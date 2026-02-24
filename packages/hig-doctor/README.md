@@ -64,7 +64,7 @@ Set `NPM_TOKEN` in repository secrets before publishing.
 ## Node API
 
 ```js
-import { diagnose } from "hig-doctor/api";
+import { diagnose } from "hig-doctor";
 
 const result = await diagnose(".", { strict: false });
 console.log(result.summary);

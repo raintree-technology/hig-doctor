@@ -130,16 +130,24 @@ description: Layout components for Apple platforms.
 
 ### SKILL.md Required Sections
 
-Every SKILL.md should include these sections:
+Every SKILL.md should include these H2 sections (validated by `hig-doctor`):
 
-1. **Persona** — "You are an expert in Apple's Human Interface Guidelines."
-2. **Before Providing Guidance** — Check for project context and platform info
-3. **When to Use This Skill** — Bullet list of specific topics and scenarios
-4. **Key Principles** — Numbered list of core guidelines (summarized, not copied)
-5. **Reference Index** — Table mapping topics to reference files
-6. **Output Format** — How to structure the response
-7. **Task-Specific Questions** — Questions the agent should ask before giving advice
-8. **Related Skills** — Cross-references to other HIG skills
+1. **Key Principles** — Numbered list of core guidelines (summarized, not copied)
+2. **Reference Index** — Table mapping topics to reference files
+3. **Output Format** — How to structure the response
+4. **Questions to Ask** — Questions the agent should ask before giving advice
+5. **Related Skills** — Cross-references to other HIG skills
+
+Additionally, every skill body should start with the context-check hint:
+
+```
+Check for `.claude/apple-design-context.md` before asking questions.
+Use existing context and only ask for information not already covered.
+```
+
+The `hig-project-context` skill has a different profile with sections: "Gathering Context", "Context Document Template", "Related Skills".
+
+Discovery information ("when to use this skill") belongs in the frontmatter `description` field, not a body section — agents read descriptions to decide relevance before loading the full body.
 
 ### Structure
 
@@ -213,7 +221,7 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 - [ ] `version` field present and matches VERSIONS.md
 - [ ] `description` is 1-1024 chars with trigger phrases
 - [ ] `SKILL.md` is under 500 lines
-- [ ] `SKILL.md` includes all required sections (persona, when-to-use, principles, reference index, questions, output format, related skills)
+- [ ] `SKILL.md` includes all required sections (Key Principles, Reference Index, Output Format, Questions to Ask, Related Skills)
 - [ ] Reference files are in `references/` directory
 - [ ] Cross-references to related skills are accurate
 - [ ] No broken links in reference index table

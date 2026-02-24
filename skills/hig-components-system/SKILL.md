@@ -1,7 +1,7 @@
 ---
 name: hig-components-system
 version: 1.0.0
-description: >
+description: >-
   Apple HIG guidance for system experience components: widgets, live activities,
   notifications, complications, home screen quick actions, top shelf, watch faces,
   app clips, and app shortcuts. Use when asked about: "widget design", "live activity",
@@ -20,51 +20,33 @@ Check for `.claude/apple-design-context.md` before asking questions. Use existin
 
 ## Key Principles
 
-### General
-
 1. **Glanceable, immediate value.** System experiences bring your app's most important content to surfaces the user sees without launching your app. Design for seconds of attention.
 
 2. **Respect platform context.** A Lock Screen widget has different constraints than a Home Screen widget. A complication is far smaller than a top shelf item.
 
-### Widgets
+3. **Widgets: show relevant information, not everything.** Display the most useful subset, updated appropriately.
 
-3. **Show relevant information, not everything.** Display the most useful subset, updated appropriately.
-
-4. **Support multiple sizes with distinct layouts.** Each size should be a thoughtful design, not a scaled version of another.
+4. **Support multiple widget sizes with distinct layouts.** Each size should be a thoughtful design, not a scaled version of another.
 
 5. **Deep-link on tap.** Take users to the relevant content, not the app's root screen.
 
-### Live Activities
-
-6. **Track events with a clear start and end.** Deliveries, scores, timers, rides. Design for both Dynamic Island and Lock Screen.
+6. **Live Activities: track events with a clear start and end.** Deliveries, scores, timers, rides. Design for both Dynamic Island and Lock Screen.
 
 7. **Stay updated and timely.** Stale data undermines trust. End promptly when the event concludes.
 
-### Notifications
+8. **Respect user attention with notifications.** Only send notifications for information users genuinely care about. No promotional or low-value notifications.
 
-8. **Respect user attention.** Only send notifications for information users genuinely care about. No promotional or low-value notifications.
+9. **Notifications: actionable and self-contained.** Include enough context to understand and act without opening the app. Support notification actions. Use threading and grouping.
 
-9. **Actionable and self-contained.** Include enough context to understand and act without opening the app. Support notification actions. Use threading and grouping.
+10. **Complications: focused data on the watch face.** Design for the smallest useful representation. Support multiple families. Budget updates wisely.
 
-### Complications
+11. **Home Screen quick actions: 3-4 most common tasks.** Short titles, optional subtitles, relevant SF Symbol icons.
 
-10. **Focused data on the watch face.** Design for the smallest useful representation. Support multiple families. Budget updates wisely.
+12. **Top Shelf: tvOS showcase.** Feature content that entices: new episodes, featured items, recent content.
 
-### Home Screen Quick Actions
+13. **App Clips: instant, focused functionality within a strict size budget.** Load quickly without App Store download. Only what's needed for the immediate task, then offer full app install.
 
-11. **3-4 most common tasks.** Short titles, optional subtitles, relevant SF Symbol icons.
-
-### Top Shelf
-
-12. **tvOS showcase.** Feature content that entices: new episodes, featured items, recent content.
-
-### App Clips
-
-13. **Instant, focused functionality within a strict size budget.** Load quickly without App Store download. Only what's needed for the immediate task, then offer full app install.
-
-### App Shortcuts
-
-14. **Surface key actions to Siri and Spotlight.** Define shortcuts for frequent tasks. Use natural, conversational trigger phrases.
+14. **App Shortcuts: surface key actions to Siri and Spotlight.** Define shortcuts for frequent tasks. Use natural, conversational trigger phrases.
 
 ## Reference Index
 

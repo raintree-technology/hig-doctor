@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "validate": "node packages/hig-doctor/src/cli.js . --verbose",
+    "validate:strict": "node packages/hig-doctor/src/cli.js . --strict",
+    "validate:score": "node packages/hig-doctor/src/cli.js . --score",
+    "validate:tui": "node packages/hig-doctor/src/cli.js . --tui",
+    "test": "npm --prefix packages/hig-doctor test"
+  }
+}

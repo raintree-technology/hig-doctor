@@ -1,7 +1,7 @@
 ---
 name: hig-components-status
 version: 1.0.0
-description: >
+description: >-
   Apple HIG guidance for status and progress UI components including progress indicators,
   status bars, and activity rings. Use this skill when asked about: "progress indicator",
   "progress bar", "loading spinner", "status bar", "activity ring", "progress display",
@@ -19,8 +19,6 @@ Check for `.claude/apple-design-context.md` before asking questions. Use existin
 
 ## Key Principles
 
-### Progress Indicators
-
 1. **Show progress for operations longer than a second or two.**
 
 2. **Determinate when duration/percentage is known.** A filling progress bar gives users a clear sense of remaining work. Use for downloads, uploads, or any measurable process.
@@ -33,17 +31,13 @@ Check for `.claude/apple-design-context.md` before asking questions. Use existin
 
 6. **Don't stack multiple indicators.** Aggregate simultaneous operations into one representation or show the most relevant.
 
-### Status Bars
-
 7. **Don't hide the status bar without good reason.** Reserve hiding for immersive experiences (full-screen media, games, AR).
 
 8. **Match status bar style to your content.** Light or dark for adequate contrast.
 
 9. **Respect safe areas.** No interactive content behind the status bar.
 
-10. **Restore promptly** when exiting immersive contexts.
-
-### Activity Rings
+10. **Restore the status bar promptly** when exiting immersive contexts.
 
 11. **Activity rings are for Move, Exercise, and Stand goals.** Don't repurpose the ring metaphor for unrelated data.
 
