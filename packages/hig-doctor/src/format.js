@@ -1,14 +1,5 @@
 import path from "node:path";
-
-const severityOrder = {
-  error: 0,
-  warning: 1
-};
-
-const truncate = (value, maxLength) => {
-  if (value.length <= maxLength) return value;
-  return `${value.slice(0, Math.max(0, maxLength - 1))}…`;
-};
+import { SEVERITY_ORDER, truncate } from "./util.js";
 
 const formatLocation = (rootDirectory, filePath) => {
   if (!filePath) return "";
@@ -96,7 +87,7 @@ const getFindingsForText = (result, verbose) => {
     : result.findings.filter((finding) => finding.severity === "error");
 
   return [...findings].sort((left, right) => {
-    const severityDelta = severityOrder[left.severity] - severityOrder[right.severity];
+    const severityDelta = SEVERITY_ORDER[left.severity] - SEVERITY_ORDER[right.severity];
     if (severityDelta !== 0) return severityDelta;
     const scopeLeft = left.skill ?? "repo";
     const scopeRight = right.skill ?? "repo";

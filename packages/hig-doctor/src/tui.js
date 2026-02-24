@@ -1,17 +1,9 @@
 import path from "node:path";
 import React, { useEffect, useMemo, useState } from "react";
 import { Box, Text, render, useApp, useInput } from "ink";
+import { SEVERITY_ORDER, truncate } from "./util.js";
 
 const FILTERS = ["all", "errors", "warnings"];
-const SEVERITY_ORDER = {
-  error: 0,
-  warning: 1
-};
-
-const truncate = (value, maxLength) => {
-  if (value.length <= maxLength) return value;
-  return `${value.slice(0, Math.max(0, maxLength - 1))}…`;
-};
 
 const getFilteredFindings = (findings, filter) => {
   if (filter === "errors") {

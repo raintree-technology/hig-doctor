@@ -85,6 +85,12 @@ const writeRepoCommonFiles = async (rootDirectory, skillNames) => {
   );
 };
 
+const mutateSkill = async (repoPath, skillName, transformFn) => {
+  const skillPath = path.join(repoPath, "skills", skillName, "SKILL.md");
+  const original = await readFile(skillPath, "utf8");
+  await writeFile(skillPath, transformFn(original), "utf8");
+};
+
 const createSampleSkill = async (rootDirectory) => {
   const skillDirectory = path.join(rootDirectory, "skills", "hig-sample");
   await mkdir(path.join(skillDirectory, "references"), { recursive: true });
@@ -433,6 +439,538 @@ test("cli strict mode exits non-zero when repository has warnings only", async (
     assert.notEqual(strict.code, 0);
     assert.equal(strict.stderr, "");
     assert.match(strict.stdout.trim(), /^[0-9]+$/);
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 1: Repo Structure
+// ---------------------------------------------------------------------------
+
+test("diagnose reports repo/versions-file-exists when VERSIONS.md is missing", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await rm(path.join(repoPath, "VERSIONS.md"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/versions-file-exists" && f.severity === "error"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports repo/versions-table-populated when VERSIONS.md has no rows", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await writeFile(
+      path.join(repoPath, "VERSIONS.md"),
+      "| Skill | Version | Last Updated |\n| --- | --- | --- |\n",
+      "utf8"
+    );
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/versions-table-populated" && f.severity === "error"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports repo/versions-no-duplicate-rows for duplicate entries", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    const versionsPath = path.join(repoPath, "VERSIONS.md");
+    const content = await readFile(versionsPath, "utf8");
+    await writeFile(versionsPath, `${content}| hig-sample | 1.0.0 | 2025-02-02 |\n`, "utf8");
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/versions-no-duplicate-rows" && f.message.includes("hig-sample")));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports repo/skills-directory-exists when skills/ is missing", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await rm(path.join(repoPath, "skills"), { recursive: true, force: true });
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/skills-directory-exists" && f.severity === "error"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports repo/skills-directory-populated when skills/ is empty", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await rm(path.join(repoPath, "skills", "hig-sample"), { recursive: true, force: true });
+    await rm(path.join(repoPath, "skills", "hig-project-context"), { recursive: true, force: true });
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/skills-directory-populated" && f.severity === "error"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 2: VERSIONS.md
+// ---------------------------------------------------------------------------
+
+test("diagnose reports versions/entry-has-skill-directory for ghost entry", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    const versionsPath = path.join(repoPath, "VERSIONS.md");
+    const content = await readFile(versionsPath, "utf8");
+    await writeFile(versionsPath, `${content}| hig-ghost | 1.0.0 | 2025-02-02 |\n`, "utf8");
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "versions/entry-has-skill-directory" && f.message.includes("hig-ghost")));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 3: Marketplace
+// ---------------------------------------------------------------------------
+
+test("diagnose reports repo/marketplace-file-exists when marketplace.json is missing", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await rm(path.join(repoPath, ".claude-plugin", "marketplace.json"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/marketplace-file-exists" && f.severity === "error"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports repo/marketplace-json-valid for invalid JSON", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await writeFile(path.join(repoPath, ".claude-plugin", "marketplace.json"), "{ broken json }", "utf8");
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/marketplace-json-valid" && f.severity === "error"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports repo/marketplace-skill-path-format for invalid path", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    const marketplacePath = path.join(repoPath, ".claude-plugin", "marketplace.json");
+    const marketplace = JSON.parse(await readFile(marketplacePath, "utf8"));
+    marketplace.plugins[0].skills.push("./skills/hig-sample/extra/nested");
+    await writeFile(marketplacePath, `${JSON.stringify(marketplace, null, 2)}\n`, "utf8");
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/marketplace-skill-path-format"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports repo/marketplace-includes-all-skills when skill is missing from marketplace", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    const marketplacePath = path.join(repoPath, ".claude-plugin", "marketplace.json");
+    const marketplace = JSON.parse(await readFile(marketplacePath, "utf8"));
+    marketplace.plugins[0].skills = marketplace.plugins[0].skills.filter((s) => !s.includes("hig-sample"));
+    await writeFile(marketplacePath, `${JSON.stringify(marketplace, null, 2)}\n`, "utf8");
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/marketplace-includes-all-skills" && f.message.includes("hig-sample")));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 4: README
+// ---------------------------------------------------------------------------
+
+test("diagnose reports repo/readme-exists when README.md is missing", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await rm(path.join(repoPath, "README.md"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/readme-exists" && f.severity === "warning"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports repo/readme-skills-table-populated when README has no table", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await writeFile(path.join(repoPath, "README.md"), "# Test\n\nNo table here.\n", "utf8");
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/readme-skills-table-populated" && f.severity === "warning"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports repo/readme-skill-exists for phantom skill in README", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    const readmePath = path.join(repoPath, "README.md");
+    const content = await readFile(readmePath, "utf8");
+    await writeFile(readmePath, `${content}| \`hig-phantom\` | Does not exist |\n`, "utf8");
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "repo/readme-skill-exists" && f.message.includes("hig-phantom")));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 5: Skill Frontmatter
+// ---------------------------------------------------------------------------
+
+test("diagnose reports skill/skill-file-exists when SKILL.md is missing", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await rm(path.join(repoPath, "skills", "hig-sample", "SKILL.md"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/skill-file-exists" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/max-lines when SKILL.md exceeds 500 lines", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) => `${content}${"\nfiller".repeat(500)}\n`);
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/max-lines" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/title-format when title lacks Apple HIG prefix", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) => content.replace("# Apple HIG: Sample Skill", "# Sample Skill"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/title-format" && f.severity === "warning" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/frontmatter-exists when frontmatter is missing", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", () => "# No Frontmatter\n\nJust content.\n");
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/frontmatter-exists" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/context-check-hint when context mention is missing", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) => content.replace(".claude/apple-design-context.md", ""));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/context-check-hint" && f.severity === "warning" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 6: Skill Name Validation
+// ---------------------------------------------------------------------------
+
+test("diagnose reports skill/name-required when name field is missing", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) => content.replace(/^name:.*$/m, ""));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/name-required" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/name-matches-directory when name differs from directory", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) => content.replace("name: hig-sample", "name: hig-other"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/name-matches-directory" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/name-format for invalid name characters", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) => content.replace("name: hig-sample", "name: HIG-Sample"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/name-format" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/name-no-consecutive-hyphens for double hyphens", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) => content.replace("name: hig-sample", "name: hig--sample"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/name-no-consecutive-hyphens" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 7: Skill Version Validation
+// ---------------------------------------------------------------------------
+
+test("diagnose reports skill/version-required when version field is missing", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) => content.replace(/^version:.*$/m, ""));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/version-required" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/version-semver for invalid semver", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) => content.replace("version: 1.0.0", "version: one"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/version-semver" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/version-listed-in-versions when skill is not in VERSIONS.md", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    const versionsPath = path.join(repoPath, "VERSIONS.md");
+    const content = await readFile(versionsPath, "utf8");
+    await writeFile(versionsPath, content.replace(/^.*hig-sample.*$/m, ""), "utf8");
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/version-listed-in-versions" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/version-matches-versions for version mismatch", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) => content.replace("version: 1.0.0", "version: 2.0.0"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/version-matches-versions" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 8: Skill Description Validation
+// ---------------------------------------------------------------------------
+
+test("diagnose reports skill/description-required when description is missing", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) => content.replace(/^description:.*$/m, ""));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/description-required" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/description-max-length for oversized description", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    const longDescription = `Use this skill when ${"x".repeat(1005)}`;
+    await mutateSkill(repoPath, "hig-sample", (content) =>
+      content.replace(/^description:.*$/m, `description: ${longDescription}`)
+    );
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/description-max-length" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/description-trigger-phrases when triggers are absent", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) =>
+      content.replace(/^description:.*$/m, "description: Apple HIG guidance for layout and navigation.")
+    );
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/description-trigger-phrases" && f.severity === "warning" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 9: Skill Sections (project-context profile)
+// ---------------------------------------------------------------------------
+
+test("diagnose reports skill/required-section for project-context profile missing Gathering Context", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-project-context", (content) =>
+      content.replace("## Gathering Context", "## Gathering Info")
+    );
+    const result = await diagnose(repoPath);
+    assert.ok(
+      result.findings.some(
+        (f) => f.ruleId === "skill/required-section" && f.skill === "hig-project-context" && f.message.includes("Gathering Context")
+      )
+    );
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 10: Skill References
+// ---------------------------------------------------------------------------
+
+test("diagnose reports skill/references-directory-exists when references/ is missing", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await rm(path.join(repoPath, "skills", "hig-sample", "references"), { recursive: true, force: true });
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/references-directory-exists" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/references-directory-has-files when references/ is empty", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await rm(path.join(repoPath, "skills", "hig-sample", "references", "example.md"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/references-directory-has-files" && f.severity === "warning" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/reference-index-links when no reference links exist", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) =>
+      content.replace("[example.md](references/example.md)", "No links here")
+    );
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/reference-index-links" && f.skill === "hig-sample"));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/reference-file-referenced for orphaned reference file", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await writeFile(path.join(repoPath, "skills", "hig-sample", "references", "extra.md"), "Orphaned file", "utf8");
+    const result = await diagnose(repoPath);
+    assert.ok(
+      result.findings.some(
+        (f) => f.ruleId === "skill/reference-file-referenced" && f.message.includes("extra.md") && f.skill === "hig-sample"
+      )
+    );
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 11: Related Skills
+// ---------------------------------------------------------------------------
+
+test("diagnose reports skill/related-skill-exists for nonexistent related skill", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) =>
+      content.replace(/## Related Skills[\s\S]*$/, "## Related Skills\n\n- See hig-nonexistent for details.\n")
+    );
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/related-skill-exists" && f.message.includes("hig-nonexistent")));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("diagnose reports skill/related-skill-wildcard-resolves for unmatched wildcard", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) =>
+      content.replace("## Related Skills", "## Related Skills\n\n- **hig-unknown-*** -- Wildcard test.")
+    );
+    const result = await diagnose(repoPath);
+    assert.ok(result.findings.some((f) => f.ruleId === "skill/related-skill-wildcard-resolves" && f.message.includes("hig-unknown-*")));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Group 12: Scoring and Edge Cases
+// ---------------------------------------------------------------------------
+
+test("score formula applies correctly for warnings only", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await mutateSkill(repoPath, "hig-sample", (content) =>
+      content
+        .replace("# Apple HIG: Sample Skill", "# Sample Skill")
+        .replace(".claude/apple-design-context.md", "")
+    );
+    const result = await diagnose(repoPath);
+    assert.equal(result.summary.errors, 0);
+    assert.equal(result.summary.warnings, 2);
+    assert.equal(result.summary.score, 96);
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("score never goes below zero", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await rm(path.join(repoPath, "VERSIONS.md"));
+    await rm(path.join(repoPath, "README.md"));
+    await rm(path.join(repoPath, ".claude-plugin", "marketplace.json"));
+    await rm(path.join(repoPath, "skills", "hig-sample", "SKILL.md"));
+    await rm(path.join(repoPath, "skills", "hig-project-context", "SKILL.md"));
+    const result = await diagnose(repoPath);
+    assert.ok(result.summary.errors >= 3);
+    assert.equal(result.summary.score, Math.max(0, 100 - result.summary.errors * 10 - result.summary.warnings * 2));
+  } finally {
+    await rm(repoPath, { recursive: true, force: true });
+  }
+});
+
+test("missing SKILL.md does not cascade into frontmatter or section checks", async () => {
+  const repoPath = await createValidRepo();
+  try {
+    await rm(path.join(repoPath, "skills", "hig-sample", "SKILL.md"));
+    const result = await diagnose(repoPath);
+    const sampleFindings = result.findings.filter((f) => f.skill === "hig-sample");
+    assert.ok(sampleFindings.some((f) => f.ruleId === "skill/skill-file-exists"));
+    assert.equal(sampleFindings.filter((f) => f.ruleId === "skill/frontmatter-exists").length, 0);
+    assert.equal(sampleFindings.filter((f) => f.ruleId === "skill/name-required").length, 0);
+    assert.equal(sampleFindings.filter((f) => f.ruleId === "skill/required-section").length, 0);
   } finally {
     await rm(repoPath, { recursive: true, force: true });
   }
