@@ -11,608 +11,549 @@ import {
 } from "remotion";
 import reportData from "./data/report-data.json";
 
-const copy = {
-  kicker: "HIG AUDIT \u2014 UNIVERSAL SCANNER",
-  headline: "349 rules.\n12 frameworks.\nOne score.",
-  subhead:
-    "Scans code, stylesheets, and config files for Apple HIG compliance. Detects accessibility, color systems, typography, dark mode, responsive layout, motion preferences, and more.",
-  whatItDoesTitle: "What the audit detects",
-  whatItDoesBullets: [
-    "Accessibility anti-patterns: missing ARIA roles, empty alt text, outline removal, positive tabindex.",
-    "Context-aware rules: skips false positives in @media print, prefers-reduced-motion, and :focus-visible.",
-    "Framework-specific patterns across SwiftUI, React, Vue, Angular, Flutter, Compose, and more."
-  ],
-  categoriesTitle: "Detections by HIG category",
-  frameworksTitle: "Framework coverage",
-  frameworksBullets: [
-    "349 regex rules across 12 framework ecosystems.",
-    "Each detection classified as positive, concern, or neutral pattern.",
-    "Context-aware CSS block tracking eliminates false positives."
-  ],
-  outroHeadline: "Ship with confidence.",
-  outroSubline:
-    "One command. 349 rules. Every framework. Zero configuration."
-};
+/* ── Design Tokens ───────────────────────────────────────────────────── */
+
+const S = { xs: 6, sm: 12, md: 20, lg: 32, xl: 48, xxl: 64 };
 
 const palette = {
-  background: "#0b0c0f",
-  foreground: "#f2f2f4",
-  mutedForeground: "rgba(229, 231, 236, 0.7)",
-  subtleForeground: "rgba(229, 231, 236, 0.5)",
-  card: "hsla(225, 10%, 11%, 0.56)",
-  cardSoft: "hsla(225, 10%, 13%, 0.52)",
-  border: "hsla(0, 0%, 100%, 0.09)",
-  chart1: "#9bb2d5",
-  chart2: "#9ec6b8",
-  chart3: "#d5c29f",
-  chart4: "#b9add1",
-  chart5: "#d2aebe",
-  success: "#9fbeaa",
-  error: "#d7a0a0",
-  warning: "#d5c09a",
-  ring: "rgba(255,255,255,0.1)"
+  bg: "#0a0b0e",
+  fg: "#f5f5f7",
+  secondary: "rgba(245, 245, 247, 0.68)",
+  tertiary: "rgba(245, 245, 247, 0.42)",
+  card: "rgba(28, 30, 38, 0.58)",
+  border: "rgba(255, 255, 255, 0.08)",
+  borderSubtle: "rgba(255, 255, 255, 0.05)",
+  green: "#8fbf9a",
+  blue: "#8faabf",
+  amber: "#bfaa8f",
+  purple: "#a68fbf",
+  rose: "#bf8f9a",
+  cyan: "#8fbfb5",
 };
 
-const sceneFade = (frame, durationInFrames) => interpolate(frame, [0, 16, durationInFrames - 18, durationInFrames], [0, 1, 1, 0], {
-  extrapolateLeft: "clamp",
-  extrapolateRight: "clamp"
-});
+const font = {
+  ui: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif",
+  mono: "SF Mono, SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace",
+};
 
-const glassCard = {
+const cardStyle = {
   background: palette.card,
   border: `1px solid ${palette.border}`,
-  borderRadius: 18,
-  backdropFilter: "blur(28px) saturate(140%)",
-  boxShadow: "0 0 0 0.5px rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.14), 0 10px 28px rgba(0,0,0,0.24)"
+  borderRadius: 24,
+  backdropFilter: "blur(32px) saturate(140%)",
+  boxShadow: "0 0 0 0.5px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.12), 0 12px 32px rgba(0,0,0,0.22)",
 };
 
-const monoFont = "SF Mono, SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace";
-const uiFont = "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif";
+const pill = {
+  background: "rgba(255,255,255,0.04)",
+  border: `1px solid ${palette.borderSubtle}`,
+  borderRadius: 14,
+};
+
+/* ── Page wrapper — fills the 1080x1920 frame ────────────────────────── */
+
+const Page = ({ children }) => (
+  <AbsoluteFill
+    style={{
+      padding: `${S.xxl}px ${S.xl}px 90px`,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+    }}
+  >
+    <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+      {children}
+    </div>
+  </AbsoluteFill>
+);
+
+/* ── Backdrop ────────────────────────────────────────────────────────── */
 
 const Backdrop = () => {
   const frame = useCurrentFrame();
-  const driftX = Math.sin(frame / 80) * 18;
-  const driftY = Math.cos(frame / 90) * 12;
+  const dx = Math.sin(frame / 100) * 10;
+  const dy = Math.cos(frame / 110) * 8;
 
   return (
-    <AbsoluteFill style={{background: palette.background, overflow: "hidden"}}>
+    <AbsoluteFill style={{ background: palette.bg, overflow: "hidden" }}>
       <div
         style={{
           position: "absolute",
-          inset: -80,
-          transform: `translate(${driftX}px, ${driftY}px) scale(1.04)`,
+          inset: -40,
+          transform: `translate(${dx}px, ${dy}px) scale(1.02)`,
           backgroundImage: `url(${staticFile("orchard.png")})`,
           backgroundSize: "cover",
-          backgroundPosition: "center top",
-          filter: "saturate(75%) contrast(90%) brightness(63%)"
+          backgroundPosition: "center",
+          filter: "saturate(60%) contrast(85%) brightness(50%)",
         }}
       />
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(180deg, rgba(8,10,14,0.76) 0%, rgba(10,11,15,0.82) 48%, rgba(9,9,12,0.88) 100%)"
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: "radial-gradient(circle at 20% 16%, rgba(155,178,213,0.14) 0%, transparent 28%), radial-gradient(circle at 82% 12%, rgba(210,174,190,0.1) 0%, transparent 24%), radial-gradient(circle at 68% 82%, rgba(158,198,184,0.1) 0%, transparent 25%)"
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          opacity: 0.12,
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.6) 0.45px, transparent 0.55px)",
-          backgroundSize: "7px 7px"
+          background: "linear-gradient(180deg, rgba(10,11,14,0.80) 0%, rgba(10,11,14,0.88) 100%)",
         }}
       />
     </AbsoluteFill>
   );
 };
 
-const StatPill = ({label, value, accent}) => (
-  <div
-    style={{
-      borderRadius: 999,
-      border: `1px solid ${palette.border}`,
-      background: "rgba(255,255,255,0.04)",
-      padding: "7px 11px",
-      display: "inline-flex",
-      alignItems: "center",
-      gap: 7
-    }}
-  >
-    <span style={{width: 7, height: 7, borderRadius: 999, background: accent}} />
-    <span style={{fontFamily: uiFont, fontSize: 12, color: palette.subtleForeground, letterSpacing: 0.15}}>{label}</span>
-    <span style={{fontFamily: uiFont, fontSize: 12, color: palette.foreground, fontWeight: 600}}>{value}</span>
-  </div>
-);
+/* ── Footer ──────────────────────────────────────────────────────────── */
 
 const BrandFooter = () => (
   <div
     style={{
       position: "absolute",
-      left: 84,
-      right: 84,
-      bottom: 22,
-      ...glassCard,
-      borderRadius: 14,
-      padding: "10px 14px",
-      background: "hsla(225, 10%, 10%, 0.66)",
-      display: "grid",
-      gridTemplateColumns: "auto 1fr auto",
+      left: S.xl,
+      right: S.xl,
+      bottom: S.lg,
+      ...cardStyle,
+      borderRadius: 16,
+      padding: `${S.sm}px ${S.md}px`,
+      background: "rgba(18, 20, 26, 0.72)",
+      display: "flex",
       alignItems: "center",
-      gap: 14
+      gap: S.md,
     }}
   >
-    <div style={{display: "flex", alignItems: "center", gap: 10}}>
-      <Img
-        src={staticFile("raintree-icon.png")}
-        style={{
-          width: 22,
-          height: 22,
-          objectFit: "contain",
-          filter: "invert(1) opacity(0.78)"
-        }}
-      />
-      <span style={{fontFamily: uiFont, fontSize: 13, color: palette.mutedForeground, fontWeight: 560, letterSpacing: 0.08}}>
-        Raintree Technology
-      </span>
-    </div>
-
-    <div style={{height: 1, background: palette.border}} />
-
-    <div style={{display: "flex", alignItems: "center", gap: 16, fontFamily: monoFont, fontSize: 12, color: palette.subtleForeground}}>
-      <span>raintree.technology</span>
-      <span>github.com/raintree-technology</span>
-    </div>
+    <Img
+      src={staticFile("raintree-icon.png")}
+      style={{ width: 26, height: 26, objectFit: "contain", filter: "invert(1) opacity(0.72)" }}
+    />
+    <span style={{ fontFamily: font.ui, fontSize: 18, fontWeight: 500, color: palette.secondary }}>
+      Raintree Technology
+    </span>
+    <span style={{ flex: 1 }} />
+    <span style={{ fontFamily: font.mono, fontSize: 15, color: palette.tertiary }}>
+      raintree.technology
+    </span>
   </div>
 );
 
 /* ── Scene 1: Intro ──────────────────────────────────────────────────── */
 
-const IntroScene = ({durationInFrames}) => {
+const IntroScene = () => {
   const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const fade = sceneFade(frame, durationInFrames);
-  const rise = spring({frame, fps, config: {damping: 135}});
-
+  const { fps } = useVideoConfig();
   const project = reportData.project;
-  const totalFiles = project.files.code + project.files.style + (project.files.config || 0);
-  const totalDetections = project.totals.concerns + project.totals.positives + project.totals.patterns;
+  const total = project.totals.positives + project.totals.patterns + project.totals.concerns;
 
-  const terminalLines = [
-    "$ bun run audit ./my-app",
-    `Scanned ${project.files.code} code + ${project.files.style} style files`,
-    "",
-    `  HIG Audit: ${project.name}   ${project.score}/100`,
-    `  ${project.frameworks.join(", ")} \u00b7 ${totalDetections} detections \u00b7 ${totalFiles} files`,
-    "",
-    `  ${project.totals.positives} good  ${project.totals.patterns} patterns  ${project.totals.concerns} concerns`,
-    "",
-    "  Excellent \u2014 Strong HIG compliance across the board.",
+  const h = spring({ frame, fps, config: { damping: 200 } });
+  const sub = spring({ frame, fps, delay: 6, config: { damping: 200 } });
+  const term = spring({ frame, fps, delay: 14, config: { damping: 200 } });
+
+  const lines = [
+    { t: "$ bun run audit ./my-app", c: palette.fg },
+    { t: "", c: "transparent" },
+    { t: `Scanning ${project.files.code} code + ${project.files.style} style files...`, c: palette.tertiary },
+    { t: "", c: "transparent" },
+    { t: `  HIG Audit   ${project.score}/100  Excellent`, c: palette.green },
+    { t: `  ${project.frameworks.join(", ")}  ·  ${total} detections`, c: palette.secondary },
+    { t: "", c: "transparent" },
+    { t: `  ${project.totals.positives} positives   ${project.totals.patterns} patterns   ${project.totals.concerns} concerns`, c: palette.secondary },
   ];
 
   return (
-    <AbsoluteFill style={{opacity: fade, padding: "68px 84px 96px", justifyContent: "center"}}>
+    <Page>
+      {/* Kicker */}
       <div
         style={{
-          ...glassCard,
-          display: "grid",
-          gridTemplateColumns: "1.22fr 0.78fr",
-          gap: 18,
-          padding: 28,
-          transform: `translateY(${interpolate(rise, [0, 1], [12, 0])}px)`
+          fontFamily: font.ui, fontSize: 18, fontWeight: 600, color: palette.blue,
+          textTransform: "uppercase", letterSpacing: "0.12em",
+          opacity: h, transform: `translateY(${interpolate(h, [0, 1], [12, 0])}px)`,
         }}
       >
-        <div>
-          <div style={{fontFamily: uiFont, color: palette.chart1, fontSize: 14, letterSpacing: 1.4, textTransform: "uppercase", fontWeight: 560}}>
-            {copy.kicker}
-          </div>
-          <div style={{fontFamily: uiFont, color: palette.foreground, fontSize: 58, lineHeight: 0.99, letterSpacing: "-0.024em", fontWeight: 600, marginTop: 8, whiteSpace: "pre-line"}}>
-            {copy.headline}
-          </div>
-          <div style={{fontFamily: uiFont, color: palette.mutedForeground, fontSize: 22, lineHeight: 1.34, letterSpacing: "-0.012em", marginTop: 14, maxWidth: 860}}>
-            {copy.subhead}
-          </div>
+        HIG Audit — Universal Scanner
+      </div>
 
-          <div style={{...glassCard, marginTop: 16, padding: "14px 16px", borderRadius: 14, background: palette.cardSoft}}>
-            <div style={{fontFamily: uiFont, fontSize: 12, color: palette.chart2, letterSpacing: 1.2, textTransform: "uppercase", fontWeight: 600}}>
-              {copy.whatItDoesTitle}
-            </div>
-            <div style={{marginTop: 8, display: "grid", gap: 6}}>
-              {copy.whatItDoesBullets.map((line) => (
-                <div key={line} style={{display: "grid", gridTemplateColumns: "12px 1fr", gap: 7, alignItems: "start"}}>
-                  <span style={{width: 6, height: 6, borderRadius: 999, background: palette.chart2, marginTop: 8}} />
-                  <span style={{fontFamily: uiFont, color: palette.mutedForeground, fontSize: 17, lineHeight: 1.34}}>{line}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Headline */}
+      <div
+        style={{
+          fontFamily: font.ui, fontSize: 88, fontWeight: 600, color: palette.fg,
+          lineHeight: 0.94, letterSpacing: "-0.03em", marginTop: S.lg,
+          whiteSpace: "pre-line",
+          opacity: h, transform: `translateY(${interpolate(h, [0, 1], [16, 0])}px)`,
+        }}
+      >
+        {"349 rules.\n12 frameworks.\nOne score."}
+      </div>
 
-          <div style={{display: "flex", flexWrap: "wrap", gap: 8, marginTop: 14}}>
-            <StatPill label="score" value={`${project.score}/100`} accent={palette.success} />
-            <StatPill label="detections" value={String(totalDetections)} accent={palette.chart1} />
-            <StatPill label="frameworks" value={project.frameworks.join(", ")} accent={palette.chart3} />
-            <StatPill label="categories" value={String(project.categories.length)} accent={palette.chart4} />
+      {/* Subhead */}
+      <div
+        style={{
+          fontFamily: font.ui, fontSize: 28, color: palette.secondary,
+          lineHeight: 1.36, marginTop: S.lg,
+          opacity: sub, transform: `translateY(${interpolate(sub, [0, 1], [8, 0])}px)`,
+        }}
+      >
+        Scans code, stylesheets, and config for Apple HIG compliance across
+        accessibility, color systems, typography, dark mode, layout, and motion.
+      </div>
+
+      {/* Stat pills */}
+      <div
+        style={{
+          display: "flex", gap: S.sm, marginTop: S.xl, flexWrap: "wrap",
+          opacity: sub,
+        }}
+      >
+        {[
+          { l: "Score", v: `${project.score}`, c: palette.green },
+          { l: "Detections", v: String(total), c: palette.blue },
+          { l: "Framework", v: project.frameworks[0] || "—", c: palette.amber },
+          { l: "Categories", v: String(project.categories.length), c: palette.purple },
+        ].map((s) => (
+          <div key={s.l} style={{ ...pill, padding: "10px 18px", display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ width: 9, height: 9, borderRadius: "50%", background: s.c }} />
+            <span style={{ fontFamily: font.ui, fontSize: 18, color: palette.tertiary }}>{s.l}</span>
+            <span style={{ fontFamily: font.ui, fontSize: 18, fontWeight: 600, color: palette.fg }}>{s.v}</span>
           </div>
+        ))}
+      </div>
+
+      {/* Terminal */}
+      <div
+        style={{
+          ...cardStyle, borderRadius: 20, overflow: "hidden", marginTop: S.xl,
+          opacity: term, transform: `translateY(${interpolate(term, [0, 1], [10, 0])}px)`,
+        }}
+      >
+        <div
+          style={{
+            display: "flex", alignItems: "center", gap: 8,
+            padding: `${S.sm}px ${S.md}px`,
+            borderBottom: `1px solid ${palette.border}`,
+            background: "rgba(255,255,255,0.025)",
+          }}
+        >
+          {["#e5534b", "#d4a04b", "#54a84f"].map((c) => (
+            <span key={c} style={{ width: 13, height: 13, borderRadius: "50%", background: c, opacity: 0.7 }} />
+          ))}
+          <span style={{ flex: 1, textAlign: "center", fontFamily: font.ui, fontSize: 15, fontWeight: 600, color: palette.tertiary, letterSpacing: "0.04em" }}>
+            hig-doctor audit
+          </span>
+          <span style={{ width: 39 }} />
         </div>
-
-        <div style={{...glassCard, borderRadius: 14, overflow: "hidden"}}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-              padding: "9px 12px",
-              borderBottom: `1px solid ${palette.border}`,
-              background: "rgba(255,255,255,0.03)"
-            }}
-          >
-            <span style={{width: 9, height: 9, borderRadius: 999, background: palette.error, opacity: 0.82}} />
-            <span style={{width: 9, height: 9, borderRadius: 999, background: palette.warning, opacity: 0.82}} />
-            <span style={{width: 9, height: 9, borderRadius: 999, background: palette.success, opacity: 0.82}} />
-            <span style={{flex: 1, textAlign: "center", fontFamily: uiFont, color: palette.subtleForeground, fontSize: 11, fontWeight: 600, letterSpacing: 0.35}}>
-              hig-doctor audit
-            </span>
-            <span style={{width: 22}} />
-          </div>
-
-          <div
-            style={{
-              background: "#1d1d1f",
-              minHeight: 438,
-              padding: "14px 15px",
-              fontFamily: monoFont,
-              fontSize: 13,
-              lineHeight: 1.42,
-              color: "rgba(255,255,255,0.86)"
-            }}
-          >
-            {terminalLines.map((line, index) => (
-              <div
-                key={`${index}-${line}`}
-                style={{
-                  color: line.startsWith("$")
-                    ? "rgba(255,255,255,0.96)"
-                    : line.includes("/100")
-                      ? palette.success
-                      : line.includes("Excellent")
-                        ? palette.chart2
-                        : "rgba(255,255,255,0.78)",
-                  transform: `translateY(${interpolate(frame, [0, 24 + index * 2], [8, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"})}px)`,
-                  opacity: interpolate(frame, [0, 18 + index * 3], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"})
-                }}
-              >
-                {line || "\u00A0"}
+        <div style={{ background: "rgba(12,13,16,0.9)", padding: S.md, fontFamily: font.mono, fontSize: 19, lineHeight: 1.6 }}>
+          {lines.map((line, i) => {
+            const d = 20 + i * 4;
+            const o = interpolate(frame, [d, d + 10], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+            const y = interpolate(frame, [d, d + 10], [5, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.quad) });
+            return (
+              <div key={i} style={{ color: line.c, opacity: o, transform: `translateY(${y}px)`, whiteSpace: "pre" }}>
+                {line.t || "\u00A0"}
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
-    </AbsoluteFill>
+    </Page>
   );
 };
 
 /* ── Scene 2: Categories ─────────────────────────────────────────────── */
 
-const CategoriesScene = ({durationInFrames}) => {
+const CategoriesScene = () => {
   const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const fade = sceneFade(frame, durationInFrames);
-
+  const { fps } = useVideoConfig();
   const categories = reportData.topCategories;
-  const maxDetections = Math.max(...categories.map((c) => c.detections), 1);
+  const max = Math.max(...categories.map((c) => c.detections), 1);
   const project = reportData.project;
-  const totalDetections = project.totals.concerns + project.totals.positives + project.totals.patterns;
+  const total = project.totals.positives + project.totals.patterns + project.totals.concerns;
   const scoreTimeline = reportData.scoreTimeline;
 
   const donutStats = [
-    {label: "Positives", value: project.totals.positives, color: palette.success},
-    {label: "Patterns", value: project.totals.patterns, color: palette.chart3},
-    {label: "Concerns", value: project.totals.concerns, color: palette.error}
+    { label: "Positives", value: project.totals.positives, color: palette.green },
+    { label: "Patterns", value: project.totals.patterns, color: palette.amber },
+    { label: "Concerns", value: project.totals.concerns, color: palette.rose },
   ].filter((s) => s.value > 0);
-  const totalDonut = Math.max(1, donutStats.reduce((sum, s) => sum + s.value, 0));
-  const radius = 120;
-  const strokeWidth = 28;
-  const circumference = 2 * Math.PI * radius;
-  let consumed = 0;
+  const donutTotal = Math.max(1, donutStats.reduce((a, s) => a + s.value, 0));
+  const R = 110, SW = 28, C = 2 * Math.PI * R;
 
   return (
-    <AbsoluteFill style={{opacity: fade, padding: "68px 84px 96px", justifyContent: "center"}}>
-      <div style={{...glassCard, padding: 24}}>
-        <div style={{fontFamily: uiFont, color: palette.foreground, fontSize: 52, letterSpacing: "-0.022em", fontWeight: 600}}>
-          {copy.categoriesTitle}
-        </div>
-        <div style={{fontFamily: uiFont, color: palette.mutedForeground, fontSize: 21, letterSpacing: "-0.012em", marginTop: 6}}>
-          {`${totalDetections} detections across ${categories.length} HIG categories. ${project.totals.positives} positive patterns found.`}
-        </div>
+    <Page>
+      <div style={{ fontFamily: font.ui, fontSize: 18, fontWeight: 600, color: palette.green, textTransform: "uppercase", letterSpacing: "0.12em" }}>
+        Detections by HIG Category
+      </div>
+      <div style={{ fontFamily: font.ui, fontSize: 52, fontWeight: 600, color: palette.fg, lineHeight: 1.05, letterSpacing: "-0.02em", marginTop: S.sm }}>
+        {total} detections
+      </div>
+      <div style={{ fontFamily: font.ui, fontSize: 24, color: palette.secondary, marginTop: S.xs }}>
+        across {categories.length} categories · {project.totals.positives} positive patterns
+      </div>
 
-        <div style={{marginTop: 16, display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 14}}>
-          <div style={{...glassCard, borderRadius: 14, padding: 14}}>
-            <div style={{fontFamily: uiFont, color: palette.subtleForeground, fontSize: 12, letterSpacing: 1.1, textTransform: "uppercase", fontWeight: 600}}>
-              Top categories by detection count
-            </div>
-            <div style={{marginTop: 14, display: "grid", gap: 8}}>
-              {categories.map((cat, index) => {
-                const grow = spring({frame, fps, delay: index * 7, config: {damping: 200}});
-                const barWidth = interpolate(grow, [0, 1], [0, (cat.detections / maxDetections) * 100]);
-                const positiveWidth = cat.detections > 0 ? (cat.positives / cat.detections) * barWidth : 0;
+      {/* Donut + legend */}
+      <div style={{ display: "flex", alignItems: "center", gap: S.xl, marginTop: S.xl }}>
+        <div style={{ position: "relative", flexShrink: 0 }}>
+          <svg width="280" height="280" viewBox="0 0 280 280">
+            <circle cx="140" cy="140" r={R} stroke="rgba(255,255,255,0.06)" strokeWidth={SW} fill="none" />
+            {(() => {
+              let consumed = 0;
+              const p = interpolate(frame, [0, 80], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+              return donutStats.map((item) => {
+                const frac = item.value / donutTotal;
+                const seg = C * frac;
+                const off = interpolate(p, [0, 1], [seg, 0]);
+                const rot = (consumed / donutTotal) * 360 - 90;
+                consumed += item.value;
                 return (
-                  <div key={cat.name} style={{...glassCard, borderRadius: 12, padding: "10px 12px", background: palette.cardSoft}}>
-                    <div style={{display: "grid", gridTemplateColumns: "1fr auto", gap: 8, alignItems: "center"}}>
-                      <div style={{fontFamily: uiFont, color: palette.mutedForeground, fontSize: 16, fontWeight: 500}}>{cat.name}</div>
-                      <div style={{display: "flex", alignItems: "baseline", gap: 4}}>
-                        <span style={{fontFamily: uiFont, color: palette.foreground, fontSize: 24, fontWeight: 600}}>{cat.detections}</span>
-                        {cat.positives > 0 && (
-                          <span style={{fontFamily: uiFont, color: palette.success, fontSize: 13}}>{cat.positives} good</span>
-                        )}
-                      </div>
-                    </div>
-                    <div style={{marginTop: 7, height: 8, borderRadius: 999, background: "rgba(255,255,255,0.1)", overflow: "hidden", display: "flex"}}>
-                      <div style={{height: "100%", width: `${positiveWidth}%`, background: palette.success, borderRadius: "999px 0 0 999px"}} />
-                      <div style={{height: "100%", width: `${barWidth - positiveWidth}%`, background: `${palette.chart3}88`, borderRadius: "0 999px 999px 0"}} />
-                    </div>
-                  </div>
+                  <circle key={item.label} cx="140" cy="140" r={R} stroke={item.color} strokeWidth={SW}
+                    fill="none" strokeLinecap="round"
+                    strokeDasharray={`${seg} ${C}`} strokeDashoffset={off}
+                    transform={`rotate(${rot} 140 140)`} />
                 );
-              })}
-            </div>
+              });
+            })()}
+          </svg>
+          <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ fontFamily: font.ui, fontSize: 48, fontWeight: 600, color: palette.fg }}>{total}</span>
+            <span style={{ fontFamily: font.ui, fontSize: 16, color: palette.tertiary, marginTop: -2 }}>total</span>
           </div>
+        </div>
 
-          <div style={{display: "grid", gridTemplateRows: "1fr auto", gap: 10}}>
-            <div style={{...glassCard, borderRadius: 14, padding: 14, display: "flex", flexDirection: "column"}}>
-              <div style={{fontFamily: uiFont, color: palette.subtleForeground, fontSize: 12, letterSpacing: 1.1, textTransform: "uppercase", fontWeight: 600}}>
-                Detection breakdown
-              </div>
-              <div style={{flex: 1, display: "flex", alignItems: "center", justifyContent: "center", position: "relative"}}>
-                <svg width="360" height="360" viewBox="0 0 360 360" aria-hidden="true">
-                  <circle cx="180" cy="180" r={radius} stroke="rgba(255,255,255,0.12)" strokeWidth={strokeWidth} fill="none" />
-                  {donutStats.map((item) => {
-                    const progress = interpolate(frame, [0, 98], [0, 1], {
-                      extrapolateLeft: "clamp",
-                      extrapolateRight: "clamp",
-                      easing: Easing.out(Easing.cubic)
-                    });
-                    const fraction = item.value / totalDonut;
-                    const segmentLength = circumference * fraction;
-                    const offset = interpolate(progress, [0, 1], [segmentLength, 0]);
-                    const rotation = (consumed / totalDonut) * 360 - 90;
-                    consumed += item.value;
-                    return (
-                      <circle
-                        key={item.label}
-                        cx="180"
-                        cy="180"
-                        r={radius}
-                        stroke={item.color}
-                        strokeWidth={strokeWidth}
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeDasharray={`${segmentLength} ${circumference}`}
-                        strokeDashoffset={offset}
-                        transform={`rotate(${rotation} 180 180)`}
-                      />
-                    );
-                  })}
-                </svg>
-                <div style={{position: "absolute", textAlign: "center"}}>
-                  <div style={{fontFamily: uiFont, color: palette.subtleForeground, fontSize: 16}}>detections</div>
-                  <div style={{fontFamily: uiFont, color: palette.foreground, fontSize: 54, fontWeight: 600}}>{totalDetections}</div>
-                </div>
-              </div>
-              <div style={{display: "flex", justifyContent: "center", gap: 16, marginTop: 4}}>
-                {donutStats.map((item) => (
-                  <div key={item.label} style={{display: "flex", alignItems: "center", gap: 6}}>
-                    <span style={{width: 8, height: 8, borderRadius: 999, background: item.color}} />
-                    <span style={{fontFamily: uiFont, color: palette.mutedForeground, fontSize: 13}}>{item.label} ({item.value})</span>
-                  </div>
-                ))}
-              </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: S.md }}>
+          {donutStats.map((s) => (
+            <div key={s.label} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: s.color }} />
+              <span style={{ fontFamily: font.ui, fontSize: 20, color: palette.secondary }}>{s.label}</span>
+              <span style={{ fontFamily: font.ui, fontSize: 20, fontWeight: 600, color: palette.fg }}>{s.value}</span>
             </div>
-
-            <div style={{...glassCard, borderRadius: 14, padding: "10px 12px", display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 7}}>
-              {scoreTimeline.map((point, index) => (
-                <div
-                  key={point.label}
-                  style={{
-                    borderRadius: 10,
-                    border: `1px solid ${palette.border}`,
-                    background: "rgba(255,255,255,0.035)",
-                    padding: "7px 8px"
-                  }}
-                >
-                  <div style={{fontFamily: uiFont, color: palette.subtleForeground, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.9, fontWeight: 600}}>
-                    {point.label}
-                  </div>
-                  <div style={{fontFamily: uiFont, color: index === 0 ? palette.error : index === scoreTimeline.length - 1 ? palette.success : palette.warning, fontSize: 22, fontWeight: 600, marginTop: 2}}>
-                    {point.score}/100
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </AbsoluteFill>
+
+      {/* Bar chart */}
+      <div style={{ marginTop: S.xl, display: "grid", gap: S.md }}>
+        {categories.map((cat, i) => {
+          const grow = spring({ frame, fps, delay: i * 5, config: { damping: 200 } });
+          const pct = interpolate(grow, [0, 1], [0, (cat.detections / max) * 100]);
+          const posPct = cat.detections > 0 ? (cat.positives / cat.detections) * pct : 0;
+          return (
+            <div key={cat.name}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: S.xs }}>
+                <span style={{ fontFamily: font.ui, fontSize: 20, color: palette.secondary }}>{cat.name}</span>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                  <span style={{ fontFamily: font.ui, fontSize: 26, fontWeight: 600, color: palette.fg }}>{cat.detections}</span>
+                  {cat.positives > 0 && (
+                    <span style={{ fontFamily: font.ui, fontSize: 16, color: palette.green }}>{cat.positives} good</span>
+                  )}
+                </div>
+              </div>
+              <div style={{ height: 10, borderRadius: 999, background: "rgba(255,255,255,0.06)", overflow: "hidden", display: "flex" }}>
+                <div style={{ height: "100%", width: `${posPct}%`, background: palette.green, borderRadius: "999px 0 0 999px" }} />
+                <div style={{ height: "100%", width: `${pct - posPct}%`, background: `${palette.amber}66`, borderRadius: "0 999px 999px 0" }} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Score timeline */}
+      <div style={{ display: "flex", gap: S.sm, marginTop: S.xl }}>
+        {scoreTimeline.map((pt, i) => {
+          const color = i === 0 ? palette.rose : i === scoreTimeline.length - 1 ? palette.green : palette.amber;
+          return (
+            <div key={pt.label} style={{ ...pill, padding: `${S.sm}px ${S.md}px`, flex: 1 }}>
+              <div style={{ fontFamily: font.ui, fontSize: 14, fontWeight: 600, color: palette.tertiary, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                {pt.label}
+              </div>
+              <div style={{ fontFamily: font.ui, fontSize: 32, fontWeight: 600, color, marginTop: 4 }}>
+                {pt.score}/100
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Page>
   );
 };
 
 /* ── Scene 3: Frameworks ─────────────────────────────────────────────── */
 
-const FrameworksScene = ({durationInFrames}) => {
+const FrameworksScene = () => {
   const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const fade = sceneFade(frame, durationInFrames);
-
+  const { fps } = useVideoConfig();
   const frameworks = reportData.frameworkRuleCounts;
-  const leftCol = frameworks.slice(0, 6);
-  const rightCol = frameworks.slice(6, 12);
+
+  const checks = [
+    { area: "Accessibility", detail: "ARIA roles, alt text, focus management, touch targets" },
+    { area: "Color Systems", detail: "Semantic tokens, dark mode support, CSS custom properties" },
+    { area: "Typography", detail: "Dynamic Type, relative units, font scale compliance" },
+    { area: "Layout", detail: "Responsive breakpoints, logical properties, RTL support" },
+    { area: "Motion", detail: "prefers-reduced-motion, transitions, scroll behavior" },
+    { area: "Internationalization", detail: "lang attributes, RTL layout, i18n framework detection" },
+    { area: "Forms & Input", detail: "Labels, fieldset/legend, autocomplete, input validation" },
+  ];
 
   return (
-    <AbsoluteFill style={{opacity: fade, padding: "68px 84px 96px", justifyContent: "center"}}>
-      <div style={{...glassCard, padding: 24, display: "grid", gridTemplateColumns: "1.08fr 0.92fr", gap: 14}}>
-        <div>
-          <div style={{fontFamily: uiFont, color: palette.foreground, fontSize: 50, letterSpacing: "-0.022em", fontWeight: 600}}>
-            {copy.frameworksTitle}
-          </div>
-          <div style={{marginTop: 10, display: "grid", gap: 6}}>
-            {copy.frameworksBullets.map((line) => (
-              <div key={line} style={{display: "grid", gridTemplateColumns: "12px 1fr", gap: 7, alignItems: "start"}}>
-                <span style={{width: 6, height: 6, borderRadius: 999, background: palette.chart1, marginTop: 8}} />
-                <span style={{fontFamily: uiFont, color: palette.mutedForeground, fontSize: 18, lineHeight: 1.34}}>{line}</span>
-              </div>
-            ))}
-          </div>
-
-          <div style={{fontFamily: uiFont, color: palette.subtleForeground, fontSize: 12, letterSpacing: 1.1, textTransform: "uppercase", fontWeight: 600, marginTop: 16}}>
-            Supported frameworks
-          </div>
-          <div style={{marginTop: 10, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6}}>
-            {[leftCol, rightCol].map((col, colIdx) => (
-              <div key={colIdx} style={{display: "grid", gap: 6}}>
-                {col.map((fw, index) => {
-                  const rise = spring({frame, fps, delay: (colIdx * 6 + index) * 3, config: {damping: 200}});
-                  return (
-                    <div
-                      key={fw.framework}
-                      style={{
-                        ...glassCard,
-                        borderRadius: 10,
-                        padding: "8px 10px",
-                        background: palette.cardSoft,
-                        display: "grid",
-                        gridTemplateColumns: "1fr auto",
-                        alignItems: "center",
-                        transform: `translateY(${interpolate(rise, [0, 1], [6, 0])}px)`,
-                        opacity: rise
-                      }}
-                    >
-                      <span style={{fontFamily: uiFont, color: palette.mutedForeground, fontSize: 15}}>{fw.framework}</span>
-                      <span style={{fontFamily: monoFont, color: palette.chart1, fontSize: 14, fontWeight: 600}}>{fw.rules}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div style={{...glassCard, borderRadius: 14, padding: 14}}>
-          <div style={{fontFamily: uiFont, color: palette.foreground, fontSize: 20, fontWeight: 600, letterSpacing: "-0.01em"}}>
-            What it checks
-          </div>
-          <div style={{marginTop: 8, display: "grid", gap: 7}}>
-            {[
-              {area: "Accessibility", detail: "ARIA roles, alt text, focus management, touch targets, heading hierarchy"},
-              {area: "Color Systems", detail: "Semantic tokens vs hardcoded values, dark mode support, CSS custom properties"},
-              {area: "Typography", detail: "Dynamic Type, relative units vs fixed px, font scale compliance"},
-              {area: "Layout", detail: "Responsive breakpoints, logical properties, RTL support, adaptive patterns"},
-              {area: "Motion", detail: "prefers-reduced-motion, transitions, animations, scroll behavior"},
-              {area: "Internationalization", detail: "lang attributes, RTL layout, logical properties, i18n frameworks"},
-              {area: "Forms & Input", detail: "Labels, fieldset/legend, autocomplete, input types, validation"},
-            ].map((item, index) => {
-              const rise = spring({frame, fps, delay: index * 5, config: {damping: 190}});
-              return (
-                <div
-                  key={item.area}
-                  style={{
-                    borderRadius: 10,
-                    border: `1px solid ${palette.border}`,
-                    padding: "9px 10px",
-                    background: "rgba(255,255,255,0.035)",
-                    transform: `translateY(${interpolate(rise, [0, 1], [10, 0])}px)`,
-                    opacity: rise
-                  }}
-                >
-                  <div style={{fontFamily: uiFont, color: palette.chart1, fontSize: 13, fontWeight: 600}}>{item.area}</div>
-                  <div style={{fontFamily: uiFont, color: palette.mutedForeground, fontSize: 14, lineHeight: 1.32, marginTop: 3}}>{item.detail}</div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+    <Page>
+      <div style={{ fontFamily: font.ui, fontSize: 18, fontWeight: 600, color: palette.purple, textTransform: "uppercase", letterSpacing: "0.12em" }}>
+        Framework Coverage
       </div>
-    </AbsoluteFill>
+      <div style={{ fontFamily: font.ui, fontSize: 56, fontWeight: 600, color: palette.fg, lineHeight: 1.02, letterSpacing: "-0.02em", marginTop: S.sm }}>
+        12 frameworks.{"\n"}349 rules.
+      </div>
+      <div style={{ fontFamily: font.ui, fontSize: 24, color: palette.secondary, lineHeight: 1.36, marginTop: S.sm }}>
+        Each detection classified as positive, concern, or neutral pattern.
+      </div>
+
+      {/* Framework grid — 2 columns for readability */}
+      <div style={{ marginTop: S.xl, display: "grid", gridTemplateColumns: "1fr 1fr", gap: S.sm }}>
+        {frameworks.map((fw, i) => {
+          const rise = spring({ frame, fps, delay: i * 2, config: { damping: 200 } });
+          return (
+            <div
+              key={fw.framework}
+              style={{
+                ...pill, padding: `${S.sm}px ${S.md}px`,
+                display: "flex", justifyContent: "space-between", alignItems: "center",
+                opacity: rise, transform: `translateY(${interpolate(rise, [0, 1], [4, 0])}px)`,
+              }}
+            >
+              <span style={{ fontFamily: font.ui, fontSize: 19, color: palette.secondary }}>{fw.framework}</span>
+              <span style={{ fontFamily: font.mono, fontSize: 17, fontWeight: 600, color: palette.blue }}>{fw.rules}</span>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* What it checks */}
+      <div style={{ fontFamily: font.ui, fontSize: 28, fontWeight: 600, color: palette.fg, marginTop: S.xxl }}>
+        What it checks
+      </div>
+      <div style={{ marginTop: S.md, display: "grid", gap: S.sm }}>
+        {checks.map((item, i) => {
+          const rise = spring({ frame, fps, delay: i * 4 + 10, config: { damping: 200 } });
+          return (
+            <div
+              key={item.area}
+              style={{
+                ...pill, padding: `${S.sm}px ${S.md}px`,
+                display: "flex", alignItems: "baseline", gap: S.sm,
+                opacity: rise, transform: `translateY(${interpolate(rise, [0, 1], [6, 0])}px)`,
+              }}
+            >
+              <span style={{ fontFamily: font.ui, fontSize: 18, fontWeight: 600, color: palette.blue, flexShrink: 0 }}>{item.area}</span>
+              <span style={{ fontFamily: font.ui, fontSize: 17, color: palette.tertiary }}>—</span>
+              <span style={{ fontFamily: font.ui, fontSize: 17, color: palette.secondary }}>{item.detail}</span>
+            </div>
+          );
+        })}
+      </div>
+    </Page>
   );
 };
 
 /* ── Scene 4: Outro ──────────────────────────────────────────────────── */
 
-const OutroScene = ({durationInFrames}) => {
+const OutroScene = () => {
   const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const fade = sceneFade(frame, durationInFrames);
-  const punch = spring({frame, fps, delay: 6, config: {damping: 130}});
-
+  const { fps } = useVideoConfig();
   const project = reportData.project;
+  const pop = spring({ frame, fps, delay: 4, config: { damping: 14, stiffness: 160 } });
+  const fadeIn = spring({ frame, fps, config: { damping: 200 } });
+  const statsIn = spring({ frame, fps, delay: 10, config: { damping: 200 } });
 
   return (
-    <AbsoluteFill style={{opacity: fade, padding: "80px 96px 102px", justifyContent: "center"}}>
-      <div
-        style={{
-          ...glassCard,
-          padding: "28px 32px",
-          transform: `scale(${interpolate(punch, [0, 1], [0.97, 1])})`,
-          display: "grid",
-          gridTemplateColumns: "1fr auto",
-          gap: 22,
-          alignItems: "center"
-        }}
-      >
-        <div>
-          <div style={{fontFamily: uiFont, color: palette.foreground, fontSize: 54, lineHeight: 1, letterSpacing: "-0.022em", fontWeight: 600}}>{copy.outroHeadline}</div>
-          <div style={{fontFamily: uiFont, color: palette.mutedForeground, fontSize: 22, lineHeight: 1.32, letterSpacing: "-0.012em", marginTop: 10}}>{copy.outroSubline}</div>
-          <div style={{fontFamily: monoFont, color: palette.chart1, fontSize: 18, marginTop: 16, padding: "10px 14px", borderRadius: 10, background: "rgba(155,178,213,0.08)", border: `1px solid ${palette.border}`, display: "inline-block"}}>
-            bun run audit ./my-app
-          </div>
+    <Page>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+        {/* Score badge */}
+        <div
+          style={{
+            width: 180, height: 180, borderRadius: "50%",
+            background: "rgba(143,191,154,0.12)", border: `3px solid ${palette.green}`,
+            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+            transform: `scale(${interpolate(pop, [0, 1], [0.8, 1])})`, opacity: pop,
+          }}
+        >
+          <span style={{ fontFamily: font.ui, fontSize: 68, fontWeight: 700, color: palette.green }}>{project.score}</span>
+          <span style={{ fontFamily: font.ui, fontSize: 18, fontWeight: 600, color: palette.secondary, marginTop: -6 }}>/ 100</span>
         </div>
 
-        <div style={{display: "grid", gridTemplateColumns: "repeat(2, minmax(160px, 1fr))", gap: 8}}>
+        {/* Headline */}
+        <div
+          style={{
+            fontFamily: font.ui, fontSize: 88, fontWeight: 600, color: palette.fg,
+            lineHeight: 0.94, letterSpacing: "-0.03em", marginTop: S.xxl,
+            opacity: fadeIn,
+          }}
+        >
+          Ship with{"\n"}confidence.
+        </div>
+        <div
+          style={{
+            fontFamily: font.ui, fontSize: 28, color: palette.secondary,
+            lineHeight: 1.3, marginTop: S.lg, opacity: fadeIn,
+          }}
+        >
+          One command. 349 rules.{"\n"}Every framework. Zero configuration.
+        </div>
+
+        {/* CTA */}
+        <div
+          style={{
+            fontFamily: font.mono, fontSize: 24, fontWeight: 500, color: palette.blue,
+            marginTop: S.xxl, padding: `${S.sm + 4}px ${S.lg}px`,
+            borderRadius: 14, background: "rgba(143,170,191,0.08)",
+            border: `1px solid ${palette.border}`,
+          }}
+        >
+          bun run audit ./my-app
+        </div>
+
+        {/* Stats — 2x2 grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: S.md, marginTop: S.xxl, opacity: statsIn, width: "100%", maxWidth: 600 }}>
           {[
-            {label: "Score", value: `${project.score}/100`, color: palette.success},
-            {label: "Rules", value: String(reportData.totalRules), color: palette.chart1},
-            {label: "Positives", value: String(project.totals.positives), color: palette.chart2},
-            {label: "Frameworks", value: String(reportData.totalFrameworks), color: palette.chart4}
+            { l: "Score", v: `${project.score}/100`, c: palette.green },
+            { l: "Rules", v: String(reportData.totalRules), c: palette.blue },
+            { l: "Positives", v: String(project.totals.positives), c: palette.cyan },
+            { l: "Frameworks", v: String(reportData.totalFrameworks), c: palette.purple },
           ].map((item) => (
-            <div key={item.label} style={{...glassCard, borderRadius: 12, padding: "9px 11px", background: "rgba(255,255,255,0.04)"}}>
-              <div style={{fontFamily: uiFont, color: palette.subtleForeground, fontSize: 11, textTransform: "uppercase", letterSpacing: 1, fontWeight: 600}}>{item.label}</div>
-              <div style={{fontFamily: uiFont, color: item.color, fontSize: 30, fontWeight: 600, letterSpacing: "-0.014em", marginTop: 2}}>{item.value}</div>
+            <div key={item.l} style={{ ...pill, padding: `${S.md}px`, textAlign: "center" }}>
+              <div style={{ fontFamily: font.ui, fontSize: 14, fontWeight: 600, color: palette.tertiary, textTransform: "uppercase", letterSpacing: "0.06em" }}>{item.l}</div>
+              <div style={{ fontFamily: font.ui, fontSize: 40, fontWeight: 600, color: item.c, marginTop: 4 }}>{item.v}</div>
             </div>
           ))}
         </div>
       </div>
-    </AbsoluteFill>
+    </Page>
   );
+};
+
+/* ── Scene Wrapper (fade in/out) ──────────────────────────────────────── */
+
+const FadeScene = ({ children, durationInFrames }) => {
+  const frame = useCurrentFrame();
+  const f = 16;
+  const opacity = interpolate(
+    frame,
+    [0, f, durationInFrames - f, durationInFrames],
+    [0, 1, 1, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+  );
+  return <AbsoluteFill style={{ opacity }}>{children}</AbsoluteFill>;
 };
 
 /* ── Composition ─────────────────────────────────────────────────────── */
 
+const scenes = [
+  { component: IntroScene,      duration: 186, from: 0   },
+  { component: CategoriesScene, duration: 200, from: 160 },
+  { component: FrameworksScene, duration: 186, from: 334 },
+  { component: OutroScene,      duration: 138, from: 494 },
+];
+
 export const HigDoctorShowcase = () => {
   return (
-    <AbsoluteFill style={{fontFamily: uiFont}}>
+    <AbsoluteFill style={{ fontFamily: font.ui }}>
       <Backdrop />
-
-      <Sequence from={0} durationInFrames={180}>
-        <IntroScene durationInFrames={180} />
-      </Sequence>
-
-      <Sequence from={154} durationInFrames={220}>
-        <CategoriesScene durationInFrames={220} />
-      </Sequence>
-
-      <Sequence from={346} durationInFrames={190}>
-        <FrameworksScene durationInFrames={190} />
-      </Sequence>
-
-      <Sequence from={506} durationInFrames={124}>
-        <OutroScene durationInFrames={124} />
-      </Sequence>
-
+      {scenes.map(({ component: Scene, duration, from }) => (
+        <Sequence key={from} from={from} durationInFrames={duration} premountFor={30}>
+          <FadeScene durationInFrames={duration}>
+            <Scene />
+          </FadeScene>
+        </Sequence>
+      ))}
       <BrandFooter />
     </AbsoluteFill>
   );

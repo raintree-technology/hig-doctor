@@ -31,6 +31,6 @@
   "scripts": {
     "doctor": "node src/cli.js",
     "doctor:tui": "node src/cli.js . --tui",
-    "test": "node --test 'tests/**/*.test.js'"
+    "test": "node --test tests/doctor.test.js"
   }
 }

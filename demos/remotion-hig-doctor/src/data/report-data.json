@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-24T20:21:47.805Z",
+  "generatedAt": "2026-02-24T20:46:31.337Z",
   "project": {
     "name": "apple-hig-skills",
     "score": 100,
@@ -13,8 +13,8 @@
       "config": 10
     },
     "totals": {
-      "concerns": 0,
-      "positives": 653,
+      "concerns": 1,
+      "positives": 652,
       "patterns": 101
     },
     "categories": [
@@ -22,8 +22,8 @@
         "name": "Foundations",
         "skill": "hig-foundations",
         "detections": 612,
-        "concerns": 0,
-        "positives": 595,
+        "concerns": 1,
+        "positives": 594,
         "patterns": 17,
         "files": [
           "website/app/layout.tsx",
@@ -227,8 +227,8 @@
       "name": "Foundations",
       "skill": "hig-foundations",
       "detections": 612,
-      "concerns": 0,
-      "positives": 595,
+      "concerns": 1,
+      "positives": 594,
       "patterns": 17,
       "files": [
         "website/app/layout.tsx",

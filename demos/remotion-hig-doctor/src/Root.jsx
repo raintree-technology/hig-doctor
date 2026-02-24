@@ -6,10 +6,10 @@ export const RemotionRoot = () => {
     <Composition
       id="HigDoctorShowcase"
       component={HigDoctorShowcase}
-      durationInFrames={630}
+      durationInFrames={632}
       fps={30}
-      width={1920}
-      height={1080}
+      width={1080}
+      height={1920}
     />
   );
 };
