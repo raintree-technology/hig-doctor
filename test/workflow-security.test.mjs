@@ -1,0 +1,69 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import test from "node:test";
+
+const repoRoot = process.cwd();
+
+const readRepoFile = (relativePath) =>
+  readFileSync(path.join(repoRoot, relativePath), "utf8");
+
+const workflowFiles = [
+  ".github/workflows/build-website.yml",
+  ".github/workflows/hig-doctor-ci.yml",
+  ".github/workflows/publish-hig-doctor.yml",
+  ".github/workflows/validate-skills.yml",
+];
+
+const pinnedActionPattern =
+  /^\s*-\s+uses:\s+[A-Za-z0-9._/-]+@[0-9a-f]{40}(?:\s+#.*)?$/;
+
+test("all GitHub workflows pin third-party actions to immutable SHAs", () => {
+  for (const workflowFile of workflowFiles) {
+    const content = readRepoFile(workflowFile);
+    const usesLines = content
+      .split("\n")
+      .filter((line) => line.trimStart().startsWith("- uses:"));
+
+    assert.ok(usesLines.length > 0, `${workflowFile} should declare actions`);
+    for (const line of usesLines) {
+      assert.match(
+        line,
+        pinnedActionPattern,
+        `${workflowFile} contains an unpinned action reference: ${line.trim()}`,
+      );
+    }
+  }
+});
+
+test("repo workflows declare least-privilege contents permissions", () => {
+  for (const workflowFile of workflowFiles) {
+    const content = readRepoFile(workflowFile);
+    assert.match(
+      content,
+      /\n\s+permissions:\n\s+contents:\s+read\n/,
+      `${workflowFile} should declare contents: read permissions`,
+    );
+  }
+});
+
+test("website CI no longer self-mutates the repository", () => {
+  const content = readRepoFile(".github/workflows/build-website.yml");
+  assert.doesNotMatch(content, /\bgit\s+push\b/);
+  assert.doesNotMatch(content, /\bgit\s+commit\b/);
+});
+
+test("npm publish uses trusted publishing instead of a long-lived token", () => {
+  const content = readRepoFile(".github/workflows/publish-hig-doctor.yml");
+  assert.match(content, /\n\s+id-token:\s+write\n/);
+  assert.match(content, /npm publish --provenance --access public/);
+  assert.doesNotMatch(content, /NODE_AUTH_TOKEN|NPM_TOKEN/);
+});
+
+test("composite action setup-node reference is pinned", () => {
+  const content = readRepoFile("action.yml");
+  assert.match(
+    content,
+    /uses:\s+actions\/setup-node@[0-9a-f]{40}(?:\s+#.*)?/,
+  );
+});

@@ -15,34 +15,36 @@ jobs:
   build:
     name: Typecheck, lint, and build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     defaults:
       run:
         working-directory: website
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: npm ci
 
-      - name: Auto-fix lint and formatting
-        run: bunx biome check --write .
+      - name: Audit npm lockfile
+        run: npm audit --omit=dev
 
-      - name: Commit fixes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --cached --quiet || git commit -m "style: auto-fix lint and formatting"
-          git push
-        if: github.event_name == 'push'
+      - name: Check lint and formatting
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test
 
       - name: Typecheck
-        run: bun run typecheck
-
-      - name: Lint
-        run: bun run lint
+        run: npm run typecheck
 
       - name: Build
-        run: bun run build
+        run: npm run build

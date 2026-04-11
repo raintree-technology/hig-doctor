@@ -23,8 +23,10 @@ jobs:
   validate:
     name: Validate skill definitions
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - id: doctor
         uses: ./
@@ -34,4 +36,4 @@ jobs:
           strict: "true"
 
       - name: Report score
-        run: echo "HIG Doctor score: ${{ steps.doctor.outputs.score }}"
+        run: 'echo "HIG Doctor score: ${{ steps.doctor.outputs.score }}"'

@@ -1,5 +1,6 @@
 import type { Element, Root } from "hast";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSanitize from "rehype-sanitize";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
@@ -41,11 +42,12 @@ function rehypeRewriteHigLinks() {
 export async function renderMarkdown(content: string): Promise<string> {
   const result = await unified()
     .use(remarkParse)
-    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(remarkRehype)
+    .use(rehypeSanitize)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: "wrap" })
     .use(rehypeRewriteHigLinks)
-    .use(rehypeStringify, { allowDangerousHtml: true })
+    .use(rehypeStringify)
     .process(content);
 
   return String(result);

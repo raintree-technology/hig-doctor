@@ -116,7 +116,9 @@ Repository workflow: `.github/workflows/publish-hig-doctor.yml`
 - Trigger manually with Actions UI, or
 - Push a tag like `hig-doctor-v0.2.0`
 
-Set `NPM_TOKEN` in repository secrets before publishing.
+Configure npm trusted publishing for this repository before publishing. The workflow
+uses GitHub OIDC and `npm publish --provenance`, so no long-lived `NPM_TOKEN` is
+required.
 
 ## Node API
 

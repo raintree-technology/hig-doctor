@@ -19,6 +19,27 @@ export interface TopicData extends TopicMeta {
 }
 
 const SKILLS_DIR = path.join(process.cwd(), "..", "skills");
+const APPLE_HIG_SOURCE_PREFIX = "/design/human-interface-guidelines";
+
+export function sanitizeTopicSourceUrl(rawSource: string): string {
+  const trimmed = rawSource.trim();
+  if (!trimmed) return "";
+
+  try {
+    const parsed = new URL(trimmed);
+    if (parsed.protocol !== "https:") return "";
+    if (parsed.hostname !== "developer.apple.com") return "";
+    if (
+      parsed.pathname !== APPLE_HIG_SOURCE_PREFIX &&
+      !parsed.pathname.startsWith(`${APPLE_HIG_SOURCE_PREFIX}/`)
+    ) {
+      return "";
+    }
+    return parsed.toString();
+  } catch {
+    return "";
+  }
+}
 
 function parseFrontmatter(raw: string): {
   title: string;
@@ -54,7 +75,7 @@ function parseFrontmatter(raw: string): {
 
   return {
     title,
-    source,
+    source: sanitizeTopicSourceUrl(source),
     content: lines.slice(contentStart).join("\n"),
   };
 }
