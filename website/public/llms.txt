@@ -8,7 +8,7 @@ Apple HIG Skills packages the full [Apple Human Interface Guidelines](https://de
 - **Source**: Apple Human Interface Guidelines (February 2025)
 - **Spec**: [Agent Skills specification](https://agentskills.io/specification)
 - **License**: MIT (structure); Apple HIG content is Apple's IP
-- **Install**: Clone and copy skills into `.claude/skills/`, or add as a git submodule
+- **Install**: `npx skills add raintree-technology/apple-hig-skills` (or clone/submodule the repo into `.claude/`)
 
 ## Skills
 

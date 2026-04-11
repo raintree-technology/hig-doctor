@@ -7,14 +7,9 @@
     "hig-doctor": "./src/cli.ts"
   },
   "scripts": {
-    "dev": "termcast dev",
     "test": "bun test",
-    "build": "termcast compile",
     "audit": "bun src/cli.ts",
     "audit:export": "bun src/cli.ts . --export",
     "audit:stdout": "bun src/cli.ts . --stdout"
-  },
-  "dependencies": {
-    "termcast": "^1.3.50"
   }
 }

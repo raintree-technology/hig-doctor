@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-24T20:46:31.337Z",
+  "generatedAt": "2026-04-11T02:15:05.075Z",
   "project": {
     "name": "apple-hig-skills",
     "score": 100,
@@ -8,23 +8,23 @@
       "nextjs"
     ],
     "files": {
-      "code": 55,
+      "code": 52,
       "style": 1,
       "config": 10
     },
     "totals": {
       "concerns": 1,
-      "positives": 652,
-      "patterns": 101
+      "positives": 626,
+      "patterns": 93
     },
     "categories": [
       {
         "name": "Foundations",
         "skill": "hig-foundations",
-        "detections": 612,
+        "detections": 589,
         "concerns": 1,
-        "positives": 594,
-        "patterns": 17,
+        "positives": 572,
+        "patterns": 16,
         "files": [
           "website/app/layout.tsx",
           "website/app/page.tsx",
@@ -44,13 +44,11 @@
           "website/components/TopicCopyButton.tsx",
           "website/components/AgentSkills.tsx",
           "website/components/Footer.tsx",
-          "website/components/MoreFromRaintree.tsx",
           "website/components/Header.tsx",
           "website/components/UpdateNotify.tsx",
           "website/components/Skills.tsx",
           "website/components/BeforeAfter.tsx",
           "website/components/FAQ.tsx",
-          "website/components/EmailCTA.tsx",
           "website/components/TopicSidebar.tsx",
           "packages/hig-doctor/src-termcast/src/patterns.ts",
           "demos/remotion-hig-doctor/src/HigDoctorShowcase.jsx",
@@ -60,10 +58,10 @@
       {
         "name": "Layout & Navigation",
         "skill": "hig-components-layout",
-        "detections": 42,
+        "detections": 38,
         "concerns": 0,
-        "positives": 11,
-        "patterns": 31,
+        "positives": 10,
+        "patterns": 28,
         "files": [
           "website/app/page.tsx",
           "website/app/topics/page.tsx",
@@ -77,12 +75,10 @@
           "website/components/TopicContent.tsx",
           "website/components/AgentSkills.tsx",
           "website/components/Footer.tsx",
-          "website/components/MoreFromRaintree.tsx",
           "website/components/Header.tsx",
           "website/components/Skills.tsx",
           "website/components/BeforeAfter.tsx",
           "website/components/FAQ.tsx",
-          "website/components/EmailCTA.tsx",
           "website/components/TopicSidebar.tsx",
           "packages/hig-doctor/src-termcast/src/patterns.ts"
         ]
@@ -104,10 +100,10 @@
       {
         "name": "Controls",
         "skill": "hig-components-controls",
-        "detections": 25,
+        "detections": 23,
         "concerns": 0,
         "positives": 0,
-        "patterns": 25,
+        "patterns": 23,
         "files": [
           "website/components/UseCases.tsx",
           "website/components/Hero.tsx",
@@ -119,33 +115,16 @@
           "website/components/UpdateNotify.tsx",
           "website/components/Skills.tsx",
           "website/components/BeforeAfter.tsx",
-          "website/components/EmailCTA.tsx",
-          "packages/hig-doctor/src-termcast/src/patterns.ts"
-        ]
-      },
-      {
-        "name": "Input Methods",
-        "skill": "hig-inputs",
-        "detections": 17,
-        "concerns": 0,
-        "positives": 14,
-        "patterns": 3,
-        "files": [
-          "website/app/layout.tsx",
-          "website/components/UpdateNotify.tsx",
-          "website/components/Skills.tsx",
-          "website/components/FAQ.tsx",
-          "website/components/EmailCTA.tsx",
           "packages/hig-doctor/src-termcast/src/patterns.ts"
         ]
       },
       {
         "name": "Content Display",
         "skill": "hig-components-content",
-        "detections": 15,
+        "detections": 14,
         "concerns": 0,
         "positives": 0,
-        "patterns": 15,
+        "patterns": 14,
         "files": [
           "website/components/UseCases.tsx",
           "website/components/ui/table.tsx",
@@ -153,11 +132,25 @@
           "website/components/Audience.tsx",
           "website/components/HowItWorks.tsx",
           "website/components/AgentSkills.tsx",
-          "website/components/MoreFromRaintree.tsx",
           "website/components/Skills.tsx",
           "website/components/BeforeAfter.tsx",
           "website/components/FAQ.tsx",
           "website/components/TopicSidebar.tsx",
+          "packages/hig-doctor/src-termcast/src/patterns.ts"
+        ]
+      },
+      {
+        "name": "Input Methods",
+        "skill": "hig-inputs",
+        "detections": 13,
+        "concerns": 0,
+        "positives": 11,
+        "patterns": 2,
+        "files": [
+          "website/app/layout.tsx",
+          "website/components/UpdateNotify.tsx",
+          "website/components/Skills.tsx",
+          "website/components/FAQ.tsx",
           "packages/hig-doctor/src-termcast/src/patterns.ts"
         ]
       },
@@ -226,10 +219,10 @@
     {
       "name": "Foundations",
       "skill": "hig-foundations",
-      "detections": 612,
+      "detections": 589,
       "concerns": 1,
-      "positives": 594,
-      "patterns": 17,
+      "positives": 572,
+      "patterns": 16,
       "files": [
         "website/app/layout.tsx",
         "website/app/page.tsx",
@@ -249,13 +242,11 @@
         "website/components/TopicCopyButton.tsx",
         "website/components/AgentSkills.tsx",
         "website/components/Footer.tsx",
-        "website/components/MoreFromRaintree.tsx",
         "website/components/Header.tsx",
         "website/components/UpdateNotify.tsx",
         "website/components/Skills.tsx",
         "website/components/BeforeAfter.tsx",
         "website/components/FAQ.tsx",
-        "website/components/EmailCTA.tsx",
         "website/components/TopicSidebar.tsx",
         "packages/hig-doctor/src-termcast/src/patterns.ts",
         "demos/remotion-hig-doctor/src/HigDoctorShowcase.jsx",
@@ -265,10 +256,10 @@
     {
       "name": "Layout & Navigation",
       "skill": "hig-components-layout",
-      "detections": 42,
+      "detections": 38,
       "concerns": 0,
-      "positives": 11,
-      "patterns": 31,
+      "positives": 10,
+      "patterns": 28,
       "files": [
         "website/app/page.tsx",
         "website/app/topics/page.tsx",
@@ -282,12 +273,10 @@
         "website/components/TopicContent.tsx",
         "website/components/AgentSkills.tsx",
         "website/components/Footer.tsx",
-        "website/components/MoreFromRaintree.tsx",
         "website/components/Header.tsx",
         "website/components/Skills.tsx",
         "website/components/BeforeAfter.tsx",
         "website/components/FAQ.tsx",
-        "website/components/EmailCTA.tsx",
         "website/components/TopicSidebar.tsx",
         "packages/hig-doctor/src-termcast/src/patterns.ts"
       ]
@@ -309,10 +298,10 @@
     {
       "name": "Controls",
       "skill": "hig-components-controls",
-      "detections": 25,
+      "detections": 23,
       "concerns": 0,
       "positives": 0,
-      "patterns": 25,
+      "patterns": 23,
       "files": [
         "website/components/UseCases.tsx",
         "website/components/Hero.tsx",
@@ -324,33 +313,16 @@
         "website/components/UpdateNotify.tsx",
         "website/components/Skills.tsx",
         "website/components/BeforeAfter.tsx",
-        "website/components/EmailCTA.tsx",
-        "packages/hig-doctor/src-termcast/src/patterns.ts"
-      ]
-    },
-    {
-      "name": "Input Methods",
-      "skill": "hig-inputs",
-      "detections": 17,
-      "concerns": 0,
-      "positives": 14,
-      "patterns": 3,
-      "files": [
-        "website/app/layout.tsx",
-        "website/components/UpdateNotify.tsx",
-        "website/components/Skills.tsx",
-        "website/components/FAQ.tsx",
-        "website/components/EmailCTA.tsx",
         "packages/hig-doctor/src-termcast/src/patterns.ts"
       ]
     },
     {
       "name": "Content Display",
       "skill": "hig-components-content",
-      "detections": 15,
+      "detections": 14,
       "concerns": 0,
       "positives": 0,
-      "patterns": 15,
+      "patterns": 14,
       "files": [
         "website/components/UseCases.tsx",
         "website/components/ui/table.tsx",
@@ -358,11 +330,25 @@
         "website/components/Audience.tsx",
         "website/components/HowItWorks.tsx",
         "website/components/AgentSkills.tsx",
-        "website/components/MoreFromRaintree.tsx",
         "website/components/Skills.tsx",
         "website/components/BeforeAfter.tsx",
         "website/components/FAQ.tsx",
         "website/components/TopicSidebar.tsx",
+        "packages/hig-doctor/src-termcast/src/patterns.ts"
+      ]
+    },
+    {
+      "name": "Input Methods",
+      "skill": "hig-inputs",
+      "detections": 13,
+      "concerns": 0,
+      "positives": 11,
+      "patterns": 2,
+      "files": [
+        "website/app/layout.tsx",
+        "website/components/UpdateNotify.tsx",
+        "website/components/Skills.tsx",
+        "website/components/FAQ.tsx",
         "packages/hig-doctor/src-termcast/src/patterns.ts"
       ]
     }

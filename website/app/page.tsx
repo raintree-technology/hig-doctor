@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
+import Install from "@/components/Install";
 
 import Skills from "@/components/Skills";
 import UseCases from "@/components/UseCases";
@@ -37,6 +38,8 @@ export default function Home() {
         <Skills />
         <SectionDivider />
         <AgentSkills />
+        <SectionDivider />
+        <Install />
         <SectionDivider />
         <FAQ />
       </main>

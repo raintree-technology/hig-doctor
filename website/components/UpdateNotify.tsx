@@ -5,27 +5,25 @@ import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const ENDPOINT = process.env.NEXT_PUBLIC_EMAIL_ENDPOINT;
+const GITHUB_URL = "https://github.com/raintree-technology/apple-hig-skills";
 
 export default function UpdateNotify() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
+  const endpoint = ENDPOINT?.trim();
+  const isConfigured = Boolean(endpoint);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
       if (!email || status === "loading" || status === "success") return;
-
-      if (!ENDPOINT) {
-        // No endpoint configured — treat as success for now
-        setStatus("success");
-        return;
-      }
+      if (!endpoint) return;
 
       setStatus("loading");
       try {
-        const res = await fetch(ENDPOINT, {
+        const res = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
@@ -36,8 +34,26 @@ export default function UpdateNotify() {
         setStatus("error");
       }
     },
-    [email, status],
+    [email, status, endpoint],
   );
+
+  if (!isConfigured) {
+    return (
+      <div className="rounded-lg border border-dashed border-border/70 bg-card/30 px-4 py-3 text-sm text-muted-foreground">
+        Email updates aren&apos;t configured on this deployment yet. Follow the{" "}
+        <a
+          href={GITHUB_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-4 hover:text-foreground transition-colors"
+        >
+          GitHub repo
+          <span className="sr-only"> (opens in new tab)</span>
+        </a>{" "}
+        for updates.
+      </div>
+    );
+  }
 
   if (status === "success") {
     return (

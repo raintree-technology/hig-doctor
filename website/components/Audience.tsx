@@ -1,11 +1,5 @@
 import { Bot, Building2, Code2, Palette } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 
 const audiences = [
   {

@@ -13,13 +13,13 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import UpdateNotify from "./UpdateNotify";
 
-const MAIN_COMMAND =
-  "git clone https://github.com/raintree-technology/apple-hig-skills.git .claude/apple-hig-skills";
+const MAIN_COMMAND = "npx skills add raintree-technology/apple-hig-skills";
 
 const altMethods = [
   {
-    label: "Copy files",
-    command: "cp -r apple-hig-skills/skills/* .claude/skills/",
+    label: "Git clone",
+    command:
+      "git clone https://github.com/raintree-technology/apple-hig-skills.git .claude/apple-hig-skills",
   },
   {
     label: "Submodule",
@@ -27,8 +27,8 @@ const altMethods = [
       "git submodule add https://github.com/raintree-technology/apple-hig-skills.git .claude/apple-hig-skills",
   },
   {
-    label: "CLI",
-    command: "npx skills add raintree-technology/apple-hig-skills",
+    label: "Copy files",
+    command: "cp -r apple-hig-skills/skills/* .claude/skills/",
   },
 ] as const;
 
@@ -135,7 +135,7 @@ export default function Install() {
               <Accordion type="single" collapsible>
                 <AccordionItem value="alt" className="border-none">
                   <AccordionTrigger className="text-sm text-muted-foreground hover:text-foreground py-2 hover:no-underline">
-                    Other ways to install (submodule, copy, CLI)
+                    Other ways to install (git clone, submodule, copy)
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-2 pt-1">
