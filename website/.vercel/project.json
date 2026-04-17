@@ -1,0 +1,15 @@
+{
+  "projectId": "prj_rYcSLpbTDCulSdZOSOq94aeaxZGD",
+  "orgId": "team_FFnZfrvD19xX7UdEzrIq4swD",
+  "projectName": "apple-skills",
+  "settings": {
+    "framework": "nextjs",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": "website",
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}
