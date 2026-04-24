@@ -1,0 +1,16 @@
+{
+  "name": "hig-mcp",
+  "version": "0.1.0",
+  "description": "MCP server exposing Apple HIG skills and audit tool for AI coding agents",
+  "type": "module",
+  "bin": {
+    "hig-mcp": "./src/index.ts"
+  },
+  "scripts": {
+    "start": "bun src/index.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0"
+  }
+}
