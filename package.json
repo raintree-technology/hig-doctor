@@ -5,7 +5,9 @@
     "validate:strict": "node packages/hig-doctor/src/cli.js . --strict",
     "validate:score": "node packages/hig-doctor/src/cli.js . --score",
     "validate:tui": "node packages/hig-doctor/src/cli.js . --tui",
-    "test": "npm --prefix packages/hig-doctor test && node --test test/workflow-security.test.mjs",
-    "test:security": "node --test test/workflow-security.test.mjs"
+    "sync:audit-patterns": "cp packages/hig-doctor/src-termcast/src/patterns.ts website/lib/audit/patterns.ts",
+    "test": "npm --prefix packages/hig-doctor test && node --test test/workflow-security.test.mjs test/audit-patterns-sync.test.mjs",
+    "test:security": "node --test test/workflow-security.test.mjs",
+    "test:audit-sync": "node --test test/audit-patterns-sync.test.mjs"
   }
 }

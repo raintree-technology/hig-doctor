@@ -1,5 +1,6 @@
 import AgentSkills from "@/components/AgentSkills";
 import Audience from "@/components/Audience";
+import AuditDemo from "@/components/AuditDemo";
 import BeforeAfter from "@/components/BeforeAfter";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -26,6 +27,8 @@ export default function Home() {
       <Header />
       <main id="main-content" className="relative z-10">
         <Hero />
+        <SectionDivider />
+        <AuditDemo />
         <SectionDivider />
         <UseCases />
         <SectionDivider />
