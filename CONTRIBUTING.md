@@ -1,106 +1,119 @@
 # Contributing
 
-This guide will help you add new skills or improve existing ones.
+Guide for adding skills, updating reference content, proposing new audit rules, and extending the MCP server.
 
-## Requesting a Skill
+## Requesting a change
 
-You can suggest new skills by [opening an issue](https://github.com/raintree-technology/apple-hig-skills/issues/new).
+Open an issue at https://github.com/raintree-technology/apple-hig-skills/issues/new for new skills, audit rules, MCP tools, or content corrections.
 
-## Improving Existing Skills
+## Working on skills
 
-1. Read the existing skill thoroughly
-2. Check that reference files are up to date with Apple's current HIG
-3. Keep changes focused and minimal
-4. Update the version in `VERSIONS.md` if making significant changes
+### Improving an existing skill
 
-## Adding a New Skill
+1. Read `SKILL.md` and its `references/` files end to end.
+2. Check reference content against Apple's live HIG for drift. Update only what has changed.
+3. Preserve the attribution block and canonical `source:` URL in the frontmatter.
+4. Bump the skill's row in `VERSIONS.md` (minor for content updates, major for structural changes).
 
-### 1. Create the skill directory
+### Adding a new skill
 
-```bash
-mkdir -p skills/hig-your-topic/references
-```
+Create the directory, write a `SKILL.md` under 500 lines with required sections, and add reference files under `references/`. Every skill must include:
 
-### 2. Create the SKILL.md file
-
-Every skill needs a `SKILL.md` file with YAML frontmatter:
-
-```yaml
----
-name: hig-your-topic
-version: 1.0.0
-description: When to use this skill. Include trigger phrases and keywords that help agents identify relevant tasks. Cross-reference related skills.
----
-
-# Apple HIG: Your Topic
-
-You are an expert in Apple's Human Interface Guidelines...
-```
-
-### 3. Follow the naming conventions
-
-- **Directory name**: `hig-` prefix, lowercase, hyphens only (e.g., `hig-components-layout`)
-- **Name field**: must match directory name exactly
-- **Description**: 1-1024 characters, include trigger phrases and cross-references
-
-### 4. Structure your skill
+- **Frontmatter** — `name` (must match directory name exactly, kebab-case, `hig-` prefix), `version` (semver), `description` (1-1024 chars, include trigger phrases and cross-references).
+- **Body sections** — Key Principles, Reference Index, Output Format, Questions to Ask, Related Skills.
+- **Context-check hint** — `Check for .claude/apple-design-context.md before asking questions.`
 
 ```
 skills/hig-your-topic/
-├── SKILL.md           # Required - instructions and reference index (<500 lines)
-└── references/        # HIG content files
+├── SKILL.md
+└── references/
     ├── topic-a.md
     └── topic-b.md
 ```
 
-### 5. Write effective SKILL.md content
-
-- Start with persona: "You are an expert in Apple's Human Interface Guidelines."
-- Include "When to Use This Skill" section with specific topics
-- Summarize key principles (don't duplicate full reference content)
-- Provide a reference index table mapping topics to files
-- End with "Related Skills" section cross-referencing other skills
-- Keep under 500 lines total
-
-### 6. Add reference files
-
-- Place HIG content in `references/` with clean hyphenated filenames
-- Keep original Apple content intact
-- One topic per file
-
-## Submitting Your Contribution
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/hig-new-topic`)
-3. Make your changes
-4. Submit a pull request
-
-Before you open a PR, validate the skill structure:
+After editing, run the validator:
 
 ```bash
-node packages/hig-doctor/src/cli.js . --verbose
+npm --prefix packages/hig-doctor install
+node packages/hig-doctor/src/cli.js . --verbose --strict
 ```
 
-Optional interactive review:
+### Running the legal-hardening pass
+
+Reference files have a uniform attribution block and must not embed Apple-hosted images. If a re-scan adds new files or content, run:
 
 ```bash
-node packages/hig-doctor/src/cli.js . --tui
+bun scripts/legal-hardening.ts
 ```
 
-You can also run the HIG audit on the website or any project to verify patterns:
+The script is idempotent and rewrites the attribution block in place.
+
+## Working on the audit CLI
+
+Source: [packages/hig-doctor/src-termcast/](packages/hig-doctor/src-termcast/)
+
+### Adding a detection rule
+
+1. Add a `PatternRule` to the relevant framework array in [patterns.ts](packages/hig-doctor/src-termcast/src/patterns.ts). Use a clear, unique `pattern` name — the severity classifier keys on it.
+2. For concern rules that are accessibility-breaking, add the pattern name to `CRITICAL_CONCERNS`. For rules that cause significant UX degradation, add to `SERIOUS_CONCERNS`. Otherwise the rule defaults to `moderate`.
+3. Use `skipInBlock` for context-aware CSS rules (e.g., `outline: none` inside `:focus:not(:focus-visible)`).
+4. Add a matching test case to [patterns.test.ts](packages/hig-doctor/src-termcast/src/patterns.test.ts).
+5. Run `bun test` in `packages/hig-doctor/src-termcast/`.
+
+### Mapping a rule to a category
+
+Rules use `category` + `subcategory` fields. If a rule belongs to a new category, update `CATEGORY_TO_SKILL` and `CATEGORY_LABELS` in [categorizer.ts](packages/hig-doctor/src-termcast/src/categorizer.ts).
+
+### Smoke-test on real projects
 
 ```bash
-cd packages/hig-doctor/src-termcast && bun install && bun run audit ../../..
+cd packages/hig-doctor/src-termcast
+bun run audit ../../../website
+bun run audit ../../../website --fail-on critical
+bun run audit ../../../website --json | jq '.severities'
 ```
 
-## Skill Quality Checklist
+## Working on the MCP server
 
-- [ ] `name` matches directory name
-- [ ] `name` starts with `hig-` prefix
-- [ ] `description` clearly explains when to use the skill (includes trigger phrases)
-- [ ] `description` cross-references related skills
+Source: [packages/hig-doctor/src-mcp/](packages/hig-doctor/src-mcp/)
+
+### Adding a tool
+
+1. Add a new tool entry to the `ListToolsRequestSchema` handler with name, description, and JSON Schema for `inputSchema`.
+2. Add the matching branch to the `CallToolRequestSchema` handler.
+3. Validate inputs (use `assertSlug` for path-safe identifiers).
+4. Test with a stdio handshake:
+
+```bash
+cd packages/hig-doctor/src-mcp
+printf '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test","version":"0"}}}\n{"jsonrpc":"2.0","method":"notifications/initialized"}\n{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"your_tool","arguments":{}}}\n' | bun src/index.ts
+```
+
+## Before opening a PR
+
+```bash
+# Skills
+node packages/hig-doctor/src/cli.js . --verbose --strict
+
+# Audit
+cd packages/hig-doctor/src-termcast && bun test
+
+# MCP handshake smoke
+cd packages/hig-doctor/src-mcp && bun install
+
+# Security checks
+npm test
+```
+
+## PR checklist
+
+- [ ] Skill `name` matches directory name, `hig-` prefix, valid kebab-case
+- [ ] Skill `description` includes trigger phrases and cross-references
 - [ ] `SKILL.md` is under 500 lines
 - [ ] Reference index table covers all files in `references/`
-- [ ] Related Skills section is accurate
-- [ ] No broken file references
-- [ ] `VERSIONS.md` updated if modifying existing skills
+- [ ] Audit rules have tests and a clear `pattern` name
+- [ ] Concern severity is classified (critical/serious in the allow-set, moderate otherwise)
+- [ ] MCP tool descriptions include when to use the tool
+- [ ] `VERSIONS.md` updated for skill content changes
+- [ ] No new Apple-hosted image URLs (run `bun scripts/legal-hardening.ts`)
+- [ ] Tests pass: `npm test` and `bun test` in the audit package

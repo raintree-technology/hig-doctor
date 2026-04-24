@@ -1,19 +1,19 @@
 # hig-doctor
 
-Two tools in one package:
+Three co-located tools used by the apple-hig-skills repository:
 
-1. **HIG Audit** — Scan any project for Apple HIG compliance (349 rules, 12 frameworks)
-2. **Skill Validator** — Validate HIG skill file structure and repository consistency
+1. **HIG Audit CLI** (`src-termcast/`) — universal Apple HIG compliance scanner across 12 frameworks.
+2. **MCP Server** (`src-mcp/`) — stdio Model Context Protocol server exposing the skills corpus and the audit function as tools.
+3. **Skill Validator** (`src/`) — internal linter for this repository's `skills/` directory; not intended for external use.
 
-## HIG Audit
+## HIG Audit CLI
 
-Audit any project for Apple Human Interface Guidelines compliance. Works with SwiftUI, UIKit, React, Next.js, Vue, Nuxt, Svelte, SvelteKit, Angular, React Native, Flutter, Jetpack Compose, Android XML, and plain HTML/CSS.
+Scan any project for Apple Human Interface Guidelines compliance. Works with SwiftUI, UIKit, React, Next.js, Vue, Nuxt, Svelte, SvelteKit, Angular, React Native, Flutter, Jetpack Compose, Android XML, and plain HTML/CSS.
 
 Requires [Bun](https://bun.sh).
 
 ```bash
 cd packages/hig-doctor/src-termcast
-bun install
 bun run audit <directory>
 ```
 
@@ -24,15 +24,20 @@ bun run audit <directory>
 | `--export` | Write a full audit report to `<directory>/hig-audit.md` |
 | `--stdout` | Print raw audit markdown to stdout (pipe to an AI for evaluation) |
 | `--json` | Print structured results as JSON (for CI/scripts) |
+| `--fail-on <severity>` | Exit 1 if any concern at/above `critical`, `serious`, or `moderate` is found |
 | `--help` | Show help |
 
-### What it detects
+### Severity model
 
-349 rules across accessibility, color systems, typography, responsive layout, dark mode, motion, i18n, forms, navigation, controls, and more. Each detection is classified as a **positive** (good HIG practice), **concern** (potential violation), or **pattern** (neutral usage detected).
+Concerns are classified as:
 
-Context-aware rules skip false positives in `@media print` blocks, `prefers-reduced-motion` resets, `:focus:not(:focus-visible)` progressive enhancement, and pseudo-element selectors. Test/spec files are excluded from scanning.
+- **critical** — accessibility-breaking (missing alt, empty button, `user-scalable=no`, autoplay without track, `ImageView` without `contentDescription`, etc.)
+- **serious** — significant UX degradation (`div` with `onClick` and no role, positive tabindex, `outline: none` outside progressive enhancement, `onTapGesture` without traits, hover-without-focus, `aria-hidden` on focusable, etc.)
+- **moderate** — HIG style/best-practice violations (hardcoded colors, deprecated `NavigationView`, `!important`, physical `text-align`, etc.)
 
-Projects with low UI density (fewer than 4 detections per file and under 500 total) are flagged with a `lowDensity` warning — scores are less meaningful for non-UI-focused projects.
+Positive detections (semantic colors, Dynamic Type, accessibility modifiers, focus-visible, reduced-motion support) are reported but don't affect the `--fail-on` gate.
+
+Projects with low UI density (<4 detections per file and <500 total) are flagged with `lowDensity: true` — severity signal is less meaningful for non-UI-focused projects.
 
 ### Supported frameworks
 
@@ -51,22 +56,76 @@ Projects with low UI density (fewer than 4 detections per file and under 500 tot
 | CSS / SCSS | 40+ | Custom properties, contrast, focus styles, outline, !important, z-index, logical properties, RTL |
 | HTML | 15+ | Landmarks, lang attribute, heading structure, viewport meta |
 
-### Scoring
+Context-aware rules skip false positives in `@media print`, `prefers-reduced-motion` resets, `:focus:not(:focus-visible)`, and pseudo-element selectors (e.g., `::-webkit-scrollbar-thumb`). Test/spec files are excluded.
 
-The score (0-100) is based on the ratio of positive patterns to concerns, with a small bonus for category breadth:
+### Node API
 
-- **90-100**: Excellent HIG compliance
-- **70-89**: Good, with room for improvement
-- **50-69**: Needs work
-- **Below 50**: Significant violations
+```typescript
+import { audit } from "./src-termcast/src/audit";
 
-## Skill Validator
+const result = await audit("./my-app");
 
-Diagnose Apple HIG skill repositories for schema, structure, and repository consistency issues.
+result.scanResult;   // { frameworks, codeFiles, styleFiles, configFiles, markupFiles }
+result.allMatches;   // PatternMatch[] — every detection with file, line, type, severity
+result.categories;   // CategorySummary[] — grouped by HIG category with critical/serious/moderate counts
+result.markdown;     // Full audit report as markdown string
+```
+
+### JSON output schema
+
+`bun run audit <dir> --json` returns:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `severities` | `{ critical, serious, moderate }` | Concern counts per severity |
+| `totals` | `{ concerns, positives, patterns }` | Aggregate detection counts |
+| `lowDensity` | `boolean` | `true` if the project has few UI patterns |
+| `frameworks` | `string[]` | Detected frameworks |
+| `files` | `{ code, style, config }` | Scanned file counts |
+| `failOn` | `string \| null` | The threshold passed via `--fail-on`, if any |
+| `gateTripped` | `boolean` | `true` if concerns at/above `failOn` were found |
+| `categories` | `array` | Per-category breakdown with name, skill, detections, concerns, positives, patterns, severities, files |
+
+## MCP Server
+
+stdio Model Context Protocol server (`src-mcp/`) that exposes the skills corpus and the audit CLI to any MCP-compatible client (Claude Desktop, Cursor, Windsurf, Claude Code).
+
+```bash
+cd packages/hig-doctor/src-mcp
+bun install
+bun src/index.ts   # starts the stdio server
+```
+
+Claude Desktop config:
+
+```json
+{
+  "mcpServers": {
+    "hig-doctor": {
+      "command": "bun",
+      "args": ["/absolute/path/to/apple-hig-skills/packages/hig-doctor/src-mcp/src/index.ts"]
+    }
+  }
+}
+```
+
+Tools:
+
+| Tool | Purpose |
+|------|---------|
+| `hig_list_skills` | Enumerate skills, descriptions, and reference topics. |
+| `hig_lookup` | Fetch HIG reference markdown by skill (and optional topic). |
+| `hig_audit` | Run the HIG compliance audit on a project directory. Supports `fail_on`. |
+
+Set `HIG_SKILLS_DIR` to override skills directory resolution.
+
+## Skill Validator (internal)
+
+Used internally to lint this repository's skill files. Not intended for third-party use — the official Agent Skills reference validator is [skills-ref](https://github.com/agentskills/agentskills).
 
 ```bash
 npm --prefix packages/hig-doctor install
-node packages/hig-doctor/src/cli.js . --verbose
+node packages/hig-doctor/src/cli.js . --verbose --strict
 ```
 
 ### What it checks
@@ -86,73 +145,28 @@ node packages/hig-doctor/src/cli.js . --verbose
 | Flag | Description |
 |------|-------------|
 | `--json` | Output full JSON report |
-| `--score` | Output score only |
+| `--score` | Output 0-100 score only |
 | `--strict` | Fail on warnings as well as errors |
 | `--verbose` | Include warnings in text output |
 | `--tui` | Open interactive Ink terminal UI |
 
-### TUI controls
-
-- `j` / `k` or arrow keys: move selection
-- `f`: cycle filter (`all`, `errors`, `warnings`)
-- `g`: toggle grouping (`scope` vs severity-first)
-- `q`: quit
-
 ## GitHub Action
+
+Wraps the audit CLI as a composite action:
 
 ```yaml
 - uses: actions/checkout@v4
 - uses: raintree-technology/apple-hig-skills@main
   with:
     directory: .
-    verbose: "true"
-    strict: "true"
+    fail-on: critical
 ```
 
-## Publishing
+Outputs: `critical`, `serious`, `moderate`, `report` (path to `hig-audit.md`).
+
+## Publishing (validator)
 
 Repository workflow: `.github/workflows/publish-hig-doctor.yml`
 
-- Trigger manually with Actions UI, or
-- Push a tag like `hig-doctor-v0.2.0`
-
-Configure npm trusted publishing for this repository before publishing. The workflow
-uses GitHub OIDC and `npm publish --provenance`, so no long-lived `NPM_TOKEN` is
-required.
-
-## Node API
-
-### Skill Validator
-
-```js
-import { diagnose } from "hig-doctor";
-
-const result = await diagnose(".", { strict: false });
-console.log(result.summary);
-```
-
-### HIG Audit
-
-```typescript
-import { audit } from "./src-termcast/src/audit";
-
-const result = await audit("./my-app");
-
-result.scanResult;   // { frameworks, codeFiles, styleFiles, configFiles, markupFiles }
-result.allMatches;   // PatternMatch[] — every detection with file, line, type
-result.categories;   // CategorySummary[] — grouped by HIG category
-result.markdown;     // Full audit report as markdown string
-```
-
-### JSON output schema
-
-`bun run audit <dir> --json` returns:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `score` | `number` | 0-100 HIG compliance score |
-| `lowDensity` | `boolean` | `true` if the project has few UI patterns |
-| `frameworks` | `string[]` | Detected frameworks |
-| `files` | `object` | `{ code, style, config }` file counts |
-| `totals` | `object` | `{ concerns, positives, patterns }` aggregate counts |
-| `categories` | `array` | Per-category breakdown with name, skill, detections, concerns, positives, patterns, files |
+- Trigger manually with Actions UI, or push a tag `hig-doctor-v*`.
+- Uses npm trusted publishing via GitHub OIDC — no long-lived `NPM_TOKEN`.
