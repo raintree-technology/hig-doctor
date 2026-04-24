@@ -1,5 +1,7 @@
 // patterns.ts — Universal HIG pattern detection across all frameworks
 // ~450 rules covering Swift, React, Vue, Svelte, Angular, Flutter, Kotlin, Android XML, CSS, HTML
+export type Severity = "critical" | "serious" | "moderate";
+
 export interface PatternMatch {
   category: string;
   subcategory: string;
@@ -8,6 +10,7 @@ export interface PatternMatch {
   line: number;
   lineContent: string;
   file: string;
+  severity?: Severity;
 }
 
 interface PatternRule {
@@ -18,6 +21,53 @@ interface PatternRule {
   regex: RegExp;
   fileFilter?: RegExp; // only apply to files matching this pattern
   skipInBlock?: RegExp; // skip this rule when inside a CSS block matching this pattern
+}
+
+// Severity classification for concern-type rules.
+// Critical = breaks accessibility outright. Serious = significant UX degradation.
+// Everything else defaults to moderate.
+const CRITICAL_CONCERNS = new Set<string>([
+  "missing alt",
+  "Image without alt",
+  "svg without a11y",
+  "empty heading",
+  "empty button",
+  "missing html lang",
+  "video without track",
+  "blink element",
+  "marquee element",
+  "user-scalable=no",
+  "maximum-scale=1",
+  "ImageView without contentDescription",
+]);
+
+const SERIOUS_CONCERNS = new Set<string>([
+  "onTapGesture without traits",
+  "Image without a11y",
+  "isAccessibilityElement false on interactive",
+  "div with onClick no role",
+  "span with onClick no role",
+  "ambiguous link text",
+  "positive tabindex",
+  "aria-hidden on focusable",
+  "onMouseOver without onFocus",
+  "onMouseOut without onBlur",
+  "div as button",
+  "div as nav/header class",
+  "autoplay media",
+  "outline none",
+  "hover without focus",
+  "v-on:click without keyboard",
+  "on:click without on:keydown",
+  "(click) without (keydown)",
+  "clickable without Role",
+  "nested touchables",
+]);
+
+export function severityFor(pattern: string): Severity {
+  if (CRITICAL_CONCERNS.has(pattern)) return "critical";
+  if (SERIOUS_CONCERNS.has(pattern)) return "serious";
+  return "moderate";
 }
 
 // File filter shorthands
@@ -649,6 +699,7 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
           line: i + 1,
           lineContent: lineContent.trim(),
           file,
+          severity: rule.type === "concern" ? severityFor(rule.pattern) : undefined,
         });
       }
     }

@@ -9,6 +9,9 @@ export interface CategorySummary {
   concerns: number;
   positives: number;
   patterns: number;
+  critical: number;
+  serious: number;
+  moderate: number;
   fileCount: number;
   files: string[];
 }
@@ -72,14 +75,18 @@ export function categorizeMatches(matches: PatternMatch[]): CategorySummary[] {
 
   for (const [skillName, skillMatches] of grouped) {
     const files = [...new Set(skillMatches.map(m => m.file))];
+    const concerns = skillMatches.filter(m => m.type === "concern");
     categories.push({
       skillName,
       category: skillMatches[0].category,
       label: CATEGORY_LABELS[skillName] ?? skillName,
       matches: skillMatches,
-      concerns: skillMatches.filter(m => m.type === "concern").length,
+      concerns: concerns.length,
       positives: skillMatches.filter(m => m.type === "positive").length,
       patterns: skillMatches.filter(m => m.type === "pattern").length,
+      critical: concerns.filter(m => m.severity === "critical").length,
+      serious: concerns.filter(m => m.severity === "serious").length,
+      moderate: concerns.filter(m => m.severity === "moderate").length,
       fileCount: files.length,
       files,
     });
