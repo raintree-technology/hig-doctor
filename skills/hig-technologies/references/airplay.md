@@ -2,17 +2,23 @@
 title: "AirPlay | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/airplay
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/airplay.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # AirPlay
 
 AirPlay lets people stream media content wirelessly from iOS, iPadOS, macOS, and tvOS devices to Apple TV, HomePod, and TVs and speakers that support AirPlay.
 
-![A sketch of the AirPlay icon. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/593648369fde5b646fed363f6b420ccd/technologies-AirPlay-intro%402x.png)
+
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/airplay#Best-practices)
 
 **Prefer the system-provided media player.** The built-in media player offers a standard set of controls and supports features like chapter navigation, subtitles, closed captioning, and AirPlay streaming. It’s also easy to implement, provides a consistent and familiar playback experience across the system, and accommodates the needs of most media apps. Consider designing a custom video player only if the system-provided player doesn’t meet your app’s needs. For developer guidance, see [`AVPlayerViewController`](https://developer.apple.com/documentation/AVKit/AVPlayerViewController).
 
-![A screenshot of the system-provided media player paused while playing a video.](https://docs-assets.developer.apple.com/published/f6ea036a0e6db3780504adc3c8afece4/airplay-video-screen%402x.png)
+
 
 **Provide content in the highest possible resolution.** Your [HTTP Live Streaming](https://developer.apple.com/documentation/http-live-streaming) (HLS) playlist needs to include the full range of available resolutions so that people can experience your content in the resolution that’s appropriate for the device they’re using (AVFoundation automatically selects the resolution based on the device). If you don’t include a range of resolutions, your content looks low quality when people stream it to a device that can play at higher resolutions. For example, content that looks great on iPhone at 720p will look low quality when people use AirPlay to stream it to a 4K TV.
 
@@ -38,19 +44,19 @@ You can download AirPlay icons in [Resources](https://developer.apple.com/design
 
 Use the black AirPlay icon on white or light backgrounds when other technology icons also appear in black.
 
-![Two black AirPlay icons. The left one is the audio AirPlay icon, represented by a triangle below three concentric lines. The right one is the video AirPlay icon, represented by a triangle below a rounded rectangle.](https://docs-assets.developer.apple.com/published/86e9b97be338e8f54764489242441e37/airplay-black-icon-set%402x.png)
+
 
 ### [White AirPlay icon](https://developer.apple.com/design/human-interface-guidelines/airplay#White-AirPlay-icon)
 
 Use the white AirPlay icon on black or dark backgrounds when other technology icons also appear in white.
 
-![Two white AirPlay icons. The left one is the audio AirPlay icon, represented by a triangle below three concentric lines. The right one is the video AirPlay icon, represented by a triangle below a rounded rectangle.](https://docs-assets.developer.apple.com/published/62baec25a6d8215e9f28971b08bf18b3/airplay-white-icon-set%402x.png)
+
 
 ### [Custom color AirPlay icon](https://developer.apple.com/design/human-interface-guidelines/airplay#Custom-color-AirPlay-icon)
 
 Use a custom color when other technology icons also appear in the same color.
 
-![Two blue AirPlay icons. The left one is the audio AirPlay icon, represented by a triangle below three concentric lines. The right one is the video AirPlay icon, represented by a triangle below a rounded rectangle.](https://docs-assets.developer.apple.com/published/91abb9f30406a70ef7f08541fd4e191b/airplay-custom-color-icon-set%402x.png)
+
 
 **Position the AirPlay icon consistently with other technology icons.** If you display other technology icons within shapes, you can display the AirPlay icon in the same manner.
 
@@ -68,30 +74,30 @@ Use a custom color when other technology icons also appear in the same color.
 
 | Example text  
 ---|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Use AirPlay to listen on your speaker  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| AirPlay to your speaker  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| You can AirPlay with [App Name]  
+| Use AirPlay to listen on your speaker  
+| AirPlay to your speaker  
+| You can AirPlay with [App Name]  
   
 **Use terms like _works with_ , _use_ , _supports_ , and _compatible_.**
 
 | Example text  
 ---|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| [App Name] is compatible with AirPlay  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| AirPlay-enabled speaker  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| You can use AirPlay with [App Name]  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| [App Name] has AirPlay  
+| [App Name] is compatible with AirPlay  
+| AirPlay-enabled speaker  
+| You can use AirPlay with [App Name]  
+| [App Name] has AirPlay  
   
 **Use the name _Apple_ with the name _AirPlay_ if desired.**
 
 | Example text  
 ---|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Compatible with Apple AirPlay  
+| Compatible with Apple AirPlay  
   
 **Refer to AirPlay if appropriate and to add clarity.** If your content is specific to AirPlay, you can use Airplay to make that clear. You can also refer to AirPlay in technical specifications.
 
 | Example text  
 ---|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| [App Name] now supports AirPlay  
+| [App Name] now supports AirPlay  
   
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/airplay#Platform-considerations)
 

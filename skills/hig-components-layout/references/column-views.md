@@ -2,11 +2,17 @@
 title: "Column views | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/column-views
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/column-views.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Column views
 
 A column view — also called a _browser_ — lets people view and navigate a data hierarchy using a series of vertical columns.
 
-![A stylized representation of three columns containing a list of folders, images, and file information. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/34ebf07677359428c45cbda0b9c1641e/components-column-view-intro%402x.png)
+
 
 Each column represents one level of the hierarchy and contains horizontal rows of data items. Within a column, any parent item that contains nested child items is marked with a triangle icon. When people select a parent, the next column displays its children. People can continue navigating in this way until they reach an item with no children, and can also navigate back up the hierarchy to explore other branches of data.
 

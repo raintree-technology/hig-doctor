@@ -2,11 +2,17 @@
 title: "Printing | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/printing
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/printing.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Printing
 
 An iOS, iPadOS, macOS, or visionOS app can integrate system-provided print functionality when it makes sense, presenting custom printer- and document-specific options if necessary.
 
-![A sketch of a printer, suggesting printing. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/1194b45798f16b503c0a91c6d8ed3ecc/patterns-printing-intro%402x.png)
+
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/printing#Best-practices)
 

@@ -2,11 +2,17 @@
 title: "Edit menus | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/edit-menus
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/edit-menus.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Edit menus
 
 An edit menu lets people make changes to selected content in the current view, in addition to offering related commands like Copy, Select, Translate, and Look Up.
 
-![A stylized representation of an edit menu extending from selected text. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/2ee5b60d3d9877b65df7633d0321550a/components-edit-menu-intro%402x.png)
+
 
 In addition to text, an edit menu’s commands can apply to many types of selectable content, such as images, files, and objects like contact cards, charts, or map locations. In iOS, iPadOS, and visionOS, the system automatically detects the data type of a selected item, which can result in the addition of a related action to the edit menu. For example, selecting an address can add an item like _Get directions_ to the edit menu.
 

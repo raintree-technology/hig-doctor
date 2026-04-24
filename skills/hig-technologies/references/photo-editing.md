@@ -2,11 +2,17 @@
 title: "Photo editing | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/photo-editing
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/photo-editing.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Photo editing
 
 Photo-editing extensions let people modify photos and videos within the Photos app by applying filters or making other changes.
 
-![A sketch of crop marks surrounded by two arrows, suggesting photo editing. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/0923c23bdf3aebd4a8b7d94e43cb0efd/technologies-photo-editing-intro%402x.png)
+
 
 Edits are always saved in the Photos app as new files, safely preserving the original versions.
 

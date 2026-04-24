@@ -2,11 +2,17 @@
 title: "Web views | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/web-views
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/web-views.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Web views
 
 A web view loads and displays rich web content, such as embedded HTML and websites, directly within your app.
 
-![A stylized representation of a compass icon. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/ae2c2f04ee2e04730e29b26e7e9bff19/components-web-view-intro%402x.png)
+
 
 For example, Mail uses a web view to show HTML content in messages.
 

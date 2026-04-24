@@ -2,11 +2,17 @@
 title: "Lists and tables | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/lists-and-tables
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/lists-and-tables.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Lists and tables
 
 Lists and tables present data in one or more columns of rows.
 
-![A stylized representation of a three-row table with header and footer text. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/c3e26d2515ac05cae7aba2704f8640d6/components-lists-and-tables-intro%402x.png)
+
 
 A table or list can represent data that’s organized in groups or hierarchies, and it can support user interactions like selecting, adding, deleting, and reordering. Apps and games in all platforms can use tables to present content and options; many apps use lists to express an overall information hierarchy and help people navigate it. For example, iOS Settings uses a hierarchy of lists to help people choose options, and several apps — such as Mail in iPadOS and macOS — use a table within a [split view](https://developer.apple.com/design/human-interface-guidelines/split-views).
 
@@ -40,9 +46,9 @@ Sometimes, people need to work with complex data in a multicolumn table or a spr
 
 **Use an info button only to reveal more information about a row’s content.** An info button — called a _detail disclosure button_ when it appears in a list row — doesn’t support navigation through a hierarchical table or list. If you need to let people drill into a list or table row’s subviews, use a disclosure indicator accessory control. For developer guidance, see [`UITableViewCell.AccessoryType.disclosureIndicator`](https://developer.apple.com/documentation/UIKit/UITableViewCell/AccessoryType-swift.enum/disclosureIndicator).
 
-![An illustration of a grouped list of rows. Each list item includes an info button at the trailing end of the row.](https://docs-assets.developer.apple.com/published/fd301d26835e0341b95eaa2027f200f2/info-button-in-list%402x.png)An info button shows details about a list item; it doesn’t support navigation.
+An info button shows details about a list item; it doesn’t support navigation.
 
-![An illustration of a grouped list of rows. Each list item includes a right-pointing chevron at the trailing end of the row.](https://docs-assets.developer.apple.com/published/dcb3678fe458846713b03756ab5e1a28/disclosure-indicator-in-list%402x.png)A disclosure indicator reveals the next level in a hierarchy; it doesn’t show details about the item.
+A disclosure indicator reveals the next level in a hierarchy; it doesn’t show details about the item.
 
 **Avoid adding an index to a table that displays controls — like disclosure indicators — in the trailing ends of its rows.** An _index_ typically consists of the letters in an alphabet, displayed vertically at the trailing side of a list. People can jump to a specific section in the list by choosing the index letter that maps to it. Because both the index and elements like disclosure indicators appear on the trailing side of a list, it can be difficult for people to use one element without activating the other.
 

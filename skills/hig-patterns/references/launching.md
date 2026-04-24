@@ -2,11 +2,17 @@
 title: "Launching | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/launching
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/launching.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Launching
 
 A streamlined launch experience helps people start using your app or game immediately.
 
-![A sketch of a square containing an arrow pointing to the upper-right corner, suggesting a transition to a new state. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/5ef419551a96fe1df7df2bd5d610b5dc/patterns-launching-intro%402x.png)
+
 
 Launching begins when someone opens your app or game, includes an initial download, and ends when the first screen is ready. After launching completes, you might offer an [onboarding](https://developer.apple.com/design/human-interface-guidelines/onboarding) experience, which can give people a high-level view of your app or game.
 

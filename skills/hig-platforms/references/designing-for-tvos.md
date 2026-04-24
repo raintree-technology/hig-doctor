@@ -2,11 +2,17 @@
 title: "Designing for tvOS | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Designing for tvOS
 
 People enjoy the vibrant content, immersive experiences, and streamlined interactions that tvOS delivers in media and games, as well as in fitness, education, and home utility apps.
 
-![A stylized representation of a TV screen shown on top of a grid. The image is overlaid with rectangular and circular grid lines and is tinted green to subtly reflect the green in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/cd98e6ef7baa3ddd91de67f43a979c8e/platforms-tvOS-intro%402x.png)
+
 
 As you begin designing your app or game for tvOS, start by understanding the following fundamental device characteristics and patterns that distinguish the tvOS experience. Using these characteristics and patterns to inform your design decisions can help you provide an app or game that tvOS users appreciate.
 

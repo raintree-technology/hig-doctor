@@ -2,11 +2,17 @@
 title: "Mac Catalyst | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/mac-catalyst
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/mac-catalyst.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Mac Catalyst
 
 When you use Mac Catalyst to create a Mac version of your iPad app, you give people the opportunity to enjoy the experience in a new environment.
 
-![A sketch of an iPad overlapping a Mac, suggesting an iPad app running on Mac. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/b26e178c0943cda75bc8463228e18dd1/technologies-Mac-Catalyst-intro%402x.png)
+
 
 ## [Before you start](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Before-you-start)
 
@@ -83,9 +89,9 @@ You’re most likely to benefit from the Mac idiom if your app displays a lot of
 
 
 
-![Zoomed icon for the California Academy of Sciences point-of-interest in Maps to show how the system renders it with less details if you choose the iPad idiom.](https://docs-assets.developer.apple.com/published/584dcc4acfee462c4e401bf375efeab0/ipad-idiom%402x.png)
 
-![Zoomed icon for the California Academy of Sciences point-of-interest in Maps to show how the system renders it with more details if you choose the Mac idiom.](https://docs-assets.developer.apple.com/published/7467ee8fcd5eae619d2fc538dc73141f/mac-idiom%402x.png)
+
+
 
 Developer note
 

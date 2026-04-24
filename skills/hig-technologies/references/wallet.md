@@ -2,11 +2,17 @@
 title: "Wallet | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/wallet
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/wallet.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Wallet
 
 Wallet helps people securely store their credit and debit cards, driver’s license or state ID, transit cards, event tickets, keys, and more on iPhone and Apple Watch.
 
-![A sketch of the Wallet icon. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/485464590c29a6fc839b0a60a3aa2556/technologies-Wallet-intro%402x.png)
+
 
 People use their cards and passes in Wallet to make Apple Pay purchases, track their orders, confirm their identity, and streamline activities like boarding a plane, attending a concert, or receiving a discount.
 
@@ -30,11 +36,11 @@ When you integrate Apple Wallet into your app, you can create custom passes and 
 
 **Help the system suggest a pass when it’s contextually relevant.** Ideally, passes automatically appear when they’re needed so people don’t have to manually locate them. When you supply information about when and where your pass is relevant, the system can display a link to it on the Lock Screen when people are most likely to want it. For example, a gym membership card could appear on the Lock Screen as people enter the gym. For developer guidance, see [Showing a Pass on the Lock Screen](https://developer.apple.com/documentation/WalletPasses/showing-a-pass-on-the-lock-screen). Starting in iOS 18 and watchOS 11, the system starts a Live Activity for poster event ticket style passes when they’re relevant.
 
-![A screenshot of the Lock Screen on iPhone, showing a notification about an upcoming flight.](https://docs-assets.developer.apple.com/published/cebddf30f9508581b883f85eccdba873/screen-notification%402x.png)
+
 
 Lock screen notification
 
-![A screenshot of the Lock Screen on iPhone, showing a Live Activity of an upcoming event.](https://docs-assets.developer.apple.com/published/1fb12c1d6aa8a295ee97a709f68915ef/poster-event-live-activity%402x.png)
+
 
 Live Activity
 
@@ -46,7 +52,7 @@ Live Activity
 
 Wallet uses a consistent design aesthetic to strengthen familiarity and build trust. Instead of merely replicating the appearance of a physical item, design a clean, simple pass that looks at home in Wallet.
 
-![An illustration that represents an iPhone next to an Apple Watch. Each device displays a Wallet pass for a flight.](https://docs-assets.developer.apple.com/published/ab8facb271621ba07477e89c7c65f8a5/pass-intro%402x.png)
+
 
 **Design a pass that looks great and works well on all devices.** Passes can look different on different devices. For example, when a pass appears on Apple Watch, it doesn’t display all the images it displays when it appears on iPhone (for guidance, see [Passes for Apple Watch](https://developer.apple.com/design/human-interface-guidelines/wallet#Passes-for-Apple-Watch)). Don’t put essential information in elements that might be unavailable on certain devices. Also, don’t add padding to images; for example, watchOS crops white space from some images.
 
@@ -68,7 +74,7 @@ The system defines several pass _styles_ for categories like boarding pass, coup
 
 Although each pass style is different, all styles display information using the basic layout areas shown below:
 
-![A diagram that shows a four-row arrangement of layout areas in a pass. The top row contains a logo, logo text, and an essential area. The second row contains a primary area. The third row contains an area for secondary and auxiliary fields, and the bottom row contains an area for codes and an optional footer.](https://docs-assets.developer.apple.com/published/84df5c51eeb08eafa967b5fac77e5d86/pass-layout-diagram%402x.png)
+
 
 All passes display a logo image, and some can display additional images in other areas depending on the pass style. To display information in the layout areas, use the following [`PassFields`](https://developer.apple.com/documentation/WalletPasses/PassFields).
 
@@ -94,9 +100,9 @@ A boarding pass can display logo and footer images, and it can have up to two pr
 
 
 
-![An illustration representing a boarding pass that includes a square QR code. The boarding pass is for a flight from SFO in San Francisco to LGA in New York.](https://docs-assets.developer.apple.com/published/1656e78a2371c7828d25a5c5ffcddad6/boarding%402x.png)
 
-![A diagram that shows the layout of a boarding pass. A top row contains a logo, logo text, and header field areas. A second row contains primary field areas and an airplane icon. A third row contains an auxiliary fields area. The fourth row contains a secondary fields area. The fifth row contains a footer area. The bottom of the pass contains a barcode area.](https://docs-assets.developer.apple.com/published/d9c8d4f88fd387194d5349d1de1f8ede/boarding-pass-layout%402x.png)
+
+
 
 #### [Coupons](https://developer.apple.com/design/human-interface-guidelines/wallet#Coupons)
 
@@ -107,9 +113,9 @@ Use the coupon style for coupons, special offers, and other discounts. A coupon 
 
 
 
-![An illustration representing a coupon pass. The pass includes a company name and icon, glyphs of clothing items, a discount offer of 15% off, and an expiration of June 5, 2023.](https://docs-assets.developer.apple.com/published/69bfb27a52f67ad10eb88d66276d0fa8/coupon%402x.png)
 
-![A diagram that shows the layout of a coupon pass. A top row contains a logo, logo text, and header field areas. A second row contains a primary field area with a callout labeled 'Strip image'. A third row contains a secondary and auxiliary fields area. The fourth row contains a barcode area.](https://docs-assets.developer.apple.com/published/e9ff886bf6d8e3f3202e165f5e0e5889/coupon-pass-layout%402x.png)
+
+
 
 #### [Store cards](https://developer.apple.com/design/human-interface-guidelines/wallet#Store-cards)
 
@@ -122,9 +128,9 @@ A store card can display logo and strip images, and it can have up to four secon
 
 
 
-![An illustration representing a store card pass. The pass includes a company name and icon, a reward point value, an illustration of a coffee cup, a reward value amount, and an updated date.](https://docs-assets.developer.apple.com/published/f81fefc86a3b46a8052c2164131d2583/store-card%402x.png)
 
-![A diagram that shows the layout of a store card pass. A top row contains a logo, logo text, and header field areas. A second row contains a primary field area with a callout labeled 'Strip image'. A third row contains a secondary and auxiliary fields area. The fourth row contains a barcode area.](https://docs-assets.developer.apple.com/published/7b648e914e0e99562fcf512efb115175/store-card-layout%402x.png)
+
+
 
 #### [Event tickets](https://developer.apple.com/design/human-interface-guidelines/wallet#Event-tickets)
 
@@ -138,11 +144,11 @@ An event ticket can display logo, strip, background, or thumbnail images. Howeve
 
 
 
-![An illustration representing an event ticket pass. The pass includes a company name and icon, a date and time, an illustration of a person bowling, a bowling alley name, and a lane number.](https://docs-assets.developer.apple.com/published/a0a42a2d3a332050cdcaba0eefa6d0ec/event-ticket%402x.png)
 
-![A diagram that shows one layout style for an event ticket pass. A top row contains a logo, logo text, and header field areas. A second row contains areas for primary fields, secondary fields, and a thumbnail. A third row contains an auxiliary fields area. The fourth row contains a barcode area.](https://docs-assets.developer.apple.com/published/b43416bbcd92dc2d60485a97d1d94bda/event-ticket-layout-1%402x.png)
 
-![A diagram that shows a second layout for an event ticket pass. A top row contains a logo, logo text, and header field areas. A second row contains a primary field area with a callout labeled 'Strip image'. A third row contains a secondary fields area. The fourth row contains an auxiliary fields area. The fifth row contains a barcode area.](https://docs-assets.developer.apple.com/published/428687f3fc4317c43ecd549547d7606f/event-ticket-layout-2%402x.png)
+
+
+
 
 In iOS 18 and later, the system defines an additional style for contactless event tickets called _poster event ticket_. Poster event tickets offer a rich visual experience that prominently features the event artwork, provides easy access to additional event information, and integrates with system apps like Weather and Maps.
 
@@ -157,17 +163,17 @@ A poster event ticket displays an event logo and background image, and can optio
 
 
 
-![An illustration representing a poster event ticket pass. The pass includes an event name, a date and time, a background image, seat information, a venue name, and a secondary logo.](https://docs-assets.developer.apple.com/published/5545e8e95a5b5e9a8c29a25a05e49001/poster-event-ticket%402x.png)
 
-![A diagram that shows the layout style for a poster event ticket pass. The background image is centered in the ticket. The header contains a logo and logo text on the left, and the date and time on the right. The footer contains primary text and seating information, and venue name and region on the bottom left, and a secondary logo on the bottom right.](https://docs-assets.developer.apple.com/published/69231d5f9da8e4f0821934f631aaad1f/poster-event-ticket-layout%402x.png)
+
+
 
 The system uses the metadata that you provide to generate a Maps shortcut to the venue directions and an event guide below the ticket when in the Wallet app. The event guide provides convenient access to information like the weather forecast and venue map, and to quick actions like checking the baggage policy and ordering food. You can display a minimum of one and up to four quick action buttons in the event guide; if you include more than four, the system collapses them into a menu. You can optionally include additional ticket information, such as pre-paid parking details, which the system also displays below the ticket.
 
-![An illustration of a poster event ticket in the Wallet app with additional ticket information, Maps shortcut, and event guide tiles displayed below the ticket.](https://docs-assets.developer.apple.com/published/cbcd171b0cd5a3431b0e8996cca7572a/poster-event-in-wallet-app%402x.png)
+
 
 Additional ticket information, Maps shortcut, and event guide tiles below the ticket in the Wallet app
 
-![An illustration of the event guide with three quick actions, a weather forecast, and a venue map.](https://docs-assets.developer.apple.com/published/2373cc358447143bdc95bb8b683793bb/poster-event-event-guide%402x.png)
+
 
 Event guide
 
@@ -177,13 +183,13 @@ Event guide
 
 **Ensure sufficient contrast so that ticket information is easy to read.** By default, the system applies a gradient in the header and a blur effect in the footer of your poster event ticket to provide sufficient contrast between the background image and ticket information. Consider adjusting the gradient and blur effect if you need more contrast. The system can also automatically determine the best text color for ticket information and labels based on your background image. If you choose to customize text colors, make sure to select a color that provides sufficient contrast, especially if you set a footer background color or a seat section color to support wayfinding. For developer guidance, see `useAutomaticColors` in [`Pass`](https://developer.apple.com/documentation/WalletPasses/Pass) and `seatSectionColor` in [`SemanticTagType.Seat`](https://developer.apple.com/documentation/WalletPasses/SemanticTagType/Seat-data.dictionary).
 
-![An illustration of a poster event ticket with good contrast between the background image and ticket information.](https://docs-assets.developer.apple.com/published/eb1dcdb8d7e2e2867927fe038db19b9a/poster-event-ticket-good-contrast%402x.png)
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
 
-![An illustration of a poster event ticket with poor contrast between the background image and ticket information.](https://docs-assets.developer.apple.com/published/ad1b01e421bb814d97f375fc1ec7f9db/poster-event-ticket-poor-contrast%402x.png)
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
+
+
+
+
 
 **Consider using the additional information tile for extra event details.** When you have more information about the event that people may find helpful, the additional information tile below the ticket is a great place to put it. If you have additional information that’s essential to display on the front of the ticket, keep the text short to avoid cluttering the footer. For developer guidance, see `additionalTicketAttributes` in [`SemanticTags`](https://developer.apple.com/documentation/WalletPasses/SemanticTags) and [`PassFields.AdditionalInfoFields`](https://developer.apple.com/documentation/WalletPasses/PassFields/AdditionalInfoFields-data.dictionary).
 
@@ -199,25 +205,25 @@ Use the generic style for a type of pass that doesn’t fit into the other categ
 
 
 
-![An illustration representing a generic pass. The pass is a membership card for a gym, and includes a company name and icon, a membership level, an illustration of a person lifting weights, a policy holder name, a member ID, and a barcode.](https://docs-assets.developer.apple.com/published/2f8c9366433d611399132b3075659cba/generic%402x.png)
 
-![A diagram that shows one layout style for a generic pass. A top row contains a logo, logo text, and header field areas. A second row contains areas for a primary field and a thumbnail. A third row contains a secondary fields area. A fourth row contains an auxiliary fields area. The fifth row contains a rectangular barcode area.](https://docs-assets.developer.apple.com/published/0ea8eaf5a48417f07aed39a2e317710e/generic-pass-layout-1%402x.png)
 
-![A diagram that shows a second layout style for a generic pass. A top row contains a logo, logo text, and header field areas. A second row contains areas for a primary field and a thumbnail. A third row contains a secondary and auxiliary fields area. The fourth row contains a square barcode area.](https://docs-assets.developer.apple.com/published/17f44895905b4c1e99b22bdab5c2842f/generic-pass-layout-2%402x.png)
+
+
+
 
 ### [Passes for Apple Watch](https://developer.apple.com/design/human-interface-guidelines/wallet#Passes-for-Apple-Watch)
 
 On Apple Watch, Wallet displays passes in a scrolling carousel of cards. People can add your pass to their Apple Watch even if you don’t create a watch-specific app, so it’s important to understand how your pass can look on the device.
 
-![A screenshot of a selected flight pass in a list of passes on Apple Watch. The pass includes information about a flight from SFO to LGA. The next pass in the list is a gym membership card with a barcode.](https://docs-assets.developer.apple.com/published/9b54ebf2a350a1e748a38c0b2cc3b74a/watch-card-and-details%402x.png)
+
 
 People can tap a pass on their Apple Watch to reveal a details screen that displays additional information in a scroll view. In some cases, people can also tap a specific transaction to get more information.
 
-![A screenshot of a flight pass on Apple Watch. The pass includes information about a flight from SFO to LGA, and appears above a QR code.](https://docs-assets.developer.apple.com/published/0f74b7b757684a79981367adf14d6adb/watch-pass-design-intro%402x.png)
+
 
 Each pass style specifies the fields and images that can appear in the basic layout areas shown below:
 
-![A diagram that shows the basic layout of a pass on Apple Watch. A top row contains a logo image and an essential field area. A second row contains a primary field area. A third row contains a secondary and auxiliary fields area.](https://docs-assets.developer.apple.com/published/063f7297022ac58ae52b2b9fa2f0121d/watch-layout-diagram%402x.png)
+
 
 If some information doesn’t fit within the layout areas, the system displays it in the scrolling details screen.
 
@@ -233,33 +239,33 @@ In every style, watchOS crops the strip image to fit the aspect ratio of the car
 
 
 
-![A diagram that shows the layout of a boarding pass on Apple Watch. The first row contains a logo image and departure or boarding time information. The second row contains origin and destination information. The third row contains the passenger name and seat.](https://docs-assets.developer.apple.com/published/70059954f5ceacc74c7fa523ca38459d/watch-layout-boarding-pass%402x.png)
 
-![A diagram that shows the layout of a coupon pass on Apple Watch. The first row contains a logo image and expiration date. The second row contains a strip image. The third row is unused.](https://docs-assets.developer.apple.com/published/184da4080f64c5ffa176008657f87e34/watch-layout-coupon%402x.png)
 
-![A diagram that shows the layout of a store card on Apple Watch. The top first row contains a logo image and an unused area. The second row contains a strip image. The third row contains a member name and number.](https://docs-assets.developer.apple.com/published/d438a08c78a49375fc86caca42894869/watch-layout-store-card%402x.png)
 
-![A diagram that shows the layout of an event ticket on Apple Watch. The first row contains a logo image and an event start date. The second row contains information about the event. The third row contains an attendee name and seat location.](https://docs-assets.developer.apple.com/published/4f41a88ccd4e2d10c941e9b49273cd3a/watch-layout-event-ticket%402x.png)
 
-![A diagram that shows the layout of a generic pass on Apple Watch. The first row contains a logo image and an expiration date. The second row contains a strip image. The third row contains a name and number.](https://docs-assets.developer.apple.com/published/f9b2258cd5e574a410899f54f831094a/watch-layout-generic-pass%402x.png)
+
+
+
+
+
 
 ## [Order tracking](https://developer.apple.com/design/human-interface-guidelines/wallet#Order-tracking)
 
 When you support order tracking, Wallet can display information about an order a customer placed through your app or website, updating the information whenever the status of the order changes. In iOS 17 and later, you can help people start tracking their order right from your app or website and offer additional ways to add their order to Wallet.
 
-![A screenshot of an order fulfillment screen for a food truck app on iPhone. The screen displays information about an order placed, and includes a status bar, shipping address, list of items ordered, and additional order details.](https://docs-assets.developer.apple.com/published/4b6816949b9b5352ebc3fad695086d73/wallet-ot-status-order-placed%402x.png)
 
-![A screenshot of an order fulfillment screen for a food truck app on iPhone. The screen displays information about an order placed, and denotes that the order was delivered today. The screen includes the shipping address, a link to track the shipment, a list of items ordered, and additional order details.](https://docs-assets.developer.apple.com/published/c00bddf304d7468dcb19bdf076772174/wallet-ot-status-delivered%402x.png)
+
+
 
 Wallet presents a dashboard that displays a customer’s active and completed orders. People can choose an order to view details about it, like the items they ordered and fulfillment information for shipping and pickup.
 
-![A screenshot of a dashboard that displays an order history screen for a food truck app on iPhone. The screen displays a search field, a list of active orders, and a list of orders placed this month.](https://docs-assets.developer.apple.com/published/a5fe5f2ee6fc90e3e8e299c0f506e5b8/wallet-ot-dashboard%402x.png)
+
 
 Dashboard
 
 The [Wallet Orders](https://developer.apple.com/documentation/WalletOrders) schema defines the properties you use to provide order data like product descriptions, order status, contact information, and shipping and pickup details, including estimated arrival dates, addresses, tracking numbers, and pickup instructions. Wallet displays the information you supply within consistent, system-defined interfaces. To help people get the information they need quickly and conveniently, supply as much information as you can, using the properties that match your order processes.
 
-![A screenshot of an order fulfillment screen for a food truck app on iPhone. The screen displays information about an order placed, and includes a status bar, shipping address, list of items ordered, and additional order details. Callouts identify different fields on the screen, including the merchant logo and display name, the order status and description, the tracking link, and various line items.](https://docs-assets.developer.apple.com/published/e5ec23af37b6a9d9cbc90e5d5f47bf8a/wallet-ot-status-on-the-way-fields%402x.png)
+
 
 **Make it easy for people to add an order to Wallet.** For example, when a customer completes an Apple Pay transaction in your app or website, use [`PKPaymentOrderDetails`](https://developer.apple.com/documentation/PassKit/PKPaymentOrderDetails) (app) or [`ApplePayPaymentOrderDetails`](https://developer.apple.com/documentation/ApplePayontheWeb/ApplePayPaymentOrderDetails) (web) to automatically add the order to Wallet. In iOS 17 and later, you can use [`AddOrderToWalletButton`](https://developer.apple.com/documentation/FinanceKitUI/AddOrderToWalletButton) to display the system-provided Track with Apple Wallet button in relevant areas of your app or website — such as in pages for order confirmation, status, or tracking — or in emails to customers. If a person already added an order to Wallet, trying to add it again opens Wallet and displays the order.
 
@@ -271,7 +277,7 @@ The [Wallet Orders](https://developer.apple.com/documentation/WalletOrders) sche
 
 **Supply distinct, high-resolution product images that use nontransparent backgrounds.** The system displays a product’s image — along with descriptive information you supply — in the detail views, order dashboard, and notifications for an order or a fulfillment. When creating a product image, use a straightforward depiction and a solid, nontransparent background. Showing a product in a “lifestyle” context or against a busy background can make the item hard to distinguish at small sizes. For each product, use the PNG or JPEG format to create an image that measures 300x300 pixels.
 
-![An illustration of donut, representing a product image. Horizontal and vertical lines extend along the bottom and right side of the image, and include labels that denote the illustration is 300 pixels wide by 300 pixels high.](https://docs-assets.developer.apple.com/published/b0c17d4dfe72b98ca8a2d5e085affccb/wallet-ot-product-images%402x.png)
+
 
 **In general, keep text brief.** People appreciate being able to read text at a glance, and the system can truncate text that’s too long.
 
@@ -291,7 +297,7 @@ An order gives people ways to contact the merchant and displays details about th
 
 **Make it easy for customers to contact the merchant.** Provide multiple contact methods, so people can choose the one that works best for them. At minimum, you need to provide a link to the merchant’s website or landing page, but you can also provide a Messages for Business link, a phone number, an email address, and a link to a support page. When people choose the Contact button in an order, the system displays a menu of the contact methods you supply. For developer guidance, see [`Merchant`](https://developer.apple.com/documentation/WalletOrders/Merchant).
 
-![A screenshot of an order detail screen for a food truck app on iPhone. The screen displays a list of donuts ordered. Above the list is an overlay containing buttons to message or email the merchant, get online support, or call customer service.](https://docs-assets.developer.apple.com/published/2aedf894ea8e8d11e1b560725c1c6093/wallet-ot-contacts%402x.png)
+
 
 **Help people track their order.** A multi-item order can have multiple fulfillments, where each fulfillment is either shipping or pickup. For example, if a customer orders a pair of shoes and a T-shirt, the customer might want to have one item shipped, while picking up the other. Regardless of fulfillment type, you need to supply enough information for people to know where their items are and when to expect them at the destination they specified. In addition to an estimated time of arrival, here’s some information that people particularly appreciate:
 
@@ -304,7 +310,7 @@ An order gives people ways to contact the merchant and displays details about th
 
 
 
-![A screenshot of an order fulfillment screen for a food truck app on iPhone. The top of the screen displays information about an order placed, and denotes that the order arrives tomorrow. The screen includes the shipping address, a link to track the shipment, a list of items ordered, and additional order details. The bottom of the screen displays another order placed, which is ready for pickup. In place of the shipping address is a Barcode button and a pickup address.](https://docs-assets.developer.apple.com/published/bd11abab3cc21427dc4d20a123cbebfa/wallet-ot-status-pickup-details%402x.png)
+
 
 **Keep the fulfillment screen centered on order tracking.** For example, if you recommend your app or other services to customers, be sure to prioritize order-tracking information over other content in the screen.
 
@@ -345,10 +351,10 @@ For each purpose string, aim for a brief, complete sentence that’s direct, spe
 
 Button type| Consider using when…  
 ---|---  
-![An illustration of a Verify Age with Apple Wallet button.](https://docs-assets.developer.apple.com/published/7ef983aea59530abf3f038216593ab5d/wallet-button-verify-age%402x.png)| Your app can complete the current transaction after you verify a person’s age. An example transaction is making a car available to lease.  
-![An illustration of a Verify Identity with Apple Wallet button.](https://docs-assets.developer.apple.com/published/4e32d4445048f4cea05d1d169e915ba4/wallet-button-verify-identity%402x.png)| Your app can complete the current transaction after you verify a person’s identity. An example transaction is a car rental.  
-![An illustration of a Continue with Apple Wallet button.](https://docs-assets.developer.apple.com/published/41c3befed0a2af0868dbcba871a415a2/wallet-button-continue-with%402x.png)| Verify with Wallet forms one part of a verification process that also requires people to supply additional information not provided by Verify with Wallet, such as a Social Security number or phone number. Examples include opening a financial account or performing a background check.  
-![An illustration of a Verify with Apple Wallet button.](https://docs-assets.developer.apple.com/published/ac3614b1e4b5622cae8533bbe1749d4d/wallet-button-verify-with%402x.png)| Your app can complete the current verification flow without additional steps, but the “Verify Age,” “Verify Identity,” and “Continue” button labels aren’t appropriate for your use case. An example is an app that helps people sign up for a government service.  
+| Your app can complete the current transaction after you verify a person’s age. An example transaction is making a car available to lease.  
+| Your app can complete the current transaction after you verify a person’s identity. An example transaction is a car rental.  
+| Verify with Wallet forms one part of a verification process that also requires people to supply additional information not provided by Verify with Wallet, such as a Social Security number or phone number. Examples include opening a financial account or performing a background check.  
+| Your app can complete the current verification flow without additional steps, but the “Verify Age,” “Verify Identity,” and “Continue” button labels aren’t appropriate for your use case. An example is an app that helps people sign up for a government service.  
   
 All button labels are also available in a multiline variant that the system automatically uses when horizontal space is constrained. For developer guidance, see [`PKIdentityButton.Label`](https://developer.apple.com/documentation/PassKit/PKIdentityButton/Label).
 

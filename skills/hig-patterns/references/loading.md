@@ -2,11 +2,17 @@
 title: "Loading | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/loading
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/loading.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Loading
 
 The best content-loading experience finishes before people become aware of it.
 
-![A sketch of a spinning indeterminate activity indicator, suggesting data loading. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/cfdf824156ed794426ac55a2cb38ec15/patterns-loading-intro%402x.png)
+
 
 If your app or game loads assets, levels, or other content, design the behavior so it doesn’t disrupt or negatively impact the user experience.
 

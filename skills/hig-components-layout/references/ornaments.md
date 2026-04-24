@@ -2,11 +2,17 @@
 title: "Ornaments | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/ornaments
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/ornaments.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Ornaments
 
 In visionOS, an ornament presents controls and information related to a window, without crowding or obscuring the window’s contents.
 
-![A stylized representation of an ornament at the bottom of a window shown on top of a grid that suggests the canvas of a design tool. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/a9012c3e7b1c5d47a4788aefd7a5b48c/components-ornaments-intro%402x.png)
+
 
 An ornament floats in a plane that’s parallel to its associated window and slightly in front of it along the z-axis. If the associated window moves, the ornament moves with it, maintaining its relative position; if the window’s contents scroll, the controls or information in the ornament remain unchanged.
 

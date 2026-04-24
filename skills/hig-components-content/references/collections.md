@@ -2,11 +2,17 @@
 title: "Collections | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/collections
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/collections.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Collections
 
 A collection manages an ordered set of content and presents it in a customizable and highly visual layout.
 
-![A stylized representation of eight image icons, separated into two rows of four. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/8769a85042888c4d649fd21c992b593f/components-collection-view-intro%402x.png)
+
 
 Generally speaking, collections are ideal for showing image-based content.
 

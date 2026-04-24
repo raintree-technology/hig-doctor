@@ -2,11 +2,17 @@
 title: "Onboarding | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/onboarding
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/onboarding.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Onboarding
 
 Onboarding can help people get a quick start using your app or game.
 
-![A sketch of a waving hand, suggesting a gesture of welcoming. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/044d56043e30ee77f306a8613041311b/patterns-onboarding-intro%402x.png)
+
 
 Ideally, people can understand your app or game simply by experiencing it, but if onboarding is necessary, design a flow that’s fast, fun, and optional. When available, onboarding occurs after [launching](https://developer.apple.com/design/human-interface-guidelines/launching) is complete — it isn’t part of the launch experience.
 

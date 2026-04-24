@@ -2,11 +2,17 @@
 title: "Context menus | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/context-menus
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/context-menus.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Context menus
 
 A context menu provides access to functionality that’s directly related to an item, without cluttering the interface.
 
-![A stylized representation of a contextual menu beneath a clicking pointer. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/6145c402544704012a48978cf5ceb87a/components-context-menu-intro%402x.png)
+
 
 Although a context menu provides convenient access to frequently used items, it’s hidden by default, so people might not know it’s there. To reveal a context menu, people generally choose a view or select some content and then perform an action, using the input modes their current configuration supports. For example:
 

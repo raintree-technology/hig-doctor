@@ -2,11 +2,17 @@
 title: "Managing notifications | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/managing-notifications
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/managing-notifications.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Managing notifications
 
 Notifications can give people timely and important information, whether the device is locked or in use.
 
-![A sketch of bell with a small overlapping circle, suggesting a notification sound. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/ba0d1e169421e490842a4009ee7d09e5/patterns-managing-notifications-intro%402x.png)
+
 
 You need to get permission before sending any notification. The system lets people change this decision in settings, where they can also silence all notifications (except for government alerts in some locales).
 

@@ -2,11 +2,17 @@
 title: "Inclusion | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/inclusion
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/inclusion.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Inclusion
 
 Inclusive apps and games put people first by prioritizing respectful communication and presenting content and functionality in ways that everyone can access and understand.
 
-![A sketch of two people, suggesting inclusion. The image is overlaid with rectangular and circular grid lines and is tinted yellow to subtly reflect the yellow in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/498c87708887321ec79abcf0c45abc66/foundations-inclusion-intro%402x.png)
+
 
 To help you design an inclusive app or game, consider the following goals as you review the words and images you use and the experiences you offer.
 
@@ -84,11 +90,11 @@ In addition, you can often avoid referencing a specific gender in an avatar, emo
 
 If you need to depict a generic person or people, use a nongendered human image to reinforce the message that _generic person_ means _human_ , not _man_ or _woman_. SF Symbols provides many nongendered glyphs you can use, such as the figure and person symbols shown here:
 
-![A solid silhouette of a person from the shoulders up, within a circle.](https://docs-assets.developer.apple.com/published/22f3909c1b433ca2181d2fdcf193fff7/person-crop-circle%402x.png)person.crop.circle
+person.crop.circle
 
-![Solid silhouettes of three people, with the left silhouette in the foreground and the other two in the background, all from the shoulders up.](https://docs-assets.developer.apple.com/published/5edbc84a409deb59e72f4d780b8e7b94/person-3-fill%402x.png)person.3.fill
+person.3.fill
 
-![A solid silhouette of a person standing with an arm raised high on the left side of the image.](https://docs-assets.developer.apple.com/published/ea7ebde0ec424a8dc74961a3670724b2/figure-wave%402x.png)figure.wave
+figure.wave
 
 Most apps and games don’t need to know a person’s gender, but if you require this information — such as for health or legal reasons — consider providing inclusive options, such as _nonbinary_ , _self-identify_ , and _decline to state_. In this situation, you could also let people specify the pronouns they use so you can address them properly when necessary.
 

@@ -2,11 +2,17 @@
 title: "Typography | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/typography
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/typography.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Typography
 
 Your typographic choices can help you display legible text, convey an information hierarchy, communicate important content, and express your brand or style.
 
-![A sketch of a small letter A to the left of a large letter A, suggesting the use of typography to convey hierarchical information. The image is overlaid with rectangular and circular grid lines and is tinted yellow to subtly reflect the yellow in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/d90940d120149af7220e4fedfd1c10bd/foundations-typography-intro%402x.png)
+
 
 ## [Ensuring legibility](https://developer.apple.com/design/human-interface-guidelines/typography#Ensuring-legibility)
 
@@ -22,11 +28,11 @@ watchOS| 16 pt| 12 pt
   
 **Test legibility in different contexts.** For example, you need to test game text for legibility on each platform on which your game runs. If testing shows that some of your text is difficult to read, consider using a larger type size, increasing contrast by modifying the text or background colors, or using typefaces designed for optimized legibility, like the system fonts.
 
-![A screenshot that shows a game running on iPhone in landscape. A name appears above each of 3 plants and a status message appears in a rounded rectangle in the top-right corner. All text uses a size that's too small, and the 3 plant names don't have visible backgrounds.](https://docs-assets.developer.apple.com/published/aaf334356178859f6e86eb42913c53dd/game-typography-incorrect%402x.png)
+
 
 Testing a game on a new platform can show where text is hard to read.
 
-![A screenshot that shows a game running on iPhone in landscape. A name appears within a shaded lozenge shape above each of 3 plants and a status message appears in a rounded rectangle in the top-right corner. All text uses a size that's at least the recommended minimum.](https://docs-assets.developer.apple.com/published/4c38de72c94767cbb6bd7763720ef281/game-typography-correct%402x.png)
+
 
 Increasing text size and adding visible background shapes can help make text easier to read.
 
@@ -46,13 +52,13 @@ Apple provides two typeface families that support an extensive range of weights,
 
 **San Francisco (SF)** is a sans serif typeface family that includes the SF Pro, SF Compact, SF Arabic, SF Armenian, SF Georgian, SF Hebrew, and SF Mono variants.
 
-![The phrase 'The quick brown fox jumps over the lazy dog.' shown in the San Francisco Pro font.](https://docs-assets.developer.apple.com/published/e270b0f4e91f523bb7372a39447ad4e4/typography-sanfrancisco%402x.png)
+
 
 The system also offers SF Pro, SF Compact, SF Arabic, SF Armenian, SF Georgian, and SF Hebrew in rounded variants you can use to coordinate text with the appearance of soft or rounded UI elements, or to provide an alternative typographic voice.
 
 **New York (NY)** is a serif typeface family designed to work well by itself and alongside the SF fonts.
 
-![The phrase 'The quick brown fox jumps over the lazy dog.' shown in the New York font.](https://docs-assets.developer.apple.com/published/8dcb4d6f97b97a957a0d73e4ee85730c/typography-new-york%402x.png)
+
 
 You can download the San Francisco and New York fonts [here](https://developer.apple.com/fonts/).
 
@@ -64,7 +70,7 @@ Variable fonts support _optical sizing_ , which refers to the adjustment of diff
 
 To help you define visual hierarchies and create clear and legible designs in many different sizes and contexts, the system fonts are available in a variety of weights, ranging from Ultralight to Black, and — in the case of SF — several widths, including Condensed and Expanded. Because SF Symbols use equivalent weights, you can achieve precise weight matching between symbols and adjacent text, regardless of the size or style you choose.
 
-![The word 'text' shown in the SF Pro font, repeated in two rows of nine columns each. The rows show upright and italic styles, and the columns show font weights ranging from ultralight to black.](https://docs-assets.developer.apple.com/published/8b07ec795d9ad16c787edb0030018a09/font-weight-sf-pro%402x.png)
+
 
 Note
 
@@ -92,11 +98,11 @@ You can use the constants defined in [`Font.Design`](https://developer.apple.com
 
 Dynamic Type is a system-level feature in iOS, iPadOS, tvOS, visionOS, and watchOS that lets people adjust the size of visible text on their device to ensure readability and comfort. For related guidance, see [Accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility).
 
-![A screenshot of a Mail message on iPhone, using the default font size. From the left, the message header displays the sender's contact photo or initials, followed by a two-line layout with the sender name and date on top and the recipient name and attachment glyph on the bottom. The message body contains four lines of text and the address of Muir Woods National Monument.](https://docs-assets.developer.apple.com/published/65fab16931136a1aa542fb71e9ec181b/typography-default-type%402x.png)
+
 
 Mail content at the default text size
 
-![A screenshot of a Mail message on iPhone, using the largest accessibility font size. From the top, the message header displays the sender name on one line, followed by the truncated recipient name on the next line, and the date and attachment glyph on the third line. Below the header and message title, the first line and part of the second line of body text are visible on the screen.](https://docs-assets.developer.apple.com/published/5840a6f168607659543494f5cebe266d/typography-dynamic-type%402x.png)
+
 
 Mail content at the largest accessibility text size
 
@@ -153,13 +159,13 @@ visionOS uses bolder versions of the Dynamic Type body and title styles and it i
 
 **In general, prefer 2D text.** The more visual depth text characters have, the more difficult they can be to read. Although a small amount of 3D text can provide a fun visual element that draws people’s attention, if you’re going to display content that people need to read and understand, prefer using text that has little or no visual depth.
 
-![A screenshot that shows the correct placement of 2D text on a window in visionOS.](https://docs-assets.developer.apple.com/published/b7eca42cb50603b5ae1630781ce6d4c7/visionos-typography-2d-text-correct%402x.png)
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
 
-![A screenshot that shows the incorrect placement of 3D text on a window in visionOS.](https://docs-assets.developer.apple.com/published/8568cd71b363e427fb91a874b8c30aa8/visionos-typography-3d-text-incorrect%402x.png)
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
+
+
+
+
 
 **Make sure text looks good and remains legible when people scale it.** Use a text style that makes the text look good at full scale, then test it for legibility at different scales.
 

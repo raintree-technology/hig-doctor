@@ -2,11 +2,17 @@
 title: "Playing audio | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/playing-audio
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/playing-audio.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Playing audio
 
 People expect rich audio experiences that automatically adjust when the context changes on the device.
 
-![A sketch of a speaker emitting sound waves, suggesting the playback of audio. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/1cf1272e2d6283fc614294242efe2145/patterns-playing-audio-intro%402x.png)
+
 
 Devices can play audio in a variety of ways, such as through internal or external speakers, headphones, and wirelessly through devices that use Bluetooth or AirPlay. To manipulate sound on their devices people use several types of controls, including volume buttons, the Ring/Silent switch on iPhone, headphone controls, the Control Center volume slider, and sound controls in third-party accessories. Whether sound is a primary part of your experience or an embellishment, you need to make sure it behaves as people expect as they make changes to volume and output.
 

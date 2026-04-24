@@ -2,11 +2,17 @@
 title: "Drag and drop | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/drag-and-drop
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/drag-and-drop.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Drag and drop
 
 Using drag and drop, people can move or duplicate selected photos, text, and other content by dragging the selection from one location to another.
 
-![A sketch of two overlapping squares containing an arrow pointing to the upper-left, suggesting a transition to a new destination. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/e5f75d051f0c1030012fab8220990cc6/patterns-drag-and-drop-intro%402x.png)
+
 
 To perform drag and drop, people select content in one location, called the _source_ , and drop it in another, called the _destination_. These locations can be in the same container — like a text view — or in different containers, like text views on opposite sides of a split view, or even in different apps.
 

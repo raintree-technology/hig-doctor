@@ -2,11 +2,17 @@
 title: "Combo boxes | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/combo-boxes
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/combo-boxes.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Combo boxes
 
 A combo box combines a text field with a pull-down button in a single control.
 
-![A stylized representation of a combo box control displaying a list of cities. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/8f828536eb509b9cd023583ecd2f8eca/components-combobox-intro%402x.png)
+
 
 People can enter a custom value into the field or click the button to choose from a list of predefined values. When people enter a custom value, it’s not added to the list of choices.
 

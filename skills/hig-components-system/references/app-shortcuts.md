@@ -2,17 +2,23 @@
 title: "App Shortcuts | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/app-shortcuts
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/app-shortcuts.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # App Shortcuts
 
 An App Shortcut gives people access to your app’s key functions or content throughout the system.
 
-![A stylized representation of the Notes app appearing as the result in the Top Hit area of Spotlight, along with App Shortcuts for creating a new note and opening two other recent notes. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/183dda77d62e2ab7dae5994f2e754a26/components-app-shortcuts-intro%402x.png)
+
 
 People can initiate App Shortcuts using features like [Siri](https://developer.apple.com/design/human-interface-guidelines/siri), Spotlight, and the Shortcuts app; using hardware features like the [Action button](https://developer.apple.com/design/human-interface-guidelines/action-button) on iPhone or Apple Watch; or by [squeezing](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Squeeze) Apple Pencil.
 
 Because App Shortcuts are part of your app, they are available immediately when installation finishes. For example, a journaling app could offer an App Shortcut for making a new journal entry that’s available before a person opens the app for the first time. Once someone starts using your app, its App Shortcuts can reflect their choices, like those from FaceTime for calling recent contacts.
 
-![A partial screenshot of the Shortcuts app on iPhone showing App Shortcuts for FaceTime listed in a grid view. The App Shortcuts are in a group labeled Call Recents, and are each titled with the name of a recent FaceTime contact.](https://docs-assets.developer.apple.com/published/c5f6fb621f6aadfac85015446ec31542/app-shortcuts-personalized-choices%402x.png)
+
 
 App Shortcuts use [App Intents](https://developer.apple.com/documentation/AppIntents) to define actions within your app to make available to the system. Each App Shortcut includes one or more actions that represent a set of steps people might want to perform to accomplish a task. For example, a home security app might combine the two common actions of turning off the lights and locking exterior doors when a person goes to sleep at night into a single App Shortcut. Each app can include up to 10 App Shortcuts.
 
@@ -26,7 +32,7 @@ When you use App Intents to make your app’s actions available to the system, i
 
 **Add flexibility by letting people choose from a set of options.** An App Shortcut can include a single optional value, or parameter, if it makes sense. For example, a meditation app could offer an App Shortcut that lets someone begin a specific type of meditation: “Start [morning, daily, sleep] meditation.” Include predictable and familiar values as options, because people won’t have the list in front of them for reference. For developer guidance, see [Adding parameters to an app intent](https://developer.apple.com/documentation/AppIntents/Adding-parameters-to-an-app-intent).
 
-![A diagram of the activation phrase of a shortcut for ordering a drink from a coffee app. The activation phrase contains an optional value for the name of the drink, which is underlined and called out as the shortcut's parameter.](https://docs-assets.developer.apple.com/published/30601265724ed100cf9fbbe64c8b9c9c/app-intents-parameter-diagram%402x.png)
+
 
 **Ask for clarification in response to a request that’s missing optional information.** For example, someone might say “Start meditation” without specifying the type (morning, daily, or sleep); you could follow up by suggesting the one they used most recently, or one based on the current time of day. If one option is most likely, consider presenting it as the default, and provide a short list of alternatives to choose from if a person doesn’t want the default choice.
 
@@ -45,9 +51,9 @@ As a person engages with an App Shortcut, your app can respond in a variety of w
 
 
 
-![A screenshot of the iPhone Home Screen with a custom snippet occupying the top half of the screen. The snippet includes buttons to confirm or cancel a delivery order from a coffee shop, along with the items in the order and the total price.](https://docs-assets.developer.apple.com/published/05c70d4c5b6a1d65a1ea0a1662b5aa83/app-shortcuts-siri-dialogue%402x.png)
 
-![A screenshot of the iPhone Home Screen with a Live Activity occupying the top quarter of the screen. The Live Activity shows the estimated time for the arrival of a delivery of an order from a coffee shop, along with the number of items in the order and a button to contact the delivery driver.](https://docs-assets.developer.apple.com/published/62d4ff80b64dba56a083468c467fdb64/app-shortcuts-live-activity%402x.png)
+
+
 
 **Provide enough detail for interaction on audio-only devices.** People can receive responses on audio-only devices such as AirPods and HomePod too, and may not always be able to see content onscreen. Include all critical information in the full dialogue text of your App Shortcuts. For developer guidance, see [`init(full:supporting:systemImageName:)`](https://developer.apple.com/documentation/AppIntents/IntentDialog/init\(full:supporting:systemImageName:\)).
 
@@ -67,7 +73,7 @@ As a person engages with an App Shortcut, your app can respond in a variety of w
 
 App Shortcuts can appear in the Top Hit area of Spotlight when people search for your app, or in the Shortcuts area below. Each App Shortcut includes a symbol from [SF Symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols) that you choose to represent its functionality, or a preview image of an item that the shortcut links to directly.
 
-![A partial screenshot showing search results in Spotlight on iPhone, including the Top Hit area at the top of the screen with the Suggestions area beneath it. The Notes app appears as the Top Hit, with App Shortcuts appearing in a row to the right of the app icon: one titled New Note with a symbol of a pencil diagonally over a square, one titled Quick Note with a symbol of a scribbled line on a canvas, and one with a thumbnail of an embedded image for a recent note titled Nature. The Suggestions area includes a link to a web search for 'not,' and suggested autocomplete terms 'noteworthy' and 'notes'.](https://docs-assets.developer.apple.com/published/11e4814bf124943b889fc4f56a025431/app-shortcuts-spotlight-search-top-hit%402x.png)
+
 
 **Order shortcuts based on importance.** The order you choose determines how App Shortcuts initially appear in both Spotlight and the Shortcuts app, so it’s helpful to include the most generally useful ones first. Once people start using your App Shortcuts, the system updates to prioritize the ones they use most frequently.
 

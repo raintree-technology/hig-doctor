@@ -2,11 +2,17 @@
 title: "Designing for games | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/designing-for-games
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/designing-for-games.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Designing for games
 
 When people play your game on an Apple device, they dive into the world you designed while relying on the platform features they love.
 
-![A stylized representation of a game controller shown on top of a grid. The image is overlaid with rectangular and circular grid lines and is tinted green to subtly reflect the green in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/87a9000504347b999d742d13b3b73635/platforms-games-intro%402x.png)
+
 
 As you create or adapt a game for Apple platforms, learn how to integrate the fundamental platform characteristics and patterns that help your game feel at home on all Apple devices. To learn what makes each platform unique, see [Designing for iOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-ios), [Designing for iPadOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-ipados), [Designing for macOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos), [Designing for tvOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos), [Designing for visionOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos), and [Designing for watchOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos). For developer guidance, see [Games Pathway](https://developer.apple.com/games/pathway/).
 
@@ -20,11 +26,11 @@ As you create or adapt a game for Apple platforms, learn how to integrate the fu
 
 **Defer requests until the right time.** You don’t want to bombard people with too many requests before they start playing, but if your game uses certain sensors on an Apple device or personalizes gameplay by accessing data like hand-tracking, you must first get the player’s permission (for guidance, see [Privacy](https://developer.apple.com/design/human-interface-guidelines/privacy)). To help people understand why you’re making such a request, integrate it into the scenario that requires the data. For example, you could ask permission to track a player’s hands between an initial cutscene and the first time they can use their hands to control the action. Also, make sure people spend quality time with your game before you ask them for a rating or review (for guidance, see [Ratings and reviews](https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews)).
 
-[![A sketch of a square containing an arrow pointing to the upper-right corner, suggesting a transition to a new state. The image is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/95c588c36ab492f99a5a71addbabef12/patterns-launching-thumbnail%402x.png) Launching ](https://developer.apple.com/design/human-interface-guidelines/launching)
+[ Launching ](https://developer.apple.com/design/human-interface-guidelines/launching)
 
-[![A sketch of a waving hand, suggesting a gesture of welcoming. The image is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/d95e8d3a568083918565701d3fe5360e/patterns-onboarding-thumbnail%402x.png) Onboarding ](https://developer.apple.com/design/human-interface-guidelines/onboarding)
+[ Onboarding ](https://developer.apple.com/design/human-interface-guidelines/onboarding)
 
-[![A sketch of a spinning indeterminate activity indicator, suggesting data loading. The image is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/d3c4485e4c81890440c23e3f64d5511e/patterns-loading-thumbnail%402x.png) Loading ](https://developer.apple.com/design/human-interface-guidelines/loading)
+[ Loading ](https://developer.apple.com/design/human-interface-guidelines/loading)
 
 ## [Look stunning on every display](https://developer.apple.com/design/human-interface-guidelines/designing-for-games#Look-stunning-on-every-display)
 
@@ -56,11 +62,11 @@ watchOS| 44x44 pt| 28x28 pt
 
 **Design for the full-screen experience.** People often enjoy playing a game in a distraction-free, full-screen context. In macOS, iOS, and iPadOS, full-screen mode lets people hide other apps and parts of the system UI; in visionOS, a game running in a Full Space can completely surround people, transporting them somewhere else. For guidance, see [Going full screen](https://developer.apple.com/design/human-interface-guidelines/going-full-screen).
 
-[![A sketch of a small rectangle in the upper-left quadrant of a larger rectangle, suggesting the position of a user interface element within a window. The image is overlaid with rectangular and circular grid lines and is tinted yellow to subtly reflect the yellow in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/0db27821e97ac9613ac0cc103892a10d/foundations-layout-thumbnail%402x.png) Layout ](https://developer.apple.com/design/human-interface-guidelines/layout)
+[ Layout ](https://developer.apple.com/design/human-interface-guidelines/layout)
 
-[![A sketch of a small letter A to the left of a large letter A, suggesting the use of typography to convey hierarchical information. The image is tinted yellow to subtly reflect the yellow in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/30a9c2adbbfa1602133dcfb2f5bfeaab/foundations-typography-thumbnail%402x.png) Typography ](https://developer.apple.com/design/human-interface-guidelines/typography)
+[ Typography ](https://developer.apple.com/design/human-interface-guidelines/typography)
 
-[![A sketch of two outward-pointing arrows arranged in a vertical line extending from the upper-left to the bottom-right, suggesting expansion. The image is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/335e1e0476ff4830a1a4add07fb016a0/patterns-going-full-screen-thumbnail%402x.png) Going full screen ](https://developer.apple.com/design/human-interface-guidelines/going-full-screen)
+[ Going full screen ](https://developer.apple.com/design/human-interface-guidelines/going-full-screen)
 
 ## [Enable intuitive interactions](https://developer.apple.com/design/human-interface-guidelines/designing-for-games#Enable-intuitive-interactions)
 
@@ -79,11 +85,11 @@ watchOS| Touch| –
 
 **Offer touch-based game controls that embrace the touchscreen experience on iPhone and iPad.** In iOS and iPadOS, your game can allow players to interact directly with game elements, and to control the game using virtual controls that appear on top of your game content. For design guidance, see [Touch controls](https://developer.apple.com/design/human-interface-guidelines/game-controls#Touch-controls).
 
-[![A sketch of a D-pad control from a game controller, suggesting gameplay. The image is tinted purple to subtly reflect the purple in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/36867292ccfd45e0f937f522d7e214f7/inputs-game-controls-thumbnail%402x.png) Game controls ](https://developer.apple.com/design/human-interface-guidelines/game-controls)
+[ Game controls ](https://developer.apple.com/design/human-interface-guidelines/game-controls)
 
-[![A sketch of a pointing hand swiping in a curved motion toward the right, suggesting touch interaction with a device. The image is tinted purple to subtly reflect the purple in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/ca100cc13bcc2fbb7168bebc1da95af8/inputs-gestures-thumbnail%402x.png) Gestures ](https://developer.apple.com/design/human-interface-guidelines/gestures)
+[ Gestures ](https://developer.apple.com/design/human-interface-guidelines/gestures)
 
-[![A sketch of an arrow-shaped pointer, suggesting use of a mouse or trackpad. The image is tinted purple to subtly reflect the purple in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/69b91fbe2b281f7b638d380a3a6aa416/inputs-pointing-devices-thumbnail%402x.png) Pointing devices ](https://developer.apple.com/design/human-interface-guidelines/pointing-devices)
+[ Pointing devices ](https://developer.apple.com/design/human-interface-guidelines/pointing-devices)
 
 ## [Welcome everyone](https://developer.apple.com/design/human-interface-guidelines/designing-for-games#Welcome-everyone)
 
@@ -108,9 +114,9 @@ watchOS| Touch| –
 
 **Avoid stereotypes in your stories and characters.** Ask yourself whether you’re depicting game characters and scenarios in a way that perpetuates real-life stereotypes. For example, does your game depict enemies as having a certain race, gender, or cultural heritage? Review your game to uncover and remove biases and stereotypes and — if references to real-life cultures and languages are necessary — be sure they’re respectful.
 
-[![A sketch of the Accessibility icon. The image is tinted yellow to subtly reflect the yellow in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/8b7b11d06dd958f4e9449f0a5acdadbd/foundations-accessibility-thumbnail%402x.png) Accessibility ](https://developer.apple.com/design/human-interface-guidelines/accessibility)
+[ Accessibility ](https://developer.apple.com/design/human-interface-guidelines/accessibility)
 
-[![A sketch of two people, suggesting inclusion. The image is tinted yellow to subtly reflect the yellow in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/bbb606721d228138791654cb9f6f426c/foundations-inclusion-thumbnail%402x.png) Inclusion ](https://developer.apple.com/design/human-interface-guidelines/inclusion)
+[ Inclusion ](https://developer.apple.com/design/human-interface-guidelines/inclusion)
 
 ## [Adopt Apple technologies](https://developer.apple.com/design/human-interface-guidelines/designing-for-games#Adopt-Apple-technologies)
 
@@ -124,11 +130,11 @@ watchOS| Touch| –
 
 **Take advantage of Apple technologies to enable unique gameplay mechanics.** For example, you can integrate technologies like augmented reality, machine learning, and [HealthKit](https://developer.apple.com/documentation/HealthKit), and request access to location data and functionality like camera and microphone. For a full list of Apple technologies, features, and services, see [Technologies](https://developer.apple.com/design/human-interface-guidelines/technologies).
 
-[![A sketch of the Game Center icon. The image is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/304edbb771279f5c096419df2cd735fe/technologies-game-center-thumbnail%402x.png) Game Center ](https://developer.apple.com/design/human-interface-guidelines/game-center)
+[ Game Center ](https://developer.apple.com/design/human-interface-guidelines/game-center)
 
-[![A sketch of the iCloud icon. The image is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/2b14682c9fa6e5d71042fa722c12bb3f/technologies-icloud-thumbnail%402x.png) iCloud ](https://developer.apple.com/design/human-interface-guidelines/icloud)
+[ iCloud ](https://developer.apple.com/design/human-interface-guidelines/icloud)
 
-[![A sketch of an add button, suggesting the purchase of additional digital assets within an app. The image is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/de58b03338460608880147558546707a/technologies-in-app-purchase-thumbnail%402x.png) In-app purchase ](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase)
+[ In-app purchase ](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase)
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/designing-for-games#Resources)
 

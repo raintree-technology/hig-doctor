@@ -2,11 +2,17 @@
 title: "VoiceOver | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/voiceover
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/voiceover.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # VoiceOver
 
 VoiceOver is a screen reader that lets people experience your app’s interface without needing to see the screen.
 
-![A sketch of the VoiceOver icon. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/477ffccb67999218b412ec3b1466e58d/technologies-VoiceOver-intro%402x.png)
+
 
 By supporting VoiceOver, you help people who are blind or have low vision access information in your app and navigate its interface and content when they can’t see the display.
 
@@ -32,17 +38,17 @@ You inform VoiceOver about your app’s content by providing alternative text th
 
 VoiceOver reads elements in the same order people read content in the their active language and locale. For example, in US English, this is top-to-bottom, left-to-right. In the ungrouped example below, VoiceOver describes each image before moving on to the captions. In the grouped example, VoiceOver describes each image with its respective caption.
 
-![An illustration of the top portion of an iPhone. The UI onscreen shows two images. On the left is a basket of mangoes, and on the right is a basket of artichokes. There are captions beneath the images that read 'Mangoes come from trees that belong to the genus Mangifera' and 'Artichokes come from a variety of a species of thistle.' The images and captions are all contained within a single VoiceOver frame.](https://docs-assets.developer.apple.com/published/164a6323c5f3d7ec48c750a90eddd4ad/voiceover-incorrect-grouping%402x.png)
+
 
 Ungrouped related elements make it hard for VoiceOver to accurately describe the UI.
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
 
-![An illustration of the top portion of an iPhone. The UI onscreen shows two images. On the left is a basket of mangoes, and on the right is a basket of artichokes. There are captions beneath the images that read 'Mangoes come from trees that belong to the genus Mangifera' and 'Artichokes come from a variety of a species of thistle.' Just the image of mangoes and its caption are contained within a single VoiceOver frame.](https://docs-assets.developer.apple.com/published/0965e3a106c0727f2b62404a1874f9e7/voiceover-correct-grouping%402x.png)
+
+
 
 Grouped related elements help VoiceOver accurately describe the UI.
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
+
 
 For developer guidance, see [`shouldGroupAccessibilityChildren`](https://developer.apple.com/documentation/ObjectiveC/NSObject-swift.class/shouldGroupAccessibilityChildren).
 

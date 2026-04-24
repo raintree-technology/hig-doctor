@@ -2,11 +2,17 @@
 title: "Siri | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/siri
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/siri.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Siri
 
 Siri makes it easy for people to accomplish everyday tasks quickly, using voice, touch, or automation.
 
-![A sketch of the Siri icon. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/4198addd86e0d7d3c38660dd8b20fca0/technologies-Siri-intro%402x.png)
+
 
 When you use [SiriKit](https://developer.apple.com/documentation/SiriKit) to define the tasks and actions that your app supports, people can use Siri to perform them even when your app isn’t running. If you’re an accessory maker, you can also help people use Siri to control your accessories by integrating them with [HomeKit](https://developer.apple.com/design/human-interface-guidelines/homekit) or [AirPlay](https://developer.apple.com/design/human-interface-guidelines/airplay). Here are some of the ways people can use Siri to interact with your app or accessory:
 
@@ -364,10 +370,10 @@ Shortcut titles and subtitles appear when the system suggests them. In Siri Sugg
 
 | Example title  
 ---|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)|  _Order my favorite coffee_  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)|  _Large latte_  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)|  _Show today’s forecast_  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)|  _Weather forecast_  
+|  _Order my favorite coffee_  
+|  _Large latte_  
+|  _Show today’s forecast_  
+|  _Weather forecast_  
   
 **Lead with important information.** Long titles and subtitles may be truncated in certain contexts, depending on the device’s screen size.
 
@@ -426,10 +432,10 @@ For developer guidance, see [Shortcut-Related UI](https://developer.apple.com/do
 
 | Example text  
 ---|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)|  _Say Hey Siri to activate Siri._  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| _Say “Hey Siri” to activate Siri._  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| _Say Hey Siri… to activate Siri._  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| _Say “hey Siri” to activate Siri._  
+|  _Say Hey Siri to activate Siri._  
+| _Say “Hey Siri” to activate Siri._  
+| _Say Hey Siri… to activate Siri._  
+| _Say “hey Siri” to activate Siri._  
   
 **In a localized context, translate only the word _Hey_ in the phrase _Hey Siri_.** As an Apple trademark, _Siri_ is never translated. Here is a list of acceptable translations for the phrase _Hey Siri_ :
 

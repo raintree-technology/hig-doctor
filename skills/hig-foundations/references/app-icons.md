@@ -2,15 +2,21 @@
 title: "App icons | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/app-icons
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/app-icons.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # App icons
 
 A unique, memorable icon expresses your app’s or game’s purpose and personality and helps people recognize it at a glance.
 
-![A sketch of the App Store icon. The image is overlaid with rectangular and circular grid lines and is tinted yellow to subtly reflect the yellow in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/05b8bbb4aac9f98ba8c77876fe5068b7/foundations-app-icons-intro%402x.png)
+
 
 Your app icon is a crucial aspect of your app’s or game’s branding and user experience. It appears on the Home Screen and in key locations throughout the system, including search results, notifications, system settings, and share sheets. A well-designed app icon conveys your app’s or game’s identity clearly and consistently across all Apple platforms.
 
-![An image that shows three variations of the Photos app's app icon as it appears on different platforms. The first variation is a rounded rectangle shape, and represents the iOS, iPadOS, and macOS icons. The second variation is an elongated, rounded rectangular shape, and represents the tvOS icon. The third variation is a circular shape, and represents the visionOS and watchOS icons. All variations have the same overall design over different background shapes.](https://docs-assets.developer.apple.com/published/298204fa29c2dc771deb8651963ce75a/app-icons-platform-appearance-overview%402x.png)
+
 
 ## [Layer design](https://developer.apple.com/design/human-interface-guidelines/app-icons#Layer-design)
 
@@ -48,7 +54,7 @@ visionOS app icon
 
 You use your favorite design tool to craft the individual foreground layers of your app icon. For iOS, iPadOS, macOS, and watchOS icons, you then import your icon layers into Icon Composer, a design tool included with Xcode and available from the [Apple Developer website](https://developer.apple.com/icon-composer). In Icon Composer, you define the background layer for your icon, adjust your foreground layer placement, apply visual effects like transparency, define default, dark, clear, and tinted appearance variants, and export your icon for use in Xcode. For additional guidance, see [Creating your app icon using Icon Composer](https://developer.apple.com/documentation/Xcode/creating-your-app-icon-using-icon-composer).
 
-![A screenshot of the Photos app icon in Icon Composer.](https://docs-assets.developer.apple.com/published/3d4f8c4c6b744e77f32802201fb48fb7/app-icons-icon-composer-overview-photos%402x.png)Icon Composer
+Icon Composer
 
 For tvOS and visionOS app icons, you add your icon layers directly to an image stack in Xcode to form your complete icon. For developer guidance, see [Configuring your app icon using an asset catalog](https://developer.apple.com/documentation/Xcode/configuring-your-app-icon).
 
@@ -70,11 +76,11 @@ An app icon’s shape varies based on a platform’s visual language. In iOS, iP
 
 
 
-![An image of the Settings icon for iOS. The iOS, iPadOS, and macOS icon grid is overlaid on the icon to show how the icon's shape and its elements map to the grid.](https://docs-assets.developer.apple.com/published/a116649a6bdc5124779475fcd769caac/app-icons-settings-app-grid-square%402x.png)
 
-![An image of the Settings icon for tvOS. The tvOS icon grid is overlaid on the icon to show how the icon's shape and its elements map to the grid.](https://docs-assets.developer.apple.com/published/770ec58a9f9985410cdff8c38b8166ab/app-icons-settings-app-grid-rectangle%402x.png)
 
-![An image of the Settings icon for watchOS. The visionOS and watchOS icon grid is overlaid on the icon to show how the icon's shape and its elements map to the grid.](https://docs-assets.developer.apple.com/published/2ceefd0eeb7e039a43ab05fd4a5050fb/app-icons-settings-app-grid-circle%402x.png)
+
+
+
 
 **Produce appropriately shaped, unmasked layers.** The system masks all layer edges to produce an icon’s final shape. For iOS, iPadOS, and macOS icons, provide square layers so the system can apply rounded corners. For visionOS and watchOS, provide square layers so the system can create the circular icon shape. For tvOS, provide rectangular layers so the system can apply rounded corners. Providing layers with pre-defined masking negatively impacts specular highlight effects and makes edges look jagged.
 
@@ -84,21 +90,21 @@ An app icon’s shape varies based on a platform’s visual language. In iOS, iP
 
 Embrace simplicity in your icon design. Simple icons tend to be easiest for people to understand and recognize. An icon with fine visual features might look busy when rendered with system-provided shadows and highlights, and details may be hard to discern at smaller sizes. Find a concept or element that captures the essence of your app or game, make it the core idea of your icon, and express it in a simple, unique way with a minimal number of shapes. Prefer a simple background, such as a solid color or gradient, that puts the emphasis on your primary design — you don’t need to fill the entire icon canvas with content.
 
-![An image of the Podcasts app icon.](https://docs-assets.developer.apple.com/published/58a62b07273dbbc302df7a428103a16e/app-icons-embrace-simplicity-podcasts%402x.png)The Podcasts app icon
+The Podcasts app icon
 
-![An image of the Home app icon.](https://docs-assets.developer.apple.com/published/4932ee4d526fc1b112e611f610a18b08/app-icons-embrace-simplicity-home%402x.png)The Home app icon
+The Home app icon
 
 **Provide a visually consistent icon design across all the platforms your app supports.** A consistent design helps people quickly find your app wherever it appears and prevents people from mistaking your app for multiple apps.
 
 **Consider basing your icon design around filled, overlapping shapes.** Overlapping solid shapes in the foreground, particularly when paired with transparency and blurring, can give an icon a sense of depth.
 
-![An illustration of two circles centered above a grid. One circle encloses the other. The inner circle has a solid fill. The outer circle is larger than the inner circle, allowing some space between them. The outer circle has no fill and shows just an outline.](https://docs-assets.developer.apple.com/published/6b02e91996a97adb2dbe53a8131cc380/app-icons-element-outline-shape%402x.png)
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
 
-![An illustration of two circles centered above a grid. One circle encloses the other. The inner circle has a solid fill. The outer circle is larger than the inner circle, has no outline, and has a semi-transparent fill that allows the background grid to show through. Together, the two circles give the impression that the inner circle is resting upon the outer circle.](https://docs-assets.developer.apple.com/published/a8d0e9d7b802123c594cf9910fb44a50/app-icons-element-filled-shape%402x.png)
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
+
+
+
+
 
 **Include text only when it’s essential to your experience or brand.** Text in icons doesn’t support accessibility or localization, is often too small to read easily, and can make an icon appear cluttered. In some contexts, your app name already appears nearby, making it redundant to display the name within the icon itself. Although displaying a mnemonic like the first letter of your app’s name can help people recognize your app or game, avoid including nonessential words that tell people what to do with it — like “Watch” or “Play” — or context-specific terms like “New” or “For visionOS.” If you include text in a tvOS app icon, make sure it’s above other layers so it’s not cropped by the parallax effect.
 
@@ -116,7 +122,7 @@ Embrace simplicity in your icon design. Simple icons tend to be easiest for peop
 
 In iOS, iPadOS, and macOS, people can choose whether their Home Screen app icons are default, dark, clear, or tinted in appearance. For example, someone may want to personalize their app icon appearance to complement their wallpaper. You can design app icon variants for every appearance variant, and the system automatically generates variants you don’t provide.
 
-![A grid showing the six different appearances of the Photos app icon in iOS. The top row shows the default, clear light, and tinted light icon variants. The bottom row shows the dark, clear dark, and tinted dark variants.](https://docs-assets.developer.apple.com/published/a91b68946df73b81596a9a29b0356a4a/app-icons-rendering-modes%402x.png)
+
 
 **Keep your icon’s features consistent across appearances.** To create a seamless experience, keep your icon’s core visual features the same in the default, dark, clear, and tinted appearances. Avoid creating custom icon variants that swap elements in and out with each variant, which may make it harder for people to find your app when they switch appearances.
 
@@ -138,7 +144,7 @@ Alternate app icons in iOS and iPadOS require their own dark, clear, and tinted 
 
 **Include a safe zone to ensure the system doesn’t crop your content.** When someone focuses your app icon, the system may crop content around the edges as the icon scales and moves. To ensure that your icon’s content is always visible, keep a safe zone around it. Be aware that the safe zone can vary, depending on the image size, layer depth, and motion, and the system crops foreground layers more than background layers.
 
-![A diagram of the Photos app icon in tvOS with a white dotted line inside the outer border, which indicates the safe zone.](https://docs-assets.developer.apple.com/published/f2f3bf70c87e53889768b64a2faf5cf5/tvos-app-icon-safe-zone%402x.png)
+
 
 ### [visionOS](https://developer.apple.com/design/human-interface-guidelines/app-icons#visionOS)
 

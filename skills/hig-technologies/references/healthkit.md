@@ -2,11 +2,17 @@
 title: "HealthKit | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/healthkit
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/healthkit.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # HealthKit
 
 HealthKit is the central repository for health and fitness data in iOS, iPadOS, and watchOS.
 
-![A sketch of the HealthKit icon. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/1ea6de75ffe8173e0253ce0b4bf27b83/technologies-HealthKit-intro%402x.png)
+
 
 When you support HealthKit in your app, you can ask people for permission to access and update their health information.
 
@@ -16,7 +22,7 @@ If your app doesn’t provide health and fitness functionality, don’t request 
 
 For example, a nutrition app might ask for permission to retrieve people’s weight and activity data, so it can define calorie consumption goals and make dietary recommendations. In this scenario, the nutrition app could also send data — such as the calories that people log — to HealthKit, which can include the data in its global progress metrics.
 
-![A screenshot of the Health app's summary screen on iPhone, showing current data for activity, active energy, stair speed, heart rate, resting energy, and stand minutes.](https://docs-assets.developer.apple.com/published/fdb416a7e3e60d832ba22dd317fae712/health-summary%402x.png)
+
 
 For developer guidance, see [HealthKit](https://developer.apple.com/documentation/HealthKit).
 
@@ -30,7 +36,7 @@ You must request permission to access people’s data, and you must take all nec
 
 **Clarify your app’s intent by adding descriptive messages to the standard permission screen.** People expect to see the system-provided permission screen when asked to approve access to health data. Write a few succinct sentences that explain why you need the information and how people can benefit from sharing it with your app. Avoid adding custom screens that replicate the standard permission screen’s behavior or content.
 
-![A screenshot of a Health Access screen on iPhone, which asks for permission for an app to write and read mindful minute data.](https://docs-assets.developer.apple.com/published/68014b16fae04d2ed8dfeecee91a4c39/health-access-requests%402x.png)
+
 
 **Manage health data sharing solely through the system’s privacy settings.** People expect to globally manage access to their health information in Settings > Privacy. Don’t confuse people by building additional screens in your app that affect the flow of health data.
 
@@ -38,7 +44,7 @@ You must request permission to access people’s data, and you must take all nec
 
 You can enhance your app’s health and wellness offerings by displaying the Activity ring element to show people’s progress toward their Move, Exercise, and Stand goals. The Activity app defines the position and color of each ring, so people are familiar with the element and understand what it means.
 
-![A screenshot of the Activity app's History screen on iPhone, which shows daily activity rings progress for June and part of July.](https://docs-assets.developer.apple.com/published/26eb6fb57c43110b544e51e0760790d5/activity-months%402x.png)
+
 
 **Use Activity rings for Move, Exercise, and Stand information only.** Activity rings consistently represent progress in these specific areas. Don’t attempt to replicate or modify Activity rings for other purposes or to display other types of data. Never show Move, Exercise, and Stand progress in another ring-like element.
 
@@ -62,7 +68,7 @@ For developer guidance, see [`HKActivityRingView`](https://developer.apple.com/d
 
 The Apple Health icon shows that an app works with HealthKit and the Health app. The following guidelines help you use the icon correctly. To learn how to refer to HealthKit and the Health app in copy and UI text, see [Editorial guidelines](https://developer.apple.com/design/human-interface-guidelines/healthkit#Editorial-guidelines); to learn about using the “Works with Apple Health” badge in your marketing communications, see [Works with Apple Health](https://developer.apple.com/health-fitness/works-with-apple-health/).
 
-![A screenshot of an onboarding screen for an app named Eating Habits, which displays the Apple Health icon and text that describes how syncing health data from Eating Habits can help people manage their health. At the bottom of the screen is a Sync Health Data button and a Skip for Now button.](https://docs-assets.developer.apple.com/published/50410b9d99b8e796d03d763d8dddc14c/health-icon-onboard-screen%402x.png)
+
 
 **Use only the Apple-provided icon.** Don’t create your own Apple Health icon design or attempt to mimic any Apple-provided designs. Download the Apple Health app icon from [Apple Design Resources](https://developer.apple.com/design/resources/#technologies).
 

@@ -2,11 +2,17 @@
 title: "Ratings and reviews | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Ratings and reviews
 
 People often view the ratings and reviews for an app or game before they download it.
 
-![A sketch of a half-filled star, suggesting a favorability rating. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/1d5f982affa4088005ecd7c8d6edddff/patterns-ratings-and-reviews-intro%402x.png)
+
 
 Delivering a great overall experience is the best way to encourage positive ratings and reviews, but it’s also crucial to choose the right time to ask people for feedback. Although every app is different, some possible ways to do this involve looking at how many times or how frequently people launch your app, the number of features someone explores, or the number of tasks they complete.
 
@@ -16,7 +22,7 @@ People can always rate your app within the App Store.
 
 **Ask for a rating only after people have demonstrated engagement with your app or game.** For example, you might prompt people when they complete a game level or a significant task. Avoid asking for a rating on first launch or during onboarding, because people haven’t had enough time to gain a clear understanding of your app’s value or form an opinion. People may even be more likely to leave negative feedback if they feel an app is asking for a rating before they get a chance to use it.
 
-![An illustration of the UI that appears when a person is prompted to rate an app or game in macOS.](https://docs-assets.developer.apple.com/published/b0aee2c246e2cfd035ba21ed1a2004c3/ratings-and-reviews-ios-alert%402x.png)
+
 
 **Avoid interrupting people while they’re performing a task or playing a game.** Asking for feedback can disrupt the user experience and feel like a burden. Look for natural breaks or stopping points in your app or game where a rating request is less likely to be bothersome.
 

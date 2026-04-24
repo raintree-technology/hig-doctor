@@ -2,11 +2,17 @@
 title: "ShazamKit | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/shazamkit
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/shazamkit.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # ShazamKit
 
 ShazamKit supports audio recognition by matching an audio sample against the ShazamKit catalog or a custom audio catalog.
 
-![A sketch of the ShazamKit icon. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/74c2e960c2dd11cd7352fb44d0f703aa/technologies-ShazamKit-intro%402x.png)
+
 
 You can use ShazamKit to provide features like:
 
@@ -21,7 +27,7 @@ You can use ShazamKit to provide features like:
 
 If you need the device microphone to get audio samples for your app to recognize, you must request access to it. As with all types of permission requests, it’s important to help people understand why you’re asking for access. For guidance, see [Privacy](https://developer.apple.com/design/human-interface-guidelines/privacy).
 
-![A screenshot of the Math School app’s permission alert on iPhone. The alert reads 'Math School would like to access your microphone. Synchronize reading and math exercises with videos played by your teacher.' There are two buttons available: Not Now and Allow.](https://docs-assets.developer.apple.com/published/b79bf93e025e4493d87cb274a21a8c97/shazamkit-mic-permission%402x.png)
+
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/shazamkit#Best-practices)
 

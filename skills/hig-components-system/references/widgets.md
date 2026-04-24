@@ -2,11 +2,17 @@
 title: "Widgets | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/widgets.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Widgets
 
 A widget provides quick access to essential information and focused interactions from your app or game in additional contexts.
 
-![A stylized representation of a set of different-sized widgets on an iPad Home Screen. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/1d1cd14d565d4afe6ecd373b26d9ffc5/components-widgets-intro%402x.png)
+
 
 Widgets help people organize and personalize their devices by displaying timely, glanceable content and offering specific functionality. They appear in various contexts for a consistent experience across platforms. For example, a person might place a Weather widget:
 
@@ -48,15 +54,15 @@ System family widgets offer a broad range of sizes and may include one or more i
 
 
 
-![An image of the small Calendar widget, showing only the current date and one event.](https://docs-assets.developer.apple.com/published/0089454df2b0b32f6ca892f3131bdb01/widgets-calendar-small%402x.png)
 
-![An image of the medium Calendar widget, which has the same height as the small widget, but twice the width. On the left, the widget repeats the small widget’s information, adding a birthday event; on the right the medium widget adds information about tomorrow’s events.](https://docs-assets.developer.apple.com/published/a29b600e231c019ccc0fd855603ac1be/widgets-calendar-medium%402x.png)
 
-![An image of the large Calendar widget, which has the same width as the medium widget, but a little more than twice the height. Like the medium widget, the large widget displays information about today on the left and information about tomorrow on the right. On both sides, the large version includes relevant time-of-day indicators.](https://docs-assets.developer.apple.com/published/d2a3a81b0ccbc123bb61e12b7da6b1ed/widgets-calendar-large%402x.png)
 
-![An image of the extra large Calendar widget, which is about twice the width of the large widget and a little shorter. The widget displays information about today and the following three days, including relevant time-of-day indicators in all four columns. The today column is a little wider than the columns for the other days.](https://docs-assets.developer.apple.com/published/f2738320bf945e097a8d16f35ca8d9c1/widgets-calendar-extra-large%402x.png)
 
-![An image of the extra large portrait Music widget, which has the same width as the large widget but is taller.](https://docs-assets.developer.apple.com/published/4ff038f07eaedfa7579dfa7e0ef38099/widgets-music-extra-large-portrait%402x.png)
+
+
+
+
+
 
 The following table shows supported contexts for each system family widget size:
 
@@ -79,13 +85,13 @@ Accessory widgets display a very limited amount of information because of their 
 
 
 
-![An image of the circular accessory Calendar widget, showing only the time for the next event.](https://docs-assets.developer.apple.com/published/8f496e2dce59da3b8607cb07e4c4215c/widgets-accessory-calendar-circular%402x.png)
 
-![An image of the corner accessory Calendar widget. It displays the time and title of an upcoming meeting.](https://docs-assets.developer.apple.com/published/ee66466be7aa2d47efc551196156b8fa/widgets-accessory-corner-widget-watch%402x.png)
 
-![An image of the inline accessory Calendar widget, showing the date and the number of the next events.](https://docs-assets.developer.apple.com/published/b9af2a21096e381b9e3734e0119b7b09/widgets-accessory-calendar-inline%402x.png)
 
-![An image of the rectangular accessory Calendar widget. It displays the time of two simultaneous events and their titles.](https://docs-assets.developer.apple.com/published/8709b464372ab0810be34a951879ceec/widgets-accessory-calendar-rectangular%402x.png)
+
+
+
+
 
 They appear on the following devices:
 
@@ -107,34 +113,34 @@ For example, a small system widget appears differently depending on the device a
 
 
 
-![An image of the small Stocks widget on the Home Screen in the full-color appearance.](https://docs-assets.developer.apple.com/published/c001f107005e17afb9e12d48d162dcb2/widgets-stocks-default%402x.png)Full-color
+Full-color
 
-![An image of the small Stocks widget on the Home Screen in the clear appearance.](https://docs-assets.developer.apple.com/published/ad7a87eea7f2be4863cf6a2e8d8a7639/widgets-stocks-clear%402x.png)Clear
+Clear
 
-![An image of the small Stocks widget on the Home Screen in the tinted appearance.](https://docs-assets.developer.apple.com/published/25e58f2c47d8b6d863187721d5c4abe9/widgets-stocks-tinted%402x.png)Tinted
+Tinted
 
   * On Apple Vision Pro, the widget appears as a 3D object, surrounded by a frame. It takes on a full-color appearance with a glass- or paper-like coating layer that responds to lighting conditions. Additionally, people can choose a tinted appearance that applies a color from a set of system-provided color palettes.
 
 
 
 
-![An image of the small Stocks widget on Apple Vision Pro.](https://docs-assets.developer.apple.com/published/4b4e42b658c77b47c0f40d4d433d7b3b/widgets-stocks-visionos-frame%402x.png)
+
 
   * On the Lock Screen of iPad, the widget takes on a monochromatic appearance without a tint color.
 
 
 
 
-![An image of the small Stocks widget on the Lock Screen, showing the price of Apple stock.](https://docs-assets.developer.apple.com/published/58aef111a6a92a03981f5998720bca48/widgets-stocks-ipad-lock-screen%402x.png)
+
 
   * On the Lock Screen of iPhone in StandBy, the widget appears scaled up in size with the background removed. When the ambient light falls below a threshold, the system renders the widget with a monochromatic red tint.
 
 
 
 
-![An image of the Stocks widget on the Lock Screen in StandBy, showing the price of Apple stock.](https://docs-assets.developer.apple.com/published/cc1129210235e90f1ee9045eaf85dfb9/widgets-stocks-standby%402x.png)StandBy
+StandBy
 
-![An image of the Stocks widget on the Lock Screen that uses the dark appearance in low-light conditions, showing the price of Apple stock.](https://docs-assets.developer.apple.com/published/eb666a28d966abb92b34bdb0d14d8e0b/widgets-stocks-standby-night-mode%402x.png)iPhone in StandBy during low-light conditions
+iPhone in StandBy during low-light conditions
 
 Similarly, a rectangular accessory widget appears as follows:
 
@@ -151,11 +157,11 @@ Similarly, a rectangular accessory widget appears as follows:
 
 
 
-![A rectangular accessory Calendar widget on the Lock Screen of iPhone, displaying a team meeting at 4 P.M. in a conference room.](https://docs-assets.developer.apple.com/published/1bf7a8ed9890752d8aac424f5406e978/widgets-calendar-rectangular-ios%402x.png)
 
-![A rectangular Calendar watch complication, displaying a team meeting at 4 P.M. in a conference room.](https://docs-assets.developer.apple.com/published/817c517d1183f2d8a797d7b304cefab3/widgets-calendar-rectangular-watchos-complication%402x.png)
 
-![A Calendar widget in the Smart Stack on Apple Watch. It displays a team meeting at 4 P.M. in a conference room.](https://docs-assets.developer.apple.com/published/a2d56d27563c849f1a5bc6b24406c59d/widgets-calendar-rectangular-watchos-smart-stack%402x.png)
+
+
+
 
 Each appearance described above includes a [rendering mode](https://developer.apple.com/design/human-interface-guidelines/widgets#Rendering-modes) that depends on the platform and a person’s appearance settings:
 
@@ -184,7 +190,7 @@ For additional design guidance, see [Rendering modes](https://developer.apple.co
 
 **Choose simple ideas that relate to your app’s main purpose.** Include timely content and relevant functionality. For example, people who use the Weather app are often most interested in the current high and low temperatures and weather conditions, so the Weather widgets prioritize this information.
 
-![An image of a small Weather widget showing current conditions for Cupertino. In text, the widget displays a temperature of 70 degrees, the condition Sunny, and forecast high and low temperatures of 75 degrees and 59 degrees, respectively. The widget also displays a yellow sun symbol above the word Sunny and the filled-in location indicator to the right of the word Cupertino.](https://docs-assets.developer.apple.com/published/6a3718b9d1eb04c89acbf3c32cf9101e/widgets-ios-weather-small%402x.png)
+
 
 **Aim to create a widget that gives people quick access to the content they want.** People appreciate widgets that display meaningful content and offer useful actions and deep links to key areas of your app. Replicating an app icon offers little additional value, and people may be less likely to keep it on their screens.
 
@@ -220,15 +226,15 @@ To remain relevant and useful, widgets periodically refresh their information bu
 
 People tap or click a widget to launch its corresponding app. It can also include buttons and toggles to offer additional functionality without launching the app. For example, the Reminders widget includes toggles to mark a task as completed. When people interact with your widget in areas that aren’t buttons or toggles, the interaction launches your app.
 
-![An image of the large Reminders widget with a toggle for each task. None of the tasks is complete.](https://docs-assets.developer.apple.com/published/71a7227a45af08e53dccfcc4b9d9ffe4/widgets-reminders-large-unselected%402x.png)Incomplete tasks
+Incomplete tasks
 
-![An image of the large Reminders widget with a toggle for each task. The toggles for the first and third items in the list indicate that these tasks are complete.](https://docs-assets.developer.apple.com/published/6d2286d6fb3ded274a98ce9c2108f59f/widgets-reminders-large-selected%402x.png)Completed tasks
+Completed tasks
 
 **Offer simple, relevant functionality and reserve complexity for your app.** Useful widgets offer an easy way to complete a task or action that’s directly related to its content.
 
 **Ensure that a widget interaction opens your app at the right location.** Deep link to details and actions that directly relate to the widget’s content, and don’t make people navigate to the relevant area in the app. For example, when people click or tap a medium Stocks widget, the Stocks app opens to a page that displays information about the symbol.
 
-![An image of a medium Stocks watchlist widget, listing two stock market indices and one stock symbol. Each row displays the index or symbol name on the left, a graph section in the middle, and a current quote, including a value change, on the right.](https://docs-assets.developer.apple.com/published/bfe482d5903ff332d0027450f18a6a43/widgets-stocks-medium%402x.png)
+
 
 **Offer interactivity while remaining glanceable and uncluttered.** Multiple interaction targets — SwiftUI links, buttons, and toggles — might make sense for your content, but avoid creating app-like layouts in your widgets. Pay attention to the size of targets and make sure people can tap or click them with confidence and without accidentally performing unintended interactions. Note that inline accessory widgets offer only one tap target.
 
@@ -268,9 +274,9 @@ In iOS, iPadOS, and visionOS, widgets support Dynamic Type sizes from Large to A
 
 **Support light and dark appearances.** Prefer light backgrounds for the light appearance and dark backgrounds for the dark appearance, and consider using the semantic system colors for text and backgrounds to let the colors dynamically adapt to the current appearance. You can also support different appearances by putting color variants in your asset catalog. For guidance, see [Dark Mode](https://developer.apple.com/design/human-interface-guidelines/dark-mode); for developer guidance, see [Asset management](https://developer.apple.com/documentation/Xcode/asset-management) and [Supporting Dark Mode in your interface](https://developer.apple.com/documentation/UIKit/supporting-dark-mode-in-your-interface).
 
-![An image of the small Notes widget. Below the yellow bar that contains the app icon and name, the widget displays a single note in black text on a white background.](https://docs-assets.developer.apple.com/published/fe8bbb296cb8ad12a123b95562d7c1f5/widgets-notes-light-appearance%402x.png)
 
-![An image of the small Notes widget. Below the yellow bar that contains the app icon and name, the widget displays a single note in white text on a black background.](https://docs-assets.developer.apple.com/published/3e2a0cd6e7b33ef2ea47970a271330fb/widgets-notes-dark-appearance%402x.png)
+
+
 
 ### [Accented](https://developer.apple.com/design/human-interface-guidelines/widgets#Accented)
 
@@ -290,9 +296,9 @@ For developer guidance, see [`widgetAccentable(_:)`](https://developer.apple.com
 
 **Design placeholder content that helps people recognize your widget.** An installed widget displays placeholder content while its data loads. Create an effective placeholder appearance by combining static interface components with semi-opaque shapes that stand in for dynamic content. For example, use rectangles of different widths to suggest lines of text, and circles or squares in place of glyphs and images.
 
-![An image of a small Tips widget that displays placeholder content on top of a yellow background. In the bottom half of the widget, three horizontal bars in different shades of yellow represent lines of text.](https://docs-assets.developer.apple.com/published/9f4ce7356e15184d0183af0e5effa04a/widgets-tips-placeholder-content%402x.png)
 
-![An image of a small Tips widget that displays actual data on top of a yellow background. The horizontal bars in the placeholder widget are replaced by three short lines of text in different shades of yellow.](https://docs-assets.developer.apple.com/published/aa5e504f019f5558fa61813932709755/widgets-tips-full-content%402x.png)
+
+
 
 **Write a succinct widget description.** The widget gallery displays descriptions that help people understand what each widget does. Begin a description with an action verb — for example, “See the current weather conditions and forecast for a location” or “Keep track of your upcoming events and meetings.” Avoid including unnecessary phrases that reference the widget itself, like “This widget shows…,” “Use this widget to…,” or “Add this widget.” Use approachable language and [sentence-style capitalization](https://support.apple.com/guide/applestyleguide/c-apsgb744e4a3/web#apdca93e113f1d64).
 
@@ -300,9 +306,9 @@ For developer guidance, see [`widgetAccentable(_:)`](https://developer.apple.com
 
 **Consider coloring the Add button.** After people choose your app in the widget gallery, an Add button appears below the group of widgets you offer. You can specify a color for this button to help remind people of your brand.
 
-![An illustration that represents the widget gallery open to the small widget for the Notes app. Below the widget is a page control showing that this is the first page of six; below the page control is a button that uses the Notes app's yellow accent color.](https://docs-assets.developer.apple.com/published/38cf8810029187a42a6873242a7a1571/widgets-add-button-tint-color-notes%402x.png)
 
-![An illustration that represents the widget gallery open to the small widget for the Weather app. Below the widget is a page control showing that this is the first page of six; below the page control is a button that uses the Weather app's blue accent color.](https://docs-assets.developer.apple.com/published/c1a2eced9508911b18e05bee9d3d107e/widgets-add-button-tint-color-weather%402x.png)
+
+
 
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/widgets#Platform-considerations)
 
@@ -314,7 +320,7 @@ Widgets on the Lock Screen are functionally similar to watch complications and f
 
 Your app can offer widgets on the Lock Screen in three different shapes: as inline text that appears above the clock, and as circular and rectangular shapes that appear below the clock.
 
-![A partial screenshot of the Lock Screen on iPhone that shows a Calendar widget and two Weather widgets below the time. From the left, the widgets are an inline text widget and two circular widgets.](https://docs-assets.developer.apple.com/published/685e1b1e81cd591a59e63f4b1ae3bde4/widget-lock-screen-display-appearances%402x.png)
+
 
 **Support the Always-On display on iPhone.** Devices with the Always-On display render widgets on the Lock Screen with reduced luminance. Use levels of gray that provide enough contrast in the Always-On display, and make sure your content remains legible.
 
@@ -333,19 +339,19 @@ On iPhone in StandBy, the system displays two small system family widgets side-b
 
 
 
-![An image of iPhone in StandBy. It shows a Clock widget on the left that displays the time as 9:41 a.m. and a Weather widget set to Cupertino with the temperature at 70 degrees Fahrenheit on the right.](https://docs-assets.developer.apple.com/published/50672d631597de47734d331e2acfc4d7/widgets-standby-removed-background-correct%402x.png)
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
 
-![An image of iPhone in StandBy. It shows a Clock widget on the left that displays the time as 9:41 a.m. and a Weather widget set to Cupertino with the temperature at 70 degrees Fahrenheit on the right. The Watch widget appears with the background removed and the Weather widget isn't optimized for StandBy.](https://docs-assets.developer.apple.com/published/853c1452b137d14fde7385a83cd1238e/widgets-standby-with-background-incorrect%402x.png)
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
+
+
+
+
 
 For developer guidance, see [Displaying the right widget background](https://developer.apple.com/documentation/WidgetKit/Displaying-the-right-widget-background).
 
 On iPhone in StandBy in low-light conditions, the system renders widgets in a monochromatic look with a red tint.
 
-![An image of iPhone in low-light conditions. It shows a Clock widget on the left that displays the time as 9:41 a.m. and a Weather widget set to Cupertino with the temperature at 70 degrees Fahrenheit on the right.](https://docs-assets.developer.apple.com/published/52d35d40b1ddb2272b2d9abed4354afb/widgets-standby-low-light%402x.png)
+
 
 iPhone in low-light conditions
 
@@ -365,9 +371,9 @@ For developer guidance, see [Updating your widgets for visionOS](https://develop
 
 Widgets on Apple Vision Pro can adapt based on a person’s proximity, and visionOS provides widgets with two key thresholds to design for: the [`simplified`](https://developer.apple.com/documentation/WidgetKit/LevelOfDetail/simplified) threshold for when a person views a widget at a distance, and the [`default`](https://developer.apple.com/documentation/WidgetKit/LevelOfDetail/default) threshold when a person views it nearby.
 
-![A placeholder image showing a widget viewed from a distance in visionOS.](https://docs-assets.developer.apple.com/published/0ab3137bf116e4640762c25ac6139f93/widgets-extra-large-portrait-far-proximity%402x.png)Viewed from a distance
+Viewed from a distance
 
-![A placeholder image showing a widget viewed from nearby in visionOS.](https://docs-assets.developer.apple.com/published/c3f6fbe96de6d0b9524ad7f2001755a6/widgets-extra-large-portrait-close-proximity%402x.png)Viewed from nearby
+Viewed from nearby
 
 Because widgets can appear throughout a person’s environment, it’s also important to match a widget’s size to the type of content it contains, and to be aware of how it appears at a variety of distances.
 

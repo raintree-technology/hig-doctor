@@ -2,11 +2,17 @@
 title: "ID Verifier | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/id-verifier
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/id-verifier.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # ID Verifier
 
 ID Verifier lets your iPhone app read mobile IDs in person without requiring external hardware.
 
-![A sketch of progressively larger curved lines emerging from the bottom corner of an ID card, suggesting ID Verifier. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/8d77246d289837a097f0556d6e7d2c7d/technologies-ID-Verifier-Apps-intro%402x.png)
+
 
 Beginning in iOS 17, you can integrate ID Verifier into your app, letting iPhone read ISO18013-5 compliant mobile IDs and helping you support in-person ID verification. For example, personnel at a concert venue can use your app on iPhone to verify customers’ ages.
 
@@ -38,8 +44,8 @@ Depending on the needs of your app, you can use ID Verifier to make the followin
 
 Button type| Example usage  
 ---|---  
-![An illustration of a Verify Age button.](https://docs-assets.developer.apple.com/published/68f99fdea3def2ba04aee092c3465400/id-verifier-button-age%402x.png)| An app that checks whether people are old enough to attend an event or access a venue, like a concert hall.  
-![An illustration of a Verify Identity button.](https://docs-assets.developer.apple.com/published/1e827d68149ef111a2ff7ebec21912a0/id-verifier-button-identity%402x.png)| An app that verifies whether specific identity information matches expected values, such as name and birth date when picking up a rental car.  
+| An app that checks whether people are old enough to attend an event or access a venue, like a concert hall.  
+| An app that verifies whether specific identity information matches expected values, such as name and birth date when picking up a rental car.  
   
 **In a Display Only request, help the person using your app provide feedback on the visual confirmation they perform.** For example, when the reader displays the customer’s portrait, you might provide buttons labeled Matches Person and Doesn’t Match Person so your app can receive an approved or rejected value as part of the response.
 

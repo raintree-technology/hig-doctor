@@ -2,11 +2,17 @@
 title: "Pull-down buttons | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Pull-down buttons
 
 A pull-down button displays a menu of items or actions that directly relate to the button’s purpose.
 
-![A stylized representation of a pull-down menu displaying a set of items. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/dbe57c62e67b173fe5203469df675796/components-pull-down-button-intro%402x.png)
+
 
 After people choose an item in a pull-down button’s menu, the menu closes, and the app performs the chosen action.
 
@@ -47,9 +53,9 @@ You can also let people reveal a pull-down menu by performing a specific gesture
 
 **Consider using a More pull-down button to present items that don’t need prominent positions in the main interface.** A More button can help you offer a range of items where space is constrained, but it can also hinder discoverability. Although people generally understand that a More button offers additional functionality related to the current context, the ellipsis icon doesn’t necessarily help them predict its contents. To design an effective More button, weigh the convenience of its size against its impact on discoverability to find a balance that works in your app.
 
-![A screenshot of the Notes app on iPhone, open to a Notes document titled Nature Walks. The top toolbar includes a More button on the trailing edge.](https://docs-assets.developer.apple.com/published/5cdc980290422f59da0f79ab5f5efd13/menu-secondary-actions-collapsed%402x.png)
 
-![A screenshot of the Notes app on iPhone, open to a Notes document titled Nature Walks. The More button in the top toolbar is expanded, revealing the More menu with additional funtionality.](https://docs-assets.developer.apple.com/published/0d263e9b8df2b3f1e989a6383ebfaf5d/menu-secondary-actions-expanded%402x.png)
+
+
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons#Resources)
 

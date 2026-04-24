@@ -2,11 +2,17 @@
 title: "Live Photos | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/live-photos
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/live-photos.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Live Photos
 
 Live Photos lets people capture favorite memories in a sound- and motion-rich interactive experience that adds vitality to traditional still photos.
 
-![A sketch of the Live Photos icon. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/dc6a4a0eb43d1336511cf15379c03a04/technologies-Live-Photos-intro%402x.png)
+
 
 When Live Photos is available, the Camera app captures additional content — including audio and extra frames — before and after people take a photo. People press a Live Photo to see it spring to life.
 
@@ -26,9 +32,9 @@ When Live Photos is available, the Camera app captures additional content — in
 
 In cases where movement isn’t possible, show a system-provided badge above the photo, either with or without text. Never include a playback button that a viewer can interpret as a video playback button.
 
-![A nighttime photo of an alpine lake with a system-provided Live Photo badge with the text Live in the upper left corner.](https://docs-assets.developer.apple.com/published/a87d82a66bbb1352833d3bf3deb1e325/live-photo-badge-with-text%402x.png)
 
-![A nighttime photo of an alpine lake with a system-provided Live Photo badge without text in the upper left corner.](https://docs-assets.developer.apple.com/published/912dc316a86639661c2f1758145e55db/live-photo-badge%402x.png)
+
+
 
 **Keep badge placement consistent.** If you show a badge, put it in the same location on every photo. Typically, a badge looks best in a corner of a photo.
 

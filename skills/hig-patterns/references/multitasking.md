@@ -2,11 +2,17 @@
 title: "Multitasking | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/multitasking
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/multitasking.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Multitasking
 
 Multitasking lets people switch quickly from one app to another, performing tasks in each.
 
-![A sketch of two side-by-side windows in a split view arrangement, suggesting multitasking. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/94f1391bf700ee7af09ad0f966dd7b36/patterns-multitasking-intro%402x.png)
+
 
 People expect to use multitasking on their devices, and they may think something is wrong if your app doesn’t allow it. With rare exceptions — such as some games, and Apple Vision Pro apps running in a Full Space — every app needs to work well with multitasking.
 
@@ -41,11 +47,11 @@ For guidance, see [Playing audio](https://developer.apple.com/design/human-inter
 
 On iPhone, multitasking lets people use FaceTime or watch a video in Picture in Picture while they also use a different app.
 
-![A screenshot of the app switcher on iPhone, showing four open apps.](https://docs-assets.developer.apple.com/published/519ce5b2d1298e573aab62d4ea3427c9/multitasking-app-switcher-iphone%402x.png)
+
 
 The app switcher displays all currently open apps.
 
-![A screenshot of Mail on iPhone, showing an individual email. On top of the email body content, a small image in the bottom-left corner shows the person currently in a FaceTime call.](https://docs-assets.developer.apple.com/published/f68005bf620706a5d6c6c03d09af37f4/multitasking-pip-iphone%402x.png)
+
 
 A current FaceTime call can continue while people use another app.
 
@@ -55,11 +61,11 @@ On iPad, people can view and interact with the [windows](https://developer.apple
 
 People can use iPad with either full-screen or windowed apps. When full screen, apps occupy the full screen, and people can switch between individual app windows using the app switcher.
 
-![A screenshot of the iPad app switcher in landscape orientation, showing five open apps. Thumbnail representations of the apps are arranged in a grid.](https://docs-assets.developer.apple.com/published/b1c2946808ad75c7036af18706a55b79/multitasking-ipad-app-switcher%402x.png)
+
 
 When using windowed apps, app windows are resizable, and people can arrange them to suit their needs with behavior similar to macOS. The system provides window controls for common tiling configurations, entering full screen, minimizing, and closing windows. The system identifies the frontmost window by coloring its window controls and casting a drop shadow on windows behind it. For guidance, see [Windows > iPadOS](https://developer.apple.com/design/human-interface-guidelines/windows#iPadOS).
 
-![A screenshot of two windowed apps on iPad in landscape orientation. The frontmost app window overlaps and casts a shadow on the one behind it, and has colored window controls to indicate that the window is active. Both windows sit atop the Home Screen background, and the Dock appears at the bottom.](https://docs-assets.developer.apple.com/published/433d49d66e117152f7cca9605ebe9628/multitasking-ipad-windows-maps-landmarks%402x.png)
+
 
 Additionally, videos and FaceTime calls can also play in a Picture in Picture overlay above other content regardless of whether apps are full screen or windowed.
 

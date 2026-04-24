@@ -2,11 +2,17 @@
 title: "Charting data | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/charting-data
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/charting-data.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Charting data
 
 Presenting data in a chart can help you communicate information with clarity and appeal.
 
-![A sketch of a bar chart, suggesting data representation. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/bc4a2c4e929441fc51874ce49b4a5129/patterns-charting-data-intro%402x.png)
+
 
 Charts provide efficient ways to communicate complex information without requiring people to read and interpret a lot of text. The graphical nature of charts also gives you additional opportunities to express the personality of your experience and add visual interest to your interface. To learn about the components you use to create a chart, see [Charts](https://developer.apple.com/design/human-interface-guidelines/charts).
 
@@ -39,9 +45,9 @@ Not every collection of data needs to be displayed in a chart. If you simply nee
 
 **Examine the data from multiple levels or perspectives to find details you can display to enhance the chart.** For example, viewing the data from a macro level can help you determine high-level summaries that people might be interested in, like totals or averages. From a mid-level perspective, you might find ways to help people identify useful subsets of the data, whereas examining individual data points might help you find ways to draw people’s attention to specific values or items. Displaying information that helps people view the chart from various perspectives can encourage them to engage with it.
 
-![A screenshot of the Stocks app on iPhone. The app uses a line chart to depict the performance of a stock over the currently chosen one-month period.](https://docs-assets.developer.apple.com/published/75cea76eff7e6ee353ad230c147be3da/charts-stocks%402x.png)
 
-![A screenshot of the Activity screen in the Health app on iPhone. The app uses a set of three bar charts to depict information from the three Activity Rings over the currently chosen one-day period.](https://docs-assets.developer.apple.com/published/b82e0965a76f384beca174253f9c6113/charts-activity%402x.png)
+
+
 
 **Aid comprehension by adding descriptive text to the chart.** Descriptive text titles, subtitles, and annotations help emphasize the most important information in a chart and can highlight actionable takeaways. You can also display brief descriptive text that serves as a headline or summary for a chart, helping people grasp essential information at a glance. For example, Weather displays text that summarizes the information people need right now — such as “Chance of light rain in the next hour” — above the scrolling list of hourly forecasts for the next 24 hours. Although a descriptive headline or summary can make a chart more accessible, it doesn’t take the place of accessibility labels.
 

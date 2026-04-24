@@ -2,11 +2,17 @@
 title: "Images | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/images
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/images.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Images
 
 To make sure your artwork looks great on all devices you support, learn how the system displays content and how to deliver art at the appropriate scale factors.
 
-![A sketch of a photo, suggesting imagery. The image is overlaid with rectangular and circular grid lines and is tinted yellow to subtly reflect the yellow in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/b0a68ac859ddb098858e92609997d307/foundations-images-intro%402x.png)
+
 
 ## [Resolution](https://developer.apple.com/design/human-interface-guidelines/images#Resolution)
 
@@ -16,11 +22,11 @@ A _point_ is an abstract unit of measurement that helps visual content remain co
 
 When creating bitmap images, you specify a _scale factor_ which determines the resolution of an image. You can visualize scale factor by considering the density of pixels per point in 2D displays of various resolutions. For example, a scale factor of 1 (also called @1x) describes a 1:1 pixel density, where one pixel is equal to one point. High-resolution 2D displays have higher pixel densities, such as 2:1 or 3:1. A 2:1 density (called @2x) has a scale factor of 2, and a 3:1 density (called @3x) has a scale factor of 3. Because of higher pixel densities, high-resolution displays demand images with more pixels.
 
-![Image of a circle that's in standard resolution at scale factor of @1x, and is 10 by 10 pixels.](https://docs-assets.developer.apple.com/published/a9b04545f30aff45ca503e263c02d464/image-resolution-1x%402x.png)1x (10x10 px)
+1x (10x10 px)
 
-![Image of a circle that's in high resolution at a scale factor of @2x, and is 20 by 20 pixels.](https://docs-assets.developer.apple.com/published/cf203acc0ee6299833fb2e5b5c4a7348/image-resolution-2x%402x.png)2x (20x20 px)
+2x (20x20 px)
 
-![Image of a circle that's in high resolution at a scale factor of @3x, and is 30 by 30 pixels.](https://docs-assets.developer.apple.com/published/0de9ee5144fc2278682eb211ac8f571d/image-resolution-3x%402x.png)3x (30x30 px)
+3x (30x30 px)
 
 **Provide high-resolution assets for all bitmap images in your app, for every device you support.** As you add each image to your project’s asset catalog, identify its scale factor by appending “@1x,” “@2x,” or “@3x” to its filename. Use the following values for guidance; for additional scale factors, see [Layout](https://developer.apple.com/design/human-interface-guidelines/layout).
 

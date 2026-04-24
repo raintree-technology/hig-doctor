@@ -2,11 +2,17 @@
 title: "Rating indicators | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/rating-indicators
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/rating-indicators.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Rating indicators
 
 A rating indicator uses a series of horizontally arranged graphical symbols — by default, stars — to communicate a ranking level.
 
-![A stylized representation of a rating indicator denoting a ranking of three out of five stars. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/aacce03e9d1c173b00080802bc79ff5d/components-rating-indicators-intro%402x.png)
+
 
 A rating indicator doesn’t display partial symbols; it rounds the value to display complete symbols only. Within a rating indicator, symbols are always the same distance apart and don’t expand or shrink to fit the component’s width.
 

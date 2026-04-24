@@ -2,11 +2,17 @@
 title: "Action sheets | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/action-sheets
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/action-sheets.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Action sheets
 
 An action sheet is a modal view that presents choices related to an action people initiate.
 
-![A stylized representation of a set of action sheet buttons at the bottom of an iPhone. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/6102d0ab9e98aa9149e6a929f0576d75/components-action-sheet-intro%402x.png)
+
 
 Developer note
 
@@ -16,9 +22,9 @@ When you use SwiftUI, you can offer action sheet functionality in all platforms 
 
 **Use an action sheet — not an alert — to offer choices related to an intentional action.** For example, when people cancel the message they’re editing in Mail on iPhone, an action sheet provides two choices: delete the draft, or save the draft. Although an alert can also help people confirm or cancel an action that has destructive consequences, it doesn’t provide additional choices related to the action. More importantly, an alert is usually unexpected, generally telling people about a problem or a change in the current situation that might require them to act. For guidance, see [Alerts](https://developer.apple.com/design/human-interface-guidelines/alerts).
 
-![A partial screenshot of a new message being composed in Mail on iPhone.](https://docs-assets.developer.apple.com/published/d78e3a39898532655eb9155586cdc1e7/action-sheet-iphone-mail%402x.png)
 
-![A partial screenshot of a new message being composed in Mail on iPhone, with the action sheet open after choosing to cancel the message. The action sheet presents choices to delete the draft or save the draft.](https://docs-assets.developer.apple.com/published/fedd171df9ff41645c885d3a428bc190/action-sheet-iphone-mail-delete-action%402x.png)
+
+
 
 **Use action sheets sparingly.** Action sheets give people important information and choices, but they interrupt the current task to do so. To encourage people to pay attention to action sheets, avoid using them more than necessary.
 
@@ -44,7 +50,7 @@ When you use SwiftUI, you can offer action sheet functionality in all platforms 
 
 The system-defined style for action sheets includes a title, an optional message, a Cancel button, and one or more additional buttons. The appearance of this interface is different depending on the device.
 
-![An illustration of an action sheet on Apple Watch, showing content that represents text in the top half of the watch screen and two stacked buttons in the bottom half.](https://docs-assets.developer.apple.com/published/4ec6a46689c0ec4550d6fe48d4aa27a8/action-sheet-watch-system-defined%402x.png)
+
 
 Each button has an associated style that conveys information about the button’s effect. There are three system-defined button styles:
 

@@ -2,11 +2,17 @@
 title: "Disclosure controls | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/disclosure-controls
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/disclosure-controls.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Disclosure controls
 
 Disclosure controls reveal and hide information and functionality related to specific controls or views.
 
-![A stylized representation of collapsed and expanded disclosure buttons. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/d9f8c2e1696219ad884582186a447524/components-disclosure-control-intro%402x.png)
+
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls#Best-practices)
 
@@ -21,9 +27,9 @@ A disclosure triangle shows and hides information and functionality associated w
 
 
 
-![An illustration of three folders in a Finder list view. The folders are collapsed, with disclosure triangles on their leading edges pointing inward to indicate that they can be expanded to reveal their contents.](https://docs-assets.developer.apple.com/published/f2f0f58d9777abfc3a92f782963fbba6/disclosure-triangle-before%402x.png)
 
-![An illustration of three folders in a Finder list view. The first and third folders are collapsed, with disclosure triangles on their leading edges pointing inward to indicate that they can be expanded to reveal their contents. The second folder is expanded, with its disclosure triangle pointing down, revealing three subfolders inside.](https://docs-assets.developer.apple.com/published/88c62732eba28e9f3233e0dedf6d0946/disclosure-triangle-after%402x.png)
+
+
 
 A disclosure triangle points inward from the leading edge when its content is hidden and down when its content is visible. Clicking or tapping the disclosure triangle switches between these two states, and the view expands or collapses accordingly to accommodate the content.
 
@@ -42,9 +48,9 @@ A disclosure button points down when its content is hidden and up when its conte
 
 
 
-![A screenshot of a collapsed save dialog in macOS. The dialog includes a closed disclosure button that expands the dialog to reveal additional options.](https://docs-assets.developer.apple.com/published/6d405bc1e4bd3743e610bf3dd4e17161/disclosure-button-before%402x.png)
 
-![A screenshot of an expanded save dialog in macOS. The dialog includes an open disclosure button that collapses the dialog to hide some options.](https://docs-assets.developer.apple.com/published/1d543abc1f07f34a01c63a3aac067ccd/disclosure-button-after%402x.png)
+
+
 
 **Place a disclosure button near the content that it shows and hides.** Establish a clear relationship between the control and the expanded choices that appear when a person clicks or taps a button.
 

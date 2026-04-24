@@ -2,11 +2,17 @@
 title: "Eyes | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/eyes
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/eyes.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Eyes
 
 In visionOS, people look at a virtual object to identify it as a target they can interact with.
 
-![A sketch of a human eye. The image is overlaid with rectangular and circular grid lines and is tinted purple to subtly reflect the purple in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/126393ded1c486236fc7a9feabea30ea/inputs-eyes-intro%402x.png)
+
 
 When people look at an interactive element, visionOS highlights it, providing visual feedback that helps them confirm the item is one they want. The visual feedback, or _hover effect_ , shows people that they can use an [indirect gesture](https://developer.apple.com/design/human-interface-guidelines/gestures#visionOS) like tap to interact with the element.
 
@@ -48,13 +54,13 @@ visionOS also supports _focus effects_ that help people navigate apps and the sy
 
 **In general, give an interactive item a rounded shape.** People’s eyes tend to be drawn toward the corners in a shape, making it difficult to keep looking at the shape’s center. The more rounded an item’s shape, the easier it is for people to use their eyes to target it.
 
-![A square button.](https://docs-assets.developer.apple.com/published/d60c5b225c91f041c5ef7e273a9219b6/visionos-eyes-sharp-button-incorrect%402x.png)
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
 
-![A circular button.](https://docs-assets.developer.apple.com/published/61afcfc99cebef8a0feae23fc5803edc/visionos-eyes-rounded-button-correct%402x.png)
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
+
+
+
+
 
 **If you create an interactive component that consists of more than one element, be sure to provide an overall containing shape that visionOS can highlight.** For example, if an image and a label below it combine to act as one interactive component, you need to define a custom region that encompasses both elements, allowing visionOS to highlight the entire region when people look at either element.
 

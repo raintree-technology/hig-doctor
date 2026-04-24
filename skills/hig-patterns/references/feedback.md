@@ -2,11 +2,17 @@
 title: "Feedback | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/feedback
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/feedback.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Feedback
 
 Feedback helps people know what’s happening, discover what they can do next, understand the results of actions, and avoid mistakes.
 
-![A sketch of a pointer surrounded by a circular set of short lines, suggesting a response to a mouse click. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/d7e2c91a509e05b5e8ee422c6fea86b3/patterns-feedback-intro%402x.png)
+
 
 Providing clear, consistent feedback as people interact with your app or game can make it feel intuitive and encourage deeper exploration. Feedback can communicate several different things, such as:
 

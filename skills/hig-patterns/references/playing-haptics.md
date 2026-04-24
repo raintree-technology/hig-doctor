@@ -2,11 +2,17 @@
 title: "Playing haptics | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/playing-haptics
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/playing-haptics.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Playing haptics
 
 Playing haptics can engage people’s sense of touch and bring their familiarity with the physical world into your app or game.
 
-![A sketch of a horizontal line of three slightly overlapping circles, suggesting vibration. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/367115f42d7b6235a3087fd140366955/patterns-playing-haptics-intro%402x.png)
+
 
 Depending on the platform and the device people are using, the system can play haptics in addition to visual and auditory feedback. For example, components like switches, sliders, and pickers automatically play haptic feedback on supported iPhone models; on Apple Watch, the Taptic Engine generates haptics for a number of built-in feedback patterns, which watchOS combines with an audible tone. On a Mac that’s equipped with a Force Touch trackpad, an app can play haptics while people drag content or when they force click to change the speed of media controls.
 

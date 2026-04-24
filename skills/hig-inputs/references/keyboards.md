@@ -2,11 +2,17 @@
 title: "Keyboards | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/keyboards
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/keyboards.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Keyboards
 
 A physical keyboard can be an essential input device for entering text, playing games, controlling apps, and more.
 
-![A sketch of a keyboard, suggesting keyboard input. The image is overlaid with rectangular and circular grid lines and is tinted purple to subtly reflect the purple in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/041dcf36a378d11a3727a6ff04989365/inputs-keyboard-intro%402x.png)
+
 
 People can connect a physical keyboard to any device except Apple Watch. Mac users tend to use a physical keyboard all the time and iPad users often do. Many games work well with a physical keyboard, and people can prefer using one instead of a [virtual keyboard](https://developer.apple.com/design/human-interface-guidelines/virtual-keyboards) when entering a lot of text.
 
@@ -169,10 +175,10 @@ Here are the modifier keys and the symbols that represent them.
 
 Modifier key| Symbol| Recommended usage  
 ---|---|---  
-Command| ![Outline of a stylized clover shape.](https://docs-assets.developer.apple.com/published/43dd468e7f303fbaa3abbf3935292ae2/Keyboard_Command.svg)| Prefer the Command key as the main modifier key in a custom keyboard shortcut.  
-Shift| ![Outline of an upward-pointing arrow.](https://docs-assets.developer.apple.com/published/3a7e5aed7275031a8c41a7fb7789e41f/Keyboard_Shift.svg)| Prefer the Shift key as a secondary modifier that complements a related shortcut.  
-Option| ![Line segments that suggest a horizontally transformed Z shape combined with a short horizontal segment aligned with the top of the Z.](https://docs-assets.developer.apple.com/published/8b064ad029d2012128a6aaeb1322b290/Keyboard_Option.svg)| Use the Option modifier sparingly for less-common commands or power features.  
-Control| ![A shallow, upside-down V shape.](https://docs-assets.developer.apple.com/published/5c92c8350588d52ff786bf763b18e9e7/Keyboard_Control.svg)| Avoid using the Control key as a modifier. The system uses Control in many systemwide features and shortcuts, like moving focus or capturing screenshots.  
+Command| | Prefer the Command key as the main modifier key in a custom keyboard shortcut.  
+Shift| | Prefer the Shift key as a secondary modifier that complements a related shortcut.  
+Option| | Use the Option modifier sparingly for less-common commands or power features.  
+Control| | Avoid using the Control key as a modifier. The system uses Control in many systemwide features and shortcuts, like moving focus or capturing screenshots.  
   
 Tip
 

@@ -2,11 +2,17 @@
 title: "Immersive experiences | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/immersive-experiences
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/immersive-experiences.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Immersive experiences
 
 In visionOS, you can design apps and games that extend beyond windows and volumes, immersing people in your content.
 
-![A sketch that suggests Apple Vision Pro. The image is overlaid with rectangular and circular grid lines and is tinted yellow to subtly reflect the yellow in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/63fd96e56c2b19f4451f688728f0b013/foundations-immersive-experiences-intro%402x.png)
+
 
 You can choose whether your visionOS app or game launches in the Shared Space or in a Full Space. In the _Shared Space_ , your software runs alongside other experiences, and people can switch between them much as they do on a Mac; in a _Full Space_ , your app or game runs alone, hiding other experiences and helping people immerse themselves in your content. Apps and games can support different types of immersion, and can transition fluidly between the Shared Space and a Full Space at any time.
 
@@ -34,9 +40,9 @@ visionOS offers several ways to immerse people in your content in the Shared Spa
 
 
 
-![A screenshot of a window in the Shared Space.](https://docs-assets.developer.apple.com/published/3aa6d97e5947c39a73cfd8dd7e9c4dff/immersive-spaces-shared-space-regular-content%402x.png)
 
-![A screenshot of a highlighted window in the Shared Space with dimmed passthrough.](https://docs-assets.developer.apple.com/published/d6645a2853d8dc87e99062f5f575222b/immersive-spaces-shared-space-dimmed-content%402x.png)
+
+
 
   * **Create unbounded 3D experiences.** Use the `mixed` immersion style in a Full Space to blend your content with passthrough. When your app or game runs in a Full Space, you can request access to information about nearby physical objects and room layout, helping you display virtual content in a person’s surroundings. The `mixed` immersion style doesn’t define a boundary. Instead, when a person gets too close to a physical object, the system automatically makes nearby content semi-opaque to help them remain aware of their surroundings. For developer guidance, see [`mixed`](https://developer.apple.com/documentation/SwiftUI/ImmersionStyle/mixed) and [ARKit](https://developer.apple.com/documentation/ARKit).
 
@@ -62,11 +68,11 @@ Play
 
 
 
-![A screenshot of an app running in a Full Space using the mixed immersion style in visionOS.](https://docs-assets.developer.apple.com/published/bb7e4d2d5f14673af8223f16b8ef8367/immersive-spaces-full-space-mixed-style%402x.png)Mixed immersion style in a Full Space blending in-app objects with real-world surroundings
+Mixed immersion style in a Full Space blending in-app objects with real-world surroundings
 
-![A screenshot of an app running in a Full Space using the progressive immersion style in visionOS.](https://docs-assets.developer.apple.com/published/7c6bd28f709239805551dfe4db2f4f0e/immersive-spaces-full-space-progressive-style%402x.png)Progressive immersion style in a Full Space blending the app’s custom environment with real-world surroundings
+Progressive immersion style in a Full Space blending the app’s custom environment with real-world surroundings
 
-![A screenshot of an app running in a Full Space using the full immersion style in visionOS.](https://docs-assets.developer.apple.com/published/3e8f31614811987239868bca745cd798/immersive-spaces-full-space-full-style%402x.png)Full immersion style in a Full Space showing a 360-degree custom environment
+Full immersion style in a Full Space showing a 360-degree custom environment
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Best-practices)
 

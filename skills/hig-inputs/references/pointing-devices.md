@@ -2,11 +2,17 @@
 title: "Pointing devices | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/pointing-devices
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/pointing-devices.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Pointing devices
 
 People can use a pointing device like a trackpad or mouse to navigate the interface and initiate actions.
 
-![A sketch of an arrow-shaped pointer, suggesting use of a mouse or trackpad. The image is overlaid with rectangular and circular grid lines and is tinted purple to subtly reflect the purple in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/d62ce652f0470403da6dfbad1b1ad2b0/inputs-pointing-devices-intro%402x.png)
+
 
 People appreciate the precision and flexibility that pointing devices offer. On a Mac, people typically expect to combine a pointing device with a keyboard as they navigate apps and the system. On iPad and Apple Vision Pro, a pointing device gives people an additional way to interact with apps and content, without replacing touch, eyes, or gestures.
 
@@ -119,11 +125,11 @@ The system also applies magnetism to text-entry areas, where it can help people 
 
 **Add padding around interactive elements to create comfortable hit regions.** You might need to experiment to determine the right size for an element’s hit region. If the hit region is too small, it can make people feel that they have to be extra precise when interacting with the element. On the other hand, when an element’s hit region is too large, people can feel that it takes a lot of effort to pull the pointer away from the element. In general, it works well to add about 12 points of padding around elements that include a bezel; for elements without a bezel, it works well to add about 24 points of padding around the element’s visible edges.
 
-![An illustration of a button that has a filled, rounded-rectangle bezel. The button is centered on top of a shaded rectangle that extends beyond the button by the same distance on all sides. Centered on each side, a callout indicates that the padding between the button and each edge of the shaded rectangle is 12 points.](https://docs-assets.developer.apple.com/published/3993cfe0b8ec1f79e7c27496d92b240e/padding-for-button-with-bezel%402x.png)
 
-![An illustration of a symbol centered on top of a shaded rectangle that extends beyond the symbol by the same distance on all sides. Centered on each side, a callout indicates that the padding between the symbol and each edge of the shaded rectangle is 24 points.](https://docs-assets.developer.apple.com/published/58bee8289c0508cc5b9e83f030925cb6/padding-for-glyph%402x.png)
 
-![An illustration of a button without a bezel, centered on top of a shaded rectangle that extends beyond the button by the same distance on all sides. Centered on each side, a callout indicates that the padding between the button and each edge of the shaded rectangle is 24 points.](https://docs-assets.developer.apple.com/published/5a79ca3d0a9d4bbd3bf71c23bf8c5da3/padding-for-button-without-bezel%402x.png)
+
+
+
 
 **Create contiguous hit regions for custom bar buttons.** If there’s space between the hit regions of adjacent buttons in a bar, people may experience a distracting motion when the pointer reverts briefly to its default shape as it moves between buttons.
 
@@ -141,7 +147,7 @@ The system also applies magnetism to text-entry areas, where it can help people 
 
 **Consider enhancing the pointer experience by displaying custom annotations that provide useful information.** For example, you could display X and Y values when people hold the pointer over a graphing area in your app. Keynote uses annotations to display the current width and height of a resizable image.
 
-![An illustration of a custom pointer hovering over a resize handle on the edge of a shaded rectangle. Above the pointer is a small annotation that displays the image’s width and height values against a dark background.](https://docs-assets.developer.apple.com/published/291aebad59eee8712e94047fcca4e7cf/useful-pointer-annotation%402x.png)
+
 
 **Avoid displaying instructional text with a pointer.** A pointer that displays instructional text can make an app seem complicated and difficult to use. Instead of providing instructions, prioritize clarity and simplicity in your interface, so that people can quickly grasp how to use your app whether they’re using the pointer or touching the screen.
 
@@ -176,24 +182,24 @@ macOS offers a variety of standard pointer styles, which your app can use to com
 
 Pointer| Name| Meaning| AppKit API  
 ---|---|---|---  
-![A pointer that resembles a diagonal arrow pointing up and to the left.](https://docs-assets.developer.apple.com/published/5be2c381c17d5d868866b3a5de1013f8/pointers-arrow%402x.png)| Arrow| Standard pointer for selecting and interacting with content and interface elements.| [`arrow`](https://developer.apple.com/documentation/AppKit/NSCursor/arrow)  
-![A closed, gloved hand.](https://docs-assets.developer.apple.com/published/6680cdb870edf5364f84a483fd2bead9/pointers-closed-hand%402x.png)| Closed hand| Dragging to reposition the display of content within a view—for example, dragging a map around in Maps.| [`closedHand`](https://developer.apple.com/documentation/AppKit/NSCursor/closedHand)  
-![A pointer arrow with a small menu-like square to the right of the arrow.](https://docs-assets.developer.apple.com/published/0cb033cee3b55bd4be661b28b928fdc1/pointers-contextual-menu%402x.png)| Contextual menu| A contextual menu is available for the content below the pointer. This pointer is generally shown only when the Control key is pressed.| [`contextualMenu`](https://developer.apple.com/documentation/AppKit/NSCursor/contextualMenu)  
-![A plus symbol.](https://docs-assets.developer.apple.com/published/d55eabe14365af873000aa389e5fad6c/pointers-crosshair%402x.png)| Crosshair| Precise rectangular selection is possible, such as when viewing an image in Preview.| [`crosshair`](https://developer.apple.com/documentation/AppKit/NSCursor/crosshair)  
-![A small pointer arrowhead with a circle underneath; the circle contains an Ex.](https://docs-assets.developer.apple.com/published/528819d511869de26beb1fd5008ac773/pointers-disappearing-item%402x.png)| Disappearing item| A dragged item will disappear when dropped. If the item references an original item, the original is unaffected. For example, when dragging a mailbox out of the favorites bar in Mail, the original mailbox isn’t removed.| [`disappearingItem`](https://developer.apple.com/documentation/AppKit/NSCursor/disappearingItem)  
-![A small pointer arrowhead with a circle underneath; the circle contains a plus symbol.](https://docs-assets.developer.apple.com/published/ccc7052f9bc6fb302d913633c648adcd/pointers-drag-copy%402x.png)| Drag copy| Duplicates a dragged—not moved—item when dropped into the destination. Appears when pressing the Option key during a drag operation.| [`dragCopy`](https://developer.apple.com/documentation/AppKit/NSCursor/dragCopy)  
-![A curved arrow, pointing up and to the right.](https://docs-assets.developer.apple.com/published/47dfbfd5f1bf3141dbf875f47446d1fd/pointers-drag-link%402x.png)| Drag link| During a drag and drop operation, creates an alias of the selected file when dropped. The alias points to the original file, which remains unmoved. Appears when pressing the Option and Command keys during a drag operation.| [`dragLink`](https://developer.apple.com/documentation/AppKit/NSCursor/dragLink)  
-![Opposing veritcal braces, used to form an insertion marker.](https://docs-assets.developer.apple.com/published/060f443dee8d260a1a1191d7831e36b7/pointers-horizontal-beam%402x.png)| Horizontal I beam| Selection and insertion of text is possible in a horizontal layout, such as a TextEdit or Pages document.| [`iBeam`](https://developer.apple.com/documentation/AppKit/NSCursor/iBeam)  
-![An open, gloved hand.](https://docs-assets.developer.apple.com/published/a5daee642ccc8fb3ac550d176b2d1932/pointers-open-hand%402x.png)| Open hand| Dragging to reposition content within a view is possible.| [`openHand`](https://developer.apple.com/documentation/AppKit/NSCursor/openHand)  
-![A small pointer arrowhead with a do not enter symbol underneath.](https://docs-assets.developer.apple.com/published/2daaf47bef26569f92f30a9016095dde/pointers-operation-not-allowed%402x.png)| Operation not allowed| A dragged item can’t be dropped in the current location.| [`operationNotAllowed`](https://developer.apple.com/documentation/AppKit/NSCursor/operationNotAllowed)  
-![A gloved hand, with the index finger extended.](https://docs-assets.developer.apple.com/published/25193808b5e72d5983ff26764889718a/pointers-pointing-hand%402x.png)| Pointing hand| The content beneath the pointer is a URL link to a webpage, document, or other item.| [`pointingHand`](https://developer.apple.com/documentation/AppKit/NSCursor/pointingHand)  
-![A horizontal bar with a downward-pointing arrow at its midpoint.](https://docs-assets.developer.apple.com/published/328443ed3b5dd85c84de91a60ed30b43/pointers-resize-down%402x.png)| Resize down| Resize or move a window, view, or element downward.| [`resizeDown`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeDown)  
-![A vertical bar with a left-pointing arrow at its midpoint.](https://docs-assets.developer.apple.com/published/34113d73f24c003f4b3715e0cef8fbf6/pointers-resize-left%402x.png)| Resize left| Resize or move a window, view, or element to the left.| [`resizeLeft`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeLeft)  
-![A vertical bar with left- and right-pointing arrows extending from its midpoint.](https://docs-assets.developer.apple.com/published/478726bb1a630013de1f77b3bccde9e0/pointers-resize-left-right%402x.png)| Resize left/right| Resize or move a window, view, or element to the left or right.| [`resizeLeftRight`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeLeftRight)  
-![A vertical bar with a right-pointing arrow at its midpoint.](https://docs-assets.developer.apple.com/published/6045fce093cc242bf438393155b77992/pointers-resize-right%402x.png)| Resize right| Resize or move a window, view, or element to the right.| [`resizeRight`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeRight)  
-![A horizontal bar with an up-pointing arrow at its midpoint.](https://docs-assets.developer.apple.com/published/34576a4ab42dea114abf11b3ee57a4f8/pointers-resize-up%402x.png)| Resize up| Resize or move a window, view, or element upward.| [`resizeUp`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeUp)  
-![A horizontal bar with up- and down-pointing arrows extending from its midpoint.](https://docs-assets.developer.apple.com/published/d55d0d01c955105a957231266affb447/pointers-resize-up-down%402x.png)| Resize up/down| Resize or move a window, view, or element upward or downward.| [`resizeUpDown`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeUpDown)  
-![Opposing horizontal braces, used to form an insertion marker.](https://docs-assets.developer.apple.com/published/15923a8cac833b5bb1fd69b4a395c4a9/pointers-vertical-beam%402x.png)| Vertical I beam| Selection and insertion of text is possible in a vertical layout.| [`iBeamCursorForVerticalLayout`](https://developer.apple.com/documentation/AppKit/NSCursor/iBeamCursorForVerticalLayout)  
+| Arrow| Standard pointer for selecting and interacting with content and interface elements.| [`arrow`](https://developer.apple.com/documentation/AppKit/NSCursor/arrow)  
+| Closed hand| Dragging to reposition the display of content within a view—for example, dragging a map around in Maps.| [`closedHand`](https://developer.apple.com/documentation/AppKit/NSCursor/closedHand)  
+| Contextual menu| A contextual menu is available for the content below the pointer. This pointer is generally shown only when the Control key is pressed.| [`contextualMenu`](https://developer.apple.com/documentation/AppKit/NSCursor/contextualMenu)  
+| Crosshair| Precise rectangular selection is possible, such as when viewing an image in Preview.| [`crosshair`](https://developer.apple.com/documentation/AppKit/NSCursor/crosshair)  
+| Disappearing item| A dragged item will disappear when dropped. If the item references an original item, the original is unaffected. For example, when dragging a mailbox out of the favorites bar in Mail, the original mailbox isn’t removed.| [`disappearingItem`](https://developer.apple.com/documentation/AppKit/NSCursor/disappearingItem)  
+| Drag copy| Duplicates a dragged—not moved—item when dropped into the destination. Appears when pressing the Option key during a drag operation.| [`dragCopy`](https://developer.apple.com/documentation/AppKit/NSCursor/dragCopy)  
+| Drag link| During a drag and drop operation, creates an alias of the selected file when dropped. The alias points to the original file, which remains unmoved. Appears when pressing the Option and Command keys during a drag operation.| [`dragLink`](https://developer.apple.com/documentation/AppKit/NSCursor/dragLink)  
+| Horizontal I beam| Selection and insertion of text is possible in a horizontal layout, such as a TextEdit or Pages document.| [`iBeam`](https://developer.apple.com/documentation/AppKit/NSCursor/iBeam)  
+| Open hand| Dragging to reposition content within a view is possible.| [`openHand`](https://developer.apple.com/documentation/AppKit/NSCursor/openHand)  
+| Operation not allowed| A dragged item can’t be dropped in the current location.| [`operationNotAllowed`](https://developer.apple.com/documentation/AppKit/NSCursor/operationNotAllowed)  
+| Pointing hand| The content beneath the pointer is a URL link to a webpage, document, or other item.| [`pointingHand`](https://developer.apple.com/documentation/AppKit/NSCursor/pointingHand)  
+| Resize down| Resize or move a window, view, or element downward.| [`resizeDown`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeDown)  
+| Resize left| Resize or move a window, view, or element to the left.| [`resizeLeft`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeLeft)  
+| Resize left/right| Resize or move a window, view, or element to the left or right.| [`resizeLeftRight`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeLeftRight)  
+| Resize right| Resize or move a window, view, or element to the right.| [`resizeRight`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeRight)  
+| Resize up| Resize or move a window, view, or element upward.| [`resizeUp`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeUp)  
+| Resize up/down| Resize or move a window, view, or element upward or downward.| [`resizeUpDown`](https://developer.apple.com/documentation/AppKit/NSCursor/resizeUpDown)  
+| Vertical I beam| Selection and insertion of text is possible in a vertical layout.| [`iBeamCursorForVerticalLayout`](https://developer.apple.com/documentation/AppKit/NSCursor/iBeamCursorForVerticalLayout)  
   
 ### [visionOS](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#visionOS)
 

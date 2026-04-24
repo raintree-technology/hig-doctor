@@ -2,17 +2,23 @@
 title: "Pop-up buttons | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Pop-up buttons
 
 A pop-up button displays a menu of mutually exclusive options.
 
-![A stylized representation of a pop-up button displaying a set of options. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/334ac7588fce25fa319c3ef611eca905/components-pop-up-button-intro%402x.png)
+
 
 After people choose an item from a pop-up button’s menu, the menu closes, and the button can update its content to indicate the current selection.
 
-![A screenshot of Calendar on iPhone, with a new calendar event open for editing. The editing screen contains controls for setting the details of the event, including its start and end dates, travel time, repeat interval, calendar, invitees, alert options, and attachments.](https://docs-assets.developer.apple.com/published/519951a89c3c840e87eca8c5760f4d90/pop-up-button-closed%402x.png)
 
-![A screenshot of Calendar on iPhone, with a new calendar event open for editing. A pop-up button menu emerges from the Repeat button, with options for choosing a repeat interval from a list of preset options, or creating a custom one.](https://docs-assets.developer.apple.com/published/61386d60280871ab2649bc5b2020aab5/pop-up-button-open%402x.png)
+
+
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons#Best-practices)
 

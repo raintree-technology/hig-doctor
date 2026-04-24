@@ -2,21 +2,27 @@
 title: "Sheets | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/sheets
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/sheets.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Sheets
 
 A sheet helps people perform a scoped task that’s closely related to their current context.
 
-![A stylized representation of a sheet extending down from the top of a window. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/357ff0b017e9241da82888bd3aec4372/components-sheet-intro%402x.png)
+
 
 By default, a sheet is _modal_ , presenting a targeted experience that prevents people from interacting with the parent view until they dismiss the sheet (for more on modal presentation, see [Modality](https://developer.apple.com/design/human-interface-guidelines/modality)). A modal sheet is useful for requesting specific information from people or presenting a simple task that they can complete before returning to the parent view. For example, a sheet might let people supply information needed to complete an action, such as attaching a file, choosing the location for a move or save, or specifying the format for a selection.
 
 In macOS, visionOS, and watchOS, a sheet is always modal, but in iOS and iPadOS, a sheet can also be nonmodal. When a nonmodal sheet is onscreen, people use its functionality to directly affect the current task in the parent view without dismissing the sheet. For example, Notes on iPhone and iPad uses a nonmodal sheet to help people apply different formatting to various text selections as they edit a note.
 
-![A screenshot of an in-progress note on iPhone. Several words are selected and highlighted. In the bottom half of the screen, the format sheet shows that the selected words use the regular body font.](https://docs-assets.developer.apple.com/published/56830eea369c54ce82f6867a0907f3f3/sheets-nonmodal-notes-text-regular%402x.png)
+
 
 The Notes format sheet lets people apply formatting to selected text in the editing view.
 
-![A screenshot of the same in-progress note on iPhone. Different words are selected and highlighted. The format sheet shows that the selected words use the body font in italics.](https://docs-assets.developer.apple.com/published/f7b427fb2d880e16df4ed1025a43b47c/sheets-nonmodal-notes-text-italic%402x.png)
+
 
 Because the sheet is nonmodal, people can make additional text selections without dismissing the sheet.
 
@@ -38,11 +44,11 @@ Because the sheet is nonmodal, people can make additional text selections withou
 
 A resizable sheet expands when people scroll its contents or drag the _grabber_ , which is a small horizontal indicator that can appear at the top edge of a sheet. Sheets resize according to their _detents_ , which are particular heights at which a sheet naturally rests. Designed for iPhone, detents specify particular heights at which a sheet naturally rests. The system defines two detents: _large_ is the height of a fully expanded sheet and _medium_ is about half of the fully expanded height.
 
-![An illustration showing an iPhone screen in portrait orientation containing a solid rounded rectangle that occupies almost all of the screen, representing a full-screen sheet. A rounded close button appears in the upper-left corner of the sheet.](https://docs-assets.developer.apple.com/published/c2a600adb5237892585d71d2ae61c9a6/sheets-large-detent%402x.png)
+
 
 Large detent
 
-![An illustration showing an iPhone screen in portrait orientation containing a solid rounded rectangle that occupies half of the screen, representing a half-screen sheet. A rounded close button appears in the upper-left corner of the sheet.](https://docs-assets.developer.apple.com/published/413ac0d4cf462891f2ba9d0cd4bb01f1/sheets-medium-detent%402x.png)
+
 
 Medium detent
 
@@ -58,11 +64,11 @@ Sheets automatically support the large detent. Adding the medium detent allows t
 
 The exception to this is for sheets with additional subviews, where the Cancel button belongs in the top-right; this provides room for the Back button in the top-left on pages after the first. At the end of the navigation flow, replace the Cancel button with the Done button.
 
-![An illustration of the top half of a sheet on iPhone. A Cancel button appears in the top-left corner of the view.](https://docs-assets.developer.apple.com/published/4c0ea03add08b05592c51ed58ebb79f1/sheets-close-button-placement-no-back%402x.png)
+
 
 Placement of the Cancel button when it appears by itself
 
-![An illustration of the top half of a sheet on iPhone. A Back button appears in the top-left corner of the view, and a Cancel button appears in the top-right corner.](https://docs-assets.developer.apple.com/published/4325d8e5db78c585b01a7137e34189c7/sheets-close-button-placement-with-back%402x.png)
+
 
 Placement of the Cancel button when it appears as part of a multi-step flow
 
@@ -72,7 +78,7 @@ Placement of the Cancel button when it appears as part of a multi-step flow
 
 In macOS, a sheet is a cardlike view with rounded corners that floats on top of its parent window. The parent window is dimmed while the sheet is onscreen, signaling that people can’t interact with it until they dismiss the sheet. However, people expect to interact with other app windows before dismissing a sheet.
 
-![A screenshot of the Notes app, with the What's New in Notes sheet centered on top of a dimmed Notes document in the background.](https://docs-assets.developer.apple.com/published/582e02d0df9b4a07dea002053f9ec6ea/sheets-macos-notes%402x.png)
+
 
 **Present a sheet in a reasonable default size.** People don’t generally expect to resize sheets, so it’s important to use a size that’s appropriate for the content you display. In some cases, however, people appreciate a resizable sheet — such as when they need to expand the contents for a clearer view — so it’s a good idea to support resizing.
 
@@ -100,7 +106,7 @@ Play
 
 In watchOS, a sheet is a full-screen view that slides over your app’s current content. The sheet is semitransparent to help maintain the current context, but the system applies a material to the background that blurs and desaturates the covered content.
 
-![A screenshot of a sheet with a primary Action button and a default cancel button on Apple Watch.](https://docs-assets.developer.apple.com/published/fcdad96a098bea9c7b98a114403e46f2/sheets-watch-overlay%402x.png)
+
 
 **Use a sheet only when your modal task requires a custom title or custom content presentation.** If you need to give people important information or present a set of choices, consider using an [alert](https://developer.apple.com/design/human-interface-guidelines/alerts) or [action sheet](https://developer.apple.com/design/human-interface-guidelines/action-sheets).
 
@@ -108,23 +114,23 @@ In watchOS, a sheet is a full-screen view that slides over your app’s current 
 
 **Change the default label of the dismiss control only if it makes sense in your app.** By default, the sheet displays a round Cancel button in the upper left corner. Use this button when the sheet lets people make changes to the app’s behavior or to their data. If your sheet simply presents information without enabling a task, use the standard Done button instead. You can use a [toolbar](https://developer.apple.com/design/human-interface-guidelines/toolbars) to display multiple buttons.
 
-![A screenshot of a watch displaying a sheet with the standard check mark Done button on Apple Watch.](https://docs-assets.developer.apple.com/published/bc70ac8a01bd110befa02132e9f53672/sheets-watch-custom%402x.png)
+
 
 The standard Done button
 
 **If you change the default label, prefer using SF Symbols to represent the action.** Avoid using a label that might mislead people into thinking that the sheet is part of a hierarchical navigation interface. Also, if the text in the top-leading corner looks like a page or app title, people won’t know how to dismiss the sheet. For guidance, see [Standard icons](https://developer.apple.com/design/human-interface-guidelines/icons#Standard-icons).
 
-![A screenshot that shows a top toolbar with the default Cancel button at the top of the screen on Apple Watch.](https://docs-assets.developer.apple.com/published/4b2b3901392b3a2101bf98fbee0b7809/modal-sheet-watchos-do%402x.png)
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
 
-![A screenshot that shows a top toolbar with a custom Back button at the top of the screen on Apple Watch.](https://docs-assets.developer.apple.com/published/3342cdf046b51d5b7e22008f4fa36cf8/modal-sheet-watchos-do-not-1%402x.png)
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
 
-![A screenshot that shows a top toolbar with a button with the words Page title at the top of the screen on Apple Watch.](https://docs-assets.developer.apple.com/published/7e655a4130904ed5def637dde60325f9/modal-sheet-watchos-do-not-2%402x.png)
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
+
+
+
+
+
+
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/sheets#Resources)
 

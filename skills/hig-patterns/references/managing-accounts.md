@@ -2,11 +2,17 @@
 title: "Managing accounts | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/managing-accounts
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/managing-accounts.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Managing accounts
 
 When it doesn’t create an unnecessary barrier to your experience, an account can be a convenient way for people to access their content and track personal details.
 
-![A sketch of a person, suggesting personal information. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/bc6ed656b5ef4483ce1c17d7e0042ce2/patterns-managing-accounts-intro%402x.png)
+
 
 Ask people to create an account only if your core functionality requires it; otherwise, let people enjoy your app or game without one. If you require an account, consider using [Sign in with Apple](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple) to give people a consistent sign-in experience they can trust and the convenience of not having to remember multiple accounts and authentication methods.
 

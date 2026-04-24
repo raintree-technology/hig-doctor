@@ -2,11 +2,17 @@
 title: "Entering data | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/entering-data
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/entering-data.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Entering data
 
 When you need information from people, design ways that make it easy for them to provide it without making mistakes.
 
-![A sketch of a pencil writing within a field, suggesting data entry. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/34d57a13e8fcf5f561a1d9c1eccf8e30/patterns-entering-data-intro%402x.png)
+
 
 Entering information can be a tedious process regardless of the interaction methods people use. Improve the experience by:
 

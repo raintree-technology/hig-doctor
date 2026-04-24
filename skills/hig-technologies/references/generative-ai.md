@@ -2,11 +2,17 @@
 title: "Generative AI | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/generative-ai
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/generative-ai.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Generative AI
 
 Generative AI empowers you to enhance your app or game with dynamic content and offer intelligent features that unlock new levels of creativity, connection, and productivity.
 
-![A sketch of a pencil surrounded by sparkly stars, suggesting generative intelligence. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/5b2d1dc127432336c055e1a7ebf09a30/technologies-generative-ai-intro%402x.png)
+
 
 Generative artificial intelligence uses [machine learning](https://developer.apple.com/design/human-interface-guidelines/machine-learning) models to create and transform text, images, and other content. Use it to offer novel, delightful features that help people express themselves creatively, communicate effectively, and complete tasks more easily. For instance, generative AI can enable people to edit text, create imaginative stories and images, or interact with a character in a game that uses AI-generated dialog.
 

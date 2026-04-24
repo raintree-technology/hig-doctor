@@ -2,11 +2,17 @@
 title: "Always On | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/always-on
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/always-on.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Always On
 
 On devices that include the Always On display, the system can continue to display an app’s interface when people suspend their interactions with the device.
 
-![A sketch of an Apple Watch containing a person running, suggesting an Always On display. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/b4927d8e754728228fdf9997f28acc35/technologies-always-on-intro%402x.png)
+
 
 In the Always On state, a device can continue to give people useful, glanceable information in a low-power, privacy-preserving way by dimming the display and minimizing onscreen motion. The system can display different items depending on the device.
 

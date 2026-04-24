@@ -2,11 +2,17 @@
 title: "Tab views | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/tab-views
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/tab-views.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Tab views
 
 A tab view presents multiple mutually exclusive panes of content in the same area, which people can switch between using a tabbed control.
 
-![A stylized representation of a view with two labeled tabs, the first of which is selected. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/4b2dbd07b3c6fe1d349d6db6aad5890b/components-tab-view-intro%402x.png)
+
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/tab-views#Best-practices)
 
@@ -26,7 +32,7 @@ For developer guidance, see [`NSTabView`](https://developer.apple.com/documentat
 
 The tabbed control appears on the top edge of the content area. You can choose to hide the control, which is appropriate for an app that switches between panes programmatically.
 
-![An illustration of a window in which a three-tab tabbed control is centered on the top edge of the content view.](https://docs-assets.developer.apple.com/published/05bb7fbc6365c3bab10db218644756c3/tab-views-top%402x.png)
+
 
 When you hide the tabbed control, the content area can be borderless, bezeled, or bordered with a line. A borderless view can be solid or transparent.
 
@@ -44,7 +50,7 @@ For similar functionality, consider using a [segmented control](https://develope
 
 watchOS displays tab views using [page controls](https://developer.apple.com/design/human-interface-guidelines/components/presentation/page-controls). For developer guidance, see [`TabView`](https://developer.apple.com/documentation/SwiftUI/TabView) and [`verticalPage`](https://developer.apple.com/documentation/SwiftUI/TabViewStyle/verticalPage).
 
-![An illustration showing the page control next to the Digital Crown on Apple Watch. The current dot is enlarged, indicating that people can scroll through the current content, as well as scroll between pages.](https://docs-assets.developer.apple.com/published/10938a94cb663210f148e0fbce431e70/tab-view-watch-vertical%402x.png)
+
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/tab-views#Resources)
 

@@ -2,11 +2,17 @@
 title: "Panels | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/panels
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/panels.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Panels
 
 In a macOS app, a panel typically floats above other open windows providing supplementary controls, options, or information related to the active window or current selection.
 
-![A stylized representation of a panel floating above a window. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/37f7c9e6dd4c635ccbae68b50200a74c/components-panel-intro%402x.png)
+
 
 In general, a panel has a less prominent appearance than an app’s [main window](https://developer.apple.com/design/human-interface-guidelines/windows#macOS-window-states). When the situation calls for it, a panel can also use a dark, translucent style to support a heads-up display (or _HUD_) experience.
 
@@ -34,7 +40,7 @@ When your app runs in other platforms, consider using a modal view to present su
 
 A HUD-style panel serves the same function as a standard panel, but its appearance is darker and translucent. HUDs work well in apps that present highly visual content or that provide an immersive experience, such as media editing or a full-screen slide show. For example, QuickTime Player uses a HUD to display inspector information without obstructing too much content.
 
-![A screenshot of a translucent HUD panel, used to display inspector information for a movie file, including the filename, format, frames per second, data rate, and the frame size of the movie content.](https://docs-assets.developer.apple.com/published/f3fccb3f4ad6963af1310c8f98c5a0f7/hud-style-panel%402x.png)
+
 
 **Prefer standard panels.** People can be distracted or confused by a HUD when there’s no logical reason for its presence. Also, a HUD might not match the current appearance setting. In general, use a HUD only:
 

@@ -2,11 +2,17 @@
 title: "Nearby interactions | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/nearby-interactions
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/nearby-interactions.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Nearby interactions
 
 Nearby interactions support on-device experiences that integrate the presence of people and objects in the nearby environment.
 
-![A sketch of curved lines beside a circular area containing a smaller circle, suggesting audio approaching a person in a room from a specific direction. The image is overlaid with rectangular and circular grid lines and is tinted purple to subtly reflect the purple in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/4ee9418314d3a8bbdc8e7586a9e3c787/inputs-nearby-interactions-intro%402x.png)
+
 
 A great nearby interaction feels intuitive and natural to people, because it builds on their innate awareness of the world around them. For example, a person playing music on their iPhone can continue listening on their HomePod mini when they bring the devices close together, simply by transferring the audio output from their iPhone to the HomePod mini.
 

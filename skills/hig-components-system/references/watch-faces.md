@@ -2,11 +2,17 @@
 title: "Watch faces | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/watch-faces
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/watch-faces.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Watch faces
 
 A watch face is a view that people choose as their primary view in watchOS.
 
-![A stylized representation of a series of Apple Watch faces. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/bdf9c3962f71506a149c0ee448c2a0ad/components-faces-intro%402x.png)
+
 
 The watch face is at the heart of the watchOS experience. People choose a watch face they want to see every time they raise their wrist, and they customize it with their favorite complications. People can even customize different watch faces for different activities, so they can switch to the watch face that fits their current context.
 

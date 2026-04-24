@@ -2,11 +2,17 @@
 title: "Boxes | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/boxes
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/boxes.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Boxes
 
 A box creates a visually distinct group of logically related information and components.
 
-![A stylized representation of a group of interface elements within a rounded rectangle. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/6e253271e9888e8d596d1d5b601d90f3/components-box-intro%402x.png)
+
 
 By default, a box uses a visible border or background color to separate its contents from the rest of the interface. A box can also include a title.
 

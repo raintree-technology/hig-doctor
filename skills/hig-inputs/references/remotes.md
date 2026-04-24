@@ -2,11 +2,17 @@
 title: "Remotes | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/remotes
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/remotes.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Remotes
 
 The Siri Remote is the primary input method for Apple TV, helping people feel connected to onscreen content from across the room.
 
-![A sketch of an Apple TV remote, suggesting interaction with onscreen content. The image is overlaid with rectangular and circular grid lines and is tinted purple to subtly reflect the purple in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/04cb8e9dcd1006a14957bda7627222ad/inputs-remotes-intro%402x.png)
+
 
 In addition to several specific buttons, the Siri Remote combines a clickpad and touch surface to support familiar gestures like swipe and press that people use to navigate tvOS apps, browse channels and content, play and pause media, and make selections.
 

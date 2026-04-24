@@ -2,17 +2,23 @@
 title: "Digital Crown | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/digital-crown
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/digital-crown.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Digital Crown
 
 The Digital Crown is an important hardware input for Apple Vision Pro and Apple Watch.
 
-![A sketch of a curved arrow beside a Digital Crown, that suggests turning the Digital Crown. The image is overlaid with rectangular and circular grid lines and is tinted purple to subtly reflect the purple in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/3b12fdaf898877ad12d62535cea6d032/inputs-digital-crown-intro%402x.png)
+
 
 On both Apple Vision Pro and Apple Watch, people can use the Digital Crown to interact with the system; on Apple Watch, people can also use the Digital Crown to interact with apps.
 
-![A close-up photograph of a person's head wearing Apple Vision Pro, with their index finger pointing at the Digital Crown.](https://docs-assets.developer.apple.com/published/b421afd55a6401eeacedaa088b02d909/digital-crown-apple-vision-pro%402x.png)The Digital Crown on Apple Vision Pro
+The Digital Crown on Apple Vision Pro
 
-![A close-up photograph of Apple Watch, shown at an angle, with the Digital Crown prominently featured at the center of the image.](https://docs-assets.developer.apple.com/published/b557ec51bcbcaac70485ca87eda59c40/digital-crown-apple-watch%402x.png)The Digital Crown on Apple Watch
+The Digital Crown on Apple Watch
 
 ## [Apple Vision Pro](https://developer.apple.com/design/human-interface-guidelines/digital-crown#Apple-Vision-Pro)
 

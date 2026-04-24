@@ -2,11 +2,17 @@
 title: "Accessibility | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/accessibility
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/accessibility.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Accessibility
 
 Accessible user interfaces empower everyone to have a great experience with your app or game.
 
-![A sketch of the Accessibility icon. The image is overlaid with rectangular and circular grid lines and is tinted yellow to subtly reflect the yellow in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/f7e408b21d156daa60c2e30c0bcff9e5/foundations-accessibility-intro%402x.png)
+
 
 When you design for accessibility, you reach a larger audience and create a more inclusive experience. An accessible interface allows people to experience your app or game regardless of their capabilities or how they use their devices. Accessibility makes information and interactions available to everyone. An accessible interface is:
 
@@ -23,7 +29,7 @@ As you design your app, audit the accessibility of your interface. Use [Accessib
 
 ## [Vision](https://developer.apple.com/design/human-interface-guidelines/accessibility#Vision)
 
-![An illustration containing five symbols associated with the topic of vision, including symbols representing text size, magnification, VoiceOver, and spoken dialogue.](https://docs-assets.developer.apple.com/published/bedd6018a62492eff46566493335ebe7/accessibility-vision-section-hero%402x.png)
+
 
 The people who use your interface may be blind, color blind, or have low vision or light sensitivity. They may also be in situations where lighting conditions and screen brightness affect their ability to interact with your interface.
 
@@ -41,9 +47,9 @@ watchOS| 16 pt| 12 pt
   
 **Bear in mind that font weight can also impact how easy text is to read.** If you’re using a custom font with a thin weight, aim for larger than the recommended sizes to increase legibility. For more guidance, see [Typography](https://developer.apple.com/design/human-interface-guidelines/typography).
 
-![An illustration of a rectangular view containing the word 'Hello,' formatted bold, at a small font size.](https://docs-assets.developer.apple.com/published/b8366a96b31af036b2414243d299b011/accessibility-font-weight-small-bold%402x.png)Thicker weights are easier to read for smaller font sizes.
+Thicker weights are easier to read for smaller font sizes.
 
-![An illustration of a rectangular view containing the word 'Hello,' formatted thin, at a large font size.](https://docs-assets.developer.apple.com/published/1f164f6ff2cb994f3852340272a3df90/accessibility-font-weight-large-thin%402x.png)Consider increasing the font size when using a thin weight.
+Consider increasing the font size when using a thin weight.
 
 **Strive to meet color contrast minimum standards.** To ensure all information in your app is legible, it’s important that there’s enough contrast between foreground text and icons and background colors. Two popular standards of measure for color contrast are the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG/) and the Accessible Perceptual Contrast Algorithm (APCA). Use standard contrast calculators to ensure your UI meets acceptable levels. [Accessibility Inspector](https://developer.apple.com/documentation/Accessibility/accessibility-inspector) uses the following values from WCAG Level AA as guidance in determining whether your app’s colors have an acceptable contrast.
 
@@ -55,35 +61,35 @@ All| Bold| 3:1
   
 If your app doesn’t provide this minimum contrast by default, ensure it at least provides a higher contrast color scheme when the system setting Increase Contrast is turned on. If your app supports [Dark Mode](https://developer.apple.com/design/human-interface-guidelines/dark-mode), make sure to check the minimum contrast in both light and dark appearances.
 
-![An illustration of a button that has insufficient contrast between the button's title and background.](https://docs-assets.developer.apple.com/published/7da7a46683e0b9063fb1c9db6ab59bd9/accessibilty-button-poor-color-contrast%402x.png)A button with insufficient color contrast
+A button with insufficient color contrast
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
 
-![An illustration of a button that has sufficient contrast between the button's title and background.](https://docs-assets.developer.apple.com/published/7e5df7edfe62df057eef743f9a449040/accessibilty-button-good-color-contrast%402x.png)A button with sufficient color contrast
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
+A button with sufficient color contrast
+
+
 
 **Prefer system-defined colors.** These colors have their own accessible variants that automatically adapt when people adjust their color preferences, such as enabling Increase Contrast or toggling between the light and dark appearances. For guidance, see [Color](https://developer.apple.com/design/human-interface-guidelines/color).
 
-![An illustration demonstrating how the system-defined color red appears above a light and dark background. In the illustration, a circle is positioned above a rounded rectangle. The left side of the rounded rectangle is light in color, and the right side is dark. The left side of the circle is slightly darker than the right side.](https://docs-assets.developer.apple.com/published/9fec337c567366d81319e2daf38b6a8a/accessibility-system-red-ios-default%402x.png)The `systemRed` default color in iOS
+The `systemRed` default color in iOS
 
-![An illustration demonstrating how the system-defined accessibility-specific color red appears above a light and dark background. In the illustration, a circle is positioned above a rounded rectangle. The left side of the rounded rectangle is light in color, and the right side is dark. The left side of the circle is considerably darker than the right side.](https://docs-assets.developer.apple.com/published/9e1e71f5dff34acee2faaff88ac135a0/accessibility-system-red-ios-accessible%402x.png)The `systemRed` accessible color in iOS
+The `systemRed` accessible color in iOS
 
 **Convey information with more than color alone.** Some people have trouble differentiating between certain colors and shades. For example, people who are color blind may have particular difficulty with pairings such as red-green and blue-orange. Offer visual indicators, like distinct shapes or icons, in addition to color to help people perceive differences in function and changes in state. Consider allowing people to customize color schemes such as chart colors or game characters so they can personalize your interface in a way that’s comfortable for them.
 
-![An illustration of a green circle to the left of a red circle.](https://docs-assets.developer.apple.com/published/5d62d6f6c6ff1563d80847b3b29e2125/accessibility-differentiate-with-shapes-incorrect%402x.png)For someone with red-green color blindness, these indicators might appear the same.
+For someone with red-green color blindness, these indicators might appear the same.
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
 
-![An illustration of a green circle containing a checkmark to the left of a red octagon containing an X.](https://docs-assets.developer.apple.com/published/e13c9c34a780c2d2ab0e614f55a3e73e/accessibility-differentiate-with-shapes-correct%402x.png)Both visual indicators and color help differentiate between indicators.
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
+Both visual indicators and color help differentiate between indicators.
+
+
 
 **Describe your app’s interface and content for VoiceOver.** VoiceOver is a screen reader that lets people experience your app’s interface without needing to see the screen. For more guidance, see [VoiceOver](https://developer.apple.com/design/human-interface-guidelines/voiceover).
 
 ## [Hearing](https://developer.apple.com/design/human-interface-guidelines/accessibility#Hearing)
 
-![An illustration containing five symbols associated with the topic of hearing, including symbols representing sound, waveforms, and closed captioning.](https://docs-assets.developer.apple.com/published/eef3040be22f7aa6b10dc45b2918f9f8/accessibility-hearing-section-hero%402x.png)
+
 
 The people who use your interface may be deaf or hard of hearing. They may also be in noisy or public environments.
 
@@ -104,13 +110,13 @@ For developer guidance, see [Selecting subtitles and alternative audio tracks](h
 
 **Use haptics in addition to audio cues.** If your interface conveys information through audio cues — such as a success chime, error sound, or game feedback — consider pairing that sound with matching haptics for people who can’t perceive the audio or have their audio turned off. In iOS and iPadOS, you can also use [Music Haptics](https://developer.apple.com/documentation/MediaAccessibility/music-haptics) and [Audio graphs](https://developer.apple.com/documentation/Accessibility/audio-graphs) to let people experience music and infographics through vibration and texture. For guidance, see [Playing haptics](https://developer.apple.com/design/human-interface-guidelines/playing-haptics).
 
-![An illustration of an iPhone device vibrating as music plays from the device.](https://docs-assets.developer.apple.com/published/1bf9d6ae5c3586a5163ce6abf0cabb95/accessibility-haptic-audio-combo%402x.png)
+
 
 **Augment audio cues with visual cues.** This is especially important for games and spatial apps where important content might be taking place off screen. When using audio to guide people towards a specific action, also add in visual indicators that point to where you want people to interact.
 
 ## [Mobility](https://developer.apple.com/design/human-interface-guidelines/accessibility#Mobility)
 
-![An illustration containing five symbols associated with the topic of mobility, including symbols representing the keyboard, movement, and touch.](https://docs-assets.developer.apple.com/published/f8e9d74dc994111ba0ee7fa436fc2fc1/accessibility-mobility-section-hero%402x.png)
+
 
 Ensure your interface offers a comfortable experience for people with limited dexterity or mobility.
 
@@ -126,21 +132,21 @@ watchOS| 44x44 pt| 28x28 pt
   
 **Consider spacing between controls as important as size.** Include enough padding between elements to reduce the chance that someone taps the wrong control. In general, it works well to add about 12 points of padding around elements that include a bezel. For elements without a bezel, about 24 points of padding works well around the element’s visible edges.
 
-![An illustration showing three buttons: rewind, play, and fast forward. The buttons have insufficient padding between them.](https://docs-assets.developer.apple.com/published/4148fe218b3f50b66d64eeda288de5be/accessibility-controls-spacing-incorrect%402x.png)Elements with insufficient padding
+Elements with insufficient padding
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
 
-![An illustration showing three buttons: rewind, play, and fast forward. The buttons are spaced apart, with sufficient padding between them.](https://docs-assets.developer.apple.com/published/98bc500a0a2cf15620b972de1fcce3b3/accessibility-controls-spacing-correct%402x.png)Elements with sufficient padding
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
+Elements with sufficient padding
+
+
 
 **Support simple gestures for common interactions.** For many people, with or without disabilities, complex gestures can be challenging. For interactions people do frequently in your app or game, use the simplest gesture possible — avoid custom multifinger and multihand gestures — so repetitive actions are both comfortable and easy to remember.
 
 **Offer alternatives to gestures.** Make sure your UI’s core functionality is accessible through more than one type of physical interaction. Gestures can be less comfortable for people who have limited dexterity, so offer onscreen ways to achieve the same outcome. For example, if you use a swipe gesture to dismiss a view, also make a button available so people can tap or use an assistive device.
 
-![An illustration of a table view in edit mode. The rows of the table include delete buttons.](https://docs-assets.developer.apple.com/published/fa893cee3fa5c70e99dfefa85c0c390a/accessibility-tap-to-delete%402x.png)Edit and tap to delete
+Edit and tap to delete
 
-![An illustration of a table view. One of the rows in the table is swiped to the left to reveal a delete button.](https://docs-assets.developer.apple.com/published/f6eb08c3c3a75f5b1b337b4813b4e95e/accessibility-swipe-to-delete%402x.png)Swipe to delete
+Swipe to delete
 
 **Let people use Voice Control to give guidance and enter information verbally.** With Voice Control, people can interact with their devices entirely by speaking commands. They can perform gestures, interact with screen elements, dictate and edit text, and more. To ensure a smooth experience, label interface elements appropriately. For developer guidance, see [Voice Control](https://developer.apple.com/documentation/Accessibility/voice-control).
 
@@ -150,7 +156,7 @@ watchOS| 44x44 pt| 28x28 pt
 
 ## [Speech](https://developer.apple.com/design/human-interface-guidelines/accessibility#Speech)
 
-![An illustration containing five symbols associated with the topic of speech, including symbols representing waveforms and speech.](https://docs-assets.developer.apple.com/published/62f06a887d774ec29a27ce2be6d30444/accessibility-speech-section-hero%402x.png)
+
 
 Apple’s accessibility features help people with speech disabilities and people who prefer text-based interactions to communicate effectively using their devices.
 
@@ -160,7 +166,7 @@ Apple’s accessibility features help people with speech disabilities and people
 
 ## [Cognitive](https://developer.apple.com/design/human-interface-guidelines/accessibility#Cognitive)
 
-![An illustration containing five symbols associated with the topic of cognition, including symbols representing music, security, and information hierarchy.](https://docs-assets.developer.apple.com/published/0d837305d3c06f6ba0199cf2764df3fd/accessibility-cognitive-section-hero%402x.png)
+
 
 When you minimize complexity in your app or game, all people benefit.
 
@@ -191,9 +197,9 @@ When you minimize complexity in your app or game, all people benefit.
 
 **Optimize your app’s UI for Assistive Access.** Assistive Access is an accessibility feature in iOS and iPadOS that allows people with cognitive disabilities to use a streamlined version of your app. Assistive Access sets a default layout and control presentation for apps that reduces cognitive load, such as the following layout of the Camera app.
 
-![A screenshot of the Camera app in Assistive Access, showing an interface with three large buttons: Photo, Video, and Back.](https://docs-assets.developer.apple.com/published/186637e83d4ec29d3d20a8249be8a538/accessibility-assistive-access-camera%402x.png)
 
-![A screenshot of the Camera app open to the photo screen in Assistive Access, showing an interface with two large buttons: Take Photo and Back.](https://docs-assets.developer.apple.com/published/c2abc07058fc2e64295271c85c5d66eb/accessibility-assistive-access-camera-photo-mode%402x.png)
+
+
 
 To optimize your app for this mode, use the following guidelines when Assistive Access is turned on:
 
@@ -234,7 +240,7 @@ Content description: A recording of someone using Pointer Control to interact wi
 
 Play 
 
-![A screenshot of an app's window in visionOS. A zoom lens is visible above a portion of the window, and displays a zoomed-in version of the content beneath the lens.](https://docs-assets.developer.apple.com/published/087dd22d68c54c95cd70008020f6dc1e/visionos-accessibility-zoom-lens%402x.png)
+
 
 **Prioritize comfort.** The immersive nature of visionOS means that interfaces, animations, and interactions have a greater chance of causing motion sickness, and visual and ergonomic discomfort for people. To ensure the most comfortable experience, consider these tips:
 

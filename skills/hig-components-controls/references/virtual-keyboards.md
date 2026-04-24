@@ -2,11 +2,17 @@
 title: "Virtual keyboards | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/virtual-keyboards
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/virtual-keyboards.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Virtual keyboards
 
 On devices without physical keyboards, the system offers various types of virtual keyboards people can use to enter data.
 
-![A stylized representation of a numeric keypad shown on top of a grid that suggests the canvas of a design tool. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/d5cea0a3ccb2af2881ade732675a1064/components-virtual-keyboard-intro%402x.png)
+
 
 A virtual keyboard can provide a specific set of keys that are optimized for the current task; for example, a keyboard that supports entering email addresses can include the “@” character and a period or even “.com”. A virtual keyboard doesn’t support keyboard shortcuts.
 
@@ -31,29 +37,29 @@ When it makes sense in your app, you can replace the system-provided keyboard wi
 
 
 
-![A partial screenshot of a keyboard on iPhone that displays all 26 letter keys in addition to the Shift, Delete, Numbers, Space, and Return keys. Typing suggestions appear above the keyboard and the Dictation button appears below it.](https://docs-assets.developer.apple.com/published/1aeba403a2942689ee8efbfed71a7943/virtual-keyboard-ascii-capable%402x.png)
 
-![A partial screenshot of a keyboard on iPhone that displays all 10 number keys in addition to the Delete key. Keys for the numbers 2 through 9 each include the 3 or 4 letters associated with the number on a phone.](https://docs-assets.developer.apple.com/published/1da579d09964a9bd81a0823d52fa18e5/virtual-keyboard-ascii-capable-number-pad%402x.png)
 
-![A partial screenshot of a keyboard on iPhone that displays all 10 number keys in addition to the Delete and period keys. Keys for the numbers 2 through 9 each include the 3 or 4 letters associated with the number on a phone.](https://docs-assets.developer.apple.com/published/4b43048f8d2f13d8322b95266bc4c4f3/virtual-keyboard-decimal-pad%402x.png)
 
-![A partial screenshot of a keyboard on iPhone that displays all 26 letter keys in addition to the Shift, Delete, Numbers, Space, and Return keys. Typing suggestions appear above the keyboard and the  Emoji and Dictation buttons appear below it.](https://docs-assets.developer.apple.com/published/34447cdc5d5eb61f1734a046f3d108c6/virtual-keyboard-default%402x.png)
 
-![A partial screenshot of a keyboard on iPhone that displays all 26 letter keys in addition to the Shift, Delete, Numbers, Space, period, at symbol, and Return keys. Typing suggestions appear above the keyboard and the Emoji button appears below it.](https://docs-assets.developer.apple.com/published/e7dcd10c36065774ac8cadf76b09d8e4/virtual-keyboard-email-address%402x.png)
 
-![A partial screenshot of a keyboard on iPhone that displays all 26 letter keys in addition to the Shift, Delete, Numbers, Space, and Return keys. Typing suggestions appear above the keyboard and the Emoji and Dictation buttons appear below it.](https://docs-assets.developer.apple.com/published/3228cd2d2cd6d36e3db1aff1d50ad903/virtual-keyboard-name-phone-pad%402x.png)
 
-![A partial screenshot of a keyboard on iPhone that displays all 10 number keys in addition to the Delete key. Keys for the numbers 2 through 9 each include the 3 or 4 letters associated with the number on a phone.](https://docs-assets.developer.apple.com/published/679c33bdff61bc9e257982b7cffba264/virtual-keyboard-number-pad%402x.png)
 
-![A partial screenshot of a keyboard on iPhone that displays 10 number and 15 punctuation keys in addition to the secondary punctuation key and the Delete, Letters, Space, and Return keys. Typing suggestions appear above the keyboard and the Dictation button appears below it.](https://docs-assets.developer.apple.com/published/916933140730b2db67f8004991c558aa/virtual-keyboard-numbers-and-punctuation%402x.png)
 
-![A partial screenshot of a keyboard on iPhone that displays all 10 number keys in addition to the Delete key and a key for plus, star, and hash. Keys for the numbers 2 through 9 each include the 3 or 4 letters associated with the number on a phone.](https://docs-assets.developer.apple.com/published/b1b427eb7252b94e7b9d0095ccd04f56/virtual-keyboard-phone-pad%402x.png)
 
-![A partial screenshot of a keyboard on iPhone that displays all 26 letter keys in addition to the Shift, Delete, Numbers, Space, at symbol, and hash keys. Typing suggestions appear above the keyboard and the Emoji and Dictation buttons appear below it.](https://docs-assets.developer.apple.com/published/21b1b12df6335045a6f29efc8cbdb5a1/virtual-keyboard-twitter%402x.png)
 
-![A partial screenshot of a keyboard on iPhone that displays all 26 letter keys in addition to the Shift, Delete, Numbers, period, slash, dot com, and Return keys. Typing suggestions appear above the keyboard and the Emoji button appears below it.](https://docs-assets.developer.apple.com/published/daec1d80ab39aff3f52effb615f84425/virtual-keyboard-url%402x.png)
 
-![A partial screenshot of a keyboard on iPhone that displays all 26 letter keys in addition to the Shift, Delete, Numbers, Space, period, and Go keys. Typing suggestions appear above the keyboard and the Emoji and Dictation buttons appear below it.](https://docs-assets.developer.apple.com/published/0618532f75b91e3f3be2416a363d4a43/virtual-keyboard-web-search%402x.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 **Consider customizing the Return key type if it helps clarify the text-entry experience.** The Return key type is based on the keyboard type you choose, but you can change this if it makes sense in your app. For example, if your app initiates a search, you can use a search Return key type rather than the standard one so the experience is consistent with other places people initiate search. For developer guidance, see [`submitLabel(_:)`](https://developer.apple.com/documentation/SwiftUI/View/submitLabel\(_:\)) (SwiftUI) and [`UIReturnKeyType`](https://developer.apple.com/documentation/UIKit/UIReturnKeyType) (UIKit).
 
@@ -87,17 +93,17 @@ Custom keyboards make sense when you want to expose unique keyboard functionalit
 
 **Use the keyboard layout guide to make the keyboard feel like an integrated part of your interface.** Using the layout guide also helps you keep important parts of your interface visible while the virtual keyboard is onscreen. For developer guidance, see [Adjusting your layout with keyboard layout guide](https://developer.apple.com/documentation/UIKit/adjusting-your-layout-with-keyboard-layout-guide).
 
-![An illustration of an app layout on iPhone, showing two stacked text fields and a button above the keyboard.](https://docs-assets.developer.apple.com/published/2d310619deb1ce3587596b7fee6e5b08/ui-fully-visible%402x.png)
 
-![A checkmark in a circle to indicate a correct example.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)The keyboard layout guide helps ensure that app UI and the keyboard work well together.
 
-![An illustration of an app layout on iPhone, showing two stacked text fields. The keyboard covers part of the bottom text field.](https://docs-assets.developer.apple.com/published/b2612a1b69632d398d2744caee9ff1e2/text-field-hidden%402x.png)
+The keyboard layout guide helps ensure that app UI and the keyboard work well together.
 
-![An X in a circle to indicate an incorrect example.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)Without the layout guide, the keyboard could make entering text more difficult.
 
-![An illustration of an app layout on iPhone, showing two stacked text fields and a button above the keyboard. The keyboard covers part of the button.](https://docs-assets.developer.apple.com/published/3a2b1c460427926e69f4d3e8d1383aef/button-hidden%402x.png)
 
-![An X in a circle to indicate an incorrect example.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)Without the layout guide, the keyboard could make tapping a button more difficult.
+Without the layout guide, the keyboard could make entering text more difficult.
+
+
+
+Without the layout guide, the keyboard could make tapping a button more difficult.
 
 **Place custom controls above the keyboard thoughtfully.** Some apps position an input accessory view containing custom controls above the keyboard to offer app-specific functionality related to the data people are working with. For example, Numbers displays controls that help people apply standard or custom calculations to spreadsheet data. If your app offers custom controls that augment the keyboard, make sure they’re relevant to the current task. If other views in your app use Liquid Glass, or if your view looks out of place above the keyboard, apply Liquid Glass to the view that contains your controls to maintain consistency. If you use a standard toolbar to contain your controls, it automatically adopts Liquid Glass. Use the keyboard layout guide and standard padding to ensure the system positions your controls as expected within the view. For developer guidance, see [`ToolbarItemPlacement`](https://developer.apple.com/documentation/SwiftUI/ToolbarItemPlacement) (SwiftUI), [`inputAccessoryView`](https://developer.apple.com/documentation/UIKit/UIResponder/inputAccessoryView) (UIKit), and [`UIKeyboardLayoutGuide`](https://developer.apple.com/documentation/UIKit/UIKeyboardLayoutGuide) (UIKit).
 

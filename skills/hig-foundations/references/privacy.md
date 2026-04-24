@@ -2,17 +2,23 @@
 title: "Privacy | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/privacy
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/privacy.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Privacy
 
 Privacy is paramount: it’s critical to be transparent about the privacy-related data and resources you require and essential to protect the data people allow you to access.
 
-![A sketch of an upright hand, suggesting protection. The image is overlaid with rectangular and circular grid lines and is tinted yellow to subtly reflect the yellow in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/161fec1d77c705ccf076fb4c67d32f5c/foundations-privacy-intro%402x.png)
+
 
 People use their devices in very personal ways and they expect apps to help them preserve their privacy.
 
 When you submit a new or updated app, you must provide details about your privacy practices and the privacy-relevant data you collect so the App Store can display the information on your product page. (You can manage this information at any time in [App Store Connect](https://help.apple.com/app-store-connect/#/dev1b4647c5b).) People use the privacy details on your product page to make an informed decision before they download your app. To learn more, see [App privacy details on the App Store](https://developer.apple.com/app-store/app-privacy-details/).
 
-![A screenshot of the App Privacy screen in an app’s App Store product page. The top card in the screen is titled Data Used to Track You and lists contact info, other data, and identifiers. The bottom card is titled Data Linked to You and lists health and fitness, financial info, contact info, purchases, location, and contacts.](https://docs-assets.developer.apple.com/published/50727e3a2229fda1e6fa93ca9677cc7f/privacy-social-media-app-store-nutrition-labels%402x.png)
+
 
 An app’s App Store product page helps people understand the app’s privacy practices before they download it.
 
@@ -55,9 +61,9 @@ The system provides a standard alert that lets people view each request you make
 
 | Example purpose string| Notes  
 ---|---|---  
-![A checkmark in a circle to indicate a correct example.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| The app records during the night to detect snoring sounds.| An active sentence that clearly describes how and why the app collects the data.  
-![An X in a circle to indicate an incorrect example.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| Microphone access is needed for a better experience.| A passive sentence that provides a vague, undefined justification.  
-![An X in a circle to indicate an incorrect example.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| Turn on microphone access.| An imperative sentence that doesn’t provide any justification.  
+| The app records during the night to detect snoring sounds.| An active sentence that clearly describes how and why the app collects the data.  
+| Microphone access is needed for a better experience.| A passive sentence that provides a vague, undefined justification.  
+| Turn on microphone access.| An imperative sentence that doesn’t provide any justification.  
   
 Here are several examples of the standard system alert:
 
@@ -67,11 +73,11 @@ Here are several examples of the standard system alert:
 
 
 
-![A screenshot of a permission alert for a social media app displaying a purpose string that reads Allow Social Media to access your location? Turning on location  will allow us to show you nearby post locations. Below the string is a small map image containing the Precise On notice and below the map are three buttons in a stack. From the top, the buttons are titled Allow Once, Allow While Using App, and Don’t Allow.](https://docs-assets.developer.apple.com/published/cc8f1498cf0906c5cbba7b0a71fff511/privacy-social-media-post-location-alert%402x.png)
 
-![A screenshot of a permission alert for a social media app displaying a purpose string that reads Social Media Would Like to Access Your Photos. Allow access to photos to upload photos from your library. The string is followed by three buttons in a stack. From the top, the buttons are titled Select Photos, Allow Access to All Photos, and Don’t Allow.](https://docs-assets.developer.apple.com/published/6143de7f950793edc8d632a54bf5d2bb/privacy-social-media-post-photo-alert%402x.png)
 
-![A screenshot of a permission alert for a social media app displaying a purpose string that reads Social Media Would Like to Access Your Contacts. Find friends using Social Media and add them to your network. The string is followed by two side-by-side buttons: Don’t Allow and Allow.](https://docs-assets.developer.apple.com/published/9a0f4d978424e52a782b4f1596426415/privacy-social-media-friends-contacts-alert%402x.png)
+
+
+
 
 ### [Pre-alert screens, windows, or views](https://developer.apple.com/design/human-interface-guidelines/privacy#Pre-alert-screens-windows-or-views)
 
@@ -79,19 +85,19 @@ Ideally, the current context helps people understand why you’re requesting the
 
 **Include only one button and make it clear that it opens the system alert.** People can feel manipulated when a custom screen or window also includes a button that doesn’t open the alert because the experience diverts them from making their choice. Another type of manipulation is using a term like “Allow” to title the custom screen’s button. If the custom button seems similar in meaning and visual weight to the allow button in the alert, people can be more likely to choose the alert’s allow button without meaning to. Use a term like “Continue” or “Next” to title the single button in your custom screen or window, clarifying that its action is to open the system alert.
 
-![A screenshot of an app's pre-alert screen that reads Turning on location services allows us to provide features like: alerts when your friends are nearby, news of events happening near you, tagging and sharing your location. You can change this later in the Settings app. Below the text is a button titled Next.](https://docs-assets.developer.apple.com/published/bda87e1bb5098ab79fee0d0a3be3a10b/privacy-custom-messaging-correct%402x.png)
 
-![A checkmark in a circle to indicate a correct example.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
+
+
 
 **Don’t include additional actions in your custom screen or window.** For example, don’t provide a way for people to leave the screen or window without viewing the system alert — like offering an option to close or cancel.
 
-![A screenshot of an app’s pre-alert screen that includes a button titled Cancel that appears below the Next button.](https://docs-assets.developer.apple.com/published/56cc76fcd5f87de8dae06080b81358f2/privacy-custom-messaging-incorrect-cancel-button%402x.png)
 
-![An X in a circle to indicate an incorrect example.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)Don’t include an option to cancel.
 
-![A screenshot of an app’s pre-alert screen that includes a Close button in the top-left corner. The Next button appears near the bottom of the screen.](https://docs-assets.developer.apple.com/published/a5cb7d6881eb22e248afd3f806743f67/privacy-custom-messaging-incorrect-close-button%402x.png)
+Don’t include an option to cancel.
 
-![An X in a circle to indicate an incorrect example.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)Don’t include an option to close the view.
+
+
+Don’t include an option to close the view.
 
 ### [Tracking requests](https://developer.apple.com/design/human-interface-guidelines/privacy#Tracking-requests)
 
@@ -108,31 +114,31 @@ There are several prohibited custom-screen designs that will cause rejection. So
 
 
 
-![A screenshot of an app’s pre-tracking message that reads Allow tracking and get a $100 credit toward your next purchase. Below the text is an image of a dollar sign inside a circle. Below the image is a button titled Get $100 credit.](https://docs-assets.developer.apple.com/published/6000f4e89c244b12c8438aec034f7d1b/privacy-custom-messaging-prohibited-incentive%402x.png)
 
-![An X in a circle to indicate an incorrect example.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)Don’t offer incentives for granting the request. You can’t offer people compensation for granting their permission, and you can’t withhold functionality or content or make your app unusable until people allow you to track them.
 
-![A screenshot of an app’s pre-tracking message that reads Allow tracking for a better experience. Below the text is a bar graph image that shows four bars increasing in height from left to right. Below the graph is a button titled Allow Tracking.](https://docs-assets.developer.apple.com/published/f1d292d13b6548e9eb72397e0d3ad760/privacy-custom-messaging-prohibited-imitation%402x.png)
+Don’t offer incentives for granting the request. You can’t offer people compensation for granting their permission, and you can’t withhold functionality or content or make your app unusable until people allow you to track them.
 
-![An X in a circle to indicate an incorrect example.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)Don’t display a custom screen that mirrors the functionality of the system alert. In particular, don’t create a button title that uses “Allow” or similar terms, because people don’t allow anything in a pre-alert screen.
 
-![A screenshot of an app’s pre-tracking message that reads Choose Allow when prompted. Below the text is an image of the system-provided alert. Below the image is a button titled Continue. The Allow While Using the App button in the system-provided alert image is circled.](https://docs-assets.developer.apple.com/published/5ae208fd0806ac0d7e89f9939a93c6e5/privacy-custom-messaging-prohibited-alert%402x.png)
 
-![An X in a circle to indicate an incorrect example.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)Don’t show an image of the standard alert and modify it in any way.
+Don’t display a custom screen that mirrors the functionality of the system alert. In particular, don’t create a button title that uses “Allow” or similar terms, because people don’t allow anything in a pre-alert screen.
 
-![A screenshot of an app’s pre-tracking message that reads Allow tracking for a better experience. The app’s custom screen also includes an upward-pointing arrow and the words Choose Allow in the lower third of the screen.](https://docs-assets.developer.apple.com/published/780cf726198155101ee7cff6d786669f/privacy-custom-messaging-prohibited-alert-annotation%402x.png)
 
-![An X in a circle to indicate an incorrect example.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)Don’t add a visual cue that draws people’s attention to the system alert’s Allow buttons.
+
+Don’t show an image of the standard alert and modify it in any way.
+
+
+
+Don’t add a visual cue that draws people’s attention to the system alert’s Allow buttons.
 
 ## [Location button](https://developer.apple.com/design/human-interface-guidelines/privacy#Location-button)
 
 In iOS, iPadOS, and watchOS, Core Location provides a button so people can grant your app temporary authorization to access their location at the moment a task needs it. A location button’s appearance can vary to match your app’s UI and it always communicates the action of location sharing in a way that’s instantly recognizable.
 
-![An image of a lozenge-shaped blue button that displays a white location indicator — that is, a narrow arrow head shape that points to the top right — followed by the text Current Location.](https://docs-assets.developer.apple.com/published/2d4e44adec80170cec96d3446617e700/location-button%402x.png)
+
 
 The first time people open your app and tap a location button, the system displays a standard alert. The alert helps people understand how using the button limits your app’s access to their location, and reminds them of the location indicator that appears when sharing starts.
 
-![A screenshot of the alert displayed by the location button that appears on top of a background image showing a partial map. The alert reads Allow Social Media to access your location? Turning on location  will allow us to show you nearby post locations. Below this text the alert displays a small image of the map, zoomed in to show part of Cupertino. Below the map are three buttons; from the top the titles are Allow Once, Allow While Using App, and Don't Allow.](https://docs-assets.developer.apple.com/published/5cff6abb7fc42b749c616ab763a09968/privacy-social-media-map-location-alert%402x.png)
+
 
 After people confirm their understanding of the button’s action, simply tapping the location button gives your app one-time permission to access their location. Although each one-time authorization expires when people stop using your app, they don’t need to reconfirm their understanding of the button’s behavior.
 

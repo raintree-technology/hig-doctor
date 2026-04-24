@@ -2,11 +2,17 @@
 title: "Labels | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/labels
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/labels.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Labels
 
 A label is a static piece of text that people can read and often copy, but not edit.
 
-![A stylized representation of a text label. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/b428963465f223dd1fdd01779043810c/components-label-intro%402x.png)
+
 
 Labels display text throughout the interface, in buttons, menu items, and views, helping people understand the current context and what they can do next.
 
@@ -58,9 +64,9 @@ To display uneditable text in a label, use the [`isEditable`](https://developer.
 
 Date and time text components (shown below on the left) display the current date, the current time, or a combination of both. You can configure a date text component to use a variety of formats, calendars, and time zones. A countdown timer text component (shown below on the right) displays a precise countdown or count-up timer. You can configure a timer text component to display its count value in a variety of formats.
 
-![An illustration of date and time text components on Apple Watch, with the date aligned to the leading edge and the time aligned to the trailing edge.](https://docs-assets.developer.apple.com/published/3cedf27f398b6683c78d37a325f26c33/labels-date-time-text-component%402x.png)Date and time labels
+Date and time labels
 
-![An illustration of a countdown timer text component on Apple Watch, with the time value at the center.](https://docs-assets.developer.apple.com/published/bc3014364c7bc508ff68d21d79c15441/labels-countdown-timer-text-component%402x.png)Timer label
+Timer label
 
 When you use the system-provided date and timer text components, watchOS automatically adjusts the label’s presentation to fit the available space. The system also updates the content without further input from your app.
 

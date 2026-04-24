@@ -2,11 +2,17 @@
 title: "Game controls | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/game-controls
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/game-controls.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Game controls
 
 Precise, intuitive game controls enhance gameplay and can increase a player’s immersion in the game.
 
-![A sketch of a D-pad control from a game controller, suggesting gameplay. The image is overlaid with rectangular and circular grid lines and is tinted purple to subtly reflect the purple in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/b6c5b8cb6c62c9dd9f5e59ae745d6465/inputs-game-controls-intro%402x.png)
+
 
 On Apple platforms, a game can support input from physical game controllers or default system interactions, like touch, a remote, or a mouse and keyboard. Players might prefer to use physical game controllers, but there are two important reasons to also support a platform’s default interaction methods:
 
@@ -27,7 +33,7 @@ For iOS and iPadOS games, supporting touch interaction means that you can provid
 
 **Place virtual buttons where they’re easy to access.** Take into account the device’s boundaries and [safe areas](https://developer.apple.com/design/human-interface-guidelines/layout#Guides-and-safe-areas) as well as comfortable locations for controls. Make sure to position buttons where they don’t overlap system features like the Home indicator or Dynamic Island on iPhone. Place frequently used buttons near a player’s thumb, avoiding the circular regions where players expect movement and camera input to happen. Place secondary controls, like menus, at the top of the screen.
 
-![A graphic that shows ideal placement for touch controls for an iPhone in landscape orientation.](https://docs-assets.developer.apple.com/published/dd0cd40a5b38af26ea97072ecf987b24/game-controls-touch-input-heat-map%402x.png)
+
 
 Placing virtual controls within reach of people’s thumbs can make your game more comfortable to play.
 
@@ -35,11 +41,11 @@ Placing virtual controls within reach of people’s thumbs can make your game mo
 
 **Always include visible and tactile press states.** A virtual control feels unresponsive without a visual and physical press state. Help players understand when they successfully interact with a button by adding a visual press state effect, such as a glow, that they can see even when their finger is covering the control. Combine this press state with sound and haptics to enhance the feeling of feedback. For guidance, see [Playing haptics](https://developer.apple.com/design/human-interface-guidelines/playing-haptics).
 
-![A right hand holding an iPhone in landscape orientation. The thumb is pressing down on a virtual button, and the button indicates its press state by increasing its opacity and showing a glow effect around it.](https://docs-assets.developer.apple.com/published/7e633e5b94444a3590ce03fee0d5c3df/game-controls-press-state%402x.png)
+
 
 **Use symbols that communicate the actions they perform.** Choose artwork that visually represents the action each button performs, such as a graphic of a weapon to represent an attack. Avoid using abstract shapes or controller-based naming like A, X, or R1 as artwork, which makes it harder for players to understand and remember what specific controls do.
 
-![A game controller button with a graphic of a square mapping to a virtual button with a graphic of a hand making a gesture to pick up an object.](https://docs-assets.developer.apple.com/published/d5ba7d4086cc786b24b789e29bfd3507/game-controls-button-to-action%402x.png)
+
 
 **Show and hide virtual controls to reflect gameplay.** Take advantage of the dynamic nature of touch controls and adapt what controls players see onscreen depending on their context. You can hide controls when an action isn’t available or relevant, letting you reduce clutter and help players concentrate on what’s important. For example, consider hiding movement controls until a player touches the screen to reduce the amount of UI overlapping your game content.
 
@@ -48,21 +54,21 @@ Placing virtual controls within reach of people’s thumbs can make your game mo
 
 
 
-![A graphic that shows gameplay with a virtual control to move the character that's more visible while the character is moving.](https://docs-assets.developer.apple.com/published/2c9a0444ff10b37e8e5b54a9036d482e/game-controls-thumbstick-in-motion%402x.png)
+
 
 When the thumbstick moves to the right, it becomes more visible and shows a highlight to indicate the movement direction.
 
-![A graphic that shows gameplay with a virtual control to move the character that's less visible while the character is at rest.](https://docs-assets.developer.apple.com/published/8feb4b819cccdf9a74fa7c3ccd5d6e42/game-controls-thumbstick-at-rest%402x.png)
+
 
 When the thumbstick is at rest, the virtual control fades to show it’s not in use.
 
 **Combine functionality into a single control.** Consider redesigning game mechanics that require players to press multiple buttons at the same time or in a sequence. Leverage gestures such as double tap and touch and hold to provide different variations of the same action, such as touch and hold to use a special powered up version of an attack. For multiple actions, such as walking or sprinting, consider combining the actions into a single control.
 
-![A graphic of a virtual button that supports both single tap and touch and hold gestures.](https://docs-assets.developer.apple.com/published/a92df74768951a55f0f4d406eedb6b4a/game-controls-power-up-action%402x.png)
+
 
 **Map movement and camera controls to predictable behavior.** Typically, players expect to control movement using the left side of their screen, and control camera direction using the right side of their screen. Maximize the amount of space that players can control both movement and the camera direction by using as large of an input area as possible. For movement control, opt to show a virtual thumbstick wherever the player lands their thumb instead of a static thumbstick position. For camera control, opt to use direct touch to pan the camera instead of a virtual thumbstick.
 
-![A graphic that shows placement for movement controls on the left side of the screen, and placement for camera controls on the right side of the screen.](https://docs-assets.developer.apple.com/published/7bc00774e35dd1839091df6f8c16a830/game-controls-camera-thumbstick-zones%402x.png)
+
 
 ## [Physical controllers](https://developer.apple.com/design/human-interface-guidelines/game-controls#Physical-controllers)
 
@@ -72,7 +78,7 @@ When the thumbstick is at rest, the virtual control fades to show it’s not in 
 
 **Automatically detect whether a controller is paired.** Instead of having players manually set up a physical game controller, you can automatically detect whether a controller is paired and get its profile. For developer documentation, see [Game Controller](https://developer.apple.com/documentation/GameController).
 
-![An illustration of a game controller with callouts that indicate the locations of the controller’s triggers, shoulder buttons, directional pad, and thumbsticks.](https://docs-assets.developer.apple.com/published/40b70c72921efd92b91da0453533baaa/game-controls-controller-anatomy%402x.png)
+
 
 **Customize onscreen content to match the connected game controller.** To simplify your game’s code, the Game Controller framework assigns standard names to controller elements based on their placement, but the colors and symbols on an actual game controller may differ. Be sure to use the connected controller’s labeling scheme when referring to controls or displaying related content in your interface. For developer guidance, see [`GCControllerElement`](https://developer.apple.com/documentation/GameController/GCControllerElement).
 
@@ -97,7 +103,7 @@ Menu| Opens game settings or pauses gameplay
 
 **Prefer using symbols, not text, to refer to game controller elements.** The Game Controller framework makes [SF Symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols) available for most elements, including the buttons on various brands of game controllers. Using symbols instead of text descriptions can be especially helpful for players who aren’t experienced with controllers because it doesn’t require them to hunt for a specific button label during gameplay.
 
-![A screenshot of the SF Symbols app showing symbols in the Gaming category.](https://docs-assets.developer.apple.com/published/c76627e659aa17ab46a638437cc5d33c/game-controls-sf-symbols-gaming-category%402x.png)
+
 
 ## [Keyboards](https://developer.apple.com/design/human-interface-guidelines/game-controls#Keyboards)
 

@@ -2,11 +2,17 @@
 title: "Live-viewing apps | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/live-viewing-apps
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/live-viewing-apps.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Live-viewing apps
 
 As you design a live-viewing app, prioritize the content and create fun, fluid interactions that encourage immersion in the live-viewing experience.
 
-![A sketch of a television containing a play button, suggesting playback of media. The image is overlaid with rectangular and circular grid lines and is tinted orange to subtly reflect the orange in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/cba28a7b98ccba8fdc5f498d69753ce8/patterns-live-viewing-intro%402x.png)
+
 
 Live-viewing apps need to elevate and prioritize live content. In every screen, draw people’s attention to live content and make sure they can distinguish it from video-on-demand (VOD) content at a glance.
 

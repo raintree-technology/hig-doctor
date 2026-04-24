@@ -2,11 +2,17 @@
 title: "Tap to Pay on iPhone | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Tap to Pay on iPhone
 
 Tap to Pay on iPhone lets merchants accept contactless payments using an app on their iPhone, without having to connect external hardware.
 
-![A sketch of progressively larger curved lines extending toward the right within a circle, suggesting Tap to Pay on iPhone. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/8dc8e961db3023f79bbdaaec49b8c194/technologies-TapToPay-intro%402x.png)
+
 
 When you support Tap to Pay on iPhone in your iOS payment app, you help merchants present a consistent and trusted payment experience to their customers.
 
@@ -26,9 +32,9 @@ Before your app can enable Tap to Pay on iPhone and configure a merchant’s dev
 
 **Help merchants accept Tap to Pay on iPhone terms and conditions before they begin interacting with their customers.** Merchants must accept the terms and conditions before you perform the initial device configuration, so it works well when they can do so before they begin a checkout or other customer-facing flow. For example, you can provide buttons that let people accept Tap to Pay on iPhone terms and conditions from within your [in-app messaging](https://developer.apple.com/tap-to-pay/marketing-guidelines/#in-your-app) or onboarding flows.
 
-![An illustration of an app screen that describes the feature and contains a button labeled 'Enable Tap to Pay on iPhone'.](https://docs-assets.developer.apple.com/published/a41cd2da2fc8940033e2ea6b75606197/tap-to-pay-introduction-screen%402x.png)An app screen that offers a way to accept Tap to Pay on iPhone terms and conditions
+An app screen that offers a way to accept Tap to Pay on iPhone terms and conditions
 
-![An illustration of an app screen that contains a button labeled 'Try a test transaction'.](https://docs-assets.developer.apple.com/published/3b8b8486581947e539f4acee1007fba4/tap-to-pay-confirmation-screen%402x.png)An app screen that shows Tap to Pay on iPhone is enabled and offers a way to try it
+An app screen that shows Tap to Pay on iPhone is enabled and offers a way to try it
 
 **Present Tap to Pay on iPhone terms and conditions only to an administrative user.** If a nonadministrator tries to activate the feature, present a message explaining that administrator access is required. If your app’s primary users are enterprise or nonadministrative users, you can let an administrator accept Tap to Pay on iPhone terms and conditions through a web interface or a different app, including one that can run on devices other than iPhone. Contact your PSP for implementation details.
 
@@ -53,11 +59,11 @@ Some merchants may be unfamiliar with Tap to Pay on iPhone, so it’s important 
 
 You can build your app’s tutorial using Apple-approved assets from the [Tap to Pay on iPhone marketing guidelines](https://developer.apple.com/tap-to-pay/marketing-guidelines/), or you can use the [`ProximityReaderDiscovery`](https://developer.apple.com/documentation/ProximityReader/ProximityReaderDiscovery) API to provide a pre-built merchant education experience. Apple ensures that the API is up to date and is localized for the merchant’s region.
 
-![An illustration of an app's Tutorials screen in Settings, with a link to open the merchant education tutorial experience.](https://docs-assets.developer.apple.com/published/6e4f01e90092b71a1a173c0bdf4c9726/tap-to-pay-merchant-settings-tutorials%402x.png)
+
 
 Your app’s settings area is a good place to make sure the tutorial is always available.
 
-![An illustration of the Tap to Pay on iPhone merchant education tutorial sheet, which includes an image of the Tap to Pay behavior and instructions for how to accept a first payment.](https://docs-assets.developer.apple.com/published/e5bab425805217aa9d34d7107b751d75/tap-to-pay-merchant-education-contactless-cards%402x.png)
+
 
 The merchant education tutorial provided by the `ProximityReaderDiscovery` API.
 
@@ -95,9 +101,9 @@ Checking out is a time-sensitive action, and merchants need the process to work 
 
 **Make sure the Tap to Pay on iPhone checkout option is available even if configuration is continuing in the background.** Merchants must always be able to select the Tap to Pay on iPhone checkout option in a checkout flow. During configuration, let merchants select the checkout option and then display a progress indicator — avoid waiting for configuration to complete before making the option available. In most scenarios, you can display an indeterminate progress indicator, but if ProximityReader API shows that configuration is ongoing, display a determinate progress indicator. For guidance, see [Progress indicators](https://developer.apple.com/design/human-interface-guidelines/progress-indicators); for developer guidance see [`PaymentCardReader.Event.updateProgress(_:)`](https://developer.apple.com/documentation/ProximityReader/PaymentCardReader/Event/updateProgress\(_:\)).
 
-![An illustration of an app screen that displays a determinate progress indicator followed by the text 'Preparing Tap to Pay on iPhone' above a purchase total.](https://docs-assets.developer.apple.com/published/75c45da83b016a137a5f42a6d0df9eb7/tap-to-pay-processing-screen-determinate-progress%402x.png)An app screen that displays a determinate progress indicator during configuration
+An app screen that displays a determinate progress indicator during configuration
 
-![An illustration of an app screen that displays an indeterminate progress indicator followed by the text 'Preparing Tap to Pay on iPhone' above a purchase total.](https://docs-assets.developer.apple.com/published/44204349e40fe79fed0268cb77c6411a/tap-to-pay-processing-screen-indeterminate-progress%402x.png)An app screen that displays an indeterminate progress indicator during configuration
+An app screen that displays an indeterminate progress indicator during configuration
 
 **If your app supports multiple payment-acceptance methods, make the Tap to Pay on iPhone button easy to find.** Avoid making merchants scroll to access the feature. If your app doesn’t support other payment acceptance options, open Tap to Pay on iPhone automatically when checkout begins.
 
@@ -105,13 +111,13 @@ Checking out is a time-sensitive action, and merchants need the process to work 
 
 **For the label of the button that activates the feature, use “Tap to Pay on iPhone” or, if space is constrained, “Tap to Pay.”** The exception is if Tap to Pay on iPhone is the only payment-acceptance method you support. In this case, you can reuse your existing Charge or Checkout buttons to activate Tap to Pay on iPhone. If you support multiple payment-acceptance methods and you use icons in the buttons that activate them, use the `wave.3.right.circle` or `wave.3.right.circle.fill` [SF Symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols) in your Tap to Pay on iPhone button. Always avoid including the Apple logo in Tap to Pay on iPhone buttons.
 
-![An illustration of a 'Tap to Pay' button containing an icon. The button correctly includes a wave symbol followed by the words 'Tap to Pay on iPhone'.](https://docs-assets.developer.apple.com/published/2847ded54a90ef597b34b7ff333e47b2/tap-to-pay-on-iphone-symbol-correct%402x.png)
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
 
-![An illustration of a 'Tap to Pay' button containing an icon. The button incorrectly includes the Apple logo followed by the words 'Tap to Pay on iPhone'.](https://docs-assets.developer.apple.com/published/cb1cece72b73adf6bed5429864699859/tap-to-pay-on-iphone-logo-incorrect%402x.png)
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
+
+
+
+
 
 Important
 
@@ -131,13 +137,13 @@ Customers pay by _tapping_ — that is, bringing a contactless card or digital w
 
 **Display a progress indicator while payment is authorizing before you show your transaction result screen.** Transaction authorization can take several seconds to complete, depending on factors like connectivity for both the PSP and the merchant’s device. To ensure a smooth visual transition, display your authorization [progress indicator](https://developer.apple.com/design/human-interface-guidelines/progress-indicators) after the Tap to Pay on iPhone screen animation finishes (for developer guidance, see [`PaymentCardReader.Event.readyForTap`](https://developer.apple.com/documentation/ProximityReader/PaymentCardReader/Event/readyForTap)).
 
-![An illustration of an app's checkout screen showing an indeterminate progress indicator followed by the text 'Authorizing' above a purchase total.](https://docs-assets.developer.apple.com/published/2088576700f5d0e5370d538a6c0c200d/tap-to-pay-authorizing-payment%402x.png)
+
 
 **Clearly display the result of a transaction, whether it’s declined or successful.** A transaction can be declined for reasons like insufficient funds, suspicion of fraud, or when the customer enters an incorrect PIN. As much as possible, also give the merchant ways to offer customers a digital receipt, such as through a QR code or text message.
 
-![An illustration of an app's checkout screen showing a green checkmark in a green circle above a purchase total. Below the total is the text 'Select receipt option' followed by a stack of three buttons.](https://docs-assets.developer.apple.com/published/30ad60568d0f86ea398c3b80ca642521/tap-to-pay-confirmed-payment%402x.png)
 
-![An illustration of an app's checkout screen showing a red X in a red circle above a purchase total. Below the total is the text 'Select receipt option' followed by a stack of three buttons.](https://docs-assets.developer.apple.com/published/0afbca661875947cdc85284e89322a98/tap-to-pay-unconfirmed-payment%402x.png)
+
+
 
 **Help merchants complete the checkout flow when a payment can’t complete with Tap to Pay on iPhone.** For example, a tap can fail when a card isn’t readable, isn’t from a supported payment network, doesn’t allow transactions at the stated amount, or doesn’t allow online PIN entry. In cases like these, you can:
 
@@ -150,7 +156,7 @@ Customers pay by _tapping_ — that is, bringing a contactless card or digital w
 
 
 
-![An illustration of an app's checkout screen showing a red X in a red circle above the text 'Payment not completed' followed by a purchase total. Below the total is the text 'Select payment option' followed by four buttons, including Tap to Pay on iPhone.](https://docs-assets.developer.apple.com/published/4e43882f08c5c4e7203d0ef0dcf25415/tap-to-pay-unsuccessful-transaction%402x.png)
+
 
 After you receive payment card data, you might also encounter scenarios like the ones listed below. If such scenarios occur, contact your PSP for guidance on addressing them.
 
@@ -175,13 +181,13 @@ When customers have other types of NFC-compatible cards or passes in Apple Walle
 
 **If your app supports an independent loyalty card transaction, distinguish this flow from a payment-acceptance flow that uses Tap to Pay on iPhone.** It works well to give merchants a separate, clearly labeled button to initiate a loyalty card transaction. To help merchants avoid choosing the wrong button by mistake, avoid including “Tap to Pay on iPhone,” “Tap to Pay,” or other payment-related terms in the label for a loyalty-transaction button.
 
-![An illustration of a button labeled 'Loyalty Card'.](https://docs-assets.developer.apple.com/published/e586a72bca99cdaa8c68fb4b99c8e209/loyalty-card%402x.png)
 
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)
 
-![An illustration of a button labeled 'Tap to Pay on iPhone - Loyalty'.](https://docs-assets.developer.apple.com/published/72070690d8e7d35c7c79169e018faa39/tap-to-pay-on-iphone-loyalty%402x.png)
 
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)
+
+
+
+
 
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Platform-considerations)
 

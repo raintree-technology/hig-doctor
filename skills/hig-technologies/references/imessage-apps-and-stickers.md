@@ -2,11 +2,17 @@
 title: "iMessage apps and stickers | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # iMessage apps and stickers
 
 An iMessage app can help people share content, collaborate, and even play games with others in a conversation; stickers are images that people can use to decorate a conversation.
 
-![A sketch of the iMessage App Store icon. The image is overlaid with rectangular and circular grid lines and is tinted blue to subtly reflect the blue in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/8a7764e72eeafa784a8f5343e1242096/technologies-iMessage-Apps-intro%402x.png)
+
 
 An iMessage app or sticker pack is available within the context of a Messages conversation and also in effects in both Messages and FaceTime. You can create an iMessage app or sticker pack as a standalone app or as an app extension within your iOS or iPadOS app. For developer guidance, see [Messages](https://developer.apple.com/documentation/Messages) and [Adding Sticker packs and iMessage apps to the system Stickers app, Messages camera, and FaceTime](https://developer.apple.com/documentation/Messages/adding-sticker-packs-and-imessage-apps-to-the-system-stickers-app-messages-camera-and-facetime).
 
@@ -48,15 +54,15 @@ App Store| 1024x1024| 1024x1024
 
 Messages supports small, regular, and large stickers. Pick the size that works best for your content and prepare all of your stickers at that size; don’t mix sizes within a single sticker pack. Messages displays stickers in a grid, organized differently for different sizes.
 
-![An illustration showing a grid of small stickers in the bottom half of an iPhone screen. Eight stickers are visible in the area, followed by a partial row of four, arranged in three rows.](https://docs-assets.developer.apple.com/published/a64edfeafbb874560b2a72b04505ff43/sticker-sizes-small%402x.png)
+
 
 Small
 
-![An illustration showing a grid of regular stickers in the bottom half of an iPhone screen. Six stickers are visible in the area, in two rows of three.](https://docs-assets.developer.apple.com/published/092a81eb61dbb7310098aecf4c0c73a7/sticker-sizes-regular%402x.png)
+
 
 Regular
 
-![An illustration showing a grid of large stickers in the bottom half of an iPhone screen. Two stickers are fully visible in the area, followed by a partial row of two additional stickers.](https://docs-assets.developer.apple.com/published/7d0d3ead02ab892c2eaa8c575707c3d5/sticker-sizes-large%402x.png)
+
 
 Large
 

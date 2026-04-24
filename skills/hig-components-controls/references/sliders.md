@@ -2,11 +2,17 @@
 title: "Sliders | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/sliders
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/sliders.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Sliders
 
 A slider is a horizontal track with a control, called a thumb, that people can adjust between a minimum and maximum value.
 
-![A stylized representation of a brightness slider. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/ebb02bcf10487e6a03fd081236b35aa0/components-slider-intro%402x.png)
+
 
 As a slider’s value changes, the portion of track between the minimum value and the thumb fills with color. A slider can optionally display left and right icons that illustrate the meaning of the minimum and maximum values.
 
@@ -18,7 +24,7 @@ As a slider’s value changes, the portion of track between the minimum value an
 
 **Consider supplementing a slider with a corresponding text field and stepper.** Especially when a slider represents a wide range of values, people may appreciate seeing the exact slider value and having the ability to enter a specific value in a text field. Adding a stepper provides a convenient way for people to increment in whole values. For related guidance, see [Text fields](https://developer.apple.com/design/human-interface-guidelines/text-fields) and [Steppers](https://developer.apple.com/design/human-interface-guidelines/steppers).
 
-![An illustration of a horizontal linear slider without tick marks, followed by a text field and a stepper. The thumb is in the center of the slider and the text field displays 50%.](https://docs-assets.developer.apple.com/published/ce79e1e4b3b1faa688862341ed208792/sliders-text-field%402x.png)
+
 
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/sliders#Platform-considerations)
 
@@ -36,11 +42,11 @@ In a linear slider either with or without tick marks, the thumb is a narrow loze
 
 In a circular slider, the thumb appears as a small circle. Tick marks, when present, appear as evenly spaced dots around the circumference of the slider.
 
-![An illustration of a horizontal slider with the thumb in the middle. The leading portion of the track up to the thumb is filled with a blue highlight color.](https://docs-assets.developer.apple.com/published/92445cf683c4dc1b179fb5359a0bdb28/sliders-no-tick-marks%402x.png)Linear slider without tick marks
+Linear slider without tick marks
 
-![An illustration of a horizontal slider with the thumb between two tick marks in the middle of the slider. The leading portion of the track up to the thumb is filled with a blue highlight color.](https://docs-assets.developer.apple.com/published/e31ef9e35e8675bd62f695ba6a988a51/sliders-tick-marks%402x.png)Linear slider with tick marks
+Linear slider with tick marks
 
-![An illustration of a circular slider with the thumb at the 12 o'clock position.](https://docs-assets.developer.apple.com/published/3f253ed199e7e92b6124e6161dd79152/sliders-circular%402x.png)Circular slider
+Circular slider
 
 **Consider giving live feedback as the value of a slider changes.** Live feedback shows people results in real time. For example, your Dock icons are dynamically scaled when adjusting the Size slider in Dock settings.
 
@@ -50,7 +56,7 @@ In a circular slider, the thumb appears as a small circle. Tick marks, when pres
 
 **Use tick marks to increase clarity and accuracy.** Tick marks help people understand the scale of measurements and make it easier to locate specific values.
 
-![A partial screenshot of the Energy Saver settings pane in macOS, cropped to show the slider that controls how long the display remains on after inactivity.](https://docs-assets.developer.apple.com/published/90d44ac8355f4a4e672e5e81633814e6/sliders-labels%402x.png)
+
 
 **Consider adding labels to tick marks for even greater clarity.** Labels can be numbers or words, depending on the slider’s values. It’s unnecessary to label every tick mark unless doing so is needed to reduce confusion. In many cases, labeling only the minimum and maximum values is sufficient. When the values of the slider are nonlinear, like in the Energy Saver settings pane, periodic labels provide context. It’s also a good idea to provide a [tooltip](https://developer.apple.com/design/human-interface-guidelines/offering-help#macOS-visionOS) that displays the value of the thumb when people hold their pointer over it.
 
@@ -62,9 +68,9 @@ In a circular slider, the thumb appears as a small circle. Tick marks, when pres
 
 A slider is a horizontal track — appearing as a set of discrete steps or as a continuous bar — that represents a finite range of values. People can tap buttons on the sides of the slider to increase or decrease its value by a predefined amount.
 
-![An illustration of a watchOS volume slider with discrete steps. The first two of three steps are filled with a green highlight color, indicating the volume level.](https://docs-assets.developer.apple.com/published/3acc4339289d9cf65ec982e73f950f97/sliders-watchos-discrete%402x.png)Discrete
+Discrete
 
-![An illustration of a watchOS volume slider with a continuous bar. Two-thirds of the bar is filled with a green highlight color, indicating the volume level.](https://docs-assets.developer.apple.com/published/b356f0616bad32afce9ac9e62763414b/sliders-watchos-continuous%402x.png)Continuous
+Continuous
 
 **If necessary, create custom glyphs to communicate what the slider does.** The system displays plus and minus signs by default.
 

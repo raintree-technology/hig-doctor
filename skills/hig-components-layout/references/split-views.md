@@ -2,11 +2,17 @@
 title: "Split views | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/split-views
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/split-views.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Split views
 
 A split view manages the presentation of multiple adjacent panes of content, each of which can contain a variety of components, including tables, collections, images, and custom views.
 
-![A stylized representation of a window consisting of three areas: a sidebar, a canvas, and an inspector. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/68c529d6dd40b4b46f1862f1cdbadec4/components-split-view-intro%402x.png)
+
 
 Typically, you use a split view to show multiple levels of your app’s hierarchy at once and support navigation between them. In this scenario, selecting an item in the view’s primary pane displays the item’s contents in the secondary pane. Similarly, a split view can display a tertiary pane if items in the secondary pane contain additional content.
 
@@ -40,11 +46,11 @@ In macOS, you can arrange the panes of a split view vertically, horizontally, or
 
 
 
-![An illustration of a laptop screen that shows two panes stacked vertically.](https://docs-assets.developer.apple.com/published/8c23f101a012db47a8e2350e50432617/vertical-split-view%402x.png)
 
-![An illustration of a laptop screen that shows two panes arranged side by side, with a narrower pane on the left and a wider pane on the right.](https://docs-assets.developer.apple.com/published/713be8f9e61a9578b26087ad71ca6b23/horizontal-split-view%402x.png)
 
-![An illustration of a laptop screen divided into three panes, split both vertically and horizontally.](https://docs-assets.developer.apple.com/published/3e315fbb8f8ade8b2d3d4f105f8c4482/multiple-split-view%402x.png)
+
+
+
 
 **Set reasonable defaults for minimum and maximum pane sizes.** If people can resize the panes in your app’s split view, make sure to use sizes that keep the divider visible. If a pane gets too small, the divider can seem to disappear, becoming difficult to use.
 
@@ -76,7 +82,7 @@ In watchOS, the split view displays either the list view or a detail view as a f
 
 **If your app displays multiple detail pages, place the detail views in a vertical[tab view](https://developer.apple.com/design/human-interface-guidelines/tab-views).** People can then use the Digital Crown to scroll between the detail view’s tabs. watchOS also displays a page indicator next to the Digital Crown, indicating the number of tabs and the currently selected tab.
 
-![A screenshot showing a detail view with a vertical tab on Apple Watch. The page indicator next to the Digital Crown shows that the fifth tab is currently selected.](https://docs-assets.developer.apple.com/published/3f36258648d54880e800568e88b5076b/split-view-watch-vertical-tab%402x.png)
+
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/split-views#Resources)
 

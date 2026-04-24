@@ -2,11 +2,17 @@
 title: "Alerts | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/alerts
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/alerts.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Alerts
 
 An alert gives people critical information they need right away.
 
-![A stylized representation of an alert mockup that includes a title, description, primary button, and secondary button. The image is tinted red to subtly reflect the red in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/89439ba152693e294fbb3298c00b2b48/components-alert-intro%402x.png)
+
 
 For example, an alert can tell people about a problem, warn them when their action might destroy data, and give them an opportunity to confirm a purchase or another important action they initiated.
 
@@ -32,15 +38,15 @@ An alert is a modal view that can look different in different platforms and devi
 
 
 
-![An illustration of an alert in the middle of the screen on iPhone.](https://docs-assets.developer.apple.com/published/ec9df875e228750105a393c96279bea5/alert-ios%402x.png)
 
-![An illustration of an alert in the middle of the screen on a Mac.](https://docs-assets.developer.apple.com/published/0dfc6fd9de495ce3b7201169d829d760/alert-macos%402x.png)
 
-![An illustration of an alert on tvOS.](https://docs-assets.developer.apple.com/published/63dde83c2b156231420f095a4d9dfae3/alert-tvos%402x.jpg)
 
-![An illustration of an alert on Apple Vision Pro.](https://docs-assets.developer.apple.com/published/1abb6467cc401af501648da039b2b317/alert-visionos%402x.png)
 
-![An illustration of an alert on Apple Watch.](https://docs-assets.developer.apple.com/published/a452534204f5ddb4aaa6ba7679946f2e/alert-watchos%402x.png)
+
+
+
+
+
 
 ## [Content](https://developer.apple.com/design/human-interface-guidelines/alerts#Content)
 

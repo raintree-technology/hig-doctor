@@ -2,11 +2,17 @@
 title: "Action button | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/action-button
 
+<!-- hig-doctor:attribution -->
+> **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/action-button.
+> This file is a structured index of that content, snapshot 2025-02-02.
+> Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
+
+
 # Action button
 
 The Action button gives people quick access to their favorite features on supported iPhone and Apple Watch models.
 
-![A sketch of an arrow pointing toward the Action button on Apple Watch, suggesting initiating an action. The image is overlaid with rectangular and circular grid lines and is tinted purple to subtly reflect the purple in the original six-color Apple logo.](https://docs-assets.developer.apple.com/published/e9f0fbe50cec4b4b3ac0ef5daa14e321/inputs-action-button-intro%402x.png)
+
 
 On a supported device, people can use the Action button to run [App Shortcuts](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts) or access system-provided functionality, like turning the flashlight on or off. On Apple Watch Ultra, the Action button supports activity-related actions, including workouts and dives.
 
