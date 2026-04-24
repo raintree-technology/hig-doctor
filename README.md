@@ -1,49 +1,79 @@
 # Apple HIG Skills
 
-Apple Human Interface Guidelines as agent skills for Claude Code, Cursor, and other AI coding agents.
+Agent-native Apple Human Interface Guidelines: a structured index of Apple's HIG delivered as Claude Skills, with an MCP server and a universal compliance auditor as the verification loop. Built for AI coding agents; usable by humans.
 
-14 skills covering the complete Apple HIG — foundations, components, patterns, inputs, platforms, and technologies. Source: [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) (February 2025).
+- **Skills corpus** — 14 skills and 156 reference topics covering the complete HIG (foundations, components, patterns, inputs, platforms, technologies). Snapshot dated 2025-02-02; canonical content remains at [developer.apple.com/design/human-interface-guidelines](https://developer.apple.com/design/human-interface-guidelines/).
+- **MCP server** — stdio Model Context Protocol server exposing `hig_list_skills`, `hig_lookup`, and `hig_audit` for Claude Desktop, Cursor, Windsurf, and Claude Code.
+- **Audit CLI** — universal HIG compliance scanner across 12 frameworks (SwiftUI, UIKit, React, Vue, Svelte, Angular, Compose, Android XML, React Native, Flutter, CSS, HTML). Emits severity-bucketed markdown/JSON with a pass/fail CI gate.
 
-## Install
+Content is © Apple Inc.; this repository provides organization, cross-referencing, and detection rules for AI agent use. MIT-licensed for structure and tooling.
+
+## Install as a Claude Code plugin
 
 ```bash
-npx skills add raintree-technology/apple-hig-skills
-```
-
-Or install via Claude Code plugin:
-
-```
 /plugin marketplace add raintree-technology/apple-hig-skills
 ```
 
-## HIG Audit
+Or add as a git submodule into any project's `.claude/` directory.
 
-Audit any project for Apple HIG compliance. Works with SwiftUI, UIKit, React, Next.js, Vue, Nuxt, Svelte, SvelteKit, Angular, React Native, Flutter, Jetpack Compose, Android XML, and plain HTML/CSS. Detects 349 patterns across accessibility, color systems, typography, responsive layout, dark mode, motion, i18n, and more.
+## MCP server
+
+Expose the skills and audit tool to any MCP-compatible client.
+
+```bash
+# From a git clone of this repo
+bun packages/hig-doctor/src-mcp/src/index.ts
+```
+
+Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "hig-doctor": {
+      "command": "bun",
+      "args": ["/absolute/path/to/apple-hig-skills/packages/hig-doctor/src-mcp/src/index.ts"]
+    }
+  }
+}
+```
+
+Tools:
+
+| Tool | Purpose |
+|------|---------|
+| `hig_list_skills` | Enumerate skills, descriptions, and reference topics. |
+| `hig_lookup` | Fetch HIG reference markdown by skill (and optional topic). |
+| `hig_audit` | Run the HIG compliance audit on a project directory. |
+
+Set `HIG_SKILLS_DIR` if you relocate the `skills/` folder.
+
+## HIG Audit CLI
+
+Scan any project for Apple HIG compliance. Works with SwiftUI, UIKit, React, Next.js, Vue, Nuxt, Svelte, SvelteKit, Angular, React Native, Flutter, Jetpack Compose, Android XML, and plain HTML/CSS. Detects 349 patterns across accessibility, color systems, typography, responsive layout, dark mode, motion, i18n, and more.
 
 Requires [Bun](https://bun.sh).
 
 ```bash
 cd packages/hig-doctor/src-termcast
-bun install
 bun run audit <directory>
 ```
 
 Example output:
 
 ```
-  HIG Audit: website   100/100
-  nextjs · 751 detections · 56 files
+  HIG Audit: my-app   2 serious
 
+  nextjs · 412 detections · 48 files
   ────────────────────────────────────────────────────────────────────
-  Foundations                610  ███████████████████░  593 good
-  Interaction Patterns        34  ███████████████████░  32 good
-  Layout & Navigation         42  █████░░░░░░░░░░░░░░░  11 good
-  Controls                    25  ░░░░░░░░░░░░░░░░░░░░
-  Input Methods               17  ████████████████░░░░  14 good
+  Foundations                312  ██████████████░░░░░░  286 good  2 serious
+  Layout & Navigation         41  ████░░░░░░░░░░░░░░░░  9 good
+  Controls                    24  ░░░░░░░░░░░░░░░░░░░░
+  Input Methods               15  ██████████████░░░░░░  11 good
   ────────────────────────────────────────────────────────────────────
-  Totals                     751  650 good  101 patterns
+  Totals                     412  306 good  2 serious  4 moderate
 
-  Excellent — Strong HIG compliance across the board.
+  Serious issues found — Significant HIG violations degrade UX.
 ```
 
 ### Options
@@ -53,7 +83,18 @@ Example output:
 | `--export` | Write a full audit report to `<directory>/hig-audit.md` |
 | `--stdout` | Print raw audit markdown to stdout (pipe to an AI for evaluation) |
 | `--json` | Print structured results as JSON (for CI/scripts) |
+| `--fail-on <severity>` | Exit 1 if any concern at/above `critical`, `serious`, or `moderate` is found |
 | `--help` | Show help |
+
+### Severity model
+
+Concerns are classified as:
+
+- **critical** — accessibility-breaking (missing alt, empty button, `user-scalable=no`, `<video>` without captions, etc.)
+- **serious** — significant UX degradation (`div` with `onClick` and no role, positive tabindex, `outline: none` outside progressive enhancement, `onTapGesture` without traits, hover-without-focus, autoplay, etc.)
+- **moderate** — HIG style/best-practice violations (hardcoded colors, deprecated components, `!important` usage, physical text-align, etc.)
+
+Positive detections (semantic colors, Dynamic Type, accessibility modifiers, focus-visible, reduced-motion support) are tracked and reported but don't affect the gate.
 
 ### What it detects
 
@@ -71,11 +112,7 @@ The audit scans code, stylesheets, and config files, then categorizes findings a
 - **Status & Progress** — progress indicators, loading states, aria-busy
 - **Apple Technologies** — WidgetKit, ActivityKit, HealthKit, ARKit, Apple Pay, Sign in with Apple
 
-**Accessibility anti-patterns detected**: div/span with click handlers but no ARIA role, missing alt text, ambiguous link text ("click here"), empty headings/buttons, `outline: none`, positive tabindex, mouse-only handlers, autoplay media, `user-scalable=no`.
-
 **Context-aware rules**: `!important` inside `@media print` and `prefers-reduced-motion` blocks is not flagged. `outline: none` inside `:focus:not(:focus-visible)` progressive enhancement is not flagged. Hover rules skip pseudo-element selectors like `::-webkit-scrollbar-thumb`. Test/spec files are excluded from scanning.
-
-Each detection is classified as a **positive** (good HIG practice), **concern** (potential violation), or **pattern** (neutral usage detected).
 
 ### Supported frameworks
 
@@ -94,126 +131,64 @@ Each detection is classified as a **positive** (good HIG practice), **concern** 
 | CSS / SCSS | 40+ | Custom properties, contrast, focus styles, outline, !important, z-index, logical properties, RTL |
 | HTML | 15+ | Landmarks, lang attribute, heading structure, viewport meta |
 
-### How scoring works
-
-The score (0-100) is based on the ratio of positive patterns to concerns, with a small bonus for category breadth:
-
-- **90-100**: Excellent HIG compliance
-- **70-89**: Good, with room for improvement
-- **50-69**: Needs work
-- **Below 50**: Significant violations
-
-Projects with low UI density (fewer than 4 detections per file and under 500 total) display a warning instead of a score interpretation, since scores are less meaningful for non-UI-focused projects like backend services or blockchain repos.
-
 ### JSON output
-
-`--json` outputs structured results for CI pipelines and scripts:
 
 ```json
 {
-  "score": 100,
   "lowDensity": false,
   "frameworks": ["nextjs"],
-  "files": { "code": 55, "style": 1, "config": 10 },
-  "totals": { "concerns": 0, "positives": 650, "patterns": 101 },
+  "files": { "code": 48, "style": 3, "config": 10 },
+  "severities": { "critical": 0, "serious": 2, "moderate": 4 },
+  "totals": { "concerns": 6, "positives": 306, "patterns": 100 },
+  "failOn": "critical",
+  "gateTripped": false,
   "categories": [
     {
       "name": "Foundations",
       "skill": "hig-foundations",
-      "detections": 610,
-      "concerns": 0,
-      "positives": 593,
-      "patterns": 17,
-      "files": ["website/app/layout.tsx", "..."]
+      "detections": 312,
+      "concerns": 2,
+      "positives": 286,
+      "patterns": 24,
+      "severities": { "critical": 0, "serious": 2, "moderate": 0 },
+      "files": ["app/layout.tsx", "..."]
     }
   ]
 }
 ```
 
-| Field | Description |
-|-------|-------------|
-| `score` | 0-100 HIG compliance score |
-| `lowDensity` | `true` if the project has few UI patterns (score may be unreliable) |
-| `frameworks` | Detected frameworks (nextjs, swiftui, vue, angular, flutter, etc.) |
-| `files` | Count of scanned code, style, and config files |
-| `totals` | Aggregate counts of concerns, positives, and neutral patterns |
-| `categories` | Per-HIG-category breakdown with detection counts and affected files |
+### GitHub Action
 
-### Programmatic API
-
-Import the audit function directly in Bun/Node:
-
-```typescript
-import { audit } from "./packages/hig-doctor/src-termcast/src/audit";
-
-const result = await audit("./my-app");
-console.log(result.categories);  // CategorySummary[]
-console.log(result.allMatches);  // PatternMatch[]
-console.log(result.scanResult);  // ScanResult with frameworks, file lists
-console.log(result.markdown);    // Full audit report as markdown
-```
-
-### Full report for AI evaluation
-
-Generate a detailed markdown report and pipe it to an AI for deeper analysis:
-
-```bash
-bun run audit ./my-app --stdout | pbcopy
-```
-
-The report includes code excerpts with line numbers, HIG reference material from the 14 skills, and per-category evaluation checklists.
-
-## HIG Doctor (Skill Validator)
-
-Validates skill file structure and repository consistency. Separate from the audit tool above.
-
-```bash
-npm --prefix packages/hig-doctor install
-node packages/hig-doctor/src/cli.js . --verbose
-```
-
-After publishing to npm:
-
-```bash
-npx -y hig-doctor@latest . --verbose
-```
-
-Open the interactive TUI:
-
-```bash
-node packages/hig-doctor/src/cli.js . --tui
-```
-
-TUI controls: `j/k` or arrows to move, `f` to filter, `g` to toggle grouping, `q` to quit.
-
-Use as a GitHub Action:
+Audit on every pull request and fail the build on critical violations.
 
 ```yaml
 - uses: actions/checkout@v4
 - uses: raintree-technology/apple-hig-skills@main
   with:
     directory: .
-    verbose: "true"
-    strict: "true"
+    fail-on: critical
 ```
 
-## Remotion Demo
+Outputs: `critical`, `serious`, `moderate`, `report` (path to generated `hig-audit.md`).
 
-A [Remotion](https://www.remotion.dev/) video demo that visualizes hig-doctor audit output with animated charts and glass-card UI.
+## Agent-readable surface
+
+The [project website](https://apple.raintree.technology) serves:
+
+- `/llms.txt` — structured index per the [llms.txt](https://llmstxt.org) convention, linking every HIG topic with excerpts.
+- `/raw/<slug>` — plain-text markdown for each reference topic (scriptable retrieval).
+- `/topics/<slug>` — HTML pages for humans.
+
+## Remotion demo
+
+An animated [Remotion](https://www.remotion.dev/) video that visualizes audit output with glass-card UI.
 
 ```bash
 cd demos/remotion-hig-doctor
 npm install
-npm run preview
+npm run preview   # preview in browser
+npm run render    # out/hig-doctor-showcase.mp4 (1920x1080, 30fps, 21s)
 ```
-
-Render to video:
-
-```bash
-npm run render
-```
-
-Output: `out/hig-doctor-showcase.mp4` (1920x1080, 30fps, 21s)
 
 ## Skills
 
@@ -234,40 +209,34 @@ Output: `out/hig-doctor-showcase.mp4` (1920x1080, 30fps, 21s)
 | `hig-components-status` | Progress indicators, status bars, activity rings |
 | `hig-components-system` | Widgets, live activities, notifications, complications, app clips, app shortcuts |
 
-## How it works
+Skills use progressive disclosure — agents load only the reference files they need.
 
-Skills use progressive disclosure to minimize token usage:
-
-1. **Discovery** — Claude reads skill names and descriptions to decide relevance
-2. **Activation** — The full SKILL.md loads with key principles and a reference index
-3. **Deep reference** — Specific files from `references/` load on demand for detailed guidance
-
-Each skill stays under 500 lines. Detailed HIG content lives in 156 reference documents loaded only when needed.
-
-## Structure
+## Repository structure
 
 ```
-skills/
-  hig-foundations/
-    SKILL.md
-    references/
-      color.md
-      typography.md
-      accessibility.md
-      ...
-  hig-components-layout/
-    SKILL.md
-    references/
-      sidebars.md
-      tab-bars.md
-      ...
-  ...
+apple-hig-skills/
+├── .claude-plugin/marketplace.json       # Claude Code plugin manifest
+├── skills/                                # 14 Agent Skills (SKILL.md + references/)
+├── packages/hig-doctor/
+│   ├── src/                               # Internal skill-structure validator (dev-only)
+│   ├── src-termcast/                      # Audit CLI (Bun, zero deps)
+│   └── src-mcp/                           # MCP server
+├── website/                               # Next.js site + llms.txt + /raw endpoints
+├── demos/remotion-hig-doctor/             # Animated audit demo
+├── scripts/legal-hardening.ts             # Idempotent content attribution pass
+└── .github/workflows/annual-hig-rescan.yml
 ```
+
+## Content maintenance
+
+Skills content is a frozen snapshot dated 2025-02-02. The `annual-hig-rescan.yml` workflow opens a tracking issue each June after WWDC to prompt diffing Apple's live HIG against this snapshot, updating changed topics, and tagging a new release. The re-scan is a human-in-the-loop process — Apple's HIG pages are JS-rendered and not safely automatable.
+
+Each reference file carries an attribution block and canonical source URL in its frontmatter. Apple-hosted screenshots have been stripped to reduce IP transfer; retain the source link and open Apple's page when visual context is needed.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding or improving skills.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add skills, update reference content after a re-scan, or propose new audit rules.
 
 ## License
 
-MIT (repository structure and skill files). Apple HIG content in `references/` is Apple's intellectual property, referenced here for AI agent guidance.
+MIT for repository structure, detection rules, tooling (audit CLI, MCP server, validator, scripts), and the Next.js website. Apple HIG text in `skills/*/references/` is © Apple Inc.; this repository provides organization and cross-referencing for AI agent guidance only — the canonical source is [developer.apple.com](https://developer.apple.com/design/human-interface-guidelines/).
