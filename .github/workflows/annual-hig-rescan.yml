@@ -1,0 +1,68 @@
+name: Annual HIG re-scan reminder
+
+# Opens a tracking issue once a year shortly after WWDC so the maintainer
+# remembers to diff Apple's HIG against the snapshot in skills/references
+# and cut a new version. We do not automate the scrape itself — Apple's
+# HIG pages are JS-rendered and the scrape is a human-in-the-loop process.
+
+on:
+  schedule:
+    # Every year on June 20 at 13:00 UTC (shortly after WWDC keynotes).
+    - cron: "0 13 20 6 *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  open-rescan-issue:
+    name: Open re-scan tracking issue
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Read current snapshot version
+        id: snapshot
+        run: |
+          CURRENT=$(grep -Eo 'as of [A-Za-z]+ [0-9]+, [0-9]{4}' VERSIONS.md | head -1 || echo "unknown")
+          echo "current=$CURRENT" >> "$GITHUB_OUTPUT"
+
+      - name: Open tracking issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CURRENT: ${{ steps.snapshot.outputs.current }}
+          YEAR: ${{ github.event.repository.updated_at }}
+        run: |
+          YEAR=$(date -u +%Y)
+          TITLE="Annual HIG re-scan: $YEAR"
+
+          # Skip if an issue with this title is already open
+          EXISTING=$(gh issue list --state open --search "in:title \"$TITLE\"" --json number --jq 'length')
+          if [ "$EXISTING" != "0" ]; then
+            echo "Issue already open; skipping."
+            exit 0
+          fi
+
+          gh issue create \
+            --title "$TITLE" \
+            --body "$(cat <<EOF
+          WWDC $YEAR has passed. Time to diff Apple's live HIG against the snapshot we ship.
+
+          **Current snapshot**: \`$CURRENT\` (see \`VERSIONS.md\`)
+
+          ### Checklist
+
+          - [ ] Review [Apple HIG changelog](https://developer.apple.com/design/human-interface-guidelines/whats-new) for new topics, renamed components, deprecations.
+          - [ ] For each changed page, refresh the corresponding file in \`skills/*/references/\`.
+          - [ ] Update \`SKILL.md\` reference indexes if topics were added or renamed.
+          - [ ] Bump skill versions in \`VERSIONS.md\` (minor for content updates, major for structural changes).
+          - [ ] Update \`HIG_SNAPSHOT_DATE\` in \`packages/hig-doctor/src-mcp/src/index.ts\`.
+          - [ ] Update the snapshot attribution in \`README.md\`.
+          - [ ] Add any new components to \`packages/hig-doctor/src-termcast/src/patterns.ts\` if they warrant detection rules.
+          - [ ] Tag a release.
+
+          See \`CONTRIBUTING.md\` for the re-scan process notes.
+          EOF
+          )" \
+            --label "maintenance"
