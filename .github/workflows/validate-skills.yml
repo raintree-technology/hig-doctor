@@ -7,16 +7,16 @@ on:
       - "skills/**"
       - "VERSIONS.md"
       - ".claude-plugin/**"
-      - "packages/hig-doctor/**"
-      - "action.yml"
+      - "packages/hig-doctor/src/**"
+      - "packages/hig-doctor/package.json"
       - ".github/workflows/validate-skills.yml"
   pull_request:
     paths:
       - "skills/**"
       - "VERSIONS.md"
       - ".claude-plugin/**"
-      - "packages/hig-doctor/**"
-      - "action.yml"
+      - "packages/hig-doctor/src/**"
+      - "packages/hig-doctor/package.json"
       - ".github/workflows/validate-skills.yml"
 
 jobs:
@@ -28,12 +28,14 @@ jobs:
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
-      - id: doctor
-        uses: ./
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          directory: .
-          verbose: "true"
-          strict: "true"
+          node-version: 20
+          cache: npm
+          cache-dependency-path: packages/hig-doctor/package-lock.json
 
-      - name: Report score
-        run: 'echo "HIG Doctor score: ${{ steps.doctor.outputs.score }}"'
+      - name: Install validator dependencies
+        run: npm ci --prefix packages/hig-doctor
+
+      - name: Run validator (strict)
+        run: node packages/hig-doctor/src/cli.js . --verbose --strict

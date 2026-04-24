@@ -9,6 +9,7 @@ const readRepoFile = (relativePath) =>
   readFileSync(path.join(repoRoot, relativePath), "utf8");
 
 const workflowFiles = [
+  ".github/workflows/annual-hig-rescan.yml",
   ".github/workflows/build-website.yml",
   ".github/workflows/hig-doctor-ci.yml",
   ".github/workflows/publish-hig-doctor.yml",
@@ -60,10 +61,17 @@ test("npm publish uses trusted publishing instead of a long-lived token", () => 
   assert.doesNotMatch(content, /NODE_AUTH_TOKEN|NPM_TOKEN/);
 });
 
-test("composite action setup-node reference is pinned", () => {
+test("composite action pins third-party action references", () => {
   const content = readRepoFile("action.yml");
-  assert.match(
-    content,
-    /uses:\s+actions\/setup-node@[0-9a-f]{40}(?:\s+#.*)?/,
-  );
+  const usesLines = content
+    .split("\n")
+    .filter((line) => line.trimStart().startsWith("- uses:"));
+  assert.ok(usesLines.length > 0, "action.yml should declare at least one action");
+  for (const line of usesLines) {
+    assert.match(
+      line,
+      pinnedActionPattern,
+      `action.yml contains an unpinned action reference: ${line.trim()}`,
+    );
+  }
 });

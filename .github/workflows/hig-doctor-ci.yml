@@ -20,8 +20,8 @@ on:
       - ".github/workflows/publish-hig-doctor.yml"
 
 jobs:
-  hig-doctor:
-    name: Test and smoke-check hig-doctor
+  validator:
+    name: Skill validator (internal)
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -48,3 +48,53 @@ jobs:
 
       - name: Smoke check strict mode
         run: node packages/hig-doctor/src/cli.js . --strict
+
+  audit:
+    name: Audit tool
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: latest
+
+      - name: Run audit tool tests
+        working-directory: packages/hig-doctor/src-termcast
+        run: bun test
+
+      - name: Smoke audit against the website
+        run: bun packages/hig-doctor/src-termcast/src/cli.ts website --json
+
+  mcp:
+    name: MCP server
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: latest
+
+      - name: Install MCP server dependencies
+        working-directory: packages/hig-doctor/src-mcp
+        run: bun install --frozen-lockfile
+
+      - name: Smoke check MCP server handshake
+        working-directory: packages/hig-doctor/src-mcp
+        run: |
+          REQUEST='{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"0"}}}
+          {"jsonrpc":"2.0","method":"notifications/initialized"}
+          {"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'
+          echo "$REQUEST" | bun src/index.ts > /tmp/mcp-out.json &
+          BUNPID=$!
+          sleep 3
+          kill $BUNPID 2>/dev/null || true
+          wait $BUNPID 2>/dev/null || true
+          grep -q '"name":"hig_list_skills"' /tmp/mcp-out.json
+          grep -q '"name":"hig_lookup"' /tmp/mcp-out.json
+          grep -q '"name":"hig_audit"' /tmp/mcp-out.json

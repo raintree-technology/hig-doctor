@@ -1,60 +1,79 @@
-name: "HIG Doctor"
-description: "Validate Apple HIG skills and emit a health score"
+name: "HIG Doctor Audit"
+description: "Audit a project for Apple Human Interface Guidelines compliance"
 branding:
   icon: "activity"
   color: "gray-dark"
 
 inputs:
   directory:
-    description: "Repository directory to scan"
+    description: "Project directory to audit (relative to repo root)"
     default: "."
-  verbose:
-    description: "Show all findings in output"
-    default: "true"
-  strict:
-    description: "Fail on warnings as well as errors"
-    default: "false"
-  node-version:
-    description: "Node.js version to use"
-    default: "20"
+  fail-on:
+    description: "Fail the job if any concern at/above this severity is found. One of: critical, serious, moderate, none"
+    default: "none"
 
 outputs:
-  score:
-    description: "Health score (0-100)"
-    value: ${{ steps.score.outputs.score }}
+  critical:
+    description: "Count of critical-severity concerns"
+    value: ${{ steps.audit.outputs.critical }}
+  serious:
+    description: "Count of serious-severity concerns"
+    value: ${{ steps.audit.outputs.serious }}
+  moderate:
+    description: "Count of moderate-severity concerns"
+    value: ${{ steps.audit.outputs.moderate }}
+  report:
+    description: "Path to the generated hig-audit.md report"
+    value: ${{ steps.audit.outputs.report }}
 
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+    - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
       with:
-        node-version: ${{ inputs.node-version }}
+        bun-version: latest
 
-    - id: scan
+    - id: audit
+      name: Run HIG audit
       shell: bash
       env:
         INPUT_DIRECTORY: ${{ inputs.directory }}
-        INPUT_VERBOSE: ${{ inputs.verbose }}
-        INPUT_STRICT: ${{ inputs.strict }}
+        INPUT_FAIL_ON: ${{ inputs.fail-on }}
+        AUDIT_DIR: ${{ github.action_path }}/packages/hig-doctor/src-termcast
       run: |
-        FLAGS=""
-        if [ "$INPUT_VERBOSE" = "true" ]; then FLAGS="$FLAGS --verbose"; fi
-        if [ "$INPUT_STRICT" = "true" ]; then FLAGS="$FLAGS --strict"; fi
+        TARGET="$GITHUB_WORKSPACE/$INPUT_DIRECTORY"
+        REPORT="$GITHUB_WORKSPACE/hig-audit.md"
 
-        set +e
-        node "$GITHUB_ACTION_PATH/packages/hig-doctor/src/cli.js" "$INPUT_DIRECTORY" $FLAGS
-        EXIT_CODE="$?"
-        echo "exit_code=$EXIT_CODE" >> "$GITHUB_OUTPUT"
-        exit 0
+        # Full markdown report for humans and downstream steps
+        bun "$AUDIT_DIR/src/cli.ts" "$TARGET" --stdout > "$REPORT"
+        echo "report=$REPORT" >> "$GITHUB_OUTPUT"
 
-    - id: score
-      shell: bash
-      env:
-        INPUT_DIRECTORY: ${{ inputs.directory }}
-      run: |
-        SCORE="$(node "$GITHUB_ACTION_PATH/packages/hig-doctor/src/cli.js" "$INPUT_DIRECTORY" --score 2>/dev/null || true)"
-        echo "score=$SCORE" >> "$GITHUB_OUTPUT"
+        # JSON for severity extraction
+        JSON="$(bun "$AUDIT_DIR/src/cli.ts" "$TARGET" --json)"
+        echo "$JSON" | jq '{severities, files, frameworks}'
 
-    - shell: bash
-      if: steps.scan.outputs.exit_code != '0'
-      run: exit 1
+        CRITICAL=$(echo "$JSON" | jq -r '.severities.critical')
+        SERIOUS=$(echo "$JSON" | jq -r '.severities.serious')
+        MODERATE=$(echo "$JSON" | jq -r '.severities.moderate')
+        echo "critical=$CRITICAL" >> "$GITHUB_OUTPUT"
+        echo "serious=$SERIOUS" >> "$GITHUB_OUTPUT"
+        echo "moderate=$MODERATE" >> "$GITHUB_OUTPUT"
+
+        echo "### HIG Audit" >> "$GITHUB_STEP_SUMMARY"
+        echo "- Critical: $CRITICAL" >> "$GITHUB_STEP_SUMMARY"
+        echo "- Serious:  $SERIOUS" >> "$GITHUB_STEP_SUMMARY"
+        echo "- Moderate: $MODERATE" >> "$GITHUB_STEP_SUMMARY"
+
+        case "$INPUT_FAIL_ON" in
+          critical)
+            [ "$CRITICAL" -gt 0 ] && exit 1 || exit 0 ;;
+          serious)
+            [ "$((CRITICAL + SERIOUS))" -gt 0 ] && exit 1 || exit 0 ;;
+          moderate)
+            [ "$((CRITICAL + SERIOUS + MODERATE))" -gt 0 ] && exit 1 || exit 0 ;;
+          none|"")
+            exit 0 ;;
+          *)
+            echo "Invalid fail-on value: $INPUT_FAIL_ON" >&2
+            exit 2 ;;
+        esac
