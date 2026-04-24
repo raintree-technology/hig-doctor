@@ -4,13 +4,26 @@
   "description": "MCP server exposing Apple HIG skills and audit tool for AI coding agents",
   "type": "module",
   "bin": {
-    "hig-mcp": "./src/index.ts"
+    "hig-mcp": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
   },
   "scripts": {
     "start": "bun src/index.ts",
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --banner:js=\"#!/usr/bin/env node\"",
+    "prepublishOnly": "npm run build",
     "test": "bun test"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
   }
 }

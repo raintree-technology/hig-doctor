@@ -2,3 +2,5 @@ _raw/
 .claude/
 .DS_Store
 node_modules/
+packages/hig-doctor/src-mcp/dist/
+

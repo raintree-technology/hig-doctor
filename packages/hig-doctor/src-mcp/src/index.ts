@@ -1,4 +1,3 @@
-#!/usr/bin/env bun
 // hig-mcp — MCP server exposing Apple HIG skills and the audit tool.
 //
 // Transports: stdio (Claude Desktop, Cursor, Windsurf, Claude Code).
@@ -8,7 +7,11 @@
 //   hig_lookup        — fetch HIG reference markdown for a skill/topic
 //   hig_audit         — run the universal HIG compliance audit on a project
 //
-// Skills directory resolution: $HIG_SKILLS_DIR > ../../../../skills (monorepo dev).
+// Skills directory resolution order:
+//   1. $HIG_SKILLS_DIR (explicit override)
+//   2. <dist>/skills        (npm-installed package with bundled skills)
+//   3. monorepo dev layout  (../../../../skills from the source file)
+//   4. $PWD/skills
 
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -17,11 +20,13 @@ import {
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { readFile, readdir, access } from "node:fs/promises";
-import { join, resolve, isAbsolute } from "node:path";
+import { dirname, join, resolve, isAbsolute } from "node:path";
+import { fileURLToPath } from "node:url";
 import { audit } from "../../src-termcast/src/audit";
 
 const HIG_SNAPSHOT_DATE = "2025-02-02";
 const HIG_SOURCE_URL = "https://developer.apple.com/design/human-interface-guidelines/";
+const MODULE_DIR = dirname(fileURLToPath(import.meta.url));
 
 async function resolveSkillsDir(): Promise<string> {
   if (process.env.HIG_SKILLS_DIR) {
@@ -30,7 +35,9 @@ async function resolveSkillsDir(): Promise<string> {
     return p;
   }
   const candidates = [
-    resolve(import.meta.dir, "..", "..", "..", "..", "skills"),
+    resolve(MODULE_DIR, "skills"),
+    resolve(MODULE_DIR, "..", "..", "..", "..", "skills"),
+    resolve(MODULE_DIR, "..", "..", "..", "..", "..", "skills"),
     resolve(process.cwd(), "skills"),
   ];
   for (const c of candidates) {

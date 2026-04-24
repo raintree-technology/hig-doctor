@@ -1,0 +1,41 @@
+name: Publish hig-mcp
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "hig-mcp-v*"
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: packages/hig-doctor/src-mcp
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build bundle
+        run: npm run build
+
+      - name: Package dry run
+        run: npm pack --dry-run
+
+      - name: Publish with trusted publishing
+        run: npm publish --provenance --access public

@@ -13,6 +13,7 @@ const workflowFiles = [
   ".github/workflows/build-website.yml",
   ".github/workflows/hig-doctor-ci.yml",
   ".github/workflows/publish-hig-doctor.yml",
+  ".github/workflows/publish-hig-mcp.yml",
   ".github/workflows/validate-skills.yml",
 ];
 
@@ -55,10 +56,15 @@ test("website CI no longer self-mutates the repository", () => {
 });
 
 test("npm publish uses trusted publishing instead of a long-lived token", () => {
-  const content = readRepoFile(".github/workflows/publish-hig-doctor.yml");
-  assert.match(content, /\n\s+id-token:\s+write\n/);
-  assert.match(content, /npm publish --provenance --access public/);
-  assert.doesNotMatch(content, /NODE_AUTH_TOKEN|NPM_TOKEN/);
+  for (const file of [
+    ".github/workflows/publish-hig-doctor.yml",
+    ".github/workflows/publish-hig-mcp.yml",
+  ]) {
+    const content = readRepoFile(file);
+    assert.match(content, /\n\s+id-token:\s+write\n/, `${file} missing id-token`);
+    assert.match(content, /npm publish --provenance --access public/, `${file} missing provenance flags`);
+    assert.doesNotMatch(content, /NODE_AUTH_TOKEN|NPM_TOKEN/, `${file} references a long-lived token`);
+  }
 });
 
 test("composite action pins third-party action references", () => {
