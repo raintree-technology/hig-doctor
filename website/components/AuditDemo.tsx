@@ -2,7 +2,7 @@
 
 import { AlertTriangle, Check, ChevronDown, Play } from "lucide-react";
 import { useMemo, useState } from "react";
-import { detectPatterns, type PatternMatch } from "@/lib/audit/patterns";
+import { detectPatterns, type PatternMatch, type Severity } from "@/lib/audit/patterns";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -140,8 +140,6 @@ struct ContentView: View {
 </html>`,
   },
 };
-
-type Severity = "critical" | "serious" | "moderate";
 
 function severityFor(match: PatternMatch): Severity | null {
   return match.severity ?? null;
