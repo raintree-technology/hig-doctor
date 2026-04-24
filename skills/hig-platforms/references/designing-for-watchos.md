@@ -10,21 +10,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/designing-
 
 # Designing for watchOS
 
-When people glance at their Apple Watch, they know they can access essential information and perform simple, timely tasks whether they’re stationary or in motion.
+**Display.**
 
+**Ergonomics.**
 
+**Inputs.**
 
-As you begin designing your app for Apple Watch, start by understanding the following fundamental device characteristics and patterns that distinguish the watchOS experience. Using these characteristics and patterns to inform your design decisions can help you provide an app that Apple Watch users appreciate.
+**App interactions.**
 
-**Display.** The small Apple Watch display fits on the wrist while delivering an easy-to-read, high-resolution experience.
-
-**Ergonomics.** Because people wear Apple Watch, they’re usually no more than a foot away from the display as they raise their wrist to view it and use their opposite hand to interact with the device. In addition, the Always On display lets people view information on the watch face when they drop their wrist.
-
-**Inputs.** People can navigate vertically or inspect data by turning the [Digital Crown](https://developer.apple.com/design/human-interface-guidelines/digital-crown), which offers consistent control on the watch face, the Home Screen, and within apps. They can provide input even while they’re in motion with standard [gestures](https://developer.apple.com/design/human-interface-guidelines/gestures) like tap, swipe, and drag. Pressing the [Action button](https://developer.apple.com/design/human-interface-guidelines/action-button) initiates an essential action without looking at the screen, and using [shortcuts](https://developer.apple.com/design/human-interface-guidelines/siri#Shortcuts-and-suggestions) helps people perform their routine tasks quickly and easily. People can also take advantage of data that device features provide, such as GPS, sensors for blood oxygen and heart function, and the altimeter, accelerometer, and gyroscope.
-
-**App interactions.** People glance at the Always On display many times throughout the day, performing concise app interactions that can last for less than a minute each. People frequently use a watchOS app’s related experiences — like complications, notifications, and Siri interactions — more than they use the app itself.
-
-**System features.** watchOS provides several features that help people interact with the system and their apps in familiar, consistent ways.
+**System features.**
 
   * [Complications](https://developer.apple.com/design/human-interface-guidelines/complications)
 
@@ -34,12 +28,7 @@ As you begin designing your app for Apple Watch, start by understanding the foll
 
   * [Watch faces](https://developer.apple.com/design/human-interface-guidelines/watch-faces)
 
-
-
-
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Best-practices)
-
-Great Apple Watch experiences are streamlined and specialized, and integrate the platform and device capabilities that people value most. To help your experience feel at home in watchOS, prioritize the following ways to incorporate these features and capabilities.
 
   * Support quick, glanceable, single-screen interactions that deliver critical information succinctly and help people perform targeted actions with a simple gesture or two.
 
@@ -55,26 +44,18 @@ Great Apple Watch experiences are streamlined and specialized, and integrate the
 
   * Design your app to function independently, complementing your notifications and complications by providing additional details and functionality.
 
-
-
-
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Resources)
 
 #### [Related](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Related)
 
-[Apple Design Resources](https://developer.apple.com/design/resources/#watchos-apps)
-
 #### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Developer-documentation)
-
-[watchOS Pathway](https://developer.apple.com/watchos/get-started/)
 
 #### [Videos](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Videos)
 
-[![](https://devimages-cdn.apple.com/wwdc-services/images/3055294D-836B-4513-B7B0-0BC5666246B0/29B2363D-8DFB-4A25-A3DB-A804582858FD/9956_wide_250x141_1x.jpg) What’s new in watchOS 26 ](https://developer.apple.com/videos/play/wwdc2025/334)
-
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Change-log)
 
-Date| Changes  
----|---  
-June 5, 2023| Enhanced guidance for providing a glanceable, focused app experience, and emphasized the importance of the Digital Crown in navigation.  
-  
+---
+
+<!-- hig-doctor:canonical-footer -->
+For the complete guidance, including worked examples and illustrations, see the canonical page: https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos
+

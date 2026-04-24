@@ -10,78 +10,55 @@ source: https://developer.apple.com/design/human-interface-guidelines/popovers
 
 # Popovers
 
-A popover is a transient view that appears above other content when people click or tap a control or interactive area.
-
-
-
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/popovers#Best-practices)
 
-**Use a popover to expose a small amount of information or functionality.** Because a popover disappears after people interact with it, limit the amount of functionality in the popover to a few related tasks. For example, a calendar event popover makes it easy for people to change the date or time of an event, or to move it to another calendar. The popover disappears after the change, letting people continue reviewing the events on their calendar.
+**Use a popover to expose a small amount of information or functionality.**
 
-**Consider using popovers when you want more room for content.** Views like sidebars and panels take up a lot of space. If you need content only temporarily, displaying it in a popover can help streamline your interface.
+**Consider using popovers when you want more room for content.**
 
-**Position popovers appropriately.** Make sure a popover’s arrow points as directly as possible to the element that revealed it. Ideally, a popover doesn’t cover the element that revealed it or any essential content people may need to see while using it.
+**Position popovers appropriately.**
 
-**Use a Close button for confirmation and guidance only.** A Close button, including Cancel or Done, is worth including if it provides clarity, like exiting with or without saving changes. Otherwise, a popover generally closes when people click or tap outside its bounds or select an item in the popover. If multiple selections are possible, make sure the popover remains open until people explicitly dismiss it or they click or tap outside its bounds.
+**Use a Close button for confirmation and guidance only.**
 
-**Always save work when automatically closing a nonmodal popover.** People can unintentionally dismiss a nonmodal popover by clicking or tapping outside its bounds. Discard people’s work only when they click or tap an explicit Cancel button.
+**Always save work when automatically closing a nonmodal popover.**
 
-**Show one popover at a time.** Displaying multiple popovers clutters the interface and causes confusion. Never show a cascade or hierarchy of popovers, in which one emerges from another. If you need to show a new popover, close the open one first.
+**Show one popover at a time.**
 
-**Don’t show another view over a popover.** Make sure nothing displays on top of a popover, except for an alert.
+**Don’t show another view over a popover.**
 
-**When possible, let people close one popover and open another with a single click or tap.** Avoiding extra gestures is especially desirable when several different bar buttons each open a popover.
+**When possible, let people close one popover and open another with a single click or tap.**
 
-**Avoid making a popover too big.** Make a popover only big enough to display its contents and point to the place it came from. If necessary, the system can adjust the size of a popover to ensure it fits well in the interface.
+**Avoid making a popover too big.**
 
-**Provide a smooth transition when changing the size of a popover.** Some popovers provide both condensed and expanded views of the same information. If you adjust the size of a popover, animate the change to avoid giving the impression that a new popover replaced the old one.
+**Provide a smooth transition when changing the size of a popover.**
 
-**Avoid using the word _popover_ in help documentation.** Instead, refer to a specific task or selection. For example, instead of “Select the Show button at the bottom of the popover,” you might write “Select the Show button.”
+**Avoid using the word _popover_ in help documentation.**
 
-**Avoid using a popover to show a warning.** People can miss a popover or accidentally close it. If you need to warn people, use an [alert](https://developer.apple.com/design/human-interface-guidelines/alerts) instead.
+**Avoid using a popover to show a warning.**
 
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/popovers#Platform-considerations)
 
- _No additional considerations for visionOS. Not supported in tvOS or watchOS._
-
 ### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/popovers#iOS-iPadOS)
 
-**Avoid displaying popovers in compact views.** Make your app or game dynamically adjust its layout based on the size class of the content area. Reserve popovers for wide views; for compact views, use all available screen space by presenting information in a full-screen modal view like a sheet instead. For related guidance, see [Modality](https://developer.apple.com/design/human-interface-guidelines/modality).
+**Avoid displaying popovers in compact views.**
 
 ### [macOS](https://developer.apple.com/design/human-interface-guidelines/popovers#macOS)
-
-You can make a popover detachable in macOS, which becomes a separate panel when people drag it. The panel remains visible onscreen while people interact with other content.
 
   * Attached popover 
   * Detached popover 
 
+**Consider letting people detach a popover.**
 
-
-
-
-
-
-**Consider letting people detach a popover.** People might appreciate being able to convert a popover into a panel if they want to view other information while the popover remains visible.
-
-**Make minimal appearance changes to a detached popover.** A panel that looks similar to the original popover helps people maintain context.
+**Make minimal appearance changes to a detached popover.**
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/popovers#Resources)
 
 #### [Related](https://developer.apple.com/design/human-interface-guidelines/popovers#Related)
 
-[Sheets](https://developer.apple.com/design/human-interface-guidelines/sheets)
-
-[Action sheets](https://developer.apple.com/design/human-interface-guidelines/action-sheets)
-
-[Alerts](https://developer.apple.com/design/human-interface-guidelines/alerts)
-
-[Modality](https://developer.apple.com/design/human-interface-guidelines/modality)
-
 #### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/popovers#Developer-documentation)
 
-[`popover(isPresented:attachmentAnchor:arrowEdge:content:)`](https://developer.apple.com/documentation/SwiftUI/View/popover\(isPresented:attachmentAnchor:arrowEdge:content:\)) — SwiftUI
+---
 
-[`UIPopoverPresentationController`](https://developer.apple.com/documentation/UIKit/UIPopoverPresentationController) — UIKit
-
-[`NSPopover`](https://developer.apple.com/documentation/AppKit/NSPopover) — AppKit
+<!-- hig-doctor:canonical-footer -->
+For the complete guidance, including worked examples and illustrations, see the canonical page: https://developer.apple.com/design/human-interface-guidelines/popovers
 
