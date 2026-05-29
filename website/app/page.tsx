@@ -21,12 +21,29 @@ function SectionDivider() {
   );
 }
 
-export default function Home() {
+async function getStars(): Promise<number | null> {
+  try {
+    const res = await fetch(
+      "https://api.github.com/repos/raintree-technology/hig-doctor",
+      { next: { revalidate: 3600 } },
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return typeof data.stargazers_count === "number"
+      ? data.stargazers_count
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+export default async function Home() {
+  const stars = await getStars();
   return (
     <div className="photo-bg min-h-screen">
       <Header />
       <main id="main-content" className="relative z-10">
-        <Hero />
+        <Hero stars={stars} />
         <SectionDivider />
         <AuditDemo />
         <SectionDivider />

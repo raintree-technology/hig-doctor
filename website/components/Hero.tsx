@@ -34,10 +34,9 @@ const terminalLines = [
 
 const INSTALL_COMMAND = "npx skills add raintree-technology/hig-doctor";
 
-export default function Hero() {
+export default function Hero({ stars }: { stars: number | null }) {
   const [visibleLines, setVisibleLines] = useState(0);
   const [copied, setCopied] = useState(false);
-  const [stars, setStars] = useState<number | null>(null);
   const prefersReducedMotion = useRef(false);
 
   useEffect(() => {
@@ -62,16 +61,6 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    fetch("https://api.github.com/repos/raintree-technology/hig-doctor")
-      .then((res) => res.json())
-      .then((data) => {
-        if (typeof data.stargazers_count === "number") {
-          setStars(data.stargazers_count);
-        }
-      })
-      .catch(() => {});
-  }, []);
 
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(INSTALL_COMMAND);
