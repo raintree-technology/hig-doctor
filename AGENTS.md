@@ -20,15 +20,17 @@ hig-doctor/
 │   └── marketplace.json       # Claude Code plugin marketplace manifest
 ├── packages/
 │   └── hig-doctor/
-│       ├── src/               # Skill validator (Node.js, npm)
-│       └── src-termcast/      # HIG audit tool (TypeScript, Bun)
-│           └── src/
-│               ├── cli.ts     # CLI entry point
-│               ├── audit.ts   # Orchestrator
-│               ├── scanner.ts # Project file walker + framework detection
-│               ├── patterns.ts # 348 regex rules across 12 frameworks
-│               ├── categorizer.ts # Maps patterns to HIG categories
-│               └── audit-generator.ts # Markdown report builder
+│       ├── src/               # Skill validator (Node.js, npm; internal/unpublished)
+│       ├── src-termcast/      # HIG audit CLI — published to npm as `hig-doctor` (TypeScript, Bun)
+│       │   └── src/
+│       │       ├── cli.ts     # CLI entry point
+│       │       ├── audit.ts   # Orchestrator
+│       │       ├── scanner.ts # Project file walker + framework detection
+│       │       ├── patterns.ts # Detection rules across 12 frameworks (count = RULE_COUNT)
+│       │       ├── categorizer.ts # Maps patterns to HIG categories
+│       │       └── audit-generator.ts # Markdown report builder
+│       └── src-mcp/           # MCP stdio server — published to npm as `hig-mcp` (TypeScript, Bun)
+│           └── src/index.ts   # Tools: hig_list_skills, hig_lookup, hig_audit
 ├── demos/
 │   └── remotion-hig-doctor/   # Remotion video demo of audit output
 ├── skills/                    # Agent Skills (14 skills)
@@ -72,6 +74,20 @@ hig-doctor/
   - `node packages/hig-doctor/src/cli.js . --tui`
 - Run validator tests:
   - `npm --prefix packages/hig-doctor test`
+
+### MCP Server (`hig-mcp`)
+- Install MCP dependencies:
+  - `cd packages/hig-doctor/src-mcp && bun install`
+- Run the server over stdio (dev):
+  - `bun packages/hig-doctor/src-mcp/src/index.ts`
+- Build the publishable bundle:
+  - `cd packages/hig-doctor/src-mcp && bun run build`
+- When running outside the repo, point it at the skills directory:
+  - `HIG_SKILLS_DIR=/path/to/skills hig-mcp`
+
+### Repository-wide guard tests
+- Run from the repo root (workflow security + audit-patterns sync):
+  - `npm test`
 
 ## Agent Skills Specification
 
