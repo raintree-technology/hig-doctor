@@ -149,13 +149,41 @@ const getLineCount = (content) => {
   return content.endsWith("\n") ? newlineCount : newlineCount + 1;
 };
 
+// Replace fenced code blocks with blank lines so that `##` lines *inside* an
+// example (e.g. a "## Output Format" shown in a code sample) are not counted as
+// real document sections. Preserves line count.
+const stripFencedCode = (content) => {
+  let inFence = false;
+  let fenceChar = "";
+  return content
+    .split(/\r?\n/)
+    .map((line) => {
+      const m = line.match(/^\s*(```+|~~~+)/);
+      if (m) {
+        const ch = m[1][0];
+        if (!inFence) {
+          inFence = true;
+          fenceChar = ch;
+          return "";
+        }
+        if (ch === fenceChar) {
+          inFence = false;
+          return "";
+        }
+      }
+      return inFence ? "" : line;
+    })
+    .join("\n");
+};
+
 const extractH2Headings = (skillContent) => {
   const headings = [];
+  const stripped = stripFencedCode(skillContent);
   const regex = /^##\s+(.+?)\s*$/gm;
-  let match = regex.exec(skillContent);
+  let match = regex.exec(stripped);
   while (match !== null) {
     headings.push(match[1].trim());
-    match = regex.exec(skillContent);
+    match = regex.exec(stripped);
   }
   return headings;
 };
