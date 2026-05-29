@@ -150,8 +150,10 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
   ],
 }));
 
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
-  const { name, arguments: args } = request.params;
+async function handleTool(
+  name: string,
+  args: Record<string, unknown> | undefined,
+) {
   const skillsDir = await resolveSkillsDir();
 
   if (name === "hig_list_skills") {
@@ -263,6 +265,21 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   }
 
   throw new Error(`Unknown tool: ${name}`);
+}
+
+// Surface tool failures as isError results (the spec-recommended channel) rather
+// than JSON-RPC protocol errors, so the calling model can see and recover from
+// missing topics, invalid arguments, or unreadable paths.
+server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  try {
+    return await handleTool(request.params.name, request.params.arguments);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    return {
+      content: [{ type: "text", text: `Error: ${message}` }],
+      isError: true,
+    };
+  }
 });
 
 const transport = new StdioServerTransport();
