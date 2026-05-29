@@ -1,0 +1,8 @@
+# Default owner for everything in the repo. Required reviewer on all PRs.
+* @admin-raintree
+
+# Published artifacts and supply-chain-sensitive paths — review carefully.
+/packages/hig-doctor/src-termcast/ @admin-raintree
+/packages/hig-doctor/src-mcp/      @admin-raintree
+/.github/workflows/                @admin-raintree
+/action.yml                        @admin-raintree

@@ -4,4 +4,7 @@ _raw/
 node_modules/
 packages/hig-doctor/src-mcp/dist/
 packages/hig-doctor/src-termcast/dist/
+.vercel/
+.agents/
+skills-lock.json
 
