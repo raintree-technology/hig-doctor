@@ -1,5 +1,7 @@
 // patterns.ts — Universal HIG pattern detection across all frameworks
-// ~450 rules covering Swift, React, Vue, Svelte, Angular, Flutter, Kotlin, Android XML, CSS, HTML
+// Rules cover Swift, React, Vue, Svelte, Angular, Flutter, Kotlin, Android XML, CSS, HTML.
+// The authoritative rule count is the exported RULE_COUNT (end of file); never
+// hardcode a count in prose — import RULE_COUNT instead.
 export type Severity = "critical" | "serious" | "moderate";
 
 export interface PatternMatch {
@@ -197,7 +199,7 @@ const swiftRules: PatternRule[] = [
 // ════════════════════════════════════════════════════════════════
 const webCodeRules: PatternRule[] = [
   // ── Accessibility: Positives ────────────────────────────────
-  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "aria-label", regex: /aria-label[=s]/, fileFilter: WEB },
+  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "aria-label", regex: /aria-label\s*=/, fileFilter: WEB },
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "aria-describedby", regex: /aria-describedby/, fileFilter: WEB },
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "aria-live", regex: /aria-live/, fileFilter: WEB },
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "aria-expanded", regex: /aria-expanded/, fileFilter: WEB },
@@ -216,11 +218,15 @@ const webCodeRules: PatternRule[] = [
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "htmlFor/for attribute", regex: /htmlFor=|for=["']/, fileFilter: WEB_ALL },
 
   // ── Accessibility: Concerns ─────────────────────────────────
-  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "missing alt", regex: /<img\s[^>]*(?<!\balt=)[^>]*\/?>/, fileFilter: WEB_ALL },
-  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "Image without alt", regex: /<Image\s[^>]*(?<!\balt=)[^>]*\/?>/, fileFilter: TSX_JSX },
-  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "svg without a11y", regex: /<svg\s(?![^>]*(?:aria-label|aria-hidden|role=))/, fileFilter: WEB_ALL },
-  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "div with onClick no role", regex: /<div\s[^>]*onClick[^>]*(?!.*role=)/, fileFilter: TSX_JSX },
-  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "span with onClick no role", regex: /<span\s[^>]*onClick[^>]*(?!.*role=)/, fileFilter: TSX_JSX },
+  // Negative-attribute checks use a "tempered greedy token" — (?:(?!X)[^>])* —
+  // which walks the tag body asserting attribute X never appears before the
+  // closing >. A plain lookbehind/lookahead backtracks and matches tags that DO
+  // have the attribute (the original bug flagged <img alt="..."> as missing alt).
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "missing alt", regex: /<img\b(?:(?!\balt\s*=)[^>])*>/i, fileFilter: WEB_ALL },
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "Image without alt", regex: /<Image\b(?:(?!\balt\s*=)[^>])*>/, fileFilter: TSX_JSX },
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "svg without a11y", regex: /<svg\b(?:(?!aria-label|aria-hidden|\brole\s*=)[^>])*>/, fileFilter: WEB_ALL },
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "div with onClick no role", regex: /<div\b(?:(?!\brole\s*=)[^>])*\bonClick\b(?:(?!\brole\s*=)[^>])*>/, fileFilter: TSX_JSX },
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "span with onClick no role", regex: /<span\b(?:(?!\brole\s*=)[^>])*\bonClick\b(?:(?!\brole\s*=)[^>])*>/, fileFilter: TSX_JSX },
   { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "ambiguous link text", regex: />\s*(click here|read more|learn more|here|more)\s*</i, fileFilter: WEB_ALL },
   { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "positive tabindex", regex: /tabIndex=\{[1-9]|tabindex="[1-9]/, fileFilter: WEB_ALL },
   { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "aria-hidden on focusable", regex: /aria-hidden=["']true["'][^>]*(?:<button|<a\s|<input|tabIndex)/, fileFilter: WEB_ALL },
@@ -640,30 +646,81 @@ const allRules: PatternRule[] = [
   ...flutterRules,
 ];
 
+interface CommentState {
+  inBlock: boolean; // inside a /* ... */ block (CSS/SCSS/JS/Swift/Kotlin/Dart)
+  inHtml: boolean; // inside an <!-- ... --> comment (HTML/XML/Vue/Svelte)
+}
+
+// Remove comment content from a single line so rules never fire on commented-out
+// code or prose (e.g. "// disable autoplay"). String and template literals are
+// PRESERVED — their contents are exactly what many rules match on (role="button",
+// class="header", href="https://..."). Block (/* */) and HTML (<!-- -->) comment
+// state carries across lines via `state`; line (//) comments and string state are
+// line-local. This is a pragmatic lexer, not a full parser: good enough to kill
+// the dominant false-positive class without AST machinery.
+function stripComments(line: string, state: CommentState): string {
+  let out = "";
+  let str: string | null = null; // active string delimiter, or null
+  const n = line.length;
+  let i = 0;
+  while (i < n) {
+    const c = line[i];
+    const c2 = i + 1 < n ? line[i + 1] : "";
+    if (state.inBlock) {
+      if (c === "*" && c2 === "/") { state.inBlock = false; i += 2; } else { i++; }
+      continue;
+    }
+    if (state.inHtml) {
+      if (c === "-" && c2 === "-" && line[i + 2] === ">") { state.inHtml = false; i += 3; } else { i++; }
+      continue;
+    }
+    if (str !== null) {
+      out += c;
+      if (c === "\\" && i + 1 < n) { out += c2; i += 2; continue; }
+      if (c === str) str = null;
+      i++;
+      continue;
+    }
+    if (c === '"' || c === "'" || c === "`") { str = c; out += c; i++; continue; }
+    if (c === "/" && c2 === "*") { state.inBlock = true; i += 2; continue; }
+    if (c === "/" && c2 === "/") break; // line comment → drop the rest of the line
+    if (c === "<" && c2 === "!" && line[i + 2] === "-" && line[i + 3] === "-") { state.inHtml = true; i += 4; continue; }
+    out += c;
+    i++;
+  }
+  return out;
+}
+
 export function detectPatterns(code: string, file: string): PatternMatch[] {
   const matches: PatternMatch[] = [];
-  const lines = code.split("\n");
+  const rawLines = code.split("\n");
   const isStyleFile = /\.(css|scss|sass|less)$/.test(file);
 
-  // Track CSS block context for skipInBlock rules
-  // We maintain a stack of block-opening lines so we can check if we're inside
-  // a @media print, :focus:not(:focus-visible), or similar block
+  // Strip comments once per line (string literals preserved). The stripped text
+  // drives both CSS block tracking and rule matching; the original line is what
+  // gets reported back to the user.
+  const commentState: CommentState = { inBlock: false, inHtml: false };
+  const lines = rawLines.map(l => stripComments(l, commentState));
+
+  // Pre-filter rules to those applicable to this file so we don't re-test every
+  // rule's fileFilter against every line (the file path is constant per call).
+  const applicable = allRules.filter(r => !r.fileFilter || r.fileFilter.test(file));
+
+  // Track CSS block context for skipInBlock rules: a stack of block-opening lines
+  // so we can tell whether we're inside @media print, :focus:not(:focus-visible), etc.
   const blockContext: string[] = [];
   let braceDepth = 0;
   const blockStartDepth: number[] = [];
 
   for (let i = 0; i < lines.length; i++) {
-    const lineContent = lines[i];
+    const scanLine = lines[i];
 
-    // Track CSS block nesting for context-aware rules
     if (isStyleFile) {
-      // Check if this line opens a new block (has a selector/at-rule before {)
-      const opensBlock = lineContent.includes("{");
-      const closesBlock = lineContent.includes("}");
-
+      const opensBlock = scanLine.includes("{");
+      const closesBlock = scanLine.includes("}");
       if (opensBlock) {
-        // Accumulate context: look back up to 3 lines for the selector/at-rule
-        let contextLines = lineContent;
+        // Accumulate context: look back up to 3 lines for the selector/at-rule.
+        let contextLines = scanLine;
         for (let j = Math.max(0, i - 3); j < i; j++) {
           if (!lines[j].includes("}") && !lines[j].includes("{")) {
             contextLines = lines[j] + " " + contextLines;
@@ -675,7 +732,6 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
       }
       if (closesBlock) {
         braceDepth = Math.max(0, braceDepth - 1);
-        // Pop blocks that have ended
         while (blockStartDepth.length > 0 && blockStartDepth[blockStartDepth.length - 1] >= braceDepth) {
           blockStartDepth.pop();
           blockContext.pop();
@@ -683,10 +739,8 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
       }
     }
 
-    for (const rule of allRules) {
-      if (rule.fileFilter && !rule.fileFilter.test(file)) continue;
-      if (rule.regex.test(lineContent)) {
-        // Check if this match should be skipped due to block context
+    for (const rule of applicable) {
+      if (rule.regex.test(scanLine)) {
         if (rule.skipInBlock && isStyleFile) {
           const inSkippedBlock = blockContext.some(ctx => rule.skipInBlock!.test(ctx));
           if (inSkippedBlock) continue;
@@ -697,7 +751,7 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
           type: rule.type,
           pattern: rule.pattern,
           line: i + 1,
-          lineContent: lineContent.trim(),
+          lineContent: rawLines[i].trim(),
           file,
           severity: rule.type === "concern" ? severityFor(rule.pattern) : undefined,
         });

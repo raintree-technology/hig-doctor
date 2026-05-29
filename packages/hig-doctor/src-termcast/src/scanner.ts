@@ -1,5 +1,5 @@
 // scanner.ts — Framework-agnostic project scanner
-import { readdir, readFile } from "node:fs/promises";
+import { readdir, readFile, stat } from "node:fs/promises";
 import { join, relative, extname, sep } from "node:path";
 
 export interface ScannedFile {
@@ -33,6 +33,16 @@ const IGNORED_DIRS = new Set([
   "dist", "build", ".cache", ".turbo", "coverage", "__pycache__",
   ".dart_tool", ".pub-cache", "android", "ios", "macos", "linux", "windows",
 ]);
+
+// Skip files larger than this — generated bundles, minified assets, and data
+// blobs cost memory and regex time without yielding real findings. The auditor
+// runs on arbitrary paths (including via the MCP server), so this is also a DoS
+// guard against being pointed at a multi-GB file with a code extension.
+const MAX_FILE_BYTES = 1_500_000;
+// Bound recursion depth so pathological or cyclic trees can't hang the walker.
+const MAX_DEPTH = 25;
+// Skip obviously generated files regardless of size.
+const GENERATED_FILE = /\.(min|bundle|chunk)\.(js|css|mjs|cjs)$/i;
 
 const CODE_EXTENSIONS = new Set([
   ".swift", ".tsx", ".jsx", ".ts", ".js",
@@ -117,7 +127,20 @@ function buildIgnoreMatcher(patterns: string[]): (relPath: string) => boolean {
   };
 }
 
-async function walkDir(dir: string, rootDir: string, result: ScanResult, isIgnored: (relPath: string) => boolean): Promise<void> {
+// Read a UTF-8 file, skipping anything too large to be worth scanning. Returns
+// null on oversized files or read errors so callers can simply skip.
+async function readText(path: string): Promise<string | null> {
+  try {
+    const info = await stat(path);
+    if (info.size > MAX_FILE_BYTES) return null;
+    return await readFile(path, "utf-8");
+  } catch {
+    return null;
+  }
+}
+
+async function walkDir(dir: string, rootDir: string, result: ScanResult, isIgnored: (relPath: string) => boolean, depth = 0): Promise<void> {
+  if (depth > MAX_DEPTH) return;
   let entries;
   try {
     entries = await readdir(dir, { withFileTypes: true });
@@ -127,43 +150,49 @@ async function walkDir(dir: string, rootDir: string, result: ScanResult, isIgnor
   for (const entry of entries) {
     const fullPath = join(dir, entry.name);
     const relPath = relative(rootDir, fullPath);
+    // Never follow symlinks: avoids escaping the scanned tree (e.g. a link to /)
+    // and breaks any directory cycles.
+    if (entry.isSymbolicLink()) continue;
     if (entry.isDirectory()) {
       if (IGNORED_DIRS.has(entry.name)) continue;
       if (isIgnored(relPath)) continue;
       if (entry.name.endsWith(".xcassets")) { result.assetCatalogs.push(relPath); continue; }
       if (entry.name.endsWith(".xcodeproj") || entry.name.endsWith(".xcworkspace")) { result.xcodeProjects.push(relPath); continue; }
-      await walkDir(fullPath, rootDir, result, isIgnored);
+      await walkDir(fullPath, rootDir, result, isIgnored, depth + 1);
     } else if (entry.isFile()) {
       const ext = extname(entry.name);
       // Skip test/spec files — they contain example code that triggers false positives
       if (/\.(test|spec)\.[^.]+$/.test(entry.name)) continue;
+      // Skip generated/minified files regardless of size
+      if (GENERATED_FILE.test(entry.name)) continue;
       // Skip files matching .higauditignore / --exclude globs
       if (isIgnored(relPath)) continue;
+
       const isConfig = CONFIG_FILES.has(entry.name);
+      const wantCode = CODE_EXTENSIONS.has(ext);
+      const wantStyle = STYLE_EXTENSIONS.has(ext);
+      const wantMarkup = MARKUP_EXTENSIONS.has(ext);
+      if (!isConfig && !wantCode && !wantStyle && !wantMarkup) continue;
+
+      const content = await readText(fullPath);
+      if (content === null) continue; // oversized or unreadable — skip
+      const file: ScannedFile = { relativePath: relPath, absolutePath: fullPath, content };
 
       // Config files are always collected (and may also be code)
       if (isConfig) {
-        const content = await readFile(fullPath, "utf-8");
-        const file: ScannedFile = { relativePath: relPath, absolutePath: fullPath, content };
         result.configFiles.push(file);
         if (entry.name === "Info.plist") result.infoPlistPaths.push(relPath);
         if (entry.name === "Package.swift") result.packageSwift = file;
-        // Config files with code extensions also go into codeFiles
-        if (CODE_EXTENSIONS.has(ext)) {
+        if (wantCode) {
           result.codeFiles.push(file);
           if (ext === ".swift") result.swiftFiles.push(file);
         }
-      } else if (CODE_EXTENSIONS.has(ext)) {
-        const content = await readFile(fullPath, "utf-8");
-        const file: ScannedFile = { relativePath: relPath, absolutePath: fullPath, content };
+      } else if (wantCode) {
         result.codeFiles.push(file);
         if (ext === ".swift") result.swiftFiles.push(file);
-      } else if (STYLE_EXTENSIONS.has(ext)) {
-        const content = await readFile(fullPath, "utf-8");
-        result.styleFiles.push({ relativePath: relPath, absolutePath: fullPath, content });
-      } else if (MARKUP_EXTENSIONS.has(ext)) {
-        const content = await readFile(fullPath, "utf-8");
-        const file: ScannedFile = { relativePath: relPath, absolutePath: fullPath, content };
+      } else if (wantStyle) {
+        result.styleFiles.push(file);
+      } else if (wantMarkup) {
         result.markupFiles.push(file);
         if (ext === ".storyboard" || ext === ".xib") result.storyboards.push(file);
       }

@@ -538,3 +538,65 @@ describe("file filter isolation", () => {
     expect(matches.filter(m => m.pattern === "Svelte bind:value").length).toBe(0);
   });
 });
+
+// ════════════════════════════════════════════════════════════════
+// NO FALSE POSITIVES — correct code must stay quiet.
+// These guard the negative-attribute rules whose original lookbehind/lookahead
+// form matched tags that DID have the attribute (e.g. <img alt> flagged as
+// "missing alt"). Without these, that class of bug is invisible to the suite.
+// ════════════════════════════════════════════════════════════════
+describe("no false positives — negative-attribute rules", () => {
+  test("does NOT flag an <img> that has alt", () => {
+    const matches = detectPatterns(`<img src="logo.png" alt="Company logo" />`, "Hero.tsx");
+    expect(matches.some(m => m.pattern === "missing alt")).toBe(false);
+  });
+  test("flags an <img> with no alt", () => {
+    const matches = detectPatterns(`<img src="logo.png" />`, "Hero.tsx");
+    expect(matches.some(m => m.pattern === "missing alt" && m.type === "concern")).toBe(true);
+  });
+  test("does NOT flag a <div onClick> that has role (role after onClick)", () => {
+    const matches = detectPatterns(`<div onClick={go} role="button" tabIndex={0}>Go</div>`, "Btn.tsx");
+    expect(matches.some(m => m.pattern === "div with onClick no role")).toBe(false);
+  });
+  test("does NOT flag a <span onClick> that has role (role before onClick)", () => {
+    const matches = detectPatterns(`<span role="button" onClick={go}>Go</span>`, "Btn.tsx");
+    expect(matches.some(m => m.pattern === "span with onClick no role")).toBe(false);
+  });
+  test("does NOT flag an <svg> with role/aria", () => {
+    const matches = detectPatterns(`<svg role="img" aria-label="Menu" viewBox="0 0 24 24"></svg>`, "Icon.tsx");
+    expect(matches.some(m => m.pattern === "svg without a11y")).toBe(false);
+  });
+  test("flags a bare <svg> with no a11y", () => {
+    const matches = detectPatterns(`<svg viewBox="0 0 24 24"></svg>`, "Icon.tsx");
+    expect(matches.some(m => m.pattern === "svg without a11y" && m.type === "concern")).toBe(true);
+  });
+});
+
+// ════════════════════════════════════════════════════════════════
+// COMMENT & STRING HANDLING — rules must not fire on commented-out code
+// or prose, but must still fire on real code (and not truncate at // inside
+// string literals such as URLs).
+// ════════════════════════════════════════════════════════════════
+describe("comment & string handling", () => {
+  test("ignores a pattern inside a line comment", () => {
+    const matches = detectPatterns(`// example: <img src="x" /> has no alt`, "notes.tsx");
+    expect(matches.some(m => m.pattern === "missing alt")).toBe(false);
+  });
+  test("ignores autoplay mentioned in a block comment", () => {
+    const matches = detectPatterns(`/* never set autoplay on <video> */\nconst x = 1;`, "Player.tsx");
+    expect(matches.some(m => m.pattern === "autoplay media")).toBe(false);
+  });
+  test("ignores markup inside an HTML comment", () => {
+    const matches = detectPatterns(`<!-- <img src="x"> <video autoplay></video> -->`, "page.html");
+    expect(matches.some(m => m.pattern === "missing alt")).toBe(false);
+    expect(matches.some(m => m.pattern === "autoplay media")).toBe(false);
+  });
+  test("still flags autoplay in real markup", () => {
+    const matches = detectPatterns(`<video autoplay src="v.mp4"></video>`, "Player.tsx");
+    expect(matches.some(m => m.pattern === "autoplay media" && m.type === "concern")).toBe(true);
+  });
+  test("preserves https:// inside a string (does not truncate the line at //)", () => {
+    const matches = detectPatterns(`<a href="https://example.com/x">read more</a>`, "Links.tsx");
+    expect(matches.some(m => m.pattern === "ambiguous link text")).toBe(true);
+  });
+});
