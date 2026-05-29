@@ -1,15 +1,49 @@
 {
   "name": "hig-doctor",
   "version": "1.0.0",
-  "description": "Apple HIG audit tool for app projects",
+  "description": "Universal Apple HIG compliance auditor — scans SwiftUI, UIKit, React, and 9 other frameworks against 348 Human Interface Guidelines rules.",
   "type": "module",
   "bin": {
-    "hig-doctor": "./src/cli.ts"
+    "hig-doctor": "./dist/index.js"
   },
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raintree-technology/apple-hig-skills.git",
+    "directory": "packages/hig-doctor/src-termcast"
+  },
+  "homepage": "https://github.com/raintree-technology/apple-hig-skills/tree/main/packages/hig-doctor/src-termcast#readme",
+  "bugs": {
+    "url": "https://github.com/raintree-technology/apple-hig-skills/issues"
+  },
+  "keywords": [
+    "apple",
+    "hig",
+    "human-interface-guidelines",
+    "audit",
+    "accessibility",
+    "swiftui",
+    "react",
+    "design-lint"
+  ],
   "scripts": {
     "test": "bun test",
     "audit": "bun src/cli.ts",
     "audit:export": "bun src/cli.ts . --export",
-    "audit:stdout": "bun src/cli.ts . --stdout"
+    "audit:stdout": "bun src/cli.ts . --stdout",
+    "build": "esbuild src/cli.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --banner:js=\"#!/usr/bin/env node\"",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
   }
 }

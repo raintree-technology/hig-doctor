@@ -1,5 +1,7 @@
-#!/usr/bin/env bun
 // cli.ts — CLI entry point for hig-doctor audit
+// No shebang here: the published bin is the esbuild bundle (dist/index.js),
+// which gets a `#!/usr/bin/env node` banner at build time. Dev usage invokes
+// this file explicitly via `bun src/cli.ts`.
 import { audit } from "./audit";
 import type { Severity } from "./patterns";
 import { writeFile } from "node:fs/promises";
@@ -42,6 +44,16 @@ function parseFailOn(flags: Set<string>, args: string[]): Severity | null {
     if (m) return m[1] as Severity;
   }
   return null;
+}
+
+function parseExclude(args: string[]): string[] {
+  const out: string[] = [];
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--exclude" && i + 1 < args.length) out.push(...args[i + 1].split(","));
+    const m = args[i].match(/^--exclude=(.+)$/);
+    if (m) out.push(...m[1].split(","));
+  }
+  return out.map(s => s.trim()).filter(Boolean);
 }
 
 function exceedsThreshold(critical: number, serious: number, moderate: number, threshold: Severity): boolean {
@@ -90,7 +102,14 @@ function spinner(): { update(msg: string): void; done(msg: string): void } {
 async function main() {
   const args = process.argv.slice(2);
   const flags = new Set(args.filter(a => a.startsWith("--")));
-  const positional = args.filter(a => !a.startsWith("--"));
+  // Flags that consume the following token as their value, so it isn't
+  // mistaken for a positional argument (directory / skills-dir).
+  const valueFlags = new Set(["--fail-on", "--exclude"]);
+  const consumed = new Set<number>();
+  for (let i = 0; i < args.length; i++) {
+    if (valueFlags.has(args[i])) consumed.add(i + 1);
+  }
+  const positional = args.filter((a, i) => !a.startsWith("--") && !consumed.has(i));
 
   const directory = positional[0] || process.cwd();
   const skillsDir = positional[1];
@@ -112,6 +131,8 @@ ${c.bold}Options:${c.reset}
   --json                Print results as JSON
   --fail-on <severity>  Exit 1 if any concern at/above severity is found
                         ${c.dim}(critical | serious | moderate)${c.reset}
+  --exclude <glob>      Skip files matching a path glob ${c.dim}(repeatable, comma-ok)${c.reset}
+                        ${c.dim}Also honors a .higauditignore file in the target dir${c.reset}
   --help, -h            Show this help
 
 ${c.bold}Examples:${c.reset}
@@ -132,12 +153,13 @@ ${c.bold}Examples:${c.reset}
   }
 
   const failOn = parseFailOn(flags, args);
+  const exclude = parseExclude(args);
 
   const s = spinner();
   const appName = basename(resolve(directory));
   s.update(`Scanning ${c.bold}${appName}${c.reset}...`);
 
-  const result = await audit(directory, skillsDir);
+  const result = await audit(directory, skillsDir, { exclude });
   const { categories, scanResult, allMatches, markdown } = result;
 
   s.done(`Scanned ${c.bold}${scanResult.codeFiles.length}${c.reset} code + ${c.bold}${scanResult.styleFiles.length}${c.reset} style files`);

@@ -1,6 +1,6 @@
 // scanner.ts — Framework-agnostic project scanner
 import { readdir, readFile } from "node:fs/promises";
-import { join, relative, extname } from "node:path";
+import { join, relative, extname, sep } from "node:path";
 
 export interface ScannedFile {
   relativePath: string;
@@ -60,7 +60,64 @@ const CONFIG_FILES = new Set([
   "build.gradle", "build.gradle.kts", "AndroidManifest.xml",
 ]);
 
-async function walkDir(dir: string, rootDir: string, result: ScanResult): Promise<void> {
+export interface ScanOptions {
+  /** Path globs (relative to the scanned root) to skip. Merged with `.higauditignore`. */
+  exclude?: string[];
+}
+
+const IGNORE_FILE = ".higauditignore";
+
+// Convert a path glob to an anchored RegExp. Semantics (path-based, not gitignore):
+//   *   → any run of characters except "/"
+//   **  → any run of characters including "/"
+//   **/ → zero or more leading path segments
+//   ?   → a single character except "/"
+// Patterns match the POSIX relative path from the scan root.
+function globToRegExp(glob: string): RegExp {
+  const g = glob.replace(/^\.\//, "").replace(/^\/+/, "").replace(/\/+$/, "");
+  let re = "";
+  for (let i = 0; i < g.length; i++) {
+    const ch = g[i];
+    if (ch === "*") {
+      if (g[i + 1] === "*") {
+        if (g[i + 2] === "/") { re += "(?:.*/)?"; i += 2; }
+        else { re += ".*"; i += 1; }
+      } else {
+        re += "[^/]*";
+      }
+    } else if (ch === "?") {
+      re += "[^/]";
+    } else if ("\\^$.|+()[]{}".includes(ch)) {
+      re += "\\" + ch;
+    } else {
+      re += ch;
+    }
+  }
+  return new RegExp("^" + re + "$");
+}
+
+async function loadIgnorePatterns(directory: string): Promise<string[]> {
+  try {
+    const content = await readFile(join(directory, IGNORE_FILE), "utf-8");
+    return content
+      .split("\n")
+      .map(line => line.trim())
+      .filter(line => line.length > 0 && !line.startsWith("#"));
+  } catch {
+    return [];
+  }
+}
+
+function buildIgnoreMatcher(patterns: string[]): (relPath: string) => boolean {
+  const regexps = patterns.map(globToRegExp);
+  if (regexps.length === 0) return () => false;
+  return (relPath: string) => {
+    const posix = relPath.split(sep).join("/");
+    return regexps.some(re => re.test(posix));
+  };
+}
+
+async function walkDir(dir: string, rootDir: string, result: ScanResult, isIgnored: (relPath: string) => boolean): Promise<void> {
   let entries;
   try {
     entries = await readdir(dir, { withFileTypes: true });
@@ -72,13 +129,16 @@ async function walkDir(dir: string, rootDir: string, result: ScanResult): Promis
     const relPath = relative(rootDir, fullPath);
     if (entry.isDirectory()) {
       if (IGNORED_DIRS.has(entry.name)) continue;
+      if (isIgnored(relPath)) continue;
       if (entry.name.endsWith(".xcassets")) { result.assetCatalogs.push(relPath); continue; }
       if (entry.name.endsWith(".xcodeproj") || entry.name.endsWith(".xcworkspace")) { result.xcodeProjects.push(relPath); continue; }
-      await walkDir(fullPath, rootDir, result);
+      await walkDir(fullPath, rootDir, result, isIgnored);
     } else if (entry.isFile()) {
       const ext = extname(entry.name);
       // Skip test/spec files — they contain example code that triggers false positives
       if (/\.(test|spec)\.[^.]+$/.test(entry.name)) continue;
+      // Skip files matching .higauditignore / --exclude globs
+      if (isIgnored(relPath)) continue;
       const isConfig = CONFIG_FILES.has(entry.name);
 
       // Config files are always collected (and may also be code)
@@ -192,7 +252,7 @@ function detectFrameworks(result: ScanResult): Framework[] {
   return frameworks;
 }
 
-export async function scanProject(directory: string): Promise<ScanResult> {
+export async function scanProject(directory: string, options: ScanOptions = {}): Promise<ScanResult> {
   const result: ScanResult = {
     directory,
     frameworks: [],
@@ -207,7 +267,9 @@ export async function scanProject(directory: string): Promise<ScanResult> {
     xcodeProjects: [],
     packageSwift: null,
   };
-  await walkDir(directory, directory, result);
+  const patterns = [...(await loadIgnorePatterns(directory)), ...(options.exclude ?? [])];
+  const isIgnored = buildIgnoreMatcher(patterns);
+  await walkDir(directory, directory, result, isIgnored);
   result.frameworks = detectFrameworks(result);
   return result;
 }

@@ -48,6 +48,13 @@ bun scripts/legal-hardening.ts
 
 The script is idempotent and rewrites the attribution block in place.
 
+For a deeper transform that drops Apple's expository prose — keeping only headings, bold "principle" sentences, and list items — use the separate deep pass. It is destructive, so it dry-runs by default; review the diff before applying:
+
+```bash
+bun scripts/legal-hardening-deep.ts          # dry-run: prints a diff summary
+bun scripts/legal-hardening-deep.ts --apply   # writes the transform
+```
+
 ## Working on the audit CLI
 
 Source: [packages/hig-doctor/src-termcast/](packages/hig-doctor/src-termcast/)

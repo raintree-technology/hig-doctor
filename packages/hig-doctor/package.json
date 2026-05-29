@@ -1,6 +1,7 @@
 {
-  "name": "hig-doctor",
+  "name": "hig-skill-validator",
   "version": "0.2.0",
+  "private": true,
   "description": "Diagnose Apple HIG skills repositories for schema and content integrity issues",
   "keywords": [
     "agent-skills",
@@ -12,7 +13,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "hig-doctor": "./src/cli.js"
+    "hig-skill-validator": "./src/cli.js"
   },
   "exports": {
     ".": "./src/index.js"

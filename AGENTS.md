@@ -26,7 +26,7 @@ apple-hig-skills/
 │               ├── cli.ts     # CLI entry point
 │               ├── audit.ts   # Orchestrator
 │               ├── scanner.ts # Project file walker + framework detection
-│               ├── patterns.ts # 349 regex rules across 12 frameworks
+│               ├── patterns.ts # 348 regex rules across 12 frameworks
 │               ├── categorizer.ts # Maps patterns to HIG categories
 │               └── audit-generator.ts # Markdown report builder
 ├── demos/
@@ -36,6 +36,9 @@ apple-hig-skills/
 │       ├── SKILL.md           # Required skill file (<500 lines)
 │       └── references/        # HIG content files loaded on demand
 ├── website/                   # Next.js marketing site
+├── scripts/                   # Legal-hardening passes over scraped HIG content
+│   ├── legal-hardening.ts      # Strip Apple CDN images + insert attribution block (idempotent)
+│   └── legal-hardening-deep.ts # Keep headings + bold principles, drop Apple prose (destructive)
 ├── AGENTS.md                  # This file
 ├── CLAUDE.md -> AGENTS.md     # Symlink for Claude Code
 ├── CONTRIBUTING.md

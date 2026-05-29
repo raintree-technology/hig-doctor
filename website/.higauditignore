@@ -1,0 +1,4 @@
+# Demo code fixtures contain intentional HIG violations (and their fixes) used
+# by the in-browser audit demo. They are data strings, not rendered markup, so
+# the file-system audit should not flag them.
+components/audit-demo-fixtures.ts

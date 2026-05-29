@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "apple-hig-skills",
-      "description": "14 Apple HIG skills (foundations, platforms, patterns, inputs, technologies, and 8 component categories) plus an MCP server (hig_list_skills / hig_lookup / hig_audit) and a Bun-based CLI auditor that detects 349 HIG patterns across SwiftUI, UIKit, React, Vue, Svelte, Angular, Compose, Flutter, and React Native.",
+      "description": "14 Apple HIG skills (foundations, platforms, patterns, inputs, technologies, and 8 component categories) plus an MCP server (hig_list_skills / hig_lookup / hig_audit) and a Bun-based CLI auditor that detects 348 HIG patterns across SwiftUI, UIKit, React, Vue, Svelte, Angular, Compose, Flutter, and React Native.",
       "source": "./",
       "strict": false,
       "skills": [

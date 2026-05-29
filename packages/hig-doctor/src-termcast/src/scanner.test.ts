@@ -84,3 +84,70 @@ describe("scanProject", () => {
     } finally { await rm(dir, { recursive: true }); }
   });
 });
+
+describe("scanProject — ignore patterns", () => {
+  test("--exclude option skips a matching file", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "hig-test-"));
+    try {
+      await writeFile(join(dir, "App.tsx"), "export default function App() { return <div/> }");
+      await writeFile(join(dir, "fixtures.tsx"), "const bad = `<img src='x' />`");
+      const result = await scanProject(dir, { exclude: ["fixtures.tsx"] });
+      const paths = result.codeFiles.map(f => f.relativePath);
+      expect(paths).toContain("App.tsx");
+      expect(paths).not.toContain("fixtures.tsx");
+    } finally { await rm(dir, { recursive: true }); }
+  });
+
+  test(".higauditignore file is honored", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "hig-test-"));
+    try {
+      await writeFile(join(dir, "App.tsx"), "export default function App() { return <div/> }");
+      await writeFile(join(dir, "samples.tsx"), "const bad = `<button></button>`");
+      await writeFile(join(dir, ".higauditignore"), "# demo fixtures\nsamples.tsx\n");
+      const result = await scanProject(dir);
+      const paths = result.codeFiles.map(f => f.relativePath);
+      expect(paths).toContain("App.tsx");
+      expect(paths).not.toContain("samples.tsx");
+    } finally { await rm(dir, { recursive: true }); }
+  });
+
+  test("** glob matches nested files at any depth", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "hig-test-"));
+    try {
+      await mkdir(join(dir, "a", "b"), { recursive: true });
+      await writeFile(join(dir, "keep.ts"), "export const x = 1");
+      await writeFile(join(dir, "a", "b", "demo.stories.tsx"), "export const s = 1");
+      const result = await scanProject(dir, { exclude: ["**/*.stories.tsx"] });
+      const paths = result.codeFiles.map(f => f.relativePath);
+      expect(paths).toContain("keep.ts");
+      expect(paths.some(p => p.endsWith("demo.stories.tsx"))).toBe(false);
+    } finally { await rm(dir, { recursive: true }); }
+  });
+
+  test("directory pattern prunes the whole subtree", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "hig-test-"));
+    try {
+      await mkdir(join(dir, "examples"), { recursive: true });
+      await writeFile(join(dir, "examples", "Bad.tsx"), "const bad = `<img src='x'/>`");
+      await writeFile(join(dir, "Good.tsx"), "export const ok = 1");
+      const result = await scanProject(dir, { exclude: ["examples"] });
+      const paths = result.codeFiles.map(f => f.relativePath);
+      expect(paths).toContain("Good.tsx");
+      expect(paths.some(p => p.startsWith("examples"))).toBe(false);
+    } finally { await rm(dir, { recursive: true }); }
+  });
+
+  test("a single * does not cross directory boundaries", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "hig-test-"));
+    try {
+      await mkdir(join(dir, "nested"), { recursive: true });
+      await writeFile(join(dir, "top.ts"), "export const a = 1");
+      await writeFile(join(dir, "nested", "deep.ts"), "export const b = 2");
+      // "*.ts" should match only top-level .ts, not nested/deep.ts
+      const result = await scanProject(dir, { exclude: ["*.ts"] });
+      const paths = result.codeFiles.map(f => f.relativePath);
+      expect(paths).not.toContain("top.ts");
+      expect(paths.some(p => p.endsWith("deep.ts"))).toBe(true);
+    } finally { await rm(dir, { recursive: true }); }
+  });
+});

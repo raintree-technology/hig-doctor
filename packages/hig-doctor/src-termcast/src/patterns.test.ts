@@ -1,8 +1,18 @@
 import { describe, test, expect } from "bun:test";
 import { detectPatterns, RULE_COUNT } from "./patterns";
 
-test("rule count is 300+", () => {
-  expect(RULE_COUNT).toBeGreaterThanOrEqual(300);
+// Exact-count guard. The rule count is quoted verbatim in user-facing docs, so
+// it must not drift silently. When you intentionally add or remove rules, bump
+// the number here AND in every doc spot below (search the repo for the old count):
+//   - README.md (root)
+//   - AGENTS.md (root)
+//   - .claude-plugin/marketplace.json (plugin description)
+//   - website/components/AuditDemo.tsx (the "same N rules" copy)
+//   - demos/remotion-hig-doctor/README.md
+//   - demos/remotion-hig-doctor/src/data/report-data.json ("totalRules")
+const EXPECTED_RULE_COUNT = 348;
+test(`rule count is exactly ${EXPECTED_RULE_COUNT}`, () => {
+  expect(RULE_COUNT).toBe(EXPECTED_RULE_COUNT);
 });
 
 // ════════════════════════════════════════════════════════════════

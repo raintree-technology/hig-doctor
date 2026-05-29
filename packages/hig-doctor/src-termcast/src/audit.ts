@@ -5,6 +5,16 @@ import { categorizeMatches, type CategorySummary } from "./categorizer";
 import { generateAuditMarkdown, loadSkillContent } from "./audit-generator";
 import { resolve, join } from "node:path";
 import { access } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+
+// Directory of this module, resolved cross-runtime (Bun has import.meta.dir,
+// Node does not). Used only to locate the bundled skills/ folder in dev.
+const moduleDir = fileURLToPath(new URL(".", import.meta.url));
+
+export interface AuditOptions {
+  /** Path globs (relative to the audited directory) to exclude from scanning. */
+  exclude?: string[];
+}
 
 export interface AuditResult {
   scanResult: ScanResult;
@@ -13,11 +23,11 @@ export interface AuditResult {
   markdown: string;
 }
 
-export async function audit(directory: string, skillsDir?: string): Promise<AuditResult> {
+export async function audit(directory: string, skillsDir?: string, options: AuditOptions = {}): Promise<AuditResult> {
   const resolvedDir = resolve(directory);
 
   // 1. Scan project
-  const scanResult = await scanProject(resolvedDir);
+  const scanResult = await scanProject(resolvedDir, { exclude: options.exclude });
 
   // 2. Detect patterns in all source files (code + style + markup)
   const allMatches: PatternMatch[] = [];
@@ -43,7 +53,7 @@ export async function audit(directory: string, skillsDir?: string): Promise<Audi
       join(resolvedDir, "..", "skills"),
       join(resolvedDir, "..", "..", "skills"),
       // Relative to this package (for development)
-      join(import.meta.dir, "..", "..", "..", "..", "skills"),
+      join(moduleDir, "..", "..", "..", "..", "skills"),
     ];
     for (const candidate of candidates) {
       try {
