@@ -1,12 +1,12 @@
 ---
 title: "App Clips | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/app-clips
+---
 
 <!-- hig-doctor:attribution -->
 > **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/app-clips.
 > This file is a structured index of that content, snapshot 2025-02-02.
 > Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
-
 
 # App Clips
 

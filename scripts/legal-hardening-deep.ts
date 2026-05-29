@@ -57,13 +57,17 @@ function splitFile(raw: string): Section {
       "\\n(?:>.*\\n)*\\n*",
   );
   const rest = raw.slice(frontmatterEnd);
-  const attr = rest.match(attributionRe);
+  // A closed frontmatter fence leaves a blank line before the attribution marker;
+  // tolerate that leading whitespace so the block is still recognized.
+  const leadingBlank = rest.match(/^\s*\n/)?.[0] ?? "";
+  const afterBlank = rest.slice(leadingBlank.length);
+  const attr = afterBlank.match(attributionRe);
 
   let attributionBlock = "";
   let body = rest;
   if (attr && attr.index === 0) {
-    attributionBlock = attr[0];
-    body = rest.slice(attr[0].length);
+    attributionBlock = leadingBlank + attr[0];
+    body = afterBlank.slice(attr[0].length);
   }
 
   const frontmatter = raw.slice(0, frontmatterEnd);

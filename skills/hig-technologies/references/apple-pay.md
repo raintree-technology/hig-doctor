@@ -1,12 +1,12 @@
 ---
 title: "Apple Pay | Apple Developer Documentation"
 source: https://developer.apple.com/design/human-interface-guidelines/apple-pay
+---
 
 <!-- hig-doctor:attribution -->
 > **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/apple-pay.
 > This file is a structured index of that content, snapshot 2025-02-02.
 > Apple HIG text and imagery are © Apple Inc.; this repository provides organization and cross-referencing for AI agent consumption only.
-
 
 # Apple Pay
 
