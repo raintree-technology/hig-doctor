@@ -1,6 +1,6 @@
 # hig-mcp
 
-Model Context Protocol stdio server that exposes the [Apple HIG Skills](https://github.com/raintree-technology/apple-hig-skills) corpus and the universal HIG compliance auditor as tools for AI coding agents.
+Model Context Protocol stdio server that exposes the [Apple HIG Skills](https://github.com/raintree-technology/hig-doctor) corpus and the universal HIG compliance auditor as tools for AI coding agents.
 
 Runs under Node 20+ (after build) or Bun (directly from source). Works with Claude Desktop, Cursor, Windsurf, and Claude Code.
 
@@ -19,8 +19,8 @@ All output is JSON or markdown text. Content is from Apple's HIG, snapshot dated
 ### Via git clone (recommended while unpublished)
 
 ```bash
-git clone https://github.com/raintree-technology/apple-hig-skills.git
-cd apple-hig-skills/packages/hig-doctor/src-mcp
+git clone https://github.com/raintree-technology/hig-doctor.git
+cd hig-doctor/packages/hig-doctor/src-mcp
 bun install  # or: npm install
 ```
 
@@ -41,7 +41,7 @@ node dist/index.js
 
 ```bash
 npm install -g hig-mcp
-HIG_SKILLS_DIR=/path/to/apple-hig-skills/skills hig-mcp
+HIG_SKILLS_DIR=/path/to/hig-doctor/skills hig-mcp
 ```
 
 The published npm package does **not** bundle the skills corpus (Apple IP — kept pinned to the git repository). Set `HIG_SKILLS_DIR` to a local clone's `skills/` directory.
@@ -56,7 +56,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
     "hig-doctor": {
       "command": "bun",
       "args": [
-        "/absolute/path/to/apple-hig-skills/packages/hig-doctor/src-mcp/src/index.ts"
+        "/absolute/path/to/hig-doctor/packages/hig-doctor/src-mcp/src/index.ts"
       ]
     }
   }
@@ -71,10 +71,10 @@ Or if using the built Node artifact:
     "hig-doctor": {
       "command": "node",
       "args": [
-        "/absolute/path/to/apple-hig-skills/packages/hig-doctor/src-mcp/dist/index.js"
+        "/absolute/path/to/hig-doctor/packages/hig-doctor/src-mcp/dist/index.js"
       ],
       "env": {
-        "HIG_SKILLS_DIR": "/absolute/path/to/apple-hig-skills/skills"
+        "HIG_SKILLS_DIR": "/absolute/path/to/hig-doctor/skills"
       }
     }
   }

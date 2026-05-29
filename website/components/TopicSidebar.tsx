@@ -2,7 +2,7 @@ import { ArrowRight, ExternalLink, FileText } from "lucide-react";
 import type { TopicMeta } from "@/lib/topics";
 import TopicCopyButton from "./TopicCopyButton";
 
-const INSTALL_COMMAND = "npx skills add raintree-technology/apple-hig-skills";
+const INSTALL_COMMAND = "npx skills add raintree-technology/hig-doctor";
 
 interface TopicSidebarProps {
   skillDisplayName: string;

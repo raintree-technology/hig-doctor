@@ -148,7 +148,7 @@ export default function Header({
 
         <div className="flex items-center gap-1">
           <a
-            href="https://github.com/raintree-technology/apple-hig-skills"
+            href="https://github.com/raintree-technology/hig-doctor"
             target="_blank"
             rel="noopener noreferrer"
             className="w-10 h-10 flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all"

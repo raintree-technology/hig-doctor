@@ -8,14 +8,14 @@ This repository contains **Agent Skills** following the [Agent Skills specificat
 
 - **Name**: Apple HIG Skills
 - **Creator**: Raintree
-- **GitHub**: [raintree-technology/apple-hig-skills](https://github.com/raintree-technology/apple-hig-skills)
+- **GitHub**: [raintree-technology/hig-doctor](https://github.com/raintree-technology/hig-doctor)
 - **License**: MIT (structure); Apple HIG content is Apple's IP
 - **Source**: [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) (February 2025)
 
 ## Repository Structure
 
 ```
-apple-hig-skills/
+hig-doctor/
 ├── .claude-plugin/
 │   └── marketplace.json       # Claude Code plugin marketplace manifest
 ├── packages/
@@ -206,7 +206,7 @@ To use as a Claude Code plugin, clone the repo into your project's `.claude/` di
 When using any skill from this repository:
 
 1. **Once per session**, on first skill use, check for updates:
-   - Fetch `VERSIONS.md` from GitHub: https://raw.githubusercontent.com/raintree-technology/apple-hig-skills/main/VERSIONS.md
+   - Fetch `VERSIONS.md` from GitHub: https://raw.githubusercontent.com/raintree-technology/hig-doctor/main/VERSIONS.md
    - Compare versions against local skill files' `version` frontmatter field
 
 2. **Only prompt if meaningful**:
@@ -217,11 +217,11 @@ When using any skill from this repository:
    ```
    ---
    Skills update available: X HIG skills have updates.
-   Say "update skills" to update automatically, or run `git pull` in your apple-hig-skills folder.
+   Say "update skills" to update automatically, or run `git pull` in your hig-doctor folder.
    ```
 
 4. **If user says "update skills"**:
-   - Run `git pull` in the apple-hig-skills directory
+   - Run `git pull` in the hig-doctor directory
    - Confirm what was updated
 
 ## Git Workflow

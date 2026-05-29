@@ -18,12 +18,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/raintree-technology/apple-hig-skills.git",
+    "url": "git+https://github.com/raintree-technology/hig-doctor.git",
     "directory": "packages/hig-doctor/src-termcast"
   },
-  "homepage": "https://github.com/raintree-technology/apple-hig-skills/tree/main/packages/hig-doctor/src-termcast#readme",
+  "homepage": "https://github.com/raintree-technology/hig-doctor/tree/main/packages/hig-doctor/src-termcast#readme",
   "bugs": {
-    "url": "https://github.com/raintree-technology/apple-hig-skills/issues"
+    "url": "https://github.com/raintree-technology/hig-doctor/issues"
   },
   "keywords": [
     "apple",

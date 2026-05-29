@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const ENDPOINT = process.env.NEXT_PUBLIC_EMAIL_ENDPOINT;
-const GITHUB_URL = "https://github.com/raintree-technology/apple-hig-skills";
+const GITHUB_URL = "https://github.com/raintree-technology/hig-doctor";
 
 export default function UpdateNotify() {
   const [email, setEmail] = useState("");

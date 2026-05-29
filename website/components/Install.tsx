@@ -13,22 +13,22 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import UpdateNotify from "./UpdateNotify";
 
-const MAIN_COMMAND = "npx skills add raintree-technology/apple-hig-skills";
+const MAIN_COMMAND = "npx skills add raintree-technology/hig-doctor";
 
 const altMethods = [
   {
     label: "Git clone",
     command:
-      "git clone https://github.com/raintree-technology/apple-hig-skills.git .claude/apple-hig-skills",
+      "git clone https://github.com/raintree-technology/hig-doctor.git .claude/hig-doctor",
   },
   {
     label: "Submodule",
     command:
-      "git submodule add https://github.com/raintree-technology/apple-hig-skills.git .claude/apple-hig-skills",
+      "git submodule add https://github.com/raintree-technology/hig-doctor.git .claude/hig-doctor",
   },
   {
     label: "Copy files",
-    command: "cp -r apple-hig-skills/skills/* .claude/skills/",
+    command: "cp -r hig-doctor/skills/* .claude/skills/",
   },
 ] as const;
 
@@ -180,7 +180,7 @@ export default function Install() {
               <p className="text-xs text-muted-foreground text-center">
                 Having trouble?{" "}
                 <a
-                  href="https://github.com/raintree-technology/apple-hig-skills/issues"
+                  href="https://github.com/raintree-technology/hig-doctor/issues"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline underline-offset-4 hover:text-foreground transition-colors"

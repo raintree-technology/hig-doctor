@@ -1,6 +1,6 @@
 # hig-doctor
 
-Three co-located tools used by the apple-hig-skills repository:
+Three co-located tools used by the hig-doctor repository:
 
 1. **HIG Audit CLI** (`src-termcast/`) — universal Apple HIG compliance scanner across 12 frameworks.
 2. **MCP Server** (`src-mcp/`) — stdio Model Context Protocol server exposing the skills corpus and the audit function as tools.
@@ -103,7 +103,7 @@ Claude Desktop config:
   "mcpServers": {
     "hig-doctor": {
       "command": "bun",
-      "args": ["/absolute/path/to/apple-hig-skills/packages/hig-doctor/src-mcp/src/index.ts"]
+      "args": ["/absolute/path/to/hig-doctor/packages/hig-doctor/src-mcp/src/index.ts"]
     }
   }
 }
@@ -156,7 +156,7 @@ Wraps the audit CLI as a composite action:
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: raintree-technology/apple-hig-skills@main
+- uses: raintree-technology/hig-doctor@main
   with:
     directory: .
     fail-on: critical

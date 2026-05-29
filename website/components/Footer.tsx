@@ -22,7 +22,7 @@ export default function Footer() {
               Agent Skills
             </a>
             <a
-              href="https://github.com/raintree-technology/apple-hig-skills"
+              href="https://github.com/raintree-technology/hig-doctor"
               target="_blank"
               hrefLang="en"
               rel="noopener noreferrer"
@@ -31,7 +31,7 @@ export default function Footer() {
               GitHub
             </a>
             <a
-              href="https://github.com/raintree-technology/apple-hig-skills/blob/main/CONTRIBUTING.md"
+              href="https://github.com/raintree-technology/hig-doctor/blob/main/CONTRIBUTING.md"
               target="_blank"
               hrefLang="en"
               rel="noopener noreferrer"
@@ -52,7 +52,7 @@ export default function Footer() {
           </nav>
           <p>
             <a
-              href="https://github.com/raintree-technology/apple-hig-skills/blob/main/LICENSE"
+              href="https://github.com/raintree-technology/hig-doctor/blob/main/LICENSE"
               target="_blank"
               hrefLang="en"
               rel="noopener noreferrer"
@@ -86,7 +86,7 @@ export default function Footer() {
               Agent Skills
             </a>
             <a
-              href="https://github.com/raintree-technology/apple-hig-skills"
+              href="https://github.com/raintree-technology/hig-doctor"
               target="_blank"
               hrefLang="en"
               rel="noopener noreferrer"
@@ -95,7 +95,7 @@ export default function Footer() {
               GitHub
             </a>
             <a
-              href="https://github.com/raintree-technology/apple-hig-skills/blob/main/LICENSE"
+              href="https://github.com/raintree-technology/hig-doctor/blob/main/LICENSE"
               target="_blank"
               hrefLang="en"
               rel="noopener noreferrer"
@@ -104,7 +104,7 @@ export default function Footer() {
               MIT License
             </a>
             <a
-              href="https://github.com/raintree-technology/apple-hig-skills/blob/main/CONTRIBUTING.md"
+              href="https://github.com/raintree-technology/hig-doctor/blob/main/CONTRIBUTING.md"
               target="_blank"
               hrefLang="en"
               rel="noopener noreferrer"

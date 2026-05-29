@@ -86,7 +86,7 @@ const jsonLd = {
       description:
         "14 agent skills that give AI coding assistants deep knowledge of Apple's Human Interface Guidelines. Built for Claude Code and the Agent Skills spec.",
       url: baseUrl,
-      codeRepository: "https://github.com/raintree-technology/apple-hig-skills",
+      codeRepository: "https://github.com/raintree-technology/hig-doctor",
       programmingLanguage: "Markdown",
       license: "https://opensource.org/licenses/MIT",
       author: {

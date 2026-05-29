@@ -31,7 +31,7 @@ const terminalLines = [
   },
 ] as const;
 
-const INSTALL_COMMAND = "npx skills add raintree-technology/apple-hig-skills";
+const INSTALL_COMMAND = "npx skills add raintree-technology/hig-doctor";
 
 export default function Hero() {
   const [visibleLines, setVisibleLines] = useState(0);
@@ -62,7 +62,7 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    fetch("https://api.github.com/repos/raintree-technology/apple-hig-skills")
+    fetch("https://api.github.com/repos/raintree-technology/hig-doctor")
       .then((res) => res.json())
       .then((data) => {
         if (typeof data.stargazers_count === "number") {
@@ -117,7 +117,7 @@ export default function Hero() {
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6">
             <a
-              href="https://github.com/raintree-technology/apple-hig-skills"
+              href="https://github.com/raintree-technology/hig-doctor"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -157,7 +157,7 @@ export default function Hero() {
 
           <div className="inline-flex items-center gap-2 max-w-full">
             <code className="px-4 py-2.5 rounded-lg border bg-muted/50 text-sm font-mono text-muted-foreground overflow-x-auto min-w-0">
-              npx skills add raintree-technology/apple-hig-skills
+              npx skills add raintree-technology/hig-doctor
             </code>
             <Button
               variant="ghost"

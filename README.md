@@ -11,7 +11,7 @@ Content is © Apple Inc.; this repository provides organization, cross-referenci
 ## Install as a Claude Code plugin
 
 ```bash
-/plugin marketplace add raintree-technology/apple-hig-skills
+/plugin marketplace add raintree-technology/hig-doctor
 ```
 
 Or add as a git submodule into any project's `.claude/` directory.
@@ -32,7 +32,7 @@ Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_conf
   "mcpServers": {
     "hig-doctor": {
       "command": "bun",
-      "args": ["/absolute/path/to/apple-hig-skills/packages/hig-doctor/src-mcp/src/index.ts"]
+      "args": ["/absolute/path/to/hig-doctor/packages/hig-doctor/src-mcp/src/index.ts"]
     }
   }
 }
@@ -163,7 +163,7 @@ Audit on every pull request and fail the build on critical violations.
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: raintree-technology/apple-hig-skills@main
+- uses: raintree-technology/hig-doctor@main
   with:
     directory: .
     fail-on: critical
@@ -214,7 +214,7 @@ Skills use progressive disclosure — agents load only the reference files they 
 ## Repository structure
 
 ```
-apple-hig-skills/
+hig-doctor/
 ├── .claude-plugin/marketplace.json       # Claude Code plugin manifest
 ├── skills/                                # 14 Agent Skills (SKILL.md + references/)
 ├── packages/hig-doctor/

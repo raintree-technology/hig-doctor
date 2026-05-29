@@ -4,7 +4,7 @@ Guide for adding skills, updating reference content, proposing new audit rules, 
 
 ## Requesting a change
 
-Open an issue at https://github.com/raintree-technology/apple-hig-skills/issues/new for new skills, audit rules, MCP tools, or content corrections.
+Open an issue at https://github.com/raintree-technology/hig-doctor/issues/new for new skills, audit rules, MCP tools, or content corrections.
 
 ## Working on skills
 
