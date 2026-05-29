@@ -112,6 +112,39 @@ cd packages/hig-doctor/src-mcp && bun install
 npm test
 ```
 
+## Releasing
+
+There are **five independent version surfaces**; do not assume one bump implies another:
+
+| Surface | Version lives in | Tracks |
+|---------|------------------|--------|
+| Audit CLI (`hig-doctor` on npm) | `packages/hig-doctor/src-termcast/package.json` | CLI + audit engine |
+| MCP server (`hig-mcp` on npm) | `packages/hig-doctor/src-mcp/package.json` | MCP server |
+| Skill validator | `packages/hig-doctor/package.json` (`private`, unpublished) | internal tooling |
+| Skill content | `VERSIONS.md` + each `SKILL.md` `version` | HIG reference corpus only |
+| Plugin marketplace | `.claude-plugin/marketplace.json` | Claude Code plugin |
+
+**`VERSIONS.md` tracks skill *content* only** — it is unrelated to the npm package versions, which release on their own cadence.
+
+### Publishing an npm package
+
+Both npm packages publish via GitHub Actions using npm **trusted publishing** (OIDC + provenance — no long-lived token). To cut a release:
+
+1. Bump `version` in that package's `package.json`.
+2. Add a dated entry to that package's `CHANGELOG.md`.
+3. Open a PR; merge once CI is green.
+4. Tag the merge commit and push the tag. **The tag prefix selects the package and its version must match the manifest:**
+   - Audit CLI → `hig-doctor-v<version>` (e.g. `hig-doctor-v1.2.0`) → runs `publish-hig-doctor.yml`
+   - MCP server → `hig-mcp-v<version>` (e.g. `hig-mcp-v0.2.0`) → runs `publish-hig-mcp.yml`
+
+```bash
+git tag hig-doctor-v1.2.0 && git push origin hig-doctor-v1.2.0
+```
+
+A bare `vX.Y.Z` tag triggers **nothing** — only the prefixed patterns above are wired to a publish workflow. Either workflow can also be run manually via **workflow_dispatch** for a re-run.
+
+> Note: the publish workflows do not yet assert that the pushed tag's version matches `package.json`, nor that the version isn't already on npm — verify both manually before tagging.
+
 ## PR checklist
 
 - [ ] Skill `name` matches directory name, `hig-` prefix, valid kebab-case
