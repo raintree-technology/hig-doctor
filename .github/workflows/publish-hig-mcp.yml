@@ -28,11 +28,39 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Verify version (tag matches manifest, not already published)
+        run: |
+          PKG_NAME="$(node -p "require('./package.json').name")"
+          PKG_VERSION="$(node -p "require('./package.json').version")"
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            TAG_VERSION="${GITHUB_REF_NAME#hig-mcp-v}"
+            if [ "$TAG_VERSION" != "$PKG_VERSION" ]; then
+              echo "::error::Tag ${GITHUB_REF_NAME} implies version ${TAG_VERSION} but package.json is ${PKG_VERSION}"
+              exit 1
+            fi
+          fi
+          if npm view "${PKG_NAME}@${PKG_VERSION}" version > /dev/null 2>&1; then
+            echo "::error::${PKG_NAME}@${PKG_VERSION} is already published to npm"
+            exit 1
+          fi
+          echo "OK to publish ${PKG_NAME}@${PKG_VERSION}"
+
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
       - name: Build bundle
         run: npm run build
+
+      - name: Smoke check the built server
+        run: |
+          printf '%s\n' \
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"0"}}}' \
+            '{"jsonrpc":"2.0","method":"notifications/initialized"}' \
+            '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' | node dist/index.js > /tmp/mcp-out.json 2>/dev/null &
+          PID=$!; sleep 2; kill "$PID" 2>/dev/null || true; wait "$PID" 2>/dev/null || true
+          grep -q '"name":"hig_list_skills"' /tmp/mcp-out.json
+          grep -q '"name":"hig_lookup"' /tmp/mcp-out.json
+          grep -q '"name":"hig_audit"' /tmp/mcp-out.json
 
       - name: Package dry run
         run: npm pack --dry-run
