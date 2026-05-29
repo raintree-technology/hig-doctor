@@ -135,6 +135,9 @@ ${c.bold}Options:${c.reset}
                         ${c.dim}Also honors a .higauditignore file in the target dir${c.reset}
   --help, -h            Show this help
 
+${c.bold}Exit codes:${c.reset}
+  ${c.dim}0${c.reset} clean (or no gate)   ${c.dim}1${c.reset} --fail-on gate tripped   ${c.dim}2${c.reset} usage error   ${c.dim}3${c.reset} internal error
+
 ${c.bold}Examples:${c.reset}
   ${c.dim}# Audit a Next.js project${c.reset}
   bun run audit ./my-nextjs-app
@@ -194,6 +197,7 @@ ${c.bold}Examples:${c.reset}
     const detectionsPerFile = totalFiles > 0 ? totalDetections / totalFiles : 0;
     const lowDensity = detectionsPerFile < 4 && totalDetections < 500;
     process.stdout.write(JSON.stringify({
+      schemaVersion: 1,
       lowDensity,
       frameworks: scanResult.frameworks,
       files: { code: scanResult.codeFiles.length, style: scanResult.styleFiles.length, config: scanResult.configFiles.length },
@@ -290,6 +294,8 @@ ${c.bold}Examples:${c.reset}
 }
 
 main().catch((e) => {
+  // Exit 3 = internal error, kept distinct from 1 (gate tripped) and 2 (usage)
+  // so CI can tell "the audit crashed" from "the audit found violations".
   console.error(`${c.red}Error:${c.reset} ${e.message}`);
-  process.exit(1);
+  process.exit(3);
 });
