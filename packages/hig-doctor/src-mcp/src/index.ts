@@ -23,6 +23,7 @@ import { readFile, readdir, access } from "node:fs/promises";
 import { dirname, join, resolve, isAbsolute } from "node:path";
 import { fileURLToPath } from "node:url";
 import { audit } from "../../src-termcast/src/audit";
+import pkg from "../package.json";
 
 const HIG_SNAPSHOT_DATE = "2025-02-02";
 const HIG_SOURCE_URL = "https://developer.apple.com/design/human-interface-guidelines/";
@@ -61,7 +62,11 @@ function assertSlug(value: unknown, field: string): string {
 }
 
 function parseFrontmatter(raw: string): Record<string, string> {
-  const match = raw.match(/^---\s*\n([\s\S]*?)\n---/);
+  // Normalize CRLF first: on a Windows checkout the closing fence is "\r\n---",
+  // which the LF-only pattern would miss, returning an empty (description-less)
+  // frontmatter for every skill.
+  const normalized = raw.replace(/\r\n/g, "\n");
+  const match = normalized.match(/^---\s*\n([\s\S]*?)\n---/);
   if (!match) return {};
   const out: Record<string, string> = {};
   let currentKey = "";
@@ -81,7 +86,7 @@ function parseFrontmatter(raw: string): Record<string, string> {
 }
 
 const server = new Server(
-  { name: "hig-doctor", version: "0.1.0" },
+  { name: pkg.name, version: pkg.version },
   { capabilities: { tools: {} } },
 );
 
@@ -208,7 +213,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     if (typeof directory !== "string" || !isAbsolute(directory)) {
       throw new Error("directory must be an absolute path");
     }
-    const failOn = args?.fail_on as "critical" | "serious" | "moderate" | undefined;
+    const failOnRaw = args?.fail_on;
+    if (
+      failOnRaw != null &&
+      failOnRaw !== "critical" &&
+      failOnRaw !== "serious" &&
+      failOnRaw !== "moderate"
+    ) {
+      // The inputSchema enum is advisory only on the low-level Server; validate
+      // explicitly so an unrecognized value can't silently disable the gate.
+      throw new Error("Invalid fail_on: expected one of 'critical', 'serious', 'moderate'");
+    }
+    const failOn = failOnRaw as "critical" | "serious" | "moderate" | undefined;
     const result = await audit(directory, skillsDir);
     const critical = result.categories.reduce((s, c) => s + c.critical, 0);
     const serious = result.categories.reduce((s, c) => s + c.serious, 0);

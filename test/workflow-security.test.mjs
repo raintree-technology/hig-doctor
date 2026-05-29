@@ -14,6 +14,7 @@ const workflowFiles = [
   ".github/workflows/hig-doctor-ci.yml",
   ".github/workflows/publish-hig-doctor.yml",
   ".github/workflows/publish-hig-mcp.yml",
+  ".github/workflows/repo-checks.yml",
   ".github/workflows/validate-skills.yml",
 ];
 

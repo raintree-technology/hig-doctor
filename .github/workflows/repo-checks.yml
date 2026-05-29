@@ -1,0 +1,22 @@
+name: Repo checks
+
+# Runs the repository-wide guard tests on every change. These encode real
+# invariants (workflows pin actions to SHAs + use least privilege; the website's
+# audit-patterns copy stays byte-identical to the canonical module) and were
+# previously enforced by nothing in CI.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  root-guards:
+    name: Root guards (workflow security + patterns sync)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Run root guard tests
+        run: node --test test/workflow-security.test.mjs test/audit-patterns-sync.test.mjs
