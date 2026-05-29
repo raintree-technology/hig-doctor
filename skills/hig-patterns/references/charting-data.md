@@ -16,7 +16,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/charting-d
 
   * Evaluating different items — or the same item at different times — by comparing data across multiple categories
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/charting-data#Best-practices)
+## Best practices
 
 **Use a chart when you want to highlight important information about a dataset.**
 
@@ -24,7 +24,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/charting-d
 
 **Make every chart in your app accessible.**
 
-## [Designing effective charts](https://developer.apple.com/design/human-interface-guidelines/charting-data#Designing-effective-charts)
+## Designing effective charts
 
 **In general, prefer using common chart types.**
 
@@ -39,18 +39,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/charting-d
 **Prefer consistency across multiple charts, deviating only when you need to highlight differences.**
 
 **Maintain continuity among multiple charts that use the same data.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/charting-data#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/charting-data#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/charting-data#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/charting-data#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/charting-data#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/charting-data#Change-log)
 
 ---
 

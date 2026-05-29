@@ -10,21 +10,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/gyro-and-a
 
 # Gyroscope and accelerometer
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/gyro-and-accelerometer#Best-practices)
+## Best practices
 
 **Use motion data only to offer a tangible benefit to people.**
 
 **Outside of active gameplay, avoid using accelerometers or gyroscopes for the direct manipulation of your interface.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/gyro-and-accelerometer#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/gyro-and-accelerometer#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/gyro-and-accelerometer#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/gyro-and-accelerometer#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/gyro-and-accelerometer#Videos)
 
 ---
 

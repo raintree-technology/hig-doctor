@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/pop-up-but
 
 # Pop-up buttons
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons#Best-practices)
+## Best practices
 
 **Use a pop-up button to present a flat list of mutually exclusive options or states.**
 
@@ -28,19 +28,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/pop-up-but
 
 **If necessary, include a Custom option in a pop-up button’s menu to provide additional items that are useful in some situations.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons#Platform-considerations)
+## Platform considerations
 
-### [iPadOS](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons#iPadOS)
+### iPadOS
 
 **Within a popover or modal view, consider using a pop-up button instead of a disclosure indicator to present multiple options for a list item.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons#Change-log)
 
 ---
 

@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/complicati
 
 # Complications
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/complications#Best-practices)
+## Best practices
 
 **Identify essential, dynamic content that people want to view at a glance.**
 
@@ -24,7 +24,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/complicati
 
 **Carefully consider when to update data.**
 
-## [Visual design](https://developer.apple.com/design/human-interface-guidelines/complications#Visual-design)
+## Visual design
 
 **Choose a ring or gauge style based on the data you need to display.**
 
@@ -46,7 +46,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/complicati
 
 **Provide a set of static placeholder images for each complication you support.**
 
-## [Circular](https://developer.apple.com/design/human-interface-guidelines/complications#Circular)
+## Circular
 
   * Style: Rounded
 
@@ -60,7 +60,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/complicati
 
   * Text size: 34.5 pt (40mm), 36.5 pt (41mm), 36.5 pt (44mm), 41 pt (45mm/49mm)
 
-## [Corner](https://developer.apple.com/design/human-interface-guidelines/complications#Corner)
+## Corner
 
   * Style: Rounded
 
@@ -68,9 +68,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/complicati
 
   * Text size: 10 pt (40mm), 10.5 pt (41mm), 11 pt (44mm), 12 pt (45mm/49mm)
 
-## [Inline](https://developer.apple.com/design/human-interface-guidelines/complications#Inline)
-
-## [Rectangular](https://developer.apple.com/design/human-interface-guidelines/complications#Rectangular)
+## Rectangular
 
   * By supplying background color or content that communicates information or aids in recognition
 
@@ -83,28 +81,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/complicati
   * Weight: Medium
 
   * Text size: 16.5 pt (40mm), 17.5 pt (41mm), 18 pt (44mm), 19.5 pt (45mm/49mm)
-
-## [Legacy templates](https://developer.apple.com/design/human-interface-guidelines/complications#Legacy-templates)
-
-### [Circular small](https://developer.apple.com/design/human-interface-guidelines/complications#Circular-small)
-
-### [Modular small](https://developer.apple.com/design/human-interface-guidelines/complications#Modular-small)
-
-### [Modular large](https://developer.apple.com/design/human-interface-guidelines/complications#Modular-large)
-
-### [Extra large](https://developer.apple.com/design/human-interface-guidelines/complications#Extra-large)
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/complications#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/complications#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/complications#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/complications#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/complications#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/complications#Change-log)
 
 ---
 

@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/color
 
 # Color
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/color#Best-practices)
+## Best practices
 
 **Avoid using the same color to mean different things.**
 
@@ -24,7 +24,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/color
 
 **If your app lets people choose colors, prefer system-provided color controls where available.**
 
-## [Inclusive color](https://developer.apple.com/design/human-interface-guidelines/color#Inclusive-color)
+## Inclusive color
 
 **Avoid relying solely on color to differentiate between objects, indicate interactivity, or communicate essential information.**
 
@@ -32,13 +32,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/color
 
 **Consider how the colors you use might be perceived in other countries and cultures.**
 
-## [System colors](https://developer.apple.com/design/human-interface-guidelines/color#System-colors)
+## System colors
 
 **Avoid hard-coding system color values in your app.**
 
 **Avoid redefining the semantic meanings of dynamic system colors.**
 
-## [Liquid Glass color](https://developer.apple.com/design/human-interface-guidelines/color#Liquid-Glass-color)
+## Liquid Glass color
 
 **Apply color sparingly to the Liquid Glass material, and to symbols or text on the material.**
 
@@ -46,7 +46,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/color
 
 **Be aware of the placement of color in the content layer.**
 
-## [Color management](https://developer.apple.com/design/human-interface-guidelines/color#Color-management)
+## Color management
 
 **Apply color profiles to your images.**
 
@@ -54,9 +54,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/color
 
 **Provide color space–specific image and color variations if necessary.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/color#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/color#iOS-iPadOS)
+### iOS, iPadOS
 
   * Primary for the overall view
 
@@ -64,17 +64,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/color
 
   * Tertiary for grouping content or elements within secondary elements
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/color#macOS)
-
-#### [App accent colors](https://developer.apple.com/design/human-interface-guidelines/color#App-accent-colors)
-
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/color#tvOS)
+### tvOS
 
 **Consider choosing a limited color palette that coordinates with your app logo.**
 
 **Avoid using only color to indicate focus.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/color#visionOS)
+### visionOS
 
 **Use color sparingly, especially on glass.**
 
@@ -82,27 +78,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/color
 
 **In a fully immersive experience, help people maintain visual comfort by keeping brightness levels balanced.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/color#watchOS)
+### watchOS
 
 **Use background color to support existing content or supply additional information.**
 
 **Recognize that people might prefer graphic complications to use tinted mode instead of full color.**
-
-## [Specifications](https://developer.apple.com/design/human-interface-guidelines/color#Specifications)
-
-### [System colors](https://developer.apple.com/design/human-interface-guidelines/color#System-colors)
-
-### [iOS, iPadOS system gray colors](https://developer.apple.com/design/human-interface-guidelines/color#iOS-iPadOS-system-gray-colors)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/color#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/color#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/color#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/color#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/color#Change-log)
 
 ---
 

@@ -26,7 +26,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-clips
 
   * A text editor might allow people to create and save a document using the demo App Clip.
 
-## [Designing your App Clip](https://developer.apple.com/design/human-interface-guidelines/app-clips#Designing-your-App-Clip)
+## Designing your App Clip
 
 **Allow people to complete a task or a demo in your App Clip.**
 
@@ -52,7 +52,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-clips
 
 **Provide a familiar, focused experience in your app.**
 
-### [Preserving privacy](https://developer.apple.com/design/human-interface-guidelines/app-clips#Preserving-privacy)
+### Preserving privacy
 
 **Limit the amount of data you store and handle yourself.**
 
@@ -60,7 +60,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-clips
 
 **Offer a secure way to pay for services or goods that also respects people’s privacy.**
 
-### [Showcasing your app](https://developer.apple.com/design/human-interface-guidelines/app-clips#Showcasing-your-app)
+### Showcasing your app
 
   * On the App Clip card, people can either launch the App Clip or visit the full app’s page on the App Store.
 
@@ -72,7 +72,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-clips
 
 **Recommend your app in a nonintrusive, polite way.**
 
-### [Limiting notifications](https://developer.apple.com/design/human-interface-guidelines/app-clips#Limiting-notifications)
+### Limiting notifications
 
 **Only ask for permission to use notifications for an extended period of time if it’s really needed.**
 
@@ -80,13 +80,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-clips
 
 **Use notifications to help people complete a task.**
 
-### [Creating App Clips for businesses](https://developer.apple.com/design/human-interface-guidelines/app-clips#Creating-App-Clips-for-businesses)
+### Creating App Clips for businesses
 
 **Use consistent branding.**
 
 **Consider multiple businesses.**
 
-## [Creating content for an App Clip card](https://developer.apple.com/design/human-interface-guidelines/app-clips#Creating-content-for-an-App-Clip-card)
+## Creating content for an App Clip card
 
 **Be informative.**
 
@@ -100,9 +100,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-clips
 
 **Pick a verb for the action button that best fits your App Clip.**
 
-## [App Clip Codes](https://developer.apple.com/design/human-interface-guidelines/app-clips#App-Clip-Codes)
+## App Clip Codes
 
-### [Interacting with App Clip Codes](https://developer.apple.com/design/human-interface-guidelines/app-clips#Interacting-with-App-Clip-Codes)
+### Interacting with App Clip Codes
 
   * A coffee shop could place an App Clip Code on their menu. A guest could hold their device close to the App Clip Code and instantly launch the shop’s App Clip to order a drink.
 
@@ -110,7 +110,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-clips
 
   * A video game creator could hand out marketing material at an industry event that includes an App Clip Code. An event attendee could scan the code to launch an App Clip that’s a playable demo of their latest video game.
 
-### [Displaying App Clip Codes](https://developer.apple.com/design/human-interface-guidelines/app-clips#Displaying-App-Clip-Codes)
+### Displaying App Clip Codes
 
   * On a tabletop at a restaurant
 
@@ -144,7 +144,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-clips
 
 **Provide enough space between an App Clip Code and adjacent App Clip Codes, graphics, or materials.**
 
-### [Using clear messaging](https://developer.apple.com/design/human-interface-guidelines/app-clips#Using-clear-messaging)
+### Using clear messaging
 
   * Scan to [_describe what people can do with your App Clip_].
 
@@ -156,13 +156,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-clips
 
 **Adhere to[Guidelines for Using Apple Trademarks](https://www.apple.com/legal/intellectual-property/guidelinesfor3rdparties.html) when referring to your App Clip and App Clip Codes.**
 
-### [Customizing your App Clip Code](https://developer.apple.com/design/human-interface-guidelines/app-clips#Customizing-your-App-Clip-Code)
+### Customizing your App Clip Code
 
 **Always use the generated App Clip Code.**
 
 **Choose colors with enough contrast that ensure accurate scanning.**
 
-## [Printing guidelines](https://developer.apple.com/design/human-interface-guidelines/app-clips#Printing-guidelines)
+## Printing guidelines
 
 **Use high-quality, non-textured print materials.**
 
@@ -176,25 +176,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-clips
 
 **If you create large batches of App Clip Codes, thoroughly test your printing workflow, and verify printed App Clip Codes.**
 
-### [Verifying your printer’s calibration](https://developer.apple.com/design/human-interface-guidelines/app-clips#Verifying-your-printers-calibration)
+### Verifying your printer’s calibration
 
 **Verify print quality of your chosen color pair with the printer calibration test sheet that shows text boxes for each default color pair.**
 
 **Verify your printer’s grayscale settings by printing the printer calibration test sheet that shows two grayscale bars.**
-
-## [Legal requirements](https://developer.apple.com/design/human-interface-guidelines/app-clips#Legal-requirements)
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/app-clips#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/app-clips#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/app-clips#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/app-clips#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/app-clips#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/app-clips#Change-log)
 
 ---
 

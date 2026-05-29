@@ -18,7 +18,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/id-verifie
 
   * **Data Transfer request.** Use a Data Transfer request only when you have a legal verification requirement and you need to store or process information like a person’s address or date of birth. You must request an additional entitlement to make a Data Transfer request. To learn more, see [Get started with ID Verifier](https://developer.apple.com/wallet/id-verifier/); for developer guidance, see [`MobileDriversLicenseDataRequest`](https://developer.apple.com/documentation/ProximityReader/MobileDriversLicenseDataRequest) and [`MobileDriversLicenseRawDataRequest`](https://developer.apple.com/documentation/ProximityReader/MobileDriversLicenseRawDataRequest).
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/id-verifier#Best-practices)
+## Best practices
 
 **Ask only for the data you need.**
 
@@ -27,18 +27,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/id-verifie
 **Provide a button that initiates the verification process.**
 
 **In a Display Only request, help the person using your app provide feedback on the visual confirmation they perform.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/id-verifier#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/id-verifier#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/id-verifier#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/id-verifier#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/id-verifier#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/id-verifier#Change-log)
 
 ---
 

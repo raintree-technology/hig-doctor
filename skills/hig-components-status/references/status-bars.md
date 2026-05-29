@@ -10,19 +10,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/status-bar
 
 # Status bars
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/status-bars#Best-practices)
+## Best practices
 
 **Obscure content under the status bar.**
 
 **Consider temporarily hiding the status bar when displaying full-screen media.**
 
 **Avoid permanently hiding the status bar.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/status-bars#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/status-bars#Resources)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/status-bars#Developer-documentation)
 
 ---
 

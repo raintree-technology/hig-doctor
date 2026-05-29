@@ -10,11 +10,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/carekit
 
 # CareKit
 
-## [Data and privacy](https://developer.apple.com/design/human-interface-guidelines/carekit#Data-and-privacy)
+## Data and privacy
 
 **Provide a coherent privacy policy.**
 
-### [HealthKit integration](https://developer.apple.com/design/human-interface-guidelines/carekit#HealthKit-integration)
+### HealthKit integration
 
 **Request access to health data only when you need it.**
 
@@ -22,15 +22,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/carekit
 
 **Manage health data sharing solely through the system’s privacy settings.**
 
-### [Motion data](https://developer.apple.com/design/human-interface-guidelines/carekit#Motion-data)
+## CareKit views
 
-### [Photos](https://developer.apple.com/design/human-interface-guidelines/carekit#Photos)
-
-### [ResearchKit integration](https://developer.apple.com/design/human-interface-guidelines/carekit#ResearchKit-integration)
-
-## [CareKit views](https://developer.apple.com/design/human-interface-guidelines/carekit#CareKit-views)
-
-### [Tasks](https://developer.apple.com/design/human-interface-guidelines/carekit#Tasks)
+### Tasks
 
 **Use the simple style for a one-step task.**
 
@@ -48,7 +42,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/carekit
 
 **Consider supplementing multistep or complex tasks with videos or images.**
 
-### [Charts](https://developer.apple.com/design/human-interface-guidelines/carekit#Charts)
+### Charts
 
 **Consider highlighting narratives and trends to illustrate progress.**
 
@@ -64,17 +58,17 @@ source: https://developer.apple.com/design/human-interface-guidelines/carekit
 
 **If necessary, offset data to keep charts proportional.**
 
-### [Contact views](https://developer.apple.com/design/human-interface-guidelines/carekit#Contact-views)
+### Contact views
 
 **Consider using color to categorize care team members.**
 
-## [Notifications](https://developer.apple.com/design/human-interface-guidelines/carekit#Notifications)
+## Notifications
 
 **Minimize notifications.**
 
 **Consider providing a detail view.**
 
-## [Symbols and branding](https://developer.apple.com/design/human-interface-guidelines/carekit#Symbols-and-branding)
+## Symbols and branding
 
   * Designs that coordinate with CareKit’s visual design language
 
@@ -83,18 +77,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/carekit
 **Design a relevant care symbol.**
 
 **Incorporate refined, unobtrusive branding.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/carekit#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/carekit#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/carekit#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/carekit#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/carekit#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/carekit#Change-log)
 
 ---
 

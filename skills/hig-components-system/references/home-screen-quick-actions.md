@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/home-scree
 
 # Home Screen quick actions
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/home-screen-quick-actions#Best-practices)
+## Best practices
 
 **Create quick actions for compelling, high-value tasks.**
 
@@ -21,14 +21,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/home-scree
 **Provide a familiar interface icon for each quick action.**
 
 **Don’t use an emoji in place of a symbol or interface icon.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/home-screen-quick-actions#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/home-screen-quick-actions#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/home-screen-quick-actions#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/home-screen-quick-actions#Developer-documentation)
 
 ---
 

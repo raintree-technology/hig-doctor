@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
 
 # Live Activities
 
-## [Anatomy](https://developer.apple.com/design/human-interface-guidelines/live-activities#Anatomy)
+## Anatomy
 
   * [Compact](https://developer.apple.com/design/human-interface-guidelines/live-activities#Compact)
 
@@ -20,17 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
 
   * [Lock Screen](https://developer.apple.com/design/human-interface-guidelines/live-activities#Lock-Screen)
 
-### [Compact](https://developer.apple.com/design/human-interface-guidelines/live-activities#Compact)
-
-### [Minimal](https://developer.apple.com/design/human-interface-guidelines/live-activities#Minimal)
-
-### [Expanded](https://developer.apple.com/design/human-interface-guidelines/live-activities#Expanded)
-
-### [Lock Screen](https://developer.apple.com/design/human-interface-guidelines/live-activities#Lock-Screen)
-
-### [StandBy](https://developer.apple.com/design/human-interface-guidelines/live-activities#StandBy)
-
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/live-activities#Best-practices)
+## Best practices
 
 **Offer Live Activities for tasks and events that have a defined beginning and end.**
 
@@ -46,7 +36,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
 
 **Ensure text is easy to read.**
 
-### [Creating Live Activity layouts](https://developer.apple.com/design/human-interface-guidelines/live-activities#Creating-Live-Activity-layouts)
+### Creating Live Activity layouts
 
 **Adapt to different screen sizes and presentations.**
 
@@ -60,7 +50,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
 
 **Dynamically change the height of your Live Activity on the Lock Screen or in the expanded presentation.**
 
-### [Choosing colors](https://developer.apple.com/design/human-interface-guidelines/live-activities#Choosing-colors)
+### Choosing colors
 
 **Carefully consider using a custom background color and opacity.**
 
@@ -68,7 +58,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
 
 **Tint your Live Activity’s key line color so that it matches your content.**
 
-### [Adding transitions and animating content updates](https://developer.apple.com/design/human-interface-guidelines/live-activities#Adding-transitions-and-animating-content-updates)
+### Adding transitions and animating content updates
 
 **Use animations to reinforce the information you’re communicating and to bring attention to updates.**
 
@@ -76,7 +66,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
 
 **Try to avoid overlapping elements.**
 
-### [Offering interactivity](https://developer.apple.com/design/human-interface-guidelines/live-activities#Offering-interactivity)
+### Offering interactivity
 
 **Make sure tapping the Live Activity opens your app at the right location.**
 
@@ -84,7 +74,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
 
 **Consider letting people respond to event or progress updates.**
 
-### [Starting, updating, and ending a Live Activity](https://developer.apple.com/design/human-interface-guidelines/live-activities#Starting-updating-and-ending-a-Live-Activity)
+### Starting, updating, and ending a Live Activity
 
 **Start Live Activities at appropriate times, and make it easy for people to turn them off in your app.**
 
@@ -98,11 +88,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
 
 **Always end a Live Activity immediately when the task or event ends, and consider setting a custom dismissal time.**
 
-## [Presentation](https://developer.apple.com/design/human-interface-guidelines/live-activities#Presentation)
+## Presentation
 
 **Start with the iPhone design, then refine it for other contexts.**
 
-### [Compact presentation](https://developer.apple.com/design/human-interface-guidelines/live-activities#Compact-presentation)
+### Compact presentation
 
 **Focus on the most important information.**
 
@@ -112,17 +102,17 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
 
 **Link to relevant app content.**
 
-### [Minimal presentation](https://developer.apple.com/design/human-interface-guidelines/live-activities#Minimal-presentation)
+### Minimal presentation
 
 **Ensure that your Live Activity is recognizable in the minimal presentation.**
 
-### [Expanded presentation](https://developer.apple.com/design/human-interface-guidelines/live-activities#Expanded-presentation)
+### Expanded presentation
 
 **Maintain the relative placement of elements to create a coherent layout between presentations.**
 
 **Wrap content tightly around the TrueDepth camera.**
 
-### [Lock Screen presentation](https://developer.apple.com/design/human-interface-guidelines/live-activities#Lock-Screen-presentation)
+### Lock Screen presentation
 
 **Don’t replicate notification layouts.**
 
@@ -134,7 +124,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
 
 **Use standard margins to align your design with notifications.**
 
-### [StandBy presentation](https://developer.apple.com/design/human-interface-guidelines/live-activities#StandBy-presentation)
+### StandBy presentation
 
 **Update your layout for StandBy.**
 
@@ -144,17 +134,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
 
 **Verify your design in Night Mode.**
 
-## [CarPlay](https://developer.apple.com/design/human-interface-guidelines/live-activities#CarPlay)
+## CarPlay
 
 **Consider creating a custom layout if your Live Activity would benefit from larger text or additional information.**
 
 **Carefully consider including buttons or toggles in your custom layout.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/live-activities#Platform-considerations)
+## Platform considerations
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/live-activities#macOS)
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/live-activities#watchOS)
+### watchOS
 
 **Consider creating a custom watchOS layout.**
 
@@ -167,26 +155,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-activ
   * Interactive elements, like stopwatch or timer controls
 
   * Significant updates, like sports score changes
-
-## [Specifications](https://developer.apple.com/design/human-interface-guidelines/live-activities#Specifications)
-
-### [CarPlay dimensions](https://developer.apple.com/design/human-interface-guidelines/live-activities#CarPlay-dimensions)
-
-### [iOS dimensions](https://developer.apple.com/design/human-interface-guidelines/live-activities#iOS-dimensions)
-
-### [iPadOS dimensions](https://developer.apple.com/design/human-interface-guidelines/live-activities#iPadOS-dimensions)
-
-### [macOS dimensions](https://developer.apple.com/design/human-interface-guidelines/live-activities#macOS-dimensions)
-
-### [watchOS dimensions](https://developer.apple.com/design/human-interface-guidelines/live-activities#watchOS-dimensions)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/live-activities#Resources)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/live-activities#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/live-activities#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/live-activities#Change-log)
 
 ---
 

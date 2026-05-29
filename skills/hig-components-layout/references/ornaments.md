@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/ornaments
 
 # Ornaments
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/ornaments#Best-practices)
+## Best practices
 
 **Consider using an ornament to present frequently needed controls or information in a consistent location that doesn’t clutter the window.**
 
@@ -23,18 +23,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/ornaments
 **Consider using borderless buttons in an ornament.**
 
 **Use system-provided toolbars and tab bars unless you need to create custom components.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/ornaments#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/ornaments#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/ornaments#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/ornaments#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/ornaments#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/ornaments#Change-log)
 
 ---
 

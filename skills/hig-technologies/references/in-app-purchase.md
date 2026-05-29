@@ -18,7 +18,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/in-app-pur
 
   * _Non-renewing subscriptions_ to a service or content that lasts for a limited time, like access to an in-game battle pass. People purchase a non-renewing subscription each time they want to extend their access to the service or content.
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Best-practices)
+## Best practices
 
 **Let people experience your app before making a purchase.**
 
@@ -32,7 +32,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/in-app-pur
 
 **Use the default confirmation sheet.**
 
-### [Supporting Family Sharing](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Supporting-Family-Sharing)
+### Supporting Family Sharing
 
 **Prominently mention Family Sharing in places where people learn about the content you offer.**
 
@@ -40,7 +40,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/in-app-pur
 
 **Aim to customize your in-app messaging so that it makes sense to both purchasers and family members.**
 
-### [Providing help with in-app purchases](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Providing-help-with-in-app-purchases)
+### Providing help with in-app purchases
 
 **Provide help that customers can view before they request a refund.**
 
@@ -54,7 +54,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/in-app-pur
 
 **Avoid characterizing or providing guidance on Apple’s refund policies.**
 
-## [Auto-renewable subscriptions](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Auto-renewable-subscriptions)
+## Auto-renewable subscriptions
 
 **Call attention to subscription benefits during onboarding.**
 
@@ -70,7 +70,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/in-app-pur
 
 **Encourage a new subscription only when someone isn’t already a subscriber.**
 
-### [Making signup effortless](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Making-signup-effortless)
+### Making signup effortless
 
 **Provide clear, distinguishable subscription options.**
 
@@ -90,7 +90,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/in-app-pur
 
 **Include a sign-up opportunity in your app’s settings.**
 
-### [Supporting offer codes](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Supporting-offer-codes)
+### Supporting offer codes
 
   * A _one-time use code_ is a unique code you generate in App Store Connect. People can redeem a one-time use code through a [redemption URL](https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-offer-codes/#distribute-offer-codes) (a shareable link), within your app (when you support redemption), or by entering it in the App Store, where they’re prompted to install your app if they haven’t already. Consider using one-time use codes when your distribution is small or when you need to restrict access to a code.
 
@@ -108,7 +108,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/in-app-pur
 
 **Help people benefit from unlocked content as soon as they complete the redemption flow.**
 
-### [Helping people manage their subscriptions](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Helping-people-manage-their-subscriptions)
+### Helping people manage their subscriptions
 
 **Provide summaries of the customer’s subscriptions.**
 
@@ -120,9 +120,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/in-app-pur
 
 **Consider creating a branded, contextual experience to complement the system-provided management UI.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Platform-considerations)
+## Platform considerations
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#watchOS)
+### watchOS
 
 **Clearly describe the differences between versions of your app that run on different devices.**
 
@@ -133,16 +133,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/in-app-pur
   * Display each option in a separate button. Using one button per payment option lets people start the signup process with one tap. In this design, it’s important to lock up each button with its description so that people can see how these elements are related, especially while scrolling.
 
   * Display a list of options, followed by a button people tap to start the signup process. Using a list to display one option per row gives you a compact design that minimizes scrolling while making subscription choices easy to scan and understand. In this design, the button’s title can update to reflect the chosen option.
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Change-log)
 
 ---
 

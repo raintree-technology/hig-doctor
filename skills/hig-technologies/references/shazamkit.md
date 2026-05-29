@@ -16,19 +16,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/shazamkit
 
   * Synchronizing in-app experiences with virtual content in contexts like online learning and retail
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/shazamkit#Best-practices)
+## Best practices
 
 **Stop recording as soon as possible.**
 
 **Let people opt in to storing your app’s recognized songs to their iCloud library.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/shazamkit#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/shazamkit#Resources)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/shazamkit#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/shazamkit#Videos)
 
 ---
 

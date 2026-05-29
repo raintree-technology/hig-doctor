@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/layout
 
 # Layout
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/layout#Best-practices)
+## Best practices
 
 **Group related items to help people find the information they want.**
 
@@ -18,7 +18,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/layout
 
 **Extend content to fill the screen or window.**
 
-## [Visual hierarchy](https://developer.apple.com/design/human-interface-guidelines/layout#Visual-hierarchy)
+## Visual hierarchy
 
 **Differentiate controls from content.**
 
@@ -30,7 +30,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/layout
 
 **Make controls easier to use by providing enough space around them and grouping them in logical sections.**
 
-## [Adaptability](https://developer.apple.com/design/human-interface-guidelines/layout#Adaptability)
+## Adaptability
 
   * Different device screen sizes, resolutions, and color spaces
 
@@ -52,13 +52,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/layout
 
 **When necessary, scale artwork in response to display changes.**
 
-## [Guides and safe areas](https://developer.apple.com/design/human-interface-guidelines/layout#Guides-and-safe-areas)
+## Guides and safe areas
 
 **Respect key display and system features in each platform.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/layout#Platform-considerations)
+## Platform considerations
 
-### [iOS](https://developer.apple.com/design/human-interface-guidelines/layout#iOS)
+### iOS
 
 **Aim to support both portrait and landscape orientations.**
 
@@ -68,7 +68,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/layout
 
 **Hide the status bar only when it adds value or enhances your experience.**
 
-### [iPadOS](https://developer.apple.com/design/human-interface-guidelines/layout#iPadOS)
+### iPadOS
 
 **As someone resizes a window, defer switching to a compact view for as long as possible.**
 
@@ -76,13 +76,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/layout
 
 **Consider a convertible tab bar for adaptive navigation.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/layout#macOS)
+### macOS
 
 **Avoid placing controls or critical information at the bottom of a window.**
 
 **Avoid displaying content within the camera housing at the top edge of the window.**
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/layout#tvOS)
+### tvOS
 
 **Be prepared for a wide range of TV sizes.**
 
@@ -90,7 +90,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/layout
 
 **Include appropriate padding between focusable elements.**
 
-#### [Grids](https://developer.apple.com/design/human-interface-guidelines/layout#Grids)
+#### Grids
 
   * Two-column 
   * Three-column 
@@ -101,21 +101,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/layout
   * Eight-column 
   * Nine-column 
 
-#### [Two-column grid](https://developer.apple.com/design/human-interface-guidelines/layout#Two-column-grid)
-
-#### [Three-column grid](https://developer.apple.com/design/human-interface-guidelines/layout#Three-column-grid)
-
-#### [Four-column grid](https://developer.apple.com/design/human-interface-guidelines/layout#Four-column-grid)
-
-#### [Five-column grid](https://developer.apple.com/design/human-interface-guidelines/layout#Five-column-grid)
-
-#### [Six-column grid](https://developer.apple.com/design/human-interface-guidelines/layout#Six-column-grid)
-
-#### [Seven-column grid](https://developer.apple.com/design/human-interface-guidelines/layout#Seven-column-grid)
-
-#### [Eight-column grid](https://developer.apple.com/design/human-interface-guidelines/layout#Eight-column-grid)
-
-#### [Nine-column grid](https://developer.apple.com/design/human-interface-guidelines/layout#Nine-column-grid)
+#### Nine-column grid
 
 **Include additional vertical spacing for titled rows.**
 
@@ -123,7 +109,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/layout
 
 **Make partially hidden content look symmetrical.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/layout#visionOS)
+### visionOS
 
 **Consider centering the most important content and controls in your app or game.**
 
@@ -133,31 +119,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/layout
 
 **Make a window’s interactive components easy for people to look at.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/layout#watchOS)
+### watchOS
 
 **Design your content to extend from one edge of the screen to the other.**
 
 **Avoid placing more than two or three controls side by side in your interface.**
 
 **Support autorotation in views people might want to show others.**
-
-## [Specifications](https://developer.apple.com/design/human-interface-guidelines/layout#Specifications)
-
-### [iOS, iPadOS device screen dimensions](https://developer.apple.com/design/human-interface-guidelines/layout#iOS-iPadOS-device-screen-dimensions)
-
-### [iOS, iPadOS device size classes](https://developer.apple.com/design/human-interface-guidelines/layout#iOS-iPadOS-device-size-classes)
-
-### [watchOS device screen dimensions](https://developer.apple.com/design/human-interface-guidelines/layout#watchOS-device-screen-dimensions)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/layout#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/layout#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/layout#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/layout#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/layout#Change-log)
 
 ---
 

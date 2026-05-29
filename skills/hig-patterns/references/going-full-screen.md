@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/going-full
 
 # Going full screen
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/going-full-screen#Best-practices)
+## Best practices
 
 **Support full-screen mode when it makes sense for your experience.**
 
@@ -26,29 +26,19 @@ source: https://developer.apple.com/design/human-interface-guidelines/going-full
 
 **Prioritize content by temporarily hiding toolbars and navigation controls.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/going-full-screen#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/going-full-screen#iOS-iPadOS)
+### iOS, iPadOS
 
 **Consider deferring system gestures to prevent accidental exits in a full-screen app or game.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/going-full-screen#macOS)
+### macOS
 
 **Use the system-provided full-screen experience.**
 
 **In a game, don’t change the display mode when players go full screen.**
 
 **Always let people choose when to enter full-screen mode.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/going-full-screen#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/going-full-screen#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/going-full-screen#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/going-full-screen#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/going-full-screen#Change-log)
 
 ---
 

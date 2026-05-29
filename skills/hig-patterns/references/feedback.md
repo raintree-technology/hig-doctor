@@ -18,7 +18,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/feedback
 
   * An opportunity to correct a mistake or problematic situation
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/feedback#Best-practices)
+## Best practices
 
 **Make sure all feedback is accessible.**
 
@@ -32,19 +32,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/feedback
 
 **Show people when a command can’t be carried out and help them understand why.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/feedback#Platform-considerations)
+## Platform considerations
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/feedback#watchOS)
+### watchOS
 
 **Avoid displaying an indeterminate progress indicator — such as a loading indicator — in a watchOS app.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/feedback#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/feedback#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/feedback#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/feedback#Videos)
 
 ---
 

@@ -16,7 +16,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/toolbars
 
   * Actions, or bar items, like [buttons](https://developer.apple.com/design/human-interface-guidelines/buttons) and [menus](https://developer.apple.com/design/human-interface-guidelines/menus)
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/toolbars#Best-practices)
+## Best practices
 
 **Choose items deliberately to avoid overcrowding.**
 
@@ -35,7 +35,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/toolbars
 
 **Consider temporarily hiding toolbars for a distraction-free experience.**
 
-## [Titles](https://developer.apple.com/design/human-interface-guidelines/toolbars#Titles)
+## Titles
 
 **Provide a useful title for each window.**
 
@@ -43,11 +43,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/toolbars
 
 **Write a concise title.**
 
-## [Navigation](https://developer.apple.com/design/human-interface-guidelines/toolbars#Navigation)
+## Navigation
 
 **Use the standard Back and Close buttons.**
 
-## [Actions](https://developer.apple.com/design/human-interface-guidelines/toolbars#Actions)
+## Actions
 
 **Provide actions that support the main tasks people perform.**
 
@@ -57,7 +57,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/toolbars
 
 **Use the`.prominent` style for key actions such as Done or Submit.**
 
-## [Item groupings](https://developer.apple.com/design/human-interface-guidelines/toolbars#Item-groupings)
+## Item groupings
 
   * **Leading edge.** Elements that let people return to the previous document and show or hide a sidebar appear at the far leading edge, followed by the view title. Next to the title, the toolbar can include a document menu that contains standard and app-specific commands that affect the document as a whole, such as Duplicate, Rename, Move, and Export. To ensure that these items are always available, items on the toolbar’s leading edge aren’t customizable.
 
@@ -75,23 +75,23 @@ source: https://developer.apple.com/design/human-interface-guidelines/toolbars
 
 **Keep actions with text labels separate.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/toolbars#Platform-considerations)
+## Platform considerations
 
-### [iOS](https://developer.apple.com/design/human-interface-guidelines/toolbars#iOS)
+### iOS
 
 **Prioritize only the most important items for inclusion in the main toolbar area.**
 
 **Use a large title to help people stay oriented as they navigate and scroll.**
 
-### [iPadOS](https://developer.apple.com/design/human-interface-guidelines/toolbars#iPadOS)
+### iPadOS
 
 **Consider combining a toolbar with a tab bar.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/toolbars#macOS)
+### macOS
 
 **Make every toolbar item available as a command in the menu bar.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/toolbars#visionOS)
+### visionOS
 
 **Prefer using a system-provided toolbar.**
 
@@ -103,19 +103,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/toolbars
 
 **Avoid using a pull-down menu in a toolbar.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/toolbars#watchOS)
+### watchOS
 
 **Use a scrolling toolbar button for an important action that isn’t a primary app function.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/toolbars#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/toolbars#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/toolbars#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/toolbars#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/toolbars#Change-log)
 
 ---
 

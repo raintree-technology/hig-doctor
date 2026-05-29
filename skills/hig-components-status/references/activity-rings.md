@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/activity-r
 
 # Activity rings
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/activity-rings#Best-practices)
+## Best practices
 
 **Display Activity rings when they’re relevant to the purpose of your app.**
 
@@ -44,23 +44,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/activity-r
 
 **Don’t use Activity rings for branding.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/activity-rings#Platform-considerations)
+## Platform considerations
 
-### [iOS](https://developer.apple.com/design/human-interface-guidelines/activity-rings#iOS)
+### iOS
 
   * With an Apple Watch paired, iOS shows all three Activity rings.
 
   * Without an Apple Watch paired, iOS shows the Move ring only, which represents an approximation of a person’s activity based on their steps and workout information from other apps.
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/activity-rings#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/activity-rings#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/activity-rings#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/activity-rings#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/activity-rings#Change-log)
 
 ---
 

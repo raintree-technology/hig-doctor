@@ -10,29 +10,17 @@ source: https://developer.apple.com/design/human-interface-guidelines/boxes
 
 # Boxes
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/boxes#Best-practices)
+## Best practices
 
 **Prefer keeping a box relatively small in comparison with its containing view.**
 
 **Consider using padding and alignment to communicate additional grouping within a box.**
 
-## [Content](https://developer.apple.com/design/human-interface-guidelines/boxes#Content)
+## Content
 
 **Provide a succinct introductory title if it helps clarify the box’s contents.**
 
 **If you need a title, write a brief phrase that describes the contents.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/boxes#Platform-considerations)
-
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/boxes#iOS-iPadOS)
-
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/boxes#macOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/boxes#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/boxes#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/boxes#Developer-documentation)
 
 ---
 

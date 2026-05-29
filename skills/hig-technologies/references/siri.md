@@ -28,11 +28,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
   * Explore the various ways people might perform your app’s tasks — such as in a hands-free situation — and the devices they might be using, such as Apple Watch or iPad.
 
-## [Integrating your app with Siri](https://developer.apple.com/design/human-interface-guidelines/siri#Integrating-your-app-with-Siri)
+## Integrating your app with Siri
 
-### [A closer look at intents](https://developer.apple.com/design/human-interface-guidelines/siri#A-closer-look-at-intents)
-
-### [Provide information about actions and support suggestions](https://developer.apple.com/design/human-interface-guidelines/siri#Provide-information-about-actions-and-support-suggestions)
+### Provide information about actions and support suggestions
 
   * Shortly before 7:30 a.m., Siri might suggest the _order coffee_ action to people who use the coffee app every morning.
 
@@ -42,13 +40,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
   * When people enter the airport after a home-bound flight, Siri might suggest they request a ride home from their favorite ride-sharing app.
 
-### [Design a great voice experience](https://developer.apple.com/design/human-interface-guidelines/siri#Design-a-great-voice-experience)
+## System intents
 
-### [Recognize that people use Siri in different contexts](https://developer.apple.com/design/human-interface-guidelines/siri#Recognize-that-people-use-Siri-in-different-contexts)
-
-## [System intents](https://developer.apple.com/design/human-interface-guidelines/siri#System-intents)
-
-### [Design responses to system intents](https://developer.apple.com/design/human-interface-guidelines/siri#Design-responses-to-system-intents)
+### Design responses to system intents
 
 **Whenever possible, complete requests without leaving Siri.**
 
@@ -58,7 +52,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
 **On Apple Watch, design a streamlined workflow that requires minimal interaction.**
 
-### [Enhance the voice experience for system intents](https://developer.apple.com/design/human-interface-guidelines/siri#Enhance-the-voice-experience-for-system-intents)
+### Enhance the voice experience for system intents
 
 **Create example requests.**
 
@@ -66,7 +60,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
 **Consider defining alternative app names.**
 
-### [Design a custom interface for a system intent](https://developer.apple.com/design/human-interface-guidelines/siri#Design-a-custom-interface-for-a-system-intent)
+### Design a custom interface for a system intent
 
 **Avoid including extraneous or redundant information.**
 
@@ -78,9 +72,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
 **Refrain from displaying your app name or icon.**
 
-## [Custom intents](https://developer.apple.com/design/human-interface-guidelines/siri#Custom-intents)
+## Custom intents
 
-### [Custom intent categories and responses](https://developer.apple.com/design/human-interface-guidelines/siri#Custom-intent-categories-and-responses)
+### Custom intent categories and responses
 
   * Confirmation. Confirms that people still want to perform the action.
 
@@ -88,7 +82,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
   * Error. Tells people that the action can’t be completed.
 
-### [Design a custom intent](https://developer.apple.com/design/human-interface-guidelines/siri#Design-a-custom-intent)
+### Design a custom intent
 
 **If your app’s action requires a custom intent, pick the category that most closely matches the action.**
 
@@ -104,7 +98,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
 **Support background operation.**
 
-### [Help people customize their requests](https://developer.apple.com/design/human-interface-guidelines/siri#Help-people-customize-their-requests)
+### Help people customize their requests
 
 **Design intents that require as few follow-up questions as possible.**
 
@@ -126,7 +120,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
   * You can present a comprehensive list of parameter values. When people set up a shortcut, having an extensive list of parameter values can help them create the shortcut they want. In contrast, when people use a shortcut to accelerate an action, they generally prefer the convenience of having a shorter list of choices.
 
-### [Enhance the voice experience for custom intents](https://developer.apple.com/design/human-interface-guidelines/siri#Enhance-the-voice-experience-for-custom-intents)
+### Enhance the voice experience for custom intents
 
 **Aim to create conversational interactions.**
 
@@ -154,7 +148,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
 **Don’t advertise.**
 
-## [Shortcuts and suggestions](https://developer.apple.com/design/human-interface-guidelines/siri#Shortcuts-and-suggestions)
+## Shortcuts and suggestions
 
   * Siri can suggest a shortcut for an action people have performed at least once by offering it in search results, on the lock screen, and in the Shortcuts app.
 
@@ -164,7 +158,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
   * People can also use the Shortcuts app to automate a shortcut by defining the conditions that can run it, like time of day or current location.
 
-### [Make app actions widely available](https://developer.apple.com/design/human-interface-guidelines/siri#Make-app-actions-widely-available)
+### Make app actions widely available
 
   * In search results
 
@@ -184,11 +178,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
 **If your app handles reservations, consider donating them to the system.**
 
-#### [Suggest Shortcuts people might want to add to Siri](https://developer.apple.com/design/human-interface-guidelines/siri#Suggest-Shortcuts-people-might-want-to-add-to-Siri)
-
-#### [Display shortcuts on the Siri watch face](https://developer.apple.com/design/human-interface-guidelines/siri#Display-shortcuts-on-the-Siri-watch-face)
-
-### [Create shortcut titles and subtitles](https://developer.apple.com/design/human-interface-guidelines/siri#Create-shortcut-titles-and-subtitles)
+### Create shortcut titles and subtitles
 
 **Be concise but descriptive.**
 
@@ -206,7 +196,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
   * 34x34 pt (68x68 px @2x) to display on the Siri watch face on the 44mm Apple Watch (watchOS scales down the image for smaller watches)
 
-### [Provide default phrases for shortcuts](https://developer.apple.com/design/human-interface-guidelines/siri#Provide-default-phrases-for-shortcuts)
+### Provide default phrases for shortcuts
 
 **Keep phrases short and memorable.**
 
@@ -214,7 +204,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
 **Don’t commandeer core Siri commands.**
 
-### [Make shortcuts customizable](https://developer.apple.com/design/human-interface-guidelines/siri#Make-shortcuts-customizable)
+### Make shortcuts customizable
 
 **Provide a parameter summary for each custom intent you support.**
 
@@ -232,13 +222,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
 **Avoid providing multiple actions that perform the same basic task.**
 
-## [Editorial guidelines](https://developer.apple.com/design/human-interface-guidelines/siri#Editorial-guidelines)
+## Editorial guidelines
 
 **Use correct capitalization and punctuation when using the term _Hey Siri_.**
 
 **In a localized context, translate only the word _Hey_ in the phrase _Hey Siri_.**
 
-### [Referring to Shortcuts](https://developer.apple.com/design/human-interface-guidelines/siri#Referring-to-Shortcuts)
+### Referring to Shortcuts
 
 **When referring to the Shortcuts feature or app, always typeset with a capital S and make sure that _Shortcuts_ is plural.**
 
@@ -246,7 +236,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
 
 **Use the right terminology when describing how people can use Shortcuts in your app.**
 
-### [Referring to Apple products](https://developer.apple.com/design/human-interface-guidelines/siri#Referring-to-Apple-products)
+### Referring to Apple products
 
 **Adhere to Apple’s trademark guidelines.**
 
@@ -261,18 +251,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/siri
   * Attribute Apple, Siri, and all other Apple trademarks with the correct credit lines wherever legal information appears within your app.
 
   * Refer to Apple devices and operating systems only in technical specifications or compatibility descriptions.
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/siri#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/siri#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/siri#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/siri#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/siri#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/siri#Change-log)
 
 ---
 

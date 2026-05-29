@@ -10,19 +10,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/digit-entr
 
 # Digit entry views
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/digit-entry-views#Best-practices)
+## Best practices
 
 **Use secure digit fields.**
 
 **Clearly state the purpose of the digit entry view.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/digit-entry-views#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/digit-entry-views#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/digit-entry-views#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/digit-entry-views#Developer-documentation)
 
 ---
 

@@ -10,29 +10,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/lockups
 
 # Lockups
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/lockups#Best-practices)
+## Best practices
 
 **Allow adequate space between lockups.**
 
 **Use consistent lockup sizes within a row or group.**
 
-## [Cards](https://developer.apple.com/design/human-interface-guidelines/lockups#Cards)
-
-## [Caption buttons](https://developer.apple.com/design/human-interface-guidelines/lockups#Caption-buttons)
-
-## [Monograms](https://developer.apple.com/design/human-interface-guidelines/lockups#Monograms)
+## Monograms
 
 **Prefer images over initials.**
-
-## [Posters](https://developer.apple.com/design/human-interface-guidelines/lockups#Posters)
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/lockups#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/lockups#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/lockups#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/lockups#Developer-documentation)
 
 ---
 

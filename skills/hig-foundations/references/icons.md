@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/icons
 
 # Icons
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/icons#Best-practices)
+## Best practices
 
 **Create a recognizable, highly simplified design.**
 
@@ -32,31 +32,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/icons
 
 **Avoid using replicas of Apple hardware products.**
 
-## [Standard icons](https://developer.apple.com/design/human-interface-guidelines/icons#Standard-icons)
+## Platform considerations
 
-### [Editing](https://developer.apple.com/design/human-interface-guidelines/icons#Editing)
+### macOS
 
-### [Selection](https://developer.apple.com/design/human-interface-guidelines/icons#Selection)
-
-### [Text formatting](https://developer.apple.com/design/human-interface-guidelines/icons#Text-formatting)
-
-### [Search](https://developer.apple.com/design/human-interface-guidelines/icons#Search)
-
-### [Sharing and exporting](https://developer.apple.com/design/human-interface-guidelines/icons#Sharing-and-exporting)
-
-### [Users and accounts](https://developer.apple.com/design/human-interface-guidelines/icons#Users-and-accounts)
-
-### [Ratings](https://developer.apple.com/design/human-interface-guidelines/icons#Ratings)
-
-### [Layer ordering](https://developer.apple.com/design/human-interface-guidelines/icons#Layer-ordering)
-
-### [Other](https://developer.apple.com/design/human-interface-guidelines/icons#Other)
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/icons#Platform-considerations)
-
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/icons#macOS)
-
-#### [Document icons](https://developer.apple.com/design/human-interface-guidelines/icons#Document-icons)
+#### Document icons
 
 **Design simple images that clearly communicate the document type.**
 
@@ -89,14 +69,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/icons
 **Define a margin that measures about 10% of the image canvas and keep most of the image within it.**
 
 **Specify a succinct term if it helps people understand your document type.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/icons#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/icons#Related)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/icons#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/icons#Change-log)
 
 ---
 

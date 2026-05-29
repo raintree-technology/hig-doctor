@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/wallet
 
 # Wallet
 
-## [Passes](https://developer.apple.com/design/human-interface-guidelines/wallet#Passes)
+## Passes
 
 **Offer to add new passes to Wallet.**
 
@@ -32,7 +32,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/wallet
 
 **Use change messages only for updates to time-critical information.**
 
-## [Designing passes](https://developer.apple.com/design/human-interface-guidelines/wallet#Designing-passes)
+## Designing passes
 
 **Design a pass that looks great and works well on all devices.**
 
@@ -48,26 +48,26 @@ source: https://developer.apple.com/design/human-interface-guidelines/wallet
 
 **Provide an icon that represents your company or brand.**
 
-### [Pass styles](https://developer.apple.com/design/human-interface-guidelines/wallet#Pass-styles)
+### Pass styles
 
 **Display text only in pass fields.**
 
-#### [Boarding passes](https://developer.apple.com/design/human-interface-guidelines/wallet#Boarding-passes)
+#### Boarding passes
 
   * Example 
   * Layout 
 
-#### [Coupons](https://developer.apple.com/design/human-interface-guidelines/wallet#Coupons)
+#### Coupons
 
   * Example 
   * Layout 
 
-#### [Store cards](https://developer.apple.com/design/human-interface-guidelines/wallet#Store-cards)
+#### Store cards
 
   * Example 
   * Layout 
 
-#### [Event tickets](https://developer.apple.com/design/human-interface-guidelines/wallet#Event-tickets)
+#### Event tickets
 
   * Example 
   * Layout 1 
@@ -86,13 +86,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/wallet
 
 **Continue to support event tickets for earlier versions of iOS.**
 
-#### [Generic passes](https://developer.apple.com/design/human-interface-guidelines/wallet#Generic-passes)
+#### Generic passes
 
   * Example 
   * Layout 1 
   * Layout 2 
 
-### [Passes for Apple Watch](https://developer.apple.com/design/human-interface-guidelines/wallet#Passes-for-Apple-Watch)
+### Passes for Apple Watch
 
   * Boarding 
   * Coupon 
@@ -100,7 +100,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/wallet
   * Event 
   * Generic 
 
-## [Order tracking](https://developer.apple.com/design/human-interface-guidelines/wallet#Order-tracking)
+## Order tracking
 
 **Make it easy for people to add an order to Wallet.**
 
@@ -116,7 +116,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/wallet
 
 **Use clear, approachable language, and localize the text you provide.**
 
-### [Displaying order and fulfillment details](https://developer.apple.com/design/human-interface-guidelines/wallet#Displaying-order-and-fulfillment-details)
+### Displaying order and fulfillment details
 
 **Provide a link to an area where people manage their order.**
 
@@ -144,7 +144,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/wallet
 
 **Be direct and thorough when describing an Issue or Canceled status.**
 
-## [Identity verification](https://developer.apple.com/design/human-interface-guidelines/wallet#Identity-verification)
+## Identity verification
 
 **Present a Wallet verification option only when the device supports it.**
 
@@ -157,22 +157,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/wallet
 **Clearly indicate whether you will keep the data and — if you need to keep it — specify how long you’ll do so.**
 
 **Choose the system-provided verification button that matches your use case and the visual design of your app.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/wallet#Platform-considerations)
-
-## [Specifications](https://developer.apple.com/design/human-interface-guidelines/wallet#Specifications)
-
-### [Pass image dimensions](https://developer.apple.com/design/human-interface-guidelines/wallet#Pass-image-dimensions)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/wallet#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/wallet#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/wallet#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/wallet#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/wallet#Change-log)
 
 ---
 

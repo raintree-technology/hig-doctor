@@ -10,43 +10,29 @@ source: https://developer.apple.com/design/human-interface-guidelines/image-view
 
 # Image views
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/image-views#Best-practices)
+## Best practices
 
 **Use an image view when the primary purpose of the view is simply to display an image.**
 
 **If you want to display an icon in your interface, consider using a symbol or interface icon instead of an image view.**
 
-## [Content](https://developer.apple.com/design/human-interface-guidelines/image-views#Content)
+## Content
 
 **Take care when overlaying text on images.**
 
 **Aim to use a consistent size for all images in an animated sequence.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/image-views#Platform-considerations)
+## Platform considerations
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/image-views#macOS)
+### macOS
 
 **If your app needs an editable image view, use an image well.**
 
 **Use an image button instead of an image view to make a clickable image.**
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/image-views#tvOS)
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/image-views#visionOS)
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/image-views#watchOS)
+### watchOS
 
 **Use SwiftUI to create animations when possible.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/image-views#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/image-views#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/image-views#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/image-views#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/image-views#Change-log)
 
 ---
 

@@ -18,7 +18,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/drag-and-d
 
   * On a Mac, people can interact with a pointing device, use full keyboard access mode, or use VoiceOver to perform drag and drop.
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Best-practices)
+## Best practices
 
 **As much as possible, support drag and drop throughout your app.**
 
@@ -34,7 +34,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/drag-and-d
 
 **Consider supporting spring loading.**
 
-## [Providing feedback](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Providing-feedback)
+## Providing feedback
 
 **Display a drag image as soon as people drag a selection about three points.**
 
@@ -44,7 +44,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/drag-and-d
 
 **When people drop an item on an invalid destination, or when dropping fails, provide visual feedback.**
 
-## [Accepting drops](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Accepting-drops)
+## Accepting drops
 
 **Scroll the contents of a destination when necessary.**
 
@@ -62,13 +62,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/drag-and-d
 
 **After a drop, maintain the content’s selection state in the destination, updating it in the source as needed.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#iOS-iPadOS)
+### iOS, iPadOS
 
 **Let people perform multiple simultaneous drag activities.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#macOS)
+### macOS
 
 **Consider letting people drag content from your app into the Finder.**
 
@@ -82,19 +82,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/drag-and-d
 
 **As much as possible, let people select and drag content with a single motion.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#visionOS)
+### visionOS
 
 **When possible, launch your app to handle content that people drop into empty space.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Change-log)
 
 ---
 

@@ -12,7 +12,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/augmented-
 
 **Offer AR features only on capable devices.**
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Best-practices)
+## Best practices
 
 **Let people use the entire display.**
 
@@ -36,13 +36,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/augmented-
 
 **Be mindful of people’s safety.**
 
-## [Providing coaching](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Providing-coaching)
+## Providing coaching
 
 **Hide unnecessary app UI while people are using a coaching view.**
 
 **If necessary, offer a custom coaching experience.**
 
-## [Helping people place objects](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Helping-people-place-objects)
+## Helping people place objects
 
 **Show people when to locate a surface and place an object.**
 
@@ -54,7 +54,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/augmented-
 
 **Incorporate plane classification information to inform object placement.**
 
-## [Designing object interactions](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Designing-object-interactions)
+## Designing object interactions
 
 **Let people use direct manipulation to interact with objects when possible.**
 
@@ -72,13 +72,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/augmented-
 
 **Explore even more engaging methods of interaction.**
 
-## [Offering a multiuser experience](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Offering-a-multiuser-experience)
+## Offering a multiuser experience
 
 **Consider allowing people occlusion.**
 
 **When possible, let new participants enter a multiuser AR experience.**
 
-## [Reacting to real-world objects](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Reacting-to-real-world-objects)
+## Reacting to real-world objects
 
 **When a detected image first disappears, consider delaying the removal of virtual objects that are attached to it.**
 
@@ -86,7 +86,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/augmented-
 
 **Limit the number of reference images requiring an accurate position.**
 
-## [Communicating with people](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Communicating-with-people)
+## Communicating with people
 
 **If you must display instructional text, use approachable terminology.**
 
@@ -96,7 +96,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/augmented-
 
 **If necessary, provide a way to get more information.**
 
-## [Handling interruptions](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Handling-interruptions)
+## Handling interruptions
 
 **Consider using the system-provided coaching view to help people relocalize.**
 
@@ -108,13 +108,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/augmented-
 
 **Indicate when the front-facing camera is unable to track a face for more than about half a second.**
 
-## [Suggesting problem resolutions](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Suggesting-problem-resolutions)
+## Suggesting problem resolutions
 
 **Let people reset the experience if it doesn’t meet their expectations.**
 
 **Suggest possible fixes if problems occur.**
 
-## [Icons and badges](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Icons-and-badges)
+## Icons and badges
 
 **Use the AR glyph as intended.**
 
@@ -129,18 +129,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/augmented-
 **Keep badge placement consistent and clear.**
 
 **Maintain minimum clear space.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Platform-considerations)
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#visionOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Videos)
 
 ---
 

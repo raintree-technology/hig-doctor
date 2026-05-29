@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-viewi
 
 # Live-viewing apps
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/live-viewing-apps#Best-practices)
+## Best practices
 
 **Feature live content prominently and make it easy to access.**
 
@@ -36,7 +36,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-viewi
 
 **Match audio to the current context.**
 
-## [EPG experience](https://developer.apple.com/design/human-interface-guidelines/live-viewing-apps#EPG-experience)
+## EPG experience
 
 **Prominently display current information and make it easy to return to playback.**
 
@@ -46,7 +46,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-viewi
 
 **Let people browse the EPG without leaving their current content.**
 
-## [Cloud DVR](https://developer.apple.com/design/human-interface-guidelines/live-viewing-apps#Cloud-DVR)
+## Cloud DVR
 
 **Let people start and stop recording from the info panel.**
 
@@ -57,12 +57,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-viewi
 **Allow playback and other content-specific actions within your cloud DVR area.**
 
 **Consider offering a control that lets people manage cloud DVR settings.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/live-viewing-apps#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/live-viewing-apps#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/live-viewing-apps#Related)
 
 ---
 

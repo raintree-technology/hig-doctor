@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/collection
 
 # Collections
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/collections#Best-practices)
+## Best practices
 
 **Use the standard row or grid layout whenever possible.**
 
@@ -22,17 +22,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/collection
 
 **Consider using animations to provide feedback when people insert, delete, or reorder items.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/collections#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/collections#iOS-iPadOS)
+### iOS, iPadOS
 
 **Use caution when making dynamic layout changes.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/collections#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/collections#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/collections#Developer-documentation)
 
 ---
 

@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/sheets
 
 # Sheets
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/sheets#Best-practices)
+## Best practices
 
 **Use a sheet to present simple content or tasks.**
 
@@ -20,9 +20,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/sheets
 
 **Use a nonmodal view when you want to present supplementary items that affect the main task in the parent view.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/sheets#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/sheets#iOS-iPadOS)
+### iOS, iPadOS
 
 **In an iPhone app, consider supporting the medium detent to allow progressive disclosure of the sheet’s content.**
 
@@ -34,7 +34,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/sheets
 
 **Prefer using the page or form sheet presentation styles in an iPadOS app.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/sheets#macOS)
+### macOS
 
 **Present a sheet in a reasonable default size.**
 
@@ -44,13 +44,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/sheets
 
 **Use a panel instead of a sheet if people need to repeatedly provide input and observe results.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/sheets#visionOS)
+### visionOS
 
 **Avoid displaying a sheet that emerges from the bottom edge of a window.**
 
 **Present a sheet in a default size that helps people retain their context.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/sheets#watchOS)
+### watchOS
 
 **Use a sheet only when your modal task requires a custom title or custom content presentation.**
 
@@ -59,14 +59,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/sheets
 **Change the default label of the dismiss control only if it makes sense in your app.**
 
 **If you change the default label, prefer using SF Symbols to represent the action.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/sheets#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/sheets#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/sheets#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/sheets#Change-log)
 
 ---
 

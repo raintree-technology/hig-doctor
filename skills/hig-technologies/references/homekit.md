@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/homekit
 
   * Provide support
 
-## [Terminology and layout](https://developer.apple.com/design/human-interface-guidelines/homekit#Terminology-and-layout)
+## Terminology and layout
 
 **Acknowledge the hierarchical model that HomeKit uses.**
 
@@ -30,19 +30,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/homekit
 
 **Don’t present duplicate home settings.**
 
-### [Homes](https://developer.apple.com/design/human-interface-guidelines/homekit#Homes)
-
-### [Rooms](https://developer.apple.com/design/human-interface-guidelines/homekit#Rooms)
-
-### [Accessories, services, and characteristics](https://developer.apple.com/design/human-interface-guidelines/homekit#Accessories-services-and-characteristics)
-
-### [Actions and scenes](https://developer.apple.com/design/human-interface-guidelines/homekit#Actions-and-scenes)
-
-### [Automations](https://developer.apple.com/design/human-interface-guidelines/homekit#Automations)
-
-### [Zones](https://developer.apple.com/design/human-interface-guidelines/homekit#Zones)
-
-## [Setup](https://developer.apple.com/design/human-interface-guidelines/homekit#Setup)
+## Setup
 
 **Use the system-provided setup flow to give people a familiar experience.**
 
@@ -54,7 +42,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/homekit
 
 **Carefully consider how and when to provide a custom accessory setup experience.**
 
-### [Help people choose useful names](https://developer.apple.com/design/human-interface-guidelines/homekit#Help-people-choose-useful-names)
+### Help people choose useful names
 
 **Suggest service names that suit your accessory.**
 
@@ -68,7 +56,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/homekit
 
 **Help people avoid creating names that include location information.**
 
-## [Siri interactions](https://developer.apple.com/design/human-interface-guidelines/homekit#Siri-interactions)
+## Siri interactions
 
 **Present example voice commands to demonstrate using Siri to control accessories during setup.**
 
@@ -80,7 +68,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/homekit
 
 **If your app supports both HomeKit and shortcuts, help people understand the difference between these types of voice control.**
 
-## [Custom functionality](https://developer.apple.com/design/human-interface-guidelines/homekit#Custom-functionality)
+## Custom functionality
 
 **Be clear about what people can do in your app and when they might want to use the Home app.**
 
@@ -88,23 +76,19 @@ source: https://developer.apple.com/design/human-interface-guidelines/homekit
 
 **Ask permission to update the HomeKit database when people make changes in your app.**
 
-### [Cameras](https://developer.apple.com/design/human-interface-guidelines/homekit#Cameras)
+### Cameras
 
 **Don’t block camera images.**
 
 **Show a microphone button only if the camera supports bidirectional audio.**
 
-## [Using HomeKit icons](https://developer.apple.com/design/human-interface-guidelines/homekit#Using-HomeKit-icons)
+## Using HomeKit icons
 
 **Use only Apple-provided icons.**
 
-### [Styles](https://developer.apple.com/design/human-interface-guidelines/homekit#Styles)
+### Styles
 
-#### [Black HomeKit icon](https://developer.apple.com/design/human-interface-guidelines/homekit#Black-HomeKit-icon)
-
-#### [White HomeKit icon](https://developer.apple.com/design/human-interface-guidelines/homekit#White-HomeKit-icon)
-
-#### [Custom color HomeKit icon](https://developer.apple.com/design/human-interface-guidelines/homekit#Custom-color-HomeKit-icon)
+#### Custom color HomeKit icon
 
 **Position the HomeKit icon consistently with other technology icons.**
 
@@ -114,7 +98,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/homekit
 
 **Pair the icon with the name _HomeKit_ correctly.**
 
-## [Referring to HomeKit](https://developer.apple.com/design/human-interface-guidelines/homekit#Referring-to-HomeKit)
+## Referring to HomeKit
 
 **Emphasize your app over HomeKit.**
 
@@ -132,7 +116,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/homekit
 
   * Refer to Apple devices and operating systems only in technical specifications or compatibility descriptions.
 
-### [Referencing HomeKit and the Home app](https://developer.apple.com/design/human-interface-guidelines/homekit#Referencing-HomeKit-and-the-Home-app)
+### Referencing HomeKit and the Home app
 
 **Use correct capitalization when using the term _HomeKit_.**
 
@@ -145,18 +129,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/homekit
 **Use the name _HomeKit_ for setup, configuration, and instructions, if desired.**
 
 **Use the app name _Apple Home_ whenever referring specifically to the app.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/homekit#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/homekit#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/homekit#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/homekit#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/homekit#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/homekit#Change-log)
 
 ---
 

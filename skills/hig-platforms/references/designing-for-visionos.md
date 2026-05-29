@@ -24,7 +24,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/designing-
 
 **Accessibility.**
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos#Best-practices)
+## Best practices
 
 **Embrace the unique features of Apple  Vision Pro.**
 
@@ -45,16 +45,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/designing-
   * Avoid encouraging people to move too much while they’re in a fully [immersive experience](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences).
 
 **Help people share activities with others.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos#Change-log)
 
 ---
 

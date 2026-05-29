@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/text-views
 
 # Text views
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/text-views#Best-practices)
+## Best practices
 
 **Use a text view when you need to display text that’s long, editable, or in a special format.**
 
@@ -18,21 +18,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/text-views
 
 **Make useful text selectable.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/text-views#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/text-views#iOS-iPadOS)
+### iOS, iPadOS
 
 **Show the appropriate keyboard type.**
-
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/text-views#tvOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/text-views#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/text-views#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/text-views#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/text-views#Change-log)
 
 ---
 

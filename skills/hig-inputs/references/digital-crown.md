@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/digital-cr
 
 # Digital Crown
 
-## [Apple Vision Pro](https://developer.apple.com/design/human-interface-guidelines/digital-crown#Apple-Vision-Pro)
+## Apple Vision Pro
 
   * Adjust volume
 
@@ -22,7 +22,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/digital-cr
 
   * Exit an app and return to the Home View
 
-## [Apple Watch](https://developer.apple.com/design/human-interface-guidelines/digital-crown#Apple-Watch)
+## Apple Watch
 
 **Anchor your app’s navigation to the Digital Crown.**
 
@@ -33,16 +33,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/digital-cr
 **Update your interface to match the speed with which people turn the Digital Crown.**
 
 **Use the default haptic feedback when it makes sense in your app.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/digital-crown#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/digital-crown#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/digital-crown#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/digital-crown#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/digital-crown#Change-log)
 
 ---
 

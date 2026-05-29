@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-icons
 
 # App icons
 
-## [Layer design](https://developer.apple.com/design/human-interface-guidelines/app-icons#Layer-design)
+## Layer design
 
 **Prefer clearly defined edges in foreground layers.**
 
@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-icons
 
 **Prefer vector graphics when bringing layers into Icon Composer.**
 
-## [Icon shape](https://developer.apple.com/design/human-interface-guidelines/app-icons#Icon-shape)
+## Icon shape
 
   * iOS, iPadOS, macOS 
   * tvOS 
@@ -30,7 +30,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-icons
 
 **Keep primary content centered to avoid truncation when the system adjusts corners or applies masking.**
 
-## [Design](https://developer.apple.com/design/human-interface-guidelines/app-icons#Design)
+## Design
 
 **Provide a visually consistent icon design across all the platforms your app supports.**
 
@@ -42,13 +42,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-icons
 
 **Don’t use replicas of Apple hardware products.**
 
-## [Visual effects](https://developer.apple.com/design/human-interface-guidelines/app-icons#Visual-effects)
+## Visual effects
 
 **Let the system handle blurring and other visual effects.**
 
 **Create layer groupings to apply effects to multiple layers at once.**
 
-## [Appearances](https://developer.apple.com/design/human-interface-guidelines/app-icons#Appearances)
+## Appearances
 
 **Keep your icon’s features consistent across appearances.**
 
@@ -58,37 +58,27 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-icons
 
 **Consider offering alternate app icons.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/app-icons#Platform-considerations)
+## Platform considerations
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/app-icons#tvOS)
+### tvOS
 
 **Include a safe zone to ensure the system doesn’t crop your content.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/app-icons#visionOS)
+### visionOS
 
 **Avoid adding a shape that’s intended to look like a hole or concave area to the background layer.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/app-icons#watchOS)
+### watchOS
 
 **Avoid using black for your icon’s background.**
 
-## [Specifications](https://developer.apple.com/design/human-interface-guidelines/app-icons#Specifications)
+## Specifications
 
   * sRGB (color)
 
   * Gray Gamma 2.2 (grayscale)
 
   * Display P3 (wide-gamut color in iOS, iPadOS, macOS, tvOS, and watchOS only)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/app-icons#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/app-icons#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/app-icons#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/app-icons#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/app-icons#Change-log)
 
 ---
 

@@ -10,13 +10,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/camera-con
 
 # Camera Control
 
-## [Anatomy](https://developer.apple.com/design/human-interface-guidelines/camera-control#Anatomy)
+## Anatomy
 
   * A _slider_ provides a range of values to choose from, such as how much contrast to apply to the content.
 
   * A _picker_ offers discrete options, such as turning a grid on and off in the viewfinder.
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/camera-control#Best-practices)
+## Best practices
 
 **Use SF Symbols to represent control functionality.**
 
@@ -35,16 +35,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/camera-con
 **Consider how to arrange your controls.**
 
 **Allow people to use the Camera Control to launch your experience from anywhere.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/camera-control#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/camera-control#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/camera-control#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/camera-control#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/camera-control#Change-log)
 
 ---
 

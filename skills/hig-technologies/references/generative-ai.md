@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/generative
 
 # Generative AI
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Best-practices)
+## Best practices
 
 **Design your experience responsibly.**
 
@@ -22,13 +22,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/generative
 
 **Ensure a great experience even when generative features aren’t available or people opt not to use them.**
 
-## [Transparency](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Transparency)
+## Transparency
 
 **Communicate where your app uses AI.**
 
 **Set clear expectations about what your AI-powered feature can and can’t do.**
 
-## [Privacy](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Privacy)
+## Privacy
 
 **Prefer on-device processing.**
 
@@ -36,13 +36,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/generative
 
 **Clearly disclose how your app and its model use and store personal information.**
 
-## [Models and datasets](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Models-and-datasets)
+## Models and datasets
 
 **Thoughtfully evaluate model capabilities.**
 
 **Be intentional when choosing or creating a dataset.**
 
-## [Inputs](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Inputs)
+## Inputs
 
 **Guide people on how to use your generative feature.**
 
@@ -50,7 +50,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/generative
 
 **Consider consequences and get permission before performing destructive or potentially problematic tasks.**
 
-## [Outputs](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Outputs)
+## Outputs
 
 **Help people improve requests when blocked or undesirable results occur.**
 
@@ -62,25 +62,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/generative
 
 **Consider offering alternate versions of results.**
 
-## [Continuous improvement](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Continuous-improvement)
+## Continuous improvement
 
 **Consider ways to improve your model over time.**
 
 **Let people share feedback on outputs.**
 
 **Design flexible, adaptable features.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Related)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Videos)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Change-log)
 
 ---
 

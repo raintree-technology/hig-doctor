@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/pointing-d
 
 # Pointing devices
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Best-practices)
+## Best practices
 
 **Be consistent when responding to mouse and trackpad gestures.**
 
@@ -22,25 +22,21 @@ source: https://developer.apple.com/design/human-interface-guidelines/pointing-d
 
 **Provide a consistent experience when people press and hold a modifier key while interacting with objects in your app.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Platform-considerations)
+## Platform considerations
 
-### [iPadOS](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#iPadOS)
+### iPadOS
 
 **Allow multiple selection in custom views when necessary.**
 
 **Distinguish between pointer and finger input only if it provides value.**
 
-#### [Pointer shape and content effects](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Pointer-shape-and-content-effects)
-
-#### [Pointer accessories](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Pointer-accessories)
+#### Pointer accessories
 
 **Use clear, simple images to create custom accessories.**
 
 **Consider using the accessory transition to signal a change in an element’s state or behavior.**
 
-#### [Pointer magnetism](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Pointer-magnetism)
-
-#### [Standard pointers and effects](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Standard-pointers-and-effects)
+#### Standard pointers and effects
 
 **When possible, support the system-provided content effects.**
 
@@ -58,7 +54,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/pointing-d
 
 **Specify the corner radius of a nonstandard element that receives the lift effect.**
 
-#### [Customizing pointers](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Customizing-pointers)
+#### Customizing pointers
 
 **Prefer system-provided pointer effects for custom elements that behave like standard elements.**
 
@@ -73,22 +69,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/pointing-d
 **Avoid displaying instructional text with a pointer.**
 
 **Consider the interplay of shadow, scale, and element spacing when defining custom hover effects.**
-
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#macOS)
-
-#### [Pointers](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Pointers)
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#visionOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/pointing-devices#Change-log)
 
 ---
 

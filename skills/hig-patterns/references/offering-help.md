@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/offering-h
 
 # Offering help
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/offering-help#Best-practices)
+## Best practices
 
 **Let your app’s tasks inform the types of help people might need.**
 
@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/offering-h
 
 **Avoid bloating your help content by explaining how standard components or patterns work.**
 
-## [Creating tips](https://developer.apple.com/design/human-interface-guidelines/offering-help#Creating-tips)
+## Creating tips
 
 **Use the most appropriate tip type for your app’s user interface.**
 
@@ -34,9 +34,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/offering-h
 
 **Use buttons to direct people to information or options.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/offering-help#Platform-considerations)
+## Platform considerations
 
-### [macOS, visionOS](https://developer.apple.com/design/human-interface-guidelines/offering-help#macOS-visionOS)
+### macOS, visionOS
 
 **Describe only the control that people indicate interest in.**
 
@@ -49,16 +49,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/offering-h
 **Use sentence case.**
 
 **Consider offering context-sensitive tooltips.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/offering-help#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/offering-help#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/offering-help#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/offering-help#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/offering-help#Change-log)
 
 ---
 

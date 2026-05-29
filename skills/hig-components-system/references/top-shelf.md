@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/top-shelf
 
 # Top Shelf
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Best-practices)
+## Best practices
 
 **Help people jump right into your content.**
 
@@ -26,7 +26,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/top-shelf
 
 **Avoid implying interactivity in a static image.**
 
-## [Dynamic layouts](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Dynamic-layouts)
+## Dynamic layouts
 
   * A carousel of full-screen video and images that includes two buttons and optional details
 
@@ -34,39 +34,27 @@ source: https://developer.apple.com/design/human-interface-guidelines/top-shelf
 
   * A set of scrolling banners
 
-### [Carousel actions](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Carousel-actions)
+### Carousel actions
 
 **Provide a title.**
 
-### [Carousel details](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Carousel-details)
+### Carousel details
 
 **Provide a title that identifies the currently playing content.**
 
-### [Sectioned content row](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Sectioned-content-row)
+### Sectioned content row
 
 **Provide enough content to constitute a complete row.**
 
-#### [Poster (2:3)](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Poster-23)
-
-#### [Square (1:1)](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Square-11)
-
-#### [16:9](https://developer.apple.com/design/human-interface-guidelines/top-shelf#169)
+#### 16:9
 
 **Be aware of additional scaling when combining image sizes.**
 
-#### [Scrolling inset banner](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Scrolling-inset-banner)
+#### Scrolling inset banner
 
 **Provide three to eight images.**
 
 **If you need text, add it to your image.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Related)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Videos)
 
 ---
 

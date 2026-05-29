@@ -18,7 +18,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
   * At a fixed position in the Smart Stack of Apple Watch
 
-## [Anatomy](https://developer.apple.com/design/human-interface-guidelines/widgets#Anatomy)
+## Anatomy
 
   * The widget size to support
 
@@ -26,7 +26,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
   * The rendering modes and color treatment that the widget receives based on the size and context
 
-### [System family widgets](https://developer.apple.com/design/human-interface-guidelines/widgets#System-family-widgets)
+### System family widgets
 
   * Small 
   * Medium 
@@ -34,14 +34,14 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
   * Extra large 
   * Extra large portrait 
 
-### [Accessory widgets](https://developer.apple.com/design/human-interface-guidelines/widgets#Accessory-widgets)
+### Accessory widgets
 
   * Accessory circular 
   * Accessory corner 
   * Accessory inline 
   * Accessory rectangular 
 
-### [Appearances](https://developer.apple.com/design/human-interface-guidelines/widgets#Appearances)
+### Appearances
 
   * On the Home Screen of iPhone and iPad, people choose from different appearances for widgets: light, dark, clear, and tinted. In light and dark appearances, widgets have a full-color design. In a clear appearance, the system desaturates the widget and adds translucency, highlights, and the Liquid Glass material. In a tinted appearance, the system desaturates the widget and its content, then applies a person’s selected tint color.
 
@@ -65,7 +65,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
   * The system uses the [vibrant](https://developer.apple.com/documentation/WidgetKit/WidgetRenderingMode/vibrant) rendering mode for widgets on the Lock Screen of iPhone and iPad, and on iPhone in StandBy in low-light conditions. It desaturates text, images, and gauges, and creates a vibrant effect by coloring your content appropriately for the Lock Screen background or a macOS desktop. Note that people can customize the Lock Screen with a tint color, and the system applies a red tint for widgets that appear on iPhone in StandBy in low-light conditions.
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/widgets#Best-practices)
+## Best practices
 
 **Choose simple ideas that relate to your app’s main purpose.**
 
@@ -89,7 +89,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
 **Let people know when authentication adds value.**
 
-### [Updating widget content](https://developer.apple.com/design/human-interface-guidelines/widgets#Updating-widget-content)
+### Updating widget content
 
 **Keep your widget up to date.**
 
@@ -97,7 +97,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
 **Use animated transitions to bring attention to data updates.**
 
-### [Adding interactivity](https://developer.apple.com/design/human-interface-guidelines/widgets#Adding-interactivity)
+### Adding interactivity
 
 **Offer simple, relevant functionality and reserve complexity for your app.**
 
@@ -105,13 +105,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
 **Offer interactivity while remaining glanceable and uncluttered.**
 
-### [Choosing margins and padding](https://developer.apple.com/design/human-interface-guidelines/widgets#Choosing-margins-and-padding)
+### Choosing margins and padding
 
 **In general, use standard margins to ensure legibility.**
 
 **Coordinate the corner radius of your content with the corner radius of the widget.**
 
-### [Displaying text in widgets](https://developer.apple.com/design/human-interface-guidelines/widgets#Displaying-text-in-widgets)
+### Displaying text in widgets
 
 **Prefer using the system font, text styles, and SF Symbols.**
 
@@ -119,7 +119,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
 **Avoid rasterizing text.**
 
-### [Using color](https://developer.apple.com/design/human-interface-guidelines/widgets#Using-color)
+### Using color
 
 **Use color to enhance a widget’s appearance without competing with its content.**
 
@@ -127,23 +127,23 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
 **Use full-color images judiciously.**
 
-## [Rendering modes](https://developer.apple.com/design/human-interface-guidelines/widgets#Rendering-modes)
+## Rendering modes
 
-### [Full-color](https://developer.apple.com/design/human-interface-guidelines/widgets#Full-color)
+### Full-color
 
 **Support light and dark appearances.**
 
-### [Accented](https://developer.apple.com/design/human-interface-guidelines/widgets#Accented)
+### Accented
 
 **Group widget components into an accented and a primary group.**
 
-### [Vibrant](https://developer.apple.com/design/human-interface-guidelines/widgets#Vibrant)
+### Vibrant
 
 **Offer enough contrast to ensure legibility.**
 
 **Create optimized assets for the best vibrant effect.**
 
-## [Previews and placeholders](https://developer.apple.com/design/human-interface-guidelines/widgets#Previews-and-placeholders)
+## Previews and placeholders
 
 **Design a realistic preview to display in the widget gallery.**
 
@@ -155,28 +155,28 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
 **Consider coloring the Add button.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/widgets#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/widgets#iOS-iPadOS)
+### iOS, iPadOS
 
 **Support the Always-On display on iPhone.**
 
 **Offer Live Activities to show real-time updates.**
 
-#### [StandBy and CarPlay](https://developer.apple.com/design/human-interface-guidelines/widgets#StandBy-and-CarPlay)
+#### StandBy and CarPlay
 
 **Limit usage of rich images or color to convey meaning in StandBy.**
 
   * Correct usage 
   * Incorrect usage 
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/widgets#visionOS)
+### visionOS
 
 **Adapt your design and content for the spatial experience Apple Vision Pro provides.**
 
 **Test your widgets across the full range of system color palettes and in different lighting conditions.**
 
-#### [Thresholds and sizes](https://developer.apple.com/design/human-interface-guidelines/widgets#Thresholds-and-sizes)
+#### Thresholds and sizes
 
 **Design a responsive layout that shows the right level of detail for each of the two thresholds.**
 
@@ -184,7 +184,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
 **Display content in a way that remains legible from a range of distances.**
 
-#### [Mounting styles](https://developer.apple.com/design/human-interface-guidelines/widgets#Mounting-styles)
+#### Mounting styles
 
   * **[Elevated](https://developer.apple.com/documentation/WidgetKit/WidgetMountingStyle/elevated) style**. On horizontal surfaces — for example, on a desk — the widget always appears elevated and gently tilts backward, providing a subtle angle that improves readability, and casts a soft shadow that helps it feel grounded on the surface. On vertical surfaces — for example, on a wall — the widget either appears elevated, sitting flush on the surface and similar to how you mount a picture frame.
 
@@ -194,7 +194,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
 **Test your elevated widget designs with each system-provided frame width.**
 
-#### [Treatment styles](https://developer.apple.com/design/human-interface-guidelines/widgets#Treatment-styles)
+#### Treatment styles
 
   * The [`paper`](https://developer.apple.com/documentation/WidgetKit/WidgetTexture/paper) style creates a more grounded, print-like style that feels solid and makes the widget feel like part of its surroundings. When lighting conditions change, widgets in the paper style become darker or lighter in response.
 
@@ -204,33 +204,17 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
 **Choose the glass style for information-rich widgets.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/widgets#watchOS)
+### watchOS
 
 **Provide a colorful background that conveys meaning.**
 
 **Encourage the system to display or elevate the position of your watchOS widget in the Smart Stack.**
 
-## [Specifications](https://developer.apple.com/design/human-interface-guidelines/widgets#Specifications)
+## Specifications
 
-### [iOS dimensions](https://developer.apple.com/design/human-interface-guidelines/widgets#iOS-dimensions)
-
-### [iPadOS dimensions](https://developer.apple.com/design/human-interface-guidelines/widgets#iPadOS-dimensions)
+### iPadOS dimensions
 
 * When Display Zoom is set to More Space.
-
-### [visionOS dimensions](https://developer.apple.com/design/human-interface-guidelines/widgets#visionOS-dimensions)
-
-### [watchOS dimensions](https://developer.apple.com/design/human-interface-guidelines/widgets#watchOS-dimensions)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/widgets#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/widgets#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/widgets#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/widgets#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/widgets#Change-log)
 
 ---
 

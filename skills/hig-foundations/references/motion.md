@@ -10,13 +10,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/motion
 
 # Motion
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/motion#Best-practices)
+## Best practices
 
 **Add motion purposefully, supporting the experience without overshadowing it.**
 
 **Make motion optional.**
 
-## [Providing feedback](https://developer.apple.com/design/human-interface-guidelines/motion#Providing-feedback)
+## Providing feedback
 
 **Strive for realistic feedback motion that follows people’s gestures and expectations.**
 
@@ -28,15 +28,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/motion
 
 **Consider using animated symbols where it makes sense.**
 
-## [Leveraging platform capabilities](https://developer.apple.com/design/human-interface-guidelines/motion#Leveraging-platform-capabilities)
+## Leveraging platform capabilities
 
 **Make sure your game’s motion looks great by default on each platform you support.**
 
 **Let people customize the visual experience of your game to optimize performance or battery life.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/motion#Platform-considerations)
+## Platform considerations
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/motion#visionOS)
+### visionOS
 
 **As much as possible, avoid displaying motion at the edges of a person’s field of view.**
 
@@ -49,18 +49,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/motion
 **Consider giving people a stationary frame of reference.**
 
 **Avoid showing objects that oscillate in a sustained way.**
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/motion#watchOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/motion#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/motion#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/motion#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/motion#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/motion#Change-log)
 
 ---
 

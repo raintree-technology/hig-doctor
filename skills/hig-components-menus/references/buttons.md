@@ -16,13 +16,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/buttons
 
   * **Role.** A system-defined role that identifies a button’s semantic meaning and can affect its appearance.
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/buttons#Best-practices)
+## Best practices
 
 **Make buttons easy for people to use.**
 
 **Always include a press state for a custom button.**
 
-## [Style](https://developer.apple.com/design/human-interface-guidelines/buttons#Style)
+## Style
 
 **In general, use a button that has a prominent visual style for the most likely action in a view.**
 
@@ -30,7 +30,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/buttons
 
 **Avoid applying a similar color to button labels and content layer backgrounds.**
 
-## [Content](https://developer.apple.com/design/human-interface-guidelines/buttons#Content)
+## Content
 
 **Ensure that each button clearly communicates its purpose.**
 
@@ -38,7 +38,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/buttons
 
 **Consider using text when a short label communicates more clearly than an icon.**
 
-## [Role](https://developer.apple.com/design/human-interface-guidelines/buttons#Role)
+## Role
 
   * **Normal.** No specific meaning.
 
@@ -52,15 +52,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/buttons
 
 **Don’t assign the primary role to a button that performs a destructive action, even if that action is the most likely choice.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/buttons#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/buttons#iOS-iPadOS)
+### iOS, iPadOS
 
 **Configure a button to display an activity indicator when you need to provide feedback about an action that doesn’t instantly complete.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/buttons#macOS)
+### macOS
 
-#### [Push buttons](https://developer.apple.com/design/human-interface-guidelines/buttons#Push-buttons)
+#### Push buttons
 
 **Use a flexible-height push button only when you need to display tall or variable height content.**
 
@@ -68,7 +68,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/buttons
 
 **Consider supporting spring loading.**
 
-#### [Square buttons](https://developer.apple.com/design/human-interface-guidelines/buttons#Square-buttons)
+#### Square buttons
 
 **Use square buttons in a view, not in the window frame.**
 
@@ -76,7 +76,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/buttons
 
 **Avoid using labels to introduce square buttons.**
 
-#### [Help buttons](https://developer.apple.com/design/human-interface-guidelines/buttons#Help-buttons)
+#### Help buttons
 
 **Use the system-provided help button to display your help documentation.**
 
@@ -90,7 +90,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/buttons
 
 **Avoid displaying text that introduces a help button.**
 
-#### [Image buttons](https://developer.apple.com/design/human-interface-guidelines/buttons#Image-buttons)
+#### Image buttons
 
 **Use an image button in a view, not in the window frame.**
 
@@ -98,7 +98,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/buttons
 
 **If you need to include a label, position it below the image button.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/buttons#visionOS)
+### visionOS
 
 **Prefer buttons that have a discernible background shape and fill.**
 
@@ -116,7 +116,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/buttons
 
 **Use standard controls to take advantage of the audible feedback sounds people already know.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/buttons#watchOS)
+### watchOS
 
 **Use a toolbar to place buttons in the corners.**
 
@@ -125,14 +125,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/buttons
 **Use toolbar buttons to provide either navigation to related areas or contextual actions for the view’s content.**
 
 **Use the same height for vertical stacks of one- and two-line text buttons.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/buttons#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/buttons#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/buttons#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/buttons#Change-log)
 
 ---
 

@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/segmented-
 
 # Segmented controls
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/segmented-controls#Best-practices)
+## Best practices
 
 **Use a segmented control to provide closely related choices that affect an object, state, or view.**
 
@@ -22,7 +22,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/segmented-
 
 **In general, keep segment size consistent.**
 
-## [Content](https://developer.apple.com/design/human-interface-guidelines/segmented-controls#Content)
+## Content
 
 **Prefer using either text or images — not a mix of both — in a single segmented control.**
 
@@ -30,13 +30,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/segmented-
 
 **Use nouns or noun phrases for segment labels.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/segmented-controls#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/segmented-controls#iOS-iPadOS)
+### iOS, iPadOS
 
 **Consider a segmented control to switch between closely related subviews.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/segmented-controls#macOS)
+### macOS
 
 **Consider using introductory text to clarify the purpose of a segmented control.**
 
@@ -44,21 +44,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/segmented-
 
 **Consider supporting spring loading.**
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/segmented-controls#tvOS)
+### tvOS
 
 **Consider using a split view instead of a segmented control on screens that perform content filtering.**
 
 **Avoid putting other focusable elements close to segmented controls.**
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/segmented-controls#visionOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/segmented-controls#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/segmented-controls#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/segmented-controls#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/segmented-controls#Change-log)
 
 ---
 

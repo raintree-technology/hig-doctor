@@ -10,23 +10,17 @@ source: https://developer.apple.com/design/human-interface-guidelines/steppers
 
 # Steppers
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/steppers#Best-practices)
+## Best practices
 
 **Make the value that a stepper affects obvious.**
 
 **Consider pairing a stepper with a text field when large value changes are likely.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/steppers#Platform-considerations)
+## Platform considerations
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/steppers#macOS)
+### macOS
 
 **For large value ranges, consider supporting Shift-click to change the value quickly.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/steppers#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/steppers#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/steppers#Developer-documentation)
 
 ---
 

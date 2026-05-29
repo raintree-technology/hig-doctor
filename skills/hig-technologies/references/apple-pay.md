@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-pay
 
 # Apple Pay
 
-## [Offering Apple Pay](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Offering-Apple-Pay)
+## Offering Apple Pay
 
 **Offer Apple Pay on all devices and browsers that support it.**
 
@@ -30,7 +30,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-pay
 
 **Inform search engines that Apple Pay is accepted on your website.**
 
-## [Streamlining checkout](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Streamlining-checkout)
+## Streamlining checkout
 
 **Provide a cohesive checkout experience.**
 
@@ -56,7 +56,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-pay
 
 **Display an order confirmation or thank-you page.**
 
-### [Customizing the payment sheet](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Customizing-the-payment-sheet)
+### Customizing the payment sheet
 
 **Only present and request essential information.**
 
@@ -81,11 +81,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-pay
 
 **Handle data entry and payment errors gracefully.**
 
-### [Displaying a website icon](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Displaying-a-website-icon)
+## Handling errors
 
-## [Handling errors](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Handling-errors)
-
-### [Data validation](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Data-validation)
+### Data validation
 
   * iOS 
   * Web 
@@ -96,11 +94,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-pay
 
 **Succinctly and specifically describe the problem when data is invalid or incorrectly formatted.**
 
-### [Payment processing](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Payment-processing)
+### Payment processing
 
 **Handle interruptions correctly.**
 
-## [Supporting subscriptions](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Supporting-subscriptions)
+## Supporting subscriptions
 
   * iOS 
   * Web 
@@ -116,15 +114,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-pay
 
 **Only show the payment sheet when a subscription change results in additional fees.**
 
-### [Supporting donations](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Supporting-donations)
+### Supporting donations
 
 **Use a line item to denote a donation.**
 
 **Streamline checkout by offering predefined donation amounts.**
 
-## [Using Apple Pay buttons](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Using-Apple-Pay-buttons)
+## Using Apple Pay buttons
 
-### [Button types](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Button-types)
+### Button types
 
   * A button that is guaranteed to use an Apple-approved caption, font, color, and style
 
@@ -136,15 +134,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-pay
 
   * A system-provided alternative text label that lets VoiceOver describe the button
 
-### [Button styles](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Button-styles)
-
-#### [Black](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Black)
-
-#### [White with outline](https://developer.apple.com/design/human-interface-guidelines/apple-pay#White-with-outline)
-
-#### [White](https://developer.apple.com/design/human-interface-guidelines/apple-pay#White)
-
-### [Button size and position](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Button-size-and-position)
+### Button size and position
 
 **Prominently display the Apple Pay button.**
 
@@ -154,13 +144,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-pay
 
 **Maintain the minimum button size and margins around the button.**
 
-### [Apple Pay mark](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Apple-Pay-mark)
+### Apple Pay mark
 
 **Use only the artwork provided by Apple, with no alterations other than height.**
 
 **Maintain a minimum clear space around the mark of 1/10 of its height.**
 
-## [Referring to Apple Pay](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Referring-to-Apple-Pay)
+## Referring to Apple Pay
 
 **Capitalize Apple Pay in text as it appears in the Apple Trademark list.**
 
@@ -173,18 +163,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-pay
 **In a payment selection context, you can display a text-only description of Apple Pay only when all payment options have text-only descriptions.**
 
 **When promoting your app’s use of Apple Pay, follow App Store guidelines.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/apple-pay#Change-log)
 
 ---
 

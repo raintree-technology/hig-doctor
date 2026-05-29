@@ -16,7 +16,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-au
 
 **Headphones.**
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/playing-audio#Best-practices)
+## Best practices
 
 **Adjust levels automatically when necessary — don’t adjust the overall volume.**
 
@@ -34,23 +34,19 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-au
 
 **Let other apps know when your app finishes playing temporary audio.**
 
-## [Handling interruptions](https://developer.apple.com/design/human-interface-guidelines/playing-audio#Handling-interruptions)
+## Handling interruptions
 
 **Determine how to respond to audio-session interruptions.**
 
 **When an interruption ends, determine whether to resume audio playback automatically.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/playing-audio#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/playing-audio#iOS-iPadOS)
+### iOS, iPadOS
 
 **Use the system’s sound services to play short sounds and vibrations.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/playing-audio#macOS)
-
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/playing-audio#tvOS)
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/playing-audio#visionOS)
+### visionOS
 
 **Prefer playing sound.**
 
@@ -64,19 +60,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-au
 
 **Decide whether you need to play sound that’s fixed to the wearer or tracked by the wearer.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/playing-audio#watchOS)
+### watchOS
 
 **Use the recommended encoding values for media assets.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/playing-audio#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/playing-audio#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/playing-audio#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/playing-audio#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/playing-audio#Change-log)
 
 ---
 

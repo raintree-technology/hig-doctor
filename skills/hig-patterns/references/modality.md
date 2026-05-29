@@ -18,7 +18,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/modality
 
   * Give people an immersive experience or help them concentrate on a complex task
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/modality#Best-practices)
+## Best practices
 
 **Present content modally only when there’s a clear benefit.**
 
@@ -35,18 +35,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/modality
 **Make it easy to identify a modal view’s task.**
 
 **Let people dismiss a modal view before presenting another one.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/modality#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/modality#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/modality#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/modality#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/modality#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/modality#Change-log)
 
 ---
 

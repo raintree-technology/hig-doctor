@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/loading
 
 # Loading
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/loading#Best-practices)
+## Best practices
 
 **Show something as soon as possible.**
 
@@ -20,27 +20,17 @@ source: https://developer.apple.com/design/human-interface-guidelines/loading
 
 **Improve installation and launch time by downloading large assets in the background.**
 
-## [Showing progress](https://developer.apple.com/design/human-interface-guidelines/loading#Showing-progress)
+## Showing progress
 
 **Clearly communicate that content is loading and how long it might take to complete.**
 
 **For games, consider creating a custom loading view.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/loading#Platform-considerations)
+## Platform considerations
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/loading#watchOS)
+### watchOS
 
 **As much as possible, avoid showing a loading indicator in your watchOS experience.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/loading#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/loading#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/loading#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/loading#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/loading#Change-log)
 
 ---
 

@@ -10,27 +10,23 @@ source: https://developer.apple.com/design/human-interface-guidelines/images
 
 # Images
 
-## [Resolution](https://developer.apple.com/design/human-interface-guidelines/images#Resolution)
+## Resolution
 
 **Provide high-resolution assets for all bitmap images in your app, for every device you support.**
 
 **In general, design images at the lowest resolution and scale them up to create high-resolution assets.**
 
-## [Formats](https://developer.apple.com/design/human-interface-guidelines/images#Formats)
-
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/images#Best-practices)
+## Best practices
 
 **Include a color profile with each image.**
 
 **Always test images on a range of actual devices.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/images#Platform-considerations)
+## Platform considerations
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/images#tvOS)
+### tvOS
 
-#### [Parallax effect](https://developer.apple.com/design/human-interface-guidelines/images#Parallax-effect)
-
-#### [Layered images](https://developer.apple.com/design/human-interface-guidelines/images#Layered-images)
+#### Layered images
 
 **Use standard interface elements to display layered images.**
 
@@ -46,7 +42,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/images
 
 **Always preview layered images.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/images#visionOS)
+### visionOS
 
 **Create a layered app icon.**
 
@@ -54,7 +50,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/images
 
 **If you need to use rasterized images, balance quality with performance as you choose a resolution.**
 
-#### [Spatial photos and spatial scenes](https://developer.apple.com/design/human-interface-guidelines/images#Spatial-photos-and-spatial-scenes)
+#### Spatial photos and spatial scenes
 
 **Make sure spatial photos render correctly in your app.**
 
@@ -70,21 +66,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/images
 
 **Prefer displaying larger spatial scenes that you center in someone’s field of view.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/images#watchOS)
+### watchOS
 
 **In general, avoid transparency to keep image files small.**
 
 **Use autoscaling PDFs to let you provide a single asset for all screen sizes.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/images#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/images#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/images#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/images#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/images#Change-log)
 
 ---
 

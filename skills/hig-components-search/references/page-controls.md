@@ -10,13 +10,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/page-contr
 
 # Page controls
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/page-controls#Best-practices)
+## Best practices
 
 **Use page controls to represent movement between an ordered list of pages.**
 
 **Center a page control at the bottom of the view or window.**
 
-## [Customizing indicators](https://developer.apple.com/design/human-interface-guidelines/page-controls#Customizing-indicators)
+## Customizing indicators
 
 **Make sure custom indicator images are simple and clear.**
 
@@ -26,9 +26,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/page-contr
 
 **Avoid coloring indicator images.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/page-controls#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/page-controls#iOS-iPadOS)
+### iOS, iPadOS
 
 **Avoid animating page transitions during scrubbing.**
 
@@ -40,25 +40,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/page-contr
 
 **Avoid supporting the scrubber when you use the minimal background style.**
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/page-controls#tvOS)
+### tvOS
 
 **Use page controls on collections of full-screen pages.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/page-controls#visionOS)
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/page-controls#watchOS)
+### watchOS
 
 **Use vertical pagination to separate multiple views into distinct, purposeful pages.**
 
 **Consider limiting the content of an individual page to a single screen height.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/page-controls#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/page-controls#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/page-controls#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/page-controls#Change-log)
 
 ---
 

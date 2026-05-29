@@ -30,11 +30,36 @@ import { join } from "node:path";
 const SKILLS_DIR = join(import.meta.dir, "..", "skills");
 const APPLY = process.argv.includes("--apply");
 
-const HEADING_RE = /^#{1,6}\s/;
+const HEADING_RE = /^(#{1,6})\s/;
 const LIST_RE = /^\s*([-*+]|\d+\.)\s/;
 const BOLD_LINE_RE = /^\*\*([^*][^*]*?\.)\*\*/;
 const ATTRIBUTION_MARKER = "<!-- hig-doctor:attribution -->";
 const CANONICAL_FOOTER_MARKER = "<!-- hig-doctor:canonical-footer -->";
+
+// Navigation chrome scraped from Apple's doc pages — these headings never
+// carried guidance. Drop the heading and everything beneath it.
+const BOILERPLATE_HEADINGS = new Set([
+  "Resources",
+  "Related",
+  "Developer documentation",
+  "Videos",
+  "Change log",
+  "See also",
+  "See Also",
+]);
+
+const headingLevel = (line: string): number => {
+  const m = line.match(HEADING_RE);
+  return m ? m[1].length : 0;
+};
+
+// "## [Title](url)" -> "## Title"; strips the scraped link wrapper that wraps
+// ~92% of headings (the canonical URL still lives in frontmatter + the footer).
+const headingText = (line: string): string =>
+  line
+    .replace(/^#{1,6}\s+/, "")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .trim();
 
 interface Section {
   frontmatter: string;
@@ -85,50 +110,92 @@ function splitFile(raw: string): Section {
 
 function transformBody(body: string): string {
   const lines = body.split("\n");
-  const out: string[] = [];
-  let lastWasBlank = false;
+  const kept: string[] = [];
   let inFooter = false;
+  let skipUntilLevel = 0; // >0 while inside a dropped boilerplate section
 
-  for (const rawLine of lines) {
-    const line = rawLine;
-
+  for (const line of lines) {
     if (line.includes(CANONICAL_FOOTER_MARKER)) inFooter = true;
     if (inFooter) continue;
 
+    const level = headingLevel(line);
+    if (level > 0) {
+      // A same-or-higher heading ends an in-progress boilerplate section.
+      if (skipUntilLevel > 0 && level <= skipUntilLevel) skipUntilLevel = 0;
+      if (skipUntilLevel > 0) continue;
+      if (BOILERPLATE_HEADINGS.has(headingText(line))) {
+        skipUntilLevel = level; // drop this heading and everything beneath it
+        continue;
+      }
+      // Emit headings as plain text (drop the scraped "[Title](url)" wrapper).
+      kept.push(`${"#".repeat(level)} ${headingText(line)}`);
+      continue;
+    }
+
+    if (skipUntilLevel > 0) continue; // still inside a dropped section
+
     if (line.trim() === "") {
-      if (!lastWasBlank) out.push("");
-      lastWasBlank = true;
+      kept.push("");
       continue;
     }
-
-    // Keep headings verbatim.
-    if (HEADING_RE.test(line)) {
-      out.push(line);
-      lastWasBlank = false;
-      continue;
-    }
-
     // Keep list items verbatim (they often enumerate HIG values).
     if (LIST_RE.test(line)) {
-      out.push(line);
-      lastWasBlank = false;
+      kept.push(line);
       continue;
     }
-
     // Truncate bold-principle lines to just the bolded sentence.
     const bold = line.match(BOLD_LINE_RE);
     if (bold) {
-      out.push(`**${bold[1]}**`);
-      lastWasBlank = false;
+      kept.push(`**${bold[1]}**`);
       continue;
     }
-
     // Drop everything else (prose).
   }
 
-  // Trim trailing blanks
-  while (out.length > 0 && out[out.length - 1].trim() === "") out.pop();
-  return out.join("\n");
+  // Prune empty headings: a heading (below the H1 title, which is always kept)
+  // with no content before the next same-or-higher heading. Iterate to a
+  // fixpoint so a parent that only held now-removed empty children collapses too.
+  let working = kept;
+  let changed = true;
+  while (changed) {
+    changed = false;
+    const next: string[] = [];
+    for (let i = 0; i < working.length; i++) {
+      const level = headingLevel(working[i]);
+      if (level > 1) {
+        let hasContent = false;
+        for (let j = i + 1; j < working.length; j++) {
+          const jl = headingLevel(working[j]);
+          if (jl > 0 && jl <= level) break; // end of this heading's section
+          if (jl === 0 && working[j].trim() !== "") {
+            hasContent = true;
+            break;
+          }
+        }
+        if (!hasContent) {
+          changed = true;
+          continue; // drop the empty heading
+        }
+      }
+      next.push(working[i]);
+    }
+    working = next;
+  }
+
+  // Collapse consecutive blank lines and trim leading/trailing blanks.
+  const final: string[] = [];
+  let lastBlank = false;
+  for (const l of working) {
+    if (l.trim() === "") {
+      if (!lastBlank && final.length > 0) final.push("");
+      lastBlank = true;
+    } else {
+      final.push(l);
+      lastBlank = false;
+    }
+  }
+  while (final.length > 0 && final[final.length - 1].trim() === "") final.pop();
+  return final.join("\n");
 }
 
 function appendFooter(body: string, source: string | null): string {

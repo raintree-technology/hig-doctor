@@ -16,7 +16,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/accessibil
 
   * **Adaptable.** Your interface adapts to how people want to use their device, whether by supporting system accessibility features or letting people personalize settings.
 
-## [Vision](https://developer.apple.com/design/human-interface-guidelines/accessibility#Vision)
+## Vision
 
 **Support larger text sizes.**
 
@@ -32,7 +32,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/accessibil
 
 **Describe your app’s interface and content for VoiceOver.**
 
-## [Hearing](https://developer.apple.com/design/human-interface-guidelines/accessibility#Hearing)
+## Hearing
 
 **Support text-based ways to enjoy audio and video.**
 
@@ -48,7 +48,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/accessibil
 
 **Augment audio cues with visual cues.**
 
-## [Mobility](https://developer.apple.com/design/human-interface-guidelines/accessibility#Mobility)
+## Mobility
 
 **Offer sufficiently sized controls.**
 
@@ -64,13 +64,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/accessibil
 
 **Support mobility-related assistive technologies.**
 
-## [Speech](https://developer.apple.com/design/human-interface-guidelines/accessibility#Speech)
+## Speech
 
 **Let people use the keyboard alone to navigate and interact with your app.**
 
 **Support Switch Control.**
 
-## [Cognitive](https://developer.apple.com/design/human-interface-guidelines/accessibility#Cognitive)
+## Cognitive
 
 **Keep actions simple and intuitive.**
 
@@ -102,9 +102,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/accessibil
 
   * Always ask for confirmation twice whenever people perform an action that’s difficult to recover from, such a deleting a file.
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/accessibility#Platform-considerations)
+## Platform considerations
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/accessibility#visionOS)
+### visionOS
 
   * Pointer Control (hand) 
   * Pointer Control (head) 
@@ -121,16 +121,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/accessibil
   * Avoid anchoring content to the wearer’s head, which may make them feel stuck and confined, and also prevent them from using assistive technologies like Pointer Control.
 
   * Minimize the need for large and repetitive gestures, as these can become tiresome and may be difficult depending on a person’s surroundings.
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/accessibility#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/accessibility#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/accessibility#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/accessibility#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/accessibility#Change-log)
 
 ---
 

@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-shortc
 
 # App Shortcuts
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#Best-practices)
+## Best practices
 
 **Offer App Shortcuts for your app’s most common and important tasks.**
 
@@ -22,7 +22,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-shortc
 
 **Make App Shortcuts discoverable in your app.**
 
-### [Responding to App Shortcuts](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#Responding-to-App-Shortcuts)
+### Responding to App Shortcuts
 
   * Snippets are great for custom views that display static information or dialog options, like showing the weather at a person’s location or confirming an order. For developer guidance, see [`ShowsSnippetView`](https://developer.apple.com/documentation/AppIntents/ShowsSnippetView).
 
@@ -30,7 +30,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-shortc
 
 **Provide enough detail for interaction on audio-only devices.**
 
-## [Editorial guidelines](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#Editorial-guidelines)
+## Editorial guidelines
 
 **Provide brief, memorable activation phrases and natural variants.**
 
@@ -38,25 +38,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/app-shortc
 
 **When referring to individual shortcuts (not App Shortcuts or the Shortcuts app), use lowercase.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#iOS-iPadOS)
+### iOS, iPadOS
 
 **Order shortcuts based on importance.**
 
 **Offer an App Shortcut that starts a Live Activity.**
-
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#macOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#Change-log)
 
 ---
 

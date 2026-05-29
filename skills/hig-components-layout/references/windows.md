@@ -14,7 +14,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/windows
 
   * An _auxiliary_ window presents a specific task or area in an app. Dedicated to one experience, an auxiliary window doesn’t allow navigation to other app areas, and it typically includes a button people use to close it after completing the task.
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/windows#Best-practices)
+## Best practices
 
 **Make sure that your windows adapt fluidly to different sizes to support multitasking and multiwindow workflows.**
 
@@ -26,9 +26,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/windows
 
 **Use the term _window_ in user-facing content.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/windows#Platform-considerations)
+## Platform considerations
 
-### [iPadOS](https://developer.apple.com/design/human-interface-guidelines/windows#iPadOS)
+### iPadOS
 
   * **Full screen.** App windows fill the entire screen, and people switch between them — or between multiple windows of the same app — using the app switcher.
 
@@ -41,11 +41,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/windows
 
 **Consider letting people use a gesture to open content in a new window.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/windows#macOS)
+### macOS
 
-#### [macOS window anatomy](https://developer.apple.com/design/human-interface-guidelines/windows#macOS-window-anatomy)
-
-#### [macOS window states](https://developer.apple.com/design/human-interface-guidelines/windows#macOS-window-states)
+#### macOS window states
 
   * **Main.** The frontmost window that people view is an app’s main window. There can be only one main window per app.
 
@@ -57,9 +55,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/windows
 
 **Avoid putting critical information or actions in a bottom bar, because people often relocate a window in a way that hides its bottom edge.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/windows#visionOS)
+### visionOS
 
-#### [visionOS windows](https://developer.apple.com/design/human-interface-guidelines/windows#visionOS-windows)
+#### visionOS windows
 
 **Prefer using a window to present a familiar interface and to support familiar tasks.**
 
@@ -73,7 +71,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/windows
 
 **Minimize the depth of 3D content you display in a window.**
 
-#### [visionOS volumes](https://developer.apple.com/design/human-interface-guidelines/windows#visionOS-volumes)
+#### visionOS volumes
 
 **Prefer using a volume to display rich, 3D content.**
 
@@ -86,16 +84,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/windows
 **Consider offering high-value content in an ornament.**
 
 **Choose an alignment that supports the way people interact with your volume.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/windows#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/windows#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/windows#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/windows#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/windows#Change-log)
 
 ---
 

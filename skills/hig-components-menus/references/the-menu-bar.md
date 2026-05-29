@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/the-menu-b
 
 # The menu bar
 
-## [Anatomy](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Anatomy)
+## Anatomy
 
   * _YourAppName_ (you supply a short version of your app’s name for this menu’s title)
 
@@ -28,7 +28,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/the-menu-b
 
   * Help
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Best-practices)
+## Best practices
 
 **Support the default system-defined menus and their ordering.**
 
@@ -40,25 +40,21 @@ source: https://developer.apple.com/design/human-interface-guidelines/the-menu-b
 
 **Prefer short, one-word menu titles.**
 
-## [App menu](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#App-menu)
+## App menu
 
 **Display the About menu item first.**
 
-## [File menu](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#File-menu)
-
-## [Edit menu](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Edit-menu)
+## Edit menu
 
 **Determine whether Find menu items belong in the Edit menu.**
 
-## [Format menu](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Format-menu)
-
-## [View menu](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#View-menu)
+## View menu
 
 **Provide a View menu even if your app supports only a subset of the standard view functions.**
 
 **Ensure that each show/hide item title reflects the current state of the corresponding view.**
 
-## [App-specific menus](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#App-specific-menus)
+## App-specific menus
 
 **Provide app-specific menus for custom commands.**
 
@@ -66,15 +62,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/the-menu-b
 
 **Aim to list app-specific menus in order from most to least general or commonly used.**
 
-## [Window menu](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Window-menu)
+## Window menu
 
 **Provide a Window menu even if your app has only one window.**
 
 **Consider including menu items for showing and hiding panels.**
 
-## [Help menu](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Help-menu)
-
-## [Dynamic menu items](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Dynamic-menu-items)
+## Dynamic menu items
 
 **Avoid making a dynamic menu item the only way to accomplish a task.**
 
@@ -82,9 +76,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/the-menu-b
 
 **Require only a single modifier key to reveal a dynamic menu item.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Platform-considerations)
+## Platform considerations
 
-### [iPadOS](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#iPadOS)
+### iPadOS
 
 **Because the menu bar is often hidden when running an app full screen, ensure that people can access all of your app’s functions through its UI.**
 
@@ -94,9 +88,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/the-menu-b
 
 **Consider grouping menu items into submenus to conserve vertical space.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#macOS)
+### macOS
 
-#### [Menu bar extras](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Menu-bar-extras)
+#### Menu bar extras
 
 **Consider using a symbol to represent your menu bar extra.**
 
@@ -107,16 +101,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/the-menu-b
 **Avoid relying on the presence of menu bar extras.**
 
 **Consider exposing app-specific functionality in other ways, too.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#Change-log)
 
 ---
 

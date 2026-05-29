@@ -16,15 +16,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/charts
 
   * Review fitness data to monitor their progress and set new goals.
 
-## [Anatomy](https://developer.apple.com/design/human-interface-guidelines/charts#Anatomy)
-
-## [Marks](https://developer.apple.com/design/human-interface-guidelines/charts#Marks)
+## Marks
 
 **Choose a mark type based on the information you want to communicate about the data.**
 
 **Consider combining mark types when it adds clarity to your chart.**
 
-## [Axes](https://developer.apple.com/design/human-interface-guidelines/charts#Axes)
+## Axes
 
 **Use a fixed or dynamic axis range depending on the meaning of your chart.**
 
@@ -34,13 +32,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/charts
 
 **Tailor the appearance of grid lines and labels to a chart’s use cases.**
 
-## [Descriptive content](https://developer.apple.com/design/human-interface-guidelines/charts#Descriptive-content)
+## Descriptive content
 
 **Write descriptions that help people understand what a chart does before they view it.**
 
 **Summarize the main message of your chart to help make it approachable and useful for everyone.**
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/charts#Best-practices)
+## Best practices
 
 **Establish a consistent visual hierarchy that helps communicate the relative importance of various chart elements.**
 
@@ -58,13 +56,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/charts
 
 **Align a chart with surrounding interface elements.**
 
-## [Color](https://developer.apple.com/design/human-interface-guidelines/charts#Color)
+## Color
 
 **Avoid relying solely on color to differentiate between different pieces of data or communicate essential information in a chart.**
 
 **Aid comprehension by adding visual separation between contiguous areas of color.**
 
-## [Enhancing the accessibility of a chart](https://developer.apple.com/design/human-interface-guidelines/charts#Enhancing-the-accessibility-of-a-chart)
+## Enhancing the accessibility of a chart
 
 **Consider using Audio Graphs to give VoiceOver users more information about your chart.**
 
@@ -82,21 +80,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/charts
 
 **Hide visible text labels for axes and ticks from assistive technologies.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/charts#Platform-considerations)
+## Platform considerations
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/charts#watchOS)
+### watchOS
 
 **In general, avoid requiring complex chart interactions in your watchOS app.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/charts#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/charts#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/charts#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/charts#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/charts#Change-log)
 
 ---
 

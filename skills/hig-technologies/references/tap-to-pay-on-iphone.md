@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/tap-to-pay
 
 # Tap to Pay on iPhone
 
-## [Enabling Tap to Pay on iPhone](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Enabling-Tap-to-Pay-on-iPhone)
+## Enabling Tap to Pay on iPhone
 
 **Help merchants accept Tap to Pay on iPhone terms and conditions before they begin interacting with their customers.**
 
@@ -18,7 +18,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/tap-to-pay
 
 **If necessary, help merchants make sure their device is up to date.**
 
-## [Educating merchants](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Educating-merchants)
+## Educating merchants
 
 **Provide a tutorial that describes the supported payment types and shows how to use Tap to Pay on iPhone to accept each type.**
 
@@ -36,7 +36,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/tap-to-pay
 
   * Handle PIN entry for a card, including accessibility mode
 
-## [Checking out](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Checking-out)
+## Checking out
 
   * Offer payment options in addition to Tap to Pay on iPhone, as necessary
 
@@ -62,7 +62,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/tap-to-pay
 
 **If you support pre-payment options in your checkout flow, display them before the Tap to Pay on iPhone screen.**
 
-## [Displaying results](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Displaying-results)
+## Displaying results
 
 **Start processing a transaction as soon as possible.**
 
@@ -86,21 +86,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/tap-to-pay
 
 **Make it easy for merchants to get help with issues they can’t resolve.**
 
-## [Additional interactions](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Additional-interactions)
+## Additional interactions
 
 **Use a generic label in a button that opens the Tap to Pay on iPhone screen to read a payment card when there’s no transaction amount.**
 
 **If your app supports an independent loyalty card transaction, distinguish this flow from a payment-acceptance flow that uses Tap to Pay on iPhone.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone#Change-log)
 
 ---
 

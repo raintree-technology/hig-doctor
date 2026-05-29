@@ -14,7 +14,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-vi
 
   * In fit-to-screen — or _aspect_ — mode, the entire video is visible onscreen, and letterboxing or pillarboxing occurs as needed. This mode is the default for standard video (4:3, 16:9, and anything up to 2:1) and ultrawide video (anything above 2.40:1). For developer guidance, see [`resizeAspect`](https://developer.apple.com/documentation/AVFoundation/AVLayerVideoGravity/resizeAspect).
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/playing-video#Best-practices)
+## Best practices
 
 **Use the system video player to give people a familiar and convenient experience.**
 
@@ -31,7 +31,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-vi
 
 **Avoid allowing audio from different sources to mix as viewers switch between modes.**
 
-## [Integrating with the TV app](https://developer.apple.com/design/human-interface-guidelines/playing-video#Integrating-with-the-TV-app)
+## Integrating with the TV app
 
 **Ensure a smooth transition to your app.**
 
@@ -45,7 +45,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-vi
 
 **Use the previous end time when resuming playback of a long video clip.**
 
-### [Loading content](https://developer.apple.com/design/human-interface-guidelines/playing-video#Loading-content)
+### Loading content
 
 **Avoid displaying loading screens when possible.**
 
@@ -53,21 +53,21 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-vi
 
 **Minimize loading screen content.**
 
-### [Exiting playback](https://developer.apple.com/design/human-interface-guidelines/playing-video#Exiting-playback)
+### Exiting playback
 
 **Show a contextually relevant screen.**
 
 **Be prepared for an immediate exit.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/playing-video#Platform-considerations)
+## Platform considerations
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/playing-video#tvOS)
+### tvOS
 
 **Defer to content when displaying logos or noninteractive overlays above video.**
 
 **Show interactive overlays gracefully.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/playing-video#visionOS)
+### visionOS
 
 **Help people stay comfortable when playing video in your app.**
 
@@ -87,7 +87,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-vi
 
 **Use a RealityKit video player if you need to play video in a view like a splash screen or a transitional view.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/playing-video#watchOS)
+### watchOS
 
 **Keep video clips short.**
 
@@ -96,16 +96,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-vi
 **Avoid creating a poster image that looks like a system control.**
 
 **Consider creating a poster image that represents a video clip’s contents.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/playing-video#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/playing-video#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/playing-video#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/playing-video#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/playing-video#Change-log)
 
 ---
 

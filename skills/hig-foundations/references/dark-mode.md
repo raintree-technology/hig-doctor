@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/dark-mode
 
 # Dark Mode
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/dark-mode#Best-practices)
+## Best practices
 
 **Avoid offering an app-specific appearance setting.**
 
@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/dark-mode
 
 **In rare cases, consider using only a dark appearance in the interface.**
 
-## [Dark Mode colors](https://developer.apple.com/design/human-interface-guidelines/dark-mode#Dark-Mode-colors)
+## Dark Mode colors
 
 **Embrace colors that adapt to the current appearance.**
 
@@ -28,7 +28,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/dark-mode
 
 **Soften the color of white backgrounds.**
 
-### [Icons and images](https://developer.apple.com/design/human-interface-guidelines/dark-mode#Icons-and-images)
+### Icons and images
 
 **Use SF Symbols wherever possible.**
 
@@ -36,29 +36,21 @@ source: https://developer.apple.com/design/human-interface-guidelines/dark-mode
 
 **Make sure full-color images and icons look good in both appearances.**
 
-### [Text](https://developer.apple.com/design/human-interface-guidelines/dark-mode#Text)
+### Text
 
 **Use the system-provided label colors for labels.**
 
 **Use system views to draw text fields and text views.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/dark-mode#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/dark-mode#iOS-iPadOS)
+### iOS, iPadOS
 
 **Prefer the system background colors.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/dark-mode#macOS)
+### macOS
 
 **Include some transparency in custom component backgrounds when appropriate.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/dark-mode#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/dark-mode#Related)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/dark-mode#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/dark-mode#Change-log)
 
 ---
 

@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/spatial-la
 
 # Spatial layout
 
-## [Field of view](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Field-of-view)
+## Field of view
 
 **Center important content within the field of view.**
 
@@ -19,7 +19,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/spatial-la
 
 **Avoid anchoring content to the wearer’s head.**
 
-## [Depth](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Depth)
+## Depth
 
 **Provide visual cues that accurately communicate the depth of your content.**
 
@@ -29,11 +29,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/spatial-la
 
 **Make sure depth adds value.**
 
-## [Scale](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Scale)
+## Scale
 
 **Consider using fixed scale when you want a virtual object to look exactly like a physical object.**
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Best-practices)
+## Best practices
 
 **Avoid displaying too many windows.**
 
@@ -46,18 +46,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/spatial-la
 **Let people use your app with minimal or no physical movement.**
 
 **Use the floor to help you place a large immersive experience.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Change-log)
 
 ---
 

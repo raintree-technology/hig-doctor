@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/ratings-an
 
 # Ratings and reviews
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews#Best-practices)
+## Best practices
 
 **Ask for a rating only after people have demonstrated engagement with your app or game.**
 
@@ -21,16 +21,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/ratings-an
 **Prefer the system-provided prompt.**
 
 **Weigh the benefits of resetting your summary rating against the potential disadvantage of showing fewer ratings.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews#Change-log)
 
 ---
 

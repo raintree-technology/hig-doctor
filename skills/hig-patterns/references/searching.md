@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/searching
 
 # Searching
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/searching#Best-practices)
+## Best practices
 
 **If search is important, consider making it a primary action.**
 
@@ -24,7 +24,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/searching
 
 **Take privacy into consideration before displaying search history.**
 
-## [Systemwide search](https://developer.apple.com/design/human-interface-guidelines/searching#Systemwide-search)
+## Systemwide search
 
 **Make your app’s content searchable in Spotlight.**
 
@@ -35,18 +35,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/searching
 **Prefer using the system-provided open and save views.**
 
 **Implement a Quick Look generator if your app produces custom file types.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/searching#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/searching#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/searching#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/searching#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/searching#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/searching#Change-log)
 
 ---
 

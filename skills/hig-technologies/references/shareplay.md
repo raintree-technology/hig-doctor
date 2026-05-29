@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/shareplay
 
 # SharePlay
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/shareplay#Best-practices)
+## Best practices
 
 **Let people know that you support SharePlay.**
 
@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/shareplay
 
 **Use the term _SharePlay_ correctly.**
 
-## [Sharing activities](https://developer.apple.com/design/human-interface-guidelines/shareplay#Sharing-activities)
+## Sharing activities
 
 **Briefly describe each activity.**
 
@@ -30,9 +30,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/shareplay
 
 **When possible, defer app tasks that might delay a shared activity.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/shareplay#Platform-considerations)
+## Platform considerations
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/shareplay#visionOS)
+### visionOS
 
 **Choose the spatial Persona template that suits your shared activity.**
 
@@ -42,7 +42,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/shareplay
 
 **Smoothly update a shared activity when new participants join.**
 
-#### [Maintaining a shared context](https://developer.apple.com/design/human-interface-guidelines/shareplay#Maintaining-a-shared-context)
+#### Maintaining a shared context
 
 **Make sure everyone views the same state of your app.**
 
@@ -56,23 +56,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/shareplay
   * Selected 
   * Shared 
 
-#### [Adjusting a shared context](https://developer.apple.com/design/human-interface-guidelines/shareplay#Adjusting-a-shared-context)
+#### Adjusting a shared context
 
 **Let people personalize their experience without changing the experience for others.**
 
 **Consider when to give each participant a unique view of the shared content.**
 
 **Make it easy for people to exit and rejoin a shared activity.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/shareplay#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/shareplay#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/shareplay#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/shareplay#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/shareplay#Change-log)
 
 ---
 

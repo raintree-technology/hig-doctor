@@ -10,18 +10,18 @@ source: https://developer.apple.com/design/human-interface-guidelines/disclosure
 
 # Disclosure controls
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls#Best-practices)
+## Best practices
 
 **Use a disclosure control to hide details until they’re relevant.**
 
-## [Disclosure triangles](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls#Disclosure-triangles)
+## Disclosure triangles
 
   * Collapsed 
   * Expanded 
 
 **Provide a descriptive label when using a disclosure triangle.**
 
-## [Disclosure buttons](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls#Disclosure-buttons)
+## Disclosure buttons
 
   * Collapsed 
   * Expanded 
@@ -29,18 +29,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/disclosure
 **Place a disclosure button near the content that it shows and hides.**
 
 **Use no more than one disclosure button in a single view.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls#Platform-considerations)
-
-### [iOS, iPadOS, visionOS](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls#iOS-iPadOS-visionOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls#Videos)
 
 ---
 

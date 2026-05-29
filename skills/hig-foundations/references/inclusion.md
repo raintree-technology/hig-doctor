@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/inclusion
 
 # Inclusion
 
-## [Inclusive by design](https://developer.apple.com/design/human-interface-guidelines/inclusion#Inclusive-by-design)
+## Inclusive by design
 
   * Age
 
@@ -36,7 +36,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/inclusion
 
   * Social and economic context
 
-## [Welcoming language](https://developer.apple.com/design/human-interface-guidelines/inclusion#Welcoming-language)
+## Welcoming language
 
 **Consider the tone of your copy from different perspectives.**
 
@@ -48,17 +48,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/inclusion
 
 **Consider carefully before including humor.**
 
-## [Being approachable](https://developer.apple.com/design/human-interface-guidelines/inclusion#Being-approachable)
+## Being approachable
 
   * Present a clear, straightforward interface. To help you design a simple interface that fits in with other experiences on each platform, see [Designing for iOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-ios), [Designing for iPadOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-ipados), [Designing for macOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos), [Designing for tvOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos), [Designing for visionOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos), [Designing for watchOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos), and [Designing for games](https://developer.apple.com/design/human-interface-guidelines/designing-for-games).
 
   * Build in ways to learn how to use your app or game. Consider designing an onboarding flow that helps people who are new to your experience take a step-by-step approach while letting others skip straight to the content they want. For guidance, see [Onboarding](https://developer.apple.com/design/human-interface-guidelines/onboarding).
 
-## [Gender identity](https://developer.apple.com/design/human-interface-guidelines/inclusion#Gender-identity)
-
-## [People and settings](https://developer.apple.com/design/human-interface-guidelines/inclusion#People-and-settings)
-
-## [Avoiding stereotypes](https://developer.apple.com/design/human-interface-guidelines/inclusion#Avoiding-stereotypes)
+## Avoiding stereotypes
 
   * What was your favorite subject in college?
 
@@ -72,7 +68,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/inclusion
 
   * What quality describes you best?
 
-## [Accessibility](https://developer.apple.com/design/human-interface-guidelines/inclusion#Accessibility)
+## Accessibility
 
   * Each disability is a spectrum. For example, visual disabilities range from low vision to complete blindness, and include things like color blindness, blurry vision, light sensitivity, and peripheral vision loss.
 
@@ -83,18 +79,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/inclusion
 **Take a people-first approach when writing about people with disabilities.**
 
 **Prioritize simplicity and perceivability.**
-
-## [Languages](https://developer.apple.com/design/human-interface-guidelines/inclusion#Languages)
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/inclusion#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/inclusion#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/inclusion#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/inclusion#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/inclusion#Videos)
 
 ---
 

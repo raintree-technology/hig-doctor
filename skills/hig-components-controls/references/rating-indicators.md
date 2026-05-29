@@ -10,21 +10,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/rating-ind
 
 # Rating indicators
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/rating-indicators#Best-practices)
+## Best practices
 
 **Make it easy to change rankings.**
 
 **If you replace the star with a custom symbol, make sure that its purpose is clear.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/rating-indicators#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/rating-indicators#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/rating-indicators#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/rating-indicators#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/rating-indicators#Change-log)
 
 ---
 

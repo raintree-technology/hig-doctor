@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/carplay
 
 # CarPlay
 
-## [iPhone interactions](https://developer.apple.com/design/human-interface-guidelines/carplay#iPhone-interactions)
+## iPhone interactions
 
 **Eliminate app interactions on iPhone when CarPlay is active.**
 
@@ -18,7 +18,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/carplay
 
 **Make sure your app works without requiring people to unlock iPhone.**
 
-### [Audio](https://developer.apple.com/design/human-interface-guidelines/carplay#Audio)
+### Audio
 
 **Let people choose when to start playback.**
 
@@ -30,7 +30,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/carplay
 
 **When necessary, automatically adjust audio levels, but don’t change the overall volume.**
 
-## [Layout](https://developer.apple.com/design/human-interface-guidelines/carplay#Layout)
+## Layout
 
 **Provide useful, high-value information in a clean layout that’s easy to scan from the driver’s seat.**
 
@@ -38,7 +38,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/carplay
 
 **Ensure that primary content stands out and feels actionable.**
 
-## [Color](https://developer.apple.com/design/human-interface-guidelines/carplay#Color)
+## Color
 
 **In general, prefer a limited color palette that coordinates with your app logo.**
 
@@ -50,7 +50,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/carplay
 
 **Choose colors that help you communicate effectively with everyone.**
 
-## [Icons and images](https://developer.apple.com/design/human-interface-guidelines/carplay#Icons-and-images)
+## Icons and images
 
 **Supply high-resolution images with scale factors of @2x and @3x for all CarPlay artwork in your app.**
 
@@ -58,21 +58,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/carplay
 
 **Don’t use black for your icon’s background.**
 
-## [Error handling](https://developer.apple.com/design/human-interface-guidelines/carplay#Error-handling)
+## Error handling
 
 **Report errors in CarPlay, not on the connected iPhone.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/carplay#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/carplay#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/carplay#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/carplay#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/carplay#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/carplay#Change-log)
 
 ---
 

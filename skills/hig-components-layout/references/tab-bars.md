@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/tab-bars
 
 # Tab bars
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/tab-bars#Best-practices)
+## Best practices
 
 **Use a tab bar to support navigation, not to provide actions.**
 
@@ -30,11 +30,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/tab-bars
 
 **Avoid applying a similar color to tab labels and content layer backgrounds.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/tab-bars#Platform-considerations)
+## Platform considerations
 
-### [iOS](https://developer.apple.com/design/human-interface-guidelines/tab-bars#iOS)
-
-### [iPadOS](https://developer.apple.com/design/human-interface-guidelines/tab-bars#iPadOS)
+### iPadOS
 
   * Tab bar 
   * Sidebar 
@@ -43,7 +41,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/tab-bars
 
 **Let people customize the tab bar.**
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/tab-bars#tvOS)
+### tvOS
 
   * Specify a tint, color, or image for the tab bar background
 
@@ -63,21 +61,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/tab-bars
 
   * Other content
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/tab-bars#visionOS)
+### visionOS
 
 **Supply a symbol and a text label for each tab.**
 
 **If it makes sense in your app, consider using a sidebar within a tab.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/tab-bars#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/tab-bars#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/tab-bars#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/tab-bars#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/tab-bars#Change-log)
 
 ---
 

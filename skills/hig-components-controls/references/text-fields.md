@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/text-field
 
 # Text fields
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/text-fields#Best-practices)
+## Best practices
 
 **Use a text field to request a small amount of information, such as a name or an email address.**
 
@@ -36,29 +36,21 @@ source: https://developer.apple.com/design/human-interface-guidelines/text-field
 
 **Minimize text entry in your tvOS and watchOS apps.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/text-fields#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/text-fields#iOS-iPadOS)
+### iOS, iPadOS
 
 **Display a Clear button in the trailing end of a text field to help people erase their input.**
 
 **Use images and buttons to provide clarity and functionality in text fields.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/text-fields#macOS)
+### macOS
 
 **Consider using a combo box if you need to pair text input with a list of choices.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/text-fields#watchOS)
+### watchOS
 
 **Present a text field only when necessary.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/text-fields#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/text-fields#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/text-fields#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/text-fields#Change-log)
 
 ---
 

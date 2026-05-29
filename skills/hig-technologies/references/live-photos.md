@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-photo
 
 # Live Photos
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/live-photos#Best-practices)
+## Best practices
 
 **Apply adjustments to all frames.**
 
@@ -25,16 +25,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/live-photo
 **Make Live Photos easily distinguishable from still photos.**
 
 **Keep badge placement consistent.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/live-photos#Platform-considerations)
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/live-photos#visionOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/live-photos#Resources)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/live-photos#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/live-photos#Videos)
 
 ---
 

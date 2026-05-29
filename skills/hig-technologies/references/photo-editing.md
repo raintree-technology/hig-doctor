@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/photo-edit
 
 # Photo editing
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/photo-editing#Best-practices)
+## Best practices
 
 **Confirm cancellation of edits.**
 
@@ -19,14 +19,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/photo-edit
 **Let people preview edits.**
 
 **Use your app icon for your photo editing extension icon.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/photo-editing#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/photo-editing#Resources)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/photo-editing#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/photo-editing#Videos)
 
 ---
 

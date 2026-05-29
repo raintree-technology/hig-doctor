@@ -14,7 +14,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-ha
 
   * [Apple Pencil Pro](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble) and some trackpads can provide haptic feedback when connected to certain iPad models. (For details on Apple Pencil features and compatibility, see [Apple Pencil](https://www.apple.com/apple-pencil/).)
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Best-practices)
+## Best practices
 
 **Use system-provided haptic patterns according to their documented meanings.**
 
@@ -30,21 +30,21 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-ha
 
 **Be aware that playing haptics might impact other user experiences.**
 
-## [Custom haptics](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Custom-haptics)
+## Custom haptics
 
   * _Transient_ events are brief and compact, often feeling like taps or impulses. The experience of tapping the Flashlight button on the Home Screen is an example of a transient event.
 
   * _Continuous_ events feel like sustained vibrations, such as the experience of the lasers effect in a message.
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Platform-considerations)
+## Platform considerations
 
-### [iOS](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#iOS)
+### iOS
 
   * Use standard UI components — like [toggles](https://developer.apple.com/design/human-interface-guidelines/toggles), [sliders](https://developer.apple.com/design/human-interface-guidelines/sliders), and [pickers](https://developer.apple.com/design/human-interface-guidelines/pickers) — that play Apple-designed system haptics by default.
 
   * When it makes sense, use a feedback generator to play one of several predefined haptic patterns in the categories of [notification](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Notification), [impact](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Impact), and [selection](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Selection) (for developer guidance, see [`UIFeedbackGenerator`](https://developer.apple.com/documentation/UIKit/UIFeedbackGenerator)).
 
-#### [Notification](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Notification)
+#### Notification
 
 **Success.**
 
@@ -52,7 +52,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-ha
 
 **Error.**
 
-#### [Impact](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Impact)
+#### Impact
 
 **Light.**
 
@@ -64,13 +64,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-ha
 
 **Soft.**
 
-#### [Selection](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Selection)
+#### Selection
 
 **Selection.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#macOS)
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#watchOS)
+### watchOS
 
   * Notification 
   * Up 
@@ -99,16 +97,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/playing-ha
 **Stop.**
 
 **Click.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Change-log)
 
 ---
 

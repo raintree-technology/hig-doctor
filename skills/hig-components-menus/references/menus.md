@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/menus
 
 # Menus
 
-## [Labels](https://developer.apple.com/design/human-interface-guidelines/menus#Labels)
+## Labels
 
 **For each menu item, write a label that clearly and succinctly describes it.**
 
@@ -22,7 +22,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/menus
 
 **Append an ellipsis to a menu item’s label when the action requires more information before it can complete.**
 
-## [Icons](https://developer.apple.com/design/human-interface-guidelines/menus#Icons)
+## Icons
 
 **Represent menu item actions with familiar icons.**
 
@@ -30,7 +30,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/menus
 
 **Use a single icon to introduce a group of similar items.**
 
-## [Organization](https://developer.apple.com/design/human-interface-guidelines/menus#Organization)
+## Organization
 
 **Prefer listing important or frequently used menu items first.**
 
@@ -40,7 +40,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/menus
 
 **Be mindful of menu length.**
 
-## [Submenus](https://developer.apple.com/design/human-interface-guidelines/menus#Submenus)
+## Submenus
 
 **Use submenus sparingly.**
 
@@ -50,7 +50,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/menus
 
 **Prefer using a submenu to indenting menu items.**
 
-## [Toggled items](https://developer.apple.com/design/human-interface-guidelines/menus#Toggled-items)
+## Toggled items
 
 **Consider using a changeable label that describes an item’s current state.**
 
@@ -62,15 +62,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/menus
 
 **Consider offering a menu item that makes it easy to remove multiple toggled attributes.**
 
-## [In-game menus](https://developer.apple.com/design/human-interface-guidelines/menus#In-game-menus)
+## In-game menus
 
 **Let players navigate in-game menus using the platform’s default interaction method.**
 
 **Make sure your menus remain easy to open and read on all platforms you support.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/menus#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/menus#iOS-iPadOS)
+### iOS, iPadOS
 
   * **Small.** A row of four items appears at the top of the menu, above a list that contains the remaining items. For each item in the top row, the menu displays a symbol or icon, but no label.
 
@@ -80,19 +80,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/menus
 
 **Choose a small or medium menu layout when it can help streamline people’s choices.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/menus#visionOS)
+### visionOS
 
 **Prefer displaying a menu near the content it controls.**
 
 **Prefer the subtle breakthrough effect in most cases.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/menus#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/menus#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/menus#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/menus#Change-log)
 
 ---
 

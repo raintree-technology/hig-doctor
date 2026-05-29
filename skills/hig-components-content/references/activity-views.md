@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/activity-v
 
 # Activity views
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/activity-views#Best-practices)
+## Best practices
 
 **Avoid creating duplicate versions of common actions that are already available in the activity view.**
 
@@ -22,7 +22,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/activity-v
 
 **Use the Share button to display an activity view.**
 
-## [Share and action extensions](https://developer.apple.com/design/human-interface-guidelines/activity-views#Share-and-action-extensions)
+## Share and action extensions
 
   * In iOS and iPadOS, share and action extensions are displayed in the share sheet that appears when people choose an Action button.
 
@@ -37,16 +37,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/activity-v
 **If necessary, provide an image that communicates the purpose of your extension.**
 
 **Use your main app to denote the progress of a lengthy operation.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/activity-views#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/activity-views#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/activity-views#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/activity-views#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/activity-views#Videos)
 
 ---
 

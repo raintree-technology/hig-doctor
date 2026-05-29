@@ -10,23 +10,23 @@ source: https://developer.apple.com/design/human-interface-guidelines/split-view
 
 # Split views
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/split-views#Best-practices)
+## Best practices
 
 **To support navigation, persistently highlight the current selection in each pane that leads to the detail view.**
 
 **Consider letting people drag and drop content between panes.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/split-views#Platform-considerations)
+## Platform considerations
 
-### [iOS](https://developer.apple.com/design/human-interface-guidelines/split-views#iOS)
+### iOS
 
 **Prefer using a split view in a regular — not a compact — environment.**
 
-### [iPadOS](https://developer.apple.com/design/human-interface-guidelines/split-views#iPadOS)
+### iPadOS
 
 **Account for narrow, compact, and intermediate window widths.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/split-views#macOS)
+### macOS
 
   * Vertical 
   * Horizontal 
@@ -40,7 +40,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/split-view
 
 **Prefer the thin divider style.**
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/split-views#tvOS)
+### tvOS
 
 **Choose a split view layout that keeps the panes looking balanced.**
 
@@ -48,25 +48,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/split-view
 
 **Choose the title’s alignment based on the type of content the secondary pane contains.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/split-views#visionOS)
+### visionOS
 
 **To display supplementary information, prefer a split view instead of a new window.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/split-views#watchOS)
+### watchOS
 
 **Automatically display the most relevant detail view.**
 
 **If your app displays multiple detail pages, place the detail views in a vertical[tab view](https://developer.apple.com/design/human-interface-guidelines/tab-views).**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/split-views#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/split-views#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/split-views#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/split-views#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/split-views#Change-log)
 
 ---
 

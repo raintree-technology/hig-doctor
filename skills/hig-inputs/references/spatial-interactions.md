@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/spatial-in
 
 # Nearby interactions
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/nearby-interactions#Best-practices)
+## Best practices
 
 **Consider a task from the perspective of the physical world to find inspiration for a nearby interaction.**
 
@@ -24,29 +24,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/spatial-in
 
 **Avoid using a nearby interaction as the only way to perform a task.**
 
-## [Device usage](https://developer.apple.com/design/human-interface-guidelines/nearby-interactions#Device-usage)
+## Device usage
 
 **Encourage people to hold the device in portrait orientation.**
 
 **Design for the device’s directional field of view.**
 
 **Help people understand how intervening objects can affect the nearby interaction experience in your app.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/nearby-interactions#Platform-considerations)
-
-### [iOS](https://developer.apple.com/design/human-interface-guidelines/nearby-interactions#iOS)
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/nearby-interactions#watchOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/nearby-interactions#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/nearby-interactions#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/nearby-interactions#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/nearby-interactions#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/nearby-interactions#Change-log)
 
 ---
 

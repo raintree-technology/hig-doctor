@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/branding
 
 # Branding
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/branding#Best-practices)
+## Best practices
 
 **Use your brand’s unique voice and tone in all the written communication you display.**
 
@@ -27,12 +27,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/branding
 **Avoid using a launch screen as a branding opportunity.**
 
 **Follow Apple’s trademark guidelines.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/branding#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/branding#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/branding#Related)
 
 ---
 

@@ -10,17 +10,17 @@ source: https://developer.apple.com/design/human-interface-guidelines/keyboards
 
 # Keyboards
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/keyboards#Best-practices)
+## Best practices
 
 **Support Full Keyboard Access when possible.**
 
 **Respect standard keyboard shortcuts.**
 
-## [Standard keyboard shortcuts](https://developer.apple.com/design/human-interface-guidelines/keyboards#Standard-keyboard-shortcuts)
+## Standard keyboard shortcuts
 
 **In general, don’t repurpose standard keyboard shortcuts for custom actions.**
 
-## [Custom keyboard shortcuts](https://developer.apple.com/design/human-interface-guidelines/keyboards#Custom-keyboard-shortcuts)
+## Custom keyboard shortcuts
 
 **Define custom keyboard shortcuts for only the most frequently used app-specific commands.**
 
@@ -34,21 +34,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/keyboards
 
 **Avoid creating a new shortcut by adding a modifier to an existing shortcut for an unrelated command.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/keyboards#Platform-considerations)
+## Platform considerations
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/keyboards#visionOS)
+### visionOS
 
 **Write descriptive shortcut titles.**
 
 **Recognize that people see an overlay when they use a physical keyboard with your visionOS app or game.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/keyboards#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/keyboards#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/keyboards#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/keyboards#Change-log)
 
 ---
 

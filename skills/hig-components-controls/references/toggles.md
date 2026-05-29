@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/toggles
 
 # Toggles
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/toggles#Best-practices)
+## Best practices
 
 **Use a toggle to help people choose between two opposing values that affect the state of content or a view.**
 
@@ -18,9 +18,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/toggles
 
 **Make sure the visual differences in a toggle’s state are obvious.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/toggles#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/toggles#iOS-iPadOS)
+### iOS, iPadOS
 
 **Use the switch toggle style only in a list row.**
 
@@ -30,11 +30,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/toggles
 
 **Avoid supplying a label that explains the button’s purpose.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/toggles#macOS)
+### macOS
 
 **Use switches, checkboxes, and radio buttons in the window body, not the window frame.**
 
-#### [Switches](https://developer.apple.com/design/human-interface-guidelines/toggles#Switches)
+#### Switches
 
 **Prefer a switch for settings that you want to emphasize.**
 
@@ -42,7 +42,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/toggles
 
 **In general, don’t replace a checkbox with a switch.**
 
-#### [Checkboxes](https://developer.apple.com/design/human-interface-guidelines/toggles#Checkboxes)
+#### Checkboxes
 
 **Use a checkbox instead of a switch if you need to present a hierarchy of settings.**
 
@@ -52,7 +52,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/toggles
 
 **Accurately reflect a checkbox’s state in its appearance.**
 
-#### [Radio buttons](https://developer.apple.com/design/human-interface-guidelines/toggles#Radio-buttons)
+#### Radio buttons
 
 **Prefer a set of radio buttons to present mutually exclusive options.**
 
@@ -61,14 +61,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/toggles
 **To present a single setting that can be on or off, prefer a checkbox.**
 
 **Use consistent spacing when you display radio buttons horizontally.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/toggles#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/toggles#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/toggles#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/toggles#Change-log)
 
 ---
 

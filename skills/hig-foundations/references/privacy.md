@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/privacy
 
 # Privacy
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/privacy#Best-practices)
+## Best practices
 
 **Request access only to data that you actually need.**
 
@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/privacy
 
 **Adopt system-defined privacy protections and follow security best practices.**
 
-## [Requesting permission](https://developer.apple.com/design/human-interface-guidelines/privacy#Requesting-permission)
+## Requesting permission
 
   * Personal data, including location, health, financial, contact, and other personally identifying information
 
@@ -44,13 +44,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/privacy
   * Example 2 
   * Example 3 
 
-### [Pre-alert screens, windows, or views](https://developer.apple.com/design/human-interface-guidelines/privacy#Pre-alert-screens-windows-or-views)
+### Pre-alert screens, windows, or views
 
 **Include only one button and make it clear that it opens the system alert.**
 
 **Don’t include additional actions in your custom screen or window.**
 
-### [Tracking requests](https://developer.apple.com/design/human-interface-guidelines/privacy#Tracking-requests)
+### Tracking requests
 
 **Never precede the system-provided alert with a custom screen or window that could confuse or mislead people.**
 
@@ -59,7 +59,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/privacy
   * Alert image 
   * Alert annotation 
 
-## [Location button](https://developer.apple.com/design/human-interface-guidelines/privacy#Location-button)
+## Location button
 
 **Consider using the location button to give people a lightweight way to share their location for specific app features.**
 
@@ -73,7 +73,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/privacy
 
   * Adjust the button’s corner radius.
 
-## [Protecting data](https://developer.apple.com/design/human-interface-guidelines/privacy#Protecting-data)
+## Protecting data
 
 **Avoid relying solely on passwords for authentication.**
 
@@ -83,27 +83,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/privacy
 
 **Avoid inventing custom authentication schemes.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/privacy#Platform-considerations)
+## Platform considerations
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/privacy#macOS)
+### macOS
 
 **Sign your app with a valid Developer ID.**
 
 **Protect people’s data with app sandboxing.**
 
 **Avoid making assumptions about who is signed in.**
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/privacy#visionOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/privacy#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/privacy#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/privacy#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/privacy#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/privacy#Change-log)
 
 ---
 

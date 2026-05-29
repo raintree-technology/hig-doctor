@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/pickers
 
 # Pickers
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/pickers#Best-practices)
+## Best practices
 
 **Consider using a picker to offer medium-to-long lists of items.**
 
@@ -20,9 +20,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/pickers
 
 **Consider providing less granularity when specifying minutes in a date picker.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/pickers#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/pickers#iOS-iPadOS)
+### iOS, iPadOS
 
   * Compact — A button that displays editable date and time content in a modal view.
 
@@ -46,21 +46,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/pickers
 
 **Use a compact date picker when space is constrained.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/pickers#macOS)
+### macOS
 
 **Choose a date picker style that suits your app.**
-
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/pickers#tvOS)
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/pickers#watchOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/pickers#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/pickers#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/pickers#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/pickers#Change-log)
 
 ---
 

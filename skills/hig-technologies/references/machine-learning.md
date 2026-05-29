@@ -10,37 +10,33 @@ source: https://developer.apple.com/design/human-interface-guidelines/machine-le
 
 # Machine learning
 
-## [Planning your design](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Planning-your-design)
+## The role of machine learning in your app
 
-## [The role of machine learning in your app](https://developer.apple.com/design/human-interface-guidelines/machine-learning#The-role-of-machine-learning-in-your-app)
-
-### [Critical or complementary](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Critical-or-complementary)
+### Critical or complementary
 
   * The keyboard uses machine learning to provide QuickType suggestions. Because the keyboard still works without these suggestions, machine learning plays a complementary role in the app.
 
   * Face ID relies on machine learning to perform accurate face recognition. Without machine learning, Face ID would not work.
 
-### [Private or public](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Private-or-public)
+### Private or public
 
   * If a health app misinterprets data and incorrectly recommends a visit to the doctor, people are likely to experience anxiety and may lose trust in the app.
 
   * If a music app misinterprets data and recommends an artist that people don’t like, they’re likely to view the result as an inconsequential mistake.
 
-### [Proactive or reactive](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Proactive-or-reactive)
+### Proactive or reactive
 
   * QuickType suggests words in reaction to what people type.
 
   * Siri Suggestions can proactively suggest a shortcut based on people’s recent routines.
 
-### [Visible or invisible](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Visible-or-invisible)
-
-### [Dynamic or static](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Dynamic-or-static)
+### Dynamic or static
 
   * Face ID improves dynamically as people’s faces gradually change over time.
 
   * Photos improves its object recognition capabilities with every new iOS release.
 
-## [Explicit feedback](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Explicit-feedback)
+## Explicit feedback
 
 **Request explicit feedback only when necessary.**
 
@@ -62,7 +58,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/machine-le
 
 **Consider using explicit feedback to help improve when and where you show results.**
 
-## [Implicit feedback](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Implicit-feedback)
+## Implicit feedback
 
 **Always secure people’s information.**
 
@@ -82,7 +78,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/machine-le
 
 **Beware of confirmation bias.**
 
-## [Calibration](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Calibration)
+## Calibration
 
 **Always secure people’s information.**
 
@@ -110,7 +106,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/machine-le
 
 **Give people a way to update or remove information they provided during calibration.**
 
-## [Corrections](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Corrections)
+## Corrections
 
 **Give people familiar, easy ways to make corrections.**
 
@@ -126,7 +122,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/machine-le
 
 **When possible, use guided corrections instead of freeform corrections.**
 
-## [Mistakes](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Mistakes)
+## Mistakes
 
   * Anticipate mistakes. As much as possible, design ways to avoid mistakes and mitigate them when they happen.
 
@@ -156,7 +152,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/machine-le
 
 **As you work on reducing mistakes in one area, always consider the effect your work has on other areas and overall accuracy.**
 
-## [Multiple options](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Multiple-options)
+## Multiple options
 
   * Suggested options, a proactive feature that suggests content to people based on the their past interactions. For example, For You recommendations from Apple Music.
 
@@ -174,7 +170,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/machine-le
 
 **Learn from selections when it makes sense.**
 
-## [Confidence](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Confidence)
+## Confidence
 
 **Know what your confidence values mean before you decide how to present them.**
 
@@ -190,7 +186,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/machine-le
 
 **When you know that confidence values correspond to result quality, you generally want to avoid showing results when confidence is low.**
 
-## [Attribution](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Attribution)
+## Attribution
 
   * Encourage people to change what they do in your app
 
@@ -208,7 +204,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/machine-le
 
 **In general, avoid technical or statistical jargon.**
 
-## [Limitations](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Limitations)
+## Limitations
 
   * Photos to perform a search that covers every category they can imagine
 
@@ -235,18 +231,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/machine-le
 **Explain how limitations can cause unsatisfactory results.**
 
 **Consider telling people when limitations are resolved.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/machine-learning#Change-log)
 
 ---
 

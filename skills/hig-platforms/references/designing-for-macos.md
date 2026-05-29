@@ -28,7 +28,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/designing-
 
   * [Dock menus](https://developer.apple.com/design/human-interface-guidelines/dock-menus)
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos#Best-practices)
+## Best practices
 
   * Leverage large displays to present more content in fewer nested levels and with less need for modality, while maintaining a comfortable information density that doesn’t make people strain to view the content they want.
 
@@ -41,14 +41,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/designing-
   * Handle keyboard shortcuts to help people accelerate actions and use keyboard-only work styles.
 
   * Support personalization, letting people customize toolbars, configure windows to display the views they use most, and choose the colors and fonts they want to see in the interface.
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos#Videos)
 
 ---
 

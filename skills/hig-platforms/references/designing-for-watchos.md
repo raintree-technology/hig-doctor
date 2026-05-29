@@ -28,7 +28,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/designing-
 
   * [Watch faces](https://developer.apple.com/design/human-interface-guidelines/watch-faces)
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Best-practices)
+## Best practices
 
   * Support quick, glanceable, single-screen interactions that deliver critical information succinctly and help people perform targeted actions with a simple gesture or two.
 
@@ -43,16 +43,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/designing-
   * Use background content such as [color](https://developer.apple.com/design/human-interface-guidelines/color) to convey useful supporting information, and use [materials](https://developer.apple.com/design/human-interface-guidelines/materials) to illustrate hierarchy and a sense of place.
 
   * Design your app to function independently, complementing your notifications and complications by providing additional details and functionality.
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Change-log)
 
 ---
 

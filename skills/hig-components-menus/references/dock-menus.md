@@ -10,19 +10,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/dock-menus
 
 # Dock menus
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/dock-menus#Best-practices)
+## Best practices
 
 **Make custom Dock menu items available in other places, too.**
 
 **Prefer high-value custom items for your Dock menu.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/dock-menus#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/dock-menus#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/dock-menus#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/dock-menus#Developer-documentation)
 
 ---
 

@@ -14,17 +14,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/path-contr
 
 **Pop up.**
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/path-controls#Best-practices)
+## Best practices
 
 **Use a path control in the window body, not the window frame.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/path-controls#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/path-controls#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/path-controls#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/path-controls#Developer-documentation)
 
 ---
 

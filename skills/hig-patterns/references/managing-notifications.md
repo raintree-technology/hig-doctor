@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/managing-n
 
 # Managing notifications
 
-## [Integrating with Focus](https://developer.apple.com/design/human-interface-guidelines/managing-notifications#Integrating-with-Focus)
+## Integrating with Focus
 
   * A Focus helps people filter notifications during a time period they reserve for an activity like sleeping, working, reading, or driving.
 
@@ -24,31 +24,19 @@ source: https://developer.apple.com/design/human-interface-guidelines/managing-n
 
   * _Critical_. Urgent information about health and safety that directly impacts the person and demands their immediate attention. Critical notifications are extremely rare and typically come from governmental and public agencies or apps that help people manage their health or home.
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/managing-notifications#Best-practices)
+## Best practices
 
 **Build trust by accurately representing the urgency of each notification.**
 
 **Use the Time Sensitive interruption level only for notifications that are relevant in the moment.**
 
-## [Sending marketing notifications](https://developer.apple.com/design/human-interface-guidelines/managing-notifications#Sending-marketing-notifications)
+## Sending marketing notifications
 
 **Never use the Time Sensitive interruption level to send a marketing notification.**
 
 **Get people’s permission if you want to send them promotional or marketing notifications.**
 
 **Make sure people can manage their notification settings within your app.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/managing-notifications#Platform-considerations)
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/managing-notifications#watchOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/managing-notifications#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/managing-notifications#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/managing-notifications#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/managing-notifications#Videos)
 
 ---
 

@@ -14,7 +14,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/always-on
 
   * When people drop their wrist while wearing Apple Watch, the system dims the watch face, continuing to display the interface of the app as long as it’s either frontmost or running a background session.
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/always-on#Best-practices)
+## Best practices
 
 **Hide sensitive information.**
 
@@ -25,18 +25,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/always-on
 **Maintain a consistent layout.**
 
 **Gracefully transition motion to a resting state; don’t stop it instantly.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/always-on#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/always-on#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/always-on#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/always-on#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/always-on#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/always-on#Change-log)
 
 ---
 

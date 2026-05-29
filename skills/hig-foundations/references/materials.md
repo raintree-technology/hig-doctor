@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/materials
 
 # Materials
 
-## [Liquid Glass](https://developer.apple.com/design/human-interface-guidelines/materials#Liquid-Glass)
+## Liquid Glass
 
 **Don’t use Liquid Glass in the content layer.**
 
@@ -22,7 +22,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/materials
 
   * If the underlying content is sufficiently dark, or if you use standard media playback controls from AVKit that provide their own dimming layer, you don’t need to apply a dimming layer.
 
-## [Standard materials](https://developer.apple.com/design/human-interface-guidelines/materials#Standard-materials)
+## Standard materials
 
 **Choose materials and effects based on semantic meaning and recommended usage.**
 
@@ -34,9 +34,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/materials
 
   * Thinner materials, which are more translucent, can help people retain their context by providing a visible reminder of the content that’s in the background.
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/materials#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/materials#iOS-iPadOS)
+### iOS, iPadOS
 
   * [`UIVibrancyEffectStyle.label`](https://developer.apple.com/documentation/UIKit/UIVibrancyEffectStyle/label) (default)
 
@@ -52,15 +52,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/materials
 
   * [`UIVibrancyEffectStyle.tertiaryFill`](https://developer.apple.com/documentation/UIKit/UIVibrancyEffectStyle/tertiaryFill)
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/materials#macOS)
+### macOS
 
 **Choose when to allow vibrancy in custom views and controls.**
 
 **Choose a background blending mode that complements your interface design.**
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/materials#tvOS)
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/materials#visionOS)
+### visionOS
 
 **Prefer translucency to opaque colors in windows.**
 
@@ -78,19 +76,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/materials
 
   * Use [`UIVibrancyEffectStyle.tertiaryLabel`](https://developer.apple.com/documentation/UIKit/UIVibrancyEffectStyle/tertiaryLabel) for inactive elements, and only when text doesn’t need high legibility.
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/materials#watchOS)
+### watchOS
 
 **Use materials to provide context in a full-screen modal view.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/materials#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/materials#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/materials#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/materials#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/materials#Change-log)
 
 ---
 

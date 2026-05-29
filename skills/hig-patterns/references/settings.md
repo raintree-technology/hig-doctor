@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/settings
 
 # Settings
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/settings#Best-practices)
+## Best practices
 
 **Aim to provide default settings that give the best experience to the largest number of people.**
 
@@ -22,21 +22,21 @@ source: https://developer.apple.com/design/human-interface-guidelines/settings
 
 **Respect people’s systemwide settings and avoid including redundant versions of them in your custom settings area.**
 
-## [General settings](https://developer.apple.com/design/human-interface-guidelines/settings#General-settings)
+## General settings
 
 **Put general, infrequently changed settings in your custom settings area.**
 
-## [Task-specific options](https://developer.apple.com/design/human-interface-guidelines/settings#Task-specific-options)
+## Task-specific options
 
 **When possible, prefer letting people modify task-specific options without going to your settings area.**
 
-## [System settings](https://developer.apple.com/design/human-interface-guidelines/settings#System-settings)
+## System settings
 
 **Add only the most rarely changed options to the system-provided Settings app.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/settings#Platform-considerations)
+## Platform considerations
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/settings#macOS)
+### macOS
 
 **Include a settings item in the[App menu](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar#App-menu).**
 
@@ -47,16 +47,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/settings
 **Update the window’s title to reflect the currently visible pane.**
 
 **Restore the most recently viewed pane.**
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/settings#watchOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/settings#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/settings#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/settings#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/settings#Change-log)
 
 ---
 

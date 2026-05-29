@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/imessage-a
 
 # iMessage apps and stickers
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers#Best-practices)
+## Best practices
 
 **Prefer providing one primary experience in your iMessage app.**
 
@@ -23,24 +23,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/imessage-a
 **Create stickers that are expressive, inclusive, and versatile.**
 
 **For each sticker, provide a localized alternative description.**
-
-## [Specifications](https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers#Specifications)
-
-### [Icon sizes](https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers#Icon-sizes)
-
-### [Sticker sizes](https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers#Sticker-sizes)
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers#Change-log)
 
 ---
 

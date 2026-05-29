@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/eyes
 
 # Eyes
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/eyes#Best-practices)
+## Best practices
 
 **Always give people multiple ways to interact with your app.**
 
@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/eyes
 
 **Prefer using standard UI components.**
 
-## [Making items easy to see](https://developer.apple.com/design/human-interface-guidelines/eyes#Making-items-easy-to-see)
+## Making items easy to see
 
 **Minimize visual distractions.**
 
@@ -28,7 +28,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/eyes
 
 **Avoid using a repeating pattern or texture that fills the field of view.**
 
-## [Encouraging interaction](https://developer.apple.com/design/human-interface-guidelines/eyes#Encouraging-interaction)
+## Encouraging interaction
 
 **Consider using subtle visual cues to encourage people to look at the item they’re most likely to want.**
 
@@ -36,7 +36,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/eyes
 
 **If you create an interactive component that consists of more than one element, be sure to provide an overall containing shape that visionOS can highlight.**
 
-## [Custom hover effects](https://developer.apple.com/design/human-interface-guidelines/eyes#Custom-hover-effects)
+## Custom hover effects
 
 **Prefer using a custom hover effect to emphasize or enhance a special moment in your experience.**
 
@@ -51,18 +51,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/eyes
 **Aim to keep one or more of the element’s primary views unchanged in both states of a custom hover effect.**
 
 **Thoroughly test custom hover effects.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/eyes#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/eyes#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/eyes#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/eyes#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/eyes#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/eyes#Change-log)
 
 ---
 

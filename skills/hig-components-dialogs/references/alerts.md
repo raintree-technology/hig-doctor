@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/alerts
 
 # Alerts
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/alerts#Best-practices)
+## Best practices
 
 **Use alerts sparingly.**
 
@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/alerts
 
 **Avoid showing an alert when your app starts.**
 
-## [Anatomy](https://developer.apple.com/design/human-interface-guidelines/alerts#Anatomy)
+## Anatomy
 
   * iOS 
   * macOS 
@@ -28,7 +28,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/alerts
   * visionOS 
   * watchOS 
 
-## [Content](https://developer.apple.com/design/human-interface-guidelines/alerts#Content)
+## Content
 
   * In iOS, iPadOS, macOS, and visionOS, an alert can include a text field.
 
@@ -46,7 +46,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/alerts
 
 **If supported, include a text field only if you need people’s input to resolve the situation.**
 
-## [Buttons](https://developer.apple.com/design/human-interface-guidelines/alerts#Buttons)
+## Buttons
 
 **Create succinct, logical button titles.**
 
@@ -60,15 +60,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/alerts
 
 **Provide alternative ways to cancel an alert when it makes sense.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/alerts#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/alerts#iOS-iPadOS)
+### iOS, iPadOS
 
 **Use an action sheet — not an alert — to offer choices related to an intentional action.**
 
 **When possible, avoid displaying an alert that scrolls.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/alerts#macOS)
+### macOS
 
   * Configure repeating alerts to let people suppress subsequent occurrences of the same alert.
 
@@ -77,16 +77,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/alerts
   * Include a Help button that opens your help documentation (see [Help buttons](https://developer.apple.com/design/human-interface-guidelines/buttons#Help-buttons)).
 
 **Use a caution symbol sparingly.**
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/alerts#visionOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/alerts#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/alerts#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/alerts#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/alerts#Change-log)
 
 ---
 

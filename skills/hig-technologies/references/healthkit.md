@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/healthkit
 
 # HealthKit
 
-## [Privacy protection](https://developer.apple.com/design/human-interface-guidelines/healthkit#Privacy-protection)
+## Privacy protection
 
 **Provide a coherent privacy policy.**
 
@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/healthkit
 
 **Manage health data sharing solely through the system’s privacy settings.**
 
-## [Activity rings](https://developer.apple.com/design/human-interface-guidelines/healthkit#Activity-rings)
+## Activity rings
 
 **Use Activity rings for Move, Exercise, and Stand information only.**
 
@@ -38,7 +38,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/healthkit
 
 **Provide app-specific information only in Activity notifications.**
 
-## [Apple Health icon](https://developer.apple.com/design/human-interface-guidelines/healthkit#Apple-Health-icon)
+## Apple Health icon
 
 **Use only the Apple-provided icon.**
 
@@ -56,7 +56,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/healthkit
 
 **Don’t display Health app images or screenshots.**
 
-## [Editorial guidelines](https://developer.apple.com/design/human-interface-guidelines/healthkit#Editorial-guidelines)
+## Editorial guidelines
 
 **Refer to the Health app as _Apple Health_ or _the Apple Health app_.**
 
@@ -65,16 +65,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/healthkit
 **Use correct capitalization when using the term _Apple Health_.**
 
 **Use the system-provided translation of _Health_ to avoid confusing people.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/healthkit#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/healthkit#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/healthkit#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/healthkit#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/healthkit#Videos)
 
 ---
 

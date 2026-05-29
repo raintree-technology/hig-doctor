@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/sign-in-wi
 
 # Sign in with Apple
 
-## [Offering Sign in with Apple](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Offering-Sign-in-with-Apple)
+## Offering Sign in with Apple
 
 **Ask people to sign in only in exchange for value.**
 
@@ -30,7 +30,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/sign-in-wi
 
 **Indicate when people are currently signed in.**
 
-## [Collecting data](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Collecting-data)
+## Collecting data
 
 **Clarify whether the additional data you request is required or just recommended.**
 
@@ -48,11 +48,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/sign-in-wi
 
 **Be transparent about the data you collect.**
 
-## [Displaying buttons](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Displaying-buttons)
+## Displaying buttons
 
 **Prominently display a Sign in with Apple button.**
 
-### [Using the system-provided buttons](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Using-the-system-provided-buttons)
+### Using the system-provided buttons
 
   * A button that’s guaranteed to use an Apple-approved appearance
 
@@ -64,19 +64,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/sign-in-wi
 
   * A system-provided alternative text label that lets VoiceOver describe the button
 
-#### [White](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#White)
-
-#### [White with outline](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#White-with-outline)
-
-#### [Black](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Black)
-
-#### [Button size and corner radius](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Button-size-and-corner-radius)
+#### Button size and corner radius
 
 **Adjust the corner radius to match the appearance of other buttons in your app.**
 
 **Maintain the minimum button size and margin around the button in iOS, macOS, and the web.**
 
-### [Creating a custom Sign in with Apple button](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Creating-a-custom-Sign-in-with-Apple-button)
+### Creating a custom Sign in with Apple button
 
   * Use the logo file to position the Apple logo in a button; never use the Apple logo as a button.
 
@@ -102,7 +96,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/sign-in-wi
 
   * Button bezel and shadow. For example, you can use a stroke to emphasize the button bezel or add a drop shadow.
 
-#### [Custom buttons with a logo and text](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Custom-buttons-with-a-logo-and-text)
+#### Custom buttons with a logo and text
 
 **Choose the format of the logo file based on the height of your button.**
 
@@ -118,7 +112,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/sign-in-wi
 
 **Maintain the minimum button size and margin around the button.**
 
-#### [Custom logo-only buttons](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Custom-logo-only-buttons)
+#### Custom logo-only buttons
 
 **Choose the format of the logo file based on the size of your button.**
 
@@ -127,18 +121,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/sign-in-wi
 **Use a mask to change the default square shape of the logo-only image.**
 
 **Maintain a minimum margin around the button.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Change-log)
 
 ---
 

@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-penc
 
 # Apple Pencil and Scribble
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Best-practices)
+## Best practices
 
 **Support behaviors people intuitively expect when using a marking instrument.**
 
@@ -22,7 +22,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-penc
 
 **Design a great left- and right-handed experience.**
 
-## [Hover](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Hover)
+## Hover
 
 **Use hover to help people predict what will happen when Apple Pencil touches the screen.**
 
@@ -34,7 +34,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-penc
 
 **Prefer showing hover previews for Apple Pencil, not for a pointing device.**
 
-## [Double tap](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Double-tap)
+## Double tap
 
 **Respect people’s settings for the double-tap gesture when they make sense in your app.**
 
@@ -42,7 +42,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-penc
 
 **Avoid using the double-tap gesture to perform an action that modifies content.**
 
-## [Squeeze](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Squeeze)
+## Squeeze
 
 **Treat squeeze as a single, quick gesture that performs a discrete — not continuous — action.**
 
@@ -50,11 +50,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-penc
 
 **Define squeeze actions that are nondestructive and easy to undo.**
 
-## [Barrel roll](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Barrel-roll)
+## Barrel roll
 
 **Use barrel roll only to modify marking behavior, not to enable navigation or display other controls.**
 
-## [Scribble](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Scribble)
+## Scribble
 
 **Make text entry feel fluid and effortless.**
 
@@ -68,23 +68,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-penc
 
 **Give people enough space to write.**
 
-## [Custom drawing](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Custom-drawing)
+## Custom drawing
 
 **Help people draw on top of existing content.**
 
 **Consider displaying custom undo and redo buttons when your app runs in a compact environment.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble#Change-log)
 
 ---
 

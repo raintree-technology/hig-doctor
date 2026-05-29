@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/gestures
 
 # Gestures
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/gestures#Best-practices)
+## Best practices
 
 **Give people more than one way to interact with your app.**
 
@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/gestures
 
 **Indicate when a gesture isn’t available.**
 
-## [Custom gestures](https://developer.apple.com/design/human-interface-guidelines/gestures#Custom-gestures)
+## Custom gestures
 
 **Add custom gestures only when necessary.**
 
@@ -38,17 +38,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/gestures
 
 **Avoid conflicting with gestures that access system UI.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/gestures#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/gestures#iOS-iPadOS)
+### iOS, iPadOS
 
 **Consider allowing simultaneous recognition of multiple gestures if it enhances the experience.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/gestures#macOS)
-
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/gestures#tvOS)
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/gestures#visionOS)
+### visionOS
 
 **Support standard gestures everywhere you can.**
 
@@ -56,7 +52,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/gestures
 
 **Avoid requiring specific body movements or positions for input.**
 
-#### [Designing custom gestures in visionOS](https://developer.apple.com/design/human-interface-guidelines/gestures#Designing-custom-gestures-in-visionOS)
+#### Designing custom gestures in visionOS
 
 **Prioritize comfort.**
 
@@ -64,7 +60,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/gestures
 
 **Avoid custom gestures that require using a specific hand.**
 
-#### [Working with system overlays in visionOS](https://developer.apple.com/design/human-interface-guidelines/gestures#Working-with-system-overlays-in-visionOS)
+#### Working with system overlays in visionOS
 
 **Reserve the area around a person’s hand for system overlays and their related gestures.**
 
@@ -72,27 +68,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/gestures
 
 **Use caution when designing custom gestures that involve a rolling motion of the hand, wrist, and forearm.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/gestures#watchOS)
+### watchOS
 
-#### [Double tap](https://developer.apple.com/design/human-interface-guidelines/gestures#Double-tap)
+#### Double tap
 
 **Avoid setting a primary action in views with lists, scroll views, or vertical tabs.**
 
 **Choose the button that people use most commonly as the primary action in a view.**
-
-## [Specifications](https://developer.apple.com/design/human-interface-guidelines/gestures#Specifications)
-
-### [Standard gestures](https://developer.apple.com/design/human-interface-guidelines/gestures#Standard-gestures)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/gestures#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/gestures#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/gestures#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/gestures#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/gestures#Change-log)
 
 ---
 

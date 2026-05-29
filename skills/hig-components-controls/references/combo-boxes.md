@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/combo-boxe
 
 # Combo boxes
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/combo-boxes#Best-practices)
+## Best practices
 
 **Populate the field with a meaningful default value from the list.**
 
@@ -19,14 +19,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/combo-boxe
 **Provide relevant choices.**
 
 **Make sure list items aren’t wider than the text field.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/combo-boxes#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/combo-boxes#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/combo-boxes#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/combo-boxes#Developer-documentation)
 
 ---
 

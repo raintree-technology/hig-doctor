@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/notificati
 
 # Notifications
 
-## [Anatomy](https://developer.apple.com/design/human-interface-guidelines/notifications#Anatomy)
+## Anatomy
 
   * A banner or view on a Lock Screen, Home Screen, Home View, or desktop
 
@@ -18,7 +18,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/notificati
 
   * An item in Notification Center
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/notifications#Best-practices)
+## Best practices
 
 **Provide concise, informative notifications.**
 
@@ -32,7 +32,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/notificati
 
 **Avoid including sensitive, personal, or confidential information in a notification.**
 
-## [Content](https://developer.apple.com/design/human-interface-guidelines/notifications#Content)
+## Content
 
 **Create a short title if it provides context for the notification content.**
 
@@ -44,7 +44,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/notificati
 
 **Consider providing a sound to supplement your notifications.**
 
-## [Notification actions](https://developer.apple.com/design/human-interface-guidelines/notifications#Notification-actions)
+## Notification actions
 
 **Provide beneficial actions that make sense in the context of your notification.**
 
@@ -54,7 +54,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/notificati
 
 **Provide a simple, recognizable interface icon for each notification action.**
 
-## [Badging](https://developer.apple.com/design/human-interface-guidelines/notifications#Badging)
+## Badging
 
 **Use a badge only to show people how many unread notifications they have.**
 
@@ -64,17 +64,17 @@ source: https://developer.apple.com/design/human-interface-guidelines/notificati
 
 **Avoid creating a custom image or component that mimics the appearance or behavior of a badge.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/notifications#Platform-considerations)
+## Platform considerations
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/notifications#watchOS)
+### watchOS
 
-#### [Short looks](https://developer.apple.com/design/human-interface-guidelines/notifications#Short-looks)
+#### Short looks
 
 **Avoid using a short look as the only way to communicate important information.**
 
 **Keep privacy in mind.**
 
-#### [Long looks](https://developer.apple.com/design/human-interface-guidelines/notifications#Long-looks)
+#### Long looks
 
 **Consider using a rich, custom long-look notification to let people get the information they need without launching your app.**
 
@@ -86,19 +86,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/notificati
 
 **Provide up to four custom actions below the content area.**
 
-#### [Double tap](https://developer.apple.com/design/human-interface-guidelines/notifications#Double-tap)
+#### Double tap
 
 **Keep double tap in mind when choosing the order of custom actions you present as responses to a notification.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/notifications#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/notifications#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/notifications#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/notifications#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/notifications#Change-log)
 
 ---
 

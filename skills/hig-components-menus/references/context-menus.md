@@ -16,7 +16,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/context-me
 
   * Using a secondary click on a Magic Trackpad in macOS or iPadOS
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/context-menus#Best-practices)
+## Best practices
 
 **Prioritize relevancy when choosing items to include in a context menu.**
 
@@ -38,15 +38,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/context-me
 
 **In iOS, iPadOS, and visionOS, warn people about context menu items that can destroy data.**
 
-## [Content](https://developer.apple.com/design/human-interface-guidelines/context-menus#Content)
+## Content
 
 **Include a title in a context menu only if doing so clarifies the menu’s effect.**
 
 **Represent menu item actions with familiar icons.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/context-menus#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/context-menus#iOS-iPadOS)
+### iOS, iPadOS
 
 **Provide either a context menu or an edit menu for an item, but not both.**
 
@@ -56,21 +56,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/context-me
 
 **Ensure that your preview looks good as it animates.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/context-menus#macOS)
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/context-menus#visionOS)
+### visionOS
 
 **Consider using a context menu instead of a panel or inspector window to present frequently used functionality.**
 
 **In general, avoid letting a context menu’s height exceed the height of the window.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/context-menus#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/context-menus#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/context-menus#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/context-menus#Change-log)
 
 ---
 

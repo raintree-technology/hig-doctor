@@ -10,9 +10,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/immersive-
 
 # Immersive experiences
 
-## [Immersion and passthrough](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Immersion-and-passthrough)
+## Immersion and passthrough
 
-### [Immersion styles](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Immersion-styles)
+### Immersion styles
 
   * **Use dimmed passthrough to bring attention to your content.** You can subtly dim or tint passthrough and other visible content to bring attention to your app in the Shared Space without hiding other apps and games, or create a more focused experience in a Full Space. While passthrough is tinted black by default, you can apply a custom tint color to create a dynamic experience in your app. For developer guidance, see [`SurroundingsEffect`](https://developer.apple.com/documentation/SwiftUI/SurroundingsEffect).
 
@@ -29,7 +29,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/immersive-
   * Full Space (Progressive) 
   * Full Space (Immersive) 
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Best-practices)
+## Best practices
 
 **Offer multiple ways to use your app or game.**
 
@@ -41,7 +41,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/immersive-
 
 **Prefer subtle tint colors for passthrough.**
 
-## [Promoting comfort](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Promoting-comfort)
+## Promoting comfort
 
 **Be mindful of people’s visual comfort.**
 
@@ -53,7 +53,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/immersive-
 
 **Adopt ARKit if you want to blend custom content with someone’s surroundings.**
 
-## [Transitioning between immersive styles](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Transitioning-between-immersive-styles)
+## Transitioning between immersive styles
 
 **Design smooth, predictable transitions when changing immersion.**
 
@@ -61,7 +61,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/immersive-
 
 **Indicate the purpose of an exit control.**
 
-## [Displaying virtual hands](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Displaying-virtual-hands)
+## Displaying virtual hands
 
 **Prefer virtual hands that match familiar characteristics.**
 
@@ -69,7 +69,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/immersive-
 
 **If there’s an interruption in hand-tracking data, fade out virtual hands and reveal the viewer’s own hands.**
 
-## [Creating an environment](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Creating-an-environment)
+## Creating an environment
 
 **Minimize distracting content.**
 
@@ -86,18 +86,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/immersive-
 **Help people feel grounded.**
 
 **Minimize asset redundancy.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Change-log)
 
 ---
 

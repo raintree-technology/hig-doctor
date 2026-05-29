@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/tab-views
 
 # Tab views
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/tab-views#Best-practices)
+## Best practices
 
 **Use a tab view to present closely related areas of content.**
 
@@ -22,23 +22,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/tab-views
 
 **Avoid providing more than six tabs in a tab view.**
 
-## [Anatomy](https://developer.apple.com/design/human-interface-guidelines/tab-views#Anatomy)
+## Anatomy
 
 **In general, inset a tab view by leaving a margin of window-body area on all sides of a tab view.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/tab-views#Platform-considerations)
-
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/tab-views#iOS-iPadOS)
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/tab-views#watchOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/tab-views#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/tab-views#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/tab-views#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/tab-views#Change-log)
 
 ---
 

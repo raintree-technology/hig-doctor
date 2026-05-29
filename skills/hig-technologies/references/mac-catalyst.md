@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/mac-cataly
 
 # Mac Catalyst
 
-## [Before you start](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Before-you-start)
+## Before you start
 
 **Drag and drop.**
 
@@ -44,7 +44,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/mac-cataly
 
   * Color picker
 
-## [Choose an idiom](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Choose-an-idiom)
+## Choose an idiom
 
 **When you adopt the Mac idiom, thoroughly audit your app’s layout, and plan to make changes to it.**
 
@@ -57,9 +57,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/mac-cataly
 
 **Limit your appearance customizations to standard macOS appearance customizations that are the same or similar to those available in iPadOS.**
 
-## [Integrate the Mac experience](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Integrate-the-Mac-experience)
+## Integrate the Mac experience
 
-### [Navigation](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Navigation)
+### Navigation
 
   * [Split views](https://developer.apple.com/design/human-interface-guidelines/split-views). A split view supports hierarchical navigation, which consists of a two- or three-column interface that shows a primary column, an optional supplementary column, and a secondary pane of content. Frequently, apps use the primary column to create a sidebar-based interface where changes in the sidebar drive changes in the optional supplementary column, which then affect the content in the content pane.
 
@@ -75,13 +75,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/mac-cataly
 
 **Offer multiple ways to move between pages.**
 
-### [Inputs](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Inputs)
-
-### [App icons](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#App-icons)
+### App icons
 
 **Create a macOS version of your app icon.**
 
-### [Layout](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Layout)
+### Layout
 
   * Divide a single column of content and actions into multiple columns.
 
@@ -94,20 +92,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/mac-cataly
 **As much as possible, adopt a top-down flow.**
 
 **Relocate buttons from the side and bottom edges of the screen.**
-
-### [Menus](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Menus)
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Change-log)
 
 ---
 

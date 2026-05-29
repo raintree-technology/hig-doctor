@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/sidebars
 
 # Sidebars
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/sidebars#Best-practices)
+## Best practices
 
 **Extend content beneath the sidebar.**
 
@@ -26,19 +26,19 @@ source: https://developer.apple.com/design/human-interface-guidelines/sidebars
 
 **If you need to include two levels of hierarchy in a sidebar, use succinct, descriptive labels to title each group.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/sidebars#Platform-considerations)
+## Platform considerations
 
-### [iOS](https://developer.apple.com/design/human-interface-guidelines/sidebars#iOS)
+### iOS
 
 **Avoid using a sidebar.**
 
-### [iPadOS](https://developer.apple.com/design/human-interface-guidelines/sidebars#iPadOS)
+### iPadOS
 
 **Consider using a tab bar first.**
 
 **If necessary, apply the correct appearance to a sidebar.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/sidebars#macOS)
+### macOS
 
 **Avoid stylizing your app by specifying a fixed color for all sidebar icons.**
 
@@ -46,19 +46,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/sidebars
 
 **Avoid putting critical information or actions at the bottom of a sidebar.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/sidebars#visionOS)
+### visionOS
 
 **If your app’s hierarchy is deep, consider using a sidebar within a tab in a tab bar.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/sidebars#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/sidebars#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/sidebars#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/sidebars#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/sidebars#Change-log)
 
 ---
 

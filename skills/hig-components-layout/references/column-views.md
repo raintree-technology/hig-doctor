@@ -10,21 +10,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/column-vie
 
 # Column views
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/column-views#Best-practices)
+## Best practices
 
 **Show the root level of your data hierarchy in the first column.**
 
 **Consider showing information about the selected item when there are no nested items to display.**
 
 **Let people resize columns.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/column-views#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/column-views#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/column-views#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/column-views#Developer-documentation)
 
 ---
 

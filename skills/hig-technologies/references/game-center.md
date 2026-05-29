@@ -16,9 +16,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/game-cente
 
   * See the latest activity from their games across the system, in the Apple Games app, the App Store, notifications, and more.
 
-## [Accessing Game Center](https://developer.apple.com/design/human-interface-guidelines/game-center#Accessing-Game-Center)
+## Accessing Game Center
 
-### [Integrating the access point](https://developer.apple.com/design/human-interface-guidelines/game-center#Integrating-the-access-point)
+### Integrating the access point
 
 **Display the access point in menu screens.**
 
@@ -26,15 +26,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/game-cente
 
 **Consider pausing your game while the Game Overlay or dashboard is present.**
 
-### [Using custom UI](https://developer.apple.com/design/human-interface-guidelines/game-center#Using-custom-UI)
+### Using custom UI
 
 **Use the artwork Game Center provides in custom links.**
 
 **Use the correct terminology in custom links.**
 
-## [Achievements](https://developer.apple.com/design/human-interface-guidelines/game-center#Achievements)
+## Achievements
 
-### [Integrating achievements into your game](https://developer.apple.com/design/human-interface-guidelines/game-center#Integrating-achievements-into-your-game)
+### Integrating achievements into your game
 
 **Align with Game Center achievement states.**
 
@@ -44,7 +44,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/game-cente
 
 **Give players a sense of progress.**
 
-### [Creating achievement images](https://developer.apple.com/design/human-interface-guidelines/game-center#Creating-achievement-images)
+### Creating achievement images
 
 **Design rich, high-quality images that help players feel rewarded.**
 
@@ -53,7 +53,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/game-cente
   * iOS, iPadOS, macOS, visionOS 
   * tvOS 
 
-## [Leaderboards](https://developer.apple.com/design/human-interface-guidelines/game-center#Leaderboards)
+## Leaderboards
 
 **Choose a leaderboard type.**
 
@@ -86,7 +86,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/game-cente
   * iOS, iPadOS, macOS 
   * tvOS 
 
-## [Challenges](https://developer.apple.com/design/human-interface-guidelines/game-center#Challenges)
+## Challenges
 
 **Create engaging challenges.**
 
@@ -102,7 +102,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/game-cente
 
 **Create high-quality artwork that encourages players to engage with your challenges.**
 
-## [Multiplayer activities](https://developer.apple.com/design/human-interface-guidelines/game-center#Multiplayer-activities)
+## Multiplayer activities
 
 **Use party codes to invite players to multiplayer activities.**
 
@@ -116,25 +116,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/game-cente
 
 **Provide engaging activity artwork.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/game-center#Platform-considerations)
+## Platform considerations
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/game-center#tvOS)
+### tvOS
 
 **Display an optional image at the top of the dashboard.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/game-center#watchOS)
+### watchOS
 
 **Be aware of Game Center support on watchOS.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/game-center#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/game-center#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/game-center#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/game-center#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/game-center#Change-log)
 
 ---
 

@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/outline-vi
 
 # Outline views
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/outline-views#Best-practices)
+## Best practices
 
 **Use a table instead of an outline view to present data that’s not hierarchical.**
 
@@ -33,16 +33,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/outline-vi
 **Consider using a centered ellipsis to truncate cell text instead of clipping it.**
 
 **Consider offering a search field to help people find values quickly in a lengthy outline view.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/outline-views#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/outline-views#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/outline-views#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/outline-views#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/outline-views#Videos)
 
 ---
 

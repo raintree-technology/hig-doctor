@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/workouts
 
 # Workouts
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/workouts#Best-practices)
+## Best practices
 
 **In a watchOS fitness app, use workout sessions to provide useful data and relevant controls.**
 
@@ -29,16 +29,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/workouts
 **Make sure text is legible for when people are in motion.**
 
 **Use Activity rings correctly.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/workouts#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/workouts#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/workouts#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/workouts#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/workouts#Videos)
 
 ---
 

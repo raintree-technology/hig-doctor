@@ -10,19 +10,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/color-well
 
 # Color wells
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/color-wells#Best-practices)
+## Best practices
 
 **Consider the system-provided color picker for a familiar experience.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/color-wells#Platform-considerations)
-
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/color-wells#macOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/color-wells#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/color-wells#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/color-wells#Developer-documentation)
 
 ---
 

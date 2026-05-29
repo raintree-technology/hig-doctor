@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/maps
 
 # Maps
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/maps#Best-practices)
+## Best practices
 
 **In general, make your map interactive.**
 
@@ -34,7 +34,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/maps
 
   * If your custom interface can move relative to the map, use the lowest position of the custom element to determine the placement of the logo and link. For example, if your app lets people pull up a custom card from the bottom of the screen, place the Apple logo and legal link 10 points above the lowest resting position of the card.
 
-## [Custom information](https://developer.apple.com/design/human-interface-guidelines/maps#Custom-information)
+## Custom information
 
 **Use annotations that match the visual style of your app.**
 
@@ -48,9 +48,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/maps
 
 **Make sure there’s enough contrast between custom controls and the map.**
 
-## [Place cards](https://developer.apple.com/design/human-interface-guidelines/maps#Place-cards)
+## Place cards
 
-### [Displaying place cards in a map](https://developer.apple.com/design/human-interface-guidelines/maps#Displaying-place-cards-in-a-map)
+### Displaying place cards in a map
 
   * The _automatic_ style lets the system determine the place card style based on the size of your map view.
 
@@ -73,11 +73,11 @@ source: https://developer.apple.com/design/human-interface-guidelines/maps
 
 **Keep the location on your map visible when displaying a place card.**
 
-### [Adding place cards outside of a map](https://developer.apple.com/design/human-interface-guidelines/maps#Adding-place-cards-outside-of-a-map)
+### Adding place cards outside of a map
 
 **Use location-related cues in surrounding content to help communicate that people can open a place card.**
 
-## [Indoor maps](https://developer.apple.com/design/human-interface-guidelines/maps#Indoor-maps)
+## Indoor maps
 
   * Example 1 
   * Example 2 
@@ -97,21 +97,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/maps
 
 **Design an indoor map that feels like a natural extension of your app.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/maps#Platform-considerations)
+## Platform considerations
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/maps#watchOS)
+### watchOS
 
 **Fit the map interface element to the screen.**
 
 **Show the smallest region that encompasses the points of interest.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/maps#Resources)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/maps#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/maps#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/maps#Change-log)
 
 ---
 

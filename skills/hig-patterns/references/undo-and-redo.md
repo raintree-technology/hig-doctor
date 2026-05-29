@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/undo-and-r
 
 # Undo and redo
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/undo-and-redo#Best-practices)
+## Best practices
 
 **Help people predict the results of undo and redo as much as possible.**
 
@@ -22,25 +22,17 @@ source: https://developer.apple.com/design/human-interface-guidelines/undo-and-r
 
 **Provide undo and redo buttons only when necessary.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/undo-and-redo#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/undo-and-redo#iOS-iPadOS)
+### iOS, iPadOS
 
 **Avoid redefining standard gestures for undo and redo.**
 
 **Briefly and precisely describe the operation to be undone or redone.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/undo-and-redo#macOS)
+### macOS
 
 **Place undo and redo commands in the Edit menu and support the standard keyboard shortcuts.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/undo-and-redo#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/undo-and-redo#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/undo-and-redo#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/undo-and-redo#Videos)
 
 ---
 

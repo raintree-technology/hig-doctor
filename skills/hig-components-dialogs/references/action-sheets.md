@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/action-she
 
 # Action sheets
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/action-sheets#Best-practices)
+## Best practices
 
 **Use an action sheet — not an alert — to offer choices related to an intentional action.**
 
@@ -24,23 +24,17 @@ source: https://developer.apple.com/design/human-interface-guidelines/action-she
 
 **Make destructive choices visually prominent.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/action-sheets#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/action-sheets#iOS-iPadOS)
+### iOS, iPadOS
 
 **Use an action sheet — not a menu — to provide choices related to an action.**
 
 **Avoid letting an action sheet scroll.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/action-sheets#watchOS)
+### watchOS
 
 **Avoid displaying more than four buttons in an action sheet, including the Cancel button.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/action-sheets#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/action-sheets#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/action-sheets#Developer-documentation)
 
 ---
 

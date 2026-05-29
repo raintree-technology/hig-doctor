@@ -16,7 +16,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/labels
 
   * Within a view, a label might provide additional context by introducing a control or describing a common action or task that people can perform in the view.
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/labels#Best-practices)
+## Best practices
 
 **Use a label to display a small amount of text that people don’t need to edit.**
 
@@ -25,20 +25,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/labels
 **Use system-provided label colors to communicate relative importance.**
 
 **Make useful label text selectable.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/labels#Platform-considerations)
-
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/labels#macOS)
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/labels#watchOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/labels#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/labels#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/labels#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/labels#Change-log)
 
 ---
 

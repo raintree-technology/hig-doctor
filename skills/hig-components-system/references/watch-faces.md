@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/watch-face
 
 # Watch faces
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/watch-faces#Best-practices)
+## Best practices
 
 **Help people discover your app by sharing watch faces that feature your complications.**
 
@@ -19,14 +19,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/watch-face
 **Aim to offer shareable watch faces for all Apple Watch devices.**
 
 **Respond gracefully if people choose an incompatible watch face.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/watch-faces#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/watch-faces#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/watch-faces#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/watch-faces#Developer-documentation)
 
 ---
 

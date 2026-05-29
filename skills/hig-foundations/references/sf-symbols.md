@@ -10,19 +10,15 @@ source: https://developer.apple.com/design/human-interface-guidelines/sf-symbols
 
 # SF Symbols
 
-## [Rendering modes](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Rendering-modes)
+## Rendering modes
 
 **Confirm that a symbol’s rendering mode works well in every context.**
 
-## [Gradients](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Gradients)
-
-## [Variable color](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Variable-color)
+## Variable color
 
 **Use variable color to communicate change — don’t use it to communicate depth.**
 
-## [Weights and scales](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Weights-and-scales)
-
-## [Design variants](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Design-variants)
+## Design variants
 
   * The outline variant works well in toolbars, lists, and other places where you display a symbol alongside text.
 
@@ -30,7 +26,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/sf-symbols
 
   * The solid areas in a fill variant tend to give a symbol more visual emphasis, making it a good choice for iOS tab bars and swipe actions and places where you use an accent color to communicate selection.
 
-## [Animations](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Animations)
+## Animations
 
   * Down-up, where the outgoing symbol scales down and the incoming symbol scales up, communicating a change in state.
 
@@ -46,7 +42,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/sf-symbols
 
 **Consider your app’s tone when adding animations.**
 
-## [Custom symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Custom-symbols)
+## Custom symbols
 
 **Use the template as a guide.**
 
@@ -69,18 +65,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/sf-symbols
 **Provide alternative text labels for custom symbols.**
 
 **Don’t design replicas of Apple products.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Change-log)
 
 ---
 

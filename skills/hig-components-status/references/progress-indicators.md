@@ -14,7 +14,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/progress-i
 
   *  _Indeterminate_ , for unquantifiable tasks, such as loading or synchronizing complex data
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/progress-indicators#Best-practices)
+## Best practices
 
 **When possible, use a determinate progress indicator.**
 
@@ -34,29 +34,21 @@ source: https://developer.apple.com/design/human-interface-guidelines/progress-i
 
 **Let people know when halting a process has a negative consequence.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/progress-indicators#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/progress-indicators#iOS-iPadOS)
+### iOS, iPadOS
 
-#### [Refresh content controls](https://developer.apple.com/design/human-interface-guidelines/progress-indicators#Refresh-content-controls)
+#### Refresh content controls
 
 **Perform automatic content updates.**
 
 **Supply a short title only if it adds value.**
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/progress-indicators#macOS)
+### macOS
 
 **Prefer an activity indicator (spinner) to communicate the status of a background operation or when space is constrained.**
 
 **Avoid labeling a spinning progress indicator.**
-
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/progress-indicators#watchOS)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/progress-indicators#Resources)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/progress-indicators#Developer-documentation)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/progress-indicators#Change-log)
 
 ---
 

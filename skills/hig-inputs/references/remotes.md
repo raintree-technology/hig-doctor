@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/remotes
 
 # Remotes
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/remotes#Best-practices)
+## Best practices
 
 **Prefer using standard gestures to perform standard actions.**
 
@@ -28,25 +28,17 @@ source: https://developer.apple.com/design/human-interface-guidelines/remotes
 
 **Respond correctly to the Play/Pause button during media playback.**
 
-## [Gestures](https://developer.apple.com/design/human-interface-guidelines/remotes#Gestures)
+## Gestures
 
 **Swipe.**
 
 **Press.**
 
-## [Buttons](https://developer.apple.com/design/human-interface-guidelines/remotes#Buttons)
-
-## [Compatible remotes](https://developer.apple.com/design/human-interface-guidelines/remotes#Compatible-remotes)
+## Compatible remotes
 
 **If your live-viewing app provides an EPG, respond to a remote’s EPG-browsing buttons in ways people expect.**
 
 **While your content plays, respond to a compatible remote’s “page up” or “page down” button by changing the channel.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/remotes#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/remotes#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/remotes#Related)
 
 ---
 

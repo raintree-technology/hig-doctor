@@ -28,7 +28,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/designing-
 
   * [TV provider accounts](https://developer.apple.com/design/human-interface-guidelines/managing-accounts#TV-provider-accounts)
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos#Best-practices)
+## Best practices
 
   * Support powerful, delightful interactions through the fluid, familiar gestures people make with the Siri Remote.
 
@@ -37,16 +37,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/designing-
   * Deliver beautiful, edge-to-edge artwork, subtle and fluid animations, and engaging audio, wrapping people in a rich, cinematic experience that’s clear, legible, and captivating from across the room.
 
   * Enhance multiuser support by making sign-in easy and infrequent, handling shared sign-in, and automatically switching profiles when people change the current viewer.
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos#Change-log)
 
 ---
 

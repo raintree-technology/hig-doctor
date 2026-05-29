@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/printing
 
 # Printing
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/printing#Best-practices)
+## Best practices
 
 **Make printing discoverable.**
 
@@ -18,9 +18,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/printing
 
 **Present relevant printing options.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/printing#Platform-considerations)
+## Platform considerations
 
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/printing#macOS)
+### macOS
 
 **If your macOS app offers app-specific print options that the system doesn’t offer, consider creating a custom category for the print panel.**
 
@@ -33,12 +33,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/printing
 **Consider letting people preview the effect of a setting.**
 
 **Consider storing modified settings with the document.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/printing#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/printing#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/printing#Developer-documentation)
 
 ---
 

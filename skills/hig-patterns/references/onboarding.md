@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/onboarding
 
 # Onboarding
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/onboarding#Best-practices)
+## Best practices
 
 **Teach through interactivity.**
 
@@ -22,7 +22,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/onboarding
 
 **Keep onboarding content focused on the experience you provide.**
 
-## [Additional content](https://developer.apple.com/design/human-interface-guidelines/onboarding#Additional-content)
+## Additional content
 
 **Briefly display a splash screen if necessary.**
 
@@ -30,23 +30,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/onboarding
 
 **Avoid displaying licensing details within your onboarding flow.**
 
-## [Additional requests](https://developer.apple.com/design/human-interface-guidelines/onboarding#Additional-requests)
+## Additional requests
 
 **Postpone nonessential setup flows or customization steps.**
 
 **If your app or game needs access to private data or resources before it can function, consider integrating the permission request into your onboarding flow.**
 
 **Prefer letting people experience your app or game before prompting them for ratings or purchases.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/onboarding#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/onboarding#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/onboarding#Related)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/onboarding#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/onboarding#Change-log)
 
 ---
 

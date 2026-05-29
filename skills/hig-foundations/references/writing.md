@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/writing
 
 # Writing
 
-## [Getting started](https://developer.apple.com/design/human-interface-guidelines/writing#Getting-started)
+## Getting started
 
 **Determine your app’s voice.**
 
@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/writing
 
 **Write for everyone.**
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/writing#Best-practices)
+## Best practices
 
 **Be action oriented.**
 
@@ -43,16 +43,6 @@ source: https://developer.apple.com/design/human-interface-guidelines/writing
 **Keep settings labels clear and simple.**
 
 **Show hints in text fields.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/writing#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/writing#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/writing#Related)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/writing#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/writing#Change-log)
 
 ---
 

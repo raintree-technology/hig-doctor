@@ -10,21 +10,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/token-fiel
 
 # Token fields
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/token-fields#Best-practices)
+## Best practices
 
 **Add value with a context menu.**
 
 **Consider providing additional ways to convert text into tokens.**
 
 **Consider customizing the delay the system uses before showing suggested tokens.**
-
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/token-fields#Platform-considerations)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/token-fields#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/token-fields#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/token-fields#Developer-documentation)
 
 ---
 

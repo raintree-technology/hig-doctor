@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/launching
 
 # Launching
 
-## [Best practices](https://developer.apple.com/design/human-interface-guidelines/launching#Best-practices)
+## Best practices
 
 **Launch instantly.**
 
@@ -20,7 +20,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/launching
 
 **Restore the previous state when your app restarts so people can continue where they left off.**
 
-## [Launch screens](https://developer.apple.com/design/human-interface-guidelines/launching#Launch-screens)
+## Launch screens
 
 **Downplay the launch experience.**
 
@@ -30,29 +30,19 @@ source: https://developer.apple.com/design/human-interface-guidelines/launching
 
 **Don’t advertise.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/launching#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/launching#iOS-iPadOS)
+### iOS, iPadOS
 
 **Launch in the appropriate orientation.**
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/launching#tvOS)
+### tvOS
 
 **In a live-viewing app, consider automatically starting playback soon after people start the app.**
 
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/launching#visionOS)
+### visionOS
 
 **Consider launching in the Shared Space even if your app is fully immersive.**
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/launching#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/launching#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/launching#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/launching#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/launching#Change-log)
 
 ---
 

@@ -10,7 +10,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/typography
 
 # Typography
 
-## [Ensuring legibility](https://developer.apple.com/design/human-interface-guidelines/typography#Ensuring-legibility)
+## Ensuring legibility
 
 **Use font sizes that most people can read easily.**
 
@@ -18,7 +18,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/typography
 
 **In general, avoid light font weights.**
 
-## [Conveying hierarchy](https://developer.apple.com/design/human-interface-guidelines/typography#Conveying-hierarchy)
+## Conveying hierarchy
 
 **Adjust font weight, size, and color as needed to emphasize important information and help people visualize hierarchy.**
 
@@ -26,7 +26,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/typography
 
 **Prioritize important content when responding to text-size changes.**
 
-## [Using system fonts](https://developer.apple.com/design/human-interface-guidelines/typography#Using-system-fonts)
+## Using system fonts
 
 **Consider using the built-in text styles.**
 
@@ -34,13 +34,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/typography
 
 **If necessary, adjust tracking in interface mockups.**
 
-## [Using custom fonts](https://developer.apple.com/design/human-interface-guidelines/typography#Using-custom-fonts)
+## Using custom fonts
 
 **Make sure custom fonts are legible.**
 
 **Implement accessibility features for custom fonts.**
 
-## [Supporting Dynamic Type](https://developer.apple.com/design/human-interface-guidelines/typography#Supporting-Dynamic-Type)
+## Supporting Dynamic Type
 
 **Make sure your app’s layout adapts to all font sizes.**
 
@@ -52,17 +52,13 @@ source: https://developer.apple.com/design/human-interface-guidelines/typography
 
 **Maintain a consistent information hierarchy regardless of the current font size.**
 
-## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/typography#Platform-considerations)
+## Platform considerations
 
-### [iOS, iPadOS](https://developer.apple.com/design/human-interface-guidelines/typography#iOS-iPadOS)
-
-### [macOS](https://developer.apple.com/design/human-interface-guidelines/typography#macOS)
+### macOS
 
 **When necessary, use dynamic system font variants to match the text in standard controls.**
 
-### [tvOS](https://developer.apple.com/design/human-interface-guidelines/typography#tvOS)
-
-### [visionOS](https://developer.apple.com/design/human-interface-guidelines/typography#visionOS)
+### visionOS
 
 **In general, prefer 2D text.**
 
@@ -74,11 +70,9 @@ source: https://developer.apple.com/design/human-interface-guidelines/typography
 
 **Keep text facing people as much as possible.**
 
-### [watchOS](https://developer.apple.com/design/human-interface-guidelines/typography#watchOS)
+## Specifications
 
-## [Specifications](https://developer.apple.com/design/human-interface-guidelines/typography#Specifications)
-
-### [iOS, iPadOS Dynamic Type sizes](https://developer.apple.com/design/human-interface-guidelines/typography#iOS-iPadOS-Dynamic-Type-sizes)
+### iOS, iPadOS Dynamic Type sizes
 
   * xSmall 
   * Small 
@@ -88,21 +82,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/typography
   * xxLarge 
   * xxxLarge 
 
-#### [xSmall](https://developer.apple.com/design/human-interface-guidelines/typography#xSmall)
-
-#### [Small](https://developer.apple.com/design/human-interface-guidelines/typography#Small)
-
-#### [Medium](https://developer.apple.com/design/human-interface-guidelines/typography#Medium)
-
-#### [Large (default)](https://developer.apple.com/design/human-interface-guidelines/typography#Large-default)
-
-#### [xLarge](https://developer.apple.com/design/human-interface-guidelines/typography#xLarge)
-
-#### [xxLarge](https://developer.apple.com/design/human-interface-guidelines/typography#xxLarge)
-
-#### [xxxLarge](https://developer.apple.com/design/human-interface-guidelines/typography#xxxLarge)
-
-### [iOS, iPadOS larger accessibility type sizes](https://developer.apple.com/design/human-interface-guidelines/typography#iOS-iPadOS-larger-accessibility-type-sizes)
+### iOS, iPadOS larger accessibility type sizes
 
   * AX1 
   * AX2 
@@ -110,21 +90,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/typography
   * AX4 
   * AX5 
 
-#### [AX1](https://developer.apple.com/design/human-interface-guidelines/typography#AX1)
-
-#### [AX2](https://developer.apple.com/design/human-interface-guidelines/typography#AX2)
-
-#### [AX3](https://developer.apple.com/design/human-interface-guidelines/typography#AX3)
-
-#### [AX4](https://developer.apple.com/design/human-interface-guidelines/typography#AX4)
-
-#### [AX5](https://developer.apple.com/design/human-interface-guidelines/typography#AX5)
-
-### [macOS built-in text styles](https://developer.apple.com/design/human-interface-guidelines/typography#macOS-built-in-text-styles)
-
-### [tvOS built-in text styles](https://developer.apple.com/design/human-interface-guidelines/typography#tvOS-built-in-text-styles)
-
-### [watchOS Dynamic Type sizes](https://developer.apple.com/design/human-interface-guidelines/typography#watchOS-Dynamic-Type-sizes)
+### watchOS Dynamic Type sizes
 
   * xSmall 
   * Small 
@@ -133,66 +99,24 @@ source: https://developer.apple.com/design/human-interface-guidelines/typography
   * xxLarge 
   * xxxLarge 
 
-#### [xSmall](https://developer.apple.com/design/human-interface-guidelines/typography#xSmall)
-
-#### [Small (default 38mm)](https://developer.apple.com/design/human-interface-guidelines/typography#Small-default-38mm)
-
-#### [Large (default 40mm/41mm/42mm)](https://developer.apple.com/design/human-interface-guidelines/typography#Large-default-40mm41mm42mm)
-
-#### [xLarge (default 44mm/45mm/49mm)](https://developer.apple.com/design/human-interface-guidelines/typography#xLarge-default-44mm45mm49mm)
-
-#### [xxLarge](https://developer.apple.com/design/human-interface-guidelines/typography#xxLarge)
-
-#### [xxxLarge](https://developer.apple.com/design/human-interface-guidelines/typography#xxxLarge)
-
-### [watchOS larger accessibility type sizes](https://developer.apple.com/design/human-interface-guidelines/typography#watchOS-larger-accessibility-type-sizes)
+### watchOS larger accessibility type sizes
 
   * AX1 
   * AX2 
   * AX3 
 
-#### [AX1](https://developer.apple.com/design/human-interface-guidelines/typography#AX1)
+### Tracking values
 
-#### [AX2](https://developer.apple.com/design/human-interface-guidelines/typography#AX2)
-
-#### [AX3](https://developer.apple.com/design/human-interface-guidelines/typography#AX3)
-
-### [Tracking values](https://developer.apple.com/design/human-interface-guidelines/typography#Tracking-values)
-
-#### [iOS, iPadOS, visionOS tracking values](https://developer.apple.com/design/human-interface-guidelines/typography#iOS-iPadOS-visionOS-tracking-values)
+#### iOS, iPadOS, visionOS tracking values
 
   * SF Pro 
   * SF Pro Rounded 
   * New York 
 
-#### [SF Pro](https://developer.apple.com/design/human-interface-guidelines/typography#SF-Pro)
-
-#### [SF Pro Rounded](https://developer.apple.com/design/human-interface-guidelines/typography#SF-Pro-Rounded)
-
-#### [New York](https://developer.apple.com/design/human-interface-guidelines/typography#New-York)
-
-#### [macOS tracking values](https://developer.apple.com/design/human-interface-guidelines/typography#macOS-tracking-values)
-
-#### [tvOS tracking values](https://developer.apple.com/design/human-interface-guidelines/typography#tvOS-tracking-values)
-
-#### [watchOS tracking values](https://developer.apple.com/design/human-interface-guidelines/typography#watchOS-tracking-values)
+#### watchOS tracking values
 
   * SF Compact 
   * SF Compact Rounded 
-
-#### [SF Compact](https://developer.apple.com/design/human-interface-guidelines/typography#SF-Compact)
-
-#### [SF Compact Rounded](https://developer.apple.com/design/human-interface-guidelines/typography#SF-Compact-Rounded)
-
-## [Resources](https://developer.apple.com/design/human-interface-guidelines/typography#Resources)
-
-#### [Related](https://developer.apple.com/design/human-interface-guidelines/typography#Related)
-
-#### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/typography#Developer-documentation)
-
-#### [Videos](https://developer.apple.com/design/human-interface-guidelines/typography#Videos)
-
-## [Change log](https://developer.apple.com/design/human-interface-guidelines/typography#Change-log)
 
 ---
 
