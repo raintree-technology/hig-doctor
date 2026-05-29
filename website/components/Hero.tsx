@@ -3,6 +3,7 @@
 import { ArrowRight, Check, Copy, Github } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { CopyStatus } from "@/lib/useCopyToClipboard";
 import { cn } from "@/lib/utils";
 
 const terminalLines = [
@@ -151,7 +152,7 @@ export default function Hero() {
             </a>
             <span className="text-muted-foreground/30 hidden sm:inline">|</span>
             <span className="text-sm text-muted-foreground">
-              14 skills. 100+ HIG reference topics.
+              14 skills. 156 HIG reference topics.
             </span>
           </div>
 
@@ -163,10 +164,7 @@ export default function Hero() {
               variant="ghost"
               size="icon"
               onClick={handleCopy}
-              aria-label={
-                copied ? "Copied to clipboard" : "Copy install command"
-              }
-              aria-live="polite"
+              aria-label="Copy install command"
             >
               {copied ? (
                 <Check className="h-4 w-4 text-green-500" />
@@ -174,6 +172,7 @@ export default function Hero() {
                 <Copy className="h-4 w-4" />
               )}
             </Button>
+            <CopyStatus active={copied} />
           </div>
         </div>
 

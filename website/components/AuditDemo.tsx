@@ -2,8 +2,13 @@
 
 import { AlertTriangle, Check, ChevronDown, Play } from "lucide-react";
 import { useMemo, useState } from "react";
-import { detectPatterns, type PatternMatch, type Severity } from "@/lib/audit/patterns";
 import { Button } from "@/components/ui/button";
+import {
+  detectPatterns,
+  type PatternMatch,
+  RULE_COUNT,
+  type Severity,
+} from "@/lib/audit/patterns";
 import { cn } from "@/lib/utils";
 import { SAMPLES, type SampleKey } from "./audit-demo-fixtures";
 
@@ -40,7 +45,9 @@ function groupBySeverity(matches: PatternMatch[]): {
 export default function AuditDemo() {
   const [sampleKey, setSampleKey] = useState<SampleKey>("react-bad");
   const [code, setCode] = useState<string>(SAMPLES["react-bad"].code);
-  const [filename, setFilename] = useState<string>(SAMPLES["react-bad"].filename);
+  const [filename, setFilename] = useState<string>(
+    SAMPLES["react-bad"].filename,
+  );
   const [results, setResults] = useState<PatternMatch[] | null>(null);
   const [hasRun, setHasRun] = useState(false);
 
@@ -81,7 +88,8 @@ export default function AuditDemo() {
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Paste a component or pick a sample. The audit runs locally, in your
-            browser, against the same 348 rules the CLI and MCP server use.
+            browser, against the same {RULE_COUNT} rules the CLI and MCP server
+            use.
           </p>
         </div>
 
@@ -115,7 +123,9 @@ export default function AuditDemo() {
                     className="bg-transparent text-xs text-white/70 font-mono outline-none focus:text-white"
                   />
                   <span className="text-xs text-white/40">·</span>
-                  <span className="text-xs text-white/50">{sample.framework}</span>
+                  <span className="text-xs text-white/50">
+                    {sample.framework}
+                  </span>
                 </div>
                 <Button size="sm" onClick={handleRun} className="gap-1.5">
                   <Play className="h-3.5 w-3.5" />
@@ -176,17 +186,21 @@ export default function AuditDemo() {
                   </p>
                 )}
 
-                {grouped && grouped.critical.length === 0 && grouped.serious.length === 0 && grouped.moderate.length === 0 && (
-                  <div className="flex items-center gap-2 text-green-400">
-                    <Check className="h-4 w-4" />
-                    Clean — no HIG concerns detected.
-                    {grouped.positives.length > 0 && (
-                      <span className="text-muted-foreground ml-1">
-                        ({grouped.positives.length} positive{grouped.positives.length === 1 ? "" : "s"})
-                      </span>
-                    )}
-                  </div>
-                )}
+                {grouped &&
+                  grouped.critical.length === 0 &&
+                  grouped.serious.length === 0 &&
+                  grouped.moderate.length === 0 && (
+                    <div className="flex items-center gap-2 text-green-400">
+                      <Check className="h-4 w-4" />
+                      Clean — no HIG concerns detected.
+                      {grouped.positives.length > 0 && (
+                        <span className="text-muted-foreground ml-1">
+                          ({grouped.positives.length} positive
+                          {grouped.positives.length === 1 ? "" : "s"})
+                        </span>
+                      )}
+                    </div>
+                  )}
 
                 {grouped && (
                   <div className="space-y-4">
@@ -217,7 +231,9 @@ export default function AuditDemo() {
             </div>
             <p className="mt-3 text-xs text-muted-foreground">
               Same detection engine as the{" "}
-              <code className="px-1 py-0.5 rounded bg-muted">bun run audit</code>{" "}
+              <code className="px-1 py-0.5 rounded bg-muted">
+                bun run audit
+              </code>{" "}
               CLI and the{" "}
               <code className="px-1 py-0.5 rounded bg-muted">hig_audit</code>{" "}
               MCP tool.
@@ -262,7 +278,9 @@ function FindingBucket({
           {tone === "amber" && <AlertTriangle className="h-3.5 w-3.5" />}
           {tone === "green" && <Check className="h-3.5 w-3.5" />}
           {label}
-          <span className="text-xs text-muted-foreground">({items.length})</span>
+          <span className="text-xs text-muted-foreground">
+            ({items.length})
+          </span>
         </span>
         <ChevronDown
           className={cn(

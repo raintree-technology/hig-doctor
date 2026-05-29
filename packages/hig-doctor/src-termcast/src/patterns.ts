@@ -77,7 +77,6 @@ const SWIFT = /\.swift$/;
 const WEB = /\.(tsx|jsx|html?)$/;
 const TSX_JSX = /\.(tsx|jsx)$/;
 const TS_JS = /\.(tsx|jsx|ts|js)$/;
-const CSS = /\.(css|scss|sass|less)$/;
 const VUE = /\.vue$/;
 const SVELTE = /\.svelte$/;
 const ANGULAR = /\.(ts|html)$/;
@@ -85,7 +84,6 @@ const DART = /\.dart$/;
 const KOTLIN = /\.kt$/;
 const ANDROID_XML = /\.xml$/;
 const WEB_ALL = /\.(tsx|jsx|html?|vue|svelte)$/;
-const CODE_ALL = /\.(tsx|jsx|ts|js|vue|svelte|html?)$/;
 const STYLE_ALL = /\.(css|scss|sass|less)$/;
 
 // ════════════════════════════════════════════════════════════════
@@ -594,7 +592,7 @@ const reactNativeRules: PatternRule[] = [
   { category: "components-layout", subcategory: "layout", type: "pattern", pattern: "SafeAreaView", regex: /\bSafeAreaView\b/, fileFilter: TSX_JSX },
   { category: "inputs", subcategory: "gestures", type: "pattern", pattern: "Gesture handler", regex: /PanGestureHandler|TapGestureHandler|GestureDetector/, fileFilter: TSX_JSX },
   { category: "patterns", subcategory: "haptics", type: "pattern", pattern: "Haptics", regex: /Haptics\.|expo-haptics/, fileFilter: TS_JS },
-  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "nested touchables", regex: /accessible=\{true\}[^]*?<Touchable/, fileFilter: TSX_JSX },
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "nested touchables", regex: /accessible=\{true\}[\s\S]*?<Touchable/, fileFilter: TSX_JSX },
 ];
 
 // ════════════════════════════════════════════════════════════════
@@ -723,7 +721,7 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
         let contextLines = scanLine;
         for (let j = Math.max(0, i - 3); j < i; j++) {
           if (!lines[j].includes("}") && !lines[j].includes("{")) {
-            contextLines = lines[j] + " " + contextLines;
+            contextLines = `${lines[j]} ${contextLines}`;
           }
         }
         blockContext.push(contextLines);
@@ -741,8 +739,9 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
 
     for (const rule of applicable) {
       if (rule.regex.test(scanLine)) {
-        if (rule.skipInBlock && isStyleFile) {
-          const inSkippedBlock = blockContext.some(ctx => rule.skipInBlock!.test(ctx));
+        const skipInBlock = rule.skipInBlock;
+        if (skipInBlock && isStyleFile) {
+          const inSkippedBlock = blockContext.some((ctx) => skipInBlock.test(ctx));
           if (inSkippedBlock) continue;
         }
         matches.push({

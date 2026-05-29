@@ -1,7 +1,6 @@
 "use client";
 
 import { Check, Copy, MessageSquare } from "lucide-react";
-import { useCallback, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { CopyStatus, useCopyToClipboard } from "@/lib/useCopyToClipboard";
 import UpdateNotify from "./UpdateNotify";
 
 const MAIN_COMMAND = "npx skills add raintree-technology/hig-doctor";
@@ -39,13 +39,7 @@ const firstQuestions = [
 ];
 
 export default function Install() {
-  const [copied, setCopied] = useState<string | null>(null);
-
-  const handleCopy = useCallback((text: string, id: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(id);
-    setTimeout(() => setCopied(null), 2000);
-  }, []);
+  const { copied, copy } = useCopyToClipboard();
 
   return (
     <section
@@ -80,13 +74,8 @@ export default function Install() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={() => handleCopy(MAIN_COMMAND, "main")}
-                  aria-label={
-                    copied === "main"
-                      ? "Copied to clipboard"
-                      : "Copy install command"
-                  }
-                  aria-live="polite"
+                  onClick={() => copy(MAIN_COMMAND, "main")}
+                  aria-label="Copy install command"
                 >
                   {copied === "main" ? (
                     <Check className="h-4 w-4 text-green-500" />
@@ -95,6 +84,8 @@ export default function Install() {
                   )}
                 </Button>
               </div>
+
+              <CopyStatus active={copied !== null} />
 
               <p className="text-sm text-muted-foreground text-center">
                 That&apos;s it. No config files, no restarts. Just ask a
@@ -117,10 +108,9 @@ export default function Install() {
                     <button
                       type="button"
                       key={question}
-                      onClick={() => handleCopy(question, question)}
+                      onClick={() => copy(question, question)}
                       className="w-full text-left px-3.5 py-2.5 rounded-lg bg-background border text-sm text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-colors cursor-pointer flex items-center gap-2"
                       aria-label={`Copy: ${question}`}
-                      aria-live="polite"
                     >
                       <span className="flex-1">{question}</span>
                       {copied === question && (
@@ -154,15 +144,8 @@ export default function Install() {
                             variant="ghost"
                             size="icon"
                             className="h-7 w-7 shrink-0"
-                            onClick={() =>
-                              handleCopy(method.command, `alt-${i}`)
-                            }
-                            aria-label={
-                              copied === `alt-${i}`
-                                ? "Copied to clipboard"
-                                : `Copy ${method.label} command`
-                            }
-                            aria-live="polite"
+                            onClick={() => copy(method.command, `alt-${i}`)}
+                            aria-label={`Copy ${method.label} command`}
                           >
                             {copied === `alt-${i}` ? (
                               <Check className="h-3.5 w-3.5 text-green-500" />

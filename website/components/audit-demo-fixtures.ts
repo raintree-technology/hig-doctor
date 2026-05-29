@@ -5,7 +5,12 @@
 // markup — excluded from the CLI scan via website/.higauditignore so the site
 // doesn't flag its own teaching samples.
 
-export type SampleKey = "swiftui-bad" | "swiftui-good" | "react-bad" | "react-good" | "html-bad";
+export type SampleKey =
+  | "swiftui-bad"
+  | "swiftui-good"
+  | "react-bad"
+  | "react-good"
+  | "html-bad";
 
 export interface Sample {
   label: string;
