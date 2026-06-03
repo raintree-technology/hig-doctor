@@ -84,6 +84,10 @@ jobs:
         working-directory: packages/hig-doctor/src-mcp
         run: bun install --frozen-lockfile
 
+      - name: Run MCP server tests
+        working-directory: packages/hig-doctor/src-mcp
+        run: bun test
+
       - name: Smoke check MCP server handshake
         working-directory: packages/hig-doctor/src-mcp
         run: |
