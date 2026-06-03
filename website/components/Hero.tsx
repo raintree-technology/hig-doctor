@@ -61,7 +61,6 @@ export default function Hero({ stars }: { stars: number | null }) {
     return () => clearInterval(timer);
   }, []);
 
-
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(INSTALL_COMMAND);
     setCopied(true);
