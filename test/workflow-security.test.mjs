@@ -68,6 +68,20 @@ test("npm publish uses trusted publishing instead of a long-lived token", () => 
   }
 });
 
+test("published CLI and MCP packages have no runtime dependencies", () => {
+  for (const file of [
+    "packages/hig-doctor/src-termcast/package.json",
+    "packages/hig-doctor/src-mcp/package.json",
+  ]) {
+    const manifest = JSON.parse(readRepoFile(file));
+    assert.deepEqual(
+      manifest.dependencies ?? {},
+      {},
+      `${file} should keep published runtime dependencies empty`,
+    );
+  }
+});
+
 test("composite action pins third-party action references", () => {
   const content = readRepoFile("action.yml");
   const usesLines = content

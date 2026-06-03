@@ -21,10 +21,8 @@
     "prepublishOnly": "npm run build",
     "test": "bun test"
   },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.12.0"
-  },
   "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
     "esbuild": "^0.25.0"
   }
 }
