@@ -51,6 +51,9 @@ jobs:
       - name: Run tests
         run: bun test
 
+      - name: Typecheck
+        run: npm run typecheck
+
       - name: Build bundle
         run: npm run build
 

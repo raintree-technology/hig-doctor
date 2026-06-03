@@ -19,10 +19,14 @@
     "start": "bun src/index.ts",
     "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --banner:js=\"#!/usr/bin/env node\"",
     "prepublishOnly": "npm run build",
-    "test": "bun test"
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
-    "esbuild": "^0.25.0"
+    "@types/bun": "^1.3.3",
+    "@types/node": "^20",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.3"
   }
 }

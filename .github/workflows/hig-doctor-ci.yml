@@ -65,6 +65,10 @@ jobs:
         working-directory: packages/hig-doctor/src-termcast
         run: bun test
 
+      - name: Typecheck audit tool
+        working-directory: packages/hig-doctor/src-termcast
+        run: npm run typecheck
+
       - name: Smoke audit against the website
         run: bun packages/hig-doctor/src-termcast/src/cli.ts website --json
 
@@ -87,6 +91,10 @@ jobs:
       - name: Run MCP server tests
         working-directory: packages/hig-doctor/src-mcp
         run: bun test
+
+      - name: Typecheck MCP server
+        working-directory: packages/hig-doctor/src-mcp
+        run: npm run typecheck
 
       - name: Smoke check MCP server handshake
         working-directory: packages/hig-doctor/src-mcp

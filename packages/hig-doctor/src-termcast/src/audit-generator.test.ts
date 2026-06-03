@@ -47,6 +47,9 @@ describe("generateAuditMarkdown", () => {
       concerns: 1,
       positives: 0,
       patterns: 0,
+      critical: 0,
+      serious: 0,
+      moderate: 1,
       fileCount: 1,
       files: ["App.swift"],
     }];
@@ -70,6 +73,9 @@ describe("generateAuditMarkdown", () => {
       concerns: 0,
       positives: 0,
       patterns: 0,
+      critical: 0,
+      serious: 0,
+      moderate: 0,
       fileCount: 0,
       files: [],
     }];
@@ -106,6 +112,9 @@ describe("generateAuditMarkdown", () => {
       concerns: 0,
       positives: 1,
       patterns: 0,
+      critical: 0,
+      serious: 0,
+      moderate: 0,
       fileCount: 1,
       files: ["Header.tsx"],
     }];

@@ -41,9 +41,13 @@
     "audit:export": "bun src/cli.ts . --export",
     "audit:stdout": "bun src/cli.ts . --stdout",
     "build": "esbuild src/cli.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --banner:js=\"#!/usr/bin/env node\"",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "esbuild": "^0.25.0"
+    "@types/bun": "^1.3.3",
+    "@types/node": "^20",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.3"
   }
 }
