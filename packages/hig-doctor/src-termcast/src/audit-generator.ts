@@ -29,6 +29,39 @@ function commentSuffix(file: string): string {
   return "";
 }
 
+function escapeMarkdownText(value: string): string {
+  return value
+    .replace(/[\r\n\t]+/g, " ")
+    .replace(/\\/g, "\\\\")
+    .replace(/([`*_{}\[\]()#+.!|-])/g, "\\$1");
+}
+
+function longestRun(value: string, char: string): number {
+  let longest = 0;
+  let current = 0;
+  for (const c of value) {
+    if (c === char) {
+      current++;
+      longest = Math.max(longest, current);
+    } else {
+      current = 0;
+    }
+  }
+  return longest;
+}
+
+function fenceFor(matches: CategorySummary["matches"]): string {
+  const longestTildeRun = matches.reduce(
+    (max, match) => Math.max(max, longestRun(match.lineContent, "~")),
+    0,
+  );
+  return "~".repeat(Math.max(3, longestTildeRun + 1));
+}
+
+function sanitizeExcerptLine(value: string): string {
+  return value.replace(/[\r\n\t]+/g, " ");
+}
+
 function renderExcerpts(category: CategorySummary): string {
   const lines: string[] = [];
   const byFile = new Map<string, typeof category.matches>();
@@ -41,16 +74,17 @@ function renderExcerpts(category: CategorySummary): string {
     const lang = langForFile(file);
     const cp = commentPrefix(file);
     const cs = commentSuffix(file);
-    lines.push(`**${file}**`);
-    lines.push(`\`\`\`${lang}`);
+    const fence = fenceFor(matches);
+    lines.push(`**${escapeMarkdownText(file)}**`);
+    lines.push(`${fence}${lang}`);
     for (const m of matches.slice(0, 15)) {
       const tag = m.type === "concern" ? ` ${cp}⚠ concern${cs}` : m.type === "positive" ? ` ${cp}✓ good${cs}` : "";
-      lines.push(`L${m.line}: ${m.lineContent}${tag}`);
+      lines.push(`L${m.line}: ${sanitizeExcerptLine(m.lineContent)}${tag}`);
     }
     if (matches.length > 15) {
       lines.push(`${cp}... and ${matches.length - 15} more matches${cs}`);
     }
-    lines.push("```");
+    lines.push(fence);
     lines.push("");
   }
 
