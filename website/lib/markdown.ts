@@ -6,11 +6,28 @@ import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
-import { visit } from "unist-util-visit";
+import { EXIT, visit } from "unist-util-visit";
 import { getTopicSlugSet } from "./topics";
 
 const HIG_BASE =
   "https://developer.apple.com/design/human-interface-guidelines/";
+
+/**
+ * Strips the leading `<h1>` from rendered topic markdown. Every reference file
+ * opens with `# <title>`, but the topic page template already renders that title
+ * as the page's single `<h1>`. Removing the duplicate keeps a valid heading
+ * outline (one h1 → h2 → h3), which the Website Spec requires.
+ */
+function rehypeStripLeadingH1() {
+  return (tree: Root) => {
+    visit(tree, "element", (node: Element, index, parent) => {
+      if (node.tagName === "h1" && parent && typeof index === "number") {
+        parent.children.splice(index, 1);
+        return EXIT;
+      }
+    });
+  };
+}
 
 /** Rewrites Apple HIG cross-reference URLs to internal /topics/ links when we have the topic */
 function rehypeRewriteHigLinks() {
@@ -44,6 +61,7 @@ export async function renderMarkdown(content: string): Promise<string> {
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypeSanitize)
+    .use(rehypeStripLeadingH1)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: "wrap" })
     .use(rehypeRewriteHigLinks)

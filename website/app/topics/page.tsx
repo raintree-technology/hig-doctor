@@ -1,4 +1,4 @@
-import { FileText } from "lucide-react";
+import { ChevronRight, FileText } from "lucide-react";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -55,15 +55,36 @@ export default function TopicsIndex() {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Apple HIG Topics",
-    description: "Browse all Apple Human Interface Guidelines topics.",
-    url: `${BASE_URL}/topics`,
-    publisher: {
-      "@type": "Organization",
-      name: "Raintree",
-      url: "https://raintree.technology",
-    },
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        name: "Apple HIG Topics",
+        description: "Browse all Apple Human Interface Guidelines topics.",
+        url: `${BASE_URL}/topics`,
+        publisher: {
+          "@type": "Organization",
+          name: "Raintree",
+          url: "https://raintree.technology",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: BASE_URL,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Topics",
+            item: `${BASE_URL}/topics`,
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -76,6 +97,18 @@ export default function TopicsIndex() {
         />
 
         <div className="mx-auto max-w-6xl px-6">
+          {/* Breadcrumbs */}
+          <nav
+            aria-label="Breadcrumb"
+            className="flex items-center gap-1.5 text-sm text-muted-foreground mb-8"
+          >
+            <a href="/" className="hover:text-foreground transition-colors">
+              Home
+            </a>
+            <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="text-foreground">Topics</span>
+          </nav>
+
           <div className="text-center mb-14">
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-4">
               Apple HIG Topics

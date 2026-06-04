@@ -61,6 +61,9 @@ export function GET() {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
       "Cache-Control": "public, max-age=3600, s-maxage=86400",
+      // Machine-readable index for LLM retrieval, not a page meant to rank.
+      // LLM crawlers fetch it directly; keep it out of search indexes.
+      "X-Robots-Tag": "noindex",
     },
   });
 }

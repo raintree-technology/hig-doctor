@@ -140,7 +140,14 @@ export default function Hero({ stars }: { stars: number | null }) {
             </a>
             <span className="text-muted-foreground/30 hidden sm:inline">|</span>
             <span className="text-sm text-muted-foreground">
-              14 skills. 156 HIG reference topics.
+              14 skills.{" "}
+              <a
+                href="/topics"
+                className="hover:text-foreground hover:underline underline-offset-4 transition-colors"
+              >
+                156 HIG reference topics
+              </a>
+              .
             </span>
           </div>
 

@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // One canonical URL per page: requests with a trailing slash get a 308
+  // redirect to the slash-less form, so search engines never see duplicates.
+  trailingSlash: false,
   experimental: {
     optimizePackageImports: [
       "lucide-react",

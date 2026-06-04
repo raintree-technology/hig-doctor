@@ -24,6 +24,12 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-4 text-[13px] text-muted-foreground sm:hidden">
           <nav aria-label="Footer links" className="flex items-center gap-6">
             <a
+              href="/topics"
+              className="hover:text-foreground hover:underline underline-offset-4 transition-colors"
+            >
+              Topics
+            </a>
+            <a
               href="https://agentskills.io"
               target="_blank"
               hrefLang="en"
@@ -87,6 +93,12 @@ export default function Footer() {
         {/* Desktop */}
         <div className="hidden sm:flex sm:items-center sm:justify-between text-[13px] text-muted-foreground">
           <nav aria-label="Footer" className="flex items-center gap-6">
+            <a
+              href="/topics"
+              className="hover:text-foreground hover:underline underline-offset-4 transition-colors"
+            >
+              Topics
+            </a>
             <a
               href="https://agentskills.io"
               target="_blank"

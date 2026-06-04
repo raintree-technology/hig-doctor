@@ -6,6 +6,7 @@
     "build": "next build",
     "start": "next start -p 3014",
     "test": "bun test",
+    "indexnow": "bun run scripts/indexnow.ts",
     "lint": "biome check .",
     "typecheck": "tsc --noEmit --project tsconfig.typecheck.json"
   },

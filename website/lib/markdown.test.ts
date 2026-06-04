@@ -25,4 +25,13 @@ describe("renderMarkdown", () => {
 
     assert.match(html, /href="\/topics\/tab-bars"/);
   });
+
+  it("strips the leading h1 so the page keeps a single h1 from the template", async () => {
+    const html = await renderMarkdown(
+      "# Tab bars\n\n## Best practices\n\nUse a sidebar on iPadOS.",
+    );
+
+    assert.doesNotMatch(html, /<h1/);
+    assert.match(html, /<h2[^>]*>[\s\S]*Best practices/);
+  });
 });
