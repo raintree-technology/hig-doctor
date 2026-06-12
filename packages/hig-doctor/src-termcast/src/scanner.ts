@@ -118,38 +118,58 @@ export interface ScanOptions {
 
 const IGNORE_FILE = ".higauditignore"
 
-// Convert a path glob to an anchored RegExp. Semantics (path-based, not gitignore):
+// Convert a path glob to an anchored predicate. Semantics (path-based, not gitignore):
 //   *   → any run of characters except "/"
 //   **  → any run of characters including "/"
 //   **/ → zero or more leading path segments
 //   ?   → a single character except "/"
 // Patterns match the POSIX relative path from the scan root.
-function globToRegExp(glob: string): RegExp {
+function compileGlob(glob: string): (path: string) => boolean {
   const g = glob.replace(/^\.\//, "").replace(/^\/+/, "").replace(/\/+$/, "")
-  let re = ""
-  for (let i = 0; i < g.length; i++) {
-    const ch = g[i]
-    if (ch === "*") {
-      if (g[i + 1] === "*") {
-        if (g[i + 2] === "/") {
-          re += "(?:.*/)?"
-          i += 2
+
+  return (path: string): boolean => {
+    const memo = new Map<string, boolean>()
+
+    const matches = (patternIndex: number, pathIndex: number): boolean => {
+      const key = `${patternIndex}:${pathIndex}`
+      const cached = memo.get(key)
+      if (cached !== undefined) return cached
+
+      let result = false
+      const ch = g[patternIndex]
+
+      if (patternIndex === g.length) {
+        result = pathIndex === path.length
+      } else if (ch === "*") {
+        if (g[patternIndex + 1] === "*") {
+          if (g[patternIndex + 2] === "/") {
+            result = matches(patternIndex + 3, pathIndex)
+            for (let next = pathIndex; !result && next < path.length; next++) {
+              if (path[next] === "/") result = matches(patternIndex + 3, next + 1)
+            }
+          } else {
+            for (let next = pathIndex; !result && next <= path.length; next++) {
+              result = matches(patternIndex + 2, next)
+            }
+          }
         } else {
-          re += ".*"
-          i += 1
+          for (let next = pathIndex; !result; next++) {
+            result = matches(patternIndex + 1, next)
+            if (next >= path.length || path[next] === "/") break
+          }
         }
+      } else if (ch === "?") {
+        result = pathIndex < path.length && path[pathIndex] !== "/" && matches(patternIndex + 1, pathIndex + 1)
       } else {
-        re += "[^/]*"
+        result = path[pathIndex] === ch && matches(patternIndex + 1, pathIndex + 1)
       }
-    } else if (ch === "?") {
-      re += "[^/]"
-    } else if ("\\^$.|+()[]{}".includes(ch)) {
-      re += "\\" + ch
-    } else {
-      re += ch
+
+      memo.set(key, result)
+      return result
     }
+
+    return matches(0, 0)
   }
-  return new RegExp("^" + re + "$")
 }
 
 async function loadIgnorePatterns(directory: string): Promise<string[]> {
@@ -165,11 +185,11 @@ async function loadIgnorePatterns(directory: string): Promise<string[]> {
 }
 
 function buildIgnoreMatcher(patterns: string[]): (relPath: string) => boolean {
-  const regexps = patterns.map(globToRegExp)
-  if (regexps.length === 0) return () => false
+  const matchers = patterns.map(compileGlob)
+  if (matchers.length === 0) return () => false
   return (relPath: string) => {
     const posix = relPath.split(sep).join("/")
-    return regexps.some((re) => re.test(posix))
+    return matchers.some((matches) => matches(posix))
   }
 }
 
