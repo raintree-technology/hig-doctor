@@ -1,5 +1,9 @@
 # Apple HIG Skills
 
+[![Status: live](https://img.shields.io/badge/status-live-brightgreen)](https://github.com/raintree-technology/hig-doctor)
+[![Raintree Technology](https://img.shields.io/badge/Raintree-Technology-0f766e)](https://raintree.technology)
+[![CI](https://github.com/raintree-technology/hig-doctor/actions/workflows/ci.yml/badge.svg)](https://github.com/raintree-technology/hig-doctor/actions/workflows/ci.yml)
+
 Agent-native Apple Human Interface Guidelines: a structured index of Apple's HIG delivered as Claude Skills, with an MCP server and a universal compliance auditor as the verification loop. Built for AI coding agents; usable by humans.
 
 - **Skills corpus** — 14 skills and 156 reference topics covering the complete HIG (foundations, components, patterns, inputs, platforms, technologies). Snapshot dated 2025-02-02; canonical content remains at [developer.apple.com/design/human-interface-guidelines](https://developer.apple.com/design/human-interface-guidelines/).
@@ -55,8 +59,8 @@ Scan any project for Apple HIG compliance. Works with SwiftUI, UIKit, React, Nex
 Requires [Bun](https://bun.sh).
 
 ```bash
-cd packages/hig-doctor/src-termcast
-bun run audit <directory>
+bun install --frozen-lockfile
+bun run --cwd packages/hig-doctor/src-termcast audit <directory>
 ```
 
 Example output:
@@ -184,10 +188,9 @@ The [project website](https://apple.raintree.technology) serves:
 An animated [Remotion](https://www.remotion.dev/) video that visualizes audit output with glass-card UI.
 
 ```bash
-cd demos/remotion-hig-doctor
-npm install
-npm run preview   # preview in browser
-npm run render    # out/hig-doctor-showcase.mp4 (1920x1080, 30fps, 21s)
+bun install --frozen-lockfile
+bun run --cwd demos/remotion-hig-doctor preview   # preview in browser
+bun run --cwd demos/remotion-hig-doctor render    # out/hig-doctor-showcase.mp4 (1920x1080, 30fps, 21s)
 ```
 
 ## Skills

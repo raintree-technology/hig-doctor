@@ -1,1 +1,1 @@
-export { diagnose } from "./doctor.js";
+export { diagnose } from "./doctor.js"

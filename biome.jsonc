@@ -1,0 +1,79 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.4.3/schema.json",
+  "extends": ["./biome.base.jsonc"],
+  "files": {
+    "includes": [
+      "action.yml",
+      "demos/remotion-hig-doctor/package.json",
+      "package.json",
+      "packages/hig-doctor/package.json",
+      "packages/hig-doctor/src/**/*.js",
+      "packages/hig-doctor/src-mcp/package.json",
+      "packages/hig-doctor/src-mcp/src/**/*.ts",
+      "packages/hig-doctor/src-mcp/tsconfig.json",
+      "packages/hig-doctor/src-termcast/package.json",
+      "packages/hig-doctor/src-termcast/src/**/*.ts",
+      "packages/hig-doctor/src-termcast/tsconfig.json",
+      "scripts/**/*.mjs",
+      "scripts/**/*.ts",
+      "test/**/*.mjs",
+      "tsconfig.base.json",
+      "website/app/**/*.ts",
+      "website/app/**/*.tsx",
+      "website/components/**/*.ts",
+      "website/components/**/*.tsx",
+      "website/components.json",
+      "website/lib/**/*.ts",
+      "!website/lib/audit",
+      "website/next.config.ts",
+      "website/package.json",
+      "website/postcss.config.mjs",
+      "website/scripts/**/*.ts",
+      "website/tailwind.config.ts",
+      "website/tsconfig.json",
+      "website/tsconfig.typecheck.json"
+    ]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 120
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "double",
+      "quoteStyle": "double",
+      "semicolons": "asNeeded",
+      "trailingCommas": "all"
+    }
+  },
+  "linter": {
+    "rules": {
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "performance": {
+        "noImgElement": "off"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useAriaPropsSupportedByRole": "off"
+      },
+      "suspicious": {
+        "noAssignInExpressions": "off",
+        "noImplicitAnyLet": "off",
+        "noArrayIndexKey": "off",
+        "noUnknownAtRules": "off"
+      },
+      "complexity": {
+        "noImportantStyles": "off"
+      }
+    }
+  },
+  "css": {
+    "parser": {
+      "cssModules": true,
+      "tailwindDirectives": true
+    }
+  }
+}

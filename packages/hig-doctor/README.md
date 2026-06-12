@@ -13,8 +13,8 @@ Scan any project for Apple Human Interface Guidelines compliance. Works with Swi
 Requires [Bun](https://bun.sh).
 
 ```bash
-cd packages/hig-doctor/src-termcast
-bun run audit <directory>
+bun install --frozen-lockfile
+bun run --cwd packages/hig-doctor/src-termcast audit <directory>
 ```
 
 ### Options
@@ -91,9 +91,8 @@ result.markdown;     // Full audit report as markdown string
 stdio Model Context Protocol server (`src-mcp/`) that exposes the skills corpus and the audit CLI to any MCP-compatible client (Claude Desktop, Cursor, Windsurf, Claude Code).
 
 ```bash
-cd packages/hig-doctor/src-mcp
-bun install
-bun src/index.ts   # starts the stdio server
+bun install --frozen-lockfile
+bun packages/hig-doctor/src-mcp/src/index.ts   # starts the stdio server
 ```
 
 Claude Desktop config:
@@ -124,7 +123,7 @@ Set `HIG_SKILLS_DIR` to override skills directory resolution.
 Used internally to lint this repository's skill files. Not intended for third-party use — the official Agent Skills reference validator is [skills-ref](https://github.com/agentskills/agentskills).
 
 ```bash
-npm --prefix packages/hig-doctor install
+bun install --frozen-lockfile
 node packages/hig-doctor/src/cli.js . --verbose --strict
 ```
 

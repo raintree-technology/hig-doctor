@@ -13,82 +13,74 @@
 //   3. monorepo dev layout  (../../../../skills from the source file)
 //   4. $PWD/skills
 
-import { Server } from "@modelcontextprotocol/sdk/server/index.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-} from "@modelcontextprotocol/sdk/types.js";
-import { readFile, readdir, access } from "node:fs/promises";
-import { dirname, join, resolve, isAbsolute } from "node:path";
-import { fileURLToPath } from "node:url";
-import { audit } from "../../src-termcast/src/audit";
-import pkg from "../package.json";
+import { access, readdir, readFile } from "node:fs/promises"
+import { dirname, isAbsolute, join, resolve } from "node:path"
+import { fileURLToPath } from "node:url"
+import { Server } from "@modelcontextprotocol/sdk/server/index.js"
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
+import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js"
+import { audit } from "../../src-termcast/src/audit"
+import pkg from "../package.json"
 
-const HIG_SNAPSHOT_DATE = "2025-02-02";
-const HIG_SOURCE_URL = "https://developer.apple.com/design/human-interface-guidelines/";
-const MODULE_DIR = dirname(fileURLToPath(import.meta.url));
+const HIG_SNAPSHOT_DATE = "2025-02-02"
+const HIG_SOURCE_URL = "https://developer.apple.com/design/human-interface-guidelines/"
+const MODULE_DIR = dirname(fileURLToPath(import.meta.url))
 
 async function resolveSkillsDir(): Promise<string> {
   if (process.env.HIG_SKILLS_DIR) {
-    const p = resolve(process.env.HIG_SKILLS_DIR);
-    await access(p);
-    return p;
+    const p = resolve(process.env.HIG_SKILLS_DIR)
+    await access(p)
+    return p
   }
   const candidates = [
     resolve(MODULE_DIR, "skills"),
     resolve(MODULE_DIR, "..", "..", "..", "..", "skills"),
     resolve(MODULE_DIR, "..", "..", "..", "..", "..", "skills"),
     resolve(process.cwd(), "skills"),
-  ];
+  ]
   for (const c of candidates) {
     try {
-      await access(c);
-      return c;
+      await access(c)
+      return c
     } catch {}
   }
-  throw new Error(
-    "Could not locate skills directory. Set HIG_SKILLS_DIR to the path of the skills/ folder.",
-  );
+  throw new Error("Could not locate skills directory. Set HIG_SKILLS_DIR to the path of the skills/ folder.")
 }
 
-const SLUG = /^[a-z0-9-]+$/;
+const SLUG = /^[a-z0-9-]+$/
 
 function assertSlug(value: unknown, field: string): string {
   if (typeof value !== "string" || !SLUG.test(value)) {
-    throw new Error(`Invalid ${field}: expected kebab-case identifier`);
+    throw new Error(`Invalid ${field}: expected kebab-case identifier`)
   }
-  return value;
+  return value
 }
 
 function parseFrontmatter(raw: string): Record<string, string> {
   // Normalize CRLF first: on a Windows checkout the closing fence is "\r\n---",
   // which the LF-only pattern would miss, returning an empty (description-less)
   // frontmatter for every skill.
-  const normalized = raw.replace(/\r\n/g, "\n");
-  const match = normalized.match(/^---\s*\n([\s\S]*?)\n---/);
-  if (!match) return {};
-  const out: Record<string, string> = {};
-  let currentKey = "";
-  let buffer = "";
+  const normalized = raw.replace(/\r\n/g, "\n")
+  const match = normalized.match(/^---\s*\n([\s\S]*?)\n---/)
+  if (!match) return {}
+  const out: Record<string, string> = {}
+  let currentKey = ""
+  let buffer = ""
   for (const line of match[1].split("\n")) {
-    const kv = line.match(/^([a-zA-Z_][\w-]*):\s*(.*)$/);
+    const kv = line.match(/^([a-zA-Z_][\w-]*):\s*(.*)$/)
     if (kv) {
-      if (currentKey) out[currentKey] = buffer.trim();
-      currentKey = kv[1];
-      buffer = kv[2] === ">-" || kv[2] === ">" || kv[2] === "|" ? "" : kv[2];
+      if (currentKey) out[currentKey] = buffer.trim()
+      currentKey = kv[1]
+      buffer = kv[2] === ">-" || kv[2] === ">" || kv[2] === "|" ? "" : kv[2]
     } else if (currentKey) {
-      buffer += " " + line.trim();
+      buffer += " " + line.trim()
     }
   }
-  if (currentKey) out[currentKey] = buffer.trim();
-  return out;
+  if (currentKey) out[currentKey] = buffer.trim()
+  return out
 }
 
-const server = new Server(
-  { name: pkg.name, version: pkg.version },
-  { capabilities: { tools: {} } },
-);
+const server = new Server({ name: pkg.name, version: pkg.version }, { capabilities: { tools: {} } })
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
@@ -113,8 +105,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
         properties: {
           skill: {
             type: "string",
-            description:
-              "Skill identifier, e.g. 'hig-foundations', 'hig-components-layout', 'hig-platforms'.",
+            description: "Skill identifier, e.g. 'hig-foundations', 'hig-components-layout', 'hig-platforms'.",
           },
           topic: {
             type: "string",
@@ -148,35 +139,32 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
   ],
-}));
+}))
 
-async function handleTool(
-  name: string,
-  args: Record<string, unknown> | undefined,
-) {
-  const skillsDir = await resolveSkillsDir();
+async function handleTool(name: string, args: Record<string, unknown> | undefined) {
+  const skillsDir = await resolveSkillsDir()
 
   if (name === "hig_list_skills") {
-    const entries = await readdir(skillsDir, { withFileTypes: true });
-    const skills: Array<{ skill: string; description: string; topics: string[] }> = [];
+    const entries = await readdir(skillsDir, { withFileTypes: true })
+    const skills: Array<{ skill: string; description: string; topics: string[] }> = []
     for (const entry of entries) {
-      if (!entry.isDirectory()) continue;
-      const skillName = entry.name;
-      if (!SLUG.test(skillName)) continue;
+      if (!entry.isDirectory()) continue
+      const skillName = entry.name
+      if (!SLUG.test(skillName)) continue
       try {
-        const skillFile = join(skillsDir, skillName, "SKILL.md");
-        const raw = await readFile(skillFile, "utf-8");
-        const fm = parseFrontmatter(raw);
-        let topics: string[] = [];
+        const skillFile = join(skillsDir, skillName, "SKILL.md")
+        const raw = await readFile(skillFile, "utf-8")
+        const fm = parseFrontmatter(raw)
+        let topics: string[] = []
         try {
-          const refs = await readdir(join(skillsDir, skillName, "references"));
-          topics = refs.filter((f) => f.endsWith(".md")).map((f) => f.replace(/\.md$/, ""));
+          const refs = await readdir(join(skillsDir, skillName, "references"))
+          topics = refs.filter((f) => f.endsWith(".md")).map((f) => f.replace(/\.md$/, ""))
         } catch {}
         skills.push({
           skill: skillName,
           description: fm.description || "",
           topics,
-        });
+        })
       } catch {}
     }
     return {
@@ -194,47 +182,40 @@ async function handleTool(
           ),
         },
       ],
-    };
+    }
   }
 
   if (name === "hig_lookup") {
-    const skill = assertSlug(args?.skill, "skill");
-    const topic = args?.topic == null ? null : assertSlug(args.topic, "topic");
-    const path = topic
-      ? join(skillsDir, skill, "references", `${topic}.md`)
-      : join(skillsDir, skill, "SKILL.md");
-    const content = await readFile(path, "utf-8");
+    const skill = assertSlug(args?.skill, "skill")
+    const topic = args?.topic == null ? null : assertSlug(args.topic, "topic")
+    const path = topic ? join(skillsDir, skill, "references", `${topic}.md`) : join(skillsDir, skill, "SKILL.md")
+    const content = await readFile(path, "utf-8")
     const header = topic
       ? `Source: ${HIG_SOURCE_URL}${topic}  (snapshot ${HIG_SNAPSHOT_DATE})\n\n`
-      : `Skill: ${skill}  (snapshot ${HIG_SNAPSHOT_DATE})\n\n`;
-    return { content: [{ type: "text", text: header + content }] };
+      : `Skill: ${skill}  (snapshot ${HIG_SNAPSHOT_DATE})\n\n`
+    return { content: [{ type: "text", text: header + content }] }
   }
 
   if (name === "hig_audit") {
-    const directory = args?.directory;
+    const directory = args?.directory
     if (typeof directory !== "string" || !isAbsolute(directory)) {
-      throw new Error("directory must be an absolute path");
+      throw new Error("directory must be an absolute path")
     }
-    const failOnRaw = args?.fail_on;
-    if (
-      failOnRaw != null &&
-      failOnRaw !== "critical" &&
-      failOnRaw !== "serious" &&
-      failOnRaw !== "moderate"
-    ) {
+    const failOnRaw = args?.fail_on
+    if (failOnRaw != null && failOnRaw !== "critical" && failOnRaw !== "serious" && failOnRaw !== "moderate") {
       // The inputSchema enum is advisory only on the low-level Server; validate
       // explicitly so an unrecognized value can't silently disable the gate.
-      throw new Error("Invalid fail_on: expected one of 'critical', 'serious', 'moderate'");
+      throw new Error("Invalid fail_on: expected one of 'critical', 'serious', 'moderate'")
     }
-    const failOn = failOnRaw as "critical" | "serious" | "moderate" | undefined;
-    const result = await audit(directory, skillsDir);
-    const critical = result.categories.reduce((s, c) => s + c.critical, 0);
-    const serious = result.categories.reduce((s, c) => s + c.serious, 0);
-    const moderate = result.categories.reduce((s, c) => s + c.moderate, 0);
-    let gateTripped = false;
-    if (failOn === "critical") gateTripped = critical > 0;
-    else if (failOn === "serious") gateTripped = critical + serious > 0;
-    else if (failOn === "moderate") gateTripped = critical + serious + moderate > 0;
+    const failOn = failOnRaw as "critical" | "serious" | "moderate" | undefined
+    const result = await audit(directory, skillsDir)
+    const critical = result.categories.reduce((s, c) => s + c.critical, 0)
+    const serious = result.categories.reduce((s, c) => s + c.serious, 0)
+    const moderate = result.categories.reduce((s, c) => s + c.moderate, 0)
+    let gateTripped = false
+    if (failOn === "critical") gateTripped = critical > 0
+    else if (failOn === "serious") gateTripped = critical + serious > 0
+    else if (failOn === "moderate") gateTripped = critical + serious + moderate > 0
 
     const summary = {
       severities: { critical, serious, moderate },
@@ -254,17 +235,17 @@ async function handleTool(
       })),
       failOn: failOn ?? null,
       gateTripped,
-    };
+    }
 
     return {
       content: [
         { type: "text", text: JSON.stringify(summary, null, 2) },
         { type: "text", text: result.markdown },
       ],
-    };
+    }
   }
 
-  throw new Error(`Unknown tool: ${name}`);
+  throw new Error(`Unknown tool: ${name}`)
 }
 
 // Surface tool failures as isError results (the spec-recommended channel) rather
@@ -272,15 +253,15 @@ async function handleTool(
 // missing topics, invalid arguments, or unreadable paths.
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   try {
-    return await handleTool(request.params.name, request.params.arguments);
+    return await handleTool(request.params.name, request.params.arguments)
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
+    const message = err instanceof Error ? err.message : String(err)
     return {
       content: [{ type: "text", text: `Error: ${message}` }],
       isError: true,
-    };
+    }
   }
-});
+})
 
-const transport = new StdioServerTransport();
-await server.connect(transport);
+const transport = new StdioServerTransport()
+await server.connect(transport)
