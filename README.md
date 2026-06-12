@@ -2,6 +2,8 @@
 
 Agent-native Apple Human Interface Guidelines: a structured index of Apple's HIG delivered as Claude Skills, with an MCP server and a universal compliance auditor as the verification loop. Built for AI coding agents; usable by humans.
 
+[![GitHub stars](https://img.shields.io/github/stars/raintree-technology/hig-doctor?style=social)](https://github.com/raintree-technology/hig-doctor/stargazers)
+
 - **Skills corpus** — 14 skills and 156 reference topics covering the complete HIG (foundations, components, patterns, inputs, platforms, technologies). Snapshot dated 2025-02-02; canonical content remains at [developer.apple.com/design/human-interface-guidelines](https://developer.apple.com/design/human-interface-guidelines/).
 - **MCP server** — stdio Model Context Protocol server exposing `hig_list_skills`, `hig_lookup`, and `hig_audit` for Claude Desktop, Cursor, Windsurf, and Claude Code.
 - **Audit CLI** — universal HIG compliance scanner across 12 frameworks (SwiftUI, UIKit, React, Vue, Svelte, Angular, Compose, Android XML, React Native, Flutter, CSS, HTML). Emits severity-bucketed markdown/JSON with a pass/fail CI gate.
