@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "_comment": "Raintree Technology canonical strict TypeScript base. Vendored into each repo as tsconfig.base.json and extended by the repo tsconfig: { \"extends\": \"./tsconfig.base.json\" }. Module/target/jsx/paths stay per-repo.",
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true
+  }
+}

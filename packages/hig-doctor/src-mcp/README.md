@@ -20,21 +20,21 @@ All output is JSON or markdown text. Content is from Apple's HIG, snapshot dated
 
 ```bash
 git clone https://github.com/raintree-technology/hig-doctor.git
-cd hig-doctor/packages/hig-doctor/src-mcp
-bun install  # or: npm install
+cd hig-doctor
+bun install --frozen-lockfile
 ```
 
 Run directly with Bun (no build):
 
 ```bash
-bun src/index.ts
+bun packages/hig-doctor/src-mcp/src/index.ts
 ```
 
 Or build for Node:
 
 ```bash
-npm run build   # writes dist/index.js (bundled, Node 20+)
-node dist/index.js
+bun run --cwd packages/hig-doctor/src-mcp build   # writes dist/index.js (bundled, Node 20+)
+node packages/hig-doctor/src-mcp/dist/index.js
 ```
 
 ### Via npm (once published)
@@ -106,7 +106,7 @@ Send a handshake + `tools/list` request over stdio:
   printf '{"jsonrpc":"2.0","method":"notifications/initialized"}\n'
   printf '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}\n'
   sleep 1
-) | bun src/index.ts
+) | bun packages/hig-doctor/src-mcp/src/index.ts
 ```
 
 You should see one response confirming protocol version and a second listing `hig_list_skills`, `hig_lookup`, and `hig_audit`.

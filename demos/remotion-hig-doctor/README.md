@@ -7,20 +7,20 @@ A [Remotion](https://www.remotion.dev/) video that visualizes `hig-doctor audit`
 Requires [Bun](https://bun.sh) (for the audit CLI) and Node.js.
 
 ```bash
-npm install
+bun install --frozen-lockfile
 ```
 
 ## Commands
 
 ```bash
 # Generate fresh data by running the audit on this repo
-npm run generate-data
+bun run --cwd demos/remotion-hig-doctor generate-data
 
 # Preview in Remotion Studio (opens browser)
-npm run preview
+bun run --cwd demos/remotion-hig-doctor preview
 
 # Render to MP4
-npm run render
+bun run --cwd demos/remotion-hig-doctor render
 ```
 
 ## Output

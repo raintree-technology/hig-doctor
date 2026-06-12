@@ -1,13 +1,11 @@
 {
+  "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
     "types": ["node", "bun"],
+    "noUncheckedIndexedAccess": false,
     "noEmit": true
   },
   "include": ["src", "../src-termcast/src"]

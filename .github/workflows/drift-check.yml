@@ -1,0 +1,30 @@
+name: Drift Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * 1"
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+      - ".npmrc"
+      - ".nvmrc"
+      - "README.md"
+      - "biome*.json*"
+      - "package.json"
+      - "bun.lock"
+      - "packages/**/package.json"
+      - "renovate.json"
+      - "tsconfig.base.json"
+      - "website/biome.json"
+      - "website/tsconfig*.json"
+
+permissions:
+  contents: read
+
+jobs:
+  drift:
+    name: Standard drift
+    uses: raintree-technology/.github/.github/workflows/drift-check.yml@3256afba6d5c060f8b00f1bbf96887d253b0e9e1
+    with:
+      standard-ref: 3256afba6d5c060f8b00f1bbf96887d253b0e9e1

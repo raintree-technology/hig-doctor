@@ -1,105 +1,102 @@
 // audit-generator.ts
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
-import type { ScanResult } from "./scanner";
-import type { CategorySummary } from "./categorizer";
+import { readFile } from "node:fs/promises"
+import { join } from "node:path"
+import type { CategorySummary } from "./categorizer"
+import type { ScanResult } from "./scanner"
 
 function formatDate(): string {
-  return new Date().toISOString().split("T")[0];
+  return new Date().toISOString().split("T")[0]
 }
 
 function langForFile(file: string): string {
-  if (file.endsWith(".swift")) return "swift";
-  if (file.endsWith(".tsx") || file.endsWith(".jsx")) return "tsx";
-  if (file.endsWith(".ts") || file.endsWith(".js")) return "typescript";
-  if (file.endsWith(".css") || file.endsWith(".scss")) return "css";
-  if (file.endsWith(".html") || file.endsWith(".htm")) return "html";
-  if (file.endsWith(".dart")) return "dart";
-  if (file.endsWith(".kt")) return "kotlin";
-  return "";
+  if (file.endsWith(".swift")) return "swift"
+  if (file.endsWith(".tsx") || file.endsWith(".jsx")) return "tsx"
+  if (file.endsWith(".ts") || file.endsWith(".js")) return "typescript"
+  if (file.endsWith(".css") || file.endsWith(".scss")) return "css"
+  if (file.endsWith(".html") || file.endsWith(".htm")) return "html"
+  if (file.endsWith(".dart")) return "dart"
+  if (file.endsWith(".kt")) return "kotlin"
+  return ""
 }
 
 function commentPrefix(file: string): string {
-  if (file.endsWith(".css") || file.endsWith(".scss")) return "/* ";
-  return "// ";
+  if (file.endsWith(".css") || file.endsWith(".scss")) return "/* "
+  return "// "
 }
 
 function commentSuffix(file: string): string {
-  if (file.endsWith(".css") || file.endsWith(".scss")) return " */";
-  return "";
+  if (file.endsWith(".css") || file.endsWith(".scss")) return " */"
+  return ""
 }
 
 function escapeMarkdownText(value: string): string {
   return value
     .replace(/[\r\n\t]+/g, " ")
     .replace(/\\/g, "\\\\")
-    .replace(/([`*_{}\[\]()#+.!|-])/g, "\\$1");
+    .replace(/([`*_{}[\]()#+.!|-])/g, "\\$1")
 }
 
 function longestRun(value: string, char: string): number {
-  let longest = 0;
-  let current = 0;
+  let longest = 0
+  let current = 0
   for (const c of value) {
     if (c === char) {
-      current++;
-      longest = Math.max(longest, current);
+      current++
+      longest = Math.max(longest, current)
     } else {
-      current = 0;
+      current = 0
     }
   }
-  return longest;
+  return longest
 }
 
 function fenceFor(matches: CategorySummary["matches"]): string {
-  const longestTildeRun = matches.reduce(
-    (max, match) => Math.max(max, longestRun(match.lineContent, "~")),
-    0,
-  );
-  return "~".repeat(Math.max(3, longestTildeRun + 1));
+  const longestTildeRun = matches.reduce((max, match) => Math.max(max, longestRun(match.lineContent, "~")), 0)
+  return "~".repeat(Math.max(3, longestTildeRun + 1))
 }
 
 function sanitizeExcerptLine(value: string): string {
-  return value.replace(/[\r\n\t]+/g, " ");
+  return value.replace(/[\r\n\t]+/g, " ")
 }
 
 function renderExcerpts(category: CategorySummary): string {
-  const lines: string[] = [];
-  const byFile = new Map<string, typeof category.matches>();
+  const lines: string[] = []
+  const byFile = new Map<string, typeof category.matches>()
   for (const m of category.matches) {
-    if (!byFile.has(m.file)) byFile.set(m.file, []);
-    byFile.get(m.file)!.push(m);
+    if (!byFile.has(m.file)) byFile.set(m.file, [])
+    byFile.get(m.file)!.push(m)
   }
 
   for (const [file, matches] of byFile) {
-    const lang = langForFile(file);
-    const cp = commentPrefix(file);
-    const cs = commentSuffix(file);
-    const fence = fenceFor(matches);
-    lines.push(`**${escapeMarkdownText(file)}**`);
-    lines.push(`${fence}${lang}`);
+    const lang = langForFile(file)
+    const cp = commentPrefix(file)
+    const cs = commentSuffix(file)
+    const fence = fenceFor(matches)
+    lines.push(`**${escapeMarkdownText(file)}**`)
+    lines.push(`${fence}${lang}`)
     for (const m of matches.slice(0, 15)) {
-      const tag = m.type === "concern" ? ` ${cp}⚠ concern${cs}` : m.type === "positive" ? ` ${cp}✓ good${cs}` : "";
-      lines.push(`L${m.line}: ${sanitizeExcerptLine(m.lineContent)}${tag}`);
+      const tag = m.type === "concern" ? ` ${cp}⚠ concern${cs}` : m.type === "positive" ? ` ${cp}✓ good${cs}` : ""
+      lines.push(`L${m.line}: ${sanitizeExcerptLine(m.lineContent)}${tag}`)
     }
     if (matches.length > 15) {
-      lines.push(`${cp}... and ${matches.length - 15} more matches${cs}`);
+      lines.push(`${cp}... and ${matches.length - 15} more matches${cs}`)
     }
-    lines.push(fence);
-    lines.push("");
+    lines.push(fence)
+    lines.push("")
   }
 
-  return lines.join("\n");
+  return lines.join("\n")
 }
 
 export async function loadSkillContent(skillsDir: string, skillName: string): Promise<string | null> {
   try {
-    const skillPath = join(skillsDir, skillName, "SKILL.md");
-    const content = await readFile(skillPath, "utf-8");
-    const stripped = content.replace(/^---\s*\r?\n[\s\S]*?\r?\n---\s*(?:\r?\n|$)/, "");
-    const principlesMatch = stripped.match(/## Key Principles\n([\s\S]*?)(?=\n## |$)/);
-    return principlesMatch ? principlesMatch[1].trim() : stripped.slice(0, 2000);
+    const skillPath = join(skillsDir, skillName, "SKILL.md")
+    const content = await readFile(skillPath, "utf-8")
+    const stripped = content.replace(/^---\s*\r?\n[\s\S]*?\r?\n---\s*(?:\r?\n|$)/, "")
+    const principlesMatch = stripped.match(/## Key Principles\n([\s\S]*?)(?=\n## |$)/)
+    return principlesMatch ? principlesMatch[1].trim() : stripped.slice(0, 2000)
   } catch {
-    return null;
+    return null
   }
 }
 
@@ -109,98 +106,104 @@ export function generateAuditMarkdown(
   skillsDir: string | null,
   skillContents?: Map<string, string>,
 ): string {
-  const lines: string[] = [];
-  const appName = scanResult.directory.split("/").pop() || "App";
+  const lines: string[] = []
+  const appName = scanResult.directory.split("/").pop() || "App"
 
   // Header
-  lines.push(`# HIG Audit: ${appName}`);
-  lines.push("");
-  lines.push(`**Generated**: ${formatDate()}`);
-  lines.push(`**Project**: ${scanResult.directory}`);
-  lines.push(`**Frameworks detected**: ${scanResult.frameworks.join(", ")}`);
+  lines.push(`# HIG Audit: ${appName}`)
+  lines.push("")
+  lines.push(`**Generated**: ${formatDate()}`)
+  lines.push(`**Project**: ${scanResult.directory}`)
+  lines.push(`**Frameworks detected**: ${scanResult.frameworks.join(", ")}`)
   const fileCounts = [
     `${scanResult.codeFiles.length} code`,
     `${scanResult.styleFiles.length} style`,
     `${scanResult.configFiles.length} config`,
-  ].join(", ");
-  lines.push(`**Files scanned**: ${fileCounts}`);
-  lines.push("");
+  ].join(", ")
+  lines.push(`**Files scanned**: ${fileCounts}`)
+  lines.push("")
 
   // Summary stats
-  const totalConcerns = categories.reduce((s, c) => s + c.concerns, 0);
-  const totalPositives = categories.reduce((s, c) => s + c.positives, 0);
-  const totalPatterns = categories.reduce((s, c) => s + c.patterns, 0);
-  lines.push(`**Quick stats**: ${totalConcerns} potential concerns, ${totalPositives} positive patterns, ${totalPatterns} component usages detected across ${categories.length} HIG categories`);
-  lines.push("");
+  const totalConcerns = categories.reduce((s, c) => s + c.concerns, 0)
+  const totalPositives = categories.reduce((s, c) => s + c.positives, 0)
+  const totalPatterns = categories.reduce((s, c) => s + c.patterns, 0)
+  lines.push(
+    `**Quick stats**: ${totalConcerns} potential concerns, ${totalPositives} positive patterns, ${totalPatterns} component usages detected across ${categories.length} HIG categories`,
+  )
+  lines.push("")
 
   // Instructions
-  lines.push("## Instructions for AI Evaluator");
-  lines.push("");
-  lines.push("You are reviewing a project for Apple Human Interface Guidelines compliance.");
-  lines.push("The HIG principles (accessibility, color systems, typography, responsive layout, motion) apply to all surfaces — native, web, and cross-platform.");
-  lines.push("For each category below, evaluate the code excerpts against the HIG reference material.");
-  lines.push("");
-  lines.push("**Scoring**: Rate each category 1-10:");
-  lines.push("- **9-10**: Excellent HIG compliance, follows best practices");
-  lines.push("- **7-8**: Good compliance with minor improvements possible");
-  lines.push("- **5-6**: Partial compliance, several areas need attention");
-  lines.push("- **3-4**: Significant HIG violations");
-  lines.push("- **1-2**: Major violations or missing fundamental practices");
-  lines.push("");
-  lines.push("**Output**: For each category, provide:");
-  lines.push("1. Score (1-10)");
-  lines.push("2. What's done well (cite specific code)");
-  lines.push("3. What needs improvement (cite specific file:line)");
-  lines.push("4. Specific fix recommendations");
-  lines.push("");
+  lines.push("## Instructions for AI Evaluator")
+  lines.push("")
+  lines.push("You are reviewing a project for Apple Human Interface Guidelines compliance.")
+  lines.push(
+    "The HIG principles (accessibility, color systems, typography, responsive layout, motion) apply to all surfaces — native, web, and cross-platform.",
+  )
+  lines.push("For each category below, evaluate the code excerpts against the HIG reference material.")
+  lines.push("")
+  lines.push("**Scoring**: Rate each category 1-10:")
+  lines.push("- **9-10**: Excellent HIG compliance, follows best practices")
+  lines.push("- **7-8**: Good compliance with minor improvements possible")
+  lines.push("- **5-6**: Partial compliance, several areas need attention")
+  lines.push("- **3-4**: Significant HIG violations")
+  lines.push("- **1-2**: Major violations or missing fundamental practices")
+  lines.push("")
+  lines.push("**Output**: For each category, provide:")
+  lines.push("1. Score (1-10)")
+  lines.push("2. What's done well (cite specific code)")
+  lines.push("3. What needs improvement (cite specific file:line)")
+  lines.push("4. Specific fix recommendations")
+  lines.push("")
 
   // Categories
   for (const category of categories) {
-    lines.push(`## Category: ${category.label}`);
-    lines.push("");
-    lines.push(`*${category.matches.length} detections across ${category.fileCount} file(s) — ${category.concerns} concern(s), ${category.positives} positive(s)*`);
-    lines.push("");
+    lines.push(`## Category: ${category.label}`)
+    lines.push("")
+    lines.push(
+      `*${category.matches.length} detections across ${category.fileCount} file(s) — ${category.concerns} concern(s), ${category.positives} positive(s)*`,
+    )
+    lines.push("")
 
-    lines.push("### Code Excerpts");
-    lines.push("");
+    lines.push("### Code Excerpts")
+    lines.push("")
     if (category.matches.length > 0) {
-      lines.push(renderExcerpts(category));
+      lines.push(renderExcerpts(category))
     } else {
-      lines.push("*No patterns detected for this category.*");
-      lines.push("");
+      lines.push("*No patterns detected for this category.*")
+      lines.push("")
     }
 
-    lines.push("### HIG Reference");
-    lines.push("");
-    const content = skillContents?.get(category.skillName);
+    lines.push("### HIG Reference")
+    lines.push("")
+    const content = skillContents?.get(category.skillName)
     if (content) {
-      lines.push(content);
+      lines.push(content)
     } else {
-      lines.push(`*Load reference from skill: ${category.skillName}*`);
+      lines.push(`*Load reference from skill: ${category.skillName}*`)
     }
-    lines.push("");
+    lines.push("")
 
-    lines.push("### Evaluate");
-    lines.push("");
-    const checks = getEvaluationChecklist(category.skillName);
+    lines.push("### Evaluate")
+    lines.push("")
+    const checks = getEvaluationChecklist(category.skillName)
     for (const check of checks) {
-      lines.push(`- ${check}`);
+      lines.push(`- ${check}`)
     }
-    lines.push("");
+    lines.push("")
   }
 
   // Scoring table
-  lines.push("## Scoring Summary");
-  lines.push("");
-  lines.push("| Category | Score (1-10) | Key Findings |");
-  lines.push("|----------|-------------|-------------|");
+  lines.push("## Scoring Summary")
+  lines.push("")
+  lines.push("| Category | Score (1-10) | Key Findings |")
+  lines.push("|----------|-------------|-------------|")
   for (const category of categories) {
-    lines.push(`| ${category.label} | | |`);
+    lines.push(`| ${category.label} | | |`)
   }
-  lines.push("| **Overall** | **/10** | |");
-  lines.push("");
+  lines.push("| **Overall** | **/10** | |")
+  lines.push("")
 
-  return lines.join("\n");
+  return lines.join("\n")
 }
 
 function getEvaluationChecklist(skillName: string): string[] {
@@ -223,10 +226,7 @@ function getEvaluationChecklist(skillName: string): string[] {
       "Proper button styles and roles",
       "Clear action labels and consistent interaction patterns",
     ],
-    "hig-components-selection": [
-      "Appropriate picker and selection controls",
-      "Clear selection state feedback",
-    ],
+    "hig-components-selection": ["Appropriate picker and selection controls", "Clear selection state feedback"],
     "hig-components-actions": [
       "Button hierarchy and prominence",
       "Destructive actions clearly marked",
@@ -241,10 +241,7 @@ function getEvaluationChecklist(skillName: string): string[] {
       "Text fields use appropriate keyboard types",
       "Search functionality uses .searchable where appropriate",
     ],
-    "hig-components-media": [
-      "Image handling with proper async loading",
-      "Media playback uses system controls",
-    ],
+    "hig-components-media": ["Image handling with proper async loading", "Media playback uses system controls"],
     "hig-components-menus": [
       "Context menus provide relevant actions",
       "Menu organization follows HIG grouping conventions",
@@ -289,6 +286,6 @@ function getEvaluationChecklist(skillName: string): string[] {
       "UI adapts appropriately across target platforms",
       "Platform idioms respected (iPhone vs iPad vs Mac)",
     ],
-  };
-  return checklists[skillName] ?? ["Evaluate against Apple HIG best practices for this category"];
+  }
+  return checklists[skillName] ?? ["Evaluate against Apple HIG best practices for this category"]
 }

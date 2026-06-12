@@ -1,0 +1,32 @@
+// Raintree Technology - canonical Biome base.
+// Vendored into each repo as biome.base.jsonc; the repo's biome.json extends it:
+//   { "extends": ["./biome.base.jsonc"], ... }
+// This base enforces org invariants (VCS integration, recommended lint rules,
+// organized imports). Formatter style (tabs/spaces, quotes, line width) is a
+// per-repo choice and intentionally not set here.
+{
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": true
+  },
+  "formatter": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  }
+}

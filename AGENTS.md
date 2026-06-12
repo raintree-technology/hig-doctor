@@ -53,19 +53,19 @@ hig-doctor/
 
 ### HIG Audit (universal project scanner)
 - Install audit dependencies:
-  - `cd packages/hig-doctor/src-termcast && bun install`
+  - `bun install --frozen-lockfile`
 - Audit a project:
-  - `cd packages/hig-doctor/src-termcast && bun run audit <directory>`
+  - `bun run --cwd packages/hig-doctor/src-termcast audit <directory>`
 - Export full report:
-  - `cd packages/hig-doctor/src-termcast && bun run audit <directory> --export`
+  - `bun run --cwd packages/hig-doctor/src-termcast audit <directory> --export`
 - JSON output (for CI):
-  - `cd packages/hig-doctor/src-termcast && bun run audit <directory> --json`
+  - `bun run --cwd packages/hig-doctor/src-termcast audit <directory> --json`
 - Run audit tests:
-  - `cd packages/hig-doctor/src-termcast && bun test`
+  - `bun run test:audit`
 
 ### Skill Validator (repository lint)
 - Install doctor package dependencies (for local TUI mode):
-  - `npm --prefix packages/hig-doctor install`
+  - `bun install --frozen-lockfile`
 - Validate all skills:
   - `node packages/hig-doctor/src/cli.js . --verbose`
 - Output score only (for CI/action outputs):
@@ -73,21 +73,21 @@ hig-doctor/
 - Interactive TUI mode:
   - `node packages/hig-doctor/src/cli.js . --tui`
 - Run validator tests:
-  - `npm --prefix packages/hig-doctor test`
+  - `bun run test:validator`
 
 ### MCP Server (`hig-mcp`)
 - Install MCP dependencies:
-  - `cd packages/hig-doctor/src-mcp && bun install`
+  - `bun install --frozen-lockfile`
 - Run the server over stdio (dev):
   - `bun packages/hig-doctor/src-mcp/src/index.ts`
 - Build the publishable bundle:
-  - `cd packages/hig-doctor/src-mcp && bun run build`
+  - `bun run --cwd packages/hig-doctor/src-mcp build`
 - When running outside the repo, point it at the skills directory:
   - `HIG_SKILLS_DIR=/path/to/skills hig-mcp`
 
 ### Repository-wide guard tests
 - Run from the repo root (workflow security + audit-patterns sync):
-  - `npm test`
+  - `bun run test:guards`
 
 ## Agent Skills Specification
 

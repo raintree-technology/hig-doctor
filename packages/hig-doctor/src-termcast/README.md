@@ -73,10 +73,10 @@ Detection is regex-based and self-contained — no network calls, no source ever
 
 ```bash
 git clone https://github.com/raintree-technology/hig-doctor.git
-cd hig-doctor/packages/hig-doctor/src-termcast
-bun install
-bun run audit ../../..            # audit the repo itself
-bun test                          # run the rule + scanner suite
+cd hig-doctor
+bun install --frozen-lockfile
+bun run --cwd packages/hig-doctor/src-termcast audit .   # audit the repo itself
+bun run test:audit                                      # run the rule + scanner suite
 ```
 
 ## License

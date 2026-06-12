@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "@remotion/transitions": "4.0.425",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "remotion": "^4.0.340"
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.425"
   },
   "devDependencies": {
-    "@remotion/cli": "^4.0.340"
+    "@remotion/cli": "4.0.425"
   }
 }
