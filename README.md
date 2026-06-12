@@ -8,6 +8,16 @@ Agent-native Apple Human Interface Guidelines: a structured index of Apple's HIG
 
 Content is © Apple Inc.; this repository provides organization, cross-referencing, and detection rules for AI agent use. MIT-licensed for structure and tooling.
 
+## Star History
+
+<a href="https://star-history.com/#raintree-technology/hig-doctor&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=raintree-technology/hig-doctor&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=raintree-technology/hig-doctor&type=Date" />
+    <img alt="Star history chart for raintree-technology/hig-doctor" src="https://api.star-history.com/svg?repos=raintree-technology/hig-doctor&type=Date" />
+  </picture>
+</a>
+
 ## Install as a Claude Code plugin
 
 ```bash
