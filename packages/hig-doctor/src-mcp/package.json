@@ -1,6 +1,7 @@
 {
   "name": "hig-mcp",
   "version": "0.1.0",
+  "mcpName": "io.github.raintree-technology/hig-doctor",
   "description": "MCP server exposing Apple HIG skills and audit tool for AI coding agents",
   "type": "module",
   "bin": {

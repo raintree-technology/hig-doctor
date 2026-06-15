@@ -1,0 +1,32 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.raintree-technology/hig-doctor",
+  "title": "HIG Doctor",
+  "description": "Apple Human Interface Guidelines lookup and project audits for MCP-compatible coding agents.",
+  "repository": {
+    "url": "https://github.com/raintree-technology/hig-doctor",
+    "source": "github",
+    "id": "1154000512",
+    "subfolder": "packages/hig-doctor/src-mcp"
+  },
+  "version": "0.1.0",
+  "websiteUrl": "https://apple.raintree.technology/mcp",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "hig-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "HIG_SKILLS_DIR",
+          "description": "Absolute path to a local clone of the hig-doctor repository's skills directory.",
+          "format": "filepath",
+          "isRequired": true
+        }
+      ]
+    }
+  ]
+}

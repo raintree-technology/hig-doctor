@@ -80,3 +80,18 @@ jobs:
 
       - name: Publish with trusted publishing
         run: npm publish --provenance --access public
+
+      - name: Install MCP Registry publisher
+        run: |
+          curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
+
+      - name: Align MCP Registry metadata version
+        run: |
+          PKG_VERSION="$(node -p "require('./package.json').version")"
+          jq --arg version "$PKG_VERSION" '.version = $version | .packages[0].version = $version' server.json > server.tmp
+          mv server.tmp server.json
+
+      - name: Publish to MCP Registry
+        run: |
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish

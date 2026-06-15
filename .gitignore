@@ -8,3 +8,4 @@ packages/hig-doctor/src-termcast/dist/
 .agents/
 skills-lock.json
 
+.vercel
