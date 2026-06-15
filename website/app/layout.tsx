@@ -13,9 +13,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "Apple HIG Skills — AI-ready Apple design guidance",
+  title: "HIG Doctor - Apple HIG Skills, MCP server, and audit CLI",
   description:
-    "14 agent skills that give AI coding assistants deep knowledge of Apple's Human Interface Guidelines. Built for Claude Code and the Agent Skills spec.",
+    "Agent-native Apple Human Interface Guidelines skills, an MCP server, and a universal audit CLI for SwiftUI, UIKit, React, Next.js, Flutter, Compose, HTML, and CSS.",
   icons: {
     icon: "/favicon.svg",
     apple: "/apple-icon",
@@ -47,11 +47,18 @@ export const metadata: Metadata = {
     "macOS",
     "SwiftUI",
     "UIKit",
+    "MCP",
+    "audit CLI",
+    "accessibility audit",
+    "React",
+    "Next.js",
+    "Flutter",
+    "Jetpack Compose",
   ],
   openGraph: {
-    title: "Apple HIG Skills — AI-ready Apple design guidance",
+    title: "HIG Doctor - Apple HIG Skills, MCP server, and audit CLI",
     description:
-      "14 agent skills that give AI coding assistants deep knowledge of Apple's Human Interface Guidelines. Works with Claude Code.",
+      "Agent-native Apple HIG skills, MCP tools, and an audit CLI for native and web UI code.",
     url: "/",
     type: "website",
     locale: "en_US",
@@ -91,15 +98,23 @@ const jsonLd = {
       },
     },
     {
-      "@type": "SoftwareSourceCode",
-      "@id": baseUrl,
-      name: "Apple HIG Skills",
+      "@type": "SoftwareApplication",
+      "@id": `${baseUrl}/#software`,
+      name: "HIG Doctor",
       description:
-        "14 agent skills that give AI coding assistants deep knowledge of Apple's Human Interface Guidelines. Built for Claude Code and the Agent Skills spec.",
+        "Agent-native Apple Human Interface Guidelines skills, an MCP server, and a universal audit CLI for SwiftUI, UIKit, React, Next.js, Flutter, Compose, HTML, and CSS.",
       url: baseUrl,
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "macOS, Linux, Windows, iOS, Android, Web",
       codeRepository: "https://github.com/raintree-technology/hig-doctor",
-      programmingLanguage: "Markdown",
+      programmingLanguage: ["TypeScript", "Markdown"],
       license: "https://opensource.org/licenses/MIT",
+      isAccessibleForFree: true,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
       author: {
         "@id": `${baseUrl}/#organization`,
       },
@@ -107,17 +122,40 @@ const jsonLd = {
         "Apple Human Interface Guidelines",
         "HIG",
         "agent skills",
+        "MCP",
+        "HIG audit CLI",
         "Claude Code",
+        "Codex",
+        "Cursor",
         "AI design guidance",
         "iOS design",
         "macOS design",
         "SwiftUI",
+        "UIKit",
+        "React",
+        "Next.js",
       ],
     },
     {
       "@type": "FAQPage",
       "@id": `${baseUrl}/#faq`,
       mainEntity: [
+        {
+          "@type": "Question",
+          name: "Does HIG Doctor expose an MCP server?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. The hig-mcp server exposes hig_list_skills, hig_lookup, and hig_audit so MCP-compatible coding agents can list HIG skills, fetch reference topics, and run project audits.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What frameworks can the HIG audit CLI scan?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The audit CLI scans SwiftUI, UIKit, React, Next.js, Vue, Svelte, Angular, React Native, Flutter, Jetpack Compose, Android XML, HTML, and CSS.",
+          },
+        },
         {
           "@type": "Question",
           name: "How should I design an iPad app using Apple's HIG?",

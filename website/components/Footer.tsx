@@ -30,6 +30,12 @@ export default function Footer() {
               Topics
             </a>
             <a
+              href="/mcp"
+              className="hover:text-foreground hover:underline underline-offset-4 transition-colors"
+            >
+              MCP
+            </a>
+            <a
               href="https://agentskills.io"
               target="_blank"
               hrefLang="en"
@@ -98,6 +104,12 @@ export default function Footer() {
               className="hover:text-foreground hover:underline underline-offset-4 transition-colors"
             >
               Topics
+            </a>
+            <a
+              href="/mcp"
+              className="hover:text-foreground hover:underline underline-offset-4 transition-colors"
+            >
+              MCP
             </a>
             <a
               href="https://agentskills.io"

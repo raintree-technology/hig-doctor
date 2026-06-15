@@ -8,12 +8,14 @@ const homeNavItems = [
   { label: "Use Cases", href: "#use-cases", id: "use-cases" },
   { label: "How It Works", href: "#how-it-works", id: "how-it-works" },
   { label: "What's Included", href: "#skills", id: "skills" },
+  { label: "MCP", href: "/mcp", id: "mcp" },
   { label: "Install", href: "#install", id: "install" },
   { label: "FAQ", href: "#faq", id: "faq" },
 ];
 
 const topicNavItems = [
   { label: "Topics", href: "/topics" },
+  { label: "MCP", href: "/mcp" },
   { label: "Install", href: "/#install" },
 ];
 
