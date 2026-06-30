@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "generate-data": "node scripts/generate-data.mjs",
-    "render": "npm run generate-data && remotion render src/index.jsx HigDoctorShowcase out/hig-doctor-showcase.mp4",
-    "preview": "npm run generate-data && remotion studio src/index.jsx"
+    "render": "bun run generate-data && remotion render src/index.jsx HigDoctorShowcase out/hig-doctor-showcase.mp4",
+    "preview": "bun run generate-data && remotion studio src/index.jsx"
   },
   "dependencies": {
     "@remotion/transitions": "4.0.425",
