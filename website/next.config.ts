@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   // redirect to the slash-less form, so search engines never see duplicates.
   trailingSlash: false,
   experimental: {
+    turbopackFileSystemCacheForBuild: true,
     optimizePackageImports: [
       "lucide-react",
       "@fortawesome/react-fontawesome",
