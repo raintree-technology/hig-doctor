@@ -33,7 +33,11 @@ Or add as a git submodule into any project's `.claude/` directory.
 Expose the skills and audit tool to any MCP-compatible client.
 
 ```bash
-# From a git clone of this repo
+# Install the MCP subpackage deps once (root bun install does not cover it,
+# because the SDK is a devDependency kept out of the published bundle).
+cd packages/hig-doctor/src-mcp && bun install
+
+# Run from anywhere in the repo:
 bun packages/hig-doctor/src-mcp/src/index.ts
 ```
 
