@@ -1,6 +1,10 @@
-# hig-mcp
+<p align="center">
+  <img src="https://raw.githubusercontent.com/raintree-technology/hig-doctor/main/brand/hig-doctor-mark.svg" alt="HIG Doctor" width="72" height="72" />
+</p>
 
-Model Context Protocol stdio server that exposes the [Apple HIG Skills](https://github.com/raintree-technology/hig-doctor) corpus and the universal HIG compliance auditor as tools for AI coding agents.
+# HIG Doctor MCP server
+
+Model Context Protocol stdio server that exposes the [HIG Doctor](https://github.com/raintree-technology/hig-doctor) skills corpus and universal HIG compliance auditor as tools for AI coding agents.
 
 Runs under Node 20+ (after build) or Bun (directly from source). Works with Claude Desktop, Cursor, Windsurf, and Claude Code.
 

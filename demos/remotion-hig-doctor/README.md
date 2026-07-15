@@ -1,4 +1,4 @@
-# Remotion hig-doctor Showcase
+# HIG Doctor Remotion showcase
 
 A [Remotion](https://www.remotion.dev/) video that visualizes `hig-doctor audit` results — 348 pattern rules across 12 frameworks, animated category charts, detection breakdowns, and a framework coverage grid.
 
@@ -50,4 +50,4 @@ The data includes:
 
 Place these in `public/`:
 - `orchard.png` — Background image
-- `raintree-icon.png` — Brand icon for footer
+- `hig-doctor-icon.svg` — HIG Doctor icon for the persistent footer

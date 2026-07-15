@@ -4,7 +4,6 @@
   "gitBranchToEnvironmentMapping": {
     "main": "prod",
     "master": "prod",
-    "develop": "dev",
-    "staging": "staging"
+    "develop": "dev"
   }
 }

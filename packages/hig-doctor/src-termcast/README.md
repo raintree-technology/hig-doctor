@@ -1,4 +1,8 @@
-# hig-doctor
+<p align="center">
+  <img src="https://raw.githubusercontent.com/raintree-technology/hig-doctor/main/brand/hig-doctor-mark.svg" alt="HIG Doctor" width="72" height="72" />
+</p>
+
+# HIG Doctor audit CLI
 
 Universal **Apple Human Interface Guidelines** compliance auditor for app projects. Scans your source against **348 HIG rules** across 12 frameworks (SwiftUI, UIKit, React, Vue, Svelte, Angular, Jetpack Compose, Android XML, React Native, Flutter, CSS, and HTML) and reports concerns by severity — **critical / serious / moderate** — plus positive patterns you already follow.
 

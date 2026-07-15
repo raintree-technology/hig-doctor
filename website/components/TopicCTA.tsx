@@ -11,7 +11,7 @@ export default function TopicCTA() {
           Get HIG guidance in your AI
         </h2>
         <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-          Install Apple HIG Skills and get expert design guidance directly in
+          Install HIG Doctor and get expert Apple design guidance directly in
           Claude Code.
         </p>
         <div className="inline-flex items-center gap-2 rounded-xl glass px-5 py-3">

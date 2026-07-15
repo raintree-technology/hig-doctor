@@ -189,7 +189,7 @@ export default function BeforeAfter() {
                 <TerminalDots />
                 <span className="flex-1 text-center text-xs font-medium flex items-center justify-center gap-1.5">
                   <AlertTriangle className="h-3 w-3 text-red-400" />
-                  <span className="text-red-400">Without HIG Skills</span>
+                  <span className="text-red-400">Without HIG Doctor</span>
                 </span>
                 <div className="w-[54px]" />
               </div>
@@ -227,7 +227,7 @@ export default function BeforeAfter() {
                 <TerminalDots />
                 <span className="flex-1 text-center text-xs font-medium flex items-center justify-center gap-1.5">
                   <CheckCircle2 className="h-3 w-3 text-green-400" />
-                  <span className="text-green-400">With HIG Skills</span>
+                  <span className="text-green-400">With HIG Doctor</span>
                 </span>
                 <div className="w-[54px]" />
               </div>
@@ -244,7 +244,7 @@ export default function BeforeAfter() {
             </div>
             <ul
               className="mt-4 space-y-2 px-1"
-              aria-label="Strengths of HIG Skills response"
+              aria-label="Strengths of HIG Doctor response"
             >
               {example.with.strengths.map((strength) => (
                 <li

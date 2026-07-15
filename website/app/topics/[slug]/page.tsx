@@ -25,7 +25,7 @@ export async function generateMetadata({
   const topic = getTopicBySlug(slug);
   if (!topic) return {};
 
-  const title = `${topic.title} — Apple HIG Design Guidelines | HIG Skills`;
+  const title = `${topic.title} — Apple HIG Design Guidelines | HIG Doctor`;
   const description = topic.excerpt
     ? topic.excerpt
     : `Apple Human Interface Guidelines for ${topic.title}. Design guidance for iOS, macOS, iPadOS, tvOS, visionOS, and watchOS.`;
@@ -41,7 +41,7 @@ export async function generateMetadata({
       description,
       url: `/topics/${slug}`,
       type: "article",
-      siteName: "Apple HIG Skills",
+      siteName: "HIG Doctor",
     },
     twitter: {
       card: "summary_large_image",
@@ -78,7 +78,7 @@ export default async function TopicPage({
         },
         about: {
           "@type": "SoftwareSourceCode",
-          name: "Apple HIG Skills",
+          name: "HIG Doctor",
           url: BASE_URL,
         },
       },

@@ -1,13 +1,14 @@
-name: Repo checks
+name: HIG Doctor repo checks
+
+env:
+  MISE_LOCKED: "1"
 
 # Runs the repository-wide guard tests on every change. These encode real
 # invariants (workflows pin actions to SHAs + use least privilege; the website's
 # audit-patterns copy stays byte-identical to the canonical module) and were
 # previously enforced by nothing in CI.
 on:
-  push:
-    branches: [main]
-  pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -20,10 +21,18 @@ jobs:
   root-guards:
     name: Root guards (workflow security + patterns sync)
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
 
+      - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db
+        with:
+          version: 2026.7.1
+          install: true
+          cache: true
       - name: Run root guard tests
         run: node --test test/workflow-security.test.mjs test/audit-patterns-sync.test.mjs

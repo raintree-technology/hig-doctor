@@ -6,7 +6,7 @@ Guidelines for AI agents working in this repository.
 
 This repository contains **Agent Skills** following the [Agent Skills specification](https://agentskills.io/specification). It provides Apple Human Interface Guidelines reference material structured for AI agent consumption.
 
-- **Name**: Apple HIG Skills
+- **Name**: HIG Doctor
 - **Creator**: Raintree
 - **GitHub**: [raintree-technology/hig-doctor](https://github.com/raintree-technology/hig-doctor)
 - **License**: MIT (structure); Apple HIG content is Apple's IP

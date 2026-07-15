@@ -1,23 +1,10 @@
-name: hig-doctor CI
+name: HIG Doctor CI
+
+env:
+  MISE_LOCKED: "1"
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "packages/hig-doctor/**"
-      - "action.yml"
-      - "README.md"
-      - "packages/hig-doctor/README.md"
-      - ".github/workflows/hig-doctor-ci.yml"
-      - ".github/workflows/publish-hig-doctor.yml"
-  pull_request:
-    paths:
-      - "packages/hig-doctor/**"
-      - "action.yml"
-      - "README.md"
-      - "packages/hig-doctor/README.md"
-      - ".github/workflows/hig-doctor-ci.yml"
-      - ".github/workflows/publish-hig-doctor.yml"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -30,17 +17,21 @@ jobs:
   validator:
     name: Skill validator (internal)
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
-
-      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
         with:
-          bun-version: 1.3.11
+          persist-credentials: false
 
+      - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db
+        with:
+          version: 2026.7.1
+          install: true
+          cache: true
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: mise run setup
 
       - name: Run package tests
         working-directory: packages/hig-doctor
@@ -58,22 +49,26 @@ jobs:
   audit:
     name: Audit tool
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
-
-      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
         with:
-          bun-version: 1.3.11
+          persist-credentials: false
 
+      - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db
+        with:
+          version: 2026.7.1
+          install: true
+          cache: true
       - name: Run audit tool tests
         working-directory: packages/hig-doctor/src-termcast
         run: bun test
 
       - name: Typecheck audit tool
         working-directory: packages/hig-doctor/src-termcast
-        run: bun run typecheck
+        run: mise run typecheck
 
       - name: Smoke audit against the website
         run: bun packages/hig-doctor/src-termcast/src/cli.ts website --json
@@ -81,18 +76,22 @@ jobs:
   mcp:
     name: MCP server
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
-
-      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
         with:
-          bun-version: 1.3.11
+          persist-credentials: false
 
+      - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db
+        with:
+          version: 2026.7.1
+          install: true
+          cache: true
       - name: Install MCP server dependencies
         working-directory: packages/hig-doctor/src-mcp
-        run: bun install --frozen-lockfile
+        run: mise run setup
 
       - name: Run MCP server tests
         working-directory: packages/hig-doctor/src-mcp
@@ -100,7 +99,7 @@ jobs:
 
       - name: Typecheck MCP server
         working-directory: packages/hig-doctor/src-mcp
-        run: bun run typecheck
+        run: mise run typecheck
 
       - name: Smoke check MCP server handshake
         working-directory: packages/hig-doctor/src-mcp

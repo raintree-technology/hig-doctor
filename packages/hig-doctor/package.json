@@ -2,7 +2,7 @@
   "name": "hig-skill-validator",
   "version": "0.2.0",
   "private": true,
-  "description": "Diagnose Apple HIG skills repositories for schema and content integrity issues",
+  "description": "HIG Doctor validator for Apple HIG skill schema and content integrity",
   "keywords": [
     "agent-skills",
     "apple",
@@ -23,7 +23,7 @@
     "README.md"
   ],
   "engines": {
-    "node": ">=18"
+    "node": "24.x"
   },
   "optionalDependencies": {
     "ink": "^5.2.1",

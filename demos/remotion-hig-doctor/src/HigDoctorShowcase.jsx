@@ -24,7 +24,7 @@ const palette = {
   border: "rgba(255, 255, 255, 0.08)",
   borderSubtle: "rgba(255, 255, 255, 0.05)",
   green: "#8fbf9a",
-  blue: "#8faabf",
+  blue: "#6686f0",
   amber: "#bfaa8f",
   purple: "#a68fbf",
   rose: "#bf8f9a",
@@ -117,15 +117,18 @@ const BrandFooter = () => (
     }}
   >
     <Img
-      src={staticFile("raintree-icon.png")}
-      style={{ width: 26, height: 26, objectFit: "contain", filter: "invert(1) opacity(0.72)" }}
+      src={staticFile("hig-doctor-icon.svg")}
+      style={{ width: 30, height: 30, objectFit: "contain" }}
     />
     <span style={{ fontFamily: font.ui, fontSize: 18, fontWeight: 500, color: palette.secondary }}>
-      Raintree Technology
+      HIG Doctor
+    </span>
+    <span style={{ fontFamily: font.ui, fontSize: 15, color: palette.tertiary }}>
+      by Raintree Technology
     </span>
     <span style={{ flex: 1 }} />
     <span style={{ fontFamily: font.mono, fontSize: 15, color: palette.tertiary }}>
-      raintree.technology
+      apple.raintree.technology
     </span>
   </div>
 );

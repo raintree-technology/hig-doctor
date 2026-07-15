@@ -1,6 +1,10 @@
-# hig-doctor
+<p align="center">
+  <img src="https://raw.githubusercontent.com/raintree-technology/hig-doctor/main/brand/hig-doctor-mark.svg" alt="HIG Doctor" width="72" height="72" />
+</p>
 
-Three co-located tools used by the hig-doctor repository:
+# HIG Doctor developer toolkit
+
+Three co-located tools used by the HIG Doctor repository:
 
 1. **HIG Audit CLI** (`src-termcast/`) — universal Apple HIG compliance scanner across 12 frameworks.
 2. **MCP Server** (`src-mcp/`) — stdio Model Context Protocol server exposing the skills corpus and the audit function as tools.

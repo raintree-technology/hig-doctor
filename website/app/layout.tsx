@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
 const baseUrl = "https://apple.raintree.technology";
 
 export const viewport: Viewport = {
@@ -13,7 +14,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "HIG Doctor - Apple HIG Skills, MCP server, and audit CLI",
+  title: "HIG Doctor — Apple HIG skills, MCP server, and audit CLI",
   description:
     "Agent-native Apple Human Interface Guidelines skills, an MCP server, and a universal audit CLI for SwiftUI, UIKit, React, Next.js, Flutter, Compose, HTML, and CSS.",
   icons: {
@@ -56,13 +57,13 @@ export const metadata: Metadata = {
     "Jetpack Compose",
   ],
   openGraph: {
-    title: "HIG Doctor - Apple HIG Skills, MCP server, and audit CLI",
+    title: "HIG Doctor — Apple HIG skills, MCP server, and audit CLI",
     description:
       "Agent-native Apple HIG skills, MCP tools, and an audit CLI for native and web UI code.",
     url: "/",
     type: "website",
     locale: "en_US",
-    siteName: "Apple HIG Skills",
+    siteName: "HIG Doctor",
     images: ["/opengraph-image"],
   },
   twitter: {
@@ -79,10 +80,6 @@ const jsonLd = {
       "@id": `${baseUrl}/#organization`,
       name: "Raintree",
       url: "https://raintree.technology",
-      logo: {
-        "@type": "ImageObject",
-        url: `${baseUrl}/logo.svg`,
-      },
       sameAs: [
         "https://github.com/raintree-technology",
         "https://x.com/raintree_tech",
@@ -91,7 +88,7 @@ const jsonLd = {
     {
       "@type": "WebSite",
       "@id": `${baseUrl}/#website`,
-      name: "Apple HIG Skills",
+      name: "HIG Doctor",
       url: baseUrl,
       publisher: {
         "@id": `${baseUrl}/#organization`,
@@ -103,6 +100,7 @@ const jsonLd = {
       name: "HIG Doctor",
       description:
         "Agent-native Apple Human Interface Guidelines skills, an MCP server, and a universal audit CLI for SwiftUI, UIKit, React, Next.js, Flutter, Compose, HTML, and CSS.",
+      logo: `${baseUrl}/logo.svg`,
       url: baseUrl,
       applicationCategory: "DeveloperApplication",
       operatingSystem: "macOS, Linux, Windows, iOS, Android, Web",
@@ -161,7 +159,7 @@ const jsonLd = {
           name: "How should I design an iPad app using Apple's HIG?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Apple's HIG recommends using sidebars instead of bottom tab bars on iPadOS, supporting split views for multitasking, and adding pointer interactions. Apple HIG Skills provides instant, AI-ready guidance on all iPadOS conventions.",
+            text: "Apple's HIG recommends using sidebars instead of bottom tab bars on iPadOS, supporting split views for multitasking, and adding pointer interactions. HIG Doctor provides instant, AI-ready guidance on all iPadOS conventions.",
           },
         },
         {
@@ -169,7 +167,7 @@ const jsonLd = {
           name: "What are Apple's guidelines for adding Apple Pay?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Apple's HIG specifies exact payment button placement, flow design, error states, and UX patterns required for App Store approval. Apple HIG Skills gives your AI agent access to the full Apple Pay design guidelines.",
+            text: "Apple's HIG specifies exact payment button placement, flow design, error states, and UX patterns required for App Store approval. HIG Doctor gives your AI agent access to the full Apple Pay design guidelines.",
           },
         },
         {
@@ -177,7 +175,7 @@ const jsonLd = {
           name: "How do I make my Apple app accessible?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Apple's HIG requires support for VoiceOver, Dynamic Type, sufficient color contrast ratios, and motor accessibility features like Switch Control. Apple HIG Skills covers all accessibility foundations and requirements.",
+            text: "Apple's HIG requires support for VoiceOver, Dynamic Type, sufficient color contrast ratios, and motor accessibility features like Switch Control. HIG Doctor covers all accessibility foundations and requirements.",
           },
         },
         {
@@ -185,7 +183,7 @@ const jsonLd = {
           name: "How do I design for visionOS and Apple Vision Pro?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Apple's HIG for visionOS covers ornaments, volumes, immersive spaces, eye tracking, and spatial interaction patterns. Apple HIG Skills includes dedicated visionOS platform guidance and spatial layout references.",
+            text: "Apple's HIG for visionOS covers ornaments, volumes, immersive spaces, eye tracking, and spatial interaction patterns. HIG Doctor includes dedicated visionOS platform guidance and spatial layout references.",
           },
         },
         {
@@ -193,7 +191,7 @@ const jsonLd = {
           name: "What are Apple's dark mode design guidelines?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Apple's HIG specifies using system semantic colors, material backgrounds, elevated surfaces, and vibrancy for dark mode. Apps should test in both modes and avoid hard-coded color values. Apple HIG Skills covers the full dark mode specification.",
+            text: "Apple's HIG specifies using system semantic colors, material backgrounds, elevated surfaces, and vibrancy for dark mode. Apps should test in both modes and avoid hard-coded color values. HIG Doctor covers the full dark mode specification.",
           },
         },
         {
@@ -201,7 +199,7 @@ const jsonLd = {
           name: "How should I design notifications for iOS apps?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Apple's HIG covers notification grouping, Live Activities, action buttons, and respecting user attention. Apple HIG Skills provides guidelines for the full notification system including widgets and complications.",
+            text: "Apple's HIG covers notification grouping, Live Activities, action buttons, and respecting user attention. HIG Doctor provides guidelines for the full notification system including widgets and complications.",
           },
         },
       ],

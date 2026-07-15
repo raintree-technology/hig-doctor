@@ -1,12 +1,22 @@
 {
   "private": true,
   "scripts": {
-    "validate": "node packages/hig-doctor/src/cli.js . --verbose",
+    "dev": "bun run --cwd website dev",
+    "build": "bun run --cwd website build && bun run --cwd packages/hig-doctor/src-termcast build && bun run --cwd packages/hig-doctor/src-mcp build",
+    "validate": "bun run lint && bun run typecheck && bun run test && bun run validate:skills",
+    "validate:skills": "node packages/hig-doctor/src/cli.js . --verbose",
     "validate:strict": "node packages/hig-doctor/src/cli.js . --strict",
+    "validate:full": "bun run validate && bun run build && bun run test:e2e",
     "validate:score": "node packages/hig-doctor/src/cli.js . --score",
     "validate:tui": "node packages/hig-doctor/src/cli.js . --tui",
     "sync:audit-patterns": "cp packages/hig-doctor/src-termcast/src/patterns.ts website/lib/audit/patterns.ts",
     "test": "bun --cwd packages/hig-doctor test && node --test test/workflow-security.test.mjs test/audit-patterns-sync.test.mjs",
+    "test:unit": "bun run test",
+    "test:e2e": "bun run validate:strict",
+    "lint": "bun run --cwd website lint",
+    "lint:fix": "bun --cwd website biome check . --write",
+    "format": "bun --cwd website biome format . --write",
+    "typecheck": "bun run --cwd website typecheck && bun run --cwd packages/hig-doctor/src-termcast typecheck && bun run --cwd packages/hig-doctor/src-mcp typecheck",
     "test:security": "node --test test/workflow-security.test.mjs",
     "test:audit-sync": "node --test test/audit-patterns-sync.test.mjs"
   },
@@ -17,5 +27,8 @@
     "packages/hig-doctor/src-mcp",
     "packages/hig-doctor/src-termcast",
     "demos/remotion-hig-doctor"
-  ]
+  ],
+  "engines": {
+    "node": "24.x"
+  }
 }

@@ -1,3 +1,4 @@
+import BrandMark from "@/components/BrandMark";
 import { Separator } from "@/components/ui/separator";
 
 // Inline X (Twitter) glyph — avoids pulling the entire FontAwesome runtime
@@ -22,6 +23,14 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-6">
         {/* Mobile */}
         <div className="flex flex-col items-center gap-4 text-[13px] text-muted-foreground sm:hidden">
+          <a
+            href="/"
+            className="inline-flex items-center gap-2 font-semibold text-foreground hover:opacity-70 transition-opacity"
+            aria-label="HIG Doctor home"
+          >
+            <BrandMark className="h-5 w-5 text-[#6686f0]" aria-hidden="true" />
+            HIG Doctor
+          </a>
           <nav aria-label="Footer links" className="flex items-center gap-6">
             <a
               href="/topics"
@@ -99,6 +108,17 @@ export default function Footer() {
         {/* Desktop */}
         <div className="hidden sm:flex sm:items-center sm:justify-between text-[13px] text-muted-foreground">
           <nav aria-label="Footer" className="flex items-center gap-6">
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 font-semibold text-foreground hover:opacity-70 transition-opacity"
+              aria-label="HIG Doctor home"
+            >
+              <BrandMark
+                className="h-4 w-4 text-[#6686f0]"
+                aria-hidden="true"
+              />
+              HIG Doctor
+            </a>
             <a
               href="/topics"
               className="hover:text-foreground hover:underline underline-offset-4 transition-colors"

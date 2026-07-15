@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
+import BrandMark from "@/components/BrandMark";
 
 export const runtime = "nodejs";
-export const alt = "Apple HIG Skills — AI-ready Apple design guidance";
+export const alt = "HIG Doctor — Apple HIG skills, MCP tools, and audit CLI";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -15,8 +16,7 @@ export default function OGImage() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background:
-          "linear-gradient(135deg, #0f1012 0%, #1a1a2e 50%, #0f1012 100%)",
+        background: "#111318",
         fontFamily: "-apple-system, BlinkMacSystemFont, sans-serif",
       }}
     >
@@ -24,48 +24,33 @@ export default function OGImage() {
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "16px",
-          marginBottom: "32px",
+          gap: "28px",
+          marginBottom: "28px",
         }}
       >
-        <svg
-          width="56"
-          height="56"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+        <BrandMark width="104" height="104" fill="#3157c8" />
+        <div
+          style={{
+            fontSize: "68px",
+            fontWeight: 700,
+            color: "#f5f2ea",
+            letterSpacing: "-0.035em",
+            lineHeight: 1,
+          }}
         >
-          <path d="M12 20.5c-4.5 0-7.5-4-7.5-8 0-3.5 2.5-5.5 5-5.5 1.2 0 2 .5 2.5.5s1.3-.5 2.5-.5c2.5 0 5 2 5 5.5 0 4-3 8-7.5 8z" />
-          <path d="M12 7V3" />
-          <path d="M12 3c1.5 0 3 1 3 2.5" />
-        </svg>
+          HIG Doctor
+        </div>
       </div>
       <div
         style={{
-          fontSize: "64px",
-          fontWeight: 700,
-          color: "white",
-          letterSpacing: "-0.03em",
-          lineHeight: 1.1,
+          fontSize: "27px",
+          color: "rgba(245,242,234,0.62)",
           textAlign: "center",
-          marginBottom: "16px",
-        }}
-      >
-        Apple HIG Skills
-      </div>
-      <div
-        style={{
-          fontSize: "28px",
-          color: "rgba(255,255,255,0.55)",
-          textAlign: "center",
-          maxWidth: "700px",
+          maxWidth: "780px",
           lineHeight: 1.4,
         }}
       >
-        AI-ready Apple design guidance for Claude Code
+        Apple HIG skills, MCP tools, and a universal interface audit CLI
       </div>
       <div
         style={{
@@ -74,7 +59,7 @@ export default function OGImage() {
           gap: "24px",
           marginTop: "40px",
           fontSize: "20px",
-          color: "rgba(255,255,255,0.35)",
+          color: "rgba(245,242,234,0.38)",
         }}
       >
         <span>14 skills</span>

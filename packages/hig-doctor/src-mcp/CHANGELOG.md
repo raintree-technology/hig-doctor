@@ -12,7 +12,7 @@ Initial public release on npm.
 
 ### Added
 
-- MCP stdio server exposing the Apple HIG Skills corpus and the HIG auditor as
+- MCP stdio server exposing the HIG Doctor skills corpus and HIG auditor as
   tools for AI coding agents (Claude Desktop, Cursor, Windsurf, Claude Code).
 - Tools:
   - `hig_list_skills` — enumerate available skills with descriptions and reference topics.
