@@ -27,6 +27,8 @@ jobs:
           cache: true
       - name: Install locked toolchain
         run: mise install --locked
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
       - name: Validate Mise task definitions
         run: mise tasks validate --errors-only
       - name: Validate repository
