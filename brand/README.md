@@ -8,19 +8,18 @@ separated by a precise registration gap. The same geometry is used from the
 
 | Role | Value |
 |---|---|
-| Cobalt | `#3157C8` |
-| Dark-UI cobalt tint | `#6686F0` |
 | Near-black | `#111318` |
 | Warm white | `#F5F2EA` |
 
-Use cobalt on light neutral backgrounds. Use warm white on near-black or
-cobalt backgrounds. The mark must also work in solid black.
+The logo is always monochrome. Use near-black on light backgrounds and warm
+white on dark backgrounds. Never use interface accent or status colors in the
+mark.
 
 ## Assets
 
 | Asset | Use |
 |---|---|
-| [`hig-doctor-mark.svg`](hig-doctor-mark.svg) | Primary cobalt symbol |
+| [`hig-doctor-mark.svg`](hig-doctor-mark.svg) | Adaptive light/dark symbol |
 | [`hig-doctor-mark-black.svg`](hig-doctor-mark-black.svg) | Monochrome light-background use |
 | [`hig-doctor-mark-white.svg`](hig-doctor-mark-white.svg) | Reversed dark-background use |
 | [`hig-doctor-app-icon.svg`](hig-doctor-app-icon.svg) | Square app/profile icon source |
@@ -32,7 +31,7 @@ cobalt backgrounds. The mark must also work in solid black.
 - Use the complete mark at 16 px and larger; don't remove either module.
 - Preserve the path geometry and the negative-space seam.
 - Don't add gradients, shadows, outlines, or severity colors to the mark.
-- Keep audit-state colors separate from the cobalt product identity.
+- Keep interface accent and audit-state colors separate from the mark.
 
 The production React implementation is in
 [`website/components/BrandMark.tsx`](../website/components/BrandMark.tsx).

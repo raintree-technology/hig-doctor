@@ -17,7 +17,7 @@ export default function OGImage() {
         alignItems: "center",
         justifyContent: "center",
         background: "#111318",
-        fontFamily: "-apple-system, BlinkMacSystemFont, sans-serif",
+        fontFamily: "sans-serif",
       }}
     >
       <div
@@ -28,7 +28,7 @@ export default function OGImage() {
           marginBottom: "28px",
         }}
       >
-        <BrandMark width="104" height="104" fill="#3157c8" />
+        <BrandMark width="104" height="104" fill="#f5f2ea" />
         <div
           style={{
             fontSize: "68px",

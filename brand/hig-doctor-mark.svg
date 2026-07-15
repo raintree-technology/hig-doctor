@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#3157c8">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#111318">
+  <style>
+    path { fill: #111318 }
+    @media (prefers-color-scheme: dark) {
+      path { fill: #f5f2ea }
+    }
+  </style>
   <path d="M10 6h22a4 4 0 0 1 4 4v10H26v16H10a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4Z"/>
   <path d="M38 28h16a4 4 0 0 1 4 4v22a4 4 0 0 1-4 4H32a4 4 0 0 1-4-4V44h10V28Z"/>
 </svg>
