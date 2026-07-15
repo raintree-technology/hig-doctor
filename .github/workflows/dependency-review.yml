@@ -4,6 +4,7 @@ env:
   MISE_LOCKED: "1"
 
 on:
+  pull_request:
   workflow_dispatch:
 
 permissions:
