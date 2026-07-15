@@ -2,6 +2,7 @@
 
 import { Github, Menu, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import BrandMark from "@/components/BrandMark";
 import { cn } from "@/lib/utils";
 
 const homeNavItems = [
@@ -104,24 +105,10 @@ export default function Header({
         <a
           href={variant === "topic" ? "/" : "#"}
           className="flex items-center gap-2 text-sm font-semibold text-foreground hover:opacity-70 transition-opacity"
-          aria-label="Apple HIG Skills home"
+          aria-label="HIG Doctor home"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-5 h-5"
-            aria-hidden="true"
-          >
-            <path d="M12 20.5c-4.5 0-7.5-4-7.5-8 0-3.5 2.5-5.5 5-5.5 1.2 0 2 .5 2.5.5s1.3-.5 2.5-.5c2.5 0 5 2 5 5.5 0 4-3 8-7.5 8z" />
-            <path d="M12 7V3" />
-            <path d="M12 3c1.5 0 3 1 3 2.5" />
-          </svg>
-          HIG Skills
+          <BrandMark className="h-5 w-5 text-[#6686f0]" aria-hidden="true" />
+          HIG Doctor
         </a>
 
         <div className="hidden md:flex items-center gap-8">

@@ -10,7 +10,7 @@ import { getAllTopicMetas } from "@/lib/topics";
 const BASE_URL = "https://apple.raintree.technology";
 
 export const metadata: Metadata = {
-  title: "Apple HIG Topics — Browse All Guidelines | HIG Skills",
+  title: "Apple HIG Topics — Browse All Guidelines | HIG Doctor",
   description:
     "Browse all 156 Apple Human Interface Guidelines topics. Design guidance for iOS, macOS, iPadOS, tvOS, visionOS, and watchOS components, patterns, and foundations.",
   alternates: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
       "Browse all Apple Human Interface Guidelines topics. Design guidance for components, patterns, foundations, and technologies.",
     url: "/topics",
     type: "website",
-    siteName: "Apple HIG Skills",
+    siteName: "HIG Doctor",
   },
 };
 

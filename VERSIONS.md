@@ -1,4 +1,4 @@
-# Apple HIG Skills Versions
+# HIG Doctor Skill Versions
 
 Current versions of all skills. Agents can compare against local versions to check for updates.
 

@@ -8,7 +8,7 @@ const BASE_URL = "https://apple.raintree.technology";
 const REPO_URL = "https://github.com/raintree-technology/hig-doctor";
 
 export const metadata: Metadata = {
-  title: "HIG Doctor MCP server and audit CLI | Apple HIG Skills",
+  title: "HIG Doctor MCP server and audit CLI",
   description:
     "Install and submit HIG Doctor: an MCP server and audit CLI that gives coding agents Apple HIG lookup, reference topics, and project audits.",
   alternates: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
       "MCP tools and CLI audits for Apple HIG guidance across SwiftUI, UIKit, React, Next.js, Flutter, Compose, HTML, and CSS.",
     url: "/mcp",
     type: "website",
-    siteName: "Apple HIG Skills",
+    siteName: "HIG Doctor",
   },
 };
 
@@ -66,7 +66,7 @@ const jsonLd = {
         "Install and submit HIG Doctor: an MCP server and audit CLI that gives coding agents Apple HIG lookup, reference topics, and project audits.",
       isPartOf: {
         "@type": "WebSite",
-        name: "Apple HIG Skills",
+        name: "HIG Doctor",
         url: BASE_URL,
       },
     },

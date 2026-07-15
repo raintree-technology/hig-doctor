@@ -380,7 +380,7 @@ body {
 
 @media (max-width: 640px) {
   button,
-  a {
+  a:any-link {
     min-height: 44px;
     min-width: 44px;
   }

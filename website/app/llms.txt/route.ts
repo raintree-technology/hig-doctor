@@ -20,7 +20,7 @@ export function GET() {
   }
 
   const lines: string[] = [];
-  lines.push("# Apple HIG Skills");
+  lines.push("# HIG Doctor");
   lines.push("");
   lines.push(
     "> Apple Human Interface Guidelines as agent skills for AI coding agents. Snapshot from February 2025, structured for progressive disclosure. Raw markdown is available for every topic — append `.md` or use the `/raw/<slug>` endpoint.",

@@ -1,6 +1,10 @@
-# Apple HIG Skills
+<p align="center">
+  <img src="brand/hig-doctor-mark.svg" alt="HIG Doctor" width="96" height="96" />
+</p>
 
-Agent-native Apple Human Interface Guidelines: a structured index of Apple's HIG delivered as Claude Skills, with an MCP server and a universal compliance auditor as the verification loop. Built for AI coding agents; usable by humans.
+# HIG Doctor
+
+Agent-native Apple Human Interface Guidelines: a structured skills corpus, MCP server, and universal compliance auditor for AI coding agents and developers.
 
 [![GitHub stars](https://img.shields.io/github/stars/raintree-technology/hig-doctor?style=social)](https://github.com/raintree-technology/hig-doctor/stargazers)
 
@@ -9,6 +13,8 @@ Agent-native Apple Human Interface Guidelines: a structured index of Apple's HIG
 - **Audit CLI** — universal HIG compliance scanner across 12 frameworks (SwiftUI, UIKit, React, Vue, Svelte, Angular, Compose, Android XML, React Native, Flutter, CSS, HTML). Emits severity-bucketed markdown/JSON with a pass/fail CI gate.
 
 Content is © Apple Inc.; this repository provides organization, cross-referencing, and detection rules for AI agent use. MIT-licensed for structure and tooling.
+
+Production logo files and usage guidance are available in [`brand/`](brand/).
 
 ## Star History
 
@@ -228,6 +234,7 @@ Skills use progressive disclosure — agents load only the reference files they 
 ```
 hig-doctor/
 ├── .claude-plugin/marketplace.json       # Claude Code plugin manifest
+├── brand/                                # Canonical logo, app icon, and usage guidance
 ├── skills/                                # 14 Agent Skills (SKILL.md + references/)
 ├── packages/hig-doctor/
 │   ├── src/                               # Internal skill-structure validator (dev-only)
@@ -238,7 +245,7 @@ hig-doctor/
 ├── scripts/
 │   ├── legal-hardening.ts                 # Idempotent: strip Apple CDN images, insert attribution
 │   └── legal-hardening-deep.ts            # Destructive prose transform: keep headings + principles
-└── .github/workflows/annual-hig-rescan.yml
+└── .github/                              # CI workflows + GitHub social preview
 ```
 
 ## Content maintenance

@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Page not found — Apple HIG Skills",
+  title: "Page not found — HIG Doctor",
   description: "The page you were looking for doesn’t exist.",
   // Next.js already serves this with a 404 status (so it is never a soft 404);
   // the explicit noindex makes the indexing policy unambiguous per the spec.

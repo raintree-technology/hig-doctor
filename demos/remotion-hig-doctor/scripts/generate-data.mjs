@@ -41,7 +41,7 @@ const frameworkRuleCounts = [
 const output = {
   generatedAt: new Date().toISOString(),
   project: {
-    name: "apple-hig-skills",
+    name: "hig-doctor",
     score: audit.score,
     lowDensity: audit.lowDensity,
     frameworks: audit.frameworks,

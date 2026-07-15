@@ -2,7 +2,7 @@ name: "HIG Doctor Audit"
 description: "Audit a project for Apple Human Interface Guidelines compliance"
 branding:
   icon: "activity"
-  color: "gray-dark"
+  color: "blue"
 
 inputs:
   directory:
