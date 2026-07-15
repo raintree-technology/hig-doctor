@@ -13,7 +13,7 @@ export default function AppleIcon() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "#3157c8",
+        background: "#111318",
       }}
     >
       <BrandMark width="108" height="108" fill="#f5f2ea" />

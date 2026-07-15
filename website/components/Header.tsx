@@ -107,7 +107,7 @@ export default function Header({
           className="flex items-center gap-2 text-sm font-semibold text-foreground hover:opacity-70 transition-opacity"
           aria-label="HIG Doctor home"
         >
-          <BrandMark className="h-5 w-5 text-[#6686f0]" aria-hidden="true" />
+          <BrandMark className="h-5 w-5 text-foreground" aria-hidden="true" />
           HIG Doctor
         </a>
 

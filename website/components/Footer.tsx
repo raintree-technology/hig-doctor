@@ -28,7 +28,7 @@ export default function Footer() {
             className="inline-flex items-center gap-2 font-semibold text-foreground hover:opacity-70 transition-opacity"
             aria-label="HIG Doctor home"
           >
-            <BrandMark className="h-5 w-5 text-[#6686f0]" aria-hidden="true" />
+            <BrandMark className="h-5 w-5 text-foreground" aria-hidden="true" />
             HIG Doctor
           </a>
           <nav aria-label="Footer links" className="flex items-center gap-6">
@@ -114,7 +114,7 @@ export default function Footer() {
               aria-label="HIG Doctor home"
             >
               <BrandMark
-                className="h-4 w-4 text-[#6686f0]"
+                className="h-4 w-4 text-foreground"
                 aria-hidden="true"
               />
               HIG Doctor
