@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -8,15 +8,10 @@ const repoRoot = process.cwd();
 const readRepoFile = (relativePath) =>
   readFileSync(path.join(repoRoot, relativePath), "utf8");
 
-const workflowFiles = [
-  ".github/workflows/annual-hig-rescan.yml",
-  ".github/workflows/build-website.yml",
-  ".github/workflows/hig-doctor-ci.yml",
-  ".github/workflows/publish-hig-doctor.yml",
-  ".github/workflows/publish-hig-mcp.yml",
-  ".github/workflows/repo-checks.yml",
-  ".github/workflows/validate-skills.yml",
-];
+const workflowFiles = readdirSync(path.join(repoRoot, ".github/workflows"))
+  .filter((file) => file.endsWith(".yml") || file.endsWith(".yaml"))
+  .sort()
+  .map((file) => `.github/workflows/${file}`);
 
 const pinnedActionPattern =
   /^\s*-\s+uses:\s+[A-Za-z0-9._/-]+@[0-9a-f]{40}(?:\s+#.*)?$/;
