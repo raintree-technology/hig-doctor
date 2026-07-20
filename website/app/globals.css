@@ -190,6 +190,12 @@ html {
   z-index: -1;
 }
 
+/* Custom clear buttons handle this; the native control doubles them up */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 code {
   font-family:
     "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
@@ -225,6 +231,14 @@ body {
 
 .prose-hig > *:first-child {
   margin-top: 0;
+}
+
+/* Keep anchored headings clear of the fixed header */
+.prose-hig h1,
+.prose-hig h2,
+.prose-hig h3,
+.prose-hig h4 {
+  scroll-margin-top: 5.5rem;
 }
 
 .prose-hig h1 {

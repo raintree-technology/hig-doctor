@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { totalReferences, totalSkills } from "@/lib/skills-data";
 
 const questions = [
   {
@@ -22,7 +23,7 @@ const questions = [
   },
   {
     q: "What platforms and topics does this cover?",
-    a: "All five Apple platforms — iOS, iPadOS, macOS, watchOS, and visionOS. Covers foundations (color, typography, layout), every component category (navigation, menus, controls, dialogs), input methods, UX patterns, and Apple technology integrations like Apple Pay, Siri, and HealthKit. 14 skills, 100+ reference topics.",
+    a: `All five Apple platforms — iOS, iPadOS, macOS, watchOS, and visionOS. Covers foundations (color, typography, layout), every component category (navigation, menus, controls, dialogs), input methods, UX patterns, and Apple technology integrations like Apple Pay, Siri, and HealthKit. ${totalSkills} skills, ${totalReferences} reference topics.`,
   },
   {
     q: "How do I keep it up to date when Apple changes the HIG?",

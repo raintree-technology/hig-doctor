@@ -56,6 +56,28 @@ function rehypeRewriteHigLinks() {
   };
 }
 
+export interface TocEntry {
+  id: string;
+  text: string;
+}
+
+/**
+ * Pulls the h2 outline out of rendered topic HTML for the "On this page"
+ * navigation. Headings carry ids from rehype-slug and wrap their text in an
+ * anchor (rehype-autolink-headings behavior: "wrap").
+ */
+export function extractH2Outline(html: string): TocEntry[] {
+  const entries: TocEntry[] = [];
+  const re = /<h2 id="([^"]+)"[^>]*>([\s\S]*?)<\/h2>/g;
+  let m = re.exec(html);
+  while (m !== null) {
+    const text = m[2].replace(/<[^>]+>/g, "").trim();
+    if (text) entries.push({ id: m[1], text });
+    m = re.exec(html);
+  }
+  return entries;
+}
+
 export async function renderMarkdown(content: string): Promise<string> {
   const result = await unified()
     .use(remarkParse)

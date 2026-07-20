@@ -1,22 +1,33 @@
 "use client";
 
 import { Github, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import BrandMark from "@/components/BrandMark";
 import { cn } from "@/lib/utils";
 
-const homeNavItems = [
+interface NavItem {
+  label: string;
+  href: string;
+  /** Section id for the home-page scrollspy */
+  id?: string;
+  /** Route prefix that marks this item active on subpages */
+  route?: string;
+}
+
+const homeNavItems: NavItem[] = [
   { label: "Use Cases", href: "#use-cases", id: "use-cases" },
   { label: "How It Works", href: "#how-it-works", id: "how-it-works" },
   { label: "What's Included", href: "#skills", id: "skills" },
-  { label: "MCP", href: "/mcp", id: "mcp" },
+  { label: "Topics", href: "/topics", route: "/topics" },
+  { label: "MCP", href: "/mcp", route: "/mcp" },
   { label: "Install", href: "#install", id: "install" },
   { label: "FAQ", href: "#faq", id: "faq" },
 ];
 
-const topicNavItems = [
-  { label: "Topics", href: "/topics" },
-  { label: "MCP", href: "/mcp" },
+const topicNavItems: NavItem[] = [
+  { label: "Topics", href: "/topics", route: "/topics" },
+  { label: "MCP", href: "/mcp", route: "/mcp" },
   { label: "Install", href: "/#install" },
 ];
 
@@ -29,6 +40,7 @@ export default function Header({
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
@@ -44,6 +56,7 @@ export default function Header({
         const offset = 100;
         let current: string | null = null;
         for (const item of homeNavItems) {
+          if (!item.id) continue;
           const el = document.getElementById(item.id);
           if (el) {
             const top = el.getBoundingClientRect().top;
@@ -88,6 +101,11 @@ export default function Header({
 
   const navItems = variant === "home" ? homeNavItems : topicNavItems;
 
+  const isItemActive = (item: NavItem) => {
+    if (item.route && pathname?.startsWith(item.route)) return true;
+    return variant === "home" && !!item.id && activeSection === item.id;
+  };
+
   return (
     <header
       ref={headerRef}
@@ -111,12 +129,9 @@ export default function Header({
           HIG Doctor
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => {
-            const isActive =
-              variant === "home" &&
-              "id" in item &&
-              activeSection === (item as (typeof homeNavItems)[0]).id;
+            const isActive = isItemActive(item);
             return (
               <a
                 key={item.label}
@@ -127,7 +142,13 @@ export default function Header({
                     ? "text-foreground bg-accent"
                     : "text-muted-foreground hover:text-foreground hover:bg-accent/50",
                 )}
-                aria-current={isActive ? "true" : undefined}
+                aria-current={
+                  item.route && pathname?.startsWith(item.route)
+                    ? "page"
+                    : isActive
+                      ? "true"
+                      : undefined
+                }
               >
                 {item.label}
               </a>
@@ -170,33 +191,38 @@ export default function Header({
         aria-hidden={!menuOpen}
       >
         <div className="min-h-0">
-          <div className="border-t border-border/50 bg-background/80 backdrop-blur-xl px-6 py-3">
-            <div className="flex flex-col gap-1" role="menu">
+          <nav
+            aria-label="Mobile"
+            className="border-t border-border/50 bg-background/80 backdrop-blur-xl px-6 py-3"
+          >
+            <ul className="flex flex-col gap-1 list-none p-0">
               {navItems.map((item) => {
-                const isActive =
-                  variant === "home" &&
-                  "id" in item &&
-                  activeSection === (item as (typeof homeNavItems)[0]).id;
+                const isActive = isItemActive(item);
                 return (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    onClick={closeMenu}
-                    role="menuitem"
-                    tabIndex={menuOpen ? 0 : -1}
-                    className={cn(
-                      "text-sm transition-colors py-2",
-                      isActive
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground",
-                    )}
-                  >
-                    {item.label}
-                  </a>
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      onClick={closeMenu}
+                      tabIndex={menuOpen ? 0 : -1}
+                      aria-current={
+                        item.route && pathname?.startsWith(item.route)
+                          ? "page"
+                          : undefined
+                      }
+                      className={cn(
+                        "block text-sm transition-colors py-2",
+                        isActive
+                          ? "text-foreground"
+                          : "text-muted-foreground hover:text-foreground",
+                      )}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
                 );
               })}
-            </div>
-          </div>
+            </ul>
+          </nav>
         </div>
       </div>
     </header>
