@@ -2,6 +2,7 @@ import { CheckCircle2, ChevronRight, Terminal } from "lucide-react";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import McpCodeBlock from "@/components/McpCodeBlock";
 import { Separator } from "@/components/ui/separator";
 
 const BASE_URL = "https://apple.raintree.technology";
@@ -93,14 +94,6 @@ const jsonLd = {
   ],
 };
 
-function CodeBlock({ children }: { children: string }) {
-  return (
-    <pre className="overflow-x-auto rounded-xl border bg-[#1d1d1f] px-4 py-3.5 text-sm leading-7 text-white/85">
-      <code>{children}</code>
-    </pre>
-  );
-}
-
 export default function McpPage() {
   return (
     <div className="photo-bg min-h-screen">
@@ -124,7 +117,7 @@ export default function McpPage() {
 
           <section className="max-w-3xl">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              Submission-ready technical surface
+              MCP server · Audit CLI
             </p>
             <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">
               Apple HIG lookup and audits for MCP-compatible agents.
@@ -134,6 +127,16 @@ export default function McpPage() {
               the Model Context Protocol and ships a CLI that scans native and
               web UI code for accessibility, layout, color, typography, motion,
               control, and platform-pattern issues.
+            </p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              The same reference content the tools serve is browsable at{" "}
+              <a
+                href="/topics"
+                className="text-foreground underline underline-offset-4 hover:opacity-70 transition-opacity"
+              >
+                /topics
+              </a>
+              , with per-topic Markdown for agents.
             </p>
           </section>
 
@@ -175,18 +178,18 @@ export default function McpPage() {
                     <Terminal className="h-4 w-4" aria-hidden="true" />
                     Run the audit CLI
                   </div>
-                  <CodeBlock>{"npx hig-doctor . --export"}</CodeBlock>
+                  <McpCodeBlock>{"npx hig-doctor . --export"}</McpCodeBlock>
                 </div>
                 <div>
                   <div className="mb-2 flex items-center gap-2 text-sm font-medium">
                     <Terminal className="h-4 w-4" aria-hidden="true" />
                     Run the MCP server from source
                   </div>
-                  <CodeBlock>
+                  <McpCodeBlock>
                     {
                       "git clone https://github.com/raintree-technology/hig-doctor.git\ncd hig-doctor/packages/hig-doctor/src-mcp\nbun install\nbun src/index.ts"
                     }
-                  </CodeBlock>
+                  </McpCodeBlock>
                 </div>
               </div>
             </section>

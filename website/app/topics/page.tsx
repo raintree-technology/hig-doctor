@@ -1,11 +1,15 @@
-import { ChevronRight, FileText } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import TopicCTA from "@/components/TopicCTA";
+import TopicsExplorer, {
+  type ExplorerCategory,
+} from "@/components/TopicsExplorer";
 import { Separator } from "@/components/ui/separator";
 import { categories } from "@/lib/skills-data";
 import { getAllTopicMetas } from "@/lib/topics";
+import { anchorFor } from "@/lib/utils";
 
 const BASE_URL = "https://apple.raintree.technology";
 
@@ -29,17 +33,9 @@ export const metadata: Metadata = {
 export default function TopicsIndex() {
   const allMetas = getAllTopicMetas();
 
-  // Group by category -> skill
-  const grouped: {
-    categoryName: string;
-    skills: {
-      skillDisplayName: string;
-      topics: { slug: string; title: string }[];
-    }[];
-  }[] = [];
-
+  const grouped: ExplorerCategory[] = [];
   for (const cat of categories) {
-    const skills: (typeof grouped)[0]["skills"] = [];
+    const skills: ExplorerCategory["skills"] = [];
     for (const skill of cat.skills) {
       const topics = allMetas
         .filter((m) => m.skillName === skill.name)
@@ -49,7 +45,11 @@ export default function TopicsIndex() {
       }
     }
     if (skills.length > 0) {
-      grouped.push({ categoryName: cat.name, skills });
+      grouped.push({
+        categoryName: cat.name,
+        anchor: anchorFor(cat.name),
+        skills,
+      });
     }
   }
 
@@ -109,49 +109,17 @@ export default function TopicsIndex() {
             <span className="text-foreground">Topics</span>
           </nav>
 
-          <div className="text-center mb-14">
+          <div className="text-center mb-10">
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-4">
               Apple HIG Topics
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Browse all {allMetas.length} Apple Human Interface Guidelines
-              topics, organized by category.
+              Every Apple Human Interface Guidelines topic in HIG Doctor —
+              search it, or jump to a category.
             </p>
           </div>
 
-          <div className="space-y-12 pb-16">
-            {grouped.map((cat) => (
-              <section key={cat.categoryName}>
-                <h2 className="text-2xl font-semibold tracking-tight mb-6">
-                  {cat.categoryName}
-                </h2>
-                <div className="space-y-6">
-                  {cat.skills.map((skill) => (
-                    <div key={skill.skillDisplayName}>
-                      <h3 className="text-sm uppercase tracking-wider text-muted-foreground mb-3">
-                        {skill.skillDisplayName}
-                      </h3>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2">
-                        {skill.topics.map((topic) => (
-                          <a
-                            key={topic.slug}
-                            href={`/topics/${topic.slug}`}
-                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
-                          >
-                            <FileText
-                              className="h-3.5 w-3.5 shrink-0 opacity-50"
-                              aria-hidden="true"
-                            />
-                            {topic.title}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
+          <TopicsExplorer categories={grouped} totalTopics={allMetas.length} />
         </div>
 
         <div className="mx-auto max-w-6xl px-6">

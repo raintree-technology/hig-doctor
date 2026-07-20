@@ -16,6 +16,51 @@ export interface TopicMeta {
 export interface TopicData extends TopicMeta {
   content: string;
   relatedTopics: TopicMeta[];
+  prevTopic: TopicMeta | null;
+  nextTopic: TopicMeta | null;
+}
+
+const ATTRIBUTION_MARKER = "<!-- hig-doctor:attribution -->";
+
+/**
+ * Splits the legal-hardening attribution block off the topic body so the page
+ * can present the same facts (source, snapshot date, Apple copyright) as
+ * structured metadata instead of a lead blockquote. The raw markdown endpoint
+ * keeps serving the untouched content — this only affects HTML presentation.
+ */
+export function splitAttribution(content: string): {
+  body: string;
+  snapshotDate: string | null;
+} {
+  const markerIdx = content.indexOf(ATTRIBUTION_MARKER);
+  if (markerIdx === -1) return { body: content, snapshotDate: null };
+
+  const lines = content.split("\n");
+  const out: string[] = [];
+  let snapshotDate: string | null = null;
+  let inBlock = false;
+  let blockDone = false;
+
+  for (const line of lines) {
+    if (!blockDone && line.trim() === ATTRIBUTION_MARKER) {
+      inBlock = true;
+      continue;
+    }
+    if (inBlock) {
+      const trimmed = line.trim();
+      if (trimmed.startsWith(">") || trimmed === "") {
+        const m = trimmed.match(/snapshot (\d{4}-\d{2}-\d{2})/i);
+        if (m) snapshotDate = m[1];
+        if (trimmed === "" && out.length > 0) out.push(line);
+        continue;
+      }
+      inBlock = false;
+      blockDone = true;
+    }
+    out.push(line);
+  }
+
+  return { body: out.join("\n").replace(/^\n+/, ""), snapshotDate };
 }
 
 const SKILLS_DIR = path.join(process.cwd(), "..", "skills");
@@ -90,7 +135,9 @@ function extractExcerpt(content: string, maxLen = 155): string {
       trimmed.startsWith("#") ||
       trimmed.startsWith("|") ||
       trimmed.startsWith("---") ||
-      trimmed.startsWith("```")
+      trimmed.startsWith("```") ||
+      trimmed.startsWith(">") ||
+      trimmed.startsWith("<!--")
     )
       continue;
     // Strip markdown formatting: bold, italic, links, inline code
@@ -154,7 +201,9 @@ export function getAllTopicMetas(): TopicMeta[] {
           slug,
           title: title || slug.replace(/-/g, " "),
           source,
-          excerpt: extractExcerpt(content),
+          // Excerpt from the body only — the attribution block would otherwise
+          // become the meta description of every topic page.
+          excerpt: extractExcerpt(splitAttribution(content).body),
           skillName: skill.name,
           skillDisplayName: info?.skillDisplayName ?? skill.displayName,
           categoryName: info?.categoryName ?? cat.name,
@@ -203,9 +252,18 @@ export function getTopicBySlug(slug: string): TopicData | null {
   related.push(...sameSkill, ...sameCategory);
   const relatedTopics = related.slice(0, 8);
 
+  // Sequential navigation within the skill (metas are in stable file order)
+  const skillTopics = metas.filter((m) => m.skillName === meta.skillName);
+  const idx = skillTopics.findIndex((m) => m.slug === slug);
+  const prevTopic = idx > 0 ? skillTopics[idx - 1] : null;
+  const nextTopic =
+    idx >= 0 && idx < skillTopics.length - 1 ? skillTopics[idx + 1] : null;
+
   return {
     ...meta,
     content,
     relatedTopics,
+    prevTopic,
+    nextTopic,
   };
 }

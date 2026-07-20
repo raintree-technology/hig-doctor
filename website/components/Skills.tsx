@@ -246,6 +246,16 @@ export default function Skills() {
             </Table>
           </div>
         </div>
+
+        <p className="mt-6 text-center text-sm text-muted-foreground">
+          Prefer reading in the browser?{" "}
+          <a
+            href="/topics"
+            className="text-foreground underline underline-offset-4 hover:opacity-70 transition-opacity"
+          >
+            Browse all {totalReferences} HIG topics
+          </a>
+        </p>
       </div>
     </section>
   );
