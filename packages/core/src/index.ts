@@ -9,9 +9,15 @@ export {
 export {
   detectPatterns,
   severityFor,
+  ruleCatalog,
+  getRuleById,
+  higCitation,
+  fixGuidance,
   RULE_COUNT,
   type PatternMatch,
   type Severity,
+  type Engine,
+  type RuleMeta,
 } from "./patterns";
 export {
   scanProject,

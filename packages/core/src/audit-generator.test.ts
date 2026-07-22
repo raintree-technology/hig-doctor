@@ -36,6 +36,8 @@ describe("generateAuditMarkdown", () => {
       category: "foundations",
       label: "Foundations",
       matches: [{
+        ruleId: "test/rule",
+        engine: "regex" as const,
         category: "foundations",
         subcategory: "color",
         type: "concern",
@@ -101,6 +103,8 @@ describe("generateAuditMarkdown", () => {
       category: "foundations",
       label: "Foundations",
       matches: [{
+        ruleId: "test/rule",
+        engine: "regex" as const,
         category: "foundations",
         subcategory: "accessibility",
         type: "positive",
@@ -131,6 +135,8 @@ describe("generateAuditMarkdown", () => {
       category: "foundations",
       label: "Foundations",
       matches: [{
+        ruleId: "test/rule",
+        engine: "regex" as const,
         category: "foundations",
         subcategory: "accessibility",
         type: "concern",

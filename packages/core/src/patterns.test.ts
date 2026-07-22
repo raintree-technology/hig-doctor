@@ -1,5 +1,7 @@
 import { describe, test, expect } from "bun:test";
-import { detectPatterns, RULE_COUNT } from "./patterns";
+import { detectPatterns, RULE_COUNT, ruleCatalog, getRuleById } from "./patterns";
+import { existsSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 
 // Exact-count guard. The rule count is quoted verbatim in user-facing docs, so
 // it must not drift silently. When you intentionally add or remove rules, bump
@@ -13,6 +15,61 @@ import { detectPatterns, RULE_COUNT } from "./patterns";
 const EXPECTED_RULE_COUNT = 348;
 test(`rule count is exactly ${EXPECTED_RULE_COUNT}`, () => {
   expect(RULE_COUNT).toBe(EXPECTED_RULE_COUNT);
+});
+
+// ════════════════════════════════════════════════════════════════
+// RULE CATALOG
+// ════════════════════════════════════════════════════════════════
+describe("rule catalog", () => {
+  const catalog = ruleCatalog();
+
+  test("has one meta entry per rule with unique stable IDs", () => {
+    expect(catalog.length).toBe(RULE_COUNT);
+    const ids = new Set(catalog.map(r => r.id));
+    expect(ids.size).toBe(RULE_COUNT);
+    for (const meta of catalog) {
+      expect(meta.id).toMatch(/^[a-z0-9-]+\/[a-z0-9-]+(-\d+)?$/);
+    }
+  });
+
+  test("getRuleById round-trips", () => {
+    const first = catalog[0];
+    expect(getRuleById(first.id)).toEqual(first);
+    expect(getRuleById("nope/never")).toBeUndefined();
+  });
+
+  test("every match carries the ruleId and engine of its rule", () => {
+    const matches = detectPatterns(`.foregroundColor(.red)`, "V.swift");
+    const m = matches.find(x => x.pattern === "hardcodedColor");
+    expect(m?.ruleId).toBe("swift/hardcoded-color");
+    expect(m?.engine).toBe("regex");
+    expect(getRuleById(m!.ruleId)?.label).toBe("hardcodedColor");
+  });
+
+  test("every critical and serious concern has fix guidance", () => {
+    const gaps = catalog.filter(
+      r => r.type === "concern" && (r.severity === "critical" || r.severity === "serious") && !r.fix,
+    );
+    expect(gaps.map(g => g.id)).toEqual([]);
+  });
+
+  test("every HIG citation resolves to a real reference topic", () => {
+    const skillsDir = join(import.meta.dir, "..", "..", "..", "skills");
+    const topics = new Set<string>();
+    for (const skill of readdirSync(skillsDir)) {
+      const refs = join(skillsDir, skill, "references");
+      if (!existsSync(refs)) continue;
+      for (const f of readdirSync(refs)) topics.add(f.replace(/\.md$/, ""));
+    }
+    const base = "https://developer.apple.com/design/human-interface-guidelines/";
+    for (const meta of catalog) {
+      expect(meta.hig.startsWith(base)).toBe(true);
+      const slug = meta.hig.slice(base.length);
+      if (slug !== "") {
+        expect(topics.has(slug)).toBe(true);
+      }
+    }
+  });
 });
 
 // ════════════════════════════════════════════════════════════════
