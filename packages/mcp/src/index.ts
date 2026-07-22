@@ -34,6 +34,7 @@ import {
   analyzeFile,
   getRuleById,
   ruleCatalog,
+  suggestFix,
   HIG_SNAPSHOT_DATE,
   type PatternMatch,
   type Severity,
@@ -140,8 +141,9 @@ function structured(payload: object, extraText?: string) {
   return { content, structuredContent: payload };
 }
 
-function findingView(m: PatternMatch) {
+function findingView(m: PatternMatch, rawLine?: string) {
   const meta = getRuleById(m.ruleId);
+  const suggestion = rawLine != null ? suggestFix(m, rawLine) : null;
   return {
     ruleId: m.ruleId,
     type: m.type,
@@ -152,6 +154,7 @@ function findingView(m: PatternMatch) {
     engine: m.engine,
     fix: meta?.fix ?? null,
     hig: meta?.hig ?? null,
+    suggestion: suggestion ? { before: suggestion.before, after: suggestion.after, safe: suggestion.safe } : null,
   };
 }
 
@@ -359,13 +362,14 @@ async function handleTool(
     if (!info.isFile()) throw new Error(`Not a file: ${file}`);
     const failOn = assertFailOn(args?.fail_on);
     const content = await readFile(file, "utf-8");
+    const lines = content.split("\n");
     const matches = analyzeFile(content, basename(file));
     const counts = severityCounts(matches);
     return structured({
       snapshot: HIG_SNAPSHOT_DATE,
       file,
       severities: counts,
-      findings: matches.map(findingView),
+      findings: matches.map(m => findingView(m, lines[m.line - 1])),
       failOn: failOn ?? null,
       gateTripped: gate(counts, failOn),
     });

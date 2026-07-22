@@ -64,6 +64,13 @@ export {
   type SarifOptions,
 } from "./sarif";
 export {
+  suggestFix,
+  applyFixes,
+  isFixable,
+  type SuggestedFix,
+  type FixApplication,
+} from "./fixes";
+export {
   runBenchmark,
   BENCHMARK_CASES,
   type BenchmarkCase,

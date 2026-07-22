@@ -8,11 +8,14 @@ import {
   writeBaseline,
   toSarif,
   getRuleById,
+  suggestFix,
+  applyFixes,
   BASELINE_FILENAME,
   HIG_SNAPSHOT_DATE,
 } from "@hig-doctor/core";
-import type { Severity } from "@hig-doctor/core";
+import type { Severity, PatternMatch, ScannedFile } from "@hig-doctor/core";
 import pkg from "../package.json";
+import { writeFile as fsWriteFile } from "node:fs/promises";
 import { writeFile } from "node:fs/promises";
 import { join, resolve, basename } from "node:path";
 
@@ -146,6 +149,8 @@ ${c.bold}Options:${c.reset}
                         ${c.dim}(default: discovered in the audited directory)${c.reset}
   --no-config           Skip config discovery
   --format sarif        Print SARIF 2.1.0 to stdout ${c.dim}(for GitHub code scanning)${c.reset}
+  --fix                 Apply safe mechanical fixes in place ${c.dim}(logical text-align,${c.reset}
+                        ${c.dim}viewport user-scalable/maximum-scale); prints unsafe suggestions${c.reset}
   --write-baseline      Snapshot current concerns into ${BASELINE_FILENAME}
   --baseline <path>     Use an explicit baseline file
                         ${c.dim}(default: ${BASELINE_FILENAME} discovered in the audited directory)${c.reset}
@@ -220,6 +225,52 @@ ${c.bold}Examples:${c.reset}
     process.stderr.write(`${c.dim}Baseline absorbed ${result.baselined} known concern(s)${result.baselineStale > 0 ? `; ${result.baselineStale} baseline entr(ies) are stale — consider --write-baseline` : ""}.${c.reset}\n`);
   }
 
+  // Map relative path → scanned file so fixes and suggestions can read the true
+  // (untrimmed) source line behind each match.
+  const filesByPath = new Map<string, ScannedFile>();
+  for (const f of [...scanResult.codeFiles, ...scanResult.styleFiles, ...scanResult.markupFiles]) {
+    filesByPath.set(f.relativePath, f);
+  }
+  const rawLineFor = (m: PatternMatch): string | null => {
+    const content = filesByPath.get(m.file)?.content;
+    if (content === undefined) return null;
+    return content.split("\n")[m.line - 1] ?? null;
+  };
+  const suggestionFor = (m: PatternMatch) => {
+    const raw = rawLineFor(m);
+    return raw === null ? null : suggestFix(m, raw);
+  };
+
+  // ── --fix mode ──────────────────────────────────────────────────
+  if (flags.has("--fix")) {
+    let totalApplied = 0;
+    const pendingSuggestions: Array<{ file: string; ruleId: string; line: number; description: string }> = [];
+    for (const file of filesByPath.values()) {
+      const fileMatches = allMatches.filter(m => m.file === file.relativePath);
+      if (fileMatches.length === 0) continue;
+      const { content, applied, suggestions } = applyFixes(file.content, fileMatches);
+      if (applied.length > 0) {
+        await fsWriteFile(file.absolutePath, content);
+        totalApplied += applied.length;
+        for (const fix of applied) {
+          process.stdout.write(`  ${c.green}fixed${c.reset} ${file.relativePath}:${fix.line} ${c.dim}${fix.ruleId}${c.reset}\n`);
+        }
+      }
+      for (const sug of suggestions) {
+        pendingSuggestions.push({ file: file.relativePath, ruleId: sug.ruleId, line: sug.line, description: sug.description });
+      }
+    }
+    process.stdout.write(`\n${c.green}✓${c.reset} Applied ${c.bold}${totalApplied}${c.reset} safe fix(es).\n`);
+    if (pendingSuggestions.length > 0) {
+      process.stdout.write(`\n${c.yellow}${pendingSuggestions.length} suggestion(s)${c.reset} need review (not applied):\n`);
+      for (const s of pendingSuggestions) {
+        process.stdout.write(`  ${c.dim}${s.file}:${s.line}${c.reset} ${s.ruleId} — ${s.description}\n`);
+      }
+      process.stdout.write(`\n  ${c.dim}Re-run with --format sarif or --json to get machine-readable suggested edits.${c.reset}\n`);
+    }
+    process.exit(0);
+  }
+
   // ── --write-baseline mode ───────────────────────────────────────
   if (writeBaselineMode) {
     const target = baselinePath ?? join(resolve(directory), BASELINE_FILENAME);
@@ -231,7 +282,7 @@ ${c.bold}Examples:${c.reset}
 
   // ── --format sarif mode ─────────────────────────────────────────
   if (format === "sarif") {
-    const sarif = toSarif(allMatches, { toolVersion: pkg.version, snapshotDate: HIG_SNAPSHOT_DATE });
+    const sarif = toSarif(allMatches, { toolVersion: pkg.version, snapshotDate: HIG_SNAPSHOT_DATE, getFix: suggestionFor });
     process.stdout.write(JSON.stringify(sarif, null, 2));
     const crit = categories.reduce((n, cat) => n + cat.critical, 0);
     const ser = categories.reduce((n, cat) => n + cat.serious, 0);
@@ -279,6 +330,7 @@ ${c.bold}Examples:${c.reset}
         .filter(m => m.type === "concern")
         .map(m => {
           const meta = getRuleById(m.ruleId);
+          const suggestion = suggestionFor(m);
           return {
             ruleId: m.ruleId,
             severity: m.severity,
@@ -288,6 +340,7 @@ ${c.bold}Examples:${c.reset}
             excerpt: m.lineContent,
             fix: meta?.fix ?? null,
             hig: meta?.hig ?? null,
+            suggestion: suggestion ? { before: suggestion.before, after: suggestion.after, safe: suggestion.safe } : null,
           };
         }),
       frameworks: scanResult.frameworks,
