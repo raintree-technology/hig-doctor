@@ -60,3 +60,10 @@ export {
   toSarif,
   type SarifOptions,
 } from "./sarif";
+export {
+  runBenchmark,
+  BENCHMARK_CASES,
+  type BenchmarkCase,
+  type BenchmarkReport,
+  type RuleScore,
+} from "./benchmark";

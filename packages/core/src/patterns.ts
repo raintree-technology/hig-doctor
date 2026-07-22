@@ -530,7 +530,10 @@ const kotlinRules: PatternRule[] = [
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "contentDescription", regex: /contentDescription\s*=/, fileFilter: KOTLIN },
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "semantics modifier", regex: /Modifier\.semantics/, fileFilter: KOTLIN },
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "clearAndSetSemantics", regex: /clearAndSetSemantics/, fileFilter: KOTLIN },
-  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "clickable without Role", regex: /Modifier\.clickable\s*\((?![^)]*role\s*=)/, fileFilter: KOTLIN },
+  // Catches both the trailing-lambda form `Modifier.clickable { }` (which has no
+  // way to pass a role and is therefore always a concern) and the parenthesized
+  // `Modifier.clickable(...)` form when no role argument is present.
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "clickable without Role", regex: /Modifier\.clickable\s*(\{|\((?![^)]*role\s*=))/, fileFilter: KOTLIN },
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "testTag", regex: /testTag\s*=/, fileFilter: KOTLIN },
   // Color
   { category: "foundations", subcategory: "color", type: "positive", pattern: "MaterialTheme colorScheme", regex: /MaterialTheme\.colorScheme/, fileFilter: KOTLIN },

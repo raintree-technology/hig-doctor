@@ -477,10 +477,17 @@ describe("detectPatterns — Kotlin/Compose", () => {
     expect(matches.some(m => m.pattern === "isSystemInDarkTheme" && m.type === "positive")).toBe(true);
   });
 
-  test("flags clickable without Role as concern", () => {
-    const code = `Modifier.clickable(onClick = { })`;
+  test("flags clickable without Role as concern (paren and trailing-lambda forms)", () => {
+    for (const code of [`Modifier.clickable(onClick = { })`, `Box(Modifier.clickable { open() })`]) {
+      const matches = detectPatterns(code, "Item.kt");
+      expect(matches.some(m => m.type === "concern" && m.pattern === "clickable without Role")).toBe(true);
+    }
+  });
+
+  test("does not flag clickable when a role is supplied", () => {
+    const code = `Modifier.clickable(role = Role.Button, onClick = { open() })`;
     const matches = detectPatterns(code, "Item.kt");
-    expect(matches.some(m => m.type === "concern" && m.pattern === "clickable without Role")).toBe(true);
+    expect(matches.some(m => m.pattern === "clickable without Role")).toBe(false);
   });
 
   test("flags hardcoded fontSize as concern", () => {
