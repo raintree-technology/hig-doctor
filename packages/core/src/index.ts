@@ -14,6 +14,7 @@ export {
   higCitation,
   fixGuidance,
   RULE_COUNT,
+  HIG_SNAPSHOT_DATE,
   type PatternMatch,
   type Severity,
   type Engine,
@@ -44,3 +45,18 @@ export {
   generateAuditMarkdown,
   loadSkillContent,
 } from "./audit-generator";
+export {
+  createBaseline,
+  applyBaseline,
+  loadBaseline,
+  parseBaseline,
+  writeBaseline,
+  baselineKey,
+  BASELINE_FILENAME,
+  type Baseline,
+  type BaselineApplication,
+} from "./baseline";
+export {
+  toSarif,
+  type SarifOptions,
+} from "./sarif";

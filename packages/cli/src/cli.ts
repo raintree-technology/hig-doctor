@@ -2,8 +2,17 @@
 // No shebang here: the published bin is the esbuild bundle (dist/index.js),
 // which gets a `#!/usr/bin/env node` banner at build time. Dev usage invokes
 // this file explicitly via `bun src/cli.ts`.
-import { audit } from "@hig-doctor/core";
+import {
+  audit,
+  createBaseline,
+  writeBaseline,
+  toSarif,
+  getRuleById,
+  BASELINE_FILENAME,
+  HIG_SNAPSHOT_DATE,
+} from "@hig-doctor/core";
 import type { Severity } from "@hig-doctor/core";
+import pkg from "../package.json";
 import { writeFile } from "node:fs/promises";
 import { join, resolve, basename } from "node:path";
 
@@ -104,7 +113,7 @@ async function main() {
   const flags = new Set(args.filter(a => a.startsWith("--")));
   // Flags that consume the following token as their value, so it isn't
   // mistaken for a positional argument (directory / skills-dir).
-  const valueFlags = new Set(["--fail-on", "--exclude", "--config"]);
+  const valueFlags = new Set(["--fail-on", "--exclude", "--config", "--baseline", "--format"]);
   const consumed = new Set<number>();
   for (let i = 0; i < args.length; i++) {
     if (valueFlags.has(args[i])) consumed.add(i + 1);
@@ -136,6 +145,11 @@ ${c.bold}Options:${c.reset}
   --config <path>       Use an explicit hig-doctor.config.json
                         ${c.dim}(default: discovered in the audited directory)${c.reset}
   --no-config           Skip config discovery
+  --format sarif        Print SARIF 2.1.0 to stdout ${c.dim}(for GitHub code scanning)${c.reset}
+  --write-baseline      Snapshot current concerns into ${BASELINE_FILENAME}
+  --baseline <path>     Use an explicit baseline file
+                        ${c.dim}(default: ${BASELINE_FILENAME} discovered in the audited directory)${c.reset}
+  --no-baseline         Ignore any baseline file
   --help, -h            Show this help
 
 ${c.bold}Config:${c.reset}
@@ -166,23 +180,63 @@ ${c.bold}Examples:${c.reset}
 
   const failOn = parseFailOn(flags, args);
   const exclude = parseExclude(args);
-  let configPath: string | undefined;
-  for (let i = 0; i < args.length; i++) {
-    if (args[i] === "--config" && i + 1 < args.length) configPath = args[i + 1];
-    const m = args[i].match(/^--config=(.+)$/);
-    if (m) configPath = m[1];
+  const valueOf = (flag: string): string | undefined => {
+    let value: string | undefined;
+    for (let i = 0; i < args.length; i++) {
+      if (args[i] === flag && i + 1 < args.length) value = args[i + 1];
+      const m = args[i].match(new RegExp(`^${flag}=(.+)$`));
+      if (m) value = m[1];
+    }
+    return value;
+  };
+  const configPath = valueOf("--config");
+  const baselinePath = valueOf("--baseline");
+  const format = valueOf("--format");
+  if (format !== undefined && format !== "sarif") {
+    process.stderr.write(`${c.red}Error:${c.reset} --format must be "sarif"\n`);
+    process.exit(2);
   }
+  const writeBaselineMode = flags.has("--write-baseline");
 
   const s = spinner();
   const appName = basename(resolve(directory));
   s.update(`Scanning ${c.bold}${appName}${c.reset}...`);
 
-  const result = await audit(directory, skillsDir, { exclude, configPath, noConfig: flags.has("--no-config") });
+  const result = await audit(directory, skillsDir, {
+    exclude,
+    configPath,
+    noConfig: flags.has("--no-config"),
+    baselinePath,
+    // A baseline must never absorb the findings being snapshotted into it.
+    noBaseline: flags.has("--no-baseline") || writeBaselineMode,
+  });
   const { categories, scanResult, allMatches, markdown } = result;
 
   s.done(`Scanned ${c.bold}${scanResult.codeFiles.length}${c.reset} code + ${c.bold}${scanResult.styleFiles.length}${c.reset} style files`);
   for (const warning of result.configWarnings) {
     process.stderr.write(`${c.yellow}Warning:${c.reset} ${warning}\n`);
+  }
+  if (result.baselined > 0) {
+    process.stderr.write(`${c.dim}Baseline absorbed ${result.baselined} known concern(s)${result.baselineStale > 0 ? `; ${result.baselineStale} baseline entr(ies) are stale — consider --write-baseline` : ""}.${c.reset}\n`);
+  }
+
+  // ── --write-baseline mode ───────────────────────────────────────
+  if (writeBaselineMode) {
+    const target = baselinePath ?? join(resolve(directory), BASELINE_FILENAME);
+    const concerns = allMatches.filter(m => m.type === "concern").length;
+    await writeBaseline(target, createBaseline(allMatches, new Date().toISOString().slice(0, 10)));
+    process.stderr.write(`${c.green}✓${c.reset} Baseline written to ${c.bold}${target}${c.reset} (${concerns} concern(s) snapshotted)\n`);
+    process.exit(0);
+  }
+
+  // ── --format sarif mode ─────────────────────────────────────────
+  if (format === "sarif") {
+    const sarif = toSarif(allMatches, { toolVersion: pkg.version, snapshotDate: HIG_SNAPSHOT_DATE });
+    process.stdout.write(JSON.stringify(sarif, null, 2));
+    const crit = categories.reduce((n, cat) => n + cat.critical, 0);
+    const ser = categories.reduce((n, cat) => n + cat.serious, 0);
+    const mod = categories.reduce((n, cat) => n + cat.moderate, 0);
+    process.exit(failOn !== null && exceedsThreshold(crit, ser, mod, failOn) ? 1 : 0);
   }
 
   // Aggregate totals (used by every mode below)
@@ -216,8 +270,26 @@ ${c.bold}Examples:${c.reset}
     const lowDensity = detectionsPerFile < 4 && totalDetections < 500;
     process.stdout.write(JSON.stringify({
       schemaVersion: 2,
+      toolVersion: pkg.version,
+      higSnapshot: HIG_SNAPSHOT_DATE,
       lowDensity,
       config: { path: result.configPath, warnings: result.configWarnings },
+      baseline: { path: result.baselinePath, absorbed: result.baselined, stale: result.baselineStale },
+      concerns: allMatches
+        .filter(m => m.type === "concern")
+        .map(m => {
+          const meta = getRuleById(m.ruleId);
+          return {
+            ruleId: m.ruleId,
+            severity: m.severity,
+            file: m.file,
+            line: m.line,
+            pattern: m.pattern,
+            excerpt: m.lineContent,
+            fix: meta?.fix ?? null,
+            hig: meta?.hig ?? null,
+          };
+        }),
       frameworks: scanResult.frameworks,
       files: { code: scanResult.codeFiles.length, style: scanResult.styleFiles.length, config: scanResult.configFiles.length },
       severities: { critical: totalCritical, serious: totalSerious, moderate: totalModerate },
