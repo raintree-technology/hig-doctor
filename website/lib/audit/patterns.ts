@@ -686,6 +686,20 @@ const SECTIONS: Array<[framework: string, rules: PatternRule[]]> = [
 ];
 
 const allRules: CatalogRule[] = [];
+// Rules whose findings a refinement engine adjudicates. The declared engine is
+// the strongest tier that runs for the rule; the regex definition remains as
+// the fallback when a tier is unavailable (e.g. ast-tsx without typescript).
+// analyze.ts and the engine modules must own the same IDs.
+const ENGINE_BY_RULE_ID: Record<string, Engine> = {
+  "swift/image-without-a11y": "swift-structural",
+  "swift/on-tap-gesture-without-traits": "swift-structural",
+  "web/missing-alt": "ast-tsx",
+  "web/image-without-alt": "ast-tsx",
+  "web/div-with-on-click-no-role": "ast-tsx",
+  "web/span-with-on-click-no-role": "ast-tsx",
+  "web/positive-tabindex": "ast-tsx",
+};
+
 {
   const used = new Set<string>();
   for (const [framework, rules] of SECTIONS) {
@@ -696,7 +710,7 @@ const allRules: CatalogRule[] = [];
       let id = base;
       for (let n = 2; used.has(id); n++) id = `${base}-${n}`;
       used.add(id);
-      allRules.push({ ...rule, id, framework, engine: "regex" });
+      allRules.push({ ...rule, id, framework, engine: ENGINE_BY_RULE_ID[id] ?? "regex" });
     }
   }
 }
@@ -913,6 +927,10 @@ function suppressionCovers(ids: string[] | "all", ruleId: string): boolean {
   );
 }
 
+// The base regex tier. Every match it produces is tagged engine "regex" even
+// for rules whose declared (max) engine is stronger — those findings are only
+// upgraded to "swift-structural"/"ast-tsx" when analyzeFile runs the refinement
+// tiers on top. Callers wanting the strongest available analysis use analyzeFile.
 export function detectPatterns(code: string, file: string): PatternMatch[] {
   const matches: PatternMatch[] = [];
   const rawLines = code.split("\n");
@@ -1003,7 +1021,7 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
         if (isSuppressed(rule.id, i + 1)) continue;
         matches.push({
           ruleId: rule.id,
-          engine: rule.engine,
+          engine: "regex",
           category: rule.category,
           subcategory: rule.subcategory,
           type: rule.type,
@@ -1054,7 +1072,7 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
         }
         matches.push({
           ruleId: rule.id,
-          engine: rule.engine,
+          engine: "regex",
           category: rule.category,
           subcategory: rule.subcategory,
           type: rule.type,

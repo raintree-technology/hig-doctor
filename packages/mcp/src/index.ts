@@ -31,7 +31,7 @@ import { basename, dirname, join, resolve, isAbsolute } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   audit,
-  detectPatterns,
+  analyzeFile,
   getRuleById,
   ruleCatalog,
   HIG_SNAPSHOT_DATE,
@@ -359,7 +359,7 @@ async function handleTool(
     if (!info.isFile()) throw new Error(`Not a file: ${file}`);
     const failOn = assertFailOn(args?.fail_on);
     const content = await readFile(file, "utf-8");
-    const matches = detectPatterns(content, basename(file));
+    const matches = analyzeFile(content, basename(file));
     const counts = severityCounts(matches);
     return structured({
       snapshot: HIG_SNAPSHOT_DATE,

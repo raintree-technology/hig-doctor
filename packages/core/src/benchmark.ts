@@ -5,7 +5,7 @@
 // false negative); "good" fixtures assert the absence of concerns (any concern
 // is a false positive). The harness scores per-rule and overall so regressions
 // in either direction are visible. docs/benchmark.md is generated from this.
-import { detectPatterns } from "./patterns";
+import { analyzeFile } from "./analyze";
 
 export interface BenchmarkCase {
   id: string;
@@ -192,6 +192,71 @@ export const BENCHMARK_CASES: BenchmarkCase[] = [
     expect: [],
   },
 
+  // ── AST-tier precision cases (regex would misjudge these) ──────
+  {
+    id: "web-img-spread-good",
+    framework: "web",
+    file: "SpreadImg.tsx",
+    kind: "good",
+    code: `export const Avatar = (props) => <img {...props} />;`,
+    expect: [], // spread props may carry alt — the AST tier abstains
+  },
+  {
+    id: "web-img-multiline-bad",
+    framework: "web",
+    file: "MultilineImg.tsx",
+    kind: "bad",
+    code: `export const Hero = () => (
+  <img
+    src="/hero.png"
+    width={640}
+  />
+);`,
+    expect: ["web/missing-alt"],
+  },
+  {
+    id: "web-div-nested-gt-bad",
+    framework: "web",
+    file: "NestedGt.tsx",
+    kind: "bad",
+    code: `export const Row = () => (
+  <div onClick={() => select(a > b ? a : b)}>
+    Pick
+  </div>
+);`,
+    expect: ["web/div-with-on-click-no-role"],
+  },
+  {
+    id: "web-span-keyboard-good",
+    framework: "web",
+    file: "AccessibleSpan.tsx",
+    kind: "good",
+    code: `export const Row = () => (
+  <span role="button" tabIndex={0} onKeyDown={onKey} onClick={onClick}>
+    Pick
+  </span>
+);`,
+    expect: [], // AST tier abstains: role + tabIndex + keydown make it operable
+  },
+  {
+    id: "swift-image-labeled-good",
+    framework: "swift",
+    file: "LabeledImage.swift",
+    kind: "good",
+    code: `Image(systemName: "star")
+  .resizable()
+  .accessibilityLabel("Favorite")`,
+    expect: [], // structural analysis sees the chained label
+  },
+  {
+    id: "swift-image-bare-bad",
+    framework: "swift",
+    file: "BareImage.swift",
+    kind: "bad",
+    code: `Image(systemName: "star").frame(width: 20, height: 20)`,
+    expect: ["swift/image-without-a11y"],
+  },
+
   // ── Cross-platform ─────────────────────────────────────────────
   {
     id: "compose-clickable-bad",
@@ -248,7 +313,7 @@ export function runBenchmark(cases: BenchmarkCase[] = BENCHMARK_CASES): Benchmar
   const falseNegatives: BenchmarkReport["falseNegatives"] = [];
 
   for (const c of cases) {
-    const concerns = detectPatterns(c.code, c.file).filter(m => m.type === "concern");
+    const concerns = analyzeFile(c.code, c.file).filter(m => m.type === "concern");
     // Multiset comparison so a fixture that expects two of a rule and only
     // produces one is scored as one TP + one FN.
     const expected = [...c.expect];

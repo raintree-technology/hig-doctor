@@ -6,14 +6,14 @@ Each fixture is a small source file paired with the exact set of concern rule ID
 
 ## Corpus
 
-- 21 fixtures (12 bad, 9 good)
+- 27 fixtures (15 bad, 12 good)
 - 6 frameworks: android-xml, compose, css, flutter, swift, web
 
 ## Results
 
 | Metric | Value |
 |--------|-------|
-| True positives | 13 |
+| True positives | 16 |
 | False positives | 0 |
 | False negatives | 0 |
 | **Precision** | **1.000** |
@@ -30,9 +30,10 @@ Each fixture is a small source file paired with the exact set of concern rule ID
 | `flutter/hardcoded-color` | 1 | 0 | 0 | 1.000 | 1.000 |
 | `swift/hardcoded-color` | 2 | 0 | 0 | 1.000 | 1.000 |
 | `swift/hardcoded-font-size` | 1 | 0 | 0 | 1.000 | 1.000 |
+| `swift/image-without-a11y` | 1 | 0 | 0 | 1.000 | 1.000 |
 | `swift/navigation-view-deprecated` | 1 | 0 | 0 | 1.000 | 1.000 |
-| `web/div-with-on-click-no-role` | 1 | 0 | 0 | 1.000 | 1.000 |
-| `web/missing-alt` | 1 | 0 | 0 | 1.000 | 1.000 |
+| `web/div-with-on-click-no-role` | 2 | 0 | 0 | 1.000 | 1.000 |
+| `web/missing-alt` | 2 | 0 | 0 | 1.000 | 1.000 |
 | `web/positive-tabindex` | 1 | 0 | 0 | 1.000 | 1.000 |
 | `web/user-scalable-no` | 1 | 0 | 0 | 1.000 | 1.000 |
 
