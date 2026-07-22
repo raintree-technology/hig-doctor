@@ -68,7 +68,7 @@ Set `HIG_SKILLS_DIR` if you relocate the `skills/` folder.
 
 ## HIG Audit CLI
 
-Scan any project for Apple HIG compliance. Works with SwiftUI, UIKit, React, Next.js, Vue, Nuxt, Svelte, SvelteKit, Angular, React Native, Flutter, Jetpack Compose, Android XML, and plain HTML/CSS. Detects 348 patterns across accessibility, color systems, typography, responsive layout, dark mode, motion, i18n, and more.
+Scan any project for Apple HIG compliance. Works with SwiftUI, UIKit, React, Next.js, Vue, Nuxt, Svelte, SvelteKit, Angular, React Native, Flutter, Jetpack Compose, Android XML, and plain HTML/CSS. Detects 431 patterns across accessibility, color systems, typography, responsive layout, dark mode, motion, i18n, and more.
 
 Requires [Bun](https://bun.sh).
 

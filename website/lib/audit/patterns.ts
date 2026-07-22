@@ -652,6 +652,171 @@ const flutterRules: PatternRule[] = [
 ];
 
 // ════════════════════════════════════════════════════════════════
+// UIKIT RULES (iOS/iPadOS, Swift)
+// ════════════════════════════════════════════════════════════════
+// Distinct from the SwiftUI rules above: these match UIKit-specific APIs, so a
+// pure-SwiftUI file won't trigger them and vice versa. Hardcoded UIColor(red:)
+// and UIFont.systemFont(ofSize:) are already covered by the swift section and
+// deliberately not repeated here to avoid double-counting.
+const uikitRules: PatternRule[] = [
+  // Navigation & structure
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "UINavigationController", regex: /\bUINavigationController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "UITabBarController", regex: /\bUITabBarController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "UISplitViewController", regex: /\bUISplitViewController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "UIPageViewController", regex: /\bUIPageViewController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "lists", type: "pattern", pattern: "UICollectionView", regex: /\bUICollectionView\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "lists", type: "pattern", pattern: "UITableView", regex: /\bUITableView\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "layout", type: "pattern", pattern: "UIStackView", regex: /\bUIStackView\b/, fileFilter: SWIFT },
+  { category: "components-search", subcategory: "search", type: "pattern", pattern: "UISearchController", regex: /\bUISearchController\b/, fileFilter: SWIFT },
+  { category: "components-menus", subcategory: "menus", type: "pattern", pattern: "UIMenu", regex: /\bUIMenu\b/, fileFilter: SWIFT },
+  { category: "components-menus", subcategory: "menus", type: "pattern", pattern: "UIContextMenuConfiguration", regex: /\bUIContextMenuConfiguration\b/, fileFilter: SWIFT },
+  { category: "components-status", subcategory: "modals", type: "pattern", pattern: "UIAlertController", regex: /\bUIAlertController\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "UISegmentedControl", regex: /\bUISegmentedControl\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "UISwitch", regex: /\bUISwitch\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "UIStepper", regex: /\bUIStepper\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "UIToolbar", regex: /\bUIToolbar\b/, fileFilter: SWIFT },
+
+  // Typography — Dynamic Type
+  { category: "foundations", subcategory: "typography", type: "positive", pattern: "UIKit preferredFont", regex: /preferredFont\(forTextStyle:/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "typography", type: "positive", pattern: "adjustsFontForContentSizeCategory", regex: /adjustsFontForContentSizeCategory\s*=\s*true/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "typography", type: "concern", pattern: "hardcoded UIFont(name:)", regex: /UIFont\(name:[^)]*,\s*size:\s*\d/, fileFilter: SWIFT },
+
+  // Color — semantic vs hardcoded
+  { category: "foundations", subcategory: "color", type: "positive", pattern: "UIKit semantic color", regex: /UIColor\.(label|secondaryLabel|tertiaryLabel|systemBackground|secondarySystemBackground|tintColor|systemFill|separator|link)\b/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "color", type: "concern", pattern: "hardcoded UIColor constant", regex: /UIColor\.(white|black|gray|lightGray|darkGray|red|blue|green|yellow|orange|purple|brown|cyan|magenta)\b/, fileFilter: SWIFT },
+
+  // Accessibility
+  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "UIKit accessibilityLabel", regex: /\.accessibilityLabel\s*=/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "UIKit isAccessibilityElement", regex: /\.isAccessibilityElement\s*=\s*true/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "UIKit accessibilityTraits", regex: /\.accessibilityTraits\s*=/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "viewWithTag lookup", regex: /\.viewWithTag\(/, fileFilter: SWIFT },
+
+  // SF Symbols
+  { category: "foundations", subcategory: "sf-symbols", type: "positive", pattern: "UIImage(systemName:)", regex: /UIImage\(systemName:/, fileFilter: SWIFT },
+
+  // Layout — Auto Layout & safe area
+  { category: "components-layout", subcategory: "layout", type: "positive", pattern: "Auto Layout constraints", regex: /NSLayoutConstraint|\.constraint\(equalTo:/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "layout", type: "positive", pattern: "safeAreaLayoutGuide", regex: /safeAreaLayoutGuide/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "layout", type: "concern", pattern: "UIScreen.main.bounds for layout", regex: /UIScreen\.main\.bounds/, fileFilter: SWIFT },
+
+  // Haptics
+  { category: "patterns", subcategory: "haptics", type: "positive", pattern: "UIFeedbackGenerator", regex: /UI(Impact|Notification|Selection)FeedbackGenerator/, fileFilter: SWIFT },
+
+  // Dark mode
+  { category: "foundations", subcategory: "color", type: "positive", pattern: "userInterfaceStyle", regex: /traitCollection\.userInterfaceStyle|overrideUserInterfaceStyle/, fileFilter: SWIFT },
+
+  // Deprecated APIs
+  { category: "components-status", subcategory: "modals", type: "concern", pattern: "UIAlertView (deprecated)", regex: /\bUIAlertView\b/, fileFilter: SWIFT },
+  { category: "components-status", subcategory: "modals", type: "concern", pattern: "UIActionSheet (deprecated)", regex: /\bUIActionSheet\b/, fileFilter: SWIFT },
+  { category: "technologies", subcategory: "structure", type: "concern", pattern: "UIWebView (deprecated)", regex: /\bUIWebView\b/, fileFilter: SWIFT },
+  { category: "components-search", subcategory: "search", type: "concern", pattern: "UISearchDisplayController (deprecated)", regex: /\bUISearchDisplayController\b/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "structure", type: "concern", pattern: "setStatusBarStyle (deprecated)", regex: /setStatusBarStyle|statusBarStyle\s*=/, fileFilter: SWIFT },
+];
+
+// ════════════════════════════════════════════════════════════════
+// APPKIT RULES (macOS, Swift)
+// ════════════════════════════════════════════════════════════════
+const appkitRules: PatternRule[] = [
+  // Structure
+  { category: "components-layout", subcategory: "windows", type: "pattern", pattern: "NSWindow", regex: /\bNSWindow\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "windows", type: "pattern", pattern: "NSWindowController", regex: /\bNSWindowController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "NSSplitViewController", regex: /\bNSSplitViewController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "sidebars", type: "pattern", pattern: "NSOutlineView", regex: /\bNSOutlineView\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "lists", type: "pattern", pattern: "NSTableView", regex: /\bNSTableView\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "lists", type: "pattern", pattern: "NSCollectionView", regex: /\bNSCollectionView\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "toolbar", type: "pattern", pattern: "NSToolbar", regex: /\bNSToolbar\b/, fileFilter: SWIFT },
+  { category: "components-menus", subcategory: "menu-bar", type: "pattern", pattern: "NSMenu", regex: /\bNSMenu\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "NSButton", regex: /\bNSButton\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "NSSegmentedControl", regex: /\bNSSegmentedControl\b/, fileFilter: SWIFT },
+  { category: "components-status", subcategory: "modals", type: "pattern", pattern: "NSAlert", regex: /\bNSAlert\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "inputs", type: "pattern", pattern: "NSComboBox", regex: /\bNSComboBox\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "inputs", type: "pattern", pattern: "NSPopUpButton", regex: /\bNSPopUpButton\b/, fileFilter: SWIFT },
+
+  // Materials & vibrancy (macOS)
+  { category: "foundations", subcategory: "materials", type: "pattern", pattern: "NSVisualEffectView", regex: /\bNSVisualEffectView\b/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "materials", type: "positive", pattern: "NSVisualEffect material", regex: /\.material\s*=\s*\.(sidebar|menu|popover|headerView|contentBackground|windowBackground|hudWindow|underWindowBackground)/, fileFilter: SWIFT },
+
+  // Color — semantic vs hardcoded
+  { category: "foundations", subcategory: "color", type: "positive", pattern: "NSColor semantic", regex: /NSColor\.(labelColor|secondaryLabelColor|controlAccentColor|windowBackgroundColor|textColor|controlColor|separatorColor|linkColor)\b/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "color", type: "concern", pattern: "hardcoded NSColor(red:)", regex: /NSColor\(\s*(calibratedRed|deviceRed|red):/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "color", type: "concern", pattern: "hardcoded NSColor constant", regex: /NSColor\.(white|black|gray|red|blue|green|yellow|orange|purple)\b/, fileFilter: SWIFT },
+
+  // Typography
+  { category: "foundations", subcategory: "typography", type: "positive", pattern: "NSFont.preferredFont", regex: /NSFont\.preferredFont\(forTextStyle:/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "typography", type: "concern", pattern: "hardcoded NSFont size", regex: /NSFont\.systemFont\(ofSize:\s*\d/, fileFilter: SWIFT },
+
+  // Accessibility
+  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "setAccessibilityLabel", regex: /setAccessibilityLabel\(|\.accessibilityLabel\s*=/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "NSAccessibility protocol", regex: /NSAccessibilityElement|isAccessibilityElement\(\)/, fileFilter: SWIFT },
+
+  // Layout
+  { category: "components-layout", subcategory: "layout", type: "positive", pattern: "AppKit Auto Layout", regex: /translatesAutoresizingMaskIntoConstraints\s*=\s*false/, fileFilter: SWIFT },
+
+  // Pointer
+  { category: "inputs", subcategory: "keyboard", type: "positive", pattern: "NSCursor", regex: /\bNSCursor\b/, fileFilter: SWIFT },
+
+  // Deprecated
+  { category: "components-menus", subcategory: "menu-bar", type: "concern", pattern: "NSMenuItem setSubmenu (deprecated)", regex: /setSubmenu:forItem:/, fileFilter: SWIFT },
+];
+
+// ════════════════════════════════════════════════════════════════
+// WATCHOS RULES (Swift / SwiftUI + WatchKit)
+// ════════════════════════════════════════════════════════════════
+const watchosRules: PatternRule[] = [
+  // WatchKit structure
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "WKInterfaceController", regex: /\bWKInterfaceController\b/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "navigation", type: "pattern", pattern: "WKHostingController", regex: /\bWKHostingController\b/, fileFilter: SWIFT },
+
+  // Digital Crown
+  { category: "inputs", subcategory: "digital-crown", type: "positive", pattern: "digitalCrownRotation", regex: /\.digitalCrownRotation\(/, fileFilter: SWIFT },
+  { category: "inputs", subcategory: "digital-crown", type: "pattern", pattern: "WKCrownSequencer", regex: /\bWKCrownSequencer\b|crownSequencer/, fileFilter: SWIFT },
+  { category: "inputs", subcategory: "digital-crown", type: "positive", pattern: "focusable for crown", regex: /\.focusable\(/, fileFilter: SWIFT },
+
+  // Complications
+  { category: "platforms", subcategory: "complications", type: "pattern", pattern: "CLKComplication", regex: /\bCLKComplication/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "complications", type: "pattern", pattern: "WidgetKit complication", regex: /CLKComplicationWidgetMigrator|\.accessoryCircular|\.accessoryCorner/, fileFilter: SWIFT },
+
+  // Always-On / luminance
+  { category: "platforms", subcategory: "always-on", type: "positive", pattern: "isLuminanceReduced", regex: /isLuminanceReduced/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "always-on", type: "positive", pattern: "privacySensitive", regex: /\.privacySensitive\(/, fileFilter: SWIFT },
+
+  // Watch faces / workouts
+  { category: "platforms", subcategory: "workouts", type: "pattern", pattern: "HKWorkoutSession", regex: /\bHKWorkoutSession\b/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "workouts", type: "positive", pattern: "WKExtendedRuntimeSession", regex: /\bWKExtendedRuntimeSession\b/, fileFilter: SWIFT },
+
+  // Haptics (watch)
+  { category: "patterns", subcategory: "haptics", type: "positive", pattern: "WKInterfaceDevice haptic", regex: /WKInterfaceDevice\.current\(\)\.play\(/, fileFilter: SWIFT },
+
+  // Notifications
+  { category: "patterns", subcategory: "state", type: "pattern", pattern: "WKUserNotificationInterfaceController", regex: /\bWKUserNotificationInterfaceController\b/, fileFilter: SWIFT },
+];
+
+// ════════════════════════════════════════════════════════════════
+// VISIONOS RULES (Swift / SwiftUI + RealityKit)
+// ════════════════════════════════════════════════════════════════
+const visionosRules: PatternRule[] = [
+  // Windows, volumes, immersive spaces
+  { category: "components-layout", subcategory: "windows", type: "pattern", pattern: "visionOS volumetric window", regex: /\.windowStyle\(\.volumetric\)/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "immersive", type: "pattern", pattern: "ImmersiveSpace", regex: /\bImmersiveSpace\b/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "immersive", type: "positive", pattern: "immersionStyle mixed", regex: /\.immersionStyle\(/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "spatial", type: "pattern", pattern: "RealityView", regex: /\bRealityView\b/, fileFilter: SWIFT },
+
+  // Ornaments
+  { category: "components-layout", subcategory: "ornaments", type: "positive", pattern: "ornament", regex: /\.ornament\(/, fileFilter: SWIFT },
+
+  // Glass materials
+  { category: "foundations", subcategory: "materials", type: "positive", pattern: "glassBackgroundEffect", regex: /\.glassBackgroundEffect\(/, fileFilter: SWIFT },
+
+  // Hover / gaze interaction
+  { category: "inputs", subcategory: "spatial", type: "positive", pattern: "hoverEffect", regex: /\.hoverEffect\(/, fileFilter: SWIFT },
+  { category: "inputs", subcategory: "spatial", type: "positive", pattern: "visionOS spatial gesture", regex: /SpatialTapGesture|\.targetedToAnyEntity\(/, fileFilter: SWIFT },
+
+  // Depth / 3D layout
+  { category: "components-layout", subcategory: "spatial", type: "pattern", pattern: "Model3D", regex: /\bModel3D\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "spatial", type: "positive", pattern: "depth alignment", regex: /\.offset\(z:|alignment3D/, fileFilter: SWIFT },
+];
+
+// ════════════════════════════════════════════════════════════════
 // RULE CATALOG
 // ════════════════════════════════════════════════════════════════
 // Every rule gets a stable ID: <framework>/<slug-of-pattern-label>. IDs are
@@ -674,6 +839,10 @@ function slugify(label: string): string {
 
 const SECTIONS: Array<[framework: string, rules: PatternRule[]]> = [
   ["swift", swiftRules],
+  ["uikit", uikitRules],
+  ["appkit", appkitRules],
+  ["watchos", watchosRules],
+  ["visionos", visionosRules],
   ["web", webCodeRules],
   ["css", cssRules],
   ["vue", vueRules],
@@ -759,6 +928,20 @@ const SUBCATEGORY_HIG: Record<string, string> = {
   tooltip: "offering-help",
   typography: "typography",
   widgets: "widgets",
+  // Apple-platform subcategories
+  windows: "windows",
+  sidebars: "sidebars",
+  "split-views": "split-views",
+  "menu-bar": "the-menu-bar",
+  materials: "materials",
+  "sf-symbols": "sf-symbols",
+  "digital-crown": "digital-crown",
+  complications: "complications",
+  "always-on": "always-on",
+  workouts: "workouts",
+  immersive: "immersive-experiences",
+  spatial: "spatial-layout",
+  ornaments: "ornaments",
 };
 
 export function higCitation(rule: Pick<CatalogRule, "hig" | "subcategory">): string {
@@ -807,6 +990,21 @@ const FIX_GUIDANCE: Record<string, string> = {
   "hardcodedUIColor": "Use a semantic UIColor (label, systemBackground) or an asset-catalog color.",
   "NavigationView (deprecated)": "Migrate to NavigationStack (single column) or NavigationSplitView (sidebar layouts).",
   "onTapGesture without traits": "Prefer Button, or add .accessibilityAddTraits(.isButton) so VoiceOver announces it.",
+  // UIKit
+  "hardcoded UIColor constant": "Use a semantic UIColor (.label, .systemBackground, .tintColor) that adapts to appearance.",
+  "hardcoded UIFont(name:)": "Scale custom fonts with UIFontMetrics, or use preferredFont(forTextStyle:).",
+  "viewWithTag lookup": "Reference views by outlet or property; tag-based lookup is fragile and breaks with view reordering.",
+  "UIScreen.main.bounds for layout": "Lay out against the view's bounds or safeAreaLayoutGuide; UIScreen.main ignores Split View and Slide Over.",
+  "UIAlertView (deprecated)": "Use UIAlertController with a .alert style.",
+  "UIActionSheet (deprecated)": "Use UIAlertController with an .actionSheet style.",
+  "UIWebView (deprecated)": "Use WKWebView.",
+  "UISearchDisplayController (deprecated)": "Use UISearchController.",
+  "setStatusBarStyle (deprecated)": "Override preferredStatusBarStyle on the view controller instead.",
+  // AppKit
+  "hardcoded NSColor(red:)": "Use a semantic NSColor (.labelColor, .controlAccentColor) or a Color Set asset with light/dark variants.",
+  "hardcoded NSColor constant": "Use a semantic NSColor (.labelColor, .windowBackgroundColor) that adapts to appearance and accent color.",
+  "hardcoded NSFont size": "Use NSFont.preferredFont(forTextStyle:) so text respects the user's size settings.",
+  "NSMenuItem setSubmenu (deprecated)": "Set the item's submenu property directly.",
 };
 
 export function fixGuidance(rule: Pick<CatalogRule, "fix" | "pattern">): string | null {

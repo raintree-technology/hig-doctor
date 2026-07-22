@@ -1,6 +1,6 @@
 # HIG Doctor Remotion showcase
 
-A [Remotion](https://www.remotion.dev/) video that visualizes `hig-doctor audit` results — 348 pattern rules across 12 frameworks, animated category charts, detection breakdowns, and a framework coverage grid.
+A [Remotion](https://www.remotion.dev/) video that visualizes `hig-doctor audit` results — 431 pattern rules across 15 frameworks, animated category charts, detection breakdowns, and a framework coverage grid.
 
 ## Setup
 

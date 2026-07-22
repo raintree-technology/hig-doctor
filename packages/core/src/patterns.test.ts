@@ -12,7 +12,7 @@ import { join } from "node:path";
 //   - website/components/AuditDemo.tsx (the "same N rules" copy)
 //   - demos/remotion-hig-doctor/README.md
 //   - demos/remotion-hig-doctor/src/data/report-data.json ("totalRules")
-const EXPECTED_RULE_COUNT = 348;
+const EXPECTED_RULE_COUNT = 431;
 test(`rule count is exactly ${EXPECTED_RULE_COUNT}`, () => {
   expect(RULE_COUNT).toBe(EXPECTED_RULE_COUNT);
 });
@@ -114,6 +114,40 @@ describe("detectPatterns — Swift", () => {
   test("flags hardcoded CGRect", () => {
     const matches = detectPatterns(`let frame = CGRect(x: 10, y: 20, width: 100, height: 50)`, "View.swift");
     expect(matches.some(m => m.type === "concern" && m.pattern === "hardcoded CGRect")).toBe(true);
+  });
+});
+
+// ════════════════════════════════════════════════════════════════
+// APPLE PLATFORMS (UIKit / AppKit / watchOS / visionOS)
+// ════════════════════════════════════════════════════════════════
+describe("detectPatterns — Apple platforms", () => {
+  test("UIKit: flags deprecated UIAlertView and a hardcoded UIColor constant", () => {
+    const m = detectPatterns(`let a = UIAlertView()\nview.backgroundColor = UIColor.white`, "VC.swift");
+    expect(m.some(x => x.ruleId === "uikit/uialert-view-deprecated" && x.type === "concern")).toBe(true);
+    expect(m.some(x => x.ruleId === "uikit/hardcoded-uicolor-constant" && x.type === "concern")).toBe(true);
+  });
+  test("UIKit: credits Dynamic Type and semantic color as positives", () => {
+    const m = detectPatterns(`label.font = .preferredFont(forTextStyle: .body)\nview.backgroundColor = UIColor.systemBackground`, "VC.swift");
+    expect(m.some(x => x.ruleId === "uikit/uikit-preferred-font" && x.type === "positive")).toBe(true);
+    expect(m.some(x => x.ruleId === "uikit/uikit-semantic-color" && x.type === "positive")).toBe(true);
+  });
+  test("AppKit: flags hardcoded NSFont size, credits NSColor semantic", () => {
+    const m = detectPatterns(`let f = NSFont.systemFont(ofSize: 13)\nlet c = NSColor.labelColor`, "Win.swift");
+    expect(m.some(x => x.ruleId === "appkit/hardcoded-nsfont-size" && x.type === "concern")).toBe(true);
+    expect(m.some(x => x.ruleId === "appkit/nscolor-semantic" && x.type === "positive")).toBe(true);
+  });
+  test("watchOS: detects Digital Crown usage", () => {
+    const m = detectPatterns(`ScrollView {}.digitalCrownRotation($value)`, "Watch.swift");
+    expect(m.some(x => x.ruleId === "watchos/digital-crown-rotation" && x.type === "positive")).toBe(true);
+  });
+  test("visionOS: detects ornaments and glass materials", () => {
+    const m = detectPatterns(`content.ornament(attachmentAnchor: .scene(.bottom)) {}\n  .glassBackgroundEffect()`, "Space.swift");
+    expect(m.some(x => x.ruleId === "visionos/ornament" && x.type === "positive")).toBe(true);
+    expect(m.some(x => x.ruleId === "visionos/glass-background-effect" && x.type === "positive")).toBe(true);
+  });
+  test("UIKit rules do not fire on pure SwiftUI code", () => {
+    const m = detectPatterns(`Text("Hi").font(.body).foregroundStyle(.primary)`, "View.swift");
+    expect(m.some(x => x.ruleId.startsWith("uikit/"))).toBe(false);
   });
 });
 
