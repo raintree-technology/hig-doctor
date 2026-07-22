@@ -1,0 +1,73 @@
+name: Publish HIG Doctor Core
+
+env:
+  MISE_LOCKED: "1"
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "hig-core-v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: packages/core
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+
+      - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db
+        with:
+          version: 2026.7.1
+          install: true
+          cache: true
+      - name: Verify version (tag matches manifest, not already published)
+        run: |
+          PKG_NAME="$(node -p "require('./package.json').name")"
+          PKG_VERSION="$(node -p "require('./package.json').version")"
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            TAG_VERSION="${GITHUB_REF_NAME#hig-core-v}"
+            if [ "$TAG_VERSION" != "$PKG_VERSION" ]; then
+              echo "::error::Tag ${GITHUB_REF_NAME} implies version ${TAG_VERSION} but package.json is ${PKG_VERSION}"
+              exit 1
+            fi
+          fi
+          if npm view "${PKG_NAME}@${PKG_VERSION}" version > /dev/null 2>&1; then
+            echo "::error::${PKG_NAME}@${PKG_VERSION} is already published to npm"
+            exit 1
+          fi
+          echo "OK to publish ${PKG_NAME}@${PKG_VERSION}"
+
+      - name: Install dependencies
+        run: mise run setup
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Run tests
+        run: bun test
+
+      - name: Build bundle
+        run: npm run build
+
+      - name: Package dry run
+        run: mise x -- npm pack --dry-run
+
+      - name: Publish with trusted publishing
+        run: mise x -- npm publish --provenance --access public

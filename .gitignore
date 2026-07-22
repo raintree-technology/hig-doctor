@@ -29,3 +29,6 @@ mise.*.local.toml
 mise.local.lock
 mise.*.local.lock
 .mise/
+
+# Local audit cache
+.hig-cache.json

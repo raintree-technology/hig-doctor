@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "apple-hig-skills",
-      "description": "HIG Doctor bundles 14 Apple HIG skills (foundations, platforms, patterns, inputs, technologies, and 8 component categories), an MCP server (hig_list_skills / hig_lookup / hig_audit), and a Bun-based CLI auditor that detects 431 HIG patterns across SwiftUI, UIKit, React, Vue, Svelte, Angular, Compose, Flutter, and React Native.",
+      "description": "HIG Doctor bundles 14 Apple HIG skills (foundations, platforms, patterns, inputs, technologies, and 8 component categories), an MCP server (hig_list_skills / hig_lookup / hig_search / hig_audit / hig_audit_file / hig_explain_finding), and a Bun-based CLI auditor that detects 431 HIG rules across SwiftUI, UIKit, AppKit, watchOS, visionOS, React, Vue, Svelte, Angular, Compose, Android XML, React Native, Flutter, CSS, and HTML.",
       "source": "./",
       "strict": false,
       "skills": [
