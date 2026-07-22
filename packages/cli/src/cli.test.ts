@@ -96,6 +96,38 @@ describe("hig-doctor CLI", () => {
     }
   });
 
+  test("--fix applies safe fixes in place and reports unsafe suggestions", async () => {
+    const fixDir = await mkdtemp(join(tmpdir(), "hig-cli-fix-"));
+    try {
+      const css = join(fixDir, "styles.css");
+      const swift = join(fixDir, "V.swift");
+      await writeFile(css, ".a { text-align: left; }\n");
+      await writeFile(swift, "NavigationView {\n");
+      const { stdout, exitCode } = runCli([fixDir, "--fix"]);
+      expect(exitCode).toBe(0);
+      expect(stdout).toContain("fixed styles.css:1");
+      expect(await Bun.file(css).text()).toContain("text-align: start;");
+      // Unsafe NavigationView fix is surfaced but not written.
+      expect(stdout).toContain("suggestion");
+      expect(await Bun.file(swift).text()).toContain("NavigationView {");
+    } finally {
+      await rm(fixDir, { recursive: true });
+    }
+  });
+
+  test("--json concerns carry a machine-readable suggestion for fixable rules", async () => {
+    const d = await mkdtemp(join(tmpdir(), "hig-cli-sug-"));
+    try {
+      await writeFile(join(d, "s.css"), ".a { text-align: left; }\n");
+      const json = JSON.parse(runCli([d, "--json"]).stdout);
+      const c = json.concerns.find((x: any) => x.ruleId === "css/physical-text-align");
+      expect(c.suggestion.safe).toBe(true);
+      expect(c.suggestion.after).toContain("text-align: start;");
+    } finally {
+      await rm(d, { recursive: true });
+    }
+  });
+
   test("--format sarif emits a 2.1.0 log with results", () => {
     const { stdout, exitCode } = runCli([dir, "--format", "sarif"]);
     expect(exitCode).toBe(0);

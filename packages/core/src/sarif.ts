@@ -3,6 +3,7 @@
 // defects). Severity maps critical→error, serious→warning, moderate→note.
 import type { PatternMatch, Severity } from "./patterns";
 import { getRuleById } from "./patterns";
+import type { SuggestedFix } from "./fixes";
 
 const SARIF_LEVEL: Record<Severity, "error" | "warning" | "note"> = {
   critical: "error",
@@ -15,6 +16,8 @@ export interface SarifOptions {
   toolVersion: string;
   /** HIG snapshot date the ruleset was authored against. */
   snapshotDate?: string;
+  /** Optional resolver returning a suggested fix for a match (safe or unsafe). */
+  getFix?: (match: PatternMatch) => SuggestedFix | null;
 }
 
 export function toSarif(matches: PatternMatch[], options: SarifOptions): object {
@@ -47,6 +50,8 @@ export function toSarif(matches: PatternMatch[], options: SarifOptions): object 
   const results = concerns.map(match => {
     const meta = getRuleById(match.ruleId);
     const fix = meta?.fix ? ` Fix: ${meta.fix}` : "";
+    const uri = match.file.replace(/\\/g, "/");
+    const suggested = options.getFix?.(match) ?? null;
     return {
       ruleId: match.ruleId,
       ruleIndex: ruleIndex.get(match.ruleId),
@@ -55,7 +60,7 @@ export function toSarif(matches: PatternMatch[], options: SarifOptions): object 
       locations: [
         {
           physicalLocation: {
-            artifactLocation: { uri: match.file.replace(/\\/g, "/"), uriBaseId: "SRCROOT" },
+            artifactLocation: { uri, uriBaseId: "SRCROOT" },
             region: { startLine: match.line },
           },
         },
@@ -65,6 +70,26 @@ export function toSarif(matches: PatternMatch[], options: SarifOptions): object 
         // code motion doesn't produce "new" alerts.
         higDoctorKey: `${match.ruleId} ${match.file} ${match.lineContent.replace(/\s+/g, " ").trim()}`,
       },
+      ...(suggested
+        ? {
+            fixes: [
+              {
+                description: { text: `${suggested.description}${suggested.safe ? "" : " (review before applying)"}` },
+                artifactChanges: [
+                  {
+                    artifactLocation: { uri, uriBaseId: "SRCROOT" },
+                    replacements: [
+                      {
+                        deletedRegion: { startLine: match.line, endLine: match.line },
+                        insertedContent: { text: suggested.after },
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          }
+        : {}),
     };
   });
 
