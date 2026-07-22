@@ -6,6 +6,26 @@ are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-07-21
+
+### Added
+
+- `hig_search` — BM25 full-text search across every HIG reference topic, so
+  agents find guidance by natural language instead of the skill taxonomy.
+- `hig_audit_file` — audit a single file (the fast loop after writing code),
+  returning per-finding rule ID, severity, fix guidance, HIG citation, and a
+  machine-readable suggested edit.
+- `hig_explain_finding` — full rule metadata plus an excerpt of the cited HIG
+  reference, keyed by rule ID with near-match suggestions.
+- Streamable HTTP transport via `--http [port]` alongside stdio.
+- Structured (`structuredContent`) output on every tool.
+
+### Changed
+
+- The published package now bundles the skills corpus (`dist/skills`), so
+  `npx hig-mcp` works with no clone; `HIG_SKILLS_DIR` becomes an optional override.
+- Now built on the extracted `@hig-doctor/core` engine.
+
 ## [0.1.0] - 2026-05-28
 
 Initial public release on npm.

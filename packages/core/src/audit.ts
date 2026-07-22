@@ -6,6 +6,7 @@ import { categorizeMatches, type CategorySummary } from "./categorizer";
 import { generateAuditMarkdown, loadSkillContent } from "./audit-generator";
 import { applyConfig, loadConfig } from "./config";
 import { applyBaseline, loadBaseline } from "./baseline";
+import { ScanCache, CACHE_FILENAME } from "./cache";
 import { resolve, join } from "node:path";
 import { access } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -25,6 +26,8 @@ export interface AuditOptions {
   baselinePath?: string;
   /** Skip baseline discovery entirely. */
   noBaseline?: boolean;
+  /** Enable the content-hash cache under the audited directory (local scans). */
+  cache?: boolean;
 }
 
 export interface AuditResult {
@@ -42,6 +45,8 @@ export interface AuditResult {
   baselined: number;
   /** Baseline occurrences that no longer match anything — time to re-snapshot. */
   baselineStale: number;
+  /** Cache hit/miss counts when the cache is enabled, else null. */
+  cacheStats: { hits: number; misses: number } | null;
 }
 
 export async function audit(directory: string, skillsDir?: string, options: AuditOptions = {}): Promise<AuditResult> {
@@ -57,13 +62,23 @@ export async function audit(directory: string, skillsDir?: string, options: Audi
   const scanResult = await scanProject(resolvedDir, { exclude });
 
   // 3. Detect patterns in all source files (code + style + markup), then apply
-  // rule settings from the config (off / severity remap / per-path overrides)
+  // rule settings from the config (off / severity remap / per-path overrides).
+  // The optional content-hash cache skips re-analysis of unchanged files.
   const detected: PatternMatch[] = [];
   const allFiles = [...scanResult.codeFiles, ...scanResult.styleFiles, ...scanResult.markupFiles];
+  const cachePath = join(resolvedDir, CACHE_FILENAME);
+  const cache = options.cache ? await ScanCache.load(cachePath) : null;
+  const touched = new Set<string>();
   for (const file of allFiles) {
-    const matches = analyzeFile(file.content, file.relativePath);
+    let matches = cache?.get(file.relativePath, file.content) ?? null;
+    if (matches === null) {
+      matches = analyzeFile(file.content, file.relativePath);
+      cache?.set(file.relativePath, file.content, matches);
+    }
+    if (cache) touched.add(cache.keyOf(file.relativePath, file.content));
     detected.push(...matches);
   }
+  if (cache) await cache.save(cachePath, touched);
   const configured = applyConfig(detected, loaded.config);
 
   // 4. Apply baseline: previously-snapshotted concerns are absorbed so only
@@ -130,5 +145,6 @@ export async function audit(directory: string, skillsDir?: string, options: Audi
     baselinePath,
     baselined,
     baselineStale,
+    cacheStats: cache ? cache.stats : null,
   };
 }

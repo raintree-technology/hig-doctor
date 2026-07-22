@@ -59,6 +59,7 @@ export {
   type Baseline,
   type BaselineApplication,
 } from "./baseline";
+export { ScanCache, CACHE_FILENAME } from "./cache";
 export {
   toSarif,
   type SarifOptions,

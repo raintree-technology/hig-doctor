@@ -155,6 +155,7 @@ ${c.bold}Options:${c.reset}
   --baseline <path>     Use an explicit baseline file
                         ${c.dim}(default: ${BASELINE_FILENAME} discovered in the audited directory)${c.reset}
   --no-baseline         Ignore any baseline file
+  --cache               Cache per-file results in ${".hig-cache.json"} ${c.dim}(re-scan only changed files)${c.reset}
   --help, -h            Show this help
 
 ${c.bold}Config:${c.reset}
@@ -214,6 +215,7 @@ ${c.bold}Examples:${c.reset}
     baselinePath,
     // A baseline must never absorb the findings being snapshotted into it.
     noBaseline: flags.has("--no-baseline") || writeBaselineMode,
+    cache: flags.has("--cache"),
   });
   const { categories, scanResult, allMatches, markdown } = result;
 
