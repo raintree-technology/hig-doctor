@@ -254,6 +254,13 @@ Skills content is a frozen snapshot dated 2025-02-02. The `annual-hig-rescan.yml
 
 Each reference file carries an attribution block and canonical source URL in its frontmatter. Apple-hosted screenshots have been stripped to reduce IP transfer; retain the source link and open Apple's page when visual context is needed.
 
+## Website deployment
+
+Vercel Git integration deploys `website` from `main`. A push is the routine
+production deployment; do not follow it with a CLI or agent-triggered deployment
+for the same SHA. Use a direct CLI deployment only after confirming that Git
+integration failed and no deployment for that SHA is `BUILDING` or `READY`.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add skills, update reference content after a re-scan, or propose new audit rules.
