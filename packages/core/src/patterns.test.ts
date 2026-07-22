@@ -757,6 +757,40 @@ describe("regression — Swift @State matcher & severity downgrades", () => {
       .some(m => m.pattern === "non-private @State")).toBe(false);
   });
 
+  // ════════════════════════════════════════════════════════════════
+  // INLINE SUPPRESSIONS
+  // ════════════════════════════════════════════════════════════════
+  test("hig-disable-next-line suppresses a specific rule on the next line only", () => {
+    const code = `// hig-disable-next-line swift/hardcoded-color -- brand splash\n.foregroundColor(.red)\n.foregroundColor(.blue)`;
+    const matches = detectPatterns(code, "V.swift");
+    const colors = matches.filter(m => m.ruleId === "swift/hardcoded-color");
+    expect(colors.length).toBe(1);
+    expect(colors[0].line).toBe(3);
+  });
+
+  test("hig-disable-next-line with no IDs suppresses everything on the next line", () => {
+    const code = `// hig-disable-next-line\n.foregroundColor(.red)`;
+    expect(detectPatterns(code, "V.swift").filter(m => m.type === "concern")).toEqual([]);
+  });
+
+  test("hig-disable-next-line leaves other rules on the line alone", () => {
+    const code = `// hig-disable-next-line swift/navigation-view-deprecated\n.foregroundColor(.red)`;
+    const matches = detectPatterns(code, "V.swift");
+    expect(matches.some(m => m.ruleId === "swift/hardcoded-color")).toBe(true);
+  });
+
+  test("hig-disable-file suppresses matching rules across the whole file", () => {
+    const code = `// hig-disable-file swift/*\n.foregroundColor(.red)\nNavigationView {`;
+    const matches = detectPatterns(code, "V.swift");
+    expect(matches).toEqual([]);
+  });
+
+  test("suppression markers work in HTML comments", () => {
+    const code = `<!-- hig-disable-next-line web/missing-alt -->\n<img src="x.png">`;
+    const matches = detectPatterns(code, "index.html");
+    expect(matches.some(m => m.ruleId === "web/missing-alt")).toBe(false);
+  });
+
   // The three heuristics that fire on common, often-fine code stay concerns but
   // at moderate severity, so they don't trip a `--fail-on serious` gate.
   test("Image / onTapGesture / hover concerns are moderate, not serious", () => {

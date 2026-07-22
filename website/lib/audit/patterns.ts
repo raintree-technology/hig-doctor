@@ -874,9 +874,65 @@ function stripComments(line: string, state: CommentState, lineComments: boolean)
   return out;
 }
 
+// Inline suppressions. They live inside comments in any language, so they're
+// parsed from RAW lines (the comment stripper would otherwise delete them):
+//   // hig-disable-next-line swift/hardcoded-color -- brand splash screen
+//   <!-- hig-disable-next-line web/missing-alt -->
+//   // hig-disable-file css/important
+// With no rule IDs, everything is suppressed. IDs may be exact or prefix globs
+// ("swift/*"). Text after "--" is a human reason and is ignored.
+interface Suppression {
+  kind: "next-line" | "file";
+  ids: string[] | "all";
+}
+
+function parseSuppression(line: string): Suppression | null {
+  const m = line.match(/hig-disable-(next-line|file)\b(.*)$/);
+  if (!m) return null;
+  const ids: string[] = [];
+  for (const token of (m[2] ?? "").trim().split(/\s+/)) {
+    if (token === "" || token === "--") break;
+    if (!/^[a-z0-9/*-]+$/.test(token) || !token.includes("/")) break;
+    ids.push(token);
+  }
+  return { kind: m[1] as Suppression["kind"], ids: ids.length > 0 ? ids : "all" };
+}
+
+function suppressionCovers(ids: string[] | "all", ruleId: string): boolean {
+  if (ids === "all") return true;
+  return ids.some(id =>
+    id.endsWith("*") ? ruleId.startsWith(id.slice(0, -1)) : ruleId === id,
+  );
+}
+
 export function detectPatterns(code: string, file: string): PatternMatch[] {
   const matches: PatternMatch[] = [];
   const rawLines = code.split("\n");
+
+  // Collect suppressions before any stripping. next-line targets are 1-based.
+  let fileSuppression: string[] | "all" | null = null;
+  const lineSuppressions = new Map<number, string[] | "all">();
+  for (let i = 0; i < rawLines.length; i++) {
+    if (!rawLines[i].includes("hig-disable-")) continue;
+    const sup = parseSuppression(rawLines[i]);
+    if (!sup) continue;
+    if (sup.kind === "file") {
+      fileSuppression = fileSuppression === "all" || sup.ids === "all"
+        ? "all"
+        : [...(fileSuppression ?? []), ...sup.ids];
+    } else {
+      const existing = lineSuppressions.get(i + 2);
+      lineSuppressions.set(
+        i + 2,
+        existing === "all" || sup.ids === "all" ? "all" : [...(existing ?? []), ...sup.ids],
+      );
+    }
+  }
+  const isSuppressed = (ruleId: string, line: number): boolean => {
+    if (fileSuppression && suppressionCovers(fileSuppression, ruleId)) return true;
+    const forLine = lineSuppressions.get(line);
+    return forLine !== undefined && suppressionCovers(forLine, ruleId);
+  };
   const isStyleFile = /\.(css|scss|sass|less)$/.test(file);
   // `//` is a line comment in code and in SCSS/Sass/Less, but NOT in plain CSS,
   // HTML, or XML — where it legitimately appears in protocol-relative URLs like
@@ -936,6 +992,7 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
           const inSkippedBlock = blockContext.some((ctx) => skipInBlock.test(ctx));
           if (inSkippedBlock) continue;
         }
+        if (isSuppressed(rule.id, i + 1)) continue;
         matches.push({
           ruleId: rule.id,
           engine: rule.engine,
@@ -982,6 +1039,11 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
       let m: RegExpExecArray | null;
       while ((m = re.exec(stripped)) !== null) {
         const lineNo = lineNumberAt(m.index);
+        if (isSuppressed(rule.id, lineNo)) {
+          if (rule.requireAbsent) break;
+          if (m.index === re.lastIndex) re.lastIndex++;
+          continue;
+        }
         matches.push({
           ruleId: rule.id,
           engine: rule.engine,

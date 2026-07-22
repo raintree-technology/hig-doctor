@@ -21,10 +21,21 @@ export {
 } from "./patterns";
 export {
   scanProject,
+  globToRegExp,
   type Framework,
   type ScanResult,
   type ScannedFile,
 } from "./scanner";
+export {
+  loadConfig,
+  parseConfig,
+  applyConfig,
+  CONFIG_FILENAME,
+  type HigDoctorConfig,
+  type LoadedConfig,
+  type RuleSetting,
+  type ConfigOverride,
+} from "./config";
 export {
   categorizeMatches,
   type CategorySummary,

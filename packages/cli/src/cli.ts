@@ -104,7 +104,7 @@ async function main() {
   const flags = new Set(args.filter(a => a.startsWith("--")));
   // Flags that consume the following token as their value, so it isn't
   // mistaken for a positional argument (directory / skills-dir).
-  const valueFlags = new Set(["--fail-on", "--exclude"]);
+  const valueFlags = new Set(["--fail-on", "--exclude", "--config"]);
   const consumed = new Set<number>();
   for (let i = 0; i < args.length; i++) {
     if (valueFlags.has(args[i])) consumed.add(i + 1);
@@ -133,7 +133,16 @@ ${c.bold}Options:${c.reset}
                         ${c.dim}(critical | serious | moderate)${c.reset}
   --exclude <glob>      Skip files matching a path glob ${c.dim}(repeatable, comma-ok)${c.reset}
                         ${c.dim}Also honors a .higauditignore file in the target dir${c.reset}
+  --config <path>       Use an explicit hig-doctor.config.json
+                        ${c.dim}(default: discovered in the audited directory)${c.reset}
+  --no-config           Skip config discovery
   --help, -h            Show this help
+
+${c.bold}Config:${c.reset}
+  hig-doctor.config.json in the audited directory can disable rules, remap
+  severities, ignore globs, and add per-path overrides. Inline comments
+  ${c.dim}hig-disable-next-line <rule-id> -- reason${c.reset} and ${c.dim}hig-disable-file${c.reset} suppress
+  findings at source level. Rule IDs: see docs/rules.md.
 
 ${c.bold}Exit codes:${c.reset}
   ${c.dim}0${c.reset} clean (or no gate)   ${c.dim}1${c.reset} --fail-on gate tripped   ${c.dim}2${c.reset} usage error   ${c.dim}3${c.reset} internal error
@@ -157,15 +166,24 @@ ${c.bold}Examples:${c.reset}
 
   const failOn = parseFailOn(flags, args);
   const exclude = parseExclude(args);
+  let configPath: string | undefined;
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--config" && i + 1 < args.length) configPath = args[i + 1];
+    const m = args[i].match(/^--config=(.+)$/);
+    if (m) configPath = m[1];
+  }
 
   const s = spinner();
   const appName = basename(resolve(directory));
   s.update(`Scanning ${c.bold}${appName}${c.reset}...`);
 
-  const result = await audit(directory, skillsDir, { exclude });
+  const result = await audit(directory, skillsDir, { exclude, configPath, noConfig: flags.has("--no-config") });
   const { categories, scanResult, allMatches, markdown } = result;
 
   s.done(`Scanned ${c.bold}${scanResult.codeFiles.length}${c.reset} code + ${c.bold}${scanResult.styleFiles.length}${c.reset} style files`);
+  for (const warning of result.configWarnings) {
+    process.stderr.write(`${c.yellow}Warning:${c.reset} ${warning}\n`);
+  }
 
   // Aggregate totals (used by every mode below)
   const totalConcerns = categories.reduce((s, cat) => s + cat.concerns, 0);
@@ -197,8 +215,9 @@ ${c.bold}Examples:${c.reset}
     const detectionsPerFile = totalFiles > 0 ? totalDetections / totalFiles : 0;
     const lowDensity = detectionsPerFile < 4 && totalDetections < 500;
     process.stdout.write(JSON.stringify({
-      schemaVersion: 1,
+      schemaVersion: 2,
       lowDensity,
+      config: { path: result.configPath, warnings: result.configWarnings },
       frameworks: scanResult.frameworks,
       files: { code: scanResult.codeFiles.length, style: scanResult.styleFiles.length, config: scanResult.configFiles.length },
       severities: { critical: totalCritical, serious: totalSerious, moderate: totalModerate },
