@@ -1,4 +1,20 @@
-import { describe, expect, test } from "bun:test";
+import { afterAll, beforeAll, describe, expect, test } from "bun:test";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+
+let fixtureFile: string;
+let fixtureDir: string;
+
+beforeAll(async () => {
+  fixtureDir = await mkdtemp(join(tmpdir(), "hig-mcp-fix-"));
+  fixtureFile = join(fixtureDir, "swatch.swift");
+  await writeFile(fixtureFile, ".foregroundColor(.red)\n");
+});
+
+afterAll(async () => {
+  await rm(fixtureDir, { recursive: true, force: true });
+});
 
 type JsonRpcMessage = {
   id?: number;
@@ -6,9 +22,14 @@ type JsonRpcMessage = {
   result?: {
     tools?: Array<{ name: string }>;
     content?: Array<{ type: string; text: string }>;
+    structuredContent?: Record<string, unknown>;
     isError?: boolean;
   };
 };
+
+function callTool(id: number, name: string, args: Record<string, unknown>) {
+  return { jsonrpc: "2.0", id, method: "tools/call", params: { name, arguments: args } };
+}
 
 const initialize = {
   jsonrpc: "2.0",
@@ -59,7 +80,84 @@ describe("hig-mcp stdio server", () => {
 
     const response = messages.find((message) => message.id === 2);
     const toolNames = response?.result?.tools?.map((tool) => tool.name);
-    expect(toolNames).toEqual(["hig_list_skills", "hig_lookup", "hig_audit"]);
+    expect(toolNames).toEqual([
+      "hig_list_skills",
+      "hig_lookup",
+      "hig_search",
+      "hig_audit",
+      "hig_audit_file",
+      "hig_explain_finding",
+    ]);
+  });
+
+  test("hig_search ranks topics for a natural-language query", async () => {
+    const messages = await runMcp([
+      initialize,
+      initialized,
+      callTool(2, "hig_search", { query: "minimum touch target size for buttons", limit: 5 }),
+    ]);
+    const response = messages.find((message) => message.id === 2);
+    expect(response?.result?.isError).toBeFalsy();
+    const structured = response?.result?.structuredContent as { results?: Array<{ skill: string; score: number }> };
+    expect(Array.isArray(structured?.results)).toBe(true);
+    expect(structured!.results!.length).toBeGreaterThan(0);
+    expect(structured!.results![0].score).toBeGreaterThan(0);
+  });
+
+  test("hig_audit_file returns structured findings for a single file", async () => {
+    const messages = await runMcp([
+      initialize,
+      initialized,
+      callTool(2, "hig_audit_file", { file: fixtureFile }),
+    ]);
+    const response = messages.find((message) => message.id === 2);
+    expect(response?.result?.isError).toBeFalsy();
+    const structured = response?.result?.structuredContent as {
+      severities?: { moderate: number };
+      findings?: Array<{ ruleId: string; fix: string | null }>;
+    };
+    const hit = structured?.findings?.find((f) => f.ruleId === "swift/hardcoded-color");
+    expect(hit).toBeDefined();
+    expect(hit!.fix).toBeTruthy();
+  });
+
+  test("hig_audit_file rejects relative paths", async () => {
+    const messages = await runMcp([
+      initialize,
+      initialized,
+      callTool(2, "hig_audit_file", { file: "relative.swift" }),
+    ]);
+    const response = messages.find((message) => message.id === 2);
+    expect(response?.result?.isError).toBe(true);
+    expect(response?.result?.content?.[0]?.text).toContain("absolute path");
+  });
+
+  test("hig_explain_finding returns rule metadata and a reference excerpt", async () => {
+    const messages = await runMcp([
+      initialize,
+      initialized,
+      callTool(2, "hig_explain_finding", { rule_id: "swift/hardcoded-color" }),
+    ]);
+    const response = messages.find((message) => message.id === 2);
+    expect(response?.result?.isError).toBeFalsy();
+    const structured = response?.result?.structuredContent as {
+      rule?: { id: string; fix: string | null; hig: string };
+      reference?: { topic: string } | null;
+    };
+    expect(structured?.rule?.id).toBe("swift/hardcoded-color");
+    expect(structured?.rule?.fix).toBeTruthy();
+    expect(structured?.reference?.topic).toBe("color");
+  });
+
+  test("hig_explain_finding suggests near matches for an unknown rule", async () => {
+    const messages = await runMcp([
+      initialize,
+      initialized,
+      callTool(2, "hig_explain_finding", { rule_id: "swift/color" }),
+    ]);
+    const response = messages.find((message) => message.id === 2);
+    expect(response?.result?.isError).toBe(true);
+    expect(response?.result?.content?.[0]?.text).toContain("Unknown rule ID");
   });
 
   test("returns isError for invalid lookup slugs", async () => {
