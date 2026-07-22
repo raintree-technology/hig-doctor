@@ -11,6 +11,9 @@ inputs:
   fail-on:
     description: "Fail the job if any concern at/above this severity is found. One of: critical, serious, moderate, none"
     default: "none"
+  annotations:
+    description: "Emit inline PR annotations for the top concerns (true/false)"
+    default: "true"
 
 outputs:
   critical:
@@ -25,6 +28,9 @@ outputs:
   report:
     description: "Path to the generated hig-audit.md report"
     value: ${{ steps.audit.outputs.report }}
+  sarif:
+    description: "Path to the generated hig-audit.sarif file. Upload it with github/codeql-action/upload-sarif (requires security-events: write) for code-scanning alerts."
+    value: ${{ steps.audit.outputs.sarif }}
 
 runs:
   using: "composite"
@@ -39,30 +45,53 @@ runs:
       env:
         INPUT_DIRECTORY: ${{ inputs.directory }}
         INPUT_FAIL_ON: ${{ inputs.fail-on }}
+        INPUT_ANNOTATIONS: ${{ inputs.annotations }}
         AUDIT_DIR: ${{ github.action_path }}/packages/cli
       run: |
         TARGET="$GITHUB_WORKSPACE/$INPUT_DIRECTORY"
         REPORT="$GITHUB_WORKSPACE/hig-audit.md"
+        SARIF="$GITHUB_WORKSPACE/hig-audit.sarif"
 
         # Full markdown report for humans and downstream steps
         bun "$AUDIT_DIR/src/cli.ts" "$TARGET" --stdout > "$REPORT"
         echo "report=$REPORT" >> "$GITHUB_OUTPUT"
 
-        # JSON for severity extraction
+        # SARIF for code scanning (upload with codeql-action/upload-sarif)
+        bun "$AUDIT_DIR/src/cli.ts" "$TARGET" --format sarif > "$SARIF"
+        echo "sarif=$SARIF" >> "$GITHUB_OUTPUT"
+
+        # JSON for severity extraction and annotations
         JSON="$(bun "$AUDIT_DIR/src/cli.ts" "$TARGET" --json)"
-        echo "$JSON" | jq '{severities, files, frameworks}'
+        echo "$JSON" | jq '{severities, files, frameworks, baseline}'
 
         CRITICAL=$(echo "$JSON" | jq -r '.severities.critical')
         SERIOUS=$(echo "$JSON" | jq -r '.severities.serious')
         MODERATE=$(echo "$JSON" | jq -r '.severities.moderate')
+        BASELINED=$(echo "$JSON" | jq -r '.baseline.absorbed')
         echo "critical=$CRITICAL" >> "$GITHUB_OUTPUT"
         echo "serious=$SERIOUS" >> "$GITHUB_OUTPUT"
         echo "moderate=$MODERATE" >> "$GITHUB_OUTPUT"
+
+        # Inline annotations on the exact lines (GitHub caps ~10 per type per
+        # step, so surface the most severe first; SARIF carries the full set).
+        if [ "$INPUT_ANNOTATIONS" != "false" ]; then
+          echo "$JSON" | jq -r --arg dir "$INPUT_DIRECTORY" '
+            .concerns
+            | sort_by(.severity | {critical: 0, serious: 1, moderate: 2}[.])
+            | .[:10][]
+            | ((if $dir == "." then "" else $dir + "/" end) + .file) as $path
+            | (if .severity == "critical" then "error" else "warning" end) as $kind
+            | "::\($kind) file=\($path),line=\(.line),title=hig-doctor \(.ruleId)::\(.pattern)\(if .fix then " — " + .fix else "" end)"
+          '
+        fi
 
         echo "### HIG Audit" >> "$GITHUB_STEP_SUMMARY"
         echo "- Critical: $CRITICAL" >> "$GITHUB_STEP_SUMMARY"
         echo "- Serious:  $SERIOUS" >> "$GITHUB_STEP_SUMMARY"
         echo "- Moderate: $MODERATE" >> "$GITHUB_STEP_SUMMARY"
+        if [ "$BASELINED" != "0" ] && [ "$BASELINED" != "null" ]; then
+          echo "- Baseline absorbed: $BASELINED" >> "$GITHUB_STEP_SUMMARY"
+        fi
 
         case "$INPUT_FAIL_ON" in
           critical)

@@ -4,6 +4,11 @@
 // hardcode a count in prose — import RULE_COUNT instead.
 export type Severity = "critical" | "serious" | "moderate";
 
+// The Apple HIG snapshot this ruleset and the skills corpus were authored
+// against. Stamped into reports, SARIF output, and MCP responses so consumers
+// can judge staleness. Update alongside a corpus re-scan.
+export const HIG_SNAPSHOT_DATE = "2025-02-02";
+
 // Which analysis produced a rule's findings. "regex" is the zero-dependency
 // line/document scanner; "swift-structural" is the comment/string-aware Swift
 // structural analyzer; "ast-tsx" is the TypeScript-compiler-backed JSX tier.

@@ -4,6 +4,7 @@ import { detectPatterns, type PatternMatch } from "./patterns";
 import { categorizeMatches, type CategorySummary } from "./categorizer";
 import { generateAuditMarkdown, loadSkillContent } from "./audit-generator";
 import { applyConfig, loadConfig } from "./config";
+import { applyBaseline, loadBaseline } from "./baseline";
 import { resolve, join } from "node:path";
 import { access } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -19,6 +20,10 @@ export interface AuditOptions {
   configPath?: string;
   /** Skip config discovery entirely. */
   noConfig?: boolean;
+  /** Explicit path to a .hig-baseline.json (default: discovered in the audited directory). */
+  baselinePath?: string;
+  /** Skip baseline discovery entirely. */
+  noBaseline?: boolean;
 }
 
 export interface AuditResult {
@@ -30,6 +35,12 @@ export interface AuditResult {
   configPath: string | null;
   /** Non-fatal config problems (unknown rule IDs etc.). */
   configWarnings: string[];
+  /** Absolute path of the applied baseline file, or null. */
+  baselinePath: string | null;
+  /** Concerns absorbed by the baseline (hidden from results and gating). */
+  baselined: number;
+  /** Baseline occurrences that no longer match anything — time to re-snapshot. */
+  baselineStale: number;
 }
 
 export async function audit(directory: string, skillsDir?: string, options: AuditOptions = {}): Promise<AuditResult> {
@@ -52,12 +63,29 @@ export async function audit(directory: string, skillsDir?: string, options: Audi
     const matches = detectPatterns(file.content, file.relativePath);
     detected.push(...matches);
   }
-  const allMatches = applyConfig(detected, loaded.config);
+  const configured = applyConfig(detected, loaded.config);
 
-  // 4. Categorize
+  // 4. Apply baseline: previously-snapshotted concerns are absorbed so only
+  // new violations surface in results and gating
+  let allMatches = configured;
+  let baselinePath: string | null = null;
+  let baselined = 0;
+  let baselineStale = 0;
+  if (!options.noBaseline) {
+    const found = await loadBaseline(resolvedDir, options.baselinePath);
+    if (found) {
+      const applied = applyBaseline(configured, found.baseline);
+      allMatches = applied.kept;
+      baselinePath = found.path;
+      baselined = applied.baselined;
+      baselineStale = applied.stale;
+    }
+  }
+
+  // 5. Categorize
   const categories = categorizeMatches(allMatches);
 
-  // 4. Try to load skill content
+  // 6. Try to load skill content
   let resolvedSkillsDir: string | null = null;
   const skillContents = new Map<string, string>();
 
@@ -88,8 +116,18 @@ export async function audit(directory: string, skillsDir?: string, options: Audi
     }
   }
 
-  // 5. Generate markdown
+  // 7. Generate markdown
   const markdown = generateAuditMarkdown(scanResult, categories, resolvedSkillsDir, skillContents);
 
-  return { scanResult, allMatches, categories, markdown, configPath: loaded.path, configWarnings: loaded.warnings };
+  return {
+    scanResult,
+    allMatches,
+    categories,
+    markdown,
+    configPath: loaded.path,
+    configWarnings: loaded.warnings,
+    baselinePath,
+    baselined,
+    baselineStale,
+  };
 }

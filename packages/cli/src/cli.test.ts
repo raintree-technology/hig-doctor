@@ -73,6 +73,46 @@ describe("hig-doctor CLI", () => {
     }
   });
 
+  test("--write-baseline snapshots concerns; next run absorbs them and gate passes", async () => {
+    const baseline = join(dir, ".hig-baseline.json");
+    try {
+      const gateBefore = runCli([dir, "--json", "--fail-on", "moderate"]);
+      expect(gateBefore.exitCode).toBe(1);
+
+      const write = runCli([dir, "--write-baseline"]);
+      expect(write.exitCode).toBe(0);
+      expect(write.stderr).toContain(".hig-baseline.json");
+
+      const after = runCli([dir, "--json", "--fail-on", "moderate"]);
+      expect(after.exitCode).toBe(0);
+      const json = JSON.parse(after.stdout);
+      expect(json.baseline.absorbed).toBeGreaterThan(0);
+      expect(json.concerns).toEqual([]);
+
+      const noBaseline = runCli([dir, "--json", "--fail-on", "moderate", "--no-baseline"]);
+      expect(noBaseline.exitCode).toBe(1);
+    } finally {
+      await rm(baseline, { force: true });
+    }
+  });
+
+  test("--format sarif emits a 2.1.0 log with results", () => {
+    const { stdout, exitCode } = runCli([dir, "--format", "sarif"]);
+    expect(exitCode).toBe(0);
+    const sarif = JSON.parse(stdout);
+    expect(sarif.version).toBe("2.1.0");
+    expect(sarif.runs[0].tool.driver.name).toBe("hig-doctor");
+    expect(sarif.runs[0].results.length).toBeGreaterThan(0);
+  });
+
+  test("--json concerns carry ruleId, fix, and hig citation", () => {
+    const json = JSON.parse(runCli([dir, "--json"]).stdout);
+    const colorConcern = json.concerns.find((f: any) => f.ruleId === "swift/hardcoded-color");
+    expect(colorConcern).toBeDefined();
+    expect(colorConcern.fix).toContain("semantic");
+    expect(colorConcern.hig).toContain("human-interface-guidelines");
+  });
+
   test("invalid config is an internal error with exit 3", async () => {
     const cfg = join(dir, "hig-doctor.config.json");
     await writeFile(cfg, `{"rules": {"swift/hardcoded-color": "loud"}}`);
