@@ -4,7 +4,7 @@
 
 # HIG Doctor audit CLI
 
-Universal **Apple Human Interface Guidelines** compliance auditor for app projects. Scans your source against **348 HIG rules** across 12 frameworks (SwiftUI, UIKit, React, Vue, Svelte, Angular, Jetpack Compose, Android XML, React Native, Flutter, CSS, and HTML) and reports concerns by severity — **critical / serious / moderate** — plus positive patterns you already follow.
+Universal **Apple Human Interface Guidelines** compliance auditor for app projects. Scans your source against **431 HIG rules** across 15 frameworks (SwiftUI, UIKit, React, Vue, Svelte, Angular, Jetpack Compose, Android XML, React Native, Flutter, CSS, and HTML) and reports concerns by severity — **critical / serious / moderate** — plus positive patterns you already follow.
 
 Runs under Node 20+ (after install) or [Bun](https://bun.sh) (directly from source). Zero runtime dependencies.
 

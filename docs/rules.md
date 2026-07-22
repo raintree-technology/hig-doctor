@@ -2,7 +2,7 @@
 
 Generated from `packages/core/src/patterns.ts` — do not edit by hand; run `bun scripts/generate-rule-docs.ts`.
 
-348 rules. Every rule has a stable ID (`framework/label-slug`) used by inline suppressions, baselines, SARIF output, and the MCP server's `hig_explain_finding`.
+431 rules. Every rule has a stable ID (`framework/label-slug`) used by inline suppressions, baselines, SARIF output, and the MCP server's `hig_explain_finding`.
 
 Rule types: **concern** (a probable HIG violation, carries a severity), **positive** (good practice worth crediting), **pattern** (neutral component usage that routes HIG reference material into the report).
 
@@ -82,6 +82,109 @@ Engines: `regex` (zero-dependency line/document scanner), `swift-structural` (co
 | `swift/hardcoded-cgrect` | concern | moderate | regex | — | [layout](https://developer.apple.com/design/human-interface-guidelines/layout) |
 | `swift/ignores-safe-area` | concern | moderate | regex | — | [layout](https://developer.apple.com/design/human-interface-guidelines/layout) |
 | `swift/non-private-state` | concern | moderate | regex | — | [feedback](https://developer.apple.com/design/human-interface-guidelines/feedback) |
+
+## UIKit (35 rules, 9 concerns)
+
+| Rule ID | Type | Severity | Engine | Guidance | HIG |
+|---------|------|----------|--------|----------|-----|
+| `uikit/uinavigation-controller` | pattern | — | regex | — | [hig](https://developer.apple.com/design/human-interface-guidelines/) |
+| `uikit/uitab-bar-controller` | pattern | — | regex | — | [hig](https://developer.apple.com/design/human-interface-guidelines/) |
+| `uikit/uisplit-view-controller` | pattern | — | regex | — | [hig](https://developer.apple.com/design/human-interface-guidelines/) |
+| `uikit/uipage-view-controller` | pattern | — | regex | — | [hig](https://developer.apple.com/design/human-interface-guidelines/) |
+| `uikit/uicollection-view` | pattern | — | regex | — | [lists-and-tables](https://developer.apple.com/design/human-interface-guidelines/lists-and-tables) |
+| `uikit/uitable-view` | pattern | — | regex | — | [lists-and-tables](https://developer.apple.com/design/human-interface-guidelines/lists-and-tables) |
+| `uikit/uistack-view` | pattern | — | regex | — | [layout](https://developer.apple.com/design/human-interface-guidelines/layout) |
+| `uikit/uisearch-controller` | pattern | — | regex | — | [searching](https://developer.apple.com/design/human-interface-guidelines/searching) |
+| `uikit/uimenu` | pattern | — | regex | — | [menus](https://developer.apple.com/design/human-interface-guidelines/menus) |
+| `uikit/uicontext-menu-configuration` | pattern | — | regex | — | [menus](https://developer.apple.com/design/human-interface-guidelines/menus) |
+| `uikit/uialert-controller` | pattern | — | regex | — | [modality](https://developer.apple.com/design/human-interface-guidelines/modality) |
+| `uikit/uisegmented-control` | pattern | — | regex | — | [controls](https://developer.apple.com/design/human-interface-guidelines/controls) |
+| `uikit/uiswitch` | pattern | — | regex | — | [controls](https://developer.apple.com/design/human-interface-guidelines/controls) |
+| `uikit/uistepper` | pattern | — | regex | — | [controls](https://developer.apple.com/design/human-interface-guidelines/controls) |
+| `uikit/uitoolbar` | pattern | — | regex | — | [controls](https://developer.apple.com/design/human-interface-guidelines/controls) |
+| `uikit/uikit-preferred-font` | positive | — | regex | — | [typography](https://developer.apple.com/design/human-interface-guidelines/typography) |
+| `uikit/adjusts-font-for-content-size-category` | positive | — | regex | — | [typography](https://developer.apple.com/design/human-interface-guidelines/typography) |
+| `uikit/hardcoded-uifont-name` | concern | moderate | regex | Scale custom fonts with UIFontMetrics, or use preferredFont(forTextStyle:). | [typography](https://developer.apple.com/design/human-interface-guidelines/typography) |
+| `uikit/uikit-semantic-color` | positive | — | regex | — | [color](https://developer.apple.com/design/human-interface-guidelines/color) |
+| `uikit/hardcoded-uicolor-constant` | concern | moderate | regex | Use a semantic UIColor (.label, .systemBackground, .tintColor) that adapts to appearance. | [color](https://developer.apple.com/design/human-interface-guidelines/color) |
+| `uikit/uikit-accessibility-label` | positive | — | regex | — | [accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility) |
+| `uikit/uikit-is-accessibility-element` | positive | — | regex | — | [accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility) |
+| `uikit/uikit-accessibility-traits` | positive | — | regex | — | [accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility) |
+| `uikit/view-with-tag-lookup` | concern | moderate | regex | Reference views by outlet or property; tag-based lookup is fragile and breaks with view reordering. | [accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility) |
+| `uikit/uiimage-system-name` | positive | — | regex | — | [sf-symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols) |
+| `uikit/auto-layout-constraints` | positive | — | regex | — | [layout](https://developer.apple.com/design/human-interface-guidelines/layout) |
+| `uikit/safe-area-layout-guide` | positive | — | regex | — | [layout](https://developer.apple.com/design/human-interface-guidelines/layout) |
+| `uikit/uiscreen-main-bounds-for-layout` | concern | moderate | regex | Lay out against the view's bounds or safeAreaLayoutGuide; UIScreen.main ignores Split View and Slide Over. | [layout](https://developer.apple.com/design/human-interface-guidelines/layout) |
+| `uikit/uifeedback-generator` | positive | — | regex | — | [playing-haptics](https://developer.apple.com/design/human-interface-guidelines/playing-haptics) |
+| `uikit/user-interface-style` | positive | — | regex | — | [color](https://developer.apple.com/design/human-interface-guidelines/color) |
+| `uikit/uialert-view-deprecated` | concern | moderate | regex | Use UIAlertController with a .alert style. | [modality](https://developer.apple.com/design/human-interface-guidelines/modality) |
+| `uikit/uiaction-sheet-deprecated` | concern | moderate | regex | Use UIAlertController with an .actionSheet style. | [modality](https://developer.apple.com/design/human-interface-guidelines/modality) |
+| `uikit/uiweb-view-deprecated` | concern | moderate | regex | Use WKWebView. | [layout](https://developer.apple.com/design/human-interface-guidelines/layout) |
+| `uikit/uisearch-display-controller-deprecated` | concern | moderate | regex | Use UISearchController. | [searching](https://developer.apple.com/design/human-interface-guidelines/searching) |
+| `uikit/set-status-bar-style-deprecated` | concern | moderate | regex | Override preferredStatusBarStyle on the view controller instead. | [layout](https://developer.apple.com/design/human-interface-guidelines/layout) |
+
+## AppKit (25 rules, 4 concerns)
+
+| Rule ID | Type | Severity | Engine | Guidance | HIG |
+|---------|------|----------|--------|----------|-----|
+| `appkit/nswindow` | pattern | — | regex | — | [windows](https://developer.apple.com/design/human-interface-guidelines/windows) |
+| `appkit/nswindow-controller` | pattern | — | regex | — | [windows](https://developer.apple.com/design/human-interface-guidelines/windows) |
+| `appkit/nssplit-view-controller` | pattern | — | regex | — | [hig](https://developer.apple.com/design/human-interface-guidelines/) |
+| `appkit/nsoutline-view` | pattern | — | regex | — | [sidebars](https://developer.apple.com/design/human-interface-guidelines/sidebars) |
+| `appkit/nstable-view` | pattern | — | regex | — | [lists-and-tables](https://developer.apple.com/design/human-interface-guidelines/lists-and-tables) |
+| `appkit/nscollection-view` | pattern | — | regex | — | [lists-and-tables](https://developer.apple.com/design/human-interface-guidelines/lists-and-tables) |
+| `appkit/nstoolbar` | pattern | — | regex | — | [toolbars](https://developer.apple.com/design/human-interface-guidelines/toolbars) |
+| `appkit/nsmenu` | pattern | — | regex | — | [the-menu-bar](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar) |
+| `appkit/nsbutton` | pattern | — | regex | — | [controls](https://developer.apple.com/design/human-interface-guidelines/controls) |
+| `appkit/nssegmented-control` | pattern | — | regex | — | [controls](https://developer.apple.com/design/human-interface-guidelines/controls) |
+| `appkit/nsalert` | pattern | — | regex | — | [modality](https://developer.apple.com/design/human-interface-guidelines/modality) |
+| `appkit/nscombo-box` | pattern | — | regex | — | [text-fields](https://developer.apple.com/design/human-interface-guidelines/text-fields) |
+| `appkit/nspop-up-button` | pattern | — | regex | — | [text-fields](https://developer.apple.com/design/human-interface-guidelines/text-fields) |
+| `appkit/nsvisual-effect-view` | pattern | — | regex | — | [materials](https://developer.apple.com/design/human-interface-guidelines/materials) |
+| `appkit/nsvisual-effect-material` | positive | — | regex | — | [materials](https://developer.apple.com/design/human-interface-guidelines/materials) |
+| `appkit/nscolor-semantic` | positive | — | regex | — | [color](https://developer.apple.com/design/human-interface-guidelines/color) |
+| `appkit/hardcoded-nscolor-red` | concern | moderate | regex | Use a semantic NSColor (.labelColor, .controlAccentColor) or a Color Set asset with light/dark variants. | [color](https://developer.apple.com/design/human-interface-guidelines/color) |
+| `appkit/hardcoded-nscolor-constant` | concern | moderate | regex | Use a semantic NSColor (.labelColor, .windowBackgroundColor) that adapts to appearance and accent color. | [color](https://developer.apple.com/design/human-interface-guidelines/color) |
+| `appkit/nsfont-preferred-font` | positive | — | regex | — | [typography](https://developer.apple.com/design/human-interface-guidelines/typography) |
+| `appkit/hardcoded-nsfont-size` | concern | moderate | regex | Use NSFont.preferredFont(forTextStyle:) so text respects the user's size settings. | [typography](https://developer.apple.com/design/human-interface-guidelines/typography) |
+| `appkit/set-accessibility-label` | positive | — | regex | — | [accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility) |
+| `appkit/nsaccessibility-protocol` | positive | — | regex | — | [accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility) |
+| `appkit/app-kit-auto-layout` | positive | — | regex | — | [layout](https://developer.apple.com/design/human-interface-guidelines/layout) |
+| `appkit/nscursor` | positive | — | regex | — | [keyboards](https://developer.apple.com/design/human-interface-guidelines/keyboards) |
+| `appkit/nsmenu-item-set-submenu-deprecated` | concern | moderate | regex | Set the item's submenu property directly. | [the-menu-bar](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar) |
+
+## watchOS (13 rules, 0 concerns)
+
+| Rule ID | Type | Severity | Engine | Guidance | HIG |
+|---------|------|----------|--------|----------|-----|
+| `watchos/wkinterface-controller` | pattern | — | regex | — | [hig](https://developer.apple.com/design/human-interface-guidelines/) |
+| `watchos/wkhosting-controller` | pattern | — | regex | — | [hig](https://developer.apple.com/design/human-interface-guidelines/) |
+| `watchos/digital-crown-rotation` | positive | — | regex | — | [digital-crown](https://developer.apple.com/design/human-interface-guidelines/digital-crown) |
+| `watchos/wkcrown-sequencer` | pattern | — | regex | — | [digital-crown](https://developer.apple.com/design/human-interface-guidelines/digital-crown) |
+| `watchos/focusable-for-crown` | positive | — | regex | — | [digital-crown](https://developer.apple.com/design/human-interface-guidelines/digital-crown) |
+| `watchos/clkcomplication` | pattern | — | regex | — | [complications](https://developer.apple.com/design/human-interface-guidelines/complications) |
+| `watchos/widget-kit-complication` | pattern | — | regex | — | [complications](https://developer.apple.com/design/human-interface-guidelines/complications) |
+| `watchos/is-luminance-reduced` | positive | — | regex | — | [always-on](https://developer.apple.com/design/human-interface-guidelines/always-on) |
+| `watchos/privacy-sensitive` | positive | — | regex | — | [always-on](https://developer.apple.com/design/human-interface-guidelines/always-on) |
+| `watchos/hkworkout-session` | pattern | — | regex | — | [workouts](https://developer.apple.com/design/human-interface-guidelines/workouts) |
+| `watchos/wkextended-runtime-session` | positive | — | regex | — | [workouts](https://developer.apple.com/design/human-interface-guidelines/workouts) |
+| `watchos/wkinterface-device-haptic` | positive | — | regex | — | [playing-haptics](https://developer.apple.com/design/human-interface-guidelines/playing-haptics) |
+| `watchos/wkuser-notification-interface-controller` | pattern | — | regex | — | [feedback](https://developer.apple.com/design/human-interface-guidelines/feedback) |
+
+## visionOS (10 rules, 0 concerns)
+
+| Rule ID | Type | Severity | Engine | Guidance | HIG |
+|---------|------|----------|--------|----------|-----|
+| `visionos/vision-os-volumetric-window` | pattern | — | regex | — | [windows](https://developer.apple.com/design/human-interface-guidelines/windows) |
+| `visionos/immersive-space` | pattern | — | regex | — | [immersive-experiences](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences) |
+| `visionos/immersion-style-mixed` | positive | — | regex | — | [immersive-experiences](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences) |
+| `visionos/reality-view` | pattern | — | regex | — | [spatial-layout](https://developer.apple.com/design/human-interface-guidelines/spatial-layout) |
+| `visionos/ornament` | positive | — | regex | — | [ornaments](https://developer.apple.com/design/human-interface-guidelines/ornaments) |
+| `visionos/glass-background-effect` | positive | — | regex | — | [materials](https://developer.apple.com/design/human-interface-guidelines/materials) |
+| `visionos/hover-effect` | positive | — | regex | — | [spatial-layout](https://developer.apple.com/design/human-interface-guidelines/spatial-layout) |
+| `visionos/vision-os-spatial-gesture` | positive | — | regex | — | [spatial-layout](https://developer.apple.com/design/human-interface-guidelines/spatial-layout) |
+| `visionos/model3-d` | pattern | — | regex | — | [spatial-layout](https://developer.apple.com/design/human-interface-guidelines/spatial-layout) |
+| `visionos/depth-alignment` | positive | — | regex | — | [spatial-layout](https://developer.apple.com/design/human-interface-guidelines/spatial-layout) |
 
 ## Web / React / Next.js (122 rules, 24 concerns)
 

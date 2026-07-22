@@ -49,8 +49,8 @@ const output = {
     totals: audit.totals,
     categories: audit.categories,
   },
-  totalRules: 349,
-  totalFrameworks: 12,
+  totalRules: 431,
+  totalFrameworks: 15,
   topCategories,
   frameworkRuleCounts,
   scoreTimeline: [
