@@ -10,7 +10,7 @@
     "validate:score": "node packages/skill-validator/src/cli.js . --score",
     "validate:tui": "node packages/skill-validator/src/cli.js . --tui",
     "sync:audit-patterns": "cp packages/core/src/patterns.ts website/lib/audit/patterns.ts",
-    "test": "bun --cwd packages/skill-validator test && bun --cwd packages/core test && bun --cwd packages/mcp test && node --test test/workflow-security.test.mjs test/audit-patterns-sync.test.mjs test/rule-docs-sync.test.mjs",
+    "test": "bun --cwd packages/skill-validator test && bun --cwd packages/core test && bun --cwd packages/cli test && bun --cwd packages/mcp test && node --test test/workflow-security.test.mjs test/audit-patterns-sync.test.mjs test/rule-docs-sync.test.mjs",
     "docs:rules": "bun scripts/generate-rule-docs.ts",
     "test:unit": "bun run test",
     "test:e2e": "bun run validate:strict",

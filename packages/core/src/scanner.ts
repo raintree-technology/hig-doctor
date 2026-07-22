@@ -83,7 +83,7 @@ const IGNORE_FILE = ".higauditignore";
 //   **/ → zero or more leading path segments
 //   ?   → a single character except "/"
 // Patterns match the POSIX relative path from the scan root.
-function globToRegExp(glob: string): RegExp {
+export function globToRegExp(glob: string): RegExp {
   const g = glob.replace(/^\.\//, "").replace(/^\/+/, "").replace(/\/+$/, "");
   let re = "";
   for (let i = 0; i < g.length; i++) {
