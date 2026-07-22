@@ -1,0 +1,630 @@
+{
+  "generated": "2026-07-22",
+  "snapshotDate": "2025-02-02",
+  "topics": {
+    "accessibility": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+      "hash": "8c960d1340ef4301"
+    },
+    "action-button": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/action-button",
+      "hash": "572e90c7356d431a"
+    },
+    "action-sheets": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/action-sheets",
+      "hash": "67d4fd81d999d3da"
+    },
+    "activity-rings": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/activity-rings",
+      "hash": "a2c22856cf3286b8"
+    },
+    "activity-views": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/activity-views",
+      "hash": "2bcbea2a2a9ded2a"
+    },
+    "airplay": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/airplay",
+      "hash": "d377e91b7d605ead"
+    },
+    "alerts": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/alerts",
+      "hash": "4368eacf0aee0844"
+    },
+    "always-on": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/always-on",
+      "hash": "bdc24b96919698e6"
+    },
+    "app-clips": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/app-clips",
+      "hash": "fde1b9b1f2e4a4e4"
+    },
+    "app-icons": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/app-icons",
+      "hash": "6f529167757ec877"
+    },
+    "app-shortcuts": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/app-shortcuts",
+      "hash": "2b39cc860ed70f21"
+    },
+    "apple-pay": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/apple-pay",
+      "hash": "4d2e82b448e690ad"
+    },
+    "apple-pencil-and-scribble": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble",
+      "hash": "a2d7f15c8845895d"
+    },
+    "augmented-reality": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/augmented-reality",
+      "hash": "81e88dacf010213e"
+    },
+    "boxes": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/boxes",
+      "hash": "a1752f950459b0cd"
+    },
+    "branding": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/branding",
+      "hash": "f38509c92fa2c0b6"
+    },
+    "buttons": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/buttons",
+      "hash": "65090726bf25936b"
+    },
+    "camera-control": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/camera-control",
+      "hash": "7716cc40bbda672a"
+    },
+    "carekit": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/carekit",
+      "hash": "2f73e34abd887323"
+    },
+    "carplay": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/carplay",
+      "hash": "5f3a0801de56b93c"
+    },
+    "charting-data": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/charting-data",
+      "hash": "24a747c65afe2aca"
+    },
+    "charts": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/charts",
+      "hash": "ff0bbd5777f671bb"
+    },
+    "collaboration-and-sharing": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/collaboration-and-sharing",
+      "hash": "481c01aac2b9a14c"
+    },
+    "collections": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/collections",
+      "hash": "052a4f5a80a3ba7c"
+    },
+    "color": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/color",
+      "hash": "7497e44ec2914acf"
+    },
+    "color-wells": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/color-wells",
+      "hash": "42b3dc773a900e49"
+    },
+    "column-views": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/column-views",
+      "hash": "fe0d10b4c64bf243"
+    },
+    "combo-boxes": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/combo-boxes",
+      "hash": "a33988fc2f95e61c"
+    },
+    "complications": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/complications",
+      "hash": "a49b638fadda2f90"
+    },
+    "context-menus": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/context-menus",
+      "hash": "afac41ca1b029f00"
+    },
+    "controls": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/controls",
+      "hash": "c19a2c23cf98c581"
+    },
+    "dark-mode": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/dark-mode",
+      "hash": "39ce76e6568a5a79"
+    },
+    "designing-for-games": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/designing-for-games",
+      "hash": "a0725826eae53207"
+    },
+    "designing-for-ios": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/designing-for-ios",
+      "hash": "d165fe3cd2aec0fb"
+    },
+    "designing-for-ipados": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/designing-for-ipados",
+      "hash": "d0553a618b1ab3a9"
+    },
+    "designing-for-macos": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/designing-for-macos",
+      "hash": "f40de204840852cd"
+    },
+    "designing-for-tvos": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos",
+      "hash": "c5760a0d93c4c6a7"
+    },
+    "designing-for-visionos": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos",
+      "hash": "fe45bab8fa01f3d7"
+    },
+    "designing-for-watchos": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos",
+      "hash": "0fe68ebb8dc766e6"
+    },
+    "digit-entry-views": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/digit-entry-views",
+      "hash": "a97e69e0dd68f4f8"
+    },
+    "digital-crown": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/digital-crown",
+      "hash": "0bc7158aed96cae0"
+    },
+    "disclosure-controls": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/disclosure-controls",
+      "hash": "4d383fc6fb6ff461"
+    },
+    "dock-menus": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/dock-menus",
+      "hash": "7655bd03ff13795e"
+    },
+    "drag-and-drop": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/drag-and-drop",
+      "hash": "51ece5453fa08468"
+    },
+    "edit-menus": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/edit-menus",
+      "hash": "8a2108dd303600e0"
+    },
+    "entering-data": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/entering-data",
+      "hash": "0e0487140b696786"
+    },
+    "eyes": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/eyes",
+      "hash": "9f526d4cc749753c"
+    },
+    "feedback": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/feedback",
+      "hash": "720f1c6bb0c305f7"
+    },
+    "file-management": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/file-management",
+      "hash": "906cb678598700b6"
+    },
+    "focus-and-selection": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/focus-and-selection",
+      "hash": "7b09a87ac800cacb"
+    },
+    "game-center": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/game-center",
+      "hash": "6e8b3964d81b602c"
+    },
+    "game-controls": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/game-controls",
+      "hash": "66fce65abd170afa"
+    },
+    "gauges": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/gauges",
+      "hash": "b5c239fded87b382"
+    },
+    "generative-ai": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/generative-ai",
+      "hash": "496188e4ac141ac0"
+    },
+    "gestures": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/gestures",
+      "hash": "daec95f0add29174"
+    },
+    "going-full-screen": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/going-full-screen",
+      "hash": "f4db7e4828387c25"
+    },
+    "gyro-and-accelerometer": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/gyro-and-accelerometer",
+      "hash": "7b7dfc58f1cd12a8"
+    },
+    "healthkit": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/healthkit",
+      "hash": "f0587f2486446652"
+    },
+    "home-screen-quick-actions": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/home-screen-quick-actions",
+      "hash": "06ba5d8c484f6365"
+    },
+    "homekit": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/homekit",
+      "hash": "f0280ac44766edb5"
+    },
+    "icloud": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/icloud",
+      "hash": "67a1cbade7271621"
+    },
+    "icons": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/icons",
+      "hash": "99f514bb55d8d302"
+    },
+    "id-verifier": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/id-verifier",
+      "hash": "bbfc89469c826c7d"
+    },
+    "image-views": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/image-views",
+      "hash": "16f11d49f63c5621"
+    },
+    "image-wells": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/image-wells",
+      "hash": "4f2e6714fd4cdffd"
+    },
+    "images": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/images",
+      "hash": "1a4c2c731345725b"
+    },
+    "imessage-apps-and-stickers": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/imessage-apps-and-stickers",
+      "hash": "376a0499a0c3800f"
+    },
+    "immersive-experiences": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/immersive-experiences",
+      "hash": "d2ac20f358ed6732"
+    },
+    "in-app-purchase": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/in-app-purchase",
+      "hash": "48c3f1f9a5289012"
+    },
+    "inclusion": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/inclusion",
+      "hash": "67499f592490bb47"
+    },
+    "keyboards": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/keyboards",
+      "hash": "fd076d32483a82ed"
+    },
+    "labels": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/labels",
+      "hash": "5bddba5cd997371a"
+    },
+    "launching": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/launching",
+      "hash": "697df6e235d29f62"
+    },
+    "layout": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/layout",
+      "hash": "53fd75f74587d405"
+    },
+    "lists-and-tables": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+      "hash": "8b8d785454af29b8"
+    },
+    "live-activities": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/live-activities",
+      "hash": "e187ad28b5b64097"
+    },
+    "live-photos": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/live-photos",
+      "hash": "5bf83db49a143ad9"
+    },
+    "live-viewing-apps": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/live-viewing-apps",
+      "hash": "a15986db22f35af6"
+    },
+    "loading": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/loading",
+      "hash": "1a549b53d685afe1"
+    },
+    "lockups": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/lockups",
+      "hash": "714eb2d3a494d935"
+    },
+    "mac-catalyst": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/mac-catalyst",
+      "hash": "59df28b19cbdac82"
+    },
+    "machine-learning": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/machine-learning",
+      "hash": "a65bb65c8e61dccb"
+    },
+    "managing-accounts": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/managing-accounts",
+      "hash": "cc44ab0ca70e1397"
+    },
+    "managing-notifications": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/managing-notifications",
+      "hash": "1a339b28f2fc5a25"
+    },
+    "maps": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/maps",
+      "hash": "275bd88e879a9a8f"
+    },
+    "materials": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/materials",
+      "hash": "b6ba4d4fc22ae580"
+    },
+    "menus": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/menus",
+      "hash": "8164c94cfa76088f"
+    },
+    "modality": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/modality",
+      "hash": "612811966ddf48f8"
+    },
+    "motion": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/motion",
+      "hash": "b1431426be0dd7d8"
+    },
+    "multitasking": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/multitasking",
+      "hash": "52af3c4c5919b655"
+    },
+    "nearby-interactions": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/nearby-interactions",
+      "hash": "1677798674cfdc75"
+    },
+    "nfc": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/nfc",
+      "hash": "e2dadcb3b6df4521"
+    },
+    "notifications": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/notifications",
+      "hash": "2f5a02b81bea65d5"
+    },
+    "offering-help": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/offering-help",
+      "hash": "76a3d1dfcf827cf1"
+    },
+    "onboarding": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/onboarding",
+      "hash": "1956761a05b9ad76"
+    },
+    "ornaments": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/ornaments",
+      "hash": "27c7c8c622879931"
+    },
+    "outline-views": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/outline-views",
+      "hash": "692563c5c8e4fae3"
+    },
+    "page-controls": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/page-controls",
+      "hash": "da982f696c30bd48"
+    },
+    "panels": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/panels",
+      "hash": "dfe2c10cc6a30717"
+    },
+    "path-controls": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/path-controls",
+      "hash": "6b454b94b3e03114"
+    },
+    "photo-editing": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/photo-editing",
+      "hash": "011fa37f3fea67d8"
+    },
+    "pickers": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/pickers",
+      "hash": "ac42df97b0579d58"
+    },
+    "playing-audio": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/playing-audio",
+      "hash": "52194e6bab7da51a"
+    },
+    "playing-haptics": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/playing-haptics",
+      "hash": "7dfb0ec47fa98ff0"
+    },
+    "playing-video": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/playing-video",
+      "hash": "a31b7c66be852782"
+    },
+    "pointing-devices": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/pointing-devices",
+      "hash": "a2f532f14c246b29"
+    },
+    "pop-up-buttons": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons",
+      "hash": "76620e82847b3c25"
+    },
+    "popovers": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/popovers",
+      "hash": "a40d3f646534fbf0"
+    },
+    "printing": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/printing",
+      "hash": "8c956a2e630a80aa"
+    },
+    "privacy": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/privacy",
+      "hash": "866959ed6ac6aea5"
+    },
+    "progress-indicators": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/progress-indicators",
+      "hash": "09157bd513597c8e"
+    },
+    "pull-down-buttons": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons",
+      "hash": "d11d572a4429f08d"
+    },
+    "rating-indicators": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/rating-indicators",
+      "hash": "b91a03f4f1ecbc8e"
+    },
+    "ratings-and-reviews": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews",
+      "hash": "ede09b423dd17e5d"
+    },
+    "remotes": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/remotes",
+      "hash": "5e8303c5b6682ccc"
+    },
+    "researchkit": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/researchkit",
+      "hash": "cff328566665c066"
+    },
+    "right-to-left": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/right-to-left",
+      "hash": "96629ff585153209"
+    },
+    "scroll-views": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/scroll-views",
+      "hash": "95458968f25d2c85"
+    },
+    "search-fields": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/search-fields",
+      "hash": "13220620b4464a1e"
+    },
+    "searching": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/searching",
+      "hash": "16529448f065a39c"
+    },
+    "segmented-controls": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/segmented-controls",
+      "hash": "a610c24d4f4bb8d4"
+    },
+    "settings": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/settings",
+      "hash": "365349903e60c13f"
+    },
+    "sf-symbols": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/sf-symbols",
+      "hash": "06b53d8edbd4c181"
+    },
+    "shareplay": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/shareplay",
+      "hash": "2387571178ca6cde"
+    },
+    "shazamkit": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/shazamkit",
+      "hash": "e02c12178d4f941f"
+    },
+    "sheets": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/sheets",
+      "hash": "41b37ed0e6a66750"
+    },
+    "sidebars": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/sidebars",
+      "hash": "72dc58ed403f935f"
+    },
+    "sign-in-with-apple": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple",
+      "hash": "bfe0adba59d891ca"
+    },
+    "siri": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/siri",
+      "hash": "a08ad985471b86c8"
+    },
+    "sliders": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/sliders",
+      "hash": "4860d0d3fcb49c8b"
+    },
+    "spatial-interactions": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/spatial-interactions",
+      "hash": "1677798674cfdc75"
+    },
+    "spatial-layout": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/spatial-layout",
+      "hash": "0a01d9fa024e41dc"
+    },
+    "split-views": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/split-views",
+      "hash": "d838336899cece53"
+    },
+    "status-bars": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/status-bars",
+      "hash": "b6e445d8b2c240e2"
+    },
+    "steppers": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/steppers",
+      "hash": "bff4aef110384d91"
+    },
+    "tab-bars": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/tab-bars",
+      "hash": "ba906d9575128996"
+    },
+    "tab-views": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/tab-views",
+      "hash": "234084253829d8a6"
+    },
+    "tap-to-pay-on-iphone": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/tap-to-pay-on-iphone",
+      "hash": "24937f207b5b76d3"
+    },
+    "text-fields": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/text-fields",
+      "hash": "8271076650c60c1b"
+    },
+    "text-views": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/text-views",
+      "hash": "dbf8bf8465368c72"
+    },
+    "the-menu-bar": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/the-menu-bar",
+      "hash": "b827a653bd03be2c"
+    },
+    "toggles": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/toggles",
+      "hash": "4b66b6819854beda"
+    },
+    "token-fields": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/token-fields",
+      "hash": "43d8df03e075175b"
+    },
+    "toolbars": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/toolbars",
+      "hash": "e71429fd50e577f1"
+    },
+    "top-shelf": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/top-shelf",
+      "hash": "9d29ae9d3aaf0add"
+    },
+    "typography": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/typography",
+      "hash": "66c5ef83a9683eda"
+    },
+    "undo-and-redo": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/undo-and-redo",
+      "hash": "026fa7c4b5829f0f"
+    },
+    "virtual-keyboards": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/virtual-keyboards",
+      "hash": "543d8e0ad408c4ff"
+    },
+    "voiceover": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/voiceover",
+      "hash": "d4f0d4e87de6b480"
+    },
+    "wallet": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/wallet",
+      "hash": "ce657bfbbd6e0fb8"
+    },
+    "watch-faces": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/watch-faces",
+      "hash": "74a2055a47f7a0fa"
+    },
+    "web-views": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/web-views",
+      "hash": "2246ea239ec01a64"
+    },
+    "widgets": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/widgets",
+      "hash": "edb1b76152982236"
+    },
+    "windows": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/windows",
+      "hash": "d90d2765ff28a12b"
+    },
+    "workouts": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/workouts",
+      "hash": "749f1c1447d2cdfb"
+    },
+    "writing": {
+      "source": "https://developer.apple.com/design/human-interface-guidelines/writing",
+      "hash": "ddaf9f13755fde0a"
+    }
+  }
+}

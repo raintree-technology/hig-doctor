@@ -251,7 +251,7 @@ hig-doctor/
 
 ## Content maintenance
 
-Skills content is a frozen snapshot dated 2025-02-02. The `annual-hig-rescan.yml` workflow opens a tracking issue each June after WWDC to prompt diffing Apple's live HIG against this snapshot, updating changed topics, and tagging a new release. The re-scan is a human-in-the-loop process — Apple's HIG pages are JS-rendered and not safely automatable.
+Skills content is a frozen snapshot dated 2025-02-02. Drift **detection** is automated: the `hig-drift.yml` workflow runs nightly, fetches each reference topic as Apple's DocC JSON (`developer.apple.com/tutorials/data/...`), hashes its text, and diffs against [`hig-snapshot.json`](hig-snapshot.json), opening a per-topic issue when Apple's live content changes. The content **rewrite** stays human-in-the-loop: refresh the flagged `skills/*/references/*.md`, then re-seed the manifest with `bun scripts/hig-drift.ts --seed`. The `annual-hig-rescan.yml` workflow still opens a broad tracking issue each year after WWDC.
 
 Each reference file carries an attribution block and canonical source URL in its frontmatter. Apple-hosted screenshots have been stripped to reduce IP transfer; retain the source link and open Apple's page when visual context is needed.
 
