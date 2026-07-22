@@ -38,8 +38,11 @@
     "accessibility",
     "lint-engine"
   ],
+  "optionalDependencies": {
+    "typescript": "^5.9.3"
+  },
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js && tsc -p tsconfig.build.json",
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --external:typescript --outfile=dist/index.js && tsc -p tsconfig.build.json",
     "test": "bun test",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "bun run build"

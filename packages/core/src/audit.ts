@@ -1,6 +1,7 @@
 // audit.ts — Full pipeline: scan → detect → categorize → generate markdown
 import { scanProject, type ScanResult } from "./scanner";
-import { detectPatterns, type PatternMatch } from "./patterns";
+import { type PatternMatch } from "./patterns";
+import { analyzeFile } from "./analyze";
 import { categorizeMatches, type CategorySummary } from "./categorizer";
 import { generateAuditMarkdown, loadSkillContent } from "./audit-generator";
 import { applyConfig, loadConfig } from "./config";
@@ -60,7 +61,7 @@ export async function audit(directory: string, skillsDir?: string, options: Audi
   const detected: PatternMatch[] = [];
   const allFiles = [...scanResult.codeFiles, ...scanResult.styleFiles, ...scanResult.markupFiles];
   for (const file of allFiles) {
-    const matches = detectPatterns(file.content, file.relativePath);
+    const matches = analyzeFile(file.content, file.relativePath);
     detected.push(...matches);
   }
   const configured = applyConfig(detected, loaded.config);

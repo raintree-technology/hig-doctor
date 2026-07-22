@@ -6,6 +6,9 @@ export {
   type AuditOptions,
   type AuditResult,
 } from "./audit";
+export { analyzeFile } from "./analyze";
+export { astTsxAvailable, AST_TSX_RULES } from "./engines/ast-tsx";
+export { refineSwift } from "./engines/swift-structural";
 export {
   detectPatterns,
   severityFor,

@@ -28,11 +28,14 @@
   },
   "scripts": {
     "start": "bun src/index.ts",
-    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --alias:@hig-doctor/core=../core/src/index.ts --banner:js=\"#!/usr/bin/env node\" && bun run bundle:skills",
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --alias:@hig-doctor/core=../core/src/index.ts --external:typescript --banner:js=\"#!/usr/bin/env node\" && bun run bundle:skills",
     "bundle:skills": "rm -rf dist/skills && cp -R ../../skills dist/skills",
     "prepublishOnly": "bun run build",
     "test": "bun test",
     "typecheck": "tsc --noEmit"
+  },
+  "optionalDependencies": {
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
