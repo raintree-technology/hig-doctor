@@ -274,6 +274,7 @@ async function scanProject(directory, options = {}) {
 }
 
 // src/patterns.ts
+var HIG_SNAPSHOT_DATE = "2025-02-02";
 var CRITICAL_CONCERNS = /* @__PURE__ */ new Set([
   "missing alt",
   "Image without alt",
@@ -683,7 +684,10 @@ var kotlinRules = [
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "contentDescription", regex: /contentDescription\s*=/, fileFilter: KOTLIN },
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "semantics modifier", regex: /Modifier\.semantics/, fileFilter: KOTLIN },
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "clearAndSetSemantics", regex: /clearAndSetSemantics/, fileFilter: KOTLIN },
-  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "clickable without Role", regex: /Modifier\.clickable\s*\((?![^)]*role\s*=)/, fileFilter: KOTLIN },
+  // Catches both the trailing-lambda form `Modifier.clickable { }` (which has no
+  // way to pass a role and is therefore always a concern) and the parenthesized
+  // `Modifier.clickable(...)` form when no role argument is present.
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "clickable without Role", regex: /Modifier\.clickable\s*(\{|\((?![^)]*role\s*=))/, fileFilter: KOTLIN },
   { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "testTag", regex: /testTag\s*=/, fileFilter: KOTLIN },
   // Color
   { category: "foundations", subcategory: "color", type: "positive", pattern: "MaterialTheme colorScheme", regex: /MaterialTheme\.colorScheme/, fileFilter: KOTLIN },
@@ -788,18 +792,306 @@ var flutterRules = [
   // i18n
   { category: "patterns", subcategory: "i18n", type: "positive", pattern: "Flutter l10n", regex: /AppLocalizations|flutter_localizations|intl/, fileFilter: DART }
 ];
-var allRules = [
-  ...swiftRules,
-  ...webCodeRules,
-  ...cssRules,
-  ...vueRules,
-  ...svelteRules,
-  ...angularRules,
-  ...kotlinRules,
-  ...androidXmlRules,
-  ...reactNativeRules,
-  ...flutterRules
+var uikitRules = [
+  // Navigation & structure
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "UINavigationController", regex: /\bUINavigationController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "UITabBarController", regex: /\bUITabBarController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "UISplitViewController", regex: /\bUISplitViewController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "UIPageViewController", regex: /\bUIPageViewController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "lists", type: "pattern", pattern: "UICollectionView", regex: /\bUICollectionView\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "lists", type: "pattern", pattern: "UITableView", regex: /\bUITableView\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "layout", type: "pattern", pattern: "UIStackView", regex: /\bUIStackView\b/, fileFilter: SWIFT },
+  { category: "components-search", subcategory: "search", type: "pattern", pattern: "UISearchController", regex: /\bUISearchController\b/, fileFilter: SWIFT },
+  { category: "components-menus", subcategory: "menus", type: "pattern", pattern: "UIMenu", regex: /\bUIMenu\b/, fileFilter: SWIFT },
+  { category: "components-menus", subcategory: "menus", type: "pattern", pattern: "UIContextMenuConfiguration", regex: /\bUIContextMenuConfiguration\b/, fileFilter: SWIFT },
+  { category: "components-status", subcategory: "modals", type: "pattern", pattern: "UIAlertController", regex: /\bUIAlertController\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "UISegmentedControl", regex: /\bUISegmentedControl\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "UISwitch", regex: /\bUISwitch\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "UIStepper", regex: /\bUIStepper\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "UIToolbar", regex: /\bUIToolbar\b/, fileFilter: SWIFT },
+  // Typography — Dynamic Type
+  { category: "foundations", subcategory: "typography", type: "positive", pattern: "UIKit preferredFont", regex: /preferredFont\(forTextStyle:/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "typography", type: "positive", pattern: "adjustsFontForContentSizeCategory", regex: /adjustsFontForContentSizeCategory\s*=\s*true/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "typography", type: "concern", pattern: "hardcoded UIFont(name:)", regex: /UIFont\(name:[^)]*,\s*size:\s*\d/, fileFilter: SWIFT },
+  // Color — semantic vs hardcoded
+  { category: "foundations", subcategory: "color", type: "positive", pattern: "UIKit semantic color", regex: /UIColor\.(label|secondaryLabel|tertiaryLabel|systemBackground|secondarySystemBackground|tintColor|systemFill|separator|link)\b/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "color", type: "concern", pattern: "hardcoded UIColor constant", regex: /UIColor\.(white|black|gray|lightGray|darkGray|red|blue|green|yellow|orange|purple|brown|cyan|magenta)\b/, fileFilter: SWIFT },
+  // Accessibility
+  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "UIKit accessibilityLabel", regex: /\.accessibilityLabel\s*=/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "UIKit isAccessibilityElement", regex: /\.isAccessibilityElement\s*=\s*true/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "UIKit accessibilityTraits", regex: /\.accessibilityTraits\s*=/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "viewWithTag lookup", regex: /\.viewWithTag\(/, fileFilter: SWIFT },
+  // SF Symbols
+  { category: "foundations", subcategory: "sf-symbols", type: "positive", pattern: "UIImage(systemName:)", regex: /UIImage\(systemName:/, fileFilter: SWIFT },
+  // Layout — Auto Layout & safe area
+  { category: "components-layout", subcategory: "layout", type: "positive", pattern: "Auto Layout constraints", regex: /NSLayoutConstraint|\.constraint\(equalTo:/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "layout", type: "positive", pattern: "safeAreaLayoutGuide", regex: /safeAreaLayoutGuide/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "layout", type: "concern", pattern: "UIScreen.main.bounds for layout", regex: /UIScreen\.main\.bounds/, fileFilter: SWIFT },
+  // Haptics
+  { category: "patterns", subcategory: "haptics", type: "positive", pattern: "UIFeedbackGenerator", regex: /UI(Impact|Notification|Selection)FeedbackGenerator/, fileFilter: SWIFT },
+  // Dark mode
+  { category: "foundations", subcategory: "color", type: "positive", pattern: "userInterfaceStyle", regex: /traitCollection\.userInterfaceStyle|overrideUserInterfaceStyle/, fileFilter: SWIFT },
+  // Deprecated APIs
+  { category: "components-status", subcategory: "modals", type: "concern", pattern: "UIAlertView (deprecated)", regex: /\bUIAlertView\b/, fileFilter: SWIFT },
+  { category: "components-status", subcategory: "modals", type: "concern", pattern: "UIActionSheet (deprecated)", regex: /\bUIActionSheet\b/, fileFilter: SWIFT },
+  { category: "technologies", subcategory: "structure", type: "concern", pattern: "UIWebView (deprecated)", regex: /\bUIWebView\b/, fileFilter: SWIFT },
+  { category: "components-search", subcategory: "search", type: "concern", pattern: "UISearchDisplayController (deprecated)", regex: /\bUISearchDisplayController\b/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "structure", type: "concern", pattern: "setStatusBarStyle (deprecated)", regex: /setStatusBarStyle|statusBarStyle\s*=/, fileFilter: SWIFT }
 ];
+var appkitRules = [
+  // Structure
+  { category: "components-layout", subcategory: "windows", type: "pattern", pattern: "NSWindow", regex: /\bNSWindow\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "windows", type: "pattern", pattern: "NSWindowController", regex: /\bNSWindowController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "NSSplitViewController", regex: /\bNSSplitViewController\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "sidebars", type: "pattern", pattern: "NSOutlineView", regex: /\bNSOutlineView\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "lists", type: "pattern", pattern: "NSTableView", regex: /\bNSTableView\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "lists", type: "pattern", pattern: "NSCollectionView", regex: /\bNSCollectionView\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "toolbar", type: "pattern", pattern: "NSToolbar", regex: /\bNSToolbar\b/, fileFilter: SWIFT },
+  { category: "components-menus", subcategory: "menu-bar", type: "pattern", pattern: "NSMenu", regex: /\bNSMenu\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "NSButton", regex: /\bNSButton\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "controls", type: "pattern", pattern: "NSSegmentedControl", regex: /\bNSSegmentedControl\b/, fileFilter: SWIFT },
+  { category: "components-status", subcategory: "modals", type: "pattern", pattern: "NSAlert", regex: /\bNSAlert\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "inputs", type: "pattern", pattern: "NSComboBox", regex: /\bNSComboBox\b/, fileFilter: SWIFT },
+  { category: "components-controls", subcategory: "inputs", type: "pattern", pattern: "NSPopUpButton", regex: /\bNSPopUpButton\b/, fileFilter: SWIFT },
+  // Materials & vibrancy (macOS)
+  { category: "foundations", subcategory: "materials", type: "pattern", pattern: "NSVisualEffectView", regex: /\bNSVisualEffectView\b/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "materials", type: "positive", pattern: "NSVisualEffect material", regex: /\.material\s*=\s*\.(sidebar|menu|popover|headerView|contentBackground|windowBackground|hudWindow|underWindowBackground)/, fileFilter: SWIFT },
+  // Color — semantic vs hardcoded
+  { category: "foundations", subcategory: "color", type: "positive", pattern: "NSColor semantic", regex: /NSColor\.(labelColor|secondaryLabelColor|controlAccentColor|windowBackgroundColor|textColor|controlColor|separatorColor|linkColor)\b/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "color", type: "concern", pattern: "hardcoded NSColor(red:)", regex: /NSColor\(\s*(calibratedRed|deviceRed|red):/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "color", type: "concern", pattern: "hardcoded NSColor constant", regex: /NSColor\.(white|black|gray|red|blue|green|yellow|orange|purple)\b/, fileFilter: SWIFT },
+  // Typography
+  { category: "foundations", subcategory: "typography", type: "positive", pattern: "NSFont.preferredFont", regex: /NSFont\.preferredFont\(forTextStyle:/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "typography", type: "concern", pattern: "hardcoded NSFont size", regex: /NSFont\.systemFont\(ofSize:\s*\d/, fileFilter: SWIFT },
+  // Accessibility
+  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "setAccessibilityLabel", regex: /setAccessibilityLabel\(|\.accessibilityLabel\s*=/, fileFilter: SWIFT },
+  { category: "foundations", subcategory: "accessibility", type: "positive", pattern: "NSAccessibility protocol", regex: /NSAccessibilityElement|isAccessibilityElement\(\)/, fileFilter: SWIFT },
+  // Layout
+  { category: "components-layout", subcategory: "layout", type: "positive", pattern: "AppKit Auto Layout", regex: /translatesAutoresizingMaskIntoConstraints\s*=\s*false/, fileFilter: SWIFT },
+  // Pointer
+  { category: "inputs", subcategory: "keyboard", type: "positive", pattern: "NSCursor", regex: /\bNSCursor\b/, fileFilter: SWIFT },
+  // Deprecated
+  { category: "components-menus", subcategory: "menu-bar", type: "concern", pattern: "NSMenuItem setSubmenu (deprecated)", regex: /setSubmenu:forItem:/, fileFilter: SWIFT }
+];
+var watchosRules = [
+  // WatchKit structure
+  { category: "components-layout", subcategory: "navigation", type: "pattern", pattern: "WKInterfaceController", regex: /\bWKInterfaceController\b/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "navigation", type: "pattern", pattern: "WKHostingController", regex: /\bWKHostingController\b/, fileFilter: SWIFT },
+  // Digital Crown
+  { category: "inputs", subcategory: "digital-crown", type: "positive", pattern: "digitalCrownRotation", regex: /\.digitalCrownRotation\(/, fileFilter: SWIFT },
+  { category: "inputs", subcategory: "digital-crown", type: "pattern", pattern: "WKCrownSequencer", regex: /\bWKCrownSequencer\b|crownSequencer/, fileFilter: SWIFT },
+  { category: "inputs", subcategory: "digital-crown", type: "positive", pattern: "focusable for crown", regex: /\.focusable\(/, fileFilter: SWIFT },
+  // Complications
+  { category: "platforms", subcategory: "complications", type: "pattern", pattern: "CLKComplication", regex: /\bCLKComplication/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "complications", type: "pattern", pattern: "WidgetKit complication", regex: /CLKComplicationWidgetMigrator|\.accessoryCircular|\.accessoryCorner/, fileFilter: SWIFT },
+  // Always-On / luminance
+  { category: "platforms", subcategory: "always-on", type: "positive", pattern: "isLuminanceReduced", regex: /isLuminanceReduced/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "always-on", type: "positive", pattern: "privacySensitive", regex: /\.privacySensitive\(/, fileFilter: SWIFT },
+  // Watch faces / workouts
+  { category: "platforms", subcategory: "workouts", type: "pattern", pattern: "HKWorkoutSession", regex: /\bHKWorkoutSession\b/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "workouts", type: "positive", pattern: "WKExtendedRuntimeSession", regex: /\bWKExtendedRuntimeSession\b/, fileFilter: SWIFT },
+  // Haptics (watch)
+  { category: "patterns", subcategory: "haptics", type: "positive", pattern: "WKInterfaceDevice haptic", regex: /WKInterfaceDevice\.current\(\)\.play\(/, fileFilter: SWIFT },
+  // Notifications
+  { category: "patterns", subcategory: "state", type: "pattern", pattern: "WKUserNotificationInterfaceController", regex: /\bWKUserNotificationInterfaceController\b/, fileFilter: SWIFT }
+];
+var visionosRules = [
+  // Windows, volumes, immersive spaces
+  { category: "components-layout", subcategory: "windows", type: "pattern", pattern: "visionOS volumetric window", regex: /\.windowStyle\(\.volumetric\)/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "immersive", type: "pattern", pattern: "ImmersiveSpace", regex: /\bImmersiveSpace\b/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "immersive", type: "positive", pattern: "immersionStyle mixed", regex: /\.immersionStyle\(/, fileFilter: SWIFT },
+  { category: "platforms", subcategory: "spatial", type: "pattern", pattern: "RealityView", regex: /\bRealityView\b/, fileFilter: SWIFT },
+  // Ornaments
+  { category: "components-layout", subcategory: "ornaments", type: "positive", pattern: "ornament", regex: /\.ornament\(/, fileFilter: SWIFT },
+  // Glass materials
+  { category: "foundations", subcategory: "materials", type: "positive", pattern: "glassBackgroundEffect", regex: /\.glassBackgroundEffect\(/, fileFilter: SWIFT },
+  // Hover / gaze interaction
+  { category: "inputs", subcategory: "spatial", type: "positive", pattern: "hoverEffect", regex: /\.hoverEffect\(/, fileFilter: SWIFT },
+  { category: "inputs", subcategory: "spatial", type: "positive", pattern: "visionOS spatial gesture", regex: /SpatialTapGesture|\.targetedToAnyEntity\(/, fileFilter: SWIFT },
+  // Depth / 3D layout
+  { category: "components-layout", subcategory: "spatial", type: "pattern", pattern: "Model3D", regex: /\bModel3D\b/, fileFilter: SWIFT },
+  { category: "components-layout", subcategory: "spatial", type: "positive", pattern: "depth alignment", regex: /\.offset\(z:|alignment3D/, fileFilter: SWIFT }
+];
+function slugify(label) {
+  return label.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+var SECTIONS = [
+  ["swift", swiftRules],
+  ["uikit", uikitRules],
+  ["appkit", appkitRules],
+  ["watchos", watchosRules],
+  ["visionos", visionosRules],
+  ["web", webCodeRules],
+  ["css", cssRules],
+  ["vue", vueRules],
+  ["svelte", svelteRules],
+  ["angular", angularRules],
+  ["compose", kotlinRules],
+  ["android-xml", androidXmlRules],
+  ["react-native", reactNativeRules],
+  ["flutter", flutterRules]
+];
+var allRules = [];
+var ENGINE_BY_RULE_ID = {
+  "swift/image-without-a11y": "swift-structural",
+  "swift/on-tap-gesture-without-traits": "swift-structural",
+  "web/missing-alt": "ast-tsx",
+  "web/image-without-alt": "ast-tsx",
+  "web/div-with-on-click-no-role": "ast-tsx",
+  "web/span-with-on-click-no-role": "ast-tsx",
+  "web/positive-tabindex": "ast-tsx"
+};
+{
+  const used = /* @__PURE__ */ new Set();
+  for (const [framework, rules] of SECTIONS) {
+    for (const rule of rules) {
+      const base = `${framework}/${slugify(rule.pattern)}`;
+      let id = base;
+      for (let n = 2; used.has(id); n++) id = `${base}-${n}`;
+      used.add(id);
+      allRules.push({ ...rule, id, framework, engine: ENGINE_BY_RULE_ID[id] ?? "regex" });
+    }
+  }
+}
+var HIG_BASE = "https://developer.apple.com/design/human-interface-guidelines/";
+var SUBCATEGORY_HIG = {
+  accessibility: "accessibility",
+  accordion: "disclosure-controls",
+  alerts: "alerts",
+  analytics: "privacy",
+  animation: "motion",
+  buttons: "buttons",
+  cards: "layout",
+  color: "color",
+  controls: "controls",
+  details: "disclosure-controls",
+  focus: "focus-and-selection",
+  forms: "entering-data",
+  gestures: "gestures",
+  haptics: "playing-haptics",
+  images: "images",
+  inputs: "text-fields",
+  keyboard: "keyboards",
+  layout: "layout",
+  lists: "lists-and-tables",
+  loading: "loading",
+  menus: "menus",
+  modals: "modality",
+  motion: "motion",
+  multiplatform: "",
+  navigation: "",
+  popover: "popovers",
+  progress: "progress-indicators",
+  refresh: "loading",
+  search: "searching",
+  seo: "",
+  state: "feedback",
+  structure: "layout",
+  tables: "lists-and-tables",
+  toast: "feedback",
+  toggle: "toggles",
+  toolbar: "toolbars",
+  tooltip: "offering-help",
+  typography: "typography",
+  widgets: "widgets",
+  // Apple-platform subcategories
+  windows: "windows",
+  sidebars: "sidebars",
+  "split-views": "split-views",
+  "menu-bar": "the-menu-bar",
+  materials: "materials",
+  "sf-symbols": "sf-symbols",
+  "digital-crown": "digital-crown",
+  complications: "complications",
+  "always-on": "always-on",
+  workouts: "workouts",
+  immersive: "immersive-experiences",
+  spatial: "spatial-layout",
+  ornaments: "ornaments"
+};
+function higCitation(rule) {
+  if (rule.hig) return rule.hig;
+  const slug = SUBCATEGORY_HIG[rule.subcategory] ?? "";
+  return HIG_BASE + slug;
+}
+var FIX_GUIDANCE = {
+  // Critical
+  "missing alt": 'Add descriptive alt text, or alt="" when the image is purely decorative.',
+  "Image without alt": 'Add descriptive alt text, or alt="" when the image is purely decorative.',
+  "svg without a11y": 'Give inline SVG role="img" plus a <title> or aria-label, or aria-hidden="true" if decorative.',
+  "empty heading": "Add text content to the heading or remove it; screen readers announce empty headings as unlabeled.",
+  "empty button": "Give the button visible text or an aria-label.",
+  "missing html lang": 'Add lang="\u2026" to the <html> element so assistive tech picks the right voice.',
+  "video without track": 'Add a <track kind="captions"> file to the video.',
+  "blink element": "Remove <blink>; if emphasis is needed, use CSS animation that honors prefers-reduced-motion.",
+  "marquee element": "Remove <marquee>; use static layout or an accessible animation that honors prefers-reduced-motion.",
+  "user-scalable=no": "Remove user-scalable=no from the viewport meta so pinch-zoom keeps working.",
+  "maximum-scale=1": "Remove maximum-scale=1 from the viewport meta so users can zoom.",
+  "ImageView without contentDescription": 'Add android:contentDescription, or importantForAccessibility="no" if decorative.',
+  // Serious
+  "isAccessibilityElement false on interactive": "Keep interactive elements exposed to accessibility; give them a label instead of hiding them.",
+  "div with onClick no role": 'Use a native <button>, or add role="button", tabIndex={0}, and Enter/Space key handling.',
+  "span with onClick no role": 'Use a native <button>, or add role="button", tabIndex={0}, and Enter/Space key handling.',
+  "ambiguous link text": 'Write link text that names the destination; avoid "click here"/"read more".',
+  "positive tabindex": 'Use tabindex="0" (or -1); positive values override the natural focus order.',
+  "aria-hidden on focusable": "Remove aria-hidden from focusable elements, or take them out of the tab order too.",
+  "onMouseOver without onFocus": "Pair onMouseOver with onFocus so keyboard users get the same affordance.",
+  "onMouseOut without onBlur": "Pair onMouseOut with onBlur so keyboard users get the same affordance.",
+  "div as button": "Replace the div with a native <button>; it brings focus, key handling, and semantics for free.",
+  "div as nav/header class": "Use the semantic <nav>/<header> element instead of a classed div so landmarks exist.",
+  "autoplay media": "Avoid autoplay; if unavoidable, autoplay muted with visible controls.",
+  "outline none": "Keep a visible focus indicator \u2014 style :focus-visible instead of removing the outline.",
+  "v-on:click without keyboard": "Add @keydown.enter/@keydown.space handling, or use a <button>.",
+  "on:click without on:keydown": "Add on:keydown handling, or use a <button>.",
+  "(click) without (keydown)": "Add a (keydown) handler, or use a <button>.",
+  "clickable without Role": "Pass role = Role.Button (or use Modifier.semantics) so TalkBack announces the control.",
+  "nested touchables": "Flatten nested touchables; keep one interactive wrapper per control.",
+  // Common moderates
+  "hardcodedColor": "Use semantic colors (.primary, .secondary, or an asset-catalog color) that adapt to dark mode.",
+  "hardcodedRGBColor": "Move the color into an asset catalog with light/dark variants.",
+  "hardcodedUIColor": "Use a semantic UIColor (label, systemBackground) or an asset-catalog color.",
+  "NavigationView (deprecated)": "Migrate to NavigationStack (single column) or NavigationSplitView (sidebar layouts).",
+  "onTapGesture without traits": "Prefer Button, or add .accessibilityAddTraits(.isButton) so VoiceOver announces it.",
+  // UIKit
+  "hardcoded UIColor constant": "Use a semantic UIColor (.label, .systemBackground, .tintColor) that adapts to appearance.",
+  "hardcoded UIFont(name:)": "Scale custom fonts with UIFontMetrics, or use preferredFont(forTextStyle:).",
+  "viewWithTag lookup": "Reference views by outlet or property; tag-based lookup is fragile and breaks with view reordering.",
+  "UIScreen.main.bounds for layout": "Lay out against the view's bounds or safeAreaLayoutGuide; UIScreen.main ignores Split View and Slide Over.",
+  "UIAlertView (deprecated)": "Use UIAlertController with a .alert style.",
+  "UIActionSheet (deprecated)": "Use UIAlertController with an .actionSheet style.",
+  "UIWebView (deprecated)": "Use WKWebView.",
+  "UISearchDisplayController (deprecated)": "Use UISearchController.",
+  "setStatusBarStyle (deprecated)": "Override preferredStatusBarStyle on the view controller instead.",
+  // AppKit
+  "hardcoded NSColor(red:)": "Use a semantic NSColor (.labelColor, .controlAccentColor) or a Color Set asset with light/dark variants.",
+  "hardcoded NSColor constant": "Use a semantic NSColor (.labelColor, .windowBackgroundColor) that adapts to appearance and accent color.",
+  "hardcoded NSFont size": "Use NSFont.preferredFont(forTextStyle:) so text respects the user's size settings.",
+  "NSMenuItem setSubmenu (deprecated)": "Set the item's submenu property directly."
+};
+function fixGuidance(rule) {
+  return rule.fix ?? FIX_GUIDANCE[rule.pattern] ?? null;
+}
+function toMeta(rule) {
+  return {
+    id: rule.id,
+    framework: rule.framework,
+    category: rule.category,
+    subcategory: rule.subcategory,
+    type: rule.type,
+    label: rule.pattern,
+    severity: rule.type === "concern" ? severityFor(rule.pattern) : null,
+    engine: rule.engine,
+    hig: higCitation(rule),
+    fix: fixGuidance(rule)
+  };
+}
+function ruleCatalog() {
+  return allRules.map(toMeta);
+}
+function getRuleById(id) {
+  const rule = allRules.find((r) => r.id === id);
+  return rule ? toMeta(rule) : void 0;
+}
 function stripComments(line, state, lineComments) {
   let out = "";
   let str = null;
@@ -859,9 +1151,47 @@ function stripComments(line, state, lineComments) {
   }
   return out;
 }
+function parseSuppression(line) {
+  const m = line.match(/hig-disable-(next-line|file)\b(.*)$/);
+  if (!m) return null;
+  const ids = [];
+  for (const token of (m[2] ?? "").trim().split(/\s+/)) {
+    if (token === "" || token === "--") break;
+    if (!/^[a-z0-9/*-]+$/.test(token) || !token.includes("/")) break;
+    ids.push(token);
+  }
+  return { kind: m[1], ids: ids.length > 0 ? ids : "all" };
+}
+function suppressionCovers(ids, ruleId) {
+  if (ids === "all") return true;
+  return ids.some(
+    (id) => id.endsWith("*") ? ruleId.startsWith(id.slice(0, -1)) : ruleId === id
+  );
+}
 function detectPatterns(code, file) {
   const matches = [];
   const rawLines = code.split("\n");
+  let fileSuppression = null;
+  const lineSuppressions = /* @__PURE__ */ new Map();
+  for (let i = 0; i < rawLines.length; i++) {
+    if (!rawLines[i].includes("hig-disable-")) continue;
+    const sup = parseSuppression(rawLines[i]);
+    if (!sup) continue;
+    if (sup.kind === "file") {
+      fileSuppression = fileSuppression === "all" || sup.ids === "all" ? "all" : [...fileSuppression ?? [], ...sup.ids];
+    } else {
+      const existing = lineSuppressions.get(i + 2);
+      lineSuppressions.set(
+        i + 2,
+        existing === "all" || sup.ids === "all" ? "all" : [...existing ?? [], ...sup.ids]
+      );
+    }
+  }
+  const isSuppressed = (ruleId, line) => {
+    if (fileSuppression && suppressionCovers(fileSuppression, ruleId)) return true;
+    const forLine = lineSuppressions.get(line);
+    return forLine !== void 0 && suppressionCovers(forLine, ruleId);
+  };
   const isStyleFile = /\.(css|scss|sass|less)$/.test(file);
   const allowLineComments = !/\.(css|html?|xml|storyboard|xib)$/i.test(file);
   const commentState = { inBlock: false, inHtml: false };
@@ -903,7 +1233,10 @@ function detectPatterns(code, file) {
           const inSkippedBlock = blockContext.some((ctx) => skipInBlock.test(ctx));
           if (inSkippedBlock) continue;
         }
+        if (isSuppressed(rule.id, i + 1)) continue;
         matches.push({
+          ruleId: rule.id,
+          engine: "regex",
           category: rule.category,
           subcategory: rule.subcategory,
           type: rule.type,
@@ -939,7 +1272,14 @@ function detectPatterns(code, file) {
       let m;
       while ((m = re.exec(stripped)) !== null) {
         const lineNo = lineNumberAt(m.index);
+        if (isSuppressed(rule.id, lineNo)) {
+          if (rule.requireAbsent) break;
+          if (m.index === re.lastIndex) re.lastIndex++;
+          continue;
+        }
         matches.push({
+          ruleId: rule.id,
+          engine: "regex",
           category: rule.category,
           subcategory: rule.subcategory,
           type: rule.type,
@@ -958,6 +1298,300 @@ function detectPatterns(code, file) {
   return matches;
 }
 var RULE_COUNT = allRules.length;
+
+// src/engines/swift-structural.ts
+var A11Y_MODIFIERS = [
+  "accessibilityLabel",
+  "accessibilityHidden",
+  "accessibilityHint",
+  "accessibilityValue",
+  "accessibilityElement",
+  "accessibilityRepresentation",
+  "accessibilityAddTraits",
+  "accessibilityLabeledPair"
+];
+function stripSwift(code) {
+  let out = "";
+  let i = 0;
+  const n = code.length;
+  let inBlock = false;
+  let inString = false;
+  while (i < n) {
+    const c = code[i];
+    const c2 = i + 1 < n ? code[i + 1] : "";
+    if (inBlock) {
+      if (c === "*" && c2 === "/") {
+        inBlock = false;
+        i += 2;
+      } else {
+        i++;
+      }
+      continue;
+    }
+    if (inString) {
+      if (c === "\\") {
+        i += 2;
+        continue;
+      }
+      if (c === '"') {
+        inString = false;
+        out += '"';
+        i++;
+        continue;
+      }
+      i++;
+      continue;
+    }
+    if (c === "/" && c2 === "*") {
+      inBlock = true;
+      i += 2;
+      continue;
+    }
+    if (c === "/" && c2 === "/") {
+      while (i < n && code[i] !== "\n") i++;
+      continue;
+    }
+    if (c === '"') {
+      inString = true;
+      out += '"';
+      i++;
+      continue;
+    }
+    out += c;
+    i++;
+  }
+  return out;
+}
+function chainedModifiers(stripped, from) {
+  const mods = [];
+  let i = from;
+  const n = stripped.length;
+  const skipWs = () => {
+    while (i < n && /\s/.test(stripped[i])) i++;
+  };
+  const skipGroup = (open, close) => {
+    let depth = 0;
+    for (; i < n; i++) {
+      const ch = stripped[i];
+      if (ch === open) depth++;
+      else if (ch === close) {
+        depth--;
+        if (depth === 0) {
+          i++;
+          return;
+        }
+      }
+    }
+  };
+  skipWs();
+  if (stripped[i] === "(") skipGroup("(", ")");
+  while (true) {
+    skipWs();
+    if (stripped[i] !== ".") break;
+    i++;
+    skipWs();
+    let id = "";
+    while (i < n && /[A-Za-z0-9_]/.test(stripped[i])) {
+      id += stripped[i];
+      i++;
+    }
+    if (id === "") break;
+    mods.push(id);
+    skipWs();
+    if (stripped[i] === "(") skipGroup("(", ")");
+    skipWs();
+    if (stripped[i] === "{") skipGroup("{", "}");
+  }
+  return mods;
+}
+function lineAt(stripped, index) {
+  let line = 1;
+  for (let i = 0; i < index && i < stripped.length; i++) {
+    if (stripped[i] === "\n") line++;
+  }
+  return line;
+}
+function refineSwift(matches, code) {
+  const swiftRefined = /* @__PURE__ */ new Set(["Image without a11y", "onTapGesture without traits"]);
+  if (!matches.some((m) => swiftRefined.has(m.pattern))) return matches;
+  const stripped = stripSwift(code);
+  const handledImageLines = /* @__PURE__ */ new Set();
+  const handledTapLines = /* @__PURE__ */ new Set();
+  for (const m of stripped.matchAll(/\bImage\s*\(\s*systemName:/g)) {
+    const idx = m.index ?? 0;
+    const parenIdx = stripped.indexOf("(", idx);
+    const mods = chainedModifiers(stripped, parenIdx);
+    if (mods.some((mod) => A11Y_MODIFIERS.includes(mod))) {
+      handledImageLines.add(lineAt(stripped, idx));
+    }
+  }
+  for (const m of stripped.matchAll(/\.onTapGesture\s*\{/g)) {
+    const idx = m.index ?? 0;
+    const braceIdx = stripped.indexOf("{", idx);
+    let j = braceIdx;
+    let depth = 0;
+    for (; j < stripped.length; j++) {
+      if (stripped[j] === "{") depth++;
+      else if (stripped[j] === "}") {
+        depth--;
+        if (depth === 0) {
+          j++;
+          break;
+        }
+      }
+    }
+    const after = chainedModifiers(stripped, j);
+    if (after.some((mod) => A11Y_MODIFIERS.includes(mod))) {
+      handledTapLines.add(lineAt(stripped, idx));
+    }
+  }
+  const out = [];
+  for (const match of matches) {
+    if (match.pattern === "Image without a11y") {
+      if (handledImageLines.has(match.line)) continue;
+      out.push({ ...match, engine: "swift-structural" });
+    } else if (match.pattern === "onTapGesture without traits") {
+      if (handledTapLines.has(match.line)) continue;
+      out.push({ ...match, engine: "swift-structural" });
+    } else {
+      out.push(match);
+    }
+  }
+  return out;
+}
+
+// src/engines/ast-tsx.ts
+import { createRequire } from "node:module";
+var AST_TSX_RULES = /* @__PURE__ */ new Set([
+  "web/missing-alt",
+  "web/image-without-alt",
+  "web/div-with-on-click-no-role",
+  "web/span-with-on-click-no-role",
+  "web/positive-tabindex"
+]);
+var tsModule;
+function loadTs() {
+  if (tsModule !== void 0) return tsModule;
+  try {
+    tsModule = createRequire(import.meta.url)("typescript");
+  } catch {
+    tsModule = null;
+  }
+  return tsModule;
+}
+function astTsxAvailable() {
+  return loadTs() != null;
+}
+function isTsxFile(file) {
+  return /\.(tsx|jsx)$/.test(file);
+}
+function push(findings, ruleId, ts, node, source) {
+  const { line } = source.getLineAndCharacterOfPosition(node.getStart(source));
+  const text = source.text.split("\n")[line] ?? "";
+  findings.push({ ruleId, line: line + 1, lineContent: text.trim() });
+}
+function analyzeTsx(code, file) {
+  if (!isTsxFile(file)) return null;
+  const ts = loadTs();
+  if (!ts) return null;
+  const source = ts.createSourceFile(file, code, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const findings = [];
+  const attrs = (opening) => {
+    const names = /* @__PURE__ */ new Set();
+    const byName = /* @__PURE__ */ new Map();
+    let hasSpread = false;
+    for (const prop of opening.attributes.properties) {
+      if (ts.isJsxSpreadAttribute(prop)) {
+        hasSpread = true;
+        continue;
+      }
+      if (ts.isJsxAttribute(prop) && prop.name) {
+        const name = prop.name.getText(source);
+        names.add(name);
+        byName.set(name, prop);
+      }
+    }
+    return { names, hasSpread, byName };
+  };
+  const tagNameOf = (opening) => opening.tagName.getText(source);
+  const attrIsTruthy = (attr) => {
+    if (!attr.initializer) return true;
+    if (ts.isStringLiteral(attr.initializer)) return attr.initializer.text === "true";
+    if (ts.isJsxExpression(attr.initializer) && attr.initializer.expression) {
+      return attr.initializer.expression.kind === ts.SyntaxKind.TrueKeyword;
+    }
+    return false;
+  };
+  const positiveTabIndex = (attr) => {
+    if (!attr.initializer) return false;
+    let raw = null;
+    if (ts.isStringLiteral(attr.initializer)) raw = attr.initializer.text;
+    else if (ts.isJsxExpression(attr.initializer) && attr.initializer.expression) {
+      const e = attr.initializer.expression;
+      if (ts.isNumericLiteral(e)) raw = e.text;
+      else if (ts.isPrefixUnaryExpression?.(e) && e.operator === ts.SyntaxKind.MinusToken) raw = "-1";
+    }
+    if (raw == null) return false;
+    const n = Number(raw);
+    return Number.isFinite(n) && n > 0;
+  };
+  const visitOpening = (opening) => {
+    const tag = tagNameOf(opening);
+    const { names, hasSpread, byName } = attrs(opening);
+    if ((tag === "img" || tag === "Image") && !hasSpread && !names.has("alt")) {
+      push(findings, "web/missing-alt", ts, opening.parent ?? opening, source);
+    }
+    if ((tag === "div" || tag === "span") && names.has("onClick") && !hasSpread) {
+      const interactive = names.has("role") || names.has("tabIndex") || names.has("onKeyDown") || names.has("onKeyPress") || names.has("onKeyUp");
+      if (!interactive) {
+        const ruleId = tag === "div" ? "web/div-with-on-click-no-role" : "web/span-with-on-click-no-role";
+        push(findings, ruleId, ts, opening.parent ?? opening, source);
+      }
+    }
+    const tabIndexAttr = byName.get("tabIndex");
+    if (tabIndexAttr && positiveTabIndex(tabIndexAttr)) {
+      push(findings, "web/positive-tabindex", ts, opening.parent ?? opening, source);
+    }
+    void attrIsTruthy;
+  };
+  const walk = (node) => {
+    if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
+      visitOpening(node);
+    }
+    ts.forEachChild(node, walk);
+  };
+  walk(source);
+  return findings.map((f) => {
+    const meta = getRuleById(f.ruleId);
+    return {
+      ruleId: f.ruleId,
+      engine: "ast-tsx",
+      category: meta?.category ?? "foundations",
+      subcategory: meta?.subcategory ?? "accessibility",
+      type: "concern",
+      pattern: meta?.label ?? f.ruleId,
+      line: f.line,
+      lineContent: f.lineContent,
+      file,
+      severity: meta?.severity ?? "moderate"
+    };
+  });
+}
+
+// src/analyze.ts
+function analyzeFile(code, file) {
+  let matches = detectPatterns(code, file);
+  if (/\.swift$/.test(file)) {
+    matches = refineSwift(matches, code);
+  }
+  const ast = analyzeTsx(code, file);
+  if (ast !== null) {
+    matches = matches.filter((m) => !AST_TSX_RULES.has(m.ruleId));
+    matches.push(...ast);
+    matches.sort((a, b) => a.line - b.line);
+  }
+  return matches;
+}
 
 // src/categorizer.ts
 var CATEGORY_TO_SKILL = {
@@ -1290,32 +1924,300 @@ function getEvaluationChecklist(skillName) {
   return checklists[skillName] ?? ["Evaluate against Apple HIG best practices for this category"];
 }
 
+// src/config.ts
+import { readFile as readFile3 } from "node:fs/promises";
+import { isAbsolute, join as join3, resolve } from "node:path";
+var CONFIG_FILENAME = "hig-doctor.config.json";
+var VALID_SETTINGS = /* @__PURE__ */ new Set(["off", "on", "critical", "serious", "moderate"]);
+function validateRules(rules, where, warnings) {
+  if (rules == null) return {};
+  if (typeof rules !== "object" || Array.isArray(rules)) {
+    throw new Error(`${where}: "rules" must be an object mapping rule IDs to settings`);
+  }
+  const out = {};
+  for (const [id, setting] of Object.entries(rules)) {
+    if (typeof setting !== "string" || !VALID_SETTINGS.has(setting)) {
+      throw new Error(
+        `${where}: invalid setting ${JSON.stringify(setting)} for rule "${id}" \u2014 expected "off", "on", "critical", "serious", or "moderate"`
+      );
+    }
+    if (!id.includes("*") && !getRuleById(id)) {
+      warnings.push(`${where}: unknown rule ID "${id}" (see docs/rules.md)`);
+    }
+    out[id] = setting;
+  }
+  return out;
+}
+function parseConfig(raw, sourcePath) {
+  let json;
+  try {
+    json = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(`${sourcePath} is not valid JSON: ${err instanceof Error ? err.message : String(err)}`);
+  }
+  if (json == null || typeof json !== "object" || Array.isArray(json)) {
+    throw new Error(`${sourcePath}: config must be a JSON object`);
+  }
+  const obj = json;
+  const warnings = [];
+  const config = {};
+  config.rules = validateRules(obj.rules, sourcePath, warnings);
+  if (obj.ignore != null) {
+    if (!Array.isArray(obj.ignore) || obj.ignore.some((g) => typeof g !== "string")) {
+      throw new Error(`${sourcePath}: "ignore" must be an array of glob strings`);
+    }
+    config.ignore = obj.ignore;
+  }
+  if (obj.overrides != null) {
+    if (!Array.isArray(obj.overrides)) {
+      throw new Error(`${sourcePath}: "overrides" must be an array`);
+    }
+    config.overrides = obj.overrides.map((entry, i) => {
+      const where = `${sourcePath} overrides[${i}]`;
+      if (entry == null || typeof entry !== "object" || Array.isArray(entry)) {
+        throw new Error(`${where}: must be an object with "files" and "rules"`);
+      }
+      const o = entry;
+      if (!Array.isArray(o.files) || o.files.length === 0 || o.files.some((g) => typeof g !== "string")) {
+        throw new Error(`${where}: "files" must be a non-empty array of glob strings`);
+      }
+      return { files: o.files, rules: validateRules(o.rules, where, warnings) };
+    });
+  }
+  return { config, warnings };
+}
+async function loadConfig(directory, explicitPath) {
+  const path = explicitPath ? isAbsolute(explicitPath) ? explicitPath : resolve(explicitPath) : join3(resolve(directory), CONFIG_FILENAME);
+  let raw;
+  try {
+    raw = await readFile3(path, "utf-8");
+  } catch {
+    if (explicitPath) throw new Error(`Config file not found: ${path}`);
+    return { path: null, config: {}, warnings: [] };
+  }
+  const { config, warnings } = parseConfig(raw, path);
+  return { path, config, warnings };
+}
+function settingFor(ruleId, rules) {
+  if (!rules) return null;
+  if (ruleId in rules) return rules[ruleId];
+  let best = null;
+  for (const [key, setting] of Object.entries(rules)) {
+    if (!key.endsWith("*")) continue;
+    const prefix = key.slice(0, -1);
+    if (ruleId.startsWith(prefix) && (!best || prefix.length > best.len)) {
+      best = { len: prefix.length, setting };
+    }
+  }
+  return best?.setting ?? null;
+}
+function applyConfig(matches, config) {
+  const hasRules = config.rules && Object.keys(config.rules).length > 0;
+  const overrides = (config.overrides ?? []).map((o) => ({
+    files: o.files.map(globToRegExp),
+    rules: o.rules
+  }));
+  if (!hasRules && overrides.length === 0) return matches;
+  const out = [];
+  for (const match of matches) {
+    let setting = settingFor(match.ruleId, config.rules);
+    for (const override of overrides) {
+      if (override.files.some((re) => re.test(match.file))) {
+        const s = settingFor(match.ruleId, override.rules);
+        if (s !== null) setting = s;
+      }
+    }
+    if (setting === "off") continue;
+    if (setting && setting !== "on" && match.type === "concern") {
+      out.push({ ...match, severity: setting });
+    } else {
+      out.push(match);
+    }
+  }
+  return out;
+}
+
+// src/baseline.ts
+import { readFile as readFile4, writeFile } from "node:fs/promises";
+import { isAbsolute as isAbsolute2, join as join4, resolve as resolve2 } from "node:path";
+var BASELINE_FILENAME = ".hig-baseline.json";
+function baselineKey(match) {
+  const content = match.lineContent.replace(/\s+/g, " ").trim();
+  return `${match.ruleId}\0${match.file}\0${content}`;
+}
+function createBaseline(matches, generated) {
+  const findings = {};
+  for (const match of matches) {
+    if (match.type !== "concern") continue;
+    const key = baselineKey(match);
+    findings[key] = (findings[key] ?? 0) + 1;
+  }
+  return { version: 1, generated, findings };
+}
+function applyBaseline(matches, baseline) {
+  const remaining = new Map(Object.entries(baseline.findings));
+  const kept = [];
+  let baselined = 0;
+  for (const match of matches) {
+    if (match.type === "concern") {
+      const key = baselineKey(match);
+      const left = remaining.get(key) ?? 0;
+      if (left > 0) {
+        remaining.set(key, left - 1);
+        baselined++;
+        continue;
+      }
+    }
+    kept.push(match);
+  }
+  let stale = 0;
+  for (const left of remaining.values()) stale += left;
+  return { kept, baselined, stale };
+}
+function parseBaseline(raw, sourcePath) {
+  let json;
+  try {
+    json = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(`${sourcePath} is not valid JSON: ${err instanceof Error ? err.message : String(err)}`);
+  }
+  const obj = json;
+  if (obj == null || obj.version !== 1 || typeof obj.findings !== "object" || obj.findings == null) {
+    throw new Error(`${sourcePath}: not a hig-doctor baseline (expected {version: 1, findings: {...}})`);
+  }
+  for (const [key, count] of Object.entries(obj.findings)) {
+    if (typeof count !== "number" || count < 0 || !Number.isInteger(count)) {
+      throw new Error(`${sourcePath}: invalid count for ${JSON.stringify(key)}`);
+    }
+  }
+  return { version: 1, generated: typeof obj.generated === "string" ? obj.generated : "", findings: obj.findings };
+}
+async function loadBaseline(directory, explicitPath) {
+  const path = explicitPath ? isAbsolute2(explicitPath) ? explicitPath : resolve2(explicitPath) : join4(resolve2(directory), BASELINE_FILENAME);
+  let raw;
+  try {
+    raw = await readFile4(path, "utf-8");
+  } catch {
+    if (explicitPath) throw new Error(`Baseline file not found: ${path}`);
+    return null;
+  }
+  return { path, baseline: parseBaseline(raw, path) };
+}
+async function writeBaseline(path, baseline) {
+  await writeFile(path, JSON.stringify(baseline, null, 2) + "\n");
+}
+
+// src/cache.ts
+import { createHash } from "node:crypto";
+import { readFile as readFile5, writeFile as writeFile2 } from "node:fs/promises";
+var CACHE_VERSION = 2;
+var CACHE_FILENAME = ".hig-cache.json";
+function namespace() {
+  return `v${CACHE_VERSION}.rules${RULE_COUNT}`;
+}
+function keyFor(path, content) {
+  return createHash("sha256").update(path).update("\0").update(content).digest("hex").slice(0, 24);
+}
+var ScanCache = class _ScanCache {
+  entries;
+  hits = 0;
+  misses = 0;
+  constructor(entries) {
+    this.entries = entries;
+  }
+  static async load(path) {
+    try {
+      const raw = await readFile5(path, "utf-8");
+      const parsed = JSON.parse(raw);
+      if (parsed.namespace === namespace() && parsed.entries) {
+        return new _ScanCache(new Map(Object.entries(parsed.entries)));
+      }
+    } catch {
+    }
+    return new _ScanCache(/* @__PURE__ */ new Map());
+  }
+  /** Return cached findings for this file, or null on a miss. */
+  get(path, content) {
+    const hit = this.entries.get(keyFor(path, content));
+    if (hit) {
+      this.hits++;
+      return hit;
+    }
+    this.misses++;
+    return null;
+  }
+  set(path, content, matches) {
+    this.entries.set(keyFor(path, content), matches);
+  }
+  get stats() {
+    return { hits: this.hits, misses: this.misses };
+  }
+  /** Persist only the keys touched this run, so deleted files don't accumulate. */
+  async save(path, touched) {
+    const entries = {};
+    for (const [k, v] of this.entries) {
+      if (touched.has(k)) entries[k] = v;
+    }
+    const file = { namespace: namespace(), entries };
+    await writeFile2(path, JSON.stringify(file));
+  }
+  keyOf(path, content) {
+    return keyFor(path, content);
+  }
+};
+
 // src/audit.ts
-import { resolve, join as join3 } from "node:path";
+import { resolve as resolve3, join as join5 } from "node:path";
 import { access } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 var moduleDir = fileURLToPath(new URL(".", import.meta.url));
 async function audit(directory, skillsDir, options = {}) {
-  const resolvedDir = resolve(directory);
-  const scanResult = await scanProject(resolvedDir, { exclude: options.exclude });
-  const allMatches = [];
+  const resolvedDir = resolve3(directory);
+  const loaded = options.noConfig ? { path: null, config: {}, warnings: [] } : await loadConfig(resolvedDir, options.configPath);
+  const exclude = [...loaded.config.ignore ?? [], ...options.exclude ?? []];
+  const scanResult = await scanProject(resolvedDir, { exclude });
+  const detected = [];
   const allFiles = [...scanResult.codeFiles, ...scanResult.styleFiles, ...scanResult.markupFiles];
+  const cachePath = join5(resolvedDir, CACHE_FILENAME);
+  const cache = options.cache ? await ScanCache.load(cachePath) : null;
+  const touched = /* @__PURE__ */ new Set();
   for (const file of allFiles) {
-    const matches = detectPatterns(file.content, file.relativePath);
-    allMatches.push(...matches);
+    let matches = cache?.get(file.relativePath, file.content) ?? null;
+    if (matches === null) {
+      matches = analyzeFile(file.content, file.relativePath);
+      cache?.set(file.relativePath, file.content, matches);
+    }
+    if (cache) touched.add(cache.keyOf(file.relativePath, file.content));
+    detected.push(...matches);
+  }
+  if (cache) await cache.save(cachePath, touched);
+  const configured = applyConfig(detected, loaded.config);
+  let allMatches = configured;
+  let baselinePath = null;
+  let baselined = 0;
+  let baselineStale = 0;
+  if (!options.noBaseline) {
+    const found = await loadBaseline(resolvedDir, options.baselinePath);
+    if (found) {
+      const applied = applyBaseline(configured, found.baseline);
+      allMatches = applied.kept;
+      baselinePath = found.path;
+      baselined = applied.baselined;
+      baselineStale = applied.stale;
+    }
   }
   const categories = categorizeMatches(allMatches);
   let resolvedSkillsDir = null;
   const skillContents = /* @__PURE__ */ new Map();
   if (skillsDir) {
-    resolvedSkillsDir = resolve(skillsDir);
+    resolvedSkillsDir = resolve3(skillsDir);
   } else {
     const candidates = [
-      join3(resolvedDir, "skills"),
-      join3(resolvedDir, "..", "skills"),
-      join3(resolvedDir, "..", "..", "skills"),
+      join5(resolvedDir, "skills"),
+      join5(resolvedDir, "..", "skills"),
+      join5(resolvedDir, "..", "..", "skills"),
       // Relative to this package (for development: packages/core/src → repo root)
-      join3(moduleDir, "..", "..", "..", "skills")
+      join5(moduleDir, "..", "..", "..", "skills")
     ];
     for (const candidate of candidates) {
       try {
@@ -1333,15 +2235,546 @@ async function audit(directory, skillsDir, options = {}) {
     }
   }
   const markdown = generateAuditMarkdown(scanResult, categories, resolvedSkillsDir, skillContents);
-  return { scanResult, allMatches, categories, markdown };
+  return {
+    scanResult,
+    allMatches,
+    categories,
+    markdown,
+    configPath: loaded.path,
+    configWarnings: loaded.warnings,
+    baselinePath,
+    baselined,
+    baselineStale,
+    cacheStats: cache ? cache.stats : null
+  };
+}
+
+// src/sarif.ts
+var SARIF_LEVEL = {
+  critical: "error",
+  serious: "warning",
+  moderate: "note"
+};
+function toSarif(matches, options) {
+  const concerns = matches.filter((m) => m.type === "concern");
+  const ruleIndex = /* @__PURE__ */ new Map();
+  const rules = [];
+  for (const match of concerns) {
+    if (ruleIndex.has(match.ruleId)) continue;
+    const meta = getRuleById(match.ruleId);
+    ruleIndex.set(match.ruleId, rules.length);
+    rules.push({
+      id: match.ruleId,
+      name: meta?.label ?? match.pattern,
+      shortDescription: { text: meta?.label ?? match.pattern },
+      ...meta?.fix ? { fullDescription: { text: meta.fix } } : {},
+      helpUri: meta?.hig,
+      properties: {
+        engine: meta?.engine ?? match.engine,
+        category: match.category,
+        subcategory: match.subcategory
+      },
+      defaultConfiguration: {
+        level: SARIF_LEVEL[meta?.severity ?? match.severity ?? "moderate"]
+      }
+    });
+  }
+  const results = concerns.map((match) => {
+    const meta = getRuleById(match.ruleId);
+    const fix = meta?.fix ? ` Fix: ${meta.fix}` : "";
+    const uri = match.file.replace(/\\/g, "/");
+    const suggested = options.getFix?.(match) ?? null;
+    return {
+      ruleId: match.ruleId,
+      ruleIndex: ruleIndex.get(match.ruleId),
+      level: SARIF_LEVEL[match.severity ?? "moderate"],
+      message: { text: `${match.pattern} (${match.category}/${match.subcategory}).${fix}` },
+      locations: [
+        {
+          physicalLocation: {
+            artifactLocation: { uri, uriBaseId: "SRCROOT" },
+            region: { startLine: match.line }
+          }
+        }
+      ],
+      partialFingerprints: {
+        // Content-based, line-number-free — matches the baseline fingerprint so
+        // code motion doesn't produce "new" alerts.
+        higDoctorKey: `${match.ruleId} ${match.file} ${match.lineContent.replace(/\s+/g, " ").trim()}`
+      },
+      ...suggested ? {
+        fixes: [
+          {
+            description: { text: `${suggested.description}${suggested.safe ? "" : " (review before applying)"}` },
+            artifactChanges: [
+              {
+                artifactLocation: { uri, uriBaseId: "SRCROOT" },
+                replacements: [
+                  {
+                    deletedRegion: { startLine: match.line, endLine: match.line },
+                    insertedContent: { text: suggested.after }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      } : {}
+    };
+  });
+  return {
+    $schema: "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+    version: "2.1.0",
+    runs: [
+      {
+        tool: {
+          driver: {
+            name: "hig-doctor",
+            informationUri: "https://github.com/raintree-technology/hig-doctor",
+            version: options.toolVersion,
+            ...options.snapshotDate ? { properties: { higSnapshot: options.snapshotDate } } : {},
+            rules
+          }
+        },
+        originalUriBaseIds: {
+          SRCROOT: { description: { text: "Root of the audited project" } }
+        },
+        results
+      }
+    ]
+  };
+}
+
+// src/fixes.ts
+function stripViewportToken(line, token) {
+  if (!token.test(line)) return null;
+  let out = line.replace(new RegExp(`\\s*,\\s*${token.source}`, "i"), "").replace(new RegExp(`${token.source}\\s*,\\s*`, "i"), "").replace(new RegExp(`\\s*${token.source}`, "i"), "");
+  out = out.replace(/,\s*,/g, ", ").replace(/,\s*(["'])/g, "$1").replace(/=\s*,/g, "=");
+  return out === line ? null : out;
+}
+var FIXERS = {
+  "css/physical-text-align": {
+    safe: true,
+    description: "Use logical text-align (start/end) so text follows writing direction.",
+    apply: (line) => {
+      const fixed = line.replace(/text-align:\s*left\b/g, "text-align: start").replace(/text-align:\s*right\b/g, "text-align: end");
+      return fixed === line ? null : fixed;
+    }
+  },
+  "web/user-scalable-no": {
+    safe: true,
+    description: "Remove user-scalable=no so pinch-zoom keeps working.",
+    apply: (line) => stripViewportToken(line, /user-scalable\s*=\s*no/)
+  },
+  "web/maximum-scale-1": {
+    safe: true,
+    description: "Remove maximum-scale=1 so users can zoom.",
+    apply: (line) => stripViewportToken(line, /maximum-scale\s*=\s*1(?:\.0)?/)
+  },
+  "swift/navigation-view-deprecated": {
+    // Unsafe: a NavigationView with a sidebar should become NavigationSplitView,
+    // which a line-level transform can't tell apart. Suggest the common case.
+    safe: false,
+    description: "Replace NavigationView with NavigationStack (or NavigationSplitView for sidebar layouts).",
+    apply: (line) => {
+      const fixed = line.replace(/\bNavigationView\b/g, "NavigationStack");
+      return fixed === line ? null : fixed;
+    }
+  },
+  "web/positive-tabindex": {
+    // Unsafe: dropping to 0 changes focus order; the author must confirm intent.
+    safe: false,
+    description: "Use tabIndex 0 (or -1); positive values override the natural focus order.",
+    apply: (line) => {
+      const fixed = line.replace(/tabIndex=\{\s*[1-9]\d*\s*\}/g, "tabIndex={0}").replace(/tabindex=(["'])[1-9]\d*\1/g, "tabindex=$10$1");
+      return fixed === line ? null : fixed;
+    }
+  }
+};
+function isFixable(ruleId) {
+  return ruleId in FIXERS;
+}
+function suggestFix(match, rawLine) {
+  const fixer = FIXERS[match.ruleId];
+  if (!fixer) return null;
+  const after = fixer.apply(rawLine);
+  if (after === null || after === rawLine) return null;
+  return { ruleId: match.ruleId, line: match.line, before: rawLine, after, safe: fixer.safe, description: fixer.description };
+}
+function applyFixes(content, matches) {
+  const lines = content.split("\n");
+  const applied = [];
+  const suggestions = [];
+  const seen = /* @__PURE__ */ new Set();
+  for (const match of matches) {
+    const fixer = FIXERS[match.ruleId];
+    if (!fixer) continue;
+    const idx = match.line - 1;
+    if (idx < 0 || idx >= lines.length) continue;
+    const key = `${match.line}:${match.ruleId}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const rawLine = lines[idx];
+    const after = fixer.apply(rawLine);
+    if (after === null || after === rawLine) continue;
+    const fix = { ruleId: match.ruleId, line: match.line, before: rawLine, after, safe: fixer.safe, description: fixer.description };
+    if (fixer.safe) {
+      lines[idx] = after;
+      applied.push(fix);
+    } else {
+      suggestions.push(fix);
+    }
+  }
+  return { content: lines.join("\n"), applied, suggestions };
+}
+
+// src/benchmark.ts
+var BENCHMARK_CASES = [
+  // ── Swift / SwiftUI ────────────────────────────────────────────
+  {
+    id: "swift-color-bad",
+    framework: "swift",
+    file: "BadColors.swift",
+    kind: "bad",
+    code: `struct V: View {
+  var body: some View {
+    Text("Hi").foregroundColor(.red)
+    Rectangle().foregroundColor(.blue)
+  }
+}`,
+    expect: ["swift/hardcoded-color", "swift/hardcoded-color"]
+  },
+  {
+    id: "swift-color-good",
+    framework: "swift",
+    file: "GoodColors.swift",
+    kind: "good",
+    code: `struct V: View {
+  var body: some View {
+    Text("Hi").foregroundStyle(.primary)
+    Rectangle().foregroundColor(Color("BrandAccent"))
+  }
+}`,
+    expect: []
+  },
+  {
+    id: "swift-nav-bad",
+    framework: "swift",
+    file: "BadNav.swift",
+    kind: "bad",
+    code: `struct Root: View {
+  var body: some View {
+    NavigationView {
+      Text("Legacy")
+    }
+  }
+}`,
+    expect: ["swift/navigation-view-deprecated"]
+  },
+  {
+    id: "swift-nav-good",
+    framework: "swift",
+    file: "GoodNav.swift",
+    kind: "good",
+    code: `struct Root: View {
+  var body: some View {
+    NavigationStack {
+      Text("Modern")
+    }
+  }
+}`,
+    expect: []
+  },
+  {
+    id: "swift-typography-bad",
+    framework: "swift",
+    file: "BadType.swift",
+    kind: "bad",
+    code: `Text("Title").font(.system(size: 24))`,
+    expect: ["swift/hardcoded-font-size"]
+  },
+  {
+    id: "swift-typography-good",
+    framework: "swift",
+    file: "GoodType.swift",
+    kind: "good",
+    code: `Text("Title").font(.title)`,
+    expect: []
+  },
+  // ── Web / React ────────────────────────────────────────────────
+  {
+    id: "web-img-bad",
+    framework: "web",
+    file: "BadImg.tsx",
+    kind: "bad",
+    code: `export const Hero = () => <img src="/hero.png" />;`,
+    expect: ["web/missing-alt"]
+  },
+  {
+    id: "web-img-good",
+    framework: "web",
+    file: "GoodImg.tsx",
+    kind: "good",
+    code: `export const Hero = () => <img src="/hero.png" alt="Product hero shot" />;`,
+    expect: []
+  },
+  {
+    id: "web-clickable-bad",
+    framework: "web",
+    file: "BadClick.tsx",
+    kind: "bad",
+    code: `export const Row = () => <div onClick={() => open()}>Open</div>;`,
+    expect: ["web/div-with-on-click-no-role"]
+  },
+  {
+    id: "web-clickable-good",
+    framework: "web",
+    file: "GoodClick.tsx",
+    kind: "good",
+    code: `export const Row = () => <button onClick={() => open()}>Open</button>;`,
+    expect: []
+  },
+  {
+    id: "web-tabindex-bad",
+    framework: "web",
+    file: "BadTab.tsx",
+    kind: "bad",
+    code: `export const F = () => <input tabIndex={3} />;`,
+    expect: ["web/positive-tabindex"]
+  },
+  {
+    id: "web-link-good",
+    framework: "web",
+    file: "GoodLink.tsx",
+    kind: "good",
+    code: `export const L = () => <a href="/pricing">See pricing plans</a>;`,
+    expect: []
+  },
+  // ── CSS ────────────────────────────────────────────────────────
+  {
+    id: "css-outline-bad",
+    framework: "css",
+    file: "bad.css",
+    kind: "bad",
+    code: `button:focus { outline: none; }`,
+    expect: ["css/outline-none"]
+  },
+  {
+    id: "css-outline-good",
+    framework: "css",
+    file: "good.css",
+    kind: "good",
+    code: `button:focus-visible { outline: 2px solid Highlight; }`,
+    expect: []
+  },
+  {
+    id: "css-important-bad",
+    framework: "css",
+    file: "important.css",
+    kind: "bad",
+    code: `.a { color: var(--fg) !important; }`,
+    expect: ["css/important-usage"]
+  },
+  {
+    id: "css-logical-good",
+    framework: "css",
+    file: "logical.css",
+    kind: "good",
+    code: `.a { text-align: start; margin-inline-start: 8px; }`,
+    expect: []
+  },
+  // ── HTML ───────────────────────────────────────────────────────
+  {
+    id: "html-viewport-bad",
+    framework: "web",
+    file: "bad.html",
+    kind: "bad",
+    code: `<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width, user-scalable=no"></head><body><h1>Hi</h1></body></html>`,
+    expect: ["web/user-scalable-no"]
+  },
+  {
+    id: "html-good",
+    framework: "web",
+    file: "good.html",
+    kind: "good",
+    code: `<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><h1>Hi</h1></body></html>`,
+    expect: []
+  },
+  // ── AST-tier precision cases (regex would misjudge these) ──────
+  {
+    id: "web-img-spread-good",
+    framework: "web",
+    file: "SpreadImg.tsx",
+    kind: "good",
+    code: `export const Avatar = (props) => <img {...props} />;`,
+    expect: []
+    // spread props may carry alt — the AST tier abstains
+  },
+  {
+    id: "web-img-multiline-bad",
+    framework: "web",
+    file: "MultilineImg.tsx",
+    kind: "bad",
+    code: `export const Hero = () => (
+  <img
+    src="/hero.png"
+    width={640}
+  />
+);`,
+    expect: ["web/missing-alt"]
+  },
+  {
+    id: "web-div-nested-gt-bad",
+    framework: "web",
+    file: "NestedGt.tsx",
+    kind: "bad",
+    code: `export const Row = () => (
+  <div onClick={() => select(a > b ? a : b)}>
+    Pick
+  </div>
+);`,
+    expect: ["web/div-with-on-click-no-role"]
+  },
+  {
+    id: "web-span-keyboard-good",
+    framework: "web",
+    file: "AccessibleSpan.tsx",
+    kind: "good",
+    code: `export const Row = () => (
+  <span role="button" tabIndex={0} onKeyDown={onKey} onClick={onClick}>
+    Pick
+  </span>
+);`,
+    expect: []
+    // AST tier abstains: role + tabIndex + keydown make it operable
+  },
+  {
+    id: "swift-image-labeled-good",
+    framework: "swift",
+    file: "LabeledImage.swift",
+    kind: "good",
+    code: `Image(systemName: "star")
+  .resizable()
+  .accessibilityLabel("Favorite")`,
+    expect: []
+    // structural analysis sees the chained label
+  },
+  {
+    id: "swift-image-bare-bad",
+    framework: "swift",
+    file: "BareImage.swift",
+    kind: "bad",
+    code: `Image(systemName: "star").frame(width: 20, height: 20)`,
+    expect: ["swift/image-without-a11y"]
+  },
+  // ── Cross-platform ─────────────────────────────────────────────
+  {
+    id: "compose-clickable-bad",
+    framework: "compose",
+    file: "Bad.kt",
+    kind: "bad",
+    code: `Box(Modifier.clickable { open() }) { Text("Open") }`,
+    expect: ["compose/clickable-without-role"]
+  },
+  {
+    id: "android-image-bad",
+    framework: "android-xml",
+    file: "bad.xml",
+    kind: "bad",
+    code: `<ImageView android:src="@drawable/logo" android:layout_width="48dp" android:layout_height="48dp" />`,
+    expect: ["android-xml/image-view-without-content-description"]
+  },
+  {
+    id: "flutter-color-bad",
+    framework: "flutter",
+    file: "bad.dart",
+    kind: "bad",
+    code: `Container(color: Color(0xFFFF0000));`,
+    expect: ["flutter/hardcoded-color"]
+  }
+];
+function ratio(n, d) {
+  return d === 0 ? 1 : Math.round(n / d * 1e3) / 1e3;
+}
+function runBenchmark(cases = BENCHMARK_CASES) {
+  const tp = /* @__PURE__ */ new Map();
+  const fp = /* @__PURE__ */ new Map();
+  const fn = /* @__PURE__ */ new Map();
+  const bump = (m, k) => m.set(k, (m.get(k) ?? 0) + 1);
+  const falsePositives = [];
+  const falseNegatives = [];
+  for (const c of cases) {
+    const concerns = analyzeFile(c.code, c.file).filter((m) => m.type === "concern");
+    const expected = [...c.expect];
+    for (const match of concerns) {
+      const idx = expected.indexOf(match.ruleId);
+      if (idx !== -1) {
+        expected.splice(idx, 1);
+        bump(tp, match.ruleId);
+      } else {
+        bump(fp, match.ruleId);
+        falsePositives.push({ case: c.id, ruleId: match.ruleId, line: match.line });
+      }
+    }
+    for (const missed of expected) {
+      bump(fn, missed);
+      falseNegatives.push({ case: c.id, ruleId: missed });
+    }
+  }
+  const ruleIds = /* @__PURE__ */ new Set([...tp.keys(), ...fp.keys(), ...fn.keys()]);
+  const perRule = [...ruleIds].sort().map((ruleId) => {
+    const t = tp.get(ruleId) ?? 0;
+    const f = fp.get(ruleId) ?? 0;
+    const n = fn.get(ruleId) ?? 0;
+    return { ruleId, tp: t, fp: f, fn: n, precision: ratio(t, t + f), recall: ratio(t, t + n) };
+  });
+  const sum = (m) => [...m.values()].reduce((a, b) => a + b, 0);
+  const T = sum(tp);
+  const F = sum(fp);
+  const N = sum(fn);
+  return {
+    perRule,
+    overall: { tp: T, fp: F, fn: N, precision: ratio(T, T + F), recall: ratio(T, T + N) },
+    falsePositives,
+    falseNegatives
+  };
 }
 export {
+  AST_TSX_RULES,
+  BASELINE_FILENAME,
+  BENCHMARK_CASES,
+  CACHE_FILENAME,
+  CONFIG_FILENAME,
+  HIG_SNAPSHOT_DATE,
   RULE_COUNT,
+  ScanCache,
+  analyzeFile,
+  applyBaseline,
+  applyConfig,
+  applyFixes,
+  astTsxAvailable,
   audit,
+  baselineKey,
   categorizeMatches,
+  createBaseline,
   detectPatterns,
+  fixGuidance,
   generateAuditMarkdown,
+  getRuleById,
+  globToRegExp,
+  higCitation,
+  isFixable,
+  loadBaseline,
+  loadConfig,
   loadSkillContent,
+  parseBaseline,
+  parseConfig,
+  refineSwift,
+  ruleCatalog,
+  runBenchmark,
   scanProject,
-  severityFor
+  severityFor,
+  suggestFix,
+  toSarif,
+  writeBaseline
 };

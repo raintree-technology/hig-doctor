@@ -9,8 +9,9 @@ Agent-native Apple Human Interface Guidelines: a structured skills corpus, MCP s
 [![GitHub stars](https://img.shields.io/github/stars/raintree-technology/hig-doctor?style=social)](https://github.com/raintree-technology/hig-doctor/stargazers)
 
 - **Skills corpus** — 14 skills and 156 reference topics covering the complete HIG (foundations, components, patterns, inputs, platforms, technologies). Snapshot dated 2025-02-02; canonical content remains at [developer.apple.com/design/human-interface-guidelines](https://developer.apple.com/design/human-interface-guidelines/).
-- **MCP server** — stdio Model Context Protocol server exposing `hig_list_skills`, `hig_lookup`, and `hig_audit` for Claude Desktop, Cursor, Windsurf, and Claude Code.
-- **Audit CLI** — universal HIG compliance scanner across 12 frameworks (SwiftUI, UIKit, React, Vue, Svelte, Angular, Compose, Android XML, React Native, Flutter, CSS, HTML). Emits severity-bucketed markdown/JSON with a pass/fail CI gate.
+- **MCP server** ([`hig-mcp`](https://www.npmjs.com/package/hig-mcp)) — six tools for Claude Desktop, Cursor, Windsurf, and Claude Code: `hig_list_skills`, `hig_lookup`, `hig_search` (BM25 over every topic), `hig_audit`, `hig_audit_file`, and `hig_explain_finding`. Runs over stdio or streamable HTTP.
+- **Audit CLI** ([`hig-doctor`](https://www.npmjs.com/package/hig-doctor)) — a **431-rule** compliance scanner across 15 frameworks. A regex base tier plus a TypeScript-compiler JSX tier and a Swift structural tier; every finding is tagged with the engine that produced it. Config files, inline suppressions, baselines, SARIF output, and `--fix` autofixes.
+- **Engine** ([`@hig-doctor/core`](https://www.npmjs.com/package/@hig-doctor/core)) — the rule engine, embeddable in your own tooling.
 
 Content is © Apple Inc.; this repository provides organization, cross-referencing, and detection rules for AI agent use. MIT-licensed for structure and tooling.
 
@@ -36,21 +37,14 @@ Or add as a git submodule into any project's `.claude/` directory.
 
 ## MCP server
 
-Expose the skills and audit tool to any MCP-compatible client.
-
-```bash
-# From a git clone of this repo
-bun packages/mcp/src/index.ts
-```
-
-Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`):
+The published package bundles the skills corpus, so it runs with no clone:
 
 ```json
 {
   "mcpServers": {
     "hig-doctor": {
-      "command": "bun",
-      "args": ["/absolute/path/to/hig-doctor/packages/mcp/src/index.ts"]
+      "command": "npx",
+      "args": ["-y", "hig-mcp"]
     }
   }
 }
@@ -62,19 +56,20 @@ Tools:
 |------|---------|
 | `hig_list_skills` | Enumerate skills, descriptions, and reference topics. |
 | `hig_lookup` | Fetch HIG reference markdown by skill (and optional topic). |
+| `hig_search` | BM25 full-text search across every reference topic — ask in natural language. |
 | `hig_audit` | Run the HIG compliance audit on a project directory. |
+| `hig_audit_file` | Audit a single file the agent just wrote; returns per-finding fixes. |
+| `hig_explain_finding` | Rule metadata plus an excerpt of the cited HIG reference, by rule ID. |
 
-Set `HIG_SKILLS_DIR` if you relocate the `skills/` folder.
+Every tool returns structured JSON alongside text. For a local checkout, point `command`/`args` at `bun /abs/path/packages/mcp/src/index.ts`. `hig-mcp --http [port]` serves the same tools over streamable HTTP. `HIG_SKILLS_DIR` overrides the bundled corpus.
 
 ## HIG Audit CLI
 
-Scan any project for Apple HIG compliance. Works with SwiftUI, UIKit, React, Next.js, Vue, Nuxt, Svelte, SvelteKit, Angular, React Native, Flutter, Jetpack Compose, Android XML, and plain HTML/CSS. Detects 431 patterns across accessibility, color systems, typography, responsive layout, dark mode, motion, i18n, and more.
-
-Requires [Bun](https://bun.sh).
+Scan any project for Apple HIG compliance across SwiftUI, UIKit, AppKit, watchOS, visionOS, React/Next.js, Vue/Nuxt, Svelte/SvelteKit, Angular, React Native, Flutter, Jetpack Compose, Android XML, and plain HTML/CSS — **431 rules** across accessibility, color, typography, layout, dark mode, motion, and i18n.
 
 ```bash
-cd packages/cli
-bun run audit <directory>
+npx hig-doctor audit <directory>
+# or, from a git clone (requires Bun): bun run --cwd packages/cli audit <directory>
 ```
 
 Example output:
@@ -100,9 +95,29 @@ Example output:
 |------|-------------|
 | `--export` | Write a full audit report to `<directory>/hig-audit.md` |
 | `--stdout` | Print raw audit markdown to stdout (pipe to an AI for evaluation) |
-| `--json` | Print structured results as JSON (for CI/scripts) |
+| `--json` | Print structured results as JSON, including per-concern fix suggestions |
+| `--format sarif` | Emit SARIF 2.1.0 for GitHub code scanning |
+| `--fix` | Apply safe mechanical fixes in place; print unsafe ones as suggestions |
 | `--fail-on <severity>` | Exit 1 if any concern at/above `critical`, `serious`, or `moderate` is found |
+| `--config <path>` / `--no-config` | Use or skip `hig-doctor.config.json` |
+| `--write-baseline` / `--baseline <path>` / `--no-baseline` | Snapshot, use, or ignore a baseline |
+| `--exclude <glob>` | Skip paths (repeatable; also reads `.higauditignore`) |
+| `--cache` | Cache per-file results; re-scan only changed files |
 | `--help` | Show help |
+
+### Configuration, suppressions, and baselines
+
+A `hig-doctor.config.json` in the audited project disables rules, remaps severities, ignores globs, and adds per-path overrides (rule IDs are documented in [`docs/rules.md`](docs/rules.md)):
+
+```json
+{
+  "rules": { "swift/hardcoded-color": "off", "css/*": "moderate" },
+  "ignore": ["legacy/**"],
+  "overrides": [{ "files": ["marketing/**"], "rules": { "css/outline-none": "off" } }]
+}
+```
+
+Inline comments suppress at the source: `// hig-disable-next-line swift/hardcoded-color -- brand splash` and `// hig-disable-file <rule-id>` (any comment syntax). `hig-doctor --write-baseline` snapshots existing concerns into `.hig-baseline.json`, keyed by content rather than line number, so a CI gate only fails on **new** violations.
 
 ### Severity model
 
@@ -134,42 +149,64 @@ The audit scans code, stylesheets, and config files, then categorizes findings a
 
 ### Supported frameworks
 
+Rule counts are derived from the catalog; the authoritative per-rule breakdown is [`docs/rules.md`](docs/rules.md).
+
+**Apple platforms** — checked against Apple's HIG directly:
+
 | Framework | Rules | Detection depth |
 |-----------|-------|----------------|
-| SwiftUI | 55+ | Navigation, controls, color, typography, accessibility, dark mode, technologies |
-| UIKit | 10+ | Accessibility, layout, color |
-| React / Next.js | 100+ | Full a11y, color tokens, typography, dark mode, responsive, forms, structure |
-| Vue / Nuxt | 25+ | Accessibility, navigation, forms, i18n, transitions |
-| Svelte / SvelteKit | 20+ | Accessibility, forms, dark mode, motion |
-| Angular | 25+ | Accessibility (CDK a11y), Material components, forms, i18n |
-| Jetpack Compose | 30+ | Semantics, color, typography, dark mode, navigation, controls |
-| Android XML | 20+ | contentDescription, color resources, sp/dp units, touch targets |
-| React Native | 15+ | accessibilityLabel/Role, color scheme, navigation, gestures |
-| Flutter | 20+ | Semantics, Theme colors/typography, dark mode, i18n |
-| CSS / SCSS | 40+ | Custom properties, contrast, focus styles, outline, !important, z-index, logical properties, RTL |
-| HTML | 15+ | Landmarks, lang attribute, heading structure, viewport meta |
+| SwiftUI (`swift`) | 70 | Navigation, controls, color, typography, accessibility, dark mode, technologies |
+| UIKit | 35 | Deprecated APIs, Dynamic Type, semantic color, Auto Layout, SF Symbols, haptics |
+| AppKit | 25 | Windows, toolbars, NSColor/NSFont semantics, materials/vibrancy, accessibility |
+| watchOS | 13 | Digital Crown, complications, Always-On luminance, workouts, haptics |
+| visionOS | 10 | Volumetric windows, immersive spaces, ornaments, glass materials, spatial gestures |
+
+**Web and cross-platform** — checked against **universal accessibility and UI-quality principles that align with the HIG** (semantic colors, scalable type, focus visibility, keyboard operability, motion/RTL), not Apple-specific HIG conformance:
+
+| Framework | Rules | Detection depth |
+|-----------|-------|----------------|
+| React / Next.js (`web`) | 122 | a11y (AST-verified for JSX), color tokens, typography, dark mode, responsive, forms |
+| CSS / SCSS | 40 | Custom properties, contrast, focus styles, outline, z-index, logical properties, RTL |
+| Vue / Nuxt | 25 | Accessibility, navigation, forms, i18n, transitions |
+| Angular | 25 | Accessibility (CDK a11y), Material components, forms, i18n |
+| Svelte / SvelteKit | 20 | Accessibility, forms, dark mode, motion |
+| Flutter | 20 | Semantics, Theme colors/typography, dark mode, i18n |
+| Jetpack Compose | 30 | Semantics, color, typography, dark mode, navigation, controls |
+| Android XML | 20 | contentDescription, color resources, sp/dp units, touch targets |
+| React Native | 15 | accessibilityLabel/Role, color scheme, navigation, gestures |
+
+### How it works: tiered analysis
+
+Findings come from three tiers, and each finding carries the tier that produced it:
+
+- **regex** — the zero-dependency base scanner (comment- and string-aware), always available.
+- **swift-structural** — walks the chained-modifier expression around each `Image(systemName:)` / `.onTapGesture` to drop findings that are already handled, cutting the two highest false-positive Swift heuristics.
+- **ast-tsx** — parses `.tsx`/`.jsx` with the TypeScript compiler to judge a set of a11y rules (missing `alt`, clickable `div`/`span` without role, positive `tabIndex`), removing false positives from multi-line elements and spread props. Uses the optional `typescript` dependency; falls back to regex when it's absent.
+
+Precision and recall are measured on an annotated fixture corpus and published in [`docs/benchmark.md`](docs/benchmark.md), guarded by CI so regressions surface.
 
 ### JSON output
 
+`--json` emits schema 2, with the tool/snapshot versions, config and baseline status, and a per-concern array carrying the rule ID, fix guidance, HIG citation, and a machine-readable suggested edit:
+
 ```json
 {
-  "lowDensity": false,
+  "schemaVersion": 2,
+  "toolVersion": "2.0.0",
+  "higSnapshot": "2025-02-02",
   "frameworks": ["nextjs"],
-  "files": { "code": 48, "style": 3, "config": 10 },
   "severities": { "critical": 0, "serious": 2, "moderate": 4 },
-  "totals": { "concerns": 6, "positives": 306, "patterns": 100 },
-  "failOn": "critical",
-  "gateTripped": false,
-  "categories": [
+  "config": { "path": null, "warnings": [] },
+  "baseline": { "path": null, "absorbed": 0, "stale": 0 },
+  "concerns": [
     {
-      "name": "Foundations",
-      "skill": "hig-foundations",
-      "detections": 312,
-      "concerns": 2,
-      "positives": 286,
-      "patterns": 24,
-      "severities": { "critical": 0, "serious": 2, "moderate": 0 },
-      "files": ["app/layout.tsx", "..."]
+      "ruleId": "css/physical-text-align",
+      "severity": "moderate",
+      "file": "app/hero.css",
+      "line": 12,
+      "fix": "Use logical text-align (start/end) so text follows writing direction.",
+      "hig": "https://developer.apple.com/design/human-interface-guidelines/right-to-left",
+      "suggestion": { "before": "  text-align: left;", "after": "  text-align: start;", "safe": true }
     }
   ]
 }
@@ -177,17 +214,26 @@ The audit scans code, stylesheets, and config files, then categorizes findings a
 
 ### GitHub Action
 
-Audit on every pull request and fail the build on critical violations.
+Audit on every pull request, fail on critical violations, and upload SARIF so findings appear as native code-scanning annotations on the exact lines:
 
 ```yaml
-- uses: actions/checkout@v4
-- uses: raintree-technology/hig-doctor@main
-  with:
-    directory: .
-    fail-on: critical
+permissions:
+  contents: read
+  security-events: write
+steps:
+  - uses: actions/checkout@v4
+  - id: hig
+    uses: raintree-technology/hig-doctor@main
+    with:
+      directory: .
+      fail-on: critical
+  - uses: github/codeql-action/upload-sarif@v3
+    if: always()
+    with:
+      sarif_file: ${{ steps.hig.outputs.sarif }}
 ```
 
-Outputs: `critical`, `serious`, `moderate`, `report` (path to generated `hig-audit.md`).
+Outputs: `critical`, `serious`, `moderate`, `report` (markdown), and `sarif`. The Action also emits inline `::error`/`::warning` annotations for the top concerns.
 
 ## Agent-readable surface
 
@@ -243,9 +289,13 @@ hig-doctor/
 │   └── skill-validator/                   # Internal skill-structure validator (dev-only)
 ├── website/                               # Next.js site + llms.txt + /raw endpoints
 ├── demos/remotion-hig-doctor/             # Animated audit demo
+├── docs/                                  # rules.md, benchmark.md (generated), audit notes
+├── hig-snapshot.json                      # HIG drift-detection manifest (per-topic content hashes)
 ├── scripts/
-│   ├── legal-hardening.ts                 # Idempotent: strip Apple CDN images, insert attribution
-│   └── legal-hardening-deep.ts            # Destructive prose transform: keep headings + principles
+│   ├── hig-drift.ts                       # DocC-JSON drift detection (--seed / --check)
+│   ├── generate-rule-docs.ts              # docs/rules.md from the rule catalog
+│   ├── generate-benchmark.ts              # docs/benchmark.md from the fixture corpus
+│   └── legal-hardening*.ts                # Strip Apple CDN images, insert attribution
 └── .github/                              # CI workflows + GitHub social preview
 ```
 
