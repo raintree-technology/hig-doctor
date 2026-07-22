@@ -5,8 +5,9 @@ env:
 
 # Opens a tracking issue once a year shortly after WWDC so the maintainer
 # remembers to diff Apple's HIG against the snapshot in skills/references
-# and cut a new version. We do not automate the scrape itself — Apple's
-# HIG pages are JS-rendered and the scrape is a human-in-the-loop process.
+# and cut a new version. Drift DETECTION is automated nightly by
+# hig-drift.yml (Apple ships each page as DocC JSON); the human stays in
+# the loop for the content rewrite, not the detection.
 
 on:
   workflow_dispatch:
@@ -69,9 +70,10 @@ jobs:
           - [ ] For each changed page, refresh the corresponding file in \`skills/*/references/\`.
           - [ ] Update \`SKILL.md\` reference indexes if topics were added or renamed.
           - [ ] Bump skill versions in \`VERSIONS.md\` (minor for content updates, major for structural changes).
-          - [ ] Update \`HIG_SNAPSHOT_DATE\` in \`packages/mcp/src/index.ts\`.
+          - [ ] Update \`HIG_SNAPSHOT_DATE\` in \`packages/core/src/patterns.ts\`.
           - [ ] Update the snapshot attribution in \`README.md\`.
           - [ ] Add any new components to \`packages/core/src/patterns.ts\` if they warrant detection rules.
+          - [ ] Re-seed the drift manifest: \`bun scripts/hig-drift.ts --seed\` and commit \`hig-snapshot.json\`.
           - [ ] Tag a release.
 
           See \`CONTRIBUTING.md\` for the re-scan process notes.
