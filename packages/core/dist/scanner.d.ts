@@ -22,4 +22,5 @@ export interface ScanOptions {
     /** Path globs (relative to the scanned root) to skip. Merged with `.higauditignore`. */
     exclude?: string[];
 }
+export declare function globToRegExp(glob: string): RegExp;
 export declare function scanProject(directory: string, options?: ScanOptions): Promise<ScanResult>;

@@ -4,9 +4,11 @@
 
 # HIG Doctor audit CLI
 
-Universal **Apple Human Interface Guidelines** compliance auditor for app projects. Scans your source against **431 HIG rules** across 15 frameworks (SwiftUI, UIKit, React, Vue, Svelte, Angular, Jetpack Compose, Android XML, React Native, Flutter, CSS, and HTML) and reports concerns by severity — **critical / serious / moderate** — plus positive patterns you already follow.
+**Apple Human Interface Guidelines** compliance auditor for app projects. Scans your source against **431 rules** across 15 frameworks (SwiftUI, UIKit, AppKit, watchOS, visionOS, React/Next.js, Vue, Svelte, Angular, Jetpack Compose, Android XML, React Native, Flutter, CSS, and HTML) and reports concerns by severity — **critical / serious / moderate** — plus positive patterns you already follow.
 
-Runs under Node 20+ (after install) or [Bun](https://bun.sh) (directly from source). Zero runtime dependencies.
+Apple-platform code is checked against the HIG directly; web and cross-platform code is checked against universal accessibility and UI-quality principles that align with the HIG.
+
+Findings come from a regex base tier plus a TypeScript-compiler JSX tier and a Swift structural tier; each finding is tagged with the engine that produced it. Runs under Node 20+ (after install) or [Bun](https://bun.sh) (from source). The AST tier uses the optional `typescript` dependency and falls back to regex when it's absent.
 
 ## Usage
 
@@ -26,9 +28,14 @@ hig-doctor ./path/to/project
 | _(none)_ | Pretty terminal summary: per-category bars, severity counts, interpretation. |
 | `--export` | Write a full markdown report to `hig-audit.md` in the audited directory. |
 | `--stdout` | Print the full markdown report to stdout (pipe it to an AI agent). |
-| `--json` | Emit machine-readable JSON to stdout (progress goes to stderr). For CI. |
+| `--json` | Emit machine-readable JSON (schema 2) to stdout, with per-concern fix suggestions. For CI. |
+| `--format sarif` | Emit SARIF 2.1.0 for GitHub code scanning. |
+| `--fix` | Apply safe mechanical fixes in place; unsafe transforms print as suggestions. |
 | `--fail-on <level>` | Exit non-zero when a finding at or above `critical`, `serious`, or `moderate` exists. For CI gates. |
+| `--config <path>` / `--no-config` | Use or skip `hig-doctor.config.json` (rule toggles, severity remaps, overrides). |
+| `--write-baseline` / `--baseline <path>` / `--no-baseline` | Snapshot, use, or ignore a baseline so gates fail only on new violations. |
 | `--exclude <glob>` | Skip paths matching a glob (comma-separated, repeatable). See _Ignoring files_. |
+| `--cache` | Cache per-file results; re-scan only changed files. |
 
 ### CI gate example
 
@@ -71,7 +78,9 @@ Each rule maps to a HIG topic (Accessibility, Color, Typography, Layout, Buttons
 - **Serious** — significant UX violations: hardcoded colors over semantic tokens, tap targets below minimum, deprecated navigation containers.
 - **Moderate** — style-level: fixed font sizes, non-Dynamic-Type fonts, gesture-only affordances.
 
-Detection is regex-based and self-contained — no network calls, no source ever leaves your machine.
+Every rule has a stable ID (`framework/label-slug`) with a HIG citation and fix guidance — see [`docs/rules.md`](../../docs/rules.md). Precision/recall on an annotated fixture corpus is published in [`docs/benchmark.md`](../../docs/benchmark.md). Detection is self-contained — no network calls, no source ever leaves your machine.
+
+Suppress findings inline (`// hig-disable-next-line <rule-id> -- reason`, `// hig-disable-file <rule-id>`) or via a `hig-doctor.config.json`.
 
 ## From source (Bun)
 
