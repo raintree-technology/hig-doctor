@@ -1,0 +1,54 @@
+{
+  "name": "@hig-doctor/core",
+  "version": "0.1.0",
+  "description": "Rule engine powering HIG Doctor: framework detection, Apple HIG pattern rules, and the audit pipeline.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "engines": {
+    "node": "24.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raintree-technology/hig-doctor.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/raintree-technology/hig-doctor/tree/main/packages/core#readme",
+  "bugs": {
+    "url": "https://github.com/raintree-technology/hig-doctor/issues"
+  },
+  "keywords": [
+    "apple",
+    "hig",
+    "human-interface-guidelines",
+    "audit",
+    "accessibility",
+    "lint-engine"
+  ],
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js && tsc -p tsconfig.build.json",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "bun run build"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.3",
+    "@types/node": "^20",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "bun@1.3.11"
+}

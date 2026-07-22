@@ -77,7 +77,7 @@ Detection is regex-based and self-contained — no network calls, no source ever
 
 ```bash
 git clone https://github.com/raintree-technology/hig-doctor.git
-cd hig-doctor/packages/hig-doctor/src-termcast
+cd hig-doctor/packages/cli
 bun install
 bun run audit ../../..            # audit the repo itself
 bun test                          # run the rule + scanner suite

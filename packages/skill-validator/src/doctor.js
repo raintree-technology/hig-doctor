@@ -317,7 +317,7 @@ const buildAgentTodoList = (findings, rootDirectory) => {
         task: "No fixes required",
         details: "Repository passed all hig-doctor checks.",
         doneWhen: "Run hig-doctor after your next content update.",
-        verifyCommand: `node packages/hig-doctor/src/cli.js "${rootDirectory}" --score`
+        verifyCommand: `node packages/skill-validator/src/cli.js "${rootDirectory}" --score`
       }
     ];
   }
@@ -370,7 +370,7 @@ const buildAgentTodoList = (findings, rootDirectory) => {
       task: `${actionVerb} ${group.ruleId} in ${group.scope}`,
       details: sampleMessage,
       doneWhen: `No ${group.ruleId} findings remain for scope '${group.scope}' and score reaches 100/100.`,
-      verifyCommand: `node packages/hig-doctor/src/cli.js "${rootDirectory}" --json`
+      verifyCommand: `node packages/skill-validator/src/cli.js "${rootDirectory}" --json`
     };
   });
 };

@@ -24,7 +24,7 @@ All output is JSON or markdown text. Content is from Apple's HIG, snapshot dated
 
 ```bash
 git clone https://github.com/raintree-technology/hig-doctor.git
-cd hig-doctor/packages/hig-doctor/src-mcp
+cd hig-doctor/packages/mcp
 bun install  # or: npm install
 ```
 
@@ -60,7 +60,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
     "hig-doctor": {
       "command": "bun",
       "args": [
-        "/absolute/path/to/hig-doctor/packages/hig-doctor/src-mcp/src/index.ts"
+        "/absolute/path/to/hig-doctor/packages/mcp/src/index.ts"
       ]
     }
   }
@@ -75,7 +75,7 @@ Or if using the built Node artifact:
     "hig-doctor": {
       "command": "node",
       "args": [
-        "/absolute/path/to/hig-doctor/packages/hig-doctor/src-mcp/dist/index.js"
+        "/absolute/path/to/hig-doctor/packages/mcp/dist/index.js"
       ],
       "env": {
         "HIG_SKILLS_DIR": "/absolute/path/to/hig-doctor/skills"

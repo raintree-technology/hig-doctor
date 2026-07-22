@@ -36,7 +36,7 @@ const getTodoItems = (result) => {
       task: "No fixes required",
       details: "Repository passed all hig-doctor checks.",
       doneWhen: "Run hig-doctor after your next content update.",
-      verifyCommand: `node packages/hig-doctor/src/cli.js "${result.directory}" --score`
+      verifyCommand: `node packages/skill-validator/src/cli.js "${result.directory}" --score`
     }
   ];
 };

@@ -187,7 +187,7 @@ export default function McpPage() {
                   </div>
                   <McpCodeBlock>
                     {
-                      "git clone https://github.com/raintree-technology/hig-doctor.git\ncd hig-doctor/packages/hig-doctor/src-mcp\nbun install\nbun src/index.ts"
+                      "git clone https://github.com/raintree-technology/hig-doctor.git\ncd hig-doctor/packages/mcp\nbun install\nbun src/index.ts"
                     }
                   </McpCodeBlock>
                 </div>

@@ -2,8 +2,8 @@
 // No shebang here: the published bin is the esbuild bundle (dist/index.js),
 // which gets a `#!/usr/bin/env node` banner at build time. Dev usage invokes
 // this file explicitly via `bun src/cli.ts`.
-import { audit } from "./audit";
-import type { Severity } from "./patterns";
+import { audit } from "@hig-doctor/core";
+import type { Severity } from "@hig-doctor/core";
 import { writeFile } from "node:fs/promises";
 import { join, resolve, basename } from "node:path";
 

@@ -16,9 +16,19 @@
   "engines": {
     "node": "24.x"
   },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raintree-technology/hig-doctor.git",
+    "directory": "packages/mcp"
+  },
+  "homepage": "https://github.com/raintree-technology/hig-doctor/tree/main/packages/mcp#readme",
+  "bugs": {
+    "url": "https://github.com/raintree-technology/hig-doctor/issues"
+  },
   "scripts": {
     "start": "bun src/index.ts",
-    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --banner:js=\"#!/usr/bin/env node\"",
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --alias:@hig-doctor/core=../core/src/index.ts --banner:js=\"#!/usr/bin/env node\"",
     "prepublishOnly": "bun run build",
     "test": "bun test",
     "typecheck": "tsc --noEmit"

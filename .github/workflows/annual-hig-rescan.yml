@@ -69,9 +69,9 @@ jobs:
           - [ ] For each changed page, refresh the corresponding file in \`skills/*/references/\`.
           - [ ] Update \`SKILL.md\` reference indexes if topics were added or renamed.
           - [ ] Bump skill versions in \`VERSIONS.md\` (minor for content updates, major for structural changes).
-          - [ ] Update \`HIG_SNAPSHOT_DATE\` in \`packages/hig-doctor/src-mcp/src/index.ts\`.
+          - [ ] Update \`HIG_SNAPSHOT_DATE\` in \`packages/mcp/src/index.ts\`.
           - [ ] Update the snapshot attribution in \`README.md\`.
-          - [ ] Add any new components to \`packages/hig-doctor/src-termcast/src/patterns.ts\` if they warrant detection rules.
+          - [ ] Add any new components to \`packages/core/src/patterns.ts\` if they warrant detection rules.
           - [ ] Tag a release.
 
           See \`CONTRIBUTING.md\` for the re-scan process notes.

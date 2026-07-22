@@ -117,7 +117,7 @@ const runTui = async (result) => {
         error.message.includes("Cannot find module 'react'"))
     ) {
       throw new Error(
-        "TUI dependencies are missing. Run 'npm --prefix packages/hig-doctor install' or install the published package dependencies."
+        "TUI dependencies are missing. Run 'npm --prefix packages/skill-validator install' or install the published package dependencies."
       );
     }
 
