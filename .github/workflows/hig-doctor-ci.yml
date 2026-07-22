@@ -60,9 +60,9 @@ jobs:
           sleep 3
           kill $BUNPID 2>/dev/null || true
           wait $BUNPID 2>/dev/null || true
-          grep -q '"name":"hig_list_skills"' /tmp/mcp-out.json
-          grep -q '"name":"hig_lookup"' /tmp/mcp-out.json
-          grep -q '"name":"hig_audit"' /tmp/mcp-out.json
+          for tool in hig_list_skills hig_lookup hig_search hig_audit hig_audit_file hig_explain_finding; do
+            grep -q "\"name\":\"$tool\"" /tmp/mcp-out.json || { echo "missing MCP tool: $tool" >&2; exit 1; }
+          done
 
       - name: Verify toolchain lock drift
         run: |

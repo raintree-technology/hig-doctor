@@ -1,6 +1,6 @@
 {
   "name": "hig-mcp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "mcpName": "io.github.raintree-technology/hig-doctor",
   "description": "HIG Doctor MCP server exposing Apple HIG skills and project audits to AI coding agents",
   "type": "module",
@@ -28,7 +28,8 @@
   },
   "scripts": {
     "start": "bun src/index.ts",
-    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --alias:@hig-doctor/core=../core/src/index.ts --banner:js=\"#!/usr/bin/env node\"",
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --alias:@hig-doctor/core=../core/src/index.ts --banner:js=\"#!/usr/bin/env node\" && bun run bundle:skills",
+    "bundle:skills": "rm -rf dist/skills && cp -R ../../skills dist/skills",
     "prepublishOnly": "bun run build",
     "test": "bun test",
     "typecheck": "tsc --noEmit"

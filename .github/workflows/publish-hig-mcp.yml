@@ -73,9 +73,9 @@ jobs:
             '{"jsonrpc":"2.0","method":"notifications/initialized"}' \
             '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' | node dist/index.js > /tmp/mcp-out.json 2>/dev/null &
           PID=$!; sleep 2; kill "$PID" 2>/dev/null || true; wait "$PID" 2>/dev/null || true
-          grep -q '"name":"hig_list_skills"' /tmp/mcp-out.json
-          grep -q '"name":"hig_lookup"' /tmp/mcp-out.json
-          grep -q '"name":"hig_audit"' /tmp/mcp-out.json
+          for tool in hig_list_skills hig_lookup hig_search hig_audit hig_audit_file hig_explain_finding; do
+            grep -q "\"name\":\"$tool\"" /tmp/mcp-out.json || { echo "missing MCP tool: $tool" >&2; exit 1; }
+          done
 
       - name: Package dry run
         run: mise x -- npm pack --dry-run

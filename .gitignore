@@ -4,6 +4,7 @@ _raw/
 node_modules/
 packages/mcp/dist/
 packages/cli/dist/
+packages/core/dist/
 .vercel/
 .agents/
 skills-lock.json
