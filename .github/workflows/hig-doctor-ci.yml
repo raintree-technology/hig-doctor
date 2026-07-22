@@ -43,14 +43,14 @@ jobs:
 
       - name: Smoke check strict and score modes
         run: |
-          node packages/hig-doctor/src/cli.js . --strict
-          node packages/hig-doctor/src/cli.js . --score
+          node packages/skill-validator/src/cli.js . --strict
+          node packages/skill-validator/src/cli.js . --score
 
       - name: Smoke audit against the website
-        run: bun packages/hig-doctor/src-termcast/src/cli.ts website --json
+        run: bun packages/cli/src/cli.ts website --json
 
       - name: Smoke check MCP server handshake
-        working-directory: packages/hig-doctor/src-mcp
+        working-directory: packages/mcp
         run: |
           REQUEST='{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"0"}}}
           {"jsonrpc":"2.0","method":"notifications/initialized"}

@@ -38,7 +38,7 @@ npm run render
 
 ## Data Pipeline
 
-`scripts/generate-data.mjs` runs the HIG audit CLI (`bun packages/hig-doctor/src-termcast/src/cli.ts <dir> --json`) on the repository root and outputs `src/data/report-data.json`.
+`scripts/generate-data.mjs` runs the HIG audit CLI (`bun packages/cli/src/cli.ts <dir> --json`) on the repository root and outputs `src/data/report-data.json`.
 
 The data includes:
 - Project score, frameworks, file counts, and detection totals

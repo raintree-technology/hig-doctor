@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const demoRoot = path.resolve(scriptDir, "..");
 const repoRoot = path.resolve(demoRoot, "..", "..");
-const auditCli = path.resolve(repoRoot, "packages", "hig-doctor", "src-termcast", "src", "cli.ts");
+const auditCli = path.resolve(repoRoot, "packages", "cli", "src", "cli.ts");
 const outputPath = path.resolve(demoRoot, "src", "data", "report-data.json");
 
 const runAudit = (targetDir) => {

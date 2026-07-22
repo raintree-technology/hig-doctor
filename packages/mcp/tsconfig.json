@@ -8,7 +8,11 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "types": ["node", "bun"],
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@hig-doctor/core": ["../core/src/index.ts"]
+    }
   },
-  "include": ["src", "../src-termcast/src"]
+  "include": ["src", "../core/src"]
 }

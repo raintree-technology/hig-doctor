@@ -39,7 +39,7 @@ runs:
       env:
         INPUT_DIRECTORY: ${{ inputs.directory }}
         INPUT_FAIL_ON: ${{ inputs.fail-on }}
-        AUDIT_DIR: ${{ github.action_path }}/packages/hig-doctor/src-termcast
+        AUDIT_DIR: ${{ github.action_path }}/packages/cli
       run: |
         TARGET="$GITHUB_WORKSPACE/$INPUT_DIRECTORY"
         REPORT="$GITHUB_WORKSPACE/hig-audit.md"

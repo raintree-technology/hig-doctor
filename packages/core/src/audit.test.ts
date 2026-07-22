@@ -109,7 +109,7 @@ button:focus-visible {
     const dir = await mkdtemp(join(tmpdir(), "hig-skills-"));
     try {
       await writeFile(join(dir, "View.swift"), `.foregroundColor(.red)`);
-      const skillsDir = join(import.meta.dir, "..", "..", "..", "..", "skills");
+      const skillsDir = join(import.meta.dir, "..", "..", "..", "skills");
       const result = await audit(dir, skillsDir);
       const foundations = result.categories.find(c => c.skillName === "hig-foundations");
       expect(foundations).toBeDefined();

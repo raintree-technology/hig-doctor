@@ -2,8 +2,8 @@ _raw/
 .claude/
 .DS_Store
 node_modules/
-packages/hig-doctor/src-mcp/dist/
-packages/hig-doctor/src-termcast/dist/
+packages/mcp/dist/
+packages/cli/dist/
 .vercel/
 .agents/
 skills-lock.json

@@ -385,7 +385,7 @@ test("missing nested reference links still report skill/reference-file-exists", 
   }
 });
 
-test("cli --version matches packages/hig-doctor/package.json", async () => {
+test("cli --version matches packages/skill-validator/package.json", async () => {
   const packageJsonPath = path.join(packageRoot, "package.json");
   const packageJson = JSON.parse(await readFile(packageJsonPath, "utf8"));
 

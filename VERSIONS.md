@@ -28,7 +28,7 @@ Content sourced from [Apple's Human Interface Guidelines](https://developer.appl
 ### 2026-04-24
 - **Tooling rework** (no change to skill content versions):
   - Audit CLI replaces the 0-100 score with severity buckets (critical/serious/moderate) and a `--fail-on` CI gate.
-  - New MCP stdio server at `packages/hig-doctor/src-mcp/` exposing `hig_list_skills`, `hig_lookup`, and `hig_audit`.
+  - New MCP stdio server at `packages/mcp/` exposing `hig_list_skills`, `hig_lookup`, and `hig_audit`.
   - GitHub Action repositioned from the internal skill validator to the audit CLI.
   - Website ships `/llms.txt` and `/raw/<slug>` agent-consumable endpoints.
   - Annual post-WWDC re-scan workflow opens a tracking issue each June 20.

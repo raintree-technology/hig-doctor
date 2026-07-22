@@ -40,7 +40,7 @@ Expose the skills and audit tool to any MCP-compatible client.
 
 ```bash
 # From a git clone of this repo
-bun packages/hig-doctor/src-mcp/src/index.ts
+bun packages/mcp/src/index.ts
 ```
 
 Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`):
@@ -50,7 +50,7 @@ Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_conf
   "mcpServers": {
     "hig-doctor": {
       "command": "bun",
-      "args": ["/absolute/path/to/hig-doctor/packages/hig-doctor/src-mcp/src/index.ts"]
+      "args": ["/absolute/path/to/hig-doctor/packages/mcp/src/index.ts"]
     }
   }
 }
@@ -73,7 +73,7 @@ Scan any project for Apple HIG compliance. Works with SwiftUI, UIKit, React, Nex
 Requires [Bun](https://bun.sh).
 
 ```bash
-cd packages/hig-doctor/src-termcast
+cd packages/cli
 bun run audit <directory>
 ```
 
@@ -236,10 +236,11 @@ hig-doctor/
 ├── .claude-plugin/marketplace.json       # Claude Code plugin manifest
 ├── brand/                                # Canonical logo, app icon, and usage guidance
 ├── skills/                                # 14 Agent Skills (SKILL.md + references/)
-├── packages/hig-doctor/
-│   ├── src/                               # Internal skill-structure validator (dev-only)
-│   ├── src-termcast/                      # Audit CLI (Bun, zero deps)
-│   └── src-mcp/                           # MCP server
+├── packages/
+│   ├── core/                              # @hig-doctor/core rule engine (scan → detect → categorize → report)
+│   ├── cli/                               # hig-doctor audit CLI
+│   ├── mcp/                               # hig-mcp MCP server
+│   └── skill-validator/                   # Internal skill-structure validator (dev-only)
 ├── website/                               # Next.js site + llms.txt + /raw endpoints
 ├── demos/remotion-hig-doctor/             # Animated audit demo
 ├── scripts/

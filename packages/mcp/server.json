@@ -7,7 +7,7 @@
     "url": "https://github.com/raintree-technology/hig-doctor",
     "source": "github",
     "id": "1154000512",
-    "subfolder": "packages/hig-doctor/src-mcp"
+    "subfolder": "packages/mcp"
   },
   "version": "0.1.0",
   "websiteUrl": "https://apple.raintree.technology/mcp",

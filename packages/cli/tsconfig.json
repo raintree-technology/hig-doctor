@@ -3,13 +3,15 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "types": ["node", "bun"],
-    "outDir": "dist",
-    "rootDir": "src"
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@hig-doctor/core": ["../core/src/index.ts"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "../core/src"]
 }

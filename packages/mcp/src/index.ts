@@ -22,7 +22,7 @@ import {
 import { readFile, readdir, access } from "node:fs/promises";
 import { dirname, join, resolve, isAbsolute } from "node:path";
 import { fileURLToPath } from "node:url";
-import { audit } from "../../src-termcast/src/audit";
+import { audit } from "@hig-doctor/core";
 import pkg from "../package.json";
 
 const HIG_SNAPSHOT_DATE = "2025-02-02";
@@ -37,8 +37,8 @@ async function resolveSkillsDir(): Promise<string> {
   }
   const candidates = [
     resolve(MODULE_DIR, "skills"),
-    resolve(MODULE_DIR, "..", "..", "..", "..", "skills"),
-    resolve(MODULE_DIR, "..", "..", "..", "..", "..", "skills"),
+    // Monorepo layout: packages/mcp/{src,dist} → repo root
+    resolve(MODULE_DIR, "..", "..", "..", "skills"),
     resolve(process.cwd(), "skills"),
   ];
   for (const c of candidates) {

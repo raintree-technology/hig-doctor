@@ -11,7 +11,7 @@ const repoRoot = process.cwd();
 
 test("website/lib/audit/patterns.ts matches the canonical audit patterns module", () => {
   const canonical = readFileSync(
-    path.join(repoRoot, "packages/hig-doctor/src-termcast/src/patterns.ts"),
+    path.join(repoRoot, "packages/core/src/patterns.ts"),
     "utf8",
   );
   const websiteCopy = readFileSync(
@@ -22,6 +22,6 @@ test("website/lib/audit/patterns.ts matches the canonical audit patterns module"
   assert.equal(
     websiteCopy,
     canonical,
-    "website/lib/audit/patterns.ts has drifted from packages/hig-doctor/src-termcast/src/patterns.ts. Re-run `npm run sync:audit-patterns` at the repo root.",
+    "website/lib/audit/patterns.ts has drifted from packages/core/src/patterns.ts. Re-run `npm run sync:audit-patterns` at the repo root.",
   );
 });

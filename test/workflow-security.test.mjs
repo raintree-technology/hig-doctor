@@ -65,8 +65,8 @@ test("npm publish uses trusted publishing instead of a long-lived token", () => 
 
 test("published CLI and MCP packages have no runtime dependencies", () => {
   for (const file of [
-    "packages/hig-doctor/src-termcast/package.json",
-    "packages/hig-doctor/src-mcp/package.json",
+    "packages/cli/package.json",
+    "packages/mcp/package.json",
   ]) {
     const manifest = JSON.parse(readRepoFile(file));
     assert.deepEqual(

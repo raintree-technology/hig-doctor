@@ -52,8 +52,8 @@ export async function audit(directory: string, skillsDir?: string, options: Audi
       join(resolvedDir, "skills"),
       join(resolvedDir, "..", "skills"),
       join(resolvedDir, "..", "..", "skills"),
-      // Relative to this package (for development)
-      join(moduleDir, "..", "..", "..", "..", "skills"),
+      // Relative to this package (for development: packages/core/src → repo root)
+      join(moduleDir, "..", "..", "..", "skills"),
     ];
     for (const candidate of candidates) {
       try {

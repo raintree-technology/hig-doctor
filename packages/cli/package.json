@@ -19,9 +19,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/raintree-technology/hig-doctor.git",
-    "directory": "packages/hig-doctor/src-termcast"
+    "directory": "packages/cli"
   },
-  "homepage": "https://github.com/raintree-technology/hig-doctor/tree/main/packages/hig-doctor/src-termcast#readme",
+  "homepage": "https://github.com/raintree-technology/hig-doctor/tree/main/packages/cli#readme",
   "bugs": {
     "url": "https://github.com/raintree-technology/hig-doctor/issues"
   },
@@ -40,7 +40,7 @@
     "audit": "bun src/cli.ts",
     "audit:export": "bun src/cli.ts . --export",
     "audit:stdout": "bun src/cli.ts . --stdout",
-    "build": "esbuild src/cli.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --banner:js=\"#!/usr/bin/env node\"",
+    "build": "esbuild src/cli.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --alias:@hig-doctor/core=../core/src/index.ts --banner:js=\"#!/usr/bin/env node\"",
     "prepublishOnly": "bun run build",
     "typecheck": "tsc --noEmit"
   },
