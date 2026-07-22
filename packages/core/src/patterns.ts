@@ -4,7 +4,14 @@
 // hardcode a count in prose — import RULE_COUNT instead.
 export type Severity = "critical" | "serious" | "moderate";
 
+// Which analysis produced a rule's findings. "regex" is the zero-dependency
+// line/document scanner; "swift-structural" is the comment/string-aware Swift
+// structural analyzer; "ast-tsx" is the TypeScript-compiler-backed JSX tier.
+export type Engine = "regex" | "swift-structural" | "ast-tsx";
+
 export interface PatternMatch {
+  ruleId: string;
+  engine: Engine;
   category: string;
   subcategory: string;
   type: "pattern" | "positive" | "concern";
@@ -21,6 +28,8 @@ interface PatternRule {
   type: "pattern" | "positive" | "concern";
   pattern: string;
   regex: RegExp;
+  hig?: string; // per-rule HIG citation override; default derives from subcategory
+  fix?: string; // per-rule fix guidance override; default derives from FIX_GUIDANCE
   fileFilter?: RegExp; // only apply to files matching this pattern
   skipInBlock?: RegExp; // skip this rule when inside a CSS block matching this pattern
   scope?: "document"; // match the whole comment-stripped source, not line-by-line.
@@ -635,20 +644,190 @@ const flutterRules: PatternRule[] = [
 ];
 
 // ════════════════════════════════════════════════════════════════
-// COMBINE ALL RULES
+// RULE CATALOG
 // ════════════════════════════════════════════════════════════════
-const allRules: PatternRule[] = [
-  ...swiftRules,
-  ...webCodeRules,
-  ...cssRules,
-  ...vueRules,
-  ...svelteRules,
-  ...angularRules,
-  ...kotlinRules,
-  ...androidXmlRules,
-  ...reactNativeRules,
-  ...flutterRules,
+// Every rule gets a stable ID: <framework>/<slug-of-pattern-label>. IDs are
+// public API — suppressions, baselines, and SARIF all key on them — so pattern
+// labels are frozen once released. Renaming a label is a breaking change.
+
+export interface CatalogRule extends PatternRule {
+  id: string;
+  framework: string;
+  engine: Engine;
+}
+
+function slugify(label: string): string {
+  return label
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+const SECTIONS: Array<[framework: string, rules: PatternRule[]]> = [
+  ["swift", swiftRules],
+  ["web", webCodeRules],
+  ["css", cssRules],
+  ["vue", vueRules],
+  ["svelte", svelteRules],
+  ["angular", angularRules],
+  ["compose", kotlinRules],
+  ["android-xml", androidXmlRules],
+  ["react-native", reactNativeRules],
+  ["flutter", flutterRules],
 ];
+
+const allRules: CatalogRule[] = [];
+{
+  const used = new Set<string>();
+  for (const [framework, rules] of SECTIONS) {
+    for (const rule of rules) {
+      const base = `${framework}/${slugify(rule.pattern)}`;
+      // Duplicate labels within a framework get a stable ordinal suffix; the
+      // suffix only ever grows with rule additions at the end of a section.
+      let id = base;
+      for (let n = 2; used.has(id); n++) id = `${base}-${n}`;
+      used.add(id);
+      allRules.push({ ...rule, id, framework, engine: "regex" });
+    }
+  }
+}
+
+// Best-fit HIG citation per rule subcategory. Values are HIG topic slugs that
+// must exist in skills/*/references/ (enforced by patterns.test.ts); "" cites
+// the HIG root for subcategories with no single canonical page.
+const HIG_BASE = "https://developer.apple.com/design/human-interface-guidelines/";
+const SUBCATEGORY_HIG: Record<string, string> = {
+  accessibility: "accessibility",
+  accordion: "disclosure-controls",
+  alerts: "alerts",
+  analytics: "privacy",
+  animation: "motion",
+  buttons: "buttons",
+  cards: "layout",
+  color: "color",
+  controls: "controls",
+  details: "disclosure-controls",
+  focus: "focus-and-selection",
+  forms: "entering-data",
+  gestures: "gestures",
+  haptics: "playing-haptics",
+  images: "images",
+  inputs: "text-fields",
+  keyboard: "keyboards",
+  layout: "layout",
+  lists: "lists-and-tables",
+  loading: "loading",
+  menus: "menus",
+  modals: "modality",
+  motion: "motion",
+  multiplatform: "",
+  navigation: "",
+  popover: "popovers",
+  progress: "progress-indicators",
+  refresh: "loading",
+  search: "searching",
+  seo: "",
+  state: "feedback",
+  structure: "layout",
+  tables: "lists-and-tables",
+  toast: "feedback",
+  toggle: "toggles",
+  toolbar: "toolbars",
+  tooltip: "offering-help",
+  typography: "typography",
+  widgets: "widgets",
+};
+
+export function higCitation(rule: Pick<CatalogRule, "hig" | "subcategory">): string {
+  if (rule.hig) return rule.hig;
+  const slug = SUBCATEGORY_HIG[rule.subcategory] ?? "";
+  return HIG_BASE + slug;
+}
+
+// Fix guidance keyed by pattern label. Covers every critical and serious
+// concern plus the most common moderates; docs generation surfaces gaps.
+const FIX_GUIDANCE: Record<string, string> = {
+  // Critical
+  "missing alt": "Add descriptive alt text, or alt=\"\" when the image is purely decorative.",
+  "Image without alt": "Add descriptive alt text, or alt=\"\" when the image is purely decorative.",
+  "svg without a11y": "Give inline SVG role=\"img\" plus a <title> or aria-label, or aria-hidden=\"true\" if decorative.",
+  "empty heading": "Add text content to the heading or remove it; screen readers announce empty headings as unlabeled.",
+  "empty button": "Give the button visible text or an aria-label.",
+  "missing html lang": "Add lang=\"…\" to the <html> element so assistive tech picks the right voice.",
+  "video without track": "Add a <track kind=\"captions\"> file to the video.",
+  "blink element": "Remove <blink>; if emphasis is needed, use CSS animation that honors prefers-reduced-motion.",
+  "marquee element": "Remove <marquee>; use static layout or an accessible animation that honors prefers-reduced-motion.",
+  "user-scalable=no": "Remove user-scalable=no from the viewport meta so pinch-zoom keeps working.",
+  "maximum-scale=1": "Remove maximum-scale=1 from the viewport meta so users can zoom.",
+  "ImageView without contentDescription": "Add android:contentDescription, or importantForAccessibility=\"no\" if decorative.",
+  // Serious
+  "isAccessibilityElement false on interactive": "Keep interactive elements exposed to accessibility; give them a label instead of hiding them.",
+  "div with onClick no role": "Use a native <button>, or add role=\"button\", tabIndex={0}, and Enter/Space key handling.",
+  "span with onClick no role": "Use a native <button>, or add role=\"button\", tabIndex={0}, and Enter/Space key handling.",
+  "ambiguous link text": "Write link text that names the destination; avoid \"click here\"/\"read more\".",
+  "positive tabindex": "Use tabindex=\"0\" (or -1); positive values override the natural focus order.",
+  "aria-hidden on focusable": "Remove aria-hidden from focusable elements, or take them out of the tab order too.",
+  "onMouseOver without onFocus": "Pair onMouseOver with onFocus so keyboard users get the same affordance.",
+  "onMouseOut without onBlur": "Pair onMouseOut with onBlur so keyboard users get the same affordance.",
+  "div as button": "Replace the div with a native <button>; it brings focus, key handling, and semantics for free.",
+  "div as nav/header class": "Use the semantic <nav>/<header> element instead of a classed div so landmarks exist.",
+  "autoplay media": "Avoid autoplay; if unavoidable, autoplay muted with visible controls.",
+  "outline none": "Keep a visible focus indicator — style :focus-visible instead of removing the outline.",
+  "v-on:click without keyboard": "Add @keydown.enter/@keydown.space handling, or use a <button>.",
+  "on:click without on:keydown": "Add on:keydown handling, or use a <button>.",
+  "(click) without (keydown)": "Add a (keydown) handler, or use a <button>.",
+  "clickable without Role": "Pass role = Role.Button (or use Modifier.semantics) so TalkBack announces the control.",
+  "nested touchables": "Flatten nested touchables; keep one interactive wrapper per control.",
+  // Common moderates
+  "hardcodedColor": "Use semantic colors (.primary, .secondary, or an asset-catalog color) that adapt to dark mode.",
+  "hardcodedRGBColor": "Move the color into an asset catalog with light/dark variants.",
+  "hardcodedUIColor": "Use a semantic UIColor (label, systemBackground) or an asset-catalog color.",
+  "NavigationView (deprecated)": "Migrate to NavigationStack (single column) or NavigationSplitView (sidebar layouts).",
+  "onTapGesture without traits": "Prefer Button, or add .accessibilityAddTraits(.isButton) so VoiceOver announces it.",
+};
+
+export function fixGuidance(rule: Pick<CatalogRule, "fix" | "pattern">): string | null {
+  return rule.fix ?? FIX_GUIDANCE[rule.pattern] ?? null;
+}
+
+// Public, serializable view of a rule for docs, SARIF, and the MCP server.
+export interface RuleMeta {
+  id: string;
+  framework: string;
+  category: string;
+  subcategory: string;
+  type: "pattern" | "positive" | "concern";
+  label: string;
+  severity: Severity | null;
+  engine: Engine;
+  hig: string;
+  fix: string | null;
+}
+
+function toMeta(rule: CatalogRule): RuleMeta {
+  return {
+    id: rule.id,
+    framework: rule.framework,
+    category: rule.category,
+    subcategory: rule.subcategory,
+    type: rule.type,
+    label: rule.pattern,
+    severity: rule.type === "concern" ? severityFor(rule.pattern) : null,
+    engine: rule.engine,
+    hig: higCitation(rule),
+    fix: fixGuidance(rule),
+  };
+}
+
+export function ruleCatalog(): RuleMeta[] {
+  return allRules.map(toMeta);
+}
+
+export function getRuleById(id: string): RuleMeta | undefined {
+  const rule = allRules.find(r => r.id === id);
+  return rule ? toMeta(rule) : undefined;
+}
 
 interface CommentState {
   inBlock: boolean; // inside a /* ... */ block (CSS/SCSS/JS/Swift/Kotlin/Dart)
@@ -758,6 +937,8 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
           if (inSkippedBlock) continue;
         }
         matches.push({
+          ruleId: rule.id,
+          engine: rule.engine,
           category: rule.category,
           subcategory: rule.subcategory,
           type: rule.type,
@@ -802,6 +983,8 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
       while ((m = re.exec(stripped)) !== null) {
         const lineNo = lineNumberAt(m.index);
         matches.push({
+          ruleId: rule.id,
+          engine: rule.engine,
           category: rule.category,
           subcategory: rule.subcategory,
           type: rule.type,
