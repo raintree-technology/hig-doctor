@@ -11,7 +11,7 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@hig-doctor/core": ["../core/src/index.ts"]
+      "@raintree-technology/hig-doctor-core": ["../core/src/index.ts"]
     }
   },
   "include": ["src", "../core/src"]

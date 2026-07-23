@@ -1,5 +1,5 @@
 {
-  "name": "@hig-doctor/core",
+  "name": "@raintree-technology/hig-doctor-core",
   "version": "0.1.0",
   "description": "Rule engine powering HIG Doctor: framework detection, Apple HIG pattern rules, and the audit pipeline.",
   "type": "module",
