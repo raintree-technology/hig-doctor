@@ -4,9 +4,9 @@ env:
   MISE_LOCKED: "1"
 
 # Nightly: fetch each HIG reference topic as DocC JSON, hash its text, and diff
-# against hig-snapshot.json. When Apple's live content diverges, open (or reuse)
-# one tracking issue per drifted topic. Detection is automated; the human writes
-# the content rewrite. Re-seed the manifest with `bun scripts/hig-drift.ts --seed`
+# against hig-snapshot.json. When Apple's live content diverges, create or update
+# one consolidated tracking issue. Detection is automated; the human writes the
+# content rewrite. Re-seed the manifest with `bun scripts/hig-drift.ts --seed`
 # after refreshing skills content.
 
 on:
@@ -50,44 +50,57 @@ jobs:
           fi
           cat drift.json
 
-      - name: Open per-topic issues
-        if: steps.drift.outputs.drift == 'true'
+      - name: Synchronize consolidated drift issue
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HAS_DRIFT: ${{ steps.drift.outputs.drift }}
         run: |
           set -euo pipefail
-          SNAPSHOT=$(jq -r '.snapshotDate' drift.json)
+          TITLE="HIG drift report"
 
           # Ensure the label exists (gh issue create fails on an unknown label).
           gh label create hig-drift --color FBCA04 --description "Apple HIG content drifted from our snapshot" 2>/dev/null || true
 
-          open_issue() {
-            local topic="$1" kind="$2"
-            local title="HIG drift: ${topic} (${kind})"
-            local existing
-            existing=$(gh issue list --state open --label hig-drift \
-              --search "in:title \"HIG drift: ${topic}\"" --json number --jq 'length')
-            if [ "$existing" != "0" ]; then
-              echo "Issue already open for ${topic}; skipping."
-              return
-            fi
-            local url="https://developer.apple.com/design/human-interface-guidelines/${topic}"
-            gh issue create \
-              --title "$title" \
-              --label hig-drift \
-              --body "Automated drift detection found that Apple's live HIG page diverged from our snapshot (\`${SNAPSHOT}\`).
+          EXISTING=$(gh issue list --state open --label hig-drift --json number,title \
+            --jq '.[] | select(.title == "HIG drift report") | .number' | head -1)
 
-          **Topic**: \`${topic}\` (${kind})
-          **Live page**: ${url}
-          **Local file**: search \`skills/*/references/${topic}.md\`
+          if [ "$HAS_DRIFT" != "true" ]; then
+            if [ -n "$EXISTING" ]; then
+              gh issue close "$EXISTING" --comment "Apple's live HIG matches the tracked snapshot; closing the drift report."
+            fi
+            exit 0
+          fi
+
+          SNAPSHOT=$(jq -r '.snapshotDate' drift.json)
+          CHANGED=$(jq '.changed | length' drift.json)
+          ADDED=$(jq '.added | length' drift.json)
+          REMOVED=$(jq '.removed | length' drift.json)
+          BODY=$(mktemp)
+
+          cat > "$BODY" <<EOF
+          Automated drift detection found that Apple's live HIG diverged from snapshot \`${SNAPSHOT}\`.
+
+          **Summary:** ${CHANGED} changed, ${ADDED} added, ${REMOVED} removed.
+
+          ### Changed topics
+          EOF
+          jq -r '.changed[] | "- [`\(.)`](https://developer.apple.com/design/human-interface-guidelines/\(.))"' drift.json >> "$BODY"
+          printf '\n### Added topics\n' >> "$BODY"
+          jq -r '.added[] | "- [`\(.)`](https://developer.apple.com/design/human-interface-guidelines/\(.))"' drift.json >> "$BODY"
+          printf '\n### Removed topics\n' >> "$BODY"
+          jq -r '.removed[] | "- `\(.)`"' drift.json >> "$BODY"
+          cat >> "$BODY" <<'EOF'
 
           ### Next steps
-          - [ ] Review the live page for changed guidance.
-          - [ ] Refresh \`skills/*/references/${topic}.md\` (keep the attribution block).
-          - [ ] Re-seed the manifest: \`bun scripts/hig-drift.ts --seed\` and commit \`hig-snapshot.json\`.
-          - [ ] Bump the affected skill version in \`VERSIONS.md\` if guidance changed materially."
-          }
+          - [ ] Review the live pages for changed guidance.
+          - [ ] Refresh the corresponding `skills/*/references/*.md` files.
+          - [ ] Re-seed the manifest with `bun scripts/hig-drift.ts --seed`.
+          - [ ] Commit `hig-snapshot.json` and bump affected skill versions when guidance changed materially.
+          EOF
 
-          jq -r '.changed[]' drift.json | while read -r t; do [ -n "$t" ] && open_issue "$t" "changed"; done
-          jq -r '.added[]'   drift.json | while read -r t; do [ -n "$t" ] && open_issue "$t" "new"; done
-          jq -r '.removed[]' drift.json | while read -r t; do [ -n "$t" ] && open_issue "$t" "removed"; done
+          if [ -n "$EXISTING" ]; then
+            gh issue edit "$EXISTING" --body-file "$BODY"
+            gh issue comment "$EXISTING" --body "Updated by the latest scheduled drift scan."
+          else
+            gh issue create --title "$TITLE" --label hig-drift --body-file "$BODY"
+          fi
