@@ -11,7 +11,7 @@ Agent-native Apple Human Interface Guidelines: a structured skills corpus, MCP s
 - **Skills corpus** — 14 skills and 156 reference topics covering the complete HIG (foundations, components, patterns, inputs, platforms, technologies). Snapshot dated 2025-02-02; canonical content remains at [developer.apple.com/design/human-interface-guidelines](https://developer.apple.com/design/human-interface-guidelines/).
 - **MCP server** ([`hig-mcp`](https://www.npmjs.com/package/hig-mcp)) — six tools for Claude Desktop, Cursor, Windsurf, and Claude Code: `hig_list_skills`, `hig_lookup`, `hig_search` (BM25 over every topic), `hig_audit`, `hig_audit_file`, and `hig_explain_finding`. Runs over stdio or streamable HTTP.
 - **Audit CLI** ([`hig-doctor`](https://www.npmjs.com/package/hig-doctor)) — a **431-rule** compliance scanner across 15 frameworks. A regex base tier plus a TypeScript-compiler JSX tier and a Swift structural tier; every finding is tagged with the engine that produced it. Config files, inline suppressions, baselines, SARIF output, and `--fix` autofixes.
-- **Engine** ([`@hig-doctor/core`](https://www.npmjs.com/package/@hig-doctor/core)) — the rule engine, embeddable in your own tooling.
+- **Engine** ([`@raintree-technology/hig-doctor-core`](https://www.npmjs.com/package/@raintree-technology/hig-doctor-core)) — the rule engine, embeddable in your own tooling.
 
 Content is © Apple Inc.; this repository provides organization, cross-referencing, and detection rules for AI agent use. MIT-licensed for structure and tooling.
 
@@ -283,7 +283,7 @@ hig-doctor/
 ├── brand/                                # Canonical logo, app icon, and usage guidance
 ├── skills/                                # 14 Agent Skills (SKILL.md + references/)
 ├── packages/
-│   ├── core/                              # @hig-doctor/core rule engine (scan → detect → categorize → report)
+│   ├── core/                              # @raintree-technology/hig-doctor-core rule engine (scan → detect → categorize → report)
 │   ├── cli/                               # hig-doctor audit CLI
 │   ├── mcp/                               # hig-mcp MCP server
 │   └── skill-validator/                   # Internal skill-structure validator (dev-only)

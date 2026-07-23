@@ -38,7 +38,7 @@ import {
   HIG_SNAPSHOT_DATE,
   type PatternMatch,
   type Severity,
-} from "@hig-doctor/core";
+} from "@raintree-technology/hig-doctor-core";
 import { SearchIndex } from "./search";
 import pkg from "../package.json";
 

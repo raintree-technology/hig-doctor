@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The published package now bundles the skills corpus (`dist/skills`), so
   `npx hig-mcp` works with no clone; `HIG_SKILLS_DIR` becomes an optional override.
-- Now built on the extracted `@hig-doctor/core` engine.
+- Now built on the extracted `@raintree-technology/hig-doctor-core` engine.
 
 ## [0.1.0] - 2026-05-28
 

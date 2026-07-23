@@ -1,4 +1,4 @@
-// @hig-doctor/core — public API surface.
+// @raintree-technology/hig-doctor-core — public API surface.
 // The CLI, MCP server, and website audit demo all consume the engine through
 // this module; keep additions here deliberate since they become npm API.
 export {

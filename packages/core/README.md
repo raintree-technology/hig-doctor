@@ -2,12 +2,12 @@
   <img src="https://raw.githubusercontent.com/raintree-technology/hig-doctor/main/brand/hig-doctor-mark.svg" alt="HIG Doctor" width="72" height="72" />
 </p>
 
-# @hig-doctor/core
+# @raintree-technology/hig-doctor-core
 
 The rule engine behind [HIG Doctor](https://github.com/raintree-technology/hig-doctor): framework detection, the Apple HIG rule catalog, tiered analysis (regex → Swift structural → TypeScript-compiler JSX), and the audit pipeline. The [`hig-doctor`](../cli) CLI and [`hig-mcp`](../mcp) server are thin wrappers over this package; embed it directly to run audits from your own tooling.
 
 ```ts
-import { audit, analyzeFile, ruleCatalog, toSarif } from "@hig-doctor/core";
+import { audit, analyzeFile, ruleCatalog, toSarif } from "@raintree-technology/hig-doctor-core";
 
 // Whole-directory audit (honors hig-doctor.config.json, baselines, suppressions)
 const result = await audit("./my-app");

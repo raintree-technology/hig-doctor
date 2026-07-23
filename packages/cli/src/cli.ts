@@ -12,8 +12,8 @@ import {
   applyFixes,
   BASELINE_FILENAME,
   HIG_SNAPSHOT_DATE,
-} from "@hig-doctor/core";
-import type { Severity, PatternMatch, ScannedFile } from "@hig-doctor/core";
+} from "@raintree-technology/hig-doctor-core";
+import type { Severity, PatternMatch, ScannedFile } from "@raintree-technology/hig-doctor-core";
 import pkg from "../package.json";
 import { writeFile as fsWriteFile } from "node:fs/promises";
 import { writeFile } from "node:fs/promises";

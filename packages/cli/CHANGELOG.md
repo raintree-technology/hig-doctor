@@ -34,7 +34,7 @@ Engine, distribution, and workflow overhaul.
 
 ### Changed
 
-- Now built on the extracted `@hig-doctor/core` engine; the package moved to
+- Now built on the extracted `@raintree-technology/hig-doctor-core` engine; the package moved to
   `packages/cli` in the restructured monorepo.
 - `--json` schema bumped to 2: adds `toolVersion`, `higSnapshot`, `config`,
   `baseline`, and a per-concern `concerns` array with fix/suggestion/HIG fields.
