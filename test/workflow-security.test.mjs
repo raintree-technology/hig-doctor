@@ -51,6 +51,13 @@ test("website CI no longer self-mutates the repository", () => {
   assert.doesNotMatch(content, /\bgit\s+commit\b/);
 });
 
+test("HIG drift workflow maintains one consolidated issue", () => {
+  const content = readRepoFile(".github/workflows/hig-drift.yml");
+  assert.match(content, /TITLE="HIG drift report"/);
+  assert.match(content, /gh issue edit "\$EXISTING" --body-file "\$BODY"/);
+  assert.doesNotMatch(content, /Open per-topic issues|open_issue\(\)/);
+});
+
 test("npm publish uses trusted publishing instead of a long-lived token", () => {
   for (const file of [
     ".github/workflows/publish-hig-doctor.yml",
