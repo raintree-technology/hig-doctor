@@ -178,7 +178,7 @@ const IntroScene = () => {
           opacity: h, transform: `translateY(${interpolate(h, [0, 1], [16, 0])}px)`,
         }}
       >
-        {"349 rules.\n12 frameworks.\nOne score."}
+        {"431 rules.\n14 frameworks.\nOne score."}
       </div>
 
       {/* Subhead */}
@@ -394,7 +394,7 @@ const FrameworksScene = () => {
         Framework Coverage
       </div>
       <div style={{ fontFamily: font.ui, fontSize: 56, fontWeight: 600, color: palette.fg, lineHeight: 1.02, letterSpacing: "-0.02em", marginTop: S.sm }}>
-        12 frameworks.{"\n"}349 rules.
+        14 frameworks.{"\n"}431 rules.
       </div>
       <div style={{ fontFamily: font.ui, fontSize: 24, color: palette.secondary, lineHeight: 1.36, marginTop: S.sm }}>
         Each detection classified as positive, concern, or neutral pattern.

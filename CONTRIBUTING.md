@@ -114,10 +114,11 @@ npm test
 
 ## Releasing
 
-There are **five independent version surfaces**; do not assume one bump implies another:
+There are **six independent version surfaces**; do not assume one bump implies another:
 
 | Surface | Version lives in | Tracks |
 |---------|------------------|--------|
+| Audit engine (`@raintree-technology/hig-doctor-core` on npm) | `packages/core/package.json` | Embeddable audit engine |
 | Audit CLI (`hig-doctor` on npm) | `packages/cli/package.json` | CLI + audit engine |
 | MCP server (`hig-mcp` on npm) | `packages/mcp/package.json` | MCP server |
 | Skill validator | `packages/skill-validator/package.json` (`private`, unpublished) | internal tooling |
@@ -128,12 +129,13 @@ There are **five independent version surfaces**; do not assume one bump implies 
 
 ### Publishing an npm package
 
-Both npm packages publish via GitHub Actions using npm **trusted publishing** (OIDC + provenance — no long-lived token). To cut a release:
+The npm packages publish via GitHub Actions using npm **trusted publishing** (OIDC + provenance — no long-lived token). To cut a release:
 
 1. Bump `version` in that package's `package.json`.
 2. Add a dated entry to that package's `CHANGELOG.md`.
 3. Open a PR; merge once CI is green.
 4. Tag the merge commit and push the tag. **The tag prefix selects the package and its version must match the manifest:**
+   - Audit engine → `hig-core-v<version>` (e.g. `hig-core-v0.1.1`) → runs `publish-hig-core.yml`
    - Audit CLI → `hig-doctor-v<version>` (e.g. `hig-doctor-v1.2.0`) → runs `publish-hig-doctor.yml`
    - MCP server → `hig-mcp-v<version>` (e.g. `hig-mcp-v0.2.0`) → runs `publish-hig-mcp.yml`
 
@@ -143,7 +145,8 @@ git tag hig-doctor-v1.2.0 && git push origin hig-doctor-v1.2.0
 
 A bare `vX.Y.Z` tag triggers **nothing** — only the prefixed patterns above are wired to a publish workflow. Either workflow can also be run manually via **workflow_dispatch** for a re-run.
 
-> Note: the publish workflows do not yet assert that the pushed tag's version matches `package.json`, nor that the version isn't already on npm — verify both manually before tagging.
+The publish workflows verify that each tag matches its package manifest and that
+the target version is not already present on npm before publishing.
 
 ## PR checklist
 

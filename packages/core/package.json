@@ -1,6 +1,6 @@
 {
   "name": "@raintree-technology/hig-doctor-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Rule engine powering HIG Doctor: framework detection, Apple HIG pattern rules, and the audit pipeline.",
   "type": "module",
   "license": "MIT",

@@ -6,6 +6,16 @@ are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-07-26
+
+### Fixed
+
+- Produce file-context-aware CSS suggestions without rewriting comments or
+  strings.
+- Bundle the corrected AST line reporting, suppressions, cache identity,
+  platform-directory scanning, and Windows config override behavior from the
+  audit engine.
+
 ## [0.2.0] - 2026-07-21
 
 ### Added

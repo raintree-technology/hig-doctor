@@ -1,6 +1,6 @@
 # HIG Doctor Remotion showcase
 
-A [Remotion](https://www.remotion.dev/) video that visualizes `hig-doctor audit` results — 431 pattern rules across 15 frameworks, animated category charts, detection breakdowns, and a framework coverage grid.
+A [Remotion](https://www.remotion.dev/) video that visualizes `hig-doctor audit` results — 431 pattern rules across 14 frameworks, animated category charts, detection breakdowns, and a framework coverage grid.
 
 ## Setup
 
@@ -43,7 +43,7 @@ npm run render
 The data includes:
 - Project score, frameworks, file counts, and detection totals
 - Per-category breakdown (name, detections, positives, concerns, patterns)
-- Framework rule count table (12 frameworks)
+- Framework rule count table (14 frameworks)
 - Score timeline for visual comparison
 
 ## Assets

@@ -5,6 +5,19 @@ All notable changes to `hig-doctor` (the Apple HIG audit CLI) are documented her
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-07-26
+
+### Fixed
+
+- Reject missing and non-directory audit targets instead of reporting them
+  clean with exit code 0.
+- Include the analysis engine in JSON findings.
+- Preserve comments and strings when `--fix` converts physical CSS alignment
+  to logical alignment.
+- Bundle the corrected AST line reporting, suppressions, cache identity,
+  platform-directory scanning, and Windows config override behavior from the
+  audit engine.
+
 ## [2.0.0] - 2026-07-21
 
 Engine, distribution, and workflow overhaul.
@@ -30,7 +43,7 @@ Engine, distribution, and workflow overhaul.
   machine-readable suggestions in `--json` and SARIF.
 - **Content-hash cache** — `--cache` re-analyzes only changed files.
 - Dedicated **UIKit, AppKit, watchOS, and visionOS** rule sections; the ruleset
-  grows to **431 rules** across 15 frameworks, now Apple-platform-weighted.
+  grows to **431 rules** across 14 frameworks, now Apple-platform-weighted.
 
 ### Changed
 

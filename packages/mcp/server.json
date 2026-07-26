@@ -9,13 +9,13 @@
     "id": "1154000512",
     "subfolder": "packages/mcp"
   },
-  "version": "0.2.0",
+  "version": "0.2.1",
   "websiteUrl": "https://apple.raintree.technology/mcp",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "hig-mcp",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "transport": {
         "type": "stdio"
       },
