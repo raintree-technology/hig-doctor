@@ -5,9 +5,9 @@
   "description": "HIG Doctor MCP server exposing Apple HIG skills and project audits to AI coding agents",
   "type": "module",
   "bin": {
-    "hig-mcp": "./dist/index.js"
+    "hig-mcp": "dist/index.js"
   },
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "files": [
     "dist",
     "README.md",

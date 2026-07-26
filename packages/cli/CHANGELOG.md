@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Include the analysis engine in JSON findings.
 - Preserve comments and strings when `--fix` converts physical CSS alignment
   to logical alignment.
+- Keep the npm executable entry intact under current npm manifest normalization.
 - Bundle the corrected AST line reporting, suppressions, cache identity,
   platform-directory scanning, and Windows config override behavior from the
   audit engine.
