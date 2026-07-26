@@ -48,6 +48,12 @@ export interface RuleMeta {
 }
 export declare function ruleCatalog(): RuleMeta[];
 export declare function getRuleById(id: string): RuleMeta | undefined;
+/**
+ * Build the inline-suppression predicate for a file. Exported so the refinement
+ * tiers (which produce findings outside detectPatterns) honour the same
+ * `hig-disable-*` comments the regex tier does.
+ */
+export declare function buildSuppressionFilter(code: string): (ruleId: string, line: number) => boolean;
 export declare function detectPatterns(code: string, file: string): PatternMatch[];
 export declare const RULE_COUNT: number;
 export {};

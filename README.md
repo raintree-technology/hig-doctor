@@ -10,7 +10,7 @@ Agent-native Apple Human Interface Guidelines: a structured skills corpus, MCP s
 
 - **Skills corpus** — 14 skills and 156 reference topics covering the complete HIG (foundations, components, patterns, inputs, platforms, technologies). Snapshot dated 2025-02-02; canonical content remains at [developer.apple.com/design/human-interface-guidelines](https://developer.apple.com/design/human-interface-guidelines/).
 - **MCP server** ([`hig-mcp`](https://www.npmjs.com/package/hig-mcp)) — six tools for Claude Desktop, Cursor, Windsurf, and Claude Code: `hig_list_skills`, `hig_lookup`, `hig_search` (BM25 over every topic), `hig_audit`, `hig_audit_file`, and `hig_explain_finding`. Runs over stdio or streamable HTTP.
-- **Audit CLI** ([`hig-doctor`](https://www.npmjs.com/package/hig-doctor)) — a **431-rule** compliance scanner across 15 frameworks. A regex base tier plus a TypeScript-compiler JSX tier and a Swift structural tier; every finding is tagged with the engine that produced it. Config files, inline suppressions, baselines, SARIF output, and `--fix` autofixes.
+- **Audit CLI** ([`hig-doctor`](https://www.npmjs.com/package/hig-doctor)) — a **431-rule** compliance scanner across 14 frameworks. A regex base tier plus a TypeScript-compiler JSX tier and a Swift structural tier; every finding is tagged with the engine that produced it. Config files, inline suppressions, baselines, SARIF output, and `--fix` autofixes.
 - **Engine** ([`@raintree-technology/hig-doctor-core`](https://www.npmjs.com/package/@raintree-technology/hig-doctor-core)) — the rule engine, embeddable in your own tooling.
 
 Content is © Apple Inc.; this repository provides organization, cross-referencing, and detection rules for AI agent use. MIT-licensed for structure and tooling.
@@ -68,7 +68,7 @@ Every tool returns structured JSON alongside text. For a local checkout, point `
 Scan any project for Apple HIG compliance across SwiftUI, UIKit, AppKit, watchOS, visionOS, React/Next.js, Vue/Nuxt, Svelte/SvelteKit, Angular, React Native, Flutter, Jetpack Compose, Android XML, and plain HTML/CSS — **431 rules** across accessibility, color, typography, layout, dark mode, motion, and i18n.
 
 ```bash
-npx hig-doctor audit <directory>
+npx hig-doctor <directory>
 # or, from a git clone (requires Bun): bun run --cwd packages/cli audit <directory>
 ```
 
@@ -166,14 +166,14 @@ Rule counts are derived from the catalog; the authoritative per-rule breakdown i
 | Framework | Rules | Detection depth |
 |-----------|-------|----------------|
 | React / Next.js (`web`) | 122 | a11y (AST-verified for JSX), color tokens, typography, dark mode, responsive, forms |
-| CSS / SCSS | 40 | Custom properties, contrast, focus styles, outline, z-index, logical properties, RTL |
-| Vue / Nuxt | 25 | Accessibility, navigation, forms, i18n, transitions |
-| Angular | 25 | Accessibility (CDK a11y), Material components, forms, i18n |
-| Svelte / SvelteKit | 20 | Accessibility, forms, dark mode, motion |
-| Flutter | 20 | Semantics, Theme colors/typography, dark mode, i18n |
-| Jetpack Compose | 30 | Semantics, color, typography, dark mode, navigation, controls |
-| Android XML | 20 | contentDescription, color resources, sp/dp units, touch targets |
-| React Native | 15 | accessibilityLabel/Role, color scheme, navigation, gestures |
+| CSS / SCSS | 25 | Custom properties, contrast, focus styles, outline, z-index, logical properties, RTL |
+| Vue / Nuxt | 19 | Accessibility, navigation, forms, i18n, transitions |
+| Angular | 17 | Accessibility (CDK a11y), Material components, forms, i18n |
+| Svelte / SvelteKit | 14 | Accessibility, forms, dark mode, motion |
+| Flutter | 21 | Semantics, Theme colors/typography, dark mode, i18n |
+| Jetpack Compose | 28 | Semantics, color, typography, dark mode, navigation, controls |
+| Android XML | 18 | contentDescription, color resources, sp/dp units, touch targets |
+| React Native | 14 | accessibilityLabel/Role, color scheme, navigation, gestures |
 
 ### How it works: tiered analysis
 
@@ -301,7 +301,7 @@ hig-doctor/
 
 ## Content maintenance
 
-Skills content is a frozen snapshot dated 2025-02-02. Drift **detection** is automated: the `hig-drift.yml` workflow runs nightly, fetches each reference topic as Apple's DocC JSON (`developer.apple.com/tutorials/data/...`), hashes its text, and diffs against [`hig-snapshot.json`](hig-snapshot.json), opening a per-topic issue when Apple's live content changes. The content **rewrite** stays human-in-the-loop: refresh the flagged `skills/*/references/*.md`, then re-seed the manifest with `bun scripts/hig-drift.ts --seed`. The `annual-hig-rescan.yml` workflow still opens a broad tracking issue each year after WWDC.
+Skills content is a frozen snapshot dated 2025-02-02. Drift **detection** is automated: the `hig-drift.yml` workflow runs nightly, fetches each reference topic as Apple's DocC JSON (`developer.apple.com/tutorials/data/...`), hashes its text, and diffs against [`hig-snapshot.json`](hig-snapshot.json), maintaining a single consolidated "HIG drift report" issue listing every topic whose live content changed. The content **rewrite** stays human-in-the-loop: refresh the flagged `skills/*/references/*.md`, then re-seed the manifest with `bun scripts/hig-drift.ts --seed`. The `annual-hig-rescan.yml` workflow still opens a broad tracking issue each year after WWDC.
 
 Each reference file carries an attribution block and canonical source URL in its frontmatter. Apple-hosted screenshots have been stripped to reduce IP transfer; retain the source link and open Apple's page when visual context is needed.
 

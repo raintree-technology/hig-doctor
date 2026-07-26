@@ -83,6 +83,49 @@ describe("scanProject", () => {
       expect(result.codeFiles.length).toBe(1);
     } finally { await rm(dir, { recursive: true }); }
   });
+
+  // `ios/` is generated boilerplate in Flutter/RN but real source in a native
+  // app; skipping it unconditionally reported such projects clean.
+  test("scans ios/ sources in a native project", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "hig-test-"));
+    try {
+      await mkdir(join(dir, "ios", "MyApp"), { recursive: true });
+      await writeFile(join(dir, "ios", "MyApp", "ContentView.swift"), "import SwiftUI\nstruct ContentView: View {}");
+      const result = await scanProject(dir);
+      expect(result.swiftFiles.length).toBe(1);
+      expect(result.frameworks).toContain("swiftui");
+    } finally { await rm(dir, { recursive: true }); }
+  });
+
+  test("still skips generated platform hosts in a Flutter project", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "hig-test-"));
+    try {
+      await writeFile(join(dir, "pubspec.yaml"), "name: demo\n");
+      await mkdir(join(dir, "ios", "Runner"), { recursive: true });
+      await writeFile(join(dir, "ios", "Runner", "AppDelegate.swift"), "import UIKit");
+      await mkdir(join(dir, "android", "app"), { recursive: true });
+      await writeFile(join(dir, "android", "app", "Main.kt"), "class Main");
+      await mkdir(join(dir, "lib"), { recursive: true });
+      await writeFile(join(dir, "lib", "main.dart"), "void main() {}");
+      const result = await scanProject(dir);
+      expect(result.swiftFiles.length).toBe(0);
+      expect(result.codeFiles.map(f => f.relativePath)).toEqual([join("lib", "main.dart")]);
+    } finally { await rm(dir, { recursive: true }); }
+  });
+
+  test("still skips generated platform hosts in a React Native project", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "hig-test-"));
+    try {
+      await writeFile(join(dir, "package.json"), JSON.stringify({ dependencies: { "react-native": "0.76.0" } }));
+      await mkdir(join(dir, "ios"), { recursive: true });
+      await writeFile(join(dir, "ios", "AppDelegate.swift"), "import UIKit");
+      await mkdir(join(dir, "src"), { recursive: true });
+      await writeFile(join(dir, "src", "App.tsx"), "export const App = () => null;");
+      const result = await scanProject(dir);
+      expect(result.swiftFiles.length).toBe(0);
+      expect(result.codeFiles.some(f => f.relativePath.endsWith("App.tsx"))).toBe(true);
+    } finally { await rm(dir, { recursive: true }); }
+  });
 });
 
 describe("scanProject — ignore patterns", () => {

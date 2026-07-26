@@ -157,8 +157,13 @@ export function applyConfig(matches: PatternMatch[], config: HigDoctorConfig): P
   const out: PatternMatch[] = [];
   for (const match of matches) {
     let setting = settingFor(match.ruleId, config.rules);
+    // Globs are POSIX-style, but match.file carries the platform separator —
+    // without this, per-path overrides silently never fire on Windows. The
+    // scanner never emits a backslash as anything but a separator, so this is
+    // unconditional rather than platform-gated (and therefore testable here).
+    const posixFile = match.file.replace(/\\/g, "/");
     for (const override of overrides) {
-      if (override.files.some(re => re.test(match.file))) {
+      if (override.files.some(re => re.test(posixFile))) {
         const s = settingFor(match.ruleId, override.rules);
         if (s !== null) setting = s;
       }

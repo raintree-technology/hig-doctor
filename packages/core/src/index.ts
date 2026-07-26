@@ -66,6 +66,7 @@ export {
 } from "./sarif";
 export {
   suggestFix,
+  suggestFixInContent,
   applyFixes,
   isFixable,
   type SuggestedFix,

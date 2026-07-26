@@ -4,7 +4,7 @@
 
 # HIG Doctor audit CLI
 
-**Apple Human Interface Guidelines** compliance auditor for app projects. Scans your source against **431 rules** across 15 frameworks (SwiftUI, UIKit, AppKit, watchOS, visionOS, React/Next.js, Vue, Svelte, Angular, Jetpack Compose, Android XML, React Native, Flutter, CSS, and HTML) and reports concerns by severity — **critical / serious / moderate** — plus positive patterns you already follow.
+**Apple Human Interface Guidelines** compliance auditor for app projects. Scans your source against **431 rules** across 14 frameworks (SwiftUI, UIKit, AppKit, watchOS, visionOS, React/Next.js, Vue, Svelte, Angular, Jetpack Compose, Android XML, React Native, Flutter, and plain HTML/CSS) and reports concerns by severity — **critical / serious / moderate** — plus positive patterns you already follow.
 
 Apple-platform code is checked against the HIG directly; web and cross-platform code is checked against universal accessibility and UI-quality principles that align with the HIG.
 

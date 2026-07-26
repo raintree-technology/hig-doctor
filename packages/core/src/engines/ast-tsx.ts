@@ -28,12 +28,40 @@ export const AST_TSX_RULES = new Set([
 type TS = any;
 let tsModule: TS | null | undefined;
 
+// The members this engine actually calls. Resolution alone isn't proof the real
+// compiler is present: under Bun a missing `typescript` resolves to a stub
+// object instead of throwing, which passed the null check and then crashed on
+// the first property access (`ts.ScriptTarget.Latest`) — turning the documented
+// regex fallback into a hard failure wherever the optional dependency wasn't
+// installed, the GitHub Action included.
+const REQUIRED_TS_MEMBERS = [
+  "createSourceFile",
+  "ScriptTarget",
+  "ScriptKind",
+  "SyntaxKind",
+  "forEachChild",
+  "isJsxSpreadAttribute",
+  "isJsxAttribute",
+  "isJsxExpression",
+  "isStringLiteral",
+  "isNumericLiteral",
+  "isJsxOpeningElement",
+  "isJsxSelfClosingElement",
+] as const;
+
+/** Exported for tests: proves a resolved module is the real compiler, not a stub. */
+export function isUsableTs(mod: TS): boolean {
+  if (mod == null || typeof mod !== "object") return false;
+  return REQUIRED_TS_MEMBERS.every(key => mod[key] != null);
+}
+
 function loadTs(): TS | null {
   if (tsModule !== undefined) return tsModule;
   try {
     // createRequire keeps this a runtime resolution (not bundled by esbuild,
     // which marks typescript external) so a missing optional dep is survivable.
-    tsModule = createRequire(import.meta.url)("typescript");
+    const mod = createRequire(import.meta.url)("typescript");
+    tsModule = isUsableTs(mod) ? mod : null;
   } catch {
     tsModule = null;
   }
@@ -119,7 +147,7 @@ export function analyzeTsx(code: string, file: string): PatternMatch[] | null {
 
     // <img> / <Image> without alt. Spread props may carry alt → abstain.
     if ((tag === "img" || tag === "Image") && !hasSpread && !names.has("alt")) {
-      push(findings, "web/missing-alt", ts, opening.parent ?? opening, source);
+      push(findings, "web/missing-alt", ts, opening, source);
     }
 
     // Lowercase host <div>/<span> with onClick and no role/interactive semantics.
@@ -128,14 +156,14 @@ export function analyzeTsx(code: string, file: string): PatternMatch[] | null {
         names.has("onKeyDown") || names.has("onKeyPress") || names.has("onKeyUp");
       if (!interactive) {
         const ruleId = tag === "div" ? "web/div-with-on-click-no-role" : "web/span-with-on-click-no-role";
-        push(findings, ruleId, ts, opening.parent ?? opening, source);
+        push(findings, ruleId, ts, opening, source);
       }
     }
 
     // Positive tabIndex on any element.
     const tabIndexAttr = byName.get("tabIndex");
     if (tabIndexAttr && positiveTabIndex(tabIndexAttr)) {
-      push(findings, "web/positive-tabindex", ts, opening.parent ?? opening, source);
+      push(findings, "web/positive-tabindex", ts, opening, source);
     }
 
     void attrIsTruthy; // reserved for future aria-hidden-on-focusable AST rule

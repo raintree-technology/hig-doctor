@@ -53,6 +53,31 @@ describe("parseConfig", () => {
   });
 });
 
+describe("applyConfig — path separators", () => {
+  // match.file carries the platform separator; the globs are POSIX. Without
+  // normalizing, every per-path override silently no-ops on Windows.
+  test("per-path overrides match regardless of separator", () => {
+    const config = {
+      overrides: [{ files: ["marketing/**"], rules: { "css/outline-none": "off" as const } }],
+    };
+    for (const file of ["marketing/promo.css", "marketing\\promo.css"]) {
+      const match = {
+        ruleId: "css/outline-none",
+        engine: "regex" as const,
+        category: "foundations",
+        subcategory: "accessibility",
+        type: "concern" as const,
+        pattern: "outline none",
+        line: 1,
+        lineContent: "outline: none;",
+        file,
+        severity: "serious" as const,
+      };
+      expect(applyConfig([match], config)).toEqual([]);
+    }
+  });
+});
+
 describe("applyConfig", () => {
   test("off drops matches; severities remap concerns only", () => {
     const matches = [

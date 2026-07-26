@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T04:35:04.088Z",
+  "generatedAt": "2026-07-26T22:20:31.782Z",
   "project": {
     "name": "hig-doctor",
     "lowDensity": false,
@@ -7,7 +7,7 @@
       "nextjs"
     ],
     "files": {
-      "code": 83,
+      "code": 84,
       "style": 1,
       "config": 14
     },

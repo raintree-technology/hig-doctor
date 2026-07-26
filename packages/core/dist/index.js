@@ -20,13 +20,9 @@ var IGNORED_DIRS = /* @__PURE__ */ new Set([
   "coverage",
   "__pycache__",
   ".dart_tool",
-  ".pub-cache",
-  "android",
-  "ios",
-  "macos",
-  "linux",
-  "windows"
+  ".pub-cache"
 ]);
+var PLATFORM_HOST_DIRS = /* @__PURE__ */ new Set(["android", "ios", "macos", "linux", "windows"]);
 var MAX_FILE_BYTES = 15e5;
 var MAX_DEPTH = 25;
 var GENERATED_FILE = /\.(min|bundle|chunk)\.(js|css|mjs|cjs)$/i;
@@ -134,7 +130,26 @@ async function readText(path) {
     return null;
   }
 }
-async function walkDir(dir, rootDir, result, isIgnored, depth = 0) {
+async function hasCrossPlatformHost(directory) {
+  const exists = async (name) => {
+    try {
+      await stat(join(directory, name));
+      return true;
+    } catch {
+      return false;
+    }
+  };
+  if (await exists("pubspec.yaml")) return true;
+  if (await exists("app.json") || await exists("expo.json") || await exists("eas.json")) return true;
+  try {
+    const pkg = JSON.parse(await readFile(join(directory, "package.json"), "utf-8"));
+    const deps = { ...pkg.dependencies, ...pkg.devDependencies };
+    if (deps["react-native"] || deps["expo"]) return true;
+  } catch {
+  }
+  return false;
+}
+async function walkDir(dir, rootDir, result, isIgnored, skipPlatformHosts, depth = 0) {
   if (depth > MAX_DEPTH) return;
   let entries;
   try {
@@ -148,6 +163,7 @@ async function walkDir(dir, rootDir, result, isIgnored, depth = 0) {
     if (entry.isSymbolicLink()) continue;
     if (entry.isDirectory()) {
       if (IGNORED_DIRS.has(entry.name)) continue;
+      if (skipPlatformHosts && PLATFORM_HOST_DIRS.has(entry.name)) continue;
       if (isIgnored(relPath)) continue;
       if (entry.name.endsWith(".xcassets")) {
         result.assetCatalogs.push(relPath);
@@ -157,7 +173,7 @@ async function walkDir(dir, rootDir, result, isIgnored, depth = 0) {
         result.xcodeProjects.push(relPath);
         continue;
       }
-      await walkDir(fullPath, rootDir, result, isIgnored, depth + 1);
+      await walkDir(fullPath, rootDir, result, isIgnored, skipPlatformHosts, depth + 1);
     } else if (entry.isFile()) {
       const ext = extname(entry.name);
       if (/\.(test|spec)\.[^.]+$/.test(entry.name)) continue;
@@ -268,7 +284,7 @@ async function scanProject(directory, options = {}) {
   };
   const patterns = [...await loadIgnorePatterns(directory), ...options.exclude ?? []];
   const isIgnored = buildIgnoreMatcher(patterns);
-  await walkDir(directory, directory, result, isIgnored);
+  await walkDir(directory, directory, result, isIgnored, await hasCrossPlatformHost(directory));
   result.frameworks = detectFrameworks(result);
   return result;
 }
@@ -1168,8 +1184,7 @@ function suppressionCovers(ids, ruleId) {
     (id) => id.endsWith("*") ? ruleId.startsWith(id.slice(0, -1)) : ruleId === id
   );
 }
-function detectPatterns(code, file) {
-  const matches = [];
+function buildSuppressionFilter(code) {
   const rawLines = code.split("\n");
   let fileSuppression = null;
   const lineSuppressions = /* @__PURE__ */ new Map();
@@ -1187,11 +1202,16 @@ function detectPatterns(code, file) {
       );
     }
   }
-  const isSuppressed = (ruleId, line) => {
+  return (ruleId, line) => {
     if (fileSuppression && suppressionCovers(fileSuppression, ruleId)) return true;
     const forLine = lineSuppressions.get(line);
     return forLine !== void 0 && suppressionCovers(forLine, ruleId);
   };
+}
+function detectPatterns(code, file) {
+  const matches = [];
+  const rawLines = code.split("\n");
+  const isSuppressed = buildSuppressionFilter(code);
   const isStyleFile = /\.(css|scss|sass|less)$/.test(file);
   const allowLineComments = !/\.(css|html?|xml|storyboard|xib)$/i.test(file);
   const commentState = { inBlock: false, inHtml: false };
@@ -1470,10 +1490,29 @@ var AST_TSX_RULES = /* @__PURE__ */ new Set([
   "web/positive-tabindex"
 ]);
 var tsModule;
+var REQUIRED_TS_MEMBERS = [
+  "createSourceFile",
+  "ScriptTarget",
+  "ScriptKind",
+  "SyntaxKind",
+  "forEachChild",
+  "isJsxSpreadAttribute",
+  "isJsxAttribute",
+  "isJsxExpression",
+  "isStringLiteral",
+  "isNumericLiteral",
+  "isJsxOpeningElement",
+  "isJsxSelfClosingElement"
+];
+function isUsableTs(mod) {
+  if (mod == null || typeof mod !== "object") return false;
+  return REQUIRED_TS_MEMBERS.every((key) => mod[key] != null);
+}
 function loadTs() {
   if (tsModule !== void 0) return tsModule;
   try {
-    tsModule = createRequire(import.meta.url)("typescript");
+    const mod = createRequire(import.meta.url)("typescript");
+    tsModule = isUsableTs(mod) ? mod : null;
   } catch {
     tsModule = null;
   }
@@ -1539,18 +1578,18 @@ function analyzeTsx(code, file) {
     const tag = tagNameOf(opening);
     const { names, hasSpread, byName } = attrs(opening);
     if ((tag === "img" || tag === "Image") && !hasSpread && !names.has("alt")) {
-      push(findings, "web/missing-alt", ts, opening.parent ?? opening, source);
+      push(findings, "web/missing-alt", ts, opening, source);
     }
     if ((tag === "div" || tag === "span") && names.has("onClick") && !hasSpread) {
       const interactive = names.has("role") || names.has("tabIndex") || names.has("onKeyDown") || names.has("onKeyPress") || names.has("onKeyUp");
       if (!interactive) {
         const ruleId = tag === "div" ? "web/div-with-on-click-no-role" : "web/span-with-on-click-no-role";
-        push(findings, ruleId, ts, opening.parent ?? opening, source);
+        push(findings, ruleId, ts, opening, source);
       }
     }
     const tabIndexAttr = byName.get("tabIndex");
     if (tabIndexAttr && positiveTabIndex(tabIndexAttr)) {
-      push(findings, "web/positive-tabindex", ts, opening.parent ?? opening, source);
+      push(findings, "web/positive-tabindex", ts, opening, source);
     }
     void attrIsTruthy;
   };
@@ -1586,8 +1625,9 @@ function analyzeFile(code, file) {
   }
   const ast = analyzeTsx(code, file);
   if (ast !== null) {
+    const isSuppressed = buildSuppressionFilter(code);
     matches = matches.filter((m) => !AST_TSX_RULES.has(m.ruleId));
-    matches.push(...ast);
+    matches.push(...ast.filter((m) => !isSuppressed(m.ruleId, m.line)));
     matches.sort((a, b) => a.line - b.line);
   }
   return matches;
@@ -2021,8 +2061,9 @@ function applyConfig(matches, config) {
   const out = [];
   for (const match of matches) {
     let setting = settingFor(match.ruleId, config.rules);
+    const posixFile = match.file.replace(/\\/g, "/");
     for (const override of overrides) {
-      if (override.files.some((re) => re.test(match.file))) {
+      if (override.files.some((re) => re.test(posixFile))) {
         const s = settingFor(match.ruleId, override.rules);
         if (s !== null) setting = s;
       }
@@ -2110,10 +2151,10 @@ async function writeBaseline(path, baseline) {
 // src/cache.ts
 import { createHash } from "node:crypto";
 import { readFile as readFile5, writeFile as writeFile2 } from "node:fs/promises";
-var CACHE_VERSION = 2;
+var CACHE_VERSION = 3;
 var CACHE_FILENAME = ".hig-cache.json";
 function namespace() {
-  return `v${CACHE_VERSION}.rules${RULE_COUNT}`;
+  return `v${CACHE_VERSION}.rules${RULE_COUNT}.ast${astTsxAvailable() ? 1 : 0}`;
 }
 function keyFor(path, content) {
   return createHash("sha256").update(path).update("\0").update(content).digest("hex").slice(0, 24);
@@ -2352,12 +2393,110 @@ function stripViewportToken(line, token) {
   out = out.replace(/,\s*,/g, ", ").replace(/,\s*(["'])/g, "$1").replace(/=\s*,/g, "=");
   return out === line ? null : out;
 }
+function replaceInCssCode(line, transform, startsInBlockComment = false, startsInQuote = null) {
+  let out = "";
+  let segment = "";
+  let i = 0;
+  let quote = startsInQuote;
+  let inBlockComment = startsInBlockComment;
+  while (i < line.length) {
+    if (inBlockComment) {
+      const end = line.indexOf("*/", i);
+      if (end === -1) return out + line.slice(i);
+      out += line.slice(i, end + 2);
+      i = end + 2;
+      inBlockComment = false;
+      continue;
+    }
+    const ch = line[i];
+    if (quote) {
+      out += ch;
+      if (ch === "\\" && i + 1 < line.length) {
+        out += line[i + 1];
+        i += 2;
+        continue;
+      }
+      if (ch === quote) quote = null;
+      i++;
+      continue;
+    }
+    if (ch === '"' || ch === "'") {
+      out += transform(segment);
+      segment = "";
+      quote = ch;
+      out += ch;
+      i++;
+      continue;
+    }
+    if (ch === "/" && line[i + 1] === "*") {
+      out += transform(segment);
+      segment = "";
+      const end = line.indexOf("*/", i + 2);
+      if (end === -1) {
+        out += line.slice(i);
+        return out;
+      }
+      out += line.slice(i, end + 2);
+      i = end + 2;
+      continue;
+    }
+    segment += ch;
+    i++;
+  }
+  return out + transform(segment);
+}
+function lineStartContexts(content) {
+  const lines = content.split("\n");
+  const contexts = [];
+  let inBlockComment = false;
+  let quote = null;
+  for (const line of lines) {
+    contexts.push({ startsInBlockComment: inBlockComment, startsInQuote: quote });
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (inBlockComment) {
+        if (ch === "*" && line[i + 1] === "/") {
+          inBlockComment = false;
+          i++;
+        }
+        continue;
+      }
+      if (quote) {
+        if (ch === "\\") {
+          i++;
+        } else if (ch === quote) {
+          quote = null;
+        }
+        continue;
+      }
+      if (ch === '"' || ch === "'") {
+        quote = ch;
+      } else if (ch === "/" && line[i + 1] === "*") {
+        inBlockComment = true;
+        i++;
+      }
+    }
+    if (quote) {
+      let trailingBackslashes = 0;
+      for (let i = line.length - 1; i >= 0 && line[i] === "\\"; i--) {
+        trailingBackslashes++;
+      }
+      if (trailingBackslashes % 2 === 0) quote = null;
+    }
+  }
+  return contexts;
+}
 var FIXERS = {
   "css/physical-text-align": {
     safe: true,
     description: "Use logical text-align (start/end) so text follows writing direction.",
-    apply: (line) => {
-      const fixed = line.replace(/text-align:\s*left\b/g, "text-align: start").replace(/text-align:\s*right\b/g, "text-align: end");
+    apply: (line, context) => {
+      const fixed = replaceInCssCode(
+        line,
+        (seg) => seg.replace(/text-align:\s*left\b/g, "text-align: start").replace(/text-align:\s*right\b/g, "text-align: end"),
+        context?.startsInBlockComment,
+        context?.startsInQuote
+      );
       return fixed === line ? null : fixed;
     }
   },
@@ -2401,8 +2540,26 @@ function suggestFix(match, rawLine) {
   if (after === null || after === rawLine) return null;
   return { ruleId: match.ruleId, line: match.line, before: rawLine, after, safe: fixer.safe, description: fixer.description };
 }
+function suggestFixInContent(match, content) {
+  const idx = match.line - 1;
+  const rawLine = content.split("\n")[idx];
+  if (rawLine === void 0) return null;
+  const fixer = FIXERS[match.ruleId];
+  if (!fixer) return null;
+  const after = fixer.apply(rawLine, lineStartContexts(content)[idx]);
+  if (after === null || after === rawLine) return null;
+  return {
+    ruleId: match.ruleId,
+    line: match.line,
+    before: rawLine,
+    after,
+    safe: fixer.safe,
+    description: fixer.description
+  };
+}
 function applyFixes(content, matches) {
   const lines = content.split("\n");
+  const contexts = lineStartContexts(content);
   const applied = [];
   const suggestions = [];
   const seen = /* @__PURE__ */ new Set();
@@ -2415,7 +2572,7 @@ function applyFixes(content, matches) {
     if (seen.has(key)) continue;
     seen.add(key);
     const rawLine = lines[idx];
-    const after = fixer.apply(rawLine);
+    const after = fixer.apply(rawLine, contexts[idx]);
     if (after === null || after === rawLine) continue;
     const fix = { ruleId: match.ruleId, line: match.line, before: rawLine, after, safe: fixer.safe, description: fixer.description };
     if (fixer.safe) {
@@ -2775,6 +2932,7 @@ export {
   scanProject,
   severityFor,
   suggestFix,
+  suggestFixInContent,
   toSarif,
   writeBaseline
 };

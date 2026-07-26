@@ -46,6 +46,32 @@ describe("ScanCache", () => {
     }
   });
 
+  // The available tiers change the findings for identical content, so they must
+  // be part of the cache identity — otherwise a cache written where the AST tier
+  // ran replays ast-tsx verdicts in an environment that cannot produce them.
+  test("namespace is scoped to the available analysis tiers", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "hig-cache-ns-"));
+    const path = join(dir, CACHE_FILENAME);
+    try {
+      const cache = await ScanCache.load(path);
+      cache.set("a.tsx", "x", []);
+      await cache.save(path, new Set([cache.keyOf("a.tsx", "x")]));
+
+      const raw = JSON.parse(await readFile(path, "utf-8"));
+      expect(raw.namespace).toMatch(/\.ast[01]$/);
+
+      // Flipping only the tier marker must invalidate the whole cache.
+      const flipped = raw.namespace.endsWith(".ast1")
+        ? raw.namespace.replace(/\.ast1$/, ".ast0")
+        : raw.namespace.replace(/\.ast0$/, ".ast1");
+      await writeFile(path, JSON.stringify({ ...raw, namespace: flipped }));
+      const reloaded = await ScanCache.load(path);
+      expect(reloaded.get("a.tsx", "x")).toBeNull();
+    } finally {
+      await rm(dir, { recursive: true });
+    }
+  });
+
   test("audit --cache produces identical findings and reports hits on re-run", async () => {
     const dir = await mkdtemp(join(tmpdir(), "hig-cache-audit-"));
     try {

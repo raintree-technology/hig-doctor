@@ -31,8 +31,14 @@ const IGNORED_DIRS = new Set([
   ".build", ".git", "node_modules", "Pods", "DerivedData",
   ".swiftpm", "Carthage", "Build", ".next", ".nuxt", ".output",
   "dist", "build", ".cache", ".turbo", "coverage", "__pycache__",
-  ".dart_tool", ".pub-cache", "android", "ios", "macos", "linux", "windows",
+  ".dart_tool", ".pub-cache",
 ]);
+
+// Flutter and React Native generate these as platform host directories full of
+// boilerplate, so they're noise there. Everywhere else they hold real source —
+// a native iOS app under `ios/` is the common layout — and skipping them
+// unconditionally made the Swift tiers silently report such projects clean.
+const PLATFORM_HOST_DIRS = new Set(["android", "ios", "macos", "linux", "windows"]);
 
 // Skip files larger than this — generated bundles, minified assets, and data
 // blobs cost memory and regex time without yielding real findings. The auditor
@@ -139,7 +145,25 @@ async function readText(path: string): Promise<string | null> {
   }
 }
 
-async function walkDir(dir: string, rootDir: string, result: ScanResult, isIgnored: (relPath: string) => boolean, depth = 0): Promise<void> {
+// Flutter/React Native roots own generated platform host directories; detected
+// once at the scan root so the walker can skip them only for those projects.
+async function hasCrossPlatformHost(directory: string): Promise<boolean> {
+  const exists = async (name: string) => {
+    try { await stat(join(directory, name)); return true; } catch { return false; }
+  };
+  if (await exists("pubspec.yaml")) return true;
+  if (await exists("app.json") || await exists("expo.json") || await exists("eas.json")) return true;
+  try {
+    const pkg = JSON.parse(await readFile(join(directory, "package.json"), "utf-8"));
+    const deps = { ...pkg.dependencies, ...pkg.devDependencies };
+    if (deps["react-native"] || deps["expo"]) return true;
+  } catch {
+    // no/unreadable package.json — not a JS cross-platform root
+  }
+  return false;
+}
+
+async function walkDir(dir: string, rootDir: string, result: ScanResult, isIgnored: (relPath: string) => boolean, skipPlatformHosts: boolean, depth = 0): Promise<void> {
   if (depth > MAX_DEPTH) return;
   let entries;
   try {
@@ -155,10 +179,11 @@ async function walkDir(dir: string, rootDir: string, result: ScanResult, isIgnor
     if (entry.isSymbolicLink()) continue;
     if (entry.isDirectory()) {
       if (IGNORED_DIRS.has(entry.name)) continue;
+      if (skipPlatformHosts && PLATFORM_HOST_DIRS.has(entry.name)) continue;
       if (isIgnored(relPath)) continue;
       if (entry.name.endsWith(".xcassets")) { result.assetCatalogs.push(relPath); continue; }
       if (entry.name.endsWith(".xcodeproj") || entry.name.endsWith(".xcworkspace")) { result.xcodeProjects.push(relPath); continue; }
-      await walkDir(fullPath, rootDir, result, isIgnored, depth + 1);
+      await walkDir(fullPath, rootDir, result, isIgnored, skipPlatformHosts, depth + 1);
     } else if (entry.isFile()) {
       const ext = extname(entry.name);
       // Skip test/spec files — they contain example code that triggers false positives
@@ -298,7 +323,7 @@ export async function scanProject(directory: string, options: ScanOptions = {}):
   };
   const patterns = [...(await loadIgnorePatterns(directory)), ...(options.exclude ?? [])];
   const isIgnored = buildIgnoreMatcher(patterns);
-  await walkDir(directory, directory, result, isIgnored);
+  await walkDir(directory, directory, result, isIgnored, await hasCrossPlatformHost(directory));
   result.frameworks = detectFrameworks(result);
   return result;
 }

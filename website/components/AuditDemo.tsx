@@ -3,6 +3,7 @@
 import { AlertTriangle, Check, ChevronDown, Play } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { refineSwift } from "@/lib/audit/engines/swift-structural";
 import {
   detectPatterns,
   type PatternMatch,
@@ -62,7 +63,11 @@ export default function AuditDemo() {
   };
 
   const handleRun = () => {
-    const matches = detectPatterns(code, filename);
+    // Mirror the CLI's tiering so the same code yields the same verdict here.
+    // The Swift structural tier is dependency-free and runs in the browser; the
+    // ast-tsx tier needs the TypeScript compiler and stays server-side only.
+    const base = detectPatterns(code, filename);
+    const matches = /\.swift$/.test(filename) ? refineSwift(base, code) : base;
     setResults(matches);
     setHasRun(true);
   };

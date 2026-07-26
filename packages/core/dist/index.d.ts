@@ -10,5 +10,5 @@ export { generateAuditMarkdown, loadSkillContent, } from "./audit-generator";
 export { createBaseline, applyBaseline, loadBaseline, parseBaseline, writeBaseline, baselineKey, BASELINE_FILENAME, type Baseline, type BaselineApplication, } from "./baseline";
 export { ScanCache, CACHE_FILENAME } from "./cache";
 export { toSarif, type SarifOptions, } from "./sarif";
-export { suggestFix, applyFixes, isFixable, type SuggestedFix, type FixApplication, } from "./fixes";
+export { suggestFix, suggestFixInContent, applyFixes, isFixable, type SuggestedFix, type FixApplication, } from "./fixes";
 export { runBenchmark, BENCHMARK_CASES, type BenchmarkCase, type BenchmarkReport, type RuleScore, } from "./benchmark";

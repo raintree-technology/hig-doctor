@@ -20,7 +20,12 @@ export interface SuggestedFix {
 interface Fixer {
   safe: boolean;
   description: string;
-  apply: (line: string) => string | null;
+  apply: (line: string, context?: FixContext) => string | null;
+}
+
+interface FixContext {
+  startsInBlockComment: boolean;
+  startsInQuote: string | null;
 }
 
 // Remove a comma-separated token (and a dangling separator) from a viewport
@@ -36,14 +41,115 @@ function stripViewportToken(line: string, token: RegExp): string | null {
   return out === line ? null : out;
 }
 
+// Rewrite only the parts of a stylesheet line that are actual declarations,
+// leaving quoted values and comments untouched. A blanket line-level replace
+// would edit `content: "text-align: left"` — changing what the page renders,
+// which a "safe" fix must never do — and would silently reword an author's
+// comment about the very property being changed.
+function replaceInCssCode(
+  line: string,
+  transform: (segment: string) => string,
+  startsInBlockComment = false,
+  startsInQuote: string | null = null,
+): string {
+  let out = "";
+  let segment = "";
+  let i = 0;
+  let quote = startsInQuote;
+  let inBlockComment = startsInBlockComment;
+  while (i < line.length) {
+    if (inBlockComment) {
+      const end = line.indexOf("*/", i);
+      if (end === -1) return out + line.slice(i);
+      out += line.slice(i, end + 2);
+      i = end + 2;
+      inBlockComment = false;
+      continue;
+    }
+    const ch = line[i];
+    if (quote) {
+      out += ch;
+      if (ch === "\\" && i + 1 < line.length) { out += line[i + 1]; i += 2; continue; }
+      if (ch === quote) quote = null;
+      i++;
+      continue;
+    }
+    if (ch === '"' || ch === "'") {
+      out += transform(segment); segment = "";
+      quote = ch; out += ch; i++;
+      continue;
+    }
+    if (ch === "/" && line[i + 1] === "*") {
+      out += transform(segment); segment = "";
+      const end = line.indexOf("*/", i + 2);
+      if (end === -1) { out += line.slice(i); return out; }
+      out += line.slice(i, end + 2);
+      i = end + 2;
+      continue;
+    }
+    segment += ch;
+    i++;
+  }
+  return out + transform(segment);
+}
+
+function lineStartContexts(content: string): FixContext[] {
+  const lines = content.split("\n");
+  const contexts: FixContext[] = [];
+  let inBlockComment = false;
+  let quote: string | null = null;
+
+  for (const line of lines) {
+    contexts.push({ startsInBlockComment: inBlockComment, startsInQuote: quote });
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (inBlockComment) {
+        if (ch === "*" && line[i + 1] === "/") {
+          inBlockComment = false;
+          i++;
+        }
+        continue;
+      }
+      if (quote) {
+        if (ch === "\\") {
+          i++;
+        } else if (ch === quote) {
+          quote = null;
+        }
+        continue;
+      }
+      if (ch === '"' || ch === "'") {
+        quote = ch;
+      } else if (ch === "/" && line[i + 1] === "*") {
+        inBlockComment = true;
+        i++;
+      }
+    }
+    if (quote) {
+      let trailingBackslashes = 0;
+      for (let i = line.length - 1; i >= 0 && line[i] === "\\"; i--) {
+        trailingBackslashes++;
+      }
+      // An escaped newline continues a CSS string. An unescaped newline ends
+      // malformed string input so it cannot hide comments in every later line.
+      if (trailingBackslashes % 2 === 0) quote = null;
+    }
+  }
+  return contexts;
+}
+
 const FIXERS: Record<string, Fixer> = {
   "css/physical-text-align": {
     safe: true,
     description: "Use logical text-align (start/end) so text follows writing direction.",
-    apply: (line) => {
-      const fixed = line
-        .replace(/text-align:\s*left\b/g, "text-align: start")
-        .replace(/text-align:\s*right\b/g, "text-align: end");
+    apply: (line, context) => {
+      const fixed = replaceInCssCode(line, seg =>
+        seg
+          .replace(/text-align:\s*left\b/g, "text-align: start")
+          .replace(/text-align:\s*right\b/g, "text-align: end"),
+        context?.startsInBlockComment,
+        context?.startsInQuote,
+      );
       return fixed === line ? null : fixed;
     },
   },
@@ -93,6 +199,28 @@ export function suggestFix(match: Pick<PatternMatch, "ruleId" | "line">, rawLine
   return { ruleId: match.ruleId, line: match.line, before: rawLine, after, safe: fixer.safe, description: fixer.description };
 }
 
+/** Compute a suggested fix with the surrounding file context needed for safe CSS edits. */
+export function suggestFixInContent(
+  match: Pick<PatternMatch, "ruleId" | "line">,
+  content: string,
+): SuggestedFix | null {
+  const idx = match.line - 1;
+  const rawLine = content.split("\n")[idx];
+  if (rawLine === undefined) return null;
+  const fixer = FIXERS[match.ruleId];
+  if (!fixer) return null;
+  const after = fixer.apply(rawLine, lineStartContexts(content)[idx]);
+  if (after === null || after === rawLine) return null;
+  return {
+    ruleId: match.ruleId,
+    line: match.line,
+    before: rawLine,
+    after,
+    safe: fixer.safe,
+    description: fixer.description,
+  };
+}
+
 export interface FixApplication {
   content: string;
   applied: SuggestedFix[];
@@ -107,6 +235,7 @@ export interface FixApplication {
  */
 export function applyFixes(content: string, matches: PatternMatch[]): FixApplication {
   const lines = content.split("\n");
+  const contexts = lineStartContexts(content);
   const applied: SuggestedFix[] = [];
   const suggestions: SuggestedFix[] = [];
   const seen = new Set<string>();
@@ -121,7 +250,7 @@ export function applyFixes(content: string, matches: PatternMatch[]): FixApplica
     seen.add(key);
 
     const rawLine = lines[idx];
-    const after = fixer.apply(rawLine);
+    const after = fixer.apply(rawLine, contexts[idx]);
     if (after === null || after === rawLine) continue;
     const fix: SuggestedFix = { ruleId: match.ruleId, line: match.line, before: rawLine, after, safe: fixer.safe, description: fixer.description };
     if (fixer.safe) {

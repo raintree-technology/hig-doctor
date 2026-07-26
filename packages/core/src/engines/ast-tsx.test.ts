@@ -1,6 +1,21 @@
 import { describe, test, expect } from "bun:test";
-import { analyzeTsx, astTsxAvailable, AST_TSX_RULES } from "./ast-tsx";
+import { analyzeTsx, astTsxAvailable, isUsableTs, AST_TSX_RULES } from "./ast-tsx";
 import { analyzeFile } from "../analyze";
+
+// Under Bun a missing optional `typescript` resolves to a stub object rather
+// than throwing, so a bare null check let the engine run and crash on the first
+// property access instead of falling back to regex.
+describe("typescript capability probe", () => {
+  test("rejects stubs and non-modules, accepts the real compiler", () => {
+    expect(isUsableTs(null)).toBe(false);
+    expect(isUsableTs(undefined)).toBe(false);
+    expect(isUsableTs({})).toBe(false);
+    expect(isUsableTs({ default: {}, __esModule: true })).toBe(false);
+    // Present but missing the JSX predicates the engine calls.
+    expect(isUsableTs({ createSourceFile: () => {}, ScriptTarget: {}, ScriptKind: {} })).toBe(false);
+    expect(isUsableTs(require("typescript"))).toBe(true);
+  });
+});
 
 // These tests assume the optional `typescript` dependency is installed (it is in
 // this repo's toolchain). They assert the AST tier's precision over regex.
@@ -43,6 +58,58 @@ describe.if(astTsxAvailable())("ast-tsx engine", () => {
     expect(analyzeFile("const A = () => <div tabIndex={3} />;", "F.tsx").some(m => m.ruleId === "web/positive-tabindex")).toBe(true);
     expect(analyzeFile("const A = () => <div tabIndex={0} />;", "G.tsx").some(m => m.ruleId === "web/positive-tabindex")).toBe(false);
     expect(analyzeFile("const A = () => <div tabIndex={-1} />;", "H.tsx").some(m => m.ruleId === "web/positive-tabindex")).toBe(false);
+  });
+
+  // Self-closing elements have no JsxElement wrapper, so reporting the node's
+  // parent pointed at the enclosing element instead — which also silently broke
+  // line-keyed `hig-disable-next-line` suppression for these rules.
+  test("reports the element's own line, not the enclosing element's", () => {
+    const code = [
+      "export const A = () => (",
+      "  <section>",
+      "    <p>one</p>",
+      '    <img src="/x.png" />',
+      "    <span tabIndex={4} />",
+      "    <div onClick={go}>hi</div>",
+      "  </section>",
+      ");",
+    ].join("\n");
+    const out = analyzeTsx(code, "L.tsx") ?? [];
+    const lineOf = (ruleId: string) => out.find(m => m.ruleId === ruleId)?.line;
+    expect(lineOf("web/missing-alt")).toBe(4);
+    expect(lineOf("web/positive-tabindex")).toBe(5);
+    expect(lineOf("web/div-with-on-click-no-role")).toBe(6);
+  });
+
+  // The AST tier builds findings outside detectPatterns, so it has to apply
+  // inline suppressions itself or `hig-disable-*` silently does nothing here.
+  test("honours inline suppressions for AST-owned rules", () => {
+    const nextLine = [
+      "export const S = () => (",
+      "  <section>",
+      "    {/* hig-disable-next-line web/missing-alt -- decorative */}",
+      '    <img src="/spacer.png" />',
+      "  </section>",
+      ");",
+    ].join("\n");
+    expect(analyzeFile(nextLine, "S.tsx").filter(m => m.ruleId === "web/missing-alt")).toEqual([]);
+
+    const fileWide = [
+      "// hig-disable-file web/missing-alt",
+      'export const T = () => <img src="/a.png" />;',
+    ].join("\n");
+    expect(analyzeFile(fileWide, "T.tsx").filter(m => m.ruleId === "web/missing-alt")).toEqual([]);
+
+    // A suppression for a different rule must not swallow the finding.
+    const otherRule = [
+      "export const U = () => (",
+      "  <section>",
+      "    {/* hig-disable-next-line web/positive-tabindex */}",
+      '    <img src="/b.png" />',
+      "  </section>",
+      ");",
+    ].join("\n");
+    expect(analyzeFile(otherRule, "U.tsx").some(m => m.ruleId === "web/missing-alt")).toBe(true);
   });
 
   test("replaces regex verdicts for AST-owned rules (no duplicate findings)", () => {

@@ -8,8 +8,9 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { RULE_COUNT, type PatternMatch } from "./patterns";
+import { astTsxAvailable } from "./engines/ast-tsx";
 
-const CACHE_VERSION = 2; // bump when analysis semantics change independent of rule count
+const CACHE_VERSION = 3; // bump when analysis semantics change independent of rule count
 export const CACHE_FILENAME = ".hig-cache.json";
 
 interface CacheFile {
@@ -17,8 +18,13 @@ interface CacheFile {
   entries: Record<string, PatternMatch[]>;
 }
 
+// The available tiers are part of the analysis identity, not just the ruleset:
+// the same file yields different findings with and without the optional
+// `typescript` dependency. Without this, a cache written where the AST tier ran
+// would replay ast-tsx verdicts in an environment that cannot produce them —
+// e.g. a committed cache shared between a dev machine and CI.
 function namespace(): string {
-  return `v${CACHE_VERSION}.rules${RULE_COUNT}`;
+  return `v${CACHE_VERSION}.rules${RULE_COUNT}.ast${astTsxAvailable() ? 1 : 0}`;
 }
 
 function keyFor(path: string, content: string): string {

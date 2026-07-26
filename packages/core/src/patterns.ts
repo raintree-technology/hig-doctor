@@ -1125,12 +1125,12 @@ function suppressionCovers(ids: string[] | "all", ruleId: string): boolean {
   );
 }
 
-// The base regex tier. Every match it produces is tagged engine "regex" even
-// for rules whose declared (max) engine is stronger — those findings are only
-// upgraded to "swift-structural"/"ast-tsx" when analyzeFile runs the refinement
-// tiers on top. Callers wanting the strongest available analysis use analyzeFile.
-export function detectPatterns(code: string, file: string): PatternMatch[] {
-  const matches: PatternMatch[] = [];
+/**
+ * Build the inline-suppression predicate for a file. Exported so the refinement
+ * tiers (which produce findings outside detectPatterns) honour the same
+ * `hig-disable-*` comments the regex tier does.
+ */
+export function buildSuppressionFilter(code: string): (ruleId: string, line: number) => boolean {
   const rawLines = code.split("\n");
 
   // Collect suppressions before any stripping. next-line targets are 1-based.
@@ -1152,11 +1152,22 @@ export function detectPatterns(code: string, file: string): PatternMatch[] {
       );
     }
   }
-  const isSuppressed = (ruleId: string, line: number): boolean => {
+  return (ruleId: string, line: number): boolean => {
     if (fileSuppression && suppressionCovers(fileSuppression, ruleId)) return true;
     const forLine = lineSuppressions.get(line);
     return forLine !== undefined && suppressionCovers(forLine, ruleId);
   };
+}
+
+// The base regex tier. Every match it produces is tagged engine "regex" even
+// for rules whose declared (max) engine is stronger — those findings are only
+// upgraded to "swift-structural"/"ast-tsx" when analyzeFile runs the refinement
+// tiers on top. Callers wanting the strongest available analysis use analyzeFile.
+export function detectPatterns(code: string, file: string): PatternMatch[] {
+  const matches: PatternMatch[] = [];
+  const rawLines = code.split("\n");
+
+  const isSuppressed = buildSuppressionFilter(code);
   const isStyleFile = /\.(css|scss|sass|less)$/.test(file);
   // `//` is a line comment in code and in SCSS/Sass/Less, but NOT in plain CSS,
   // HTML, or XML — where it legitimately appears in protocol-relative URLs like

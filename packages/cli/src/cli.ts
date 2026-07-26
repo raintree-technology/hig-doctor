@@ -8,7 +8,7 @@ import {
   writeBaseline,
   toSarif,
   getRuleById,
-  suggestFix,
+  suggestFixInContent,
   applyFixes,
   BASELINE_FILENAME,
   HIG_SNAPSHOT_DATE,
@@ -16,7 +16,7 @@ import {
 import type { Severity, PatternMatch, ScannedFile } from "@raintree-technology/hig-doctor-core";
 import pkg from "../package.json";
 import { writeFile as fsWriteFile } from "node:fs/promises";
-import { writeFile } from "node:fs/promises";
+import { stat, writeFile } from "node:fs/promises";
 import { join, resolve, basename } from "node:path";
 
 // ── ANSI helpers ──────────────────────────────────────────────────────
@@ -204,6 +204,20 @@ ${c.bold}Examples:${c.reset}
   }
   const writeBaselineMode = flags.has("--write-baseline");
 
+  // A path that isn't a readable directory would otherwise scan zero files and
+  // report "clean" with exit 0 — a typo'd path or a stale CI working directory
+  // would pass a --fail-on gate vacuously.
+  try {
+    const info = await stat(resolve(directory));
+    if (!info.isDirectory()) {
+      process.stderr.write(`${c.red}Error:${c.reset} Not a directory: ${directory}\n`);
+      process.exit(2);
+    }
+  } catch {
+    process.stderr.write(`${c.red}Error:${c.reset} Directory not found: ${directory}\n`);
+    process.exit(2);
+  }
+
   const s = spinner();
   const appName = basename(resolve(directory));
   s.update(`Scanning ${c.bold}${appName}${c.reset}...`);
@@ -233,14 +247,9 @@ ${c.bold}Examples:${c.reset}
   for (const f of [...scanResult.codeFiles, ...scanResult.styleFiles, ...scanResult.markupFiles]) {
     filesByPath.set(f.relativePath, f);
   }
-  const rawLineFor = (m: PatternMatch): string | null => {
-    const content = filesByPath.get(m.file)?.content;
-    if (content === undefined) return null;
-    return content.split("\n")[m.line - 1] ?? null;
-  };
   const suggestionFor = (m: PatternMatch) => {
-    const raw = rawLineFor(m);
-    return raw === null ? null : suggestFix(m, raw);
+    const content = filesByPath.get(m.file)?.content;
+    return content === undefined ? null : suggestFixInContent(m, content);
   };
 
   // ── --fix mode ──────────────────────────────────────────────────
@@ -336,6 +345,7 @@ ${c.bold}Examples:${c.reset}
           return {
             ruleId: m.ruleId,
             severity: m.severity,
+            engine: m.engine,
             file: m.file,
             line: m.line,
             pattern: m.pattern,

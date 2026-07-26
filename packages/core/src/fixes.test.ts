@@ -1,5 +1,5 @@
 import { describe, test, expect } from "bun:test";
-import { suggestFix, applyFixes, isFixable } from "./fixes";
+import { suggestFix, suggestFixInContent, applyFixes, isFixable } from "./fixes";
 import type { PatternMatch } from "./patterns";
 
 const m = (over: Partial<PatternMatch>): PatternMatch => ({
@@ -14,6 +14,52 @@ const m = (over: Partial<PatternMatch>): PatternMatch => ({
   file: "a.css",
   severity: "moderate",
   ...over,
+});
+
+// A "safe" fix must be behavior-preserving. Rewriting a quoted value changes
+// what the page renders, and rewriting a comment silently rewords the author's
+// note about the very declaration being changed.
+describe("suggestFix — leaves strings and comments alone", () => {
+  test("fixes the declaration but not an identical string value", () => {
+    const line = '.a::before { content: "text-align: left"; text-align: left; }';
+    const fix = suggestFix(m({}), line);
+    expect(fix?.after).toBe('.a::before { content: "text-align: left"; text-align: start; }');
+  });
+
+  test("fixes the declaration but not a trailing comment", () => {
+    const line = ".b { text-align: left; } /* keep text-align: left for legacy */";
+    const fix = suggestFix(m({}), line);
+    expect(fix?.after).toBe(".b { text-align: start; } /* keep text-align: left for legacy */");
+  });
+
+  test("handles single quotes and an interior comment", () => {
+    expect(suggestFix(m({}), ".g::after { content: 'text-align: right'; }")).toBeNull();
+    const line = ".f { text-align: left; /* was right */ text-align: right; }";
+    expect(suggestFix(m({}), line)?.after).toBe(
+      ".f { text-align: start; /* was right */ text-align: end; }",
+    );
+  });
+
+  test("preserves a CRLF line ending", () => {
+    expect(suggestFix(m({}), ".c { text-align: left; }\r")?.after).toBe(".c { text-align: start; }\r");
+  });
+
+  test("uses file context to preserve a multi-line comment before a declaration", () => {
+    const content = `.d { /* Keep this note:
+  text-align: left is required for the legacy view. */ text-align: left;
+}`;
+    const fix = suggestFixInContent(m({ line: 2 }), content);
+    expect(fix?.after).toBe(
+      "  text-align: left is required for the legacy view. */ text-align: start;",
+    );
+  });
+
+  test("uses file context to preserve an escaped multi-line string", () => {
+    const content = `.f::before { content: "Keep \\
+text-align: left"; text-align: left; }`;
+    const fix = suggestFixInContent(m({ line: 2 }), content);
+    expect(fix?.after).toBe('text-align: left"; text-align: start; }');
+  });
 });
 
 describe("suggestFix", () => {
@@ -83,5 +129,24 @@ describe("applyFixes", () => {
     const out = applyFixes(content, matches);
     expect(out.applied.length).toBe(1);
     expect(out.content).toBe("text-align: start;");
+  });
+
+  test("does not rewrite text inside a multi-line comment on a matched line", () => {
+    const content = `.e { /* Keep this note:
+  text-align: right is intentional. */ text-align: right;
+}`;
+    const out = applyFixes(content, [m({ line: 2 })]);
+    expect(out.content).toBe(`.e { /* Keep this note:
+  text-align: right is intentional. */ text-align: end;
+}`);
+    expect(out.applied).toHaveLength(1);
+  });
+
+  test("does not rewrite text inside an escaped multi-line string on a matched line", () => {
+    const content = `.g::before { content: "Keep \\
+text-align: right"; text-align: right; }`;
+    const out = applyFixes(content, [m({ line: 2 })]);
+    expect(out.content).toBe(`.g::before { content: "Keep \\
+text-align: right"; text-align: end; }`);
   });
 });

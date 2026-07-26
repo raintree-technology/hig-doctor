@@ -27,6 +27,22 @@ afterAll(async () => {
   await rm(dir, { recursive: true });
 });
 
+describe("hig-doctor CLI — target validation", () => {
+  // Scanning a bad path used to yield zero files and a "clean" exit 0, so a
+  // typo'd path or a stale CI working directory passed --fail-on vacuously.
+  test("a missing directory is a usage error, not a clean audit", () => {
+    const r = runCli([join(dir, "does-not-exist"), "--fail-on", "critical"]);
+    expect(r.exitCode).toBe(2);
+    expect(r.stderr).toContain("Directory not found");
+  });
+
+  test("a file path is a usage error", () => {
+    const r = runCli([join(dir, "View.swift")]);
+    expect(r.exitCode).toBe(2);
+    expect(r.stderr).toContain("Not a directory");
+  });
+});
+
 describe("hig-doctor CLI", () => {
   test("--json reports severities, config block, and exits 0 without a gate", () => {
     const { stdout, exitCode } = runCli([dir, "--json"]);
