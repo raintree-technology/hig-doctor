@@ -38,6 +38,7 @@ jobs:
           install: true
           cache: true
       - name: Verify version (tag matches manifest, not already published)
+        id: version
         run: |
           PKG_NAME="$(node -p "require('./package.json').name")"
           PKG_VERSION="$(node -p "require('./package.json').version")"
@@ -49,10 +50,17 @@ jobs:
             fi
           fi
           if npm view "${PKG_NAME}@${PKG_VERSION}" version > /dev/null 2>&1; then
-            echo "::error::${PKG_NAME}@${PKG_VERSION} is already published to npm"
-            exit 1
+            if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
+              echo "npm_published=true" >> "$GITHUB_OUTPUT"
+              echo "${PKG_NAME}@${PKG_VERSION} is already on npm; continuing with the MCP Registry"
+            else
+              echo "::error::${PKG_NAME}@${PKG_VERSION} is already published to npm"
+              exit 1
+            fi
+          else
+            echo "npm_published=false" >> "$GITHUB_OUTPUT"
+            echo "OK to publish ${PKG_NAME}@${PKG_VERSION}"
           fi
-          echo "OK to publish ${PKG_NAME}@${PKG_VERSION}"
 
       - name: Install dependencies
         run: mise run setup
@@ -81,6 +89,7 @@ jobs:
         run: mise x -- npm pack --dry-run
 
       - name: Publish with trusted publishing
+        if: steps.version.outputs.npm_published != 'true'
         run: mise x -- npm publish --provenance --access public
 
       - name: Install MCP Registry publisher

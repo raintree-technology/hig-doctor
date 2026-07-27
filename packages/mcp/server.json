@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.raintree-technology/hig-doctor",
   "title": "HIG Doctor",
-  "description": "Apple Human Interface Guidelines search, lookup, and project audits for MCP-compatible coding agents.",
+  "description": "Apple Human Interface Guidelines search, lookup, and project audits for AI coding agents.",
   "repository": {
     "url": "https://github.com/raintree-technology/hig-doctor",
     "source": "github",

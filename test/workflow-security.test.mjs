@@ -70,6 +70,16 @@ test("npm publish uses trusted publishing instead of a long-lived token", () => 
   }
 });
 
+test("MCP publishing supports a registry-only retry with valid metadata", () => {
+  const workflow = readRepoFile(".github/workflows/publish-hig-mcp.yml");
+  const server = JSON.parse(readRepoFile("packages/mcp/server.json"));
+
+  assert.ok(server.description.length <= 100, "MCP Registry description exceeds 100 characters");
+  assert.match(workflow, /GITHUB_EVENT_NAME.*workflow_dispatch/);
+  assert.match(workflow, /npm_published=true/);
+  assert.match(workflow, /if: steps\.version\.outputs\.npm_published != 'true'/);
+});
+
 test("published CLI and MCP packages have no runtime dependencies", () => {
   for (const file of [
     "packages/cli/package.json",
