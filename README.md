@@ -307,10 +307,11 @@ Each reference file carries an attribution block and canonical source URL in its
 
 ## Website deployment
 
-Vercel Git integration deploys `website` from `main`. A push is the routine
-production deployment; do not follow it with a CLI or agent-triggered deployment
-for the same SHA. Use a direct CLI deployment only after confirming that Git
-integration failed and no deployment for that SHA is `BUILDING` or `READY`.
+Vercel Git integration deploys `website` from `main`; preview-branch deployments
+are disabled. A push is the routine production deployment; do not follow it
+with a CLI or agent-triggered deployment for the same SHA. Use a direct CLI
+deployment only after confirming that Git integration failed and no deployment
+for that SHA is `BUILDING` or `READY`.
 
 ## Contributing
 
