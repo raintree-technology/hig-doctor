@@ -33,13 +33,13 @@ export function GET() {
   lines.push("## MCP server");
   lines.push("");
   lines.push(
-    `- [hig-doctor MCP server](${BASE_URL}/mcp): stdio MCP server exposing hig_list_skills, hig_lookup, and hig_audit tools.`,
+    `- [HIG Doctor MCP server](${BASE_URL}/mcp): stdio MCP server exposing skill discovery, search, lookup, project and file audits, and finding explanations.`,
   );
   lines.push("");
   lines.push("## Audit tool");
   lines.push("");
   lines.push(
-    `- [hig-doctor audit CLI](${BASE_URL}): universal HIG compliance scanner across 12 frameworks, emits severity-bucketed markdown/JSON.`,
+    `- [HIG Doctor audit CLI](${BASE_URL}): source auditor across 14 frameworks; Apple-platform checks cite the HIG directly, while other surfaces use aligned accessibility and interface-quality rules.`,
   );
   lines.push("");
 

@@ -4,9 +4,19 @@
 
 # HIG Doctor MCP server
 
-Model Context Protocol server that exposes the [HIG Doctor](https://github.com/raintree-technology/hig-doctor) skills corpus and universal HIG compliance auditor as tools for AI coding agents.
+**Active MCP server for developers connecting HIG Doctor to coding agents.**
+It exposes the HIG skills corpus and source audit as structured tools.
 
 Runs under Node 20+ (after build) or Bun (directly from source). Works with Claude Desktop, Cursor, Windsurf, and Claude Code. Transports: stdio (default) and streamable HTTP (`--http`).
+
+## Install and start
+
+```bash
+npx hig-mcp
+```
+
+Expected result: the process starts an MCP stdio server and advertises the six
+tools below. The published package includes the skills corpus.
 
 ## Tools
 
@@ -19,19 +29,9 @@ Runs under Node 20+ (after build) or Bun (directly from source). Works with Clau
 | `hig_audit_file` | Audit a single file — the fast inner loop after writing or editing code. Returns each finding with rule ID, severity, line, fix guidance, and HIG citation. |
 | `hig_explain_finding` | Explain a finding: full rule metadata plus an excerpt of the cited Apple HIG reference. Pass a `ruleId` from an audit result. |
 
-Every tool returns `structuredContent` (parsed JSON) alongside the text mirror, so agents can consume structure directly. Content is from Apple's HIG, snapshot dated 2025-02-02; canonical source at https://developer.apple.com/design/human-interface-guidelines/.
+Every tool returns `structuredContent` (parsed JSON) alongside the text mirror, so agents can consume structure directly. Content is from Apple's HIG, snapshot dated 2025-02-02; Apple's [live Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) remain canonical.
 
-## Install
-
-### Via npx (no clone)
-
-The published package bundles the HIG skills corpus, so it runs with zero configuration:
-
-```bash
-npx hig-mcp
-```
-
-### Via git clone
+## Run from a checkout
 
 ```bash
 git clone https://github.com/raintree-technology/hig-doctor.git
@@ -87,6 +87,14 @@ The published npm package bundles the corpus at `dist/skills`, so `$HIG_SKILLS_D
 
 Slug arguments (`skill`, `topic`) are validated against a kebab-case allowlist (`/^[a-z0-9-]+$/`) before being used to construct filesystem paths. `hig_audit.directory` and `hig_audit_file.file` must be absolute paths. Invalid inputs throw before any filesystem access.
 
+## Limits and support boundary
+
+The audit tools provide static review evidence; they do not prove HIG
+conformance, accessibility, or design quality. HTTP mode does not add
+authentication or TLS, so place it behind an appropriate local or trusted
+transport boundary. See the [project guide](../../README.md),
+[benchmark](../../docs/benchmark.md), and [security policy](../../SECURITY.md).
+
 ## License
 
-MIT for this package. Apple HIG reference content read by `hig_lookup`/`hig_search` is © Apple Inc. — see the repository root [LICENSE](../../../LICENSE) for the full attribution.
+MIT for this package. Apple HIG reference content read by `hig_lookup`/`hig_search` is © Apple Inc. — see the repository root [LICENSE](../../LICENSE) for the full attribution.

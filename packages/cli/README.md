@@ -4,13 +4,15 @@
 
 # HIG Doctor audit CLI
 
-**Apple Human Interface Guidelines** compliance auditor for app projects. Scans your source against **431 rules** across 14 frameworks (SwiftUI, UIKit, AppKit, watchOS, visionOS, React/Next.js, Vue, Svelte, Angular, Jetpack Compose, Android XML, React Native, Flutter, and plain HTML/CSS) and reports concerns by severity — **critical / serious / moderate** — plus positive patterns you already follow.
+**Active CLI for developers and coding agents reviewing application source.**
+It scans source against **431 rules** across 14 frameworks and returns prioritized,
+machine-readable interface findings before release.
 
 Apple-platform code is checked against the HIG directly; web and cross-platform code is checked against universal accessibility and UI-quality principles that align with the HIG.
 
 Findings come from a regex base tier plus a TypeScript-compiler JSX tier and a Swift structural tier; each finding is tagged with the engine that produced it. Runs under Node 20+ (after install) or [Bun](https://bun.sh) (from source). The AST tier uses the optional `typescript` dependency and falls back to regex when it's absent.
 
-## Usage
+## Install and run
 
 ```bash
 # Audit a project (one-off, no install)
@@ -20,6 +22,9 @@ npx hig-doctor ./path/to/project
 npm install -g hig-doctor
 hig-doctor ./path/to/project
 ```
+
+Expected result: a terminal summary groups concerns by severity and identifies
+the source file and rule behind each finding.
 
 ### Output modes
 
@@ -75,14 +80,26 @@ examples
 Each rule maps to a HIG topic (Accessibility, Color, Typography, Layout, Buttons, Navigation, Materials, …) and a severity:
 
 - **Critical** — accessibility-breaking: images without alt text, `user-scalable=no`, removed focus outlines, click handlers on non-interactive elements.
-- **Serious** — significant UX violations: hardcoded colors over semantic tokens, tap targets below minimum, deprecated navigation containers.
-- **Moderate** — style-level: fixed font sizes, non-Dynamic-Type fonts, gesture-only affordances.
+- **Serious** — high-impact interface and accessibility concerns that need review before release.
+- **Moderate** — issues such as hardcoded colors, deprecated navigation containers,
+  fixed font sizes, non-Dynamic-Type fonts, and gesture-only affordances.
 
 Every rule has a stable ID (`framework/label-slug`) with a HIG citation and fix guidance — see [`docs/rules.md`](../../docs/rules.md). Precision/recall on an annotated fixture corpus is published in [`docs/benchmark.md`](../../docs/benchmark.md). Detection is self-contained — no network calls, no source ever leaves your machine.
 
 Suppress findings inline (`// hig-disable-next-line <rule-id> -- reason`, `// hig-disable-file <rule-id>`) or via a `hig-doctor.config.json`.
 
-## From source (Bun)
+## Limits and support boundary
+
+HIG Doctor is a static review aid. Findings do not prove HIG conformance,
+accessibility, or design quality. Apple-platform rules cite the HIG directly;
+web and cross-platform rules apply aligned accessibility and interface-quality
+principles. Review findings in context before applying fixes.
+
+See the [project guide](../../README.md), [rule catalog](../../docs/rules.md),
+[benchmark and limitations](../../docs/benchmark.md), and [security
+policy](../../SECURITY.md).
+
+## Maintainer checks
 
 ```bash
 git clone https://github.com/raintree-technology/hig-doctor.git
@@ -94,4 +111,4 @@ bun test                          # run the rule + scanner suite
 
 ## License
 
-MIT for this package. The HIG rule set encodes guidance derived from Apple's Human Interface Guidelines (© Apple Inc.); see the repository root [LICENSE](../../../LICENSE) for attribution. The published npm package contains only the bundled auditor — it does not redistribute Apple's reference content.
+MIT for this package. The HIG rule set encodes guidance derived from Apple's Human Interface Guidelines (© Apple Inc.); see the repository root [LICENSE](../../LICENSE) for attribution. The published npm package contains only the bundled auditor — it does not redistribute Apple's reference content.

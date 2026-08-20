@@ -19,10 +19,10 @@ mark.
 
 | Asset | Use |
 |---|---|
-| [`hig-doctor-mark.svg`](hig-doctor-mark.svg) | Adaptive light/dark symbol |
-| [`hig-doctor-mark-black.svg`](hig-doctor-mark-black.svg) | Monochrome light-background use |
-| [`hig-doctor-mark-white.svg`](hig-doctor-mark-white.svg) | Reversed dark-background use |
-| [`hig-doctor-app-icon.svg`](hig-doctor-app-icon.svg) | Square app/profile icon source |
+| [`hig-doctor-mark.svg`](../brand/hig-doctor-mark.svg) | Adaptive light/dark symbol |
+| [`hig-doctor-mark-black.svg`](../brand/hig-doctor-mark-black.svg) | Monochrome light-background use |
+| [`hig-doctor-mark-white.svg`](../brand/hig-doctor-mark-white.svg) | Reversed dark-background use |
+| [`hig-doctor-app-icon.svg`](../brand/hig-doctor-app-icon.svg) | Square app/profile icon source |
 | [`.github/social-preview.png`](../.github/social-preview.png) | 1200 × 630 GitHub/social preview |
 
 ## Usage

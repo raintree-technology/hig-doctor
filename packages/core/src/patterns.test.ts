@@ -10,7 +10,7 @@ import { join } from "node:path";
 //   - AGENTS.md (root)
 //   - .claude-plugin/marketplace.json (plugin description)
 //   - website/components/AuditDemo.tsx (the "same N rules" copy)
-//   - demos/remotion-hig-doctor/README.md
+//   - docs/remotion-showcase.md
 //   - demos/remotion-hig-doctor/src/data/report-data.json ("totalRules")
 const EXPECTED_RULE_COUNT = 431;
 test(`rule count is exactly ${EXPECTED_RULE_COUNT}`, () => {

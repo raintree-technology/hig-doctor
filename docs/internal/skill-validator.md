@@ -6,7 +6,9 @@
 
 Internal linter for this repository's `skills/` directory. Not intended for third-party use — the official Agent Skills reference validator is [skills-ref](https://github.com/agentskills/agentskills).
 
-The audit CLI lives in [`packages/cli`](../cli), the rule engine in [`packages/core`](../core), and the MCP server in [`packages/mcp`](../mcp).
+The audit CLI lives in [`packages/cli`](../../packages/cli), the rule engine in
+[`packages/core`](../../packages/core), and the MCP server in
+[`packages/mcp`](../../packages/mcp).
 
 ```bash
 node packages/skill-validator/src/cli.js . --verbose --strict
