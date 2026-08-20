@@ -57,4 +57,4 @@ the HIG directly; other surfaces use aligned interface-quality rules. See the
 
 ## License
 
-MIT. Apple HIG reference content the engine cites is © Apple Inc. — see the repository [LICENSE](../../LICENSE).
+MIT. Apple HIG reference content the engine cites is © Apple Inc. — see the repository [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).

@@ -23,7 +23,7 @@ following are in scope:
   privilege escalation through audit inputs is in scope.
 
 Apple HIG reference **content** is Apple's intellectual property and is out of
-scope for security reports (see [LICENSE](LICENSE)).
+scope for security reports (see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)).
 
 ## Supported versions
 

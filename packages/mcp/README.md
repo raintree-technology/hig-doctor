@@ -97,4 +97,4 @@ transport boundary. See the [project guide](../../README.md),
 
 ## License
 
-MIT for this package. Apple HIG reference content read by `hig_lookup`/`hig_search` is © Apple Inc. — see the repository root [LICENSE](../../LICENSE) for the full attribution.
+MIT for this package. Apple HIG reference content read by `hig_lookup`/`hig_search` is © Apple Inc. — see the repository root [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md) for the full attribution.

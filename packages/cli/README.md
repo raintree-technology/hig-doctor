@@ -111,4 +111,4 @@ bun test                          # run the rule + scanner suite
 
 ## License
 
-MIT for this package. The HIG rule set encodes guidance derived from Apple's Human Interface Guidelines (© Apple Inc.); see the repository root [LICENSE](../../LICENSE) for attribution. The published npm package contains only the bundled auditor — it does not redistribute Apple's reference content.
+MIT for this package. The HIG rule set encodes guidance derived from Apple's Human Interface Guidelines (© Apple Inc.); see the repository root [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md) for attribution. The published npm package contains only the bundled auditor — it does not redistribute Apple's reference content.

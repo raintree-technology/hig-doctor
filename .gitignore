@@ -6,7 +6,8 @@ packages/mcp/dist/
 packages/cli/dist/
 packages/core/dist/
 .vercel/
-.agents/
+.agents/*
+!.agents/product-marketing.md
 skills-lock.json
 
 .vercel

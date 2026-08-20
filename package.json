@@ -35,5 +35,14 @@
   ],
   "engines": {
     "node": "24.x"
+  },
+  "overrides": {
+    "@hono/node-server": "1.19.15",
+    "fast-uri": "3.1.5",
+    "hono": "4.12.34",
+    "ip-address": "10.3.1",
+    "nanoid": "3.3.18",
+    "postcss": "8.5.26",
+    "sharp": "0.35.3"
   }
 }

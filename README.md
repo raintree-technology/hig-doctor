@@ -152,8 +152,10 @@ defines governed requirements. See the
 
 ## Project policies
 
-[Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) ·
-[Source repository](https://github.com/raintree-technology/hig-doctor) · [MIT License](LICENSE)
+[Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md) ·
+[Changelog](CHANGELOG.md) ·
+[Source repository](https://github.com/raintree-technology/hig-doctor) · [MIT License](LICENSE) ·
+[Third-party notices](THIRD_PARTY_NOTICES.md)
 
 Apple HIG reference text in `skills/*/references/` is © Apple Inc. and remains subject
 to Apple’s terms.
