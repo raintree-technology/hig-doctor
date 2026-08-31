@@ -50,14 +50,9 @@ const output = {
     categories: audit.categories,
   },
   totalRules: 431,
-  totalFrameworks: 15,
+  totalFrameworks: 14,
   topCategories,
   frameworkRuleCounts,
-  scoreTimeline: [
-    { label: "Poor project", score: 35 },
-    { label: "Average project", score: 72 },
-    { label: "This repo", score: audit.score },
-  ],
 };
 
 await mkdir(path.dirname(outputPath), { recursive: true });

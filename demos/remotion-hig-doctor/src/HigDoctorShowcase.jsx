@@ -150,7 +150,7 @@ const IntroScene = () => {
     { t: "", c: "transparent" },
     { t: `Scanning ${project.files.code} code + ${project.files.style} style files...`, c: palette.tertiary },
     { t: "", c: "transparent" },
-    { t: `  HIG Audit   ${project.score}/100  Excellent`, c: palette.green },
+    { t: "  HIG Doctor   431 rules   Ready", c: palette.green },
     { t: `  ${project.frameworks.join(", ")}  ·  ${total} detections`, c: palette.secondary },
     { t: "", c: "transparent" },
     { t: `  ${project.totals.positives} positives   ${project.totals.patterns} patterns   ${project.totals.concerns} concerns`, c: palette.secondary },
@@ -178,7 +178,7 @@ const IntroScene = () => {
           opacity: h, transform: `translateY(${interpolate(h, [0, 1], [16, 0])}px)`,
         }}
       >
-        {"431 rules.\n14 frameworks.\nOne score."}
+        {"Teach your agent\nApple’s design\nlanguage."}
       </div>
 
       {/* Subhead */}
@@ -189,8 +189,8 @@ const IntroScene = () => {
           opacity: sub, transform: `translateY(${interpolate(sub, [0, 1], [8, 0])}px)`,
         }}
       >
-        Scans code, stylesheets, and config for Apple HIG compliance across
-        accessibility, color systems, typography, dark mode, layout, and motion.
+        HIG Doctor gives coding agents platform-specific guidance and audits
+        interfaces against Apple’s Human Interface Guidelines.
       </div>
 
       {/* Stat pills */}
@@ -201,10 +201,10 @@ const IntroScene = () => {
         }}
       >
         {[
-          { l: "Score", v: `${project.score}`, c: palette.green },
-          { l: "Detections", v: String(total), c: palette.blue },
-          { l: "Framework", v: project.frameworks[0] || "—", c: palette.amber },
-          { l: "Categories", v: String(project.categories.length), c: palette.purple },
+          { l: "Installs", v: "6,000+", c: palette.green },
+          { l: "GitHub stars", v: "117", c: palette.blue },
+          { l: "Rules", v: "431", c: palette.amber },
+          { l: "HIG skills", v: "14", c: palette.purple },
         ].map((s) => (
           <div key={s.l} style={{ ...pill, padding: "10px 18px", display: "flex", alignItems: "center", gap: 10 }}>
             <span style={{ width: 9, height: 9, borderRadius: "50%", background: s.c }} />
@@ -263,7 +263,6 @@ const CategoriesScene = () => {
   const max = Math.max(...categories.map((c) => c.detections), 1);
   const project = reportData.project;
   const total = project.totals.positives + project.totals.patterns + project.totals.concerns;
-  const scoreTimeline = reportData.scoreTimeline;
 
   const donutStats = [
     { label: "Positives", value: project.totals.positives, color: palette.green },
@@ -351,17 +350,20 @@ const CategoriesScene = () => {
         })}
       </div>
 
-      {/* Score timeline */}
+      {/* Project reach */}
       <div style={{ display: "flex", gap: S.sm, marginTop: S.xl }}>
-        {scoreTimeline.map((pt, i) => {
-          const color = i === 0 ? palette.rose : i === scoreTimeline.length - 1 ? palette.green : palette.amber;
+        {[
+          { label: "Installs", value: "6,000+", color: palette.green },
+          { label: "GitHub stars", value: "117", color: palette.blue },
+          { label: "HIG topics", value: "156", color: palette.purple },
+        ].map((item) => {
           return (
-            <div key={pt.label} style={{ ...pill, padding: `${S.sm}px ${S.md}px`, flex: 1 }}>
+            <div key={item.label} style={{ ...pill, padding: `${S.sm}px ${S.md}px`, flex: 1 }}>
               <div style={{ fontFamily: font.ui, fontSize: 14, fontWeight: 600, color: palette.tertiary, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                {pt.label}
+                {item.label}
               </div>
-              <div style={{ fontFamily: font.ui, fontSize: 32, fontWeight: 600, color, marginTop: 4 }}>
-                {pt.score}/100
+              <div style={{ fontFamily: font.ui, fontSize: 32, fontWeight: 600, color: item.color, marginTop: 4 }}>
+                {item.value}
               </div>
             </div>
           );
@@ -452,7 +454,6 @@ const FrameworksScene = () => {
 const OutroScene = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const project = reportData.project;
   const pop = spring({ frame, fps, delay: 4, config: { damping: 14, stiffness: 160 } });
   const fadeIn = spring({ frame, fps, config: { damping: 200 } });
   const statsIn = spring({ frame, fps, delay: 10, config: { damping: 200 } });
@@ -460,7 +461,7 @@ const OutroScene = () => {
   return (
     <Page>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-        {/* Score badge */}
+        {/* Product mark */}
         <div
           style={{
             width: 180, height: 180, borderRadius: "50%",
@@ -469,8 +470,7 @@ const OutroScene = () => {
             transform: `scale(${interpolate(pop, [0, 1], [0.8, 1])})`, opacity: pop,
           }}
         >
-          <span style={{ fontFamily: font.ui, fontSize: 68, fontWeight: 700, color: palette.green }}>{project.score}</span>
-          <span style={{ fontFamily: font.ui, fontSize: 18, fontWeight: 600, color: palette.secondary, marginTop: -6 }}>/ 100</span>
+          <Img src={staticFile("hig-doctor-icon.svg")} style={{ width: 96, height: 96, objectFit: "contain" }} />
         </div>
 
         {/* Headline */}
@@ -489,7 +489,7 @@ const OutroScene = () => {
             lineHeight: 1.3, marginTop: S.lg, opacity: fadeIn,
           }}
         >
-          One command. 349 rules.{"\n"}Every framework. Zero configuration.
+          431 audit rules. 14 frameworks.{"\n"}14 Apple HIG skills. 156 topics.
         </div>
 
         {/* CTA */}
@@ -501,15 +501,15 @@ const OutroScene = () => {
             border: `1px solid ${palette.border}`,
           }}
         >
-          bun run audit ./my-app
+          npx skills add raintree-technology/hig-doctor
         </div>
 
         {/* Stats — 2x2 grid */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: S.md, marginTop: S.xxl, opacity: statsIn, width: "100%", maxWidth: 600 }}>
           {[
-            { l: "Score", v: `${project.score}/100`, c: palette.green },
-            { l: "Rules", v: String(reportData.totalRules), c: palette.blue },
-            { l: "Positives", v: String(project.totals.positives), c: palette.cyan },
+            { l: "Installs", v: "6,000+", c: palette.green },
+            { l: "Stars", v: "117", c: palette.blue },
+            { l: "Rules", v: String(reportData.totalRules), c: palette.cyan },
             { l: "Frameworks", v: String(reportData.totalFrameworks), c: palette.purple },
           ].map((item) => (
             <div key={item.l} style={{ ...pill, padding: `${S.md}px`, textAlign: "center" }}>

@@ -1,18 +1,20 @@
 {
-  "generatedAt": "2026-07-26T23:50:00.011Z",
+  "generatedAt": "2026-08-28T17:03:47.584Z",
   "project": {
     "name": "hig-doctor",
     "lowDensity": false,
     "frameworks": [
+      "swiftui",
+      "uikit",
       "nextjs"
     ],
     "files": {
-      "code": 84,
+      "code": 85,
       "style": 1,
       "config": 14
     },
     "totals": {
-      "concerns": 2,
+      "concerns": 4,
       "positives": 884,
       "patterns": 149
     },
@@ -20,16 +22,17 @@
       {
         "name": "Foundations",
         "skill": "hig-foundations",
-        "detections": 821,
-        "concerns": 2,
+        "detections": 822,
+        "concerns": 3,
         "positives": 799,
         "patterns": 20,
         "severities": {
           "critical": 2,
           "serious": 0,
-          "moderate": 0
+          "moderate": 1
         },
         "files": [
+          "test/fixtures/readme-audit/View.swift",
           "website/app/mcp/page.tsx",
           "website/app/layout.tsx",
           "website/app/page.tsx",
@@ -73,16 +76,17 @@
       {
         "name": "Layout & Navigation",
         "skill": "hig-components-layout",
-        "detections": 63,
-        "concerns": 0,
+        "detections": 64,
+        "concerns": 1,
         "positives": 14,
         "patterns": 49,
         "severities": {
           "critical": 0,
           "serious": 0,
-          "moderate": 0
+          "moderate": 1
         },
         "files": [
+          "test/fixtures/readme-audit/View.swift",
           "website/app/mcp/page.tsx",
           "website/app/page.tsx",
           "website/app/not-found.tsx",
@@ -290,21 +294,22 @@
     ]
   },
   "totalRules": 431,
-  "totalFrameworks": 15,
+  "totalFrameworks": 14,
   "topCategories": [
     {
       "name": "Foundations",
       "skill": "hig-foundations",
-      "detections": 821,
-      "concerns": 2,
+      "detections": 822,
+      "concerns": 3,
       "positives": 799,
       "patterns": 20,
       "severities": {
         "critical": 2,
         "serious": 0,
-        "moderate": 0
+        "moderate": 1
       },
       "files": [
+        "test/fixtures/readme-audit/View.swift",
         "website/app/mcp/page.tsx",
         "website/app/layout.tsx",
         "website/app/page.tsx",
@@ -348,16 +353,17 @@
     {
       "name": "Layout & Navigation",
       "skill": "hig-components-layout",
-      "detections": 63,
-      "concerns": 0,
+      "detections": 64,
+      "concerns": 1,
       "positives": 14,
       "patterns": 49,
       "severities": {
         "critical": 0,
         "serious": 0,
-        "moderate": 0
+        "moderate": 1
       },
       "files": [
+        "test/fixtures/readme-audit/View.swift",
         "website/app/mcp/page.tsx",
         "website/app/page.tsx",
         "website/app/not-found.tsx",
@@ -541,19 +547,6 @@
     {
       "framework": "UIKit",
       "rules": "10+"
-    }
-  ],
-  "scoreTimeline": [
-    {
-      "label": "Poor project",
-      "score": 35
-    },
-    {
-      "label": "Average project",
-      "score": 72
-    },
-    {
-      "label": "This repo"
     }
   ]
 }
