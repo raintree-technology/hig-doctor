@@ -69,8 +69,8 @@ export default function Skills() {
             What&apos;s included
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {totalSkills} skills. {totalReferences} reference topics. The full
-            Apple Human Interface Guidelines, structured for AI.
+            {totalSkills} skills organize {totalReferences} HIG reference topics
+            for AI-assisted retrieval.
           </p>
           <p className="text-sm text-muted-foreground max-w-2xl mx-auto mt-4">
             <strong className="text-foreground">New here?</strong> Start with{" "}
@@ -81,7 +81,7 @@ export default function Skills() {
             >
               Project Context
             </button>{" "}
-            to set up your app details, then try{" "}
+            to record your platform, technology, and constraints. Then open{" "}
             <button
               type="button"
               onClick={() => setFilter("Platforms")}
@@ -89,8 +89,8 @@ export default function Skills() {
             >
               Platforms
             </button>{" "}
-            for your target platform. The rest load on demand as you ask
-            questions.
+            for platform-specific guidance. Other skills load when a question
+            needs them.
           </p>
         </div>
 

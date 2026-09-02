@@ -17,7 +17,10 @@ const terminalLines = [
   { type: "system", content: "Loading hig-components-layout..." },
   { type: "system", content: "Reading references/tab-bars.md" },
   { type: "blank", content: "" },
-  { type: "response", content: "Based on Apple's HIG for iPadOS tab bars," },
+  {
+    type: "response",
+    content: "Based on HIG Doctor's iPadOS tab-bar reference,",
+  },
   {
     type: "response",
     content: "use a sidebar instead of a bottom tab bar.",
@@ -74,28 +77,29 @@ export default function Hero({ stars }: { stars: number | null }) {
       className="pt-32 sm:pt-40 lg:pt-48 pb-20 sm:pb-28"
     >
       <div className="mx-auto max-w-6xl w-full px-6">
-        <div className="text-center mb-16">
+        <div className="mb-10 text-center sm:mb-16">
           <h1
             id="hero-heading"
             className="text-4xl sm:text-6xl lg:text-[80px] font-semibold tracking-[-0.015em] leading-[1.05] mb-5"
           >
-            Teach your AI
+            Give your AI structured
             <br />
-            Apple&apos;s design language
+            Apple design guidance
           </h1>
-          <p className="text-xl sm:text-2xl text-muted-foreground font-medium tracking-tight max-w-3xl mx-auto mb-4">
-            Give your AI the complete Apple Human Interface Guidelines. No more
-            hallucinated patterns. No more wrong-platform advice.
+          <p className="mx-auto mb-4 max-w-3xl text-lg font-medium tracking-tight text-foreground/85 sm:text-2xl">
+            HIG Doctor organizes Apple Human Interface Guidelines references for
+            AI-assisted design and development.
           </p>
-          <p className="text-lg sm:text-xl text-muted-foreground/80 tracking-tight max-w-2xl mx-auto mb-8">
-            Accurate, platform-specific guidance for iOS, iPadOS, macOS,
-            watchOS, and visionOS — without reading 500 pages yourself.
+          <p className="mx-auto mb-8 hidden max-w-2xl text-lg tracking-tight text-muted-foreground sm:block sm:text-xl">
+            Retrieve attributed guidance for iOS, iPadOS, macOS, watchOS, and
+            visionOS. Verify consequential decisions against Apple&apos;s
+            current documentation.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
             <Button size="lg" asChild>
               <a href="#install">
-                Install now — it&apos;s free
+                Install HIG Doctor
                 <ArrowRight className="h-4 w-4" />
               </a>
             </Button>
@@ -104,7 +108,7 @@ export default function Hero({ stars }: { stars: number | null }) {
             </Button>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6">
+          <div className="mb-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 sm:mb-6 sm:gap-x-6 sm:gap-y-2">
             <a
               href="https://github.com/raintree-technology/hig-doctor"
               target="_blank"
@@ -125,7 +129,7 @@ export default function Hero({ stars }: { stars: number | null }) {
               href="https://www.producthunt.com/products/apple-hig-skills"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="hidden items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
             >
               <svg
                 className="h-3.5 w-3.5"
@@ -138,7 +142,7 @@ export default function Hero({ stars }: { stars: number | null }) {
               Product Hunt
               <span className="sr-only"> (opens in new tab)</span>
             </a>
-            <span className="text-muted-foreground/30 hidden sm:inline">|</span>
+            <span className="hidden text-muted-foreground/30 sm:inline">|</span>
             <span className="text-sm text-muted-foreground">
               14 skills.{" "}
               <a
@@ -152,7 +156,7 @@ export default function Hero({ stars }: { stars: number | null }) {
           </div>
 
           <div className="inline-flex items-center gap-2 max-w-full">
-            <code className="px-4 py-2.5 rounded-lg border bg-muted/50 text-sm font-mono text-muted-foreground overflow-x-auto min-w-0">
+            <code className="min-w-0 overflow-x-auto rounded-lg border bg-background/70 px-3 py-2.5 font-mono text-xs text-foreground/80 sm:px-4 sm:text-sm">
               npx skills add raintree-technology/hig-doctor
             </code>
             <Button

@@ -14,28 +14,28 @@ const useCases = [
     icon: Tablet,
     question: "Building an iPad app?",
     answer:
-      "Skip the guesswork on sidebars vs. tab bars, split views, multitasking, and pointer interactions. Get the iPadOS-specific answer, not generic iOS advice.",
+      "Retrieve iPadOS references for sidebars, tab bars, split views, multitasking, and pointer interactions.",
     skills: ["Platforms", "Layout", "Inputs"],
   },
   {
     icon: CreditCard,
     question: "Adding Apple Pay?",
     answer:
-      "Get the exact button placement, flow design, and error handling patterns Apple requires — so you pass App Review the first time.",
+      "Review button presentation, checkout flow, and failure-state guidance, then verify the finished experience against Apple's current requirements.",
     skills: ["Technologies", "Patterns"],
   },
   {
     icon: Glasses,
     question: "Designing for visionOS?",
     answer:
-      "Ornaments, volumes, immersive spaces, eye tracking, and spatial interactions — the full visionOS design language in one place.",
+      "Retrieve visionOS references for ornaments, volumes, immersive spaces, eye tracking, and spatial interactions.",
     skills: ["Platforms", "Inputs", "Layout"],
   },
   {
     icon: Paintbrush,
     question: "Getting dark mode right?",
     answer:
-      "System colors, materials, elevation, and vibrancy — every rule for a dark mode that feels native, not bolted on.",
+      "Find guidance for system colors, materials, elevation, and vibrancy, then test the finished interface in every supported appearance.",
     skills: ["Foundations", "Content"],
   },
 ];
@@ -53,11 +53,12 @@ export default function UseCases() {
             id="use-cases-heading"
             className="text-3xl sm:text-5xl font-semibold tracking-tight mb-4"
           >
-            What can you ask
+            Find guidance for a design decision
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ask a design question. Get a specific, platform-aware answer
-            grounded in Apple&apos;s actual guidelines.
+            Ask about a platform, component, input method, pattern, or Apple
+            technology. HIG Doctor retrieves relevant references and source
+            links.
           </p>
         </div>
 

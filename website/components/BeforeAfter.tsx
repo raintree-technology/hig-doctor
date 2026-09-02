@@ -64,7 +64,7 @@ const examples = [
       lines: [
         "Per Apple's HIG, use semantic system colors",
         "(like .systemBackground, .label) that adapt",
-        "automatically. Never hard-code color values.",
+        "automatically. Avoid hard-coded color values.",
         "",
         "Use material backgrounds for depth, support",
         "vibrancy for layered content, and test both",
@@ -74,7 +74,7 @@ const examples = [
       strengths: [
         "Uses Apple's semantic color system",
         "Covers materials, vibrancy, and elevation",
-        "Follows actual HIG Dark Mode specification",
+        "Links the answer to the relevant HIG topic",
       ],
     },
   },
@@ -110,7 +110,7 @@ const examples = [
       strengths: [
         "Prioritizes user attention over engagement",
         "Covers grouping, actions, and authorization",
-        "Aligns with App Review expectations",
+        "Addresses authorization and user attention",
       ],
     },
   },
@@ -145,8 +145,9 @@ export default function BeforeAfter() {
             See the difference
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Same question. Same AI. The only difference is whether it has
-            Apple&apos;s actual guidelines or not.
+            Compare an illustrative generic response with an answer that uses
+            HIG Doctor references. Verify both against Apple&apos;s current
+            documentation.
           </p>
         </div>
 
@@ -189,7 +190,7 @@ export default function BeforeAfter() {
                 <TerminalDots />
                 <span className="flex-1 text-center text-xs font-medium flex items-center justify-center gap-1.5">
                   <AlertTriangle className="h-3 w-3 text-red-400" />
-                  <span className="text-red-400">Without HIG Doctor</span>
+                  <span className="text-red-400">Generic example</span>
                 </span>
                 <div className="w-[54px]" />
               </div>
@@ -227,7 +228,7 @@ export default function BeforeAfter() {
                 <TerminalDots />
                 <span className="flex-1 text-center text-xs font-medium flex items-center justify-center gap-1.5">
                   <CheckCircle2 className="h-3 w-3 text-green-400" />
-                  <span className="text-green-400">With HIG Doctor</span>
+                  <span className="text-green-400">HIG-informed example</span>
                 </span>
                 <div className="w-[54px]" />
               </div>
@@ -262,7 +263,7 @@ export default function BeforeAfter() {
         <div className="text-center mt-10">
           <Button size="lg" asChild>
             <a href="#install">
-              Get these answers in your project
+              Install HIG Doctor
               <ArrowRight className="h-4 w-4" />
             </a>
           </Button>

@@ -11,23 +11,23 @@ import { totalReferences, totalSkills } from "@/lib/skills-data";
 const questions = [
   {
     q: "Can't my AI already answer HIG questions without this?",
-    a: "It can try — but it's working from training data, not Apple's actual documentation. That means it mixes up platform conventions (suggesting iPhone tab bars on iPad), recommends deprecated patterns, and invents guidance that doesn't exist. These skills give your agent the real HIG text so it cites instead of guesses.",
+    a: "An AI tool can answer from its training data, but that answer may omit a platform distinction, use outdated guidance, or lack a source. HIG Doctor gives the tool a structured reference set with links to Apple's documentation. Verify consequential decisions against Apple's current guidance.",
   },
   {
     q: "How is this different from pasting the HIG into my prompt?",
-    a: "The full HIG is 50,000+ tokens — most models will either truncate it or lose focus. These skills use progressive disclosure: your agent loads only the specific topic it needs (~4,000 tokens), so you get precise answers without burning your context window.",
+    a: "Pasting a large reference set uses context for topics that may not apply. HIG Doctor uses progressive disclosure: the agent reads a short skill index, selects a skill, and loads the relevant reference topics.",
   },
   {
     q: "What AI tools does this work with?",
-    a: "Any tool that reads project files: Claude Code, Cursor, GitHub Copilot, Windsurf, Cline, Aider, Roo Code, Continue, Augment Code, and any agent that supports the Agent Skills standard. No plugins or API keys required.",
+    a: "The repository provides Agent Skills files for Claude Code, Cursor, GitHub Copilot, Windsurf, Cline, Aider, Roo Code, Continue, Augment Code, and other Agent Skills clients. Discovery and loading behavior depend on the client.",
   },
   {
     q: "What platforms and topics does this cover?",
-    a: `All five Apple platforms — iOS, iPadOS, macOS, watchOS, and visionOS. Covers foundations (color, typography, layout), every component category (navigation, menus, controls, dialogs), input methods, UX patterns, and Apple technology integrations like Apple Pay, Siri, and HealthKit. ${totalSkills} skills, ${totalReferences} reference topics.`,
+    a: `The repository includes guidance for iOS, iPadOS, macOS, tvOS, visionOS, watchOS, and games. Its ${totalSkills} skills organize ${totalReferences} reference topics across foundations, components, input methods, patterns, and Apple technologies.`,
   },
   {
     q: "How do I keep it up to date when Apple changes the HIG?",
-    a: "Run git pull. We track Apple's HIG updates and publish new versions with semantic versioning. Your agent will even notify you when updates are available.",
+    a: "Run git pull after HIG Doctor publishes a new version. Check the release notes for changed guidance. Email notifications are available only when the site deployment configures them.",
   },
   {
     q: "Is this an official Apple product?",
@@ -35,11 +35,11 @@ const questions = [
   },
   {
     q: "I'm a designer, not a developer. Can I still use this?",
-    a: "Yes. Installation is one terminal command — copy it, paste it, done. Once installed, just ask your AI design questions in plain English. No configuration or coding required.",
+    a: "Yes. You need access to a terminal for installation, but you can ask design questions in plain language after a supported client discovers the skills.",
   },
   {
     q: "Is it free?",
-    a: "Completely free and open source. No accounts, no API keys, no usage limits.",
+    a: "HIG Doctor's structure and tooling are free, open source, and MIT-licensed. HIG Doctor does not require an account or API key. Your AI tool may have separate fees or usage limits.",
   },
 ];
 

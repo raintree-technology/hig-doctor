@@ -9,19 +9,19 @@ const features = [
     icon: Package,
     title: "Portable",
     description:
-      "Switch AI tools without rebuilding your setup. Works with Claude Code, Cursor, Copilot, Windsurf, and custom agents.",
+      "Use the same skill files with the supported tools listed below. Loading behavior depends on each tool's Agent Skills support.",
   },
   {
     icon: GitBranch,
     title: "Versionable",
     description:
-      "Run git pull when Apple updates the HIG. New guidance, zero reconfiguration.",
+      "Run git pull after HIG Doctor publishes an update. Review the release notes before adopting changed guidance.",
   },
   {
     icon: Globe,
     title: "Universal",
     description:
-      "One install, every tool. No more fragmented .cursorrules, CLAUDE.md, and copilot-instructions.md files.",
+      "Store reusable guidance as Agent Skills instead of duplicating the same reference content in tool-specific instruction files.",
   },
 ];
 
@@ -62,12 +62,12 @@ export default function AgentSkills() {
             id="agent-skills-heading"
             className="text-3xl sm:text-5xl font-semibold tracking-tight mb-4"
           >
-            Works everywhere, updates automatically
+            Portable files with explicit updates
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
-            Built on Agent Skills — an open standard for giving AI agents
-            reusable expertise. Install once, use with any tool, update with a
-            single command.
+            HIG Doctor uses the Agent Skills format for reusable guidance. Use
+            the files with supported tools, and run an update command when HIG
+            Doctor publishes a new release.
           </p>
           <Button variant="outline" size="lg" asChild>
             <a
@@ -108,7 +108,9 @@ export default function AgentSkills() {
         <Separator className="mb-12" />
 
         <div className="text-center">
-          <p className="text-sm text-muted-foreground mb-4">Compatible with</p>
+          <p className="text-sm text-muted-foreground mb-4">
+            Supported tools and agents
+          </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             {compatibleAgents.map((agent) => (
               <a

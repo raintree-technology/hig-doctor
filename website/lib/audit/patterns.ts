@@ -248,8 +248,8 @@ const webCodeRules: PatternRule[] = [
   { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "ambiguous link text", regex: />\s*(click here|read more|learn more|here|more)\s*</i, fileFilter: WEB_ALL },
   { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "positive tabindex", regex: /tabIndex=\{[1-9]|tabindex="[1-9]/, fileFilter: WEB_ALL },
   { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "aria-hidden on focusable", regex: /aria-hidden=["']true["'][^>]*(?:<button|<a\s|<input|tabIndex)/, fileFilter: WEB_ALL },
-  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "onMouseOver without onFocus", regex: /onMouseOver=(?![^>]*onFocus)/, fileFilter: TSX_JSX },
-  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "onMouseOut without onBlur", regex: /onMouseOut=(?![^>]*onBlur)/, fileFilter: TSX_JSX },
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "onMouseOver without onFocus", regex: /<[A-Za-z][\w.:-]*\b(?:(?!\bonFocus\s*=)[^>])*\bonMouseOver\s*=(?:(?!\bonFocus\s*=)[^>])*>/, fileFilter: TSX_JSX, scope: "document" },
+  { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "onMouseOut without onBlur", regex: /<[A-Za-z][\w.:-]*\b(?:(?!\bonBlur\s*=)[^>])*\bonMouseOut\s*=(?:(?!\bonBlur\s*=)[^>])*>/, fileFilter: TSX_JSX, scope: "document" },
   { category: "foundations", subcategory: "accessibility", type: "concern", pattern: "autoFocus", regex: /autoFocus\b|autofocus\b/, fileFilter: WEB_ALL },
 
   // ── Heading & Structure ─────────────────────────────────────

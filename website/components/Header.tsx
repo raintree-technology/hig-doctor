@@ -40,16 +40,23 @@ export default function Header({
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const closeMenu = useCallback((restoreFocus = false) => {
+    setMenuOpen(false);
+    if (restoreFocus) {
+      requestAnimationFrame(() => menuButtonRef.current?.focus());
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
       // Close mobile menu on scroll
-      setMenuOpen(false);
+      closeMenu();
 
       // Determine active section (only for home variant)
       if (variant === "home") {
@@ -71,31 +78,58 @@ export default function Header({
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [variant]);
+  }, [closeMenu, variant]);
 
-  // Close mobile menu on outside click or Escape key
+  // Treat the full-screen mobile navigation as one contained task. Keep the
+  // obscured page out of keyboard and assistive-technology navigation, cycle
+  // focus within the menu, and return focus to the disclosure on dismissal.
   useEffect(() => {
     if (!menuOpen) return;
-    const handleClick = (e: MouseEvent) => {
-      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
-        closeMenu();
-      }
-    };
+    const pageRegions = [
+      document.querySelector<HTMLElement>("main"),
+      document.querySelector<HTMLElement>("footer"),
+    ].filter((region): region is HTMLElement => region !== null);
+    const previousOverflow = document.body.style.overflow;
+
+    for (const region of pageRegions) region.inert = true;
+    document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => {
+      mobileMenuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+    });
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        closeMenu();
-        // Return focus to the menu toggle button
-        const toggle = headerRef.current?.querySelector<HTMLButtonElement>(
-          "button[aria-expanded]",
-        );
-        toggle?.focus();
+        e.preventDefault();
+        closeMenu(true);
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      const focusable = [
+        menuButtonRef.current,
+        ...(mobileMenuRef.current?.querySelectorAll<HTMLAnchorElement>("a") ??
+          []),
+      ].filter(
+        (element): element is HTMLAnchorElement | HTMLButtonElement =>
+          element !== null,
+      );
+      const first = focusable[0];
+      const last = focusable.at(-1);
+      if (!first || !last) return;
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     };
-    document.addEventListener("click", handleClick);
     document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener("click", handleClick);
       document.removeEventListener("keydown", handleKeyDown);
+      for (const region of pageRegions) region.inert = false;
+      document.body.style.overflow = previousOverflow;
     };
   }, [menuOpen, closeMenu]);
 
@@ -124,6 +158,7 @@ export default function Header({
           href={variant === "topic" ? "/" : "#"}
           className="flex items-center gap-2 text-sm font-semibold text-foreground hover:opacity-70 transition-opacity"
           aria-label="HIG Doctor home"
+          tabIndex={menuOpen ? -1 : undefined}
         >
           <BrandMark className="h-5 w-5 text-foreground" aria-hidden="true" />
           HIG Doctor
@@ -137,7 +172,7 @@ export default function Header({
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  "text-sm transition-all relative px-3 py-1.5 rounded-full",
+                  "relative inline-flex min-h-11 items-center rounded-full px-3 py-2.5 text-sm transition-all",
                   isActive
                     ? "text-foreground bg-accent"
                     : "text-muted-foreground hover:text-foreground hover:bg-accent/50",
@@ -163,15 +198,18 @@ export default function Header({
             rel="noopener noreferrer"
             className="w-10 h-10 flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all"
             aria-label="View on GitHub (opens in new tab)"
+            tabIndex={menuOpen ? -1 : undefined}
           >
             <Github className="h-[18px] w-[18px]" />
           </a>
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden w-10 h-10 flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
           >
             {menuOpen ? (
               <X className="h-[18px] w-[18px]" />
@@ -182,19 +220,13 @@ export default function Header({
         </div>
       </nav>
 
-      {/* Mobile nav */}
-      <div
-        className={cn(
-          "md:hidden overflow-hidden transition-[grid-template-rows] duration-300 ease-out grid",
-          menuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
-        )}
-        aria-hidden={!menuOpen}
-      >
-        <div className="min-h-0">
-          <nav
-            aria-label="Mobile"
-            className="border-t border-border/50 bg-background/80 backdrop-blur-xl px-6 py-3"
-          >
+      {menuOpen && (
+        <div
+          ref={mobileMenuRef}
+          id="mobile-navigation"
+          className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto border-t border-border/60 bg-background/95 px-[env(safe-area-inset-left)] pb-[env(safe-area-inset-bottom)] backdrop-blur-2xl md:hidden"
+        >
+          <nav aria-label="Mobile" className="mx-auto max-w-6xl px-6 py-4">
             <ul className="flex flex-col gap-1 list-none p-0">
               {navItems.map((item) => {
                 const isActive = isItemActive(item);
@@ -202,18 +234,17 @@ export default function Header({
                   <li key={item.label}>
                     <a
                       href={item.href}
-                      onClick={closeMenu}
-                      tabIndex={menuOpen ? 0 : -1}
+                      onClick={() => closeMenu()}
                       aria-current={
                         item.route && pathname?.startsWith(item.route)
                           ? "page"
                           : undefined
                       }
                       className={cn(
-                        "block text-sm transition-colors py-2",
+                        "flex min-h-11 items-center rounded-lg px-3 py-3 text-base transition-colors",
                         isActive
-                          ? "text-foreground"
-                          : "text-muted-foreground hover:text-foreground",
+                          ? "bg-accent text-foreground"
+                          : "text-muted-foreground hover:bg-accent/60 hover:text-foreground",
                       )}
                     >
                       {item.label}
@@ -224,7 +255,7 @@ export default function Header({
             </ul>
           </nav>
         </div>
-      </div>
+      )}
     </header>
   );
 }
