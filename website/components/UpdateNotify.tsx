@@ -70,7 +70,7 @@ export default function UpdateNotify() {
   return (
     <div>
       <p className="text-sm text-muted-foreground mb-3">
-        Get notified when we update for new Apple releases.
+        Get an email when HIG Doctor publishes guidance for a new Apple release.
       </p>
       <form onSubmit={handleSubmit} className="flex gap-2">
         <input
@@ -103,7 +103,7 @@ export default function UpdateNotify() {
       </form>
       {status === "error" && (
         <p className="text-sm text-red-400 mt-2">
-          Something went wrong. Try again.
+          We couldn&apos;t subscribe this address. Try again.
         </p>
       )}
     </div>

@@ -7,30 +7,30 @@ const steps = [
   {
     icon: Search,
     title: "Discovery",
-    tokens: "~50 tokens",
+    scope: "14 descriptions",
     description:
-      "Your agent scans 14 skill descriptions to find the right one. Costs ~700 tokens total — barely a rounding error.",
+      "Your agent reads 14 skill descriptions and selects the skill that best matches the question.",
   },
   {
     icon: FileText,
     title: "Activation",
-    tokens: "~1,500 tokens",
+    scope: "1 selected skill",
     description:
-      "The matching skill loads its key principles and reference index. Just enough to route to the right answer.",
+      "The selected skill loads its principles and reference index to identify relevant topics.",
   },
   {
     icon: Settings,
     title: "Context",
-    tokens: "~200 tokens",
+    scope: "Project details",
     description:
-      "Your project context (platform, tech stack, constraints) tailors the guidance to your specific app.",
+      "When project context is available, the agent applies your platform, technology, and constraints.",
   },
   {
     icon: BookOpen,
-    title: "Deep Reference",
-    tokens: "~2,000 tokens",
+    title: "Reference",
+    scope: "Relevant topics",
     description:
-      "Only the exact HIG topic you asked about loads. Not the entire guide — just the page you need.",
+      "The agent loads the reference topics that apply to the question and can follow their Apple source links.",
   },
 ];
 
@@ -50,58 +50,41 @@ export default function HowItWorks() {
             Your agent loads only what it needs
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            ~4,000 tokens per question instead of 50,000+ for the full HIG. Your
-            agent gets the answer without burning your context window.
+            HIG Doctor uses progressive disclosure. Your agent reads a short
+            index first, then loads the selected skill and relevant reference
+            topics.
           </p>
         </div>
 
-        {/* Savings callout */}
+        {/* Scope callout */}
         <div className="mb-10 rounded-xl border bg-card/50 px-4 sm:px-8 py-6 max-w-2xl mx-auto">
           <div className="flex items-center justify-center gap-4 sm:gap-10">
             <div className="text-center">
-              <p className="text-2xl sm:text-4xl font-semibold tracking-tight text-muted-foreground/40 line-through decoration-2">
-                50,000+
+              <p className="text-xl sm:text-3xl font-semibold tracking-tight text-muted-foreground/60">
+                Full corpus
               </p>
               <p className="text-xs text-muted-foreground mt-1">
-                Full HIG dump
+                All reference topics
               </p>
             </div>
             <div className="text-xl sm:text-2xl text-muted-foreground">
               &rarr;
             </div>
             <div className="text-center">
-              <p className="text-2xl sm:text-4xl font-semibold tracking-tight">
-                ~4,000
+              <p className="text-xl sm:text-3xl font-semibold tracking-tight">
+                Selected references
               </p>
               <p className="text-xs text-muted-foreground mt-1">
-                With progressive disclosure
+                Relevant to the question
               </p>
             </div>
             <div className="text-center pl-4 sm:pl-6 border-l">
-              <p className="text-2xl sm:text-4xl font-semibold tracking-tight text-green-600 dark:text-green-400">
-                92%
+              <p className="text-xl sm:text-3xl font-semibold tracking-tight text-green-600 dark:text-green-400">
+                Focused
               </p>
               <p className="text-xs text-muted-foreground mt-1">
-                Less context used
+                Less unrelated context
               </p>
-            </div>
-          </div>
-          {/* Visual gauge */}
-          <div
-            className="mt-5 pt-4 border-t border-border/30"
-            role="img"
-            aria-label="Visual comparison: ~4,000 tokens used out of 50,000, representing 92% savings"
-          >
-            <div className="flex items-center gap-3">
-              <span className="text-xs text-muted-foreground shrink-0 w-12 text-right tabular-nums">
-                50k
-              </span>
-              <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
-                <div className="h-full w-[8%] rounded-full bg-green-600 dark:bg-green-400" />
-              </div>
-              <span className="text-xs text-muted-foreground shrink-0 w-8 tabular-nums">
-                4k
-              </span>
             </div>
           </div>
         </div>
@@ -109,26 +92,26 @@ export default function HowItWorks() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl mx-auto mb-10">
           <div className="text-center rounded-xl border bg-card/50 px-4 py-5">
             <p className="text-2xl sm:text-3xl font-semibold tracking-tight mb-1">
-              Seconds
+              Focused
             </p>
             <p className="text-xs text-muted-foreground">
-              Not hours in Apple&apos;s docs
+              Loads selected topics
             </p>
           </div>
           <div className="text-center rounded-xl border bg-card/50 px-4 py-5">
             <p className="text-2xl sm:text-3xl font-semibold tracking-tight mb-1">
-              Grounded
+              Attributed
             </p>
             <p className="text-xs text-muted-foreground">
-              Apple&apos;s actual text, not guesses
+              Links to Apple sources
             </p>
           </div>
           <div className="text-center rounded-xl border bg-card/50 px-4 py-5">
             <p className="text-2xl sm:text-3xl font-semibold tracking-tight mb-1">
-              Current
+              Versioned
             </p>
             <p className="text-xs text-muted-foreground">
-              Updated when Apple updates
+              Updates through releases
             </p>
           </div>
         </div>
@@ -150,7 +133,7 @@ export default function HowItWorks() {
                         Step {i + 1}
                       </span>
                       <Badge variant="outline" className="text-xs font-mono">
-                        {step.tokens}
+                        {step.scope}
                       </Badge>
                     </div>
                     <CardTitle className="text-base mb-2">

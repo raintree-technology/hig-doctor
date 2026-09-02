@@ -668,6 +668,34 @@ describe("no false positives — negative-attribute rules", () => {
     const matches = detectPatterns(`<svg viewBox="0 0 24 24"></svg>`, "Icon.tsx");
     expect(matches.some(m => m.pattern === "svg without a11y" && m.type === "concern")).toBe(true);
   });
+  test("does NOT flag onMouseOver when onFocus appears earlier in a multi-line tag", () => {
+    const code = `<button
+  onFocus={preview}
+  onMouseOver={preview}
+  aria-label="Preview"
+>`;
+    expect(detectPatterns(code, "Hero.tsx").some(m => m.pattern === "onMouseOver without onFocus")).toBe(false);
+  });
+  test("does NOT flag onMouseOver when onFocus appears later in the tag", () => {
+    const code = `<button onMouseOver={preview} onFocus={preview}>Preview</button>`;
+    expect(detectPatterns(code, "Hero.tsx").some(m => m.pattern === "onMouseOver without onFocus")).toBe(false);
+  });
+  test("flags onMouseOver when the same tag has no onFocus", () => {
+    const code = `<button
+  onMouseOver={preview}
+  aria-label="Preview"
+>`;
+    const matches = detectPatterns(code, "Hero.tsx").filter(m => m.pattern === "onMouseOver without onFocus");
+    expect(matches).toHaveLength(1);
+    expect(matches[0]?.line).toBe(1);
+  });
+  test("does NOT flag onMouseOut when onBlur appears in the same multi-line tag", () => {
+    const code = `<button
+  onMouseOut={hidePreview}
+  onBlur={hidePreview}
+>`;
+    expect(detectPatterns(code, "Hero.tsx").some(m => m.pattern === "onMouseOut without onBlur")).toBe(false);
+  });
 });
 
 // ════════════════════════════════════════════════════════════════

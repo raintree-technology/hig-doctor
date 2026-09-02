@@ -55,11 +55,11 @@ export default function Install() {
                 id="install-heading"
                 className="text-3xl sm:text-5xl font-semibold leading-none tracking-tight"
               >
-                Install in 30 seconds
+                Install HIG Doctor with one command
               </h2>
               <p className="text-lg text-muted-foreground mt-2">
-                One command. No configuration. Your agent discovers the skills
-                automatically.
+                Run the command in your project. A supported Agent Skills client
+                can then discover the installed skills.
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -88,8 +88,8 @@ export default function Install() {
               <CopyStatus active={copied !== null} />
 
               <p className="text-sm text-muted-foreground text-center">
-                That&apos;s it. No config files, no restarts. Just ask a
-                question.
+                After installation, ask your agent a design question. Skill
+                discovery depends on the client you use.
               </p>
 
               {/* First question prompt */}
@@ -99,9 +99,7 @@ export default function Install() {
                     className="h-4 w-4 text-muted-foreground"
                     aria-hidden="true"
                   />
-                  <p className="text-sm font-medium">
-                    Then try your first question
-                  </p>
+                  <p className="text-sm font-medium">Copy a question to try</p>
                 </div>
                 <div className="space-y-2">
                   {firstQuestions.map((question) => (
@@ -125,7 +123,7 @@ export default function Install() {
               <Accordion type="single" collapsible>
                 <AccordionItem value="alt" className="border-none">
                   <AccordionTrigger className="text-sm text-muted-foreground hover:text-foreground py-2 hover:no-underline">
-                    Other ways to install (git clone, submodule, copy)
+                    Alternative installation methods
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-2 pt-1">

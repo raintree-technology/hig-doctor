@@ -159,7 +159,7 @@ const jsonLd = {
           name: "How should I design an iPad app using Apple's HIG?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Apple's HIG recommends using sidebars instead of bottom tab bars on iPadOS, supporting split views for multitasking, and adding pointer interactions. HIG Doctor provides instant, AI-ready guidance on all iPadOS conventions.",
+            text: "HIG Doctor includes iPadOS references for sidebars, tab bars, split views, multitasking, and pointer interactions. Use those references to inform a design, then verify consequential decisions against Apple's current documentation.",
           },
         },
         {
@@ -167,7 +167,7 @@ const jsonLd = {
           name: "What are Apple's guidelines for adding Apple Pay?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Apple's HIG specifies exact payment button placement, flow design, error states, and UX patterns required for App Store approval. HIG Doctor gives your AI agent access to the full Apple Pay design guidelines.",
+            text: "HIG Doctor includes Apple Pay references for button presentation, checkout flow, and failure states. Verify the finished experience against Apple's current design and review requirements.",
           },
         },
         {
@@ -175,7 +175,7 @@ const jsonLd = {
           name: "How do I make my Apple app accessible?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Apple's HIG requires support for VoiceOver, Dynamic Type, sufficient color contrast ratios, and motor accessibility features like Switch Control. HIG Doctor covers all accessibility foundations and requirements.",
+            text: "HIG Doctor includes accessibility references for VoiceOver, Dynamic Type, color and contrast, and motor accessibility. Automated guidance does not replace accessibility testing or review of Apple's current requirements.",
           },
         },
         {
@@ -191,7 +191,7 @@ const jsonLd = {
           name: "What are Apple's dark mode design guidelines?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Apple's HIG specifies using system semantic colors, material backgrounds, elevated surfaces, and vibrancy for dark mode. Apps should test in both modes and avoid hard-coded color values. HIG Doctor covers the full dark mode specification.",
+            text: "HIG Doctor includes dark mode references for semantic colors, materials, elevated surfaces, and vibrancy. Test each supported appearance and verify the design against Apple's current documentation.",
           },
         },
         {
@@ -199,7 +199,7 @@ const jsonLd = {
           name: "How should I design notifications for iOS apps?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Apple's HIG covers notification grouping, Live Activities, action buttons, and respecting user attention. HIG Doctor provides guidelines for the full notification system including widgets and complications.",
+            text: "HIG Doctor includes references for notifications, Live Activities, actions, widgets, and complications. Select the topics that apply to the product and platform.",
           },
         },
       ],

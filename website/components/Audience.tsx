@@ -6,25 +6,25 @@ const audiences = [
     icon: Code2,
     title: "Indie iOS developers",
     description:
-      "Stop context-switching between Xcode and Apple's docs. Ask your agent a design question and keep building.",
+      "Retrieve relevant HIG references without leaving your AI-assisted development workflow.",
   },
   {
     icon: Palette,
     title: "Design teams",
     description:
-      "Give Claude, Cursor, or Copilot the same HIG knowledge your senior designers have. Every team member gets consistent, accurate answers.",
+      "Give supported AI tools the same structured reference set so team members can start from consistent source material.",
   },
   {
     icon: Building2,
     title: "Agencies and consultancies",
     description:
-      "Deliver Apple-quality design guidance to clients without memorizing every guideline. Your AI handles the reference work.",
+      "Use attributed HIG references during client reviews, then verify recommendations against Apple's current documentation.",
   },
   {
     icon: Bot,
     title: "Teams building AI features",
     description:
-      "AI-generated UI that feels native, not generic. Your agent knows what Apple expects before you ship.",
+      "Use platform-specific references when reviewing AI-generated interfaces before release.",
   },
 ];
 
@@ -44,8 +44,8 @@ export default function Audience() {
             Built for how you work
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Solo developer or full team — same accurate answers, zero HIG
-            research time.
+            Use the same structured HIG reference set across individual and team
+            workflows.
           </p>
         </div>
 
