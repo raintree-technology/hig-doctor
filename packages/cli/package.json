@@ -1,6 +1,6 @@
 {
   "name": "hig-doctor",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "HIG Doctor universal Apple HIG compliance auditor for SwiftUI, UIKit, React, and 11 other frameworks.",
   "type": "module",
   "bin": {

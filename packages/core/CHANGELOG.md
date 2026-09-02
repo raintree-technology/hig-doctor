@@ -5,6 +5,15 @@ All notable changes to `@raintree-technology/hig-doctor-core` are documented her
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2026-09-02
+
+### Fixed
+
+- Match `onMouseOver` and `onMouseOut` accessibility concerns within one JSX
+  element so handlers on separate elements cannot satisfy each other.
+- Preserve valid `onFocus` and `onBlur` counterparts regardless of their
+  attribute order or line position inside the element.
+
 ## [0.1.1] - 2026-07-26
 
 ### Fixed
