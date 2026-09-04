@@ -1,5 +1,12 @@
 "use client";
 
+import { refineSwift } from "@hig-core/engines/swift-structural";
+import {
+  detectPatterns,
+  getRuleById,
+  type PatternMatch,
+  RULE_COUNT,
+} from "@hig-core/patterns";
 import {
   AlertTriangle,
   ArrowUpRight,
@@ -11,13 +18,6 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { refineSwift } from "@/lib/audit/engines/swift-structural";
-import {
-  detectPatterns,
-  getRuleById,
-  type PatternMatch,
-  RULE_COUNT,
-} from "@/lib/audit/patterns";
 import { cn } from "@/lib/utils";
 import { SAMPLES, type SampleKey } from "./audit-demo-fixtures";
 import {

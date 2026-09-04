@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { detectPatterns } from "../lib/audit/patterns";
+import { detectPatterns } from "@hig-core/patterns";
 import { SAMPLES } from "./audit-demo-fixtures";
 
 describe("audit demo fixtures", () => {

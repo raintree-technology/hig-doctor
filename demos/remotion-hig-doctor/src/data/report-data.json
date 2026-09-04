@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-28T17:03:47.584Z",
+  "generatedAt": "2026-09-03T05:45:16.594Z",
   "project": {
     "name": "hig-doctor",
     "lowDensity": false,
@@ -14,22 +14,22 @@
       "config": 14
     },
     "totals": {
-      "concerns": 4,
-      "positives": 884,
-      "patterns": 149
+      "concerns": 8,
+      "positives": 885,
+      "patterns": 134
     },
     "categories": [
       {
         "name": "Foundations",
         "skill": "hig-foundations",
-        "detections": 822,
-        "concerns": 3,
-        "positives": 799,
-        "patterns": 20,
+        "detections": 857,
+        "concerns": 7,
+        "positives": 829,
+        "patterns": 21,
         "severities": {
           "critical": 2,
           "serious": 0,
-          "moderate": 1
+          "moderate": 5
         },
         "files": [
           "test/fixtures/readme-audit/View.swift",
@@ -67,19 +67,19 @@
           "website/components/FAQ.tsx",
           "website/components/TopicSidebar.tsx",
           "website/lib/useCopyToClipboard.tsx",
-          "website/lib/audit/patterns.ts",
           "packages/core/src/patterns.ts",
           "demos/remotion-hig-doctor/src/HigDoctorShowcase.jsx",
+          "demos/remotion-hig-doctor/src/SocialPromo.jsx",
           "website/app/globals.css"
         ]
       },
       {
         "name": "Layout & Navigation",
         "skill": "hig-components-layout",
-        "detections": 64,
+        "detections": 58,
         "concerns": 1,
-        "positives": 14,
-        "patterns": 49,
+        "positives": 13,
+        "patterns": 44,
         "severities": {
           "critical": 0,
           "serious": 0,
@@ -109,39 +109,16 @@
           "website/components/AuditDemo.tsx",
           "website/components/FAQ.tsx",
           "website/components/TopicSidebar.tsx",
-          "website/lib/audit/patterns.ts",
           "packages/core/src/patterns.ts"
-        ]
-      },
-      {
-        "name": "Interaction Patterns",
-        "skill": "hig-patterns",
-        "detections": 53,
-        "concerns": 0,
-        "positives": 49,
-        "patterns": 4,
-        "severities": {
-          "critical": 0,
-          "serious": 0,
-          "moderate": 0
-        },
-        "files": [
-          "website/app/mcp/page.tsx",
-          "website/app/layout.tsx",
-          "website/app/not-found.tsx",
-          "website/app/topics/page.tsx",
-          "website/lib/audit/patterns.ts",
-          "packages/core/src/patterns.ts",
-          "demos/remotion-hig-doctor/src/HigDoctorShowcase.jsx"
         ]
       },
       {
         "name": "Controls",
         "skill": "hig-components-controls",
-        "detections": 39,
+        "detections": 37,
         "concerns": 0,
-        "positives": 0,
-        "patterns": 39,
+        "positives": 1,
+        "patterns": 36,
         "severities": {
           "critical": 0,
           "serious": 0,
@@ -163,40 +140,37 @@
           "website/components/Skills.tsx",
           "website/components/BeforeAfter.tsx",
           "website/components/AuditDemo.tsx",
-          "website/lib/audit/patterns.ts",
           "packages/core/src/patterns.ts"
         ]
       },
       {
-        "name": "Input Methods",
-        "skill": "hig-inputs",
-        "detections": 25,
+        "name": "Interaction Patterns",
+        "skill": "hig-patterns",
+        "detections": 29,
         "concerns": 0,
-        "positives": 22,
-        "patterns": 3,
+        "positives": 27,
+        "patterns": 2,
         "severities": {
           "critical": 0,
           "serious": 0,
           "moderate": 0
         },
         "files": [
+          "website/app/mcp/page.tsx",
           "website/app/layout.tsx",
-          "website/components/TopicsExplorer.tsx",
-          "website/components/UpdateNotify.tsx",
-          "website/components/Skills.tsx",
-          "website/components/FAQ.tsx",
-          "website/lib/audit/patterns.ts",
+          "website/app/not-found.tsx",
+          "website/app/topics/page.tsx",
           "packages/core/src/patterns.ts",
-          "packages/mcp/src/index.ts"
+          "demos/remotion-hig-doctor/src/HigDoctorShowcase.jsx"
         ]
       },
       {
         "name": "Content Display",
         "skill": "hig-components-content",
-        "detections": 22,
+        "detections": 21,
         "concerns": 0,
         "positives": 0,
-        "patterns": 22,
+        "patterns": 21,
         "severities": {
           "critical": 0,
           "serious": 0,
@@ -217,31 +191,32 @@
           "website/components/AuditDemo.tsx",
           "website/components/FAQ.tsx",
           "website/components/TopicSidebar.tsx",
-          "website/lib/audit/patterns.ts",
           "packages/core/src/patterns.ts"
         ]
       },
       {
-        "name": "Status & Progress",
-        "skill": "hig-components-status",
-        "detections": 5,
+        "name": "Input Methods",
+        "skill": "hig-inputs",
+        "detections": 17,
         "concerns": 0,
-        "positives": 0,
-        "patterns": 5,
+        "positives": 15,
+        "patterns": 2,
         "severities": {
           "critical": 0,
           "serious": 0,
           "moderate": 0
         },
         "files": [
-          "website/components/AgentSkills.tsx",
-          "website/lib/audit/patterns.ts",
-          "packages/core/src/patterns.ts"
+          "website/components/TopicsExplorer.tsx",
+          "website/components/UpdateNotify.tsx",
+          "website/components/Skills.tsx",
+          "packages/core/src/patterns.ts",
+          "packages/mcp/src/index.ts"
         ]
       },
       {
-        "name": "Apple Technologies",
-        "skill": "hig-technologies",
+        "name": "Status & Progress",
+        "skill": "hig-components-status",
         "detections": 3,
         "concerns": 0,
         "positives": 0,
@@ -252,8 +227,24 @@
           "moderate": 0
         },
         "files": [
+          "website/components/AgentSkills.tsx",
+          "packages/core/src/patterns.ts"
+        ]
+      },
+      {
+        "name": "Apple Technologies",
+        "skill": "hig-technologies",
+        "detections": 2,
+        "concerns": 0,
+        "positives": 0,
+        "patterns": 2,
+        "severities": {
+          "critical": 0,
+          "serious": 0,
+          "moderate": 0
+        },
+        "files": [
           "website/app/layout.tsx",
-          "website/lib/audit/patterns.ts",
           "packages/core/src/patterns.ts"
         ]
       },
@@ -277,17 +268,16 @@
       {
         "name": "Dialogs & Presentations",
         "skill": "hig-components-dialogs",
-        "detections": 2,
+        "detections": 1,
         "concerns": 0,
         "positives": 0,
-        "patterns": 2,
+        "patterns": 1,
         "severities": {
           "critical": 0,
           "serious": 0,
           "moderate": 0
         },
         "files": [
-          "website/lib/audit/patterns.ts",
           "packages/core/src/patterns.ts"
         ]
       }
@@ -299,14 +289,14 @@
     {
       "name": "Foundations",
       "skill": "hig-foundations",
-      "detections": 822,
-      "concerns": 3,
-      "positives": 799,
-      "patterns": 20,
+      "detections": 857,
+      "concerns": 7,
+      "positives": 829,
+      "patterns": 21,
       "severities": {
         "critical": 2,
         "serious": 0,
-        "moderate": 1
+        "moderate": 5
       },
       "files": [
         "test/fixtures/readme-audit/View.swift",
@@ -344,19 +334,19 @@
         "website/components/FAQ.tsx",
         "website/components/TopicSidebar.tsx",
         "website/lib/useCopyToClipboard.tsx",
-        "website/lib/audit/patterns.ts",
         "packages/core/src/patterns.ts",
         "demos/remotion-hig-doctor/src/HigDoctorShowcase.jsx",
+        "demos/remotion-hig-doctor/src/SocialPromo.jsx",
         "website/app/globals.css"
       ]
     },
     {
       "name": "Layout & Navigation",
       "skill": "hig-components-layout",
-      "detections": 64,
+      "detections": 58,
       "concerns": 1,
-      "positives": 14,
-      "patterns": 49,
+      "positives": 13,
+      "patterns": 44,
       "severities": {
         "critical": 0,
         "serious": 0,
@@ -386,39 +376,16 @@
         "website/components/AuditDemo.tsx",
         "website/components/FAQ.tsx",
         "website/components/TopicSidebar.tsx",
-        "website/lib/audit/patterns.ts",
         "packages/core/src/patterns.ts"
-      ]
-    },
-    {
-      "name": "Interaction Patterns",
-      "skill": "hig-patterns",
-      "detections": 53,
-      "concerns": 0,
-      "positives": 49,
-      "patterns": 4,
-      "severities": {
-        "critical": 0,
-        "serious": 0,
-        "moderate": 0
-      },
-      "files": [
-        "website/app/mcp/page.tsx",
-        "website/app/layout.tsx",
-        "website/app/not-found.tsx",
-        "website/app/topics/page.tsx",
-        "website/lib/audit/patterns.ts",
-        "packages/core/src/patterns.ts",
-        "demos/remotion-hig-doctor/src/HigDoctorShowcase.jsx"
       ]
     },
     {
       "name": "Controls",
       "skill": "hig-components-controls",
-      "detections": 39,
+      "detections": 37,
       "concerns": 0,
-      "positives": 0,
-      "patterns": 39,
+      "positives": 1,
+      "patterns": 36,
       "severities": {
         "critical": 0,
         "serious": 0,
@@ -440,40 +407,37 @@
         "website/components/Skills.tsx",
         "website/components/BeforeAfter.tsx",
         "website/components/AuditDemo.tsx",
-        "website/lib/audit/patterns.ts",
         "packages/core/src/patterns.ts"
       ]
     },
     {
-      "name": "Input Methods",
-      "skill": "hig-inputs",
-      "detections": 25,
+      "name": "Interaction Patterns",
+      "skill": "hig-patterns",
+      "detections": 29,
       "concerns": 0,
-      "positives": 22,
-      "patterns": 3,
+      "positives": 27,
+      "patterns": 2,
       "severities": {
         "critical": 0,
         "serious": 0,
         "moderate": 0
       },
       "files": [
+        "website/app/mcp/page.tsx",
         "website/app/layout.tsx",
-        "website/components/TopicsExplorer.tsx",
-        "website/components/UpdateNotify.tsx",
-        "website/components/Skills.tsx",
-        "website/components/FAQ.tsx",
-        "website/lib/audit/patterns.ts",
+        "website/app/not-found.tsx",
+        "website/app/topics/page.tsx",
         "packages/core/src/patterns.ts",
-        "packages/mcp/src/index.ts"
+        "demos/remotion-hig-doctor/src/HigDoctorShowcase.jsx"
       ]
     },
     {
       "name": "Content Display",
       "skill": "hig-components-content",
-      "detections": 22,
+      "detections": 21,
       "concerns": 0,
       "positives": 0,
-      "patterns": 22,
+      "patterns": 21,
       "severities": {
         "critical": 0,
         "serious": 0,
@@ -494,8 +458,27 @@
         "website/components/AuditDemo.tsx",
         "website/components/FAQ.tsx",
         "website/components/TopicSidebar.tsx",
-        "website/lib/audit/patterns.ts",
         "packages/core/src/patterns.ts"
+      ]
+    },
+    {
+      "name": "Input Methods",
+      "skill": "hig-inputs",
+      "detections": 17,
+      "concerns": 0,
+      "positives": 15,
+      "patterns": 2,
+      "severities": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0
+      },
+      "files": [
+        "website/components/TopicsExplorer.tsx",
+        "website/components/UpdateNotify.tsx",
+        "website/components/Skills.tsx",
+        "packages/core/src/patterns.ts",
+        "packages/mcp/src/index.ts"
       ]
     }
   ],

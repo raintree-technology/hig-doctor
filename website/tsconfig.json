@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@hig-core/*": ["../packages/core/src/*"]
     }
   },
   "include": [

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "hig-doctor": {
+      "command": "npx",
+      "args": ["-y", "hig-mcp@0.2.3"]
+    }
+  }
+}

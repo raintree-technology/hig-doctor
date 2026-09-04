@@ -1,4 +1,4 @@
-import type { PatternMatch, Severity } from "@/lib/audit/patterns";
+import type { PatternMatch, Severity } from "@hig-core/patterns";
 
 const SEVERITY_ORDER: Record<Severity, number> = {
   critical: 0,

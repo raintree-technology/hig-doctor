@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "skill": "hig-doctor-audit",
+  "positive": [
+    "Audit this SwiftUI project for HIG issues.",
+    "Run HIG Doctor on the React interface and explain serious findings."
+  ],
+  "negative": [
+    "What does the Apple HIG say about tab bars?",
+    "Choose a color palette for this brand."
+  ]
+}

@@ -9,7 +9,7 @@ import { join } from "node:path";
 //   - README.md (root)
 //   - AGENTS.md (root)
 //   - .claude-plugin/marketplace.json (plugin description)
-//   - website/components/AuditDemo.tsx (the "same N rules" copy)
+//   - website/components/AuditDemo.tsx (the "same N rules" text)
 //   - docs/remotion-showcase.md
 //   - demos/remotion-hig-doctor/src/data/report-data.json ("totalRules")
 const EXPECTED_RULE_COUNT = 431;

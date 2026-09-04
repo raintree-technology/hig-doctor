@@ -1,0 +1,31 @@
+{
+  "name": "hig-doctor",
+  "version": "2.0.3",
+  "description": "Audit interface source and apply the canonical HIG Doctor guidance corpus.",
+  "author": {
+    "name": "Raintree Technology",
+    "email": "support@raintree.technology",
+    "url": "https://raintree.technology"
+  },
+  "homepage": "https://apple.raintree.technology",
+  "repository": "https://github.com/raintree-technology/hig-doctor",
+  "license": "MIT",
+  "keywords": ["apple", "hig", "accessibility", "audit", "interface-design"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "HIG Doctor",
+    "shortDescription": "Audit source and apply Apple HIG guidance.",
+    "longDescription": "HIG Doctor combines a local source auditor, six MCP tools, and 14 attributed Apple Human Interface Guidelines skills. Findings support review and do not certify HIG or accessibility conformance.",
+    "developerName": "Raintree Technology",
+    "category": "Developer Tools",
+    "capabilities": ["Audit interface source", "Search HIG guidance", "Explain findings"],
+    "websiteURL": "https://apple.raintree.technology",
+    "brandColor": "#111111",
+    "defaultPrompt": [
+      "Audit this interface source with HIG Doctor.",
+      "Find the relevant Apple HIG guidance for this design.",
+      "Explain this HIG Doctor finding and suggest a fix."
+    ]
+  }
+}
