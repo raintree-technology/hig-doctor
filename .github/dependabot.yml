@@ -1,0 +1,9 @@
+version: 2
+updates:
+  # Security updates only: version-update PRs are disabled by the zero limit.
+  # Using the bun ecosystem keeps bun.lock in sync with package.json.
+  - package-ecosystem: bun
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
