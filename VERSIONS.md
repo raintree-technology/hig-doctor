@@ -27,7 +27,7 @@ Content sourced from [Apple's Human Interface Guidelines](https://developer.appl
 ## Recent Changes
 
 ### 2026-10-15
-- **October 2026 refresh** - full re-crawl (173 topics, 166 leaf). Minor bump for `hig-components-system` (2.2.0) and `hig-technologies` (2.3.0); patch bump for `hig-foundations` (2.2.1), `hig-platforms` (2.2.1), and `hig-patterns` (2.1.3). All other skills are unchanged and keep their earlier stamps. Twelve reference files changed and take the 2026-10-15 stamp.
+- **October 2026 refresh** - full re-crawl (173 topics, 166 leaf). Minor bump for `hig-components-system` (2.2.0) and `hig-technologies` (2.3.0); patch bump for `hig-foundations` (2.2.1), `hig-platforms` (2.2.1), and `hig-patterns` (2.1.3). All other skills are unchanged and keep their earlier stamps. Thirteen reference files changed and take the 2026-10-15 stamp.
   - `widgets` and `carplay` - Apple HomeView now appears among the widget and CarPlay surfaces.
   - `live-activities` - up to three minimal presentations can appear in the Dynamic Island, and a new 28pt limited-width rule applies.
   - `designing-for-iphone-duo` - adds Device Hub, `ArrangementView` / `UIArrangementViewController`, and screenshot-spec pointers.
