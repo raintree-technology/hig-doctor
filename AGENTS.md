@@ -10,7 +10,7 @@ This repository contains **Agent Skills** following the [Agent Skills specificat
 - **Creator**: Raintree
 - **GitHub**: [raintree-technology/hig-doctor](https://github.com/raintree-technology/hig-doctor)
 - **License**: MIT (structure); Apple HIG content is Apple's IP
-- **Source**: [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) — snapshot dates per skill in [VERSIONS.md](VERSIONS.md) (last re-verified 2026-09-10)
+- **Source**: [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) — snapshot dates per skill in [VERSIONS.md](VERSIONS.md) (last re-verified 2026-10-15)
 
 ## Repository Structure
 

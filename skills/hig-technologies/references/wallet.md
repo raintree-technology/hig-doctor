@@ -5,7 +5,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/wallet
 
 <!-- hig-doctor:attribution -->
 > **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/wallet.
-> This file reproduces that content for AI agent reference, snapshot 2026-09-10.
+> This file reproduces that content for AI agent reference, snapshot 2026-10-15.
 > Apple HIG text is © Apple Inc.; imagery is omitted. This repository provides organization and cross-referencing for AI agent consumption only.
 
 # Wallet
@@ -103,7 +103,7 @@ The poster generic pass style features a full background image and a pass field 
 
 ### Generic passes
 
-The generic style is for passes that don’t fit the other categories, such as a gym membership card or coat-check claim ticket. For developer guidance, see [Creating a poster generic pass](https://developer.apple.com/documentation/walletpasses/creating-a-poster-generic-pass).
+The generic style is for passes that don’t fit the other categories, such as a gym membership card or coat-check claim ticket. For developer guidance, see [Creating a Poster Generic Pass](https://developer.apple.com/documentation/walletpasses/creating-a-poster-generic-pass).
 
 ## Pass images
 

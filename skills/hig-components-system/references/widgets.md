@@ -5,7 +5,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/widgets
 
 <!-- hig-doctor:attribution -->
 > **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/widgets.
-> This file reproduces that content for AI agent reference, snapshot 2026-08-24.
+> This file reproduces that content for AI agent reference, snapshot 2026-10-15.
 > Apple HIG text is © Apple Inc.; imagery is omitted. This repository provides organization and cross-referencing for AI agent consumption only.
 
 # Widgets
@@ -16,10 +16,11 @@ Widgets help people organize and personalize their devices by displaying timely,
 * On the desktop and Notification Center of their Mac
 * On a horizontal or vertical surface when they wear Apple Vision Pro
 * At a fixed position in the Smart Stack of Apple Watch
+* On the Home Screen and Modular face of Apple HomeView
 
 ## Anatomy
 
-Widgets come in different sizes, ranging from small accessory widgets on iPhone, iPad, and Apple Watch to system family widgets that include an extra large size on iPad, Mac, and Apple Vision Pro. Additionally, widgets adapt their appearance to the context in which they appear and respond to a person’s device customization. Consider the following aspects when you design widgets:
+Widgets come in different sizes, ranging from small accessory widgets on iPad, iPhone, and Apple Watch to system family widgets that include an extra large size on iPad, Mac, and Apple Vision Pro. Additionally, widgets adapt their appearance to the context in which they appear and respond to a person’s device customization. Consider the following when designing widgets:
 
 * The widget size to support
 * The context — devices and system experiences — in which the widget may appear
@@ -35,7 +36,7 @@ The following table shows supported contexts for each system family widget size:
 
 | Widget size | iPhone | iPad | Mac | Apple Vision Pro |
 | --- | --- | --- | --- | --- |
-| System small | Home Screen, Today View, StandBy, and CarPlay | Home Screen, Today View, and Lock Screen | Desktop and Notification Center | Horizontal and vertical surfaces |
+| System small | Home Screen, Today View, StandBy, CarPlay, and Apple HomeView | Home Screen, Today View, and Lock Screen | Desktop and Notification Center | Horizontal and vertical surfaces |
 | System medium | Home Screen and Today View | Home Screen and Today View | Desktop and Notification Center | Horizontal and vertical surfaces |
 | System large | Home Screen and Today View | Home Screen and Today View | Desktop and Notification Center | Horizontal and vertical surfaces |
 | System extra large | Not supported | Home Screen and Today View | Desktop and Notification Center | Horizontal and vertical surfaces |
@@ -60,13 +61,13 @@ A widget can appear in full-color, in monochrome with a tint color, or in a clea
 
 For example, a small system widget appears differently depending on the device and location:
 
-* On the Home Screen of iPhone and iPad, people choose from different appearances for widgets: light, dark, clear, and tinted. In light and dark appearances, widgets have a full-color design. In a clear appearance, the system desaturates the widget and adds translucency, highlights, and the Liquid Glass material. In a tinted appearance, the system desaturates the widget and its content, then applies a person’s selected tint color.
+* On the Home Screen of iPad, iPhone, and Apple HomeView, people choose from different appearances for widgets: light, dark, clear, and tinted. In light and dark appearances, widgets have a full-color design. In a clear appearance, the system desaturates the widget and adds translucency, highlights, and the Liquid Glass material. In a tinted appearance, the system desaturates the widget and its content, then applies a person’s selected tint color.
 
 * On Apple Vision Pro, the widget appears as a 3D object, surrounded by a frame. It takes on a full-color appearance with a glass- or paper-like coating layer that responds to lighting conditions. Additionally, people can choose a tinted appearance that applies a color from a set of system-provided color palettes.
 
 * On the Lock Screen of iPad, the widget takes on a monochromatic appearance without a tint color.
 
-* On the Lock Screen of iPhone in StandBy, the widget appears scaled up in size with the background removed. When the ambient light falls below a threshold, the system renders the widget with a monochromatic red tint.
+* On the Lock Screen of iPhone in StandBy and the Modular face of Apple HomeView, the widget appears scaled up in size with the background removed. When the ambient light falls below a threshold, the system renders the widget with a monochromatic red tint.
 
 Similarly, a rectangular accessory widget appears as follows:
 
@@ -83,11 +84,12 @@ The following table lists the occurrences for each rendering mode per platform:
 
 | Platform | Full-color | Accented | Vibrant |
 | --- | --- | --- | --- |
-| iPhone | Home Screen, Today view, StandBy and CarPlay (with the background removed) | Home Screen and Today view | Lock Screen, StandBy in low-light conditions |
+| iPhone | Home Screen, Today view, StandBy and CarPlay (with the background removed) | Home Screen and Today view | Lock Screen, StandBy in Night Mode |
 | iPad | Home Screen and Today view | Home Screen and Today view | Lock Screen |
 | Apple Watch | Smart Stack, complications | Smart Stack, complications | Not supported |
 | Mac | Desktop and Notification Center | Not supported | Desktop |
 | Apple Vision Pro | Horizontal and vertical surfaces | Horizontal and vertical surfaces | Not supported |
+| Apple HomeView | Home Screen, Modular face (with the background removed) | Home Screen, Modular face (with the background removed) | Modular face in Night Mode |
 
 For additional design guidance, see [Rendering modes](https://developer.apple.com/design/human-interface-guidelines/widgets#Rendering-modes). For developer guidance, see [Preparing widgets for additional platforms, contexts, and appearances](https://developer.apple.com/documentation/widgetkit/preparing-widgets-for-additional-contexts-and-appearances) and [WidgetRenderingMode](https://developer.apple.com/documentation/widgetkit/widgetrenderingmode).
 
@@ -199,25 +201,30 @@ For developer guidance, see [widgetAccentable(_:)](https://developer.apple.com/d
 
 ### iOS, iPadOS
 
-Widgets on the Lock Screen are functionally similar to watch complications and follow design principles for [Complications](https://developer.apple.com/design/human-interface-guidelines/complications) in addition to design principles for widgets. Provide useful information in your Lock Screen widget, and don’t treat it only as an additional way for people to launch into your app. In many cases, a design for complications also works well for widgets on the Lock Screen (and vice versa), so consider creating them in tandem.
+Widgets on the Lock Screen are functionally similar to watch complications and follow design principles for [Complications](https://developer.apple.com/design/human-interface-guidelines/complications) in addition to design principles for widgets. Provide useful information in your Lock Screen widget, and don’t treat it as an additional way for people to launch into your app. In many cases, a design for complications also works well for widgets on the Lock Screen (and vice versa), so consider creating them in tandem.
 
-Your app can offer widgets on the Lock Screen in three different shapes: as inline text that appears above the clock, and as circular and rectangular shapes that appear below the clock.
+Your app can offer widgets on the Lock Screen in three different styles: as inline text that appears above the clock, and as circular and rectangular shapes that appear below the clock.
 
 **Support the Always-On display on iPhone.** Devices with the Always-On display render widgets on the Lock Screen with reduced luminance. Use levels of gray that provide enough contrast in the Always-On display, and make sure your content remains legible.
 
 For developer guidance, see [Creating accessory widgets and watch complications](https://developer.apple.com/documentation/widgetkit/creating-accessory-widgets-and-watch-complications).
 
-**Offer Live Activities to show real-time updates.** Widgets don’t show real-time information. If your app allows people to track the progress of a task or event for a limited amount of time with frequent updates, consider offering Live Activities. Widgets and Live Activities use the same underlying frameworks and share design similarities. As a result, it can be a good idea to develop widgets and Live Activities in tandem and reuse code and design components for both features. For design guidance on Live Activities, see [Live Activities](https://developer.apple.com/design/human-interface-guidelines/live-activities); for developer guidance, see [ActivityKit](https://developer.apple.com/documentation/activitykit).
+**Offer Live Activities to show real-time updates.** Widgets don’t show real-time information. If your app allows people to track the progress of a task or event for a limited amount of time with frequent updates, consider offering Live Activities. Widgets and Live Activities use the same underlying frameworks and share design similarities. Develop widgets and Live Activities in tandem and reuse code and design components for both features. For design guidance on Live Activities, see [Live Activities](https://developer.apple.com/design/human-interface-guidelines/live-activities); for developer guidance, see [ActivityKit](https://developer.apple.com/documentation/activitykit).
 
 #### StandBy and CarPlay
 
 On iPhone in StandBy, the system displays two small system family widgets side-by-side, scaled up so they fill the Lock Screen. By supporting StandBy, you also ensure your widgets work well in CarPlay. CarPlay and StandBy widgets both use the small system family widget with the background removed and scaled up to best fit the grid on the Widgets screen. Glanceable information and large text are especially important in CarPlay to make your widget easy to read on a car’s display.
 
-**Limit usage of rich images or color to convey meaning in StandBy.** Instead, make use of the additional space by scaling up and rearranging text so people can glance at the widget content from a greater distance. To seamlessly blend with the black background, don’t use background colors for your widget when it appears in StandBy.
-
-For developer guidance, see [Displaying the right widget background](https://developer.apple.com/documentation/widgetkit/displaying-the-right-widget-background).
+**Limit usage of rich images or color to convey meaning in StandBy.** Instead, make use of the additional space by scaling up and rearranging text so people can glance at the widget content from a greater distance. Mark your widget’s background as removable to ensure it can appear in StandBy. For developer guidance, see [Displaying the right widget background](https://developer.apple.com/documentation/widgetkit/displaying-the-right-widget-background).
 
 On iPhone in StandBy in low-light conditions, the system renders widgets in a monochromatic look with a red tint.
+
+#### Apple HomeView
+
+On Apple HomeView, people can place widgets on the Modular face and the Home Screen. Widgets on HomeView are from the small system family, and share the appearance of iPhone widgets. A person chooses widgets from among those already installed on HomeView, like Weather or World Clock, or from their individually connected iPad or iPhone.
+
+* The Modular face can include up to four widgets, which can be from the iPhone devices of different household members. For example, if someone places a Calendar widget on the Modular face, that person’s calendar appears there for everyone. There is one Modular face per household.
+* The Home Screen contains a personalized set of widgets and apps, which can include the defaults that come with HomeView along with those that a person chooses to display from their connected device. Each enrolled household member has their own personalized Home Screen.
 
 ### visionOS
 
@@ -337,9 +344,12 @@ As you design your widgets, use the following values for guidance.
 | --- | --- |
 | 40mm | 152x69.5 |
 | 41mm | 165x72.5 |
+| 42mm | 176x72.5 |
 | 44mm | 173x76.5 |
 | 45mm | 184x80.5 |
-| 49mm | 191x81.5 |
+| 46mm | 194x80.5 |
+| 49mm (Ultra 3, 4) | 198x81.5 |
+| 49mm (Ultra 1, 2) | 191x81.5 |
 
 ## Resources
 
@@ -363,6 +373,7 @@ As you design your widgets, use the following values for guidance.
 
 | Date | Changes |
 | --- | --- |
+| October 13, 2026 | Added guidance for Apple HomeView, and updated watchOS specifications. |
 | December 16, 2025 | Updated guidance for all platforms, and added guidance for visionOS and CarPlay. |
 | January 17, 2025 | Corrected watchOS widget dimensions. |
 | June 10, 2024 | Updated to include guidance for accented widgets in iOS 18 and iPadOS 18. |

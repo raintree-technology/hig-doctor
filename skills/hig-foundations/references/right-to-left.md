@@ -5,7 +5,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/right-to-l
 
 <!-- hig-doctor:attribution -->
 > **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/right-to-left.
-> This file reproduces that content for AI agent reference, snapshot 2026-08-24.
+> This file reproduces that content for AI agent reference, snapshot 2026-10-15.
 > Apple HIG text is © Apple Inc.; imagery is omitted. This repository provides organization and cross-referencing for AI agent consumption only.
 
 # Right to left
@@ -52,7 +52,7 @@ If your app covers mathematical concepts or other number-centric topics, it’s 
 
 ## Interface icons
 
-When you use [SF Symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols) to supply interface icons for your app, you get variants for the RTL context and localized symbols for Arabic and Hebrew, among other languages. If you create custom symbols, you can specify their directionality. For developer guidance, see [Creating custom symbol images for your app](https://developer.apple.com/documentation/uikit/creating-custom-symbol-images-for-your-app).
+When you use [SF Symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols) to supply interface icons for your app, you get variants for the RTL context and localized symbols for Arabic and Hebrew, among other languages. If you create custom symbols, you can specify their directionality. For developer guidance, see [Creating custom symbols](https://developer.apple.com/documentation/technologyoverviews/custom-sf-symbols).
 
 **Flip interface icons that represent text or reading direction.** For example, if an interface icon uses left-aligned bars to represent text in the LTR context, right-align the bars in the RTL context.
 

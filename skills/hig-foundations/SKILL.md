@@ -1,6 +1,6 @@
 ---
 name: hig-foundations
-version: 2.2.0
+version: 2.2.1
 description: >-
   Apple Human Interface Guidelines design foundations. Use this skill when the user asks about
   "HIG color", "Apple typography", "SF Symbols", "dark mode guidelines", "accessible design",

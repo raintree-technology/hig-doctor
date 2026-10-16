@@ -5,8 +5,8 @@
     "email": "hq@zacharyr0th.com"
   },
   "metadata": {
-    "description": "Apple Human Interface Guidelines for AI coding agents \u2014 15 skills, a Model Context Protocol server, and a universal HIG compliance auditor. Snapshot September 2026 (WWDC 2026 / iOS 27 and iPhone Duo guidance).",
-    "version": "1.4.0"
+    "description": "Apple Human Interface Guidelines for AI coding agents \u2014 15 skills, a Model Context Protocol server, and a universal HIG compliance auditor. Snapshot October 2026 (WWDC 2026 / iOS 27 and iPhone Duo guidance).",
+    "version": "1.5.0"
   },
   "plugins": [
     {

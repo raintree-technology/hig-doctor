@@ -5,7 +5,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/managing-a
 
 <!-- hig-doctor:attribution -->
 > **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/managing-accounts.
-> This file reproduces that content for AI agent reference, snapshot 2026-08-24.
+> This file reproduces that content for AI agent reference, snapshot 2026-10-15.
 > Apple HIG text is © Apple Inc.; imagery is omitted. This repository provides organization and cross-referencing for AI agent consumption only.
 
 # Managing accounts
@@ -49,7 +49,7 @@ If you help people create an account within your app or game, you must also help
 * Billing for an auto-renewable subscription continues through Apple until people cancel the subscription, regardless of whether they delete their account.
 * After they delete their account, people need to cancel their subscription or request a refund.
 
-In addition to helping people understand these scenarios, provide information that describes how to cancel subscriptions and manage purchases. For guidance, see [Helping people manage their subscriptions](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Helping-people-manage-their-subscriptions) and [Providing help with in-app purchases](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Providing-help-with-in-app-purchases).
+In addition to helping people understand these scenarios, provide information that describes how to cancel subscriptions and manage purchases. For guidance, see [Helping people manage their subscriptions](https://developer.apple.com/design/human-interface-guidelines/apple-in-app-purchase#Helping-people-manage-their-subscriptions) and [Providing help](https://developer.apple.com/design/human-interface-guidelines/apple-in-app-purchase#Providing-help).
 
 > **Note:** Even if people didn’t use your app to purchase the subscription, you still need to support account deletion.
 

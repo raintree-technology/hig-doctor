@@ -1,6 +1,6 @@
 ---
 name: hig-technologies
-version: 2.2.0
+version: 2.3.0
 description: >-
   Apple HIG guidance for Apple technology integrations: Siri, Apple Pay, HealthKit,
   HomeKit, ARKit, machine learning, generative AI, iCloud, Sign in with Apple,
@@ -54,7 +54,7 @@ Check for `.claude/apple-design-context.md` before asking questions. Use existin
 | [siri.md](references/siri.md) | Siri | Intents, shortcuts, voice interaction, App Shortcuts |
 | [apple-pay.md](references/apple-pay.md) | Apple Pay | Payment buttons, checkout flow, security |
 | [tap-to-pay-on-iphone.md](references/tap-to-pay-on-iphone.md) | Tap to Pay | Merchant flows, contactless payment |
-| [in-app-purchase.md](references/in-app-purchase.md) | In-app purchase | Subscriptions, one-time purchases, transparency |
+| [apple-in-app-purchase.md](references/apple-in-app-purchase.md) | Apple In-App Purchase | Subscriptions, one-time purchases, transparency |
 | [healthkit.md](references/healthkit.md) | HealthKit | Health data access, privacy, permissions |
 | [carekit.md](references/carekit.md) | CareKit | Care plans, tasks, health management |
 | [researchkit.md](references/researchkit.md) | ResearchKit | Studies, informed consent, data collection |

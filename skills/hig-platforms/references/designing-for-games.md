@@ -5,7 +5,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/designing-
 
 <!-- hig-doctor:attribution -->
 > **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/designing-for-games.
-> This file reproduces that content for AI agent reference, snapshot 2026-08-24.
+> This file reproduces that content for AI agent reference, snapshot 2026-10-15.
 > Apple HIG text is © Apple Inc.; imagery is omitted. This repository provides organization and cross-referencing for AI agent consumption only.
 
 # Designing for games
@@ -114,7 +114,7 @@ As you create or adapt a game for Apple platforms, learn how to integrate the fu
 
 * [Game Center](https://developer.apple.com/design/human-interface-guidelines/game-center)
 * [iCloud](https://developer.apple.com/design/human-interface-guidelines/icloud)
-* [In-app purchase](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase)
+* [Apple In-App Purchase](https://developer.apple.com/design/human-interface-guidelines/apple-in-app-purchase)
 
 ## Resources
 

@@ -5,7 +5,7 @@ source: https://developer.apple.com/design/human-interface-guidelines/apple-pay
 
 <!-- hig-doctor:attribution -->
 > **Source**: Apple Inc. Canonical content at https://developer.apple.com/design/human-interface-guidelines/apple-pay.
-> This file reproduces that content for AI agent reference, snapshot 2026-08-24.
+> This file reproduces that content for AI agent reference, snapshot 2026-10-15.
 > Apple HIG text is © Apple Inc.; imagery is omitted. This repository provides organization and cross-referencing for AI agent consumption only.
 
 # Apple Pay
@@ -18,7 +18,7 @@ People pay using Face ID, Touch ID, or Optic ID on supported devices, or by doub
 
 For developer guidance, see [Apple Pay](https://developer.apple.com/documentation/passkit/apple-pay) and [Apple Pay on the Web](https://developer.apple.com/documentation/applepayontheweb). For a hands-on demo of Apple Pay on the web, see [Apple Pay on the web interactive demo](https://applepaydemo.apple.com).
 
-> **Note:** Use [In-app purchase](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase) to sell virtual goods in your app, such as premium content, and subscriptions for digital content.
+> **Note:** Use [Apple In-App Purchase](https://developer.apple.com/design/human-interface-guidelines/apple-in-app-purchase) to sell virtual goods in your app, such as premium content, and subscriptions for digital content.
 
 ## Offering Apple Pay
 

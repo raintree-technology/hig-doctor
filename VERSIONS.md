@@ -5,9 +5,9 @@ Current versions of all skills. Agents can compare against local versions to che
 | Skill | Version | Last Updated |
 |-------|---------|--------------|
 | hig-project-context | 1.0.0 | 2025-02-02 |
-| hig-platforms | 2.2.0 | 2026-09-10 |
-| hig-foundations | 2.2.0 | 2026-09-10 |
-| hig-patterns | 2.1.2 | 2026-09-10 |
+| hig-platforms | 2.2.1 | 2026-10-15 |
+| hig-foundations | 2.2.1 | 2026-10-15 |
+| hig-patterns | 2.1.3 | 2026-10-15 |
 | hig-components-content | 2.1.1 | 2026-08-24 |
 | hig-components-layout | 2.1.1 | 2026-08-24 |
 | hig-components-menus | 2.1.1 | 2026-08-24 |
@@ -15,16 +15,26 @@ Current versions of all skills. Agents can compare against local versions to che
 | hig-components-dialogs | 2.0.1 | 2026-08-24 |
 | hig-components-controls | 2.0.1 | 2026-08-24 |
 | hig-components-status | 2.1.1 | 2026-08-24 |
-| hig-components-system | 2.1.1 | 2026-08-24 |
+| hig-components-system | 2.2.0 | 2026-10-15 |
 | hig-inputs | 2.1.1 | 2026-08-24 |
-| hig-technologies | 2.2.0 | 2026-09-10 |
+| hig-technologies | 2.3.0 | 2026-10-15 |
 | hig-accessibility-audit | 1.0.0 | 2026-07-11 |
 
 ## HIG Source
 
-Content sourced from [Apple's Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/), re-verified against the live site on September 10, 2026. Files updated 2026-09-10 carry that snapshot stamp; files whose content was verified unchanged retain their earlier (2026-08-24, 2026-07-08, or 2026-06-11) stamp.
+Content sourced from [Apple's Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/), re-verified against the live site on October 15, 2026. Files updated 2026-10-15 carry that snapshot stamp; files whose content was verified unchanged retain their earlier (2026-09-10, 2026-08-24, 2026-07-08, or 2026-06-11) stamp.
 
 ## Recent Changes
+
+### 2026-10-15
+- **October 2026 refresh** - full re-crawl (173 topics, 166 leaf). Minor bump for `hig-components-system` (2.2.0) and `hig-technologies` (2.3.0); patch bump for `hig-foundations` (2.2.1), `hig-platforms` (2.2.1), and `hig-patterns` (2.1.3). All other skills are unchanged and keep their earlier stamps. Twelve reference files changed and take the 2026-10-15 stamp.
+  - `widgets` and `carplay` - Apple HomeView now appears among the widget and CarPlay surfaces.
+  - `live-activities` - up to three minimal presentations can appear in the Dynamic Island, and a new 28pt limited-width rule applies.
+  - `designing-for-iphone-duo` - adds Device Hub, `ArrangementView` / `UIArrangementViewController`, and screenshot-spec pointers.
+  - `privacy` - custom screens may add actions needed for legal consent.
+  - **Renamed topic: `in-app-purchase` is now `apple-in-app-purchase`** ("Apple In-App Purchase", `hig-technologies`). Reference file renamed, index row and canonical URL updated, and mapped via `NEW_TOPIC_PLACEMENT` in `generate.py`. Apple rebranded the page (September 17, 2026) and refined guidance: the offer-code and retention/win-back guidance was reworded, and the custom subscription-management UI guidance was removed.
+  - Minor link and wording updates in `icons`, `right-to-left`, `sf-symbols`, `managing-accounts`, `designing-for-games`, `apple-pay`, and `wallet`.
+  - MCP server snapshot constant bumped to 2026-10-15.
 
 ### 2026-09-10
 - **September 2026 event updates (iPhone Duo)** — full re-crawl (173 topics, 166 leaf) picked up Apple's September 9, 2026 change-log entries. Minor bump for `hig-platforms`, `hig-foundations`, and `hig-technologies` (2.2.0); patch bump for `hig-patterns` (2.1.2). All other skills are unchanged and keep their 2026-08-24 stamp.

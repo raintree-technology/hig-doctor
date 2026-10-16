@@ -23,6 +23,8 @@ NEW_TOPIC_PLACEMENT = {
     "snippets": "hig-components-system",
     # designing-for-iphone-duo: new platform page (Sept 2026) -> platforms skill
     "designing-for-iphone-duo": "hig-platforms",
+    # apple-in-app-purchase: Apple renamed in-app-purchase (Oct 2026) -> technologies skill
+    "apple-in-app-purchase": "hig-technologies",
 }
 # Live collection/navigation pages with no leaf prose — skip (handled by SKILL.md).
 SKIP_SLUGS = {

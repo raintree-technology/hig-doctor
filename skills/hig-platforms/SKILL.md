@@ -1,6 +1,6 @@
 ---
 name: hig-platforms
-version: 2.2.0
+version: 2.2.1
 description: >-
   Apple Human Interface Guidelines for platform-specific design. Use this skill when the user asks about
   "designing for iOS", "iPhone Duo", "foldable iPhone", "dual display", "iPad app design", "macOS design",
