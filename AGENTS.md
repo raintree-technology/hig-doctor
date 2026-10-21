@@ -16,6 +16,6 @@ Human Interface Guidelines.
   report diff before validation.
 - Add a focused fixture and test for every detection-rule behavior change.
 - Keep file scanning bounded and preserve symlink, size, and recursion safeguards.
-- Use Bun 1.3.11 and Node 24 through Mise.
+- Use Bun 1.4.3 and Node 24 through Mise.
 - Run `bun run validate` while iterating and `bun run validate:full` for release-facing
   changes.

@@ -1,0 +1,5 @@
+preload = ["../../tools/security/tls-preload.mjs"]
+
+
+[install]
+cafile = "../../tools/security/ca.pem"
