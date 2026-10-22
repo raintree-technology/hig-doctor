@@ -3,7 +3,7 @@
 min_version = "2026.7.1"
 
 [tools]
-"bun" = "1.4.3"
+"bun" = "1.4.4"
 "node" = "24.22.1"
 
 [tasks."setup"]

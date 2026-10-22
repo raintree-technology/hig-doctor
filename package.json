@@ -22,7 +22,7 @@
     "typecheck": "bun run --cwd website typecheck && bun run --cwd packages/core typecheck && bun run --cwd packages/cli typecheck && bun run --cwd packages/mcp typecheck",
     "test:security": "node --test test/workflow-security.test.mjs"
   },
-  "packageManager": "bun@1.4.3",
+  "packageManager": "bun@1.4.4",
   "workspaces": [
     "website",
     "packages/core",
