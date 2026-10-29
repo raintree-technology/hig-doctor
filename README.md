@@ -150,7 +150,7 @@ and [Raintree Standards](https://github.com/raintree-technology/raintree.standar
 defines governed requirements. See the
 [Raintree open-source portfolio](https://raintree.technology/portfolio#open-source).
 
-Raintree also builds [BetterOff](https://betteroff.finance), which keeps a household's
+Raintree also builds [BetterOff](https://betteroff.finance/github), which keeps a household's
 spending, investments, assets, debts, and net worth in one current record.
 
 ## Project policies
