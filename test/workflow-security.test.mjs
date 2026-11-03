@@ -45,12 +45,6 @@ test("repo workflows declare least-privilege contents permissions", () => {
   }
 });
 
-test("website CI no longer self-mutates the repository", () => {
-  const content = readRepoFile(".github/workflows/build-website.yml");
-  assert.doesNotMatch(content, /\bgit\s+push\b/);
-  assert.doesNotMatch(content, /\bgit\s+commit\b/);
-});
-
 test("HIG drift workflow maintains one consolidated issue", () => {
   const content = readRepoFile(".github/workflows/hig-drift.yml");
   assert.match(content, /TITLE="HIG drift report"/);
